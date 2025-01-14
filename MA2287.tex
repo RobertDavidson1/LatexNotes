@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+
+%--------------------------------------------------------
+% Basic Page Setup
+%--------------------------------------------------------
+\usepackage[margin=1in]{geometry} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}  % Improves typography
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}  % Use the latest available features
+
+
+% Slightly increase line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+%--------------------------------------------------------
+% Math Packages
+%--------------------------------------------------------
+\usepackage{amsmath,amssymb,amsthm}
+
+%--------------------------------------------------------
+% tcolorbox for Call-Out Blocks
+%--------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+% Definition box
+\newtcolorbox{definitionbox}{
+  title=Definition,
+  fonttitle=\bfseries,
+  colback=blue!5!white,    % Light blue background
+  colframe=blue!30!white,  % Darker blue frame
+  coltitle=black,
+  boxrule=1.5pt,
+  arc=3pt,
+  outer arc=3pt,
+}
+
+% Theorem box
+\newtcolorbox{theorembox}{
+  title=Theorem,
+  fonttitle=\bfseries,
+  colback=blue!5!black,
+  colframe=blue!50!black,
+  coltitle=black,
+  boxrule=0.5pt,
+  arc=4pt,
+  outer arc=4pt,
+}
+
+% Note box
+\newtcolorbox{examplebox}{
+  title=Example,
+  fonttitle=\bfseries,
+  colback=red!5!white,
+  colframe=red!30!white,
+  coltitle=black,
+  boxrule=0.5pt,
+  arc=4pt,
+  outer arc=4pt,
+}
+
+%--------------------------------------------------------
+% Theorem Environments (optional alternative)
+%--------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+
+
+\title{
+Complex Analysis\\[2ex]
+Exams:\\
+60\% Exam\\
+40\% Continuous Assessment
+}
+\author{}     % Optional: Add author details if desired
+\date{}       % Optional: Add date if desired
+%--------------------------------------------------------
+% Document
+%--------------------------------------------------------
+\begin{document}
+\maketitle
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\section{Week 1: Introduction to Complex Numbers}
+\subsection{Quadratics with Complex Roots}
+Everybody knows that, for coefficients $a,b,c \in \mathbb{R}$, the quadatric
+$$ax^2 + bx +c = 0$$
+has real values solutions given by:
+$$x = \dfrac{-b\;\pm\;\sqrt{b^2 - 4ac}}{2a}\quad\quad\quad \text{if } b^2 -4ac \geq 0$$ 
+but if $b^2 - 4ac < 0$, then we need the roots of negative numbers, and thus the solutions are complex numbers.\\
+For example, the, the plot of $x^2 + 1 = 0$, below implies imaginary soltuons, since there are no real $x$-values that make y=0
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        width = 0.5\textwidth,
+        height = 0.5\textwidth,
+        axis lines = middle,
+        xlabel = {$x$},
+        ylabel = {$f(x)$},
+        domain = -2:2,
+        samples = 100,
+        enlargelimits = true
+      ]
+      \addplot [blue, thick] {x^2 + 1};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+\newpage
+\subsection{Real valued solutions of a cubic}
+Oddly enough, complex numbers are needed to find real-valued solutions of a cubic equation.
+\begin{definitionbox}
+  For $p, q \in \mathbb{R}$, 
+$$x^3 = px + q,$$
+has the solution, by Cardano's formula:
+  $$x = \sqrt[3]{\frac{q}{2} + \sqrt{\left(\frac{q}{2}\right)^2 - \left(\frac{p}{3}\right)^3}} + \sqrt[3]{\frac{q}{2} - \sqrt{\left(\frac{q}{2}\right)^2 - \left(\frac{p}{3}\right)^3}}$$
+\end{definitionbox}
+
+\begin{examplebox}
+Consider $x^3 = 15x +4$, staring at this long enough, one could guess that $x=4$ is a solution, and then factor out $(x-4)$ to get a quadratic, but that's not the point.\\
+By Cardano's Formula, with $p = 15$ and $q = 4$, we get:
+$$\sqrt[3]{2 + \sqrt{-121}} + \sqrt[3]{2-\sqrt{121}}$$
+Setting $i = \sqrt{-1}$, thus $\sqrt{-121} = 11i$ \\
+And noticing that:
+\begin{align*}
+  (2+i)^3 &= 2^3 + 3\cdot2^2 \cdot i + 3\cdot 2 \cdot i^2 + i^3 \\
+  &= 8 + 12i - 6 - i \\ 
+  &= 2 + 11i \\ 
+  \text{Thus} \quad (2+1)^3 = 2 + 11i \quad &\text{and} \quad (2-1)^3 = 2 - 11i
+\end{align*}
+
+Thus, the solution is:
+\begin{align*}
+  &= \sqrt[3]{(2+i)^3} + \sqrt[3]{(2-i)^3} \\ 
+  &= 2+ i + 2 - i \\
+  &= 4
+\end{align*}
+\end{examplebox}
+\pagebreak
+\subsection{Definition of Complex Numbers}
+
+\begin{definitionbox}
+  The set of complex numbers is defined as: 
+  $$\mathbb{C} = \{x + yi \mid x,y \in \mathbb{R}\}$$
+  where $a$ is the real part and $yi$ is the imaginary part, and $i^2 = -1$
+\end{definitionbox}
+\subsection{Attributes of Complex Numbers}
+Given a complex number of the form: $z = x + yi$, we have:
+\begin{itemize}
+  \item Re$(z) = x$ is the real part of $z$ \
+  \item Im$(z) = y$ is the imaginary part of $z$ 
+  \item $\bar{z} = x - yi$ is the complex conjugate of $z$
+  \item $|z| = \sqrt{x^2 + y^2}$ is the modulus of $z$
+\end{itemize}
+Note that: 
+\[
+z\bar{z} = x^2 + y^2 = |z|^2 \in \mathbb{R}
+\]
+Also note how this formula is used in the computation of the inverse of $z$:
+\[
+z^{-1} = \frac{\overline{z}}{|z|^2}
+\]
+The geometric meaning of these attributes can be seen below.
+\begin{center}
+
+\begin{tikzpicture}
+  % Draw the axes
+  \draw[->] (0,0) -- (5,0) node[right] {$\mathrm{Re}$};
+  \draw[->] (0,-3) -- (0,3) node[above] {$\mathrm{Im}$};
+  
+  % Draw the vectors
+  \draw[->,thick,red] (0,0) -- (2,3) node[midway, below right] {$z = x + iy$};
+  \draw[->,thick,blue] (0,0) -- (2,-3) node[midway, above right] {$\bar{z} = x - iy$};
+  
+  % Add grid lines
+  \draw[help lines, dashed, gray] (-1,-3) grid (5,3);
+\end{tikzpicture}
+\end{center}
+\end{document}

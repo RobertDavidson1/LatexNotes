@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+%--------------------------------------------------------
+% Basic Page Setup
+%--------------------------------------------------------
+\usepackage[margin=1in]{geometry} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}  % Improves typography
+
+% Slightly increase line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+%--------------------------------------------------------
+% Math Packages
+%--------------------------------------------------------
+\usepackage{amsmath,amssymb,amsthm}
+
+%--------------------------------------------------------
+% tcolorbox for Call-Out Blocks
+%--------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+% Definition box
+\newtcolorbox{definitionbox}[1][]{%
+  fonttitle=\bfseries,
+  colback=blue!5!white,    % Light blue background
+  colframe=blue!30!white,  % Darker blue frame
+  coltitle=black,
+  boxrule=1.5pt,
+  arc=3pt,
+  outer arc=3pt,
+  title=#1 % Title will be passed as an argument
+}
+
+
+\newtcolorbox{notebox}[1][]{%
+  fonttitle=\bfseries,
+  colback=red!5!white,
+  colframe=red!30!white,
+  coltitle=black,
+  boxrule=1.5pt,
+  arc=3pt,
+  outer arc=3pt,
+  title=#1 % Title will be passed as an argument
+}
+
+% Theorem box
+\newtcolorbox{theorembox}{
+  title=Theorem,
+  fonttitle=\bfseries,
+
+  coltitle=black,
+  boxrule=0.5pt,
+  arc=4pt,
+  outer arc=4pt,
+}
+
+
+
+%--------------------------------------------------------
+% Theorem Environments (optional alternative)
+%--------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+
+\usepackage{enumitem}
+
+
+\title{
+Mathematical Methods II\\[2ex]
+Exams:\\
+70\% Exam\\
+30\% Continuous Assessment (3 parts)
+}
+\author{}     % Optional: Add author details if desired
+\date{}       % Optional: Add date if desired
+%--------------------------------------------------------
+% Document
+%--------------------------------------------------------
+\begin{document}
+\setlist[itemize]{itemsep=1pt, parsep=1pt, topsep=1pt}
+\maketitle
+\pagebreak
+
+
+
+\tableofcontents
+\pagebreak
+\section{Week 1: Introduction to Statistics}
+\begin{definitionbox}[Definitions]
+    \begin{itemize}
+        \item \textbf{Population:} A group of objects or people with a shared characteristic.
+        \item \textbf{Sample:} A subset of the population.
+        \item \textbf{Parameter:} A numerical value that represent a characteristic of the population.
+        \item \textbf{Statistic:} A numerical value that represent a characteristic of the sample.
+    \end{itemize}
+\end{definitionbox}
+
+\begin{notebox}[Types of Variables]
+    \begin{itemize}
+        \item \textbf{Qualitative:} Categorical data that can be divided into groups.
+            \begin{itemize}
+                \item Nominal data: Data that cannot be ordered. (eye color)
+                \item Ordinal data: Data that can be ordered. (hurricane category)
+            \end{itemize}
+        \item \textbf{Quantitative:} Numerical data that can be measured.
+            \begin{itemize}
+                \item Continuous data: Data that can take any value within a range. (height)
+                \item Discrete data: Data that can only take specific values. (number of siblings)
+            \end{itemize}
+    \end{itemize}
+
+\end{notebox}
+\end{document}
