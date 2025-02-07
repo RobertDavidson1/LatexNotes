@@ -1,16 +1,16 @@
-\documentclass[a4paper,12pt]{article} % Added 12pt for better readability
-
+\documentclass[a4paper, 10pt ]{article} % Changed font size to 6pt
+\usepackage{amsmath} % Added for extended math commands
 % Encoding and fonts
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{xcolor}      % For color definitions
-
+\usepackage{caption}
 % Page layout
 \usepackage[margin=1in]{geometry}
 
 % Micro-typography
 \usepackage{microtype}
-
+\usepackage{extarrows} 
 % Math packages
 \usepackage{amsmath, amssymb, amsthm}
 
@@ -21,6 +21,9 @@
 
 % Additional utilities
 \usepackage{etoolbox}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+\tdplotsetmaincoords{75}{120}
 
 % Patching pgfplots warning
 \usepackage{pgfplots}
@@ -136,10 +139,12 @@ Complex Analysis Notes
 
 \begin{document}
 \maketitle
-\pagebreak
 
 \tableofcontents
+
 \pagebreak
+
+
 \section{Preliminary}
 \subsection{The Complex Plane and the Four Quadrants}
 
@@ -157,7 +162,7 @@ The complex plane is a two-dimensional plane where the horizontal axis represent
 \subsection{Diagram of the Quadrants}
 \hfill \hfill
 \begin{center}
-  \begin{tikzpicture}[scale=5]
+  \begin{tikzpicture}[scale=1]
     % Draw axes
     \draw[->] (-1.2,0) -- (1.2,0) node[right] {\text{Re}};
     \draw[->] (0,-1.2) -- (0,1.2) node[above] {\text{Im}};
@@ -171,7 +176,6 @@ The complex plane is a two-dimensional plane where the horizontal axis represent
   \end{tikzpicture}
 \end{center}
 
-\pagebreak
 
 \subsection{Adjusting Angles Based on Quadrants}
 
@@ -205,16 +209,13 @@ To correctly determine \( \theta \), adjust the angle returned by \(\tan^{-1}\le
 
 \begin{examplebox}[Let $z = 5 - 2i$]
   $x = 5$ and $y = -2$. Thus, we have:
-  $$\theta = 2\pi - \tan^{-1}({2/5}) \approx 338.20^\circ$$
+  $\theta = 2\pi - \tan^{-1}({2/5}) \approx 338.20^\circ$
   \begin{center}
-    \begin{tikzpicture}[scale=1.5]
+    \begin{tikzpicture}[scale=0.5]
 
       % Draw axes
       \draw[->] (-1, 0) -- (6, 0) node[right] {$\text{Re}$};
       \draw[->] (0, -3) -- (0, 2) node[above] {$\text{Im}$};
-
-      % Draw grid (optional)
-      \draw[gray, dotted] (-1, -3) grid (6, 2);
 
       % Draw the complex number z = 5 - 2i
       \coordinate (z) at (5, -2);
@@ -238,7 +239,6 @@ To correctly determine \( \theta \), adjust the angle returned by \(\tan^{-1}\le
 
 \end{examplebox}
 
-\pagebreak
 \section{Foundations}
 \subsection{Intro to Complex Numbers}
 \noindent
@@ -310,7 +310,6 @@ Letting $z = x + iy$ and $w = u+iv$, we see:
 $$|z -w| = \sqrt{(x-u)^2 + (y-z^2)^2}$$
 That is, $|z-w|$ is the distance between $z$ and $w$ in the complex plane.
 
-\pagebreak
 
 \subsection{Polar Form}
 
@@ -373,23 +372,13 @@ $$\arg(z) = \text{Arg}(z) + 2 n \pi, \quad n \in \mathbb{Z}$$
 \begin{examplebox}[Find $\text{Arg}(i)$ and $\arg(i)$]
   Since $i = 0 + 1i$, we have $x = 0$ and $y = 1$.
 
-  Using $\tan^{-1}\left(\frac{y}{x}\right)$:
+  Using $\tan^{-1}\left(\frac{y}{x}\right) \Rightarrow \arg(z) = \tan^{-1}\left(\frac{1}{0}\right) = \frac{\pi}{2}$
 
-  \[
-    \arg(z) = \tan^{-1}\left(\frac{1}{0}\right) = \frac{\pi}{2}
-  \]
 
   Therefore:
 
-  \[
-    \text{Arg}(i) = \frac{\pi}{2}
-  \]
-  \[
-    \arg(i) = \frac{\pi}{2} + 2n\pi, \quad n \in \mathbb{Z}
-  \]
+  $$ \text{Arg}(i) = \frac{\pi}{2} \quad \text{and} \quad \arg(i) = \frac{\pi}{2} + 2n\pi, \quad n \in \mathbb{Z} $$
 \end{examplebox}
-
-\pagebreak
 
 \subsection{De Moivre's Theorem}
 \textbf{Theorem:} Let $z_1,z_2 \in \mathbb{C}$, be nonzero numbers
@@ -419,10 +408,8 @@ Since $z$ lies on the unit circle, we know $R =1$, thus we have
 $$z = e^{i\theta}$$
 Also, we can rewrite $1$ as:
 \begin{align*}
-  1 & = 1 + 0i                                                                                                              \\
-    & = \cos(0) + i\sin(0)                                                                                                  \\
-    & = \cos(2\pi) + i\sin(2\pi)                                                                                            \\
-    & = \cos(2\pi k) + i\sin(2\pi k) \quad (\text{Periodic with } 2\pi \; \text{so multiples of k don't change the result}) \\
+  1 & = 1 + 0i = \cos(0) + i\sin(0)                                                                                                             \\
+    & = \cos(2\pi) + i\sin(2\pi) = \cos(2\pi k) + i\sin(2\pi k) \quad (\text{Periodic with} 2\pi \; \text{k multiples don't change the result}) \\
     & = e^{i2\pi k} \quad \text{where} \; k \in \mathbb{Z} \quad (\text{By Eulers Formula})
 \end{align*}
 So we have, $z^n = e^{n(i \theta)}$:
@@ -435,12 +422,10 @@ So we have, $z^n = e^{n(i \theta)}$:
 So $\theta$ is the angle corresponding to the $n$-th roots of unity. Using eulers formula again, the solutions are given as:
 $$z_k = e_{i\theta} = e^{i(\frac{2\pi k}{n})} = \cos\left(\frac{2\pi k}{n}\right) + i \sin\left(\frac{2\pi k}{n}\right)$$
 
-\pagebreak
 \subsection{Complex Roots}
-Recall, square roots can be written as $4^{1/2} = \sqrt{4} = 2$, cubic roots as $27^{1/3} = \sqrt[3]{27} = 3$, and so on. Thus, we can write the $n$-th root as $x^{1/n}$. \\
+Recall, square roots can be written as $4^{1/2} = \sqrt{4} = 2$, thus, we can write the $n$-th root as $x^{1/n}$. \\
 \textbf{What if we wanted to find the $n$-th root of a complex number?} \\
-Consider $f(z) = z^{1/n}$, where $n\in \mathbb{Z}$. To solve this, we aim to find some $w$ such that $w^n = z$. \\
-Let:
+Consider $f(z) = z^{1/n}$, where $n\in \mathbb{Z}$. To solve this, we aim to find some $w$ such that $w^n = z$.
 $$z = R[\cos(\theta) + i \sin( \theta)] \quad \text{and} \quad w = r[\cos(\phi) + i \sin(\phi)]$$
 From De Moivre's Theorem, we have:
 $$w^n = r^n[\cos(n\phi) + i\sin(n\phi)] = R[\cos(\theta) + i\sin(\theta)]$$
@@ -451,8 +436,7 @@ We see:
 \end{align*}
 Note that since $\sin$ and $\cos$ are periodic with $2\pi$, the addition of $2\pi k$ doesn't change the result.\\
 So we have:
-$$z^{1/n} = R^{1/n} [\cos\phi + i \sin\phi]$$
-$$\text{with} \quad \phi = \frac{\theta+ 2k\pi}{n}, \quad k \in (0, 1, 2, \dots, n-1)$$
+$$z^{1/n} = R^{1/n} [\cos\phi + i \sin\phi] \quad \text{with} \quad \phi = \frac{\theta+ 2k\pi}{n}, \quad k \in (0, 1, 2, \dots, n-1)$$
 Note that we reserve the notation $\sqrt[n]{z}$ to denote the \textbf{principal root}, defined when $k = 0$.
 
 \begin{examplebox}[Find the cube roots of $z = -1 + i$]
@@ -463,7 +447,9 @@ Note that we reserve the notation $\sqrt[n]{z}$ to denote the \textbf{principal 
   Thus, the cubic roots are:
   $$w_k = \sqrt[3]{2} \left[\cos\left(\frac{\theta + 2\pi k}{3}\right) + i\sin\left(\frac{\theta + 2\pi k}{3}\right)\right]$$
 \end{examplebox}
+
 \pagebreak
+
 \section{Complex Functions}
 \subsection{Trigonemtric Functions}
 Recall:
@@ -506,7 +492,6 @@ $$e^{z} = \sum_{n=0}^{\infty} \frac{z^n}{n!} = 1 + z + \frac{z^2}{2!} +\frac{z^3
 Recall also, that $z = re{i\theta} = e^{i\theta}$ it then follows:
 $$z = e^{i \theta} = \sum_{n = 0}^{\infty} \frac{(i \theta)^n}{n!} = \underbrace{\left(1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} + \dots \right)} _{\cos\theta} + i\underbrace{\left(1 - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} + \dots \right)} _{\cos\theta} = \cos(\theta) + i\sin(\theta)$$
 
-\pagebreak
 
 
 \subsection{Complex Logarithms}
@@ -527,17 +512,20 @@ We can also write the \textbf{Complex logarithm} as:
 \end{align*}
 
 \begin{examplebox}[Find the log of $z = 1 + 0i$]
-  We have:  \\
-  $\circ \;\; z = 1 + 0i = 1  \Rightarrow |z|  = 1$ \\
-  $\circ \;\; \text{Arg}(z) = \tan^{-1}{0/1} = 0$
-  Thus, we have:
-  \begin{align*}
-    \log(1) & = \ln|1| + i(\text{Arg}(z) + 2k\pi)              \\
-            & = 0 + i(0 + 2k\pi)                               \\
-            & = 2k\pi i \quad \text{where} \; k \in \mathbb{Z}
-  \end{align*}
-  \begin{center}
-    \begin{tikzpicture}[scale = 1]
+
+  \begin{minipage}{0.44\textwidth}
+    $\circ \;\; z = 1 + 0i = 1  \Rightarrow |z|  = 1$ \\
+    $\circ \;\; \text{Arg}(z) = \tan^{-1}{0/1} = 0$ \\
+    Thus, we have: \\
+    \begin{align*}
+      \log(1) & = \ln|1| + i(\text{Arg}(z) + 2k\pi)              \\
+              & = 0 + i(0 + 2k\pi)                               \\
+              & = 2k\pi i \quad \text{where} \; k \in \mathbb{Z}
+    \end{align*}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\textwidth}
+    \begin{tikzpicture}[scale = 0.5]
       \begin{axis}[
           axis lines = center,
           xlabel = {Re},
@@ -549,7 +537,6 @@ We can also write the \textbf{Complex logarithm} as:
           xtick = {-9,-6,...,6,9},
           ytick = {-9,-6,...,6,9},
         ]
-
         % Plot discrete logarithm values (2kπi)
         \addplot[
           only marks,
@@ -561,13 +548,14 @@ We can also write the \textbf{Complex logarithm} as:
             (0, 0)
             (0, 6.28)
           };
-
       \end{axis}
     \end{tikzpicture}
-  \end{center}
+  \end{minipage}
+
+
+
 \end{examplebox}
 
-\pagebreak
 
 \subsection{Complex Powers}
 Recall the Logarithm Rule: $\log(a^b) = b\log(a)$. We want to define $z^\alpha$, in such a way that $\log(z^\alpha) = \alpha \log(z)$. That is the \textbf{Complex Power} is defined as:
@@ -590,7 +578,6 @@ $$1^{\alpha} = e^{\frac{2k\pi i m}{n}} = \cos\left(\frac{2\pi km}{n}\right) + i 
 If $\alpha = i$ then we see:
 $$1^\alpha = 1^i = e^{2k\pi i \cdot i} = e^{-2k\pi}$$
 
-\pagebreak
 
 \section{Geomtric Mappings and Transformations}
 \subsection{Mappings:}
@@ -617,7 +604,7 @@ $$\{w = u+iv: -\pi < v \leq \pi\}$$
 
   \draw[blue3, very thick] (0,0) -- (3,0) node[midway, below] {\scriptsize$\theta = 0$};
   \draw[red3, very thick] (0,0) -- (2.1213 ,2.1213)  node[midway, below, sloped] {\scriptsize$\theta = \frac{\pi}{4}$};
-  \draw[purple3, very thick] (0,0) -- (0,3) node[midway, right] {\scriptsize$\theta = \frac{\pi}{2}$};;;
+  \draw[purple3, very thick] (0,0) -- (0,3) node[midway, right] {\scriptsize$\theta = \frac{\pi}{2}$};
 
   \fill[blue3] (1,0) circle (2pt);
   \fill[blue3] (2,0) circle (2pt);
@@ -686,10 +673,9 @@ $$\{w = u+iv: -\pi < v \leq \pi\}$$
 
 \end{tikzpicture}
 
-\pagebreak
 
 \subsubsection{Example Mapping 1}
-Let \( f(z) = z^3 \), we see that: \\[1ex]
+Let \( f(z) = z^3 \), we see that: \\
 \begin{minipage}{0.47\textwidth}
   Using exponential rules and polar representation:
   \begin{align*}
@@ -716,12 +702,11 @@ and $|z| = \sqrt{1^2 + 1^2} = \sqrt{2}$.  Thus, we have: \\
   \begin{align*}
     z^3 & = |z|^3\cdot \left[\cos(3\theta) + i\sin(3\theta)\right]                                            \\
         & = (\sqrt{2})^3\cdot \left[\cos\left(\frac{3\pi}{4}\right) + i\sin\left(\frac{3\pi}{4}\right)\right] \\
-        & = 2\sqrt{2}\cdot \left[\cos\left(\frac{3\pi}{4}\right) + i\sin\left(\frac{3\pi}{4}\right)\right]    \\
         & = -2\sqrt{2} + i 2\sqrt{2}
   \end{align*}
 \end{minipage}\hfill
 \begin{minipage}{0.47\textwidth}
-  \begin{tikzpicture}[scale=1.0, every node/.style={font=\small}]
+  \begin{tikzpicture}[scale=0.5, every node/.style={font=\small}]
 
     % Draw the coordinate axes
     \draw[->] (-3,0) -- (3,0) node[right] {$\text{Re}$};
@@ -745,11 +730,10 @@ and $|z| = \sqrt{1^2 + 1^2} = \sqrt{2}$.  Thus, we have: \\
     \draw[red3, dashed] (0.65,0) arc (0:135:0.65) node[below, right] {\scriptsize$3\theta$};
 
   \end{tikzpicture}
-\end{minipage}\hfill\\
+\end{minipage}\hfill\\\\\\
 In essence, the mapping $f(z) = z^3$ rotates the complex number $z$ by $3\theta$ and scales it by $|z|^3$.
 We can imagine this, for the complex numbers with $|z| = 1$, and $0 < \theta \leq \frac{\pi}{2}$, as an arc of radius $1$, from the angle $0 \to 90^\circ$, mapped to an arc of radius $8$, from the angles $0 \to 270^\circ$.
 
-\pagebreak
 
 \subsubsection{Example Mapping 2}
 We wish to find the image of the line \(x=1\) under
@@ -882,8 +866,126 @@ $$A(x^2+y^2) + Bx + Cy + D = 0 \quad \underrightarrow{\text{maps to}} \quad D(u^
 
 \end{tikzpicture}
 \pagebreak
+\subsection{Prelim to Riemann Sphere}
+Our goal is to define the  \textbf{Riemann Sphere}, which is the complex plane $\mathbb{C}$, together with an extra point at infinity. In essence
+The Riemann sphere is a way to "wrap  up" the entire complex plane into a compact, closed surface that is \textbf{homeomorphic} (toplogically equivalent) to the sphere $S^2$ and the connection between them is made via the \textbf{stereographic projection}.
+
+\subsubsection{Euclidean Space and Compact Sets}
+\textbf{Euclidean space}, denoted as \(\mathbb{R}^n\), is the collection of all points in \(n\)-dimensional space, where each point is described by \(n\) real numbers. In Euclidean spaces (such as the real line \(\mathbb{R}\) or the plane \(\mathbb{R}^2\)), a set is \textbf{compact} if it is both: \textbf{Closed} (contains all its limit points), and \textbf{Bounded} (contained within a finite region).
+
+\begin{minipage}{0.47\textwidth}
+  \begin{align*}
+     & \textbf{Examples of Compact Sets:}                                                       \\
+     & \text{The closed interval } [0,1] \subset \mathbb{R}^1,                                  \\
+     & \text{A closed disk } \{(x,y) \in \mathbb{R}^2 : x^2 + y^2 \leq 1\} \subset \mathbb{R}^2
+  \end{align*}
+\end{minipage}\hfill
+\begin{minipage}{0.47\textwidth}
+  \begin{align*}
+     & \textbf{Examples of Non-Compact Sets:}                                          \\
+     & \text{The open interval } (0,1) \subset \mathbb{R}^1 \quad (\text{not closed}), \\
+     & \text{The entire real line } \mathbb{R} \quad (\text{not bounded})
+  \end{align*}
+\end{minipage}
+
+\subsubsection{Compactification of the Complex Plane}
+The complex plane $\mathbb{C}$ is not compact - it streches out infinitely in all directions. By adding a single point at infinity, we "close" the plane, turning it into a compact set. This new space, is \textbf{homeomorphic} (a one-to-one mapping that is continuous in both directions or toplogically equivalent) to  to the Riemann Sphere . We define the new space as:
+$$\tilde{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$$
+
 \subsection{Riemann Sphere}
-Define $\tilde{\mathbb{C}}$
+Define $\tilde{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$. Then $\tilde{\mathbb{C}} \xleftrightarrow{1:1} S^2 \{X = (x,y,z) : x^2 + y^2 + z^2 = 1 \}$ (\emph{homeomorphic}) via the sterographic projection, denoted $St$, defined as follows:\\[2ex]
+\textbf{1. Projection from $S^2 \to \tilde{\mathbb{C}}$}: \\
+For a point $(x, y,z ) \in S^2$, with $z \neq 1$ (the point is not the north pole) the projection is defined as:
+\begin{gather}
+  St(x, y, z) = \frac{1}{1-x_3}(x_1, x_2) \quad \text{for} \; z \neq 1 \notag \\
+  \text{\emph{This takes a point on the sphere and maps it to a point in the complex plane.}} \notag
+\end{gather}
+\textbf{2. Projection from $\tilde{\mathbb{C}} \to S^2$}: \\
+For a point $z \in \mathbb{C}$, the inverse projection is defined as:
+\begin{gather}
+  St^{-1}(z) = \frac{1}{|z|^2 + 1}\langle 2\text{Re}(z), 2\text{Im}(z), |z|^2 - 1 \rangle \notag  \\
+  \text{\emph{This takes a complex number, $z$, written in terms of its real $($Re$(z))$}} \notag \\
+  \text{\emph{and imaginary $($Im$(z))$ parts, and maps it to the sphere}} \notag
+\end{gather}
+\textbf{3. Mapping the North Pole}:
+\\The projection leaves out the north pole from projection onto $\mathbb{C}$
+\begin{gather}
+  St(N)= \infty \quad \text{and} \quad St^{-1}(\infty) = N \notag \quad \text{where}\; N = \langle 0,0,1\rangle\\
+  \text{\emph{The north pole is mapped to the point at infinity, and vice versa.}} \notag
+\end{gather}
+
+\pagebreak
+% \subsection{Stereographic Projection}
+% \begin{figure}[h]
+%   \begin{minipage}{0.48\linewidth}
+%     \centering
+%     \begin{tikzpicture}[tdplot_main_coords, scale = 2.5]
+%       \shade[ball color = lightgray, opacity = 0.5] (0,0,0) circle (1cm);
+
+%       % Axes in 3D coordinate system
+%       \draw[->, very thin] (0,0,0) -- (1.80,0,0) node[anchor=north east] {$x$};
+%       \draw[->, very thin] (0,0,0) -- (0,1.40,0) node[anchor=north east] {$y$};
+%       \draw[->, very thin] (0,0,-1.4) -- (0,0,1.40) node[anchor=north east] {$z$};
+
+%       \tdplotsetrotatedcoords{0}{0}{0};
+%       % Define points
+%       \coordinate (X) at ({0},{0.882},{-0.47});
+%       \coordinate (P) at ({0},{0.6},{0});
+%       \coordinate (N) at ({0}, {0}, {1});
+%       \coordinate (O) at ({0}, {0}, {0});
+%       \coordinate (Q) at ({0}, {0}, {-0.47});
+
+%       \draw[dashed, gray] (0,0,0) circle (1);
+
+%       % Draw points
+%       \filldraw[red] (X) circle (1pt) node[above right] {$X$};
+%       \filldraw[red] (P) circle (1pt) node[above right] {$P$};
+%       \filldraw[red] (N) circle (1pt) node[above right] {$N$};
+%       \filldraw[red] (O) circle (1pt) node[above right] {$O$};
+%       \filldraw[red] (Q) circle (1pt) node[above right] {$Q$};
+
+%       % Draw lines
+%       \draw[thick, -stealth] (O) -- (P);
+%       \draw[thick, -stealth] (O) -- (N);
+%       \draw[thick, -stealth] (Q) -- (X);
+%       \draw[thick, -stealth] (Q) -- (N);
+%       \draw[thick, -stealth] (N) -- (X);
+%     \end{tikzpicture}
+%   \end{minipage}%
+%   \hfill
+%   \begin{minipage}{0.48\linewidth}
+%     \centering
+%     \begin{tikzpicture}[scale = 2.5]
+%       \draw[->, very thin] (-1.4,0) -- (1.4,0) node[anchor=north east] {$y$};
+%       \draw[->, very thin] (0,-1.4) -- (0,1.40) node[anchor=north east] {$z$};
+
+%       \coordinate (N) at (0,1);
+%       \coordinate (P) at (0.6,0);
+%       \coordinate (O) at (0,0);
+%       \coordinate (Q) at (0,-0.47);
+%       \coordinate (X) at (0.882,-0.47);
+
+%       % Draw points
+%       \draw[fill=black] (N) circle (0.025) node[above right] {$N$};
+%       \draw[fill=black] (P) circle (0.025) node[above right] {$P$};
+%       \draw[fill=black] (O) circle (0.025) node[above right] {$O$};
+%       \draw[fill=black] (Q) circle (0.025) node[above right] {$Q$};
+%       \draw[fill=black] (X) circle (0.025) node[above right] {$X$};
+
+%       % Draw lines
+%       \draw[red, very thick] (N) -- (P);
+%       \draw[red, very thick] (O) -- (P);
+%       \draw[red, very thick] (O) -- (N);
+%       \draw[blue] (N) -- (X);
+%       \draw[blue] (X) -- (Q);
+%       \draw[blue] (Q) -- (N);
+%     \end{tikzpicture}
+%   \end{minipage}
+%   \caption*{The stereographic projection from the unit sphere $S^2$ onto the complex plane $\mathbb{C}$}
+% \end{figure}
+
+% \noindent In the above figure, the point $N$ is the north pole of the sphere, and the projection of $X$ onto the plane, $Q$ is the intersection of the vertcial line through $X$ with the through
+
 \subsection{Mobius Transform}
 \subsection{Matrix Reprsentation}
 \subsection{Cayley Transform}
