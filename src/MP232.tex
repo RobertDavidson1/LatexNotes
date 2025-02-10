@@ -61,8 +61,6 @@ $$
   \int \cosh(at)\,dt & = \frac{1}{a}\sinh(at) + C,                \\
   \int \tanh(at)\,dt & = \frac{1}{a}\ln\bigl|\cosh(at)\bigr| + C. \\
 \end{align*}
-
-
 \textbf{Common Identities}
 \begin{align*}
   \cosh^2 x - \sinh^2 x & = 1,                                \\
@@ -71,8 +69,19 @@ $$
   \tanh(2x)             & = \frac{2\,\tanh x}{1 + \tanh^2 x}.
 \end{align*}
 
+\subsection{Partial Fraction Decomposition}
+\textbf{Unrepeated Linear Factors}: A linear factor is of form $(ax + b)$
+$$\frac{s + 1}{s(s-2)(s+3)} = \frac{A}{s} + \frac{B}{s-2} + \frac{C}{s+3}$$
+\textbf{Repeated LinearFactors}:
+$$\frac{3}{(s+2)^2(s-3)} = \frac{A}{s+2} + \frac{B}{(s+2)^2} + \frac{C}{s-3}$$
+\textbf{Unrepeated Quadratic Factors with complex roots}: Where the discriminant ($b^2 - 4ac$) is \\
+\indent negative (complex roots) but the factor is not repeated
+$$\frac{3}{(s^2 - s + 1)(s+2)} = \frac{As + B}{s^2 - s + 1} + \frac{C}{s+2}$$
+\textbf{Repeated Quadratic Factors with complex roots}:
+$$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 + 1} + \frac{E}{s-1}$$
 
 
+\pagebreak
 \section{Laplace Transforms}
 \subsection{What is a Laplace Transform?}
 The Laplace Transform, defined for $t \geq 0$, is given by
