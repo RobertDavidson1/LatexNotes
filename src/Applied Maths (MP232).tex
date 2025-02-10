@@ -86,7 +86,6 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
 \subsection{What is a Laplace Transform?}
 The Laplace Transform, defined for $t \geq 0$, is given by
 $$L\{f(t)\}(s) = F(s) = \int_0^\infty e^{-st} dt$$
-The Laplace is useful because it transforms differential equations into algebraic equations. It is also useful for solving initial value problems.
 
 \subsection{Common Laplace Transforms}
 
@@ -158,7 +157,7 @@ The Laplace is useful because it transforms differential equations into algebrai
     L\{\cos(wt)\} = \frac{s}{s^2+w^2} \quad \text{and} \quad L\{\sin(wt)\} = \frac{w}{s^2+w^2}.
   \]
 \end{examplebox}
-\pagebreak
+
 \subsection{Linearity of the Laplace Transform}
 The Laplace Transform is a linear operator, i.e. for any constants $a$ and $b$:
 $$L\{af(t) + bg(t)\} = aL\{f(t)\} + bL\{g(t)\}$$
@@ -170,6 +169,8 @@ $$L\{af(t) + bg(t)\} = aL\{f(t)\} + bL\{g(t)\}$$
      & = aL\{f(t)\} + bL\{g(t)\}
   \end{align*}
 \end{proofbox}
+
+\newpage
 
 \subsection{The First Shift Theorem}
 \begin{theorembox}[First Shift Theorem]
