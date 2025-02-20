@@ -375,8 +375,9 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
 \end{enumerate}
 
 \subsection{The Dirac Delta Function}
-Consider the action of very large forces acting over a very short time. Such as a nail hitting a hammer. The \textbf{Dirac Delta Function} can model these. \\
-Let $\delta_{\epsilon}(t)$ be a some function which is very large over a short intercal, $-\epsilon < t < \epsilon$, with $\epsilon > 0$, but is $0$ elsewhere.
+The \textbf{Dirac Delta Function} models extremely brief but intense forces
+like a hammer hitting a nail. 
+Let $\delta_{\epsilon}(t)$ be a some function which is very large over a short intercal, $t \in [-\epsilon,\epsilon]$, with $\epsilon > 0$, but is $0$ elsewhere.
 $$
   \begin{array}{r@{\quad}l}
     \begin{tikzpicture}[scale=0.8, baseline={(current bounding box.center)}]
@@ -397,7 +398,7 @@ $$
      &
     \delta_{\epsilon}(t)=
     \begin{cases}
-      \dfrac{1}{2\epsilon} & \text{if } -\epsilon < t < \epsilon, \\
+      \dfrac{1}{2\epsilon} & \text{if } t \in  [-\epsilon,\epsilon], \\
       0                    & \text{otherwise.}
     \end{cases}
   \end{array}
@@ -409,5 +410,10 @@ $$\delta(t) = \lim_{\epsilon \to 0+} \{\delta_{\epsilon}(t)\}$$
 The Dirac Delta Function has the property:
 $$\delta(t) = 0 \;\; \text{for} \;\; t \neq 0 \quad \text{and} \quad \int_{-\infty}^{\infty} \delta(t) \; dt = 1$$
 Futhermore, we may define the integral of the product of the Dirac Delta Function with a function $f(t)$ as:
-$$\int_{-\infty}^{\infty} \delta(t-t_0)f(t) \; dt = f(0)$$
+$$\int_{-\infty}^{\infty} \delta(t-t_0)f(t) \; dt = \lim_{\varepsilon \to 0+}\int_{-\infty}^{\infty} \delta_{\varepsilon} (t-t_0)f(t)\;dt = f(t_0)$$
+Thus, the Laplace Transform of the Dirac Delta Function is:
+$$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \;
+\; t_0 > 0$$
+
+
 \end{document}
