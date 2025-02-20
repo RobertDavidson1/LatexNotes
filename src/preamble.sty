@@ -6,6 +6,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
+\usepackage{pagecolor}
+
 
 % (2) Common Packages
 \usepackage{amsmath, amssymb, amsthm}
@@ -35,7 +37,7 @@
 
 % (4) Define Colors
 \definecolor{custom_green}{HTML}{a3be8c}
-\definecolor{custom_red}{HTML}{bf616a}
+\definecolor{custom_red}{HTML}{d20f39}
 \definecolor{custom_blue}{HTML}{5e81ac}
 
 \definecolor{blue0}{HTML}{142458}
@@ -53,8 +55,11 @@
 \definecolor{red2}{HTML}{DE542D}
 \definecolor{red3}{HTML}{EF7E32}
 
-\definecolor{gray1}{HTML}{e6e6e6}
-\definecolor{gray2}{HTML}{f2f2f2}
+\definecolor{base}{HTML}{eff1f5}
+\definecolor{gray1}{HTML}{e6e9ef}
+\definecolor{gray2}{HTML}{bcc0cc}
+
+\newpagecolor{base}
 
 % (5) Custom tcolorbox Environments
 \newtcolorbox{definitionbox}{
@@ -79,7 +84,8 @@
     arc=0mm,
     bottomtitle=0.5mm,
     boxrule=0mm,
-    colbacktitle=black!10!white,
+    colbacktitle=gray2,
+    colback=gray1, 
     coltitle=black,
     left=2.5mm,
     leftrule=1mm,
@@ -95,7 +101,8 @@
     arc=0mm,
     bottomtitle=0.5mm,
     boxrule=0mm,
-    colbacktitle=black!10!white,
+    colbacktitle=gray2,
+    colback=gray1, 
     coltitle=black,
     left=2.5mm,
     leftrule=1mm,
@@ -127,7 +134,8 @@
     arc=0mm,
     bottomtitle=0.5mm,
     boxrule=0mm,
-    colbacktitle=black!10!white,
+    colbacktitle=gray2,
+    colback=gray1, 
     coltitle=black,
     left=2.5mm,
     leftrule=1mm,

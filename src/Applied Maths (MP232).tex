@@ -339,6 +339,150 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
 \end{examplebox}
 \pagebreak
 
+\subsection{Heaviside Step Function}
+Denote the Heaviside Step Function as $H(t)$, defined as:
+$$
+H(t) = \begin{cases}
+0 & \text{if } t < 0 \\
+1 & \text{if } t > 0
+\end{cases}
+$$
+Clearly, for any constant $a$, we have:
+$$
+H(t-a) = \begin{cases}
+0 & \text{if } t < a \\
+1 & \text{if } t > a
+\end{cases}
+$$
+
+\begin{examplebox}[Express this function in terms of a Heaviside step function]
+  $$f(t) = \begin{cases}
+    3 & \text{for } 0 \leq t < 2 \\
+    -1 & \text{for } t > 2 \\
+  \end{cases}$$
+  We write the general form of $f(t)$ as:
+  $$f(t) = \alpha + \beta H(t-2)$$
+  Now, settings $t$ to any value $\in [0,2)$ gives:
+  $$f(t) = \alpha + (\beta)(0) = 0 \Rightarrow \alpha = 3$$
+  Setting $t$ to any value greater than 2 gives:
+  $$f(t) = 3 + (\beta)(1) = -1 \Rightarrow \beta = -4 $$
+  Thus, we have:
+  $$f(t) = 3 - 4H(t-2)$$
+\end{examplebox}
+
+\begin{examplebox}[Express this function in terms of a Heaviside step function]
+  $$f(t) = \begin{cases}
+    3 & \text{for } 0 \leq t < 1 \\
+    5 & \text{for } 1 < t < 3 \\
+    -2 & \text{for } t > 3 \\
+  \end{cases}$$
+
+  We write the general form of $f(t)$ as:
+  $$f(t) = \alpha + \beta H(t-1) + \gamma H(t-3)$$
+  Setting $t$ to any value $\in [0,1)$ gives: $f(t) = \alpha + (\beta)(0) + (\gamma)(0) = 0 \Rightarrow \alpha = 3$ \\
+  Setting $t$ to any value $\in (1,3)$ gives: $f(t) = 3 + (\beta)(2) + (\gamma)(0) = 5 \Rightarrow \beta = 2$ \\
+  Setting $t$ to any value greater than 3 gives: $f(t) = 3 + 2 + (\gamma)(1) = -7 \Rightarrow \gamma = -5$
+  Thus, we have:
+  $$f(t) = 3 + 2H(t-1) - 7H(t-3)$$
+\end{examplebox}
+
+\pagebreak
+
+\subsection{The Second Shift Theorem}
+\begin{theorembox}
+  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function, 
+  $$
+  \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
+    0 & \text{if } t < a \\
+    f(t-a) & \text{if } t > a
+  \end{cases}
+  $$
+  has the transform $e^{-as}F(s)\; (s > k)$, that is:
+  $$L\{f(t-a)H(t-a)\} = e^{-as}F(s)$$
+\end{theorembox}
+
+\begin{proofbox}
+  $$L\{f(t-a)H(t-a)\} = \int_0^\infty e^{-st}f(t-a)H(t-a)\, dt = \int_a^\infty e^{-st}f(t-a)\;dt$$
+  We introduce a new integration variable $\tau = t-a$, we have
+  $$\int_0^\infty e^{-s(\tau + a)}f(\tau)\;d\tau = e^{-as}\int_0^\infty e^{-s\tau}f(\tau)\;d\tau = e^{-as}F(s)$$
+\end{proofbox}
+
+\begin{examplebox}[: Find the Laplace Transform of $H(t-a)$ for $a > 0$]
+  $$L\{H(t-a)\} = L\{H(t-a)f(t-a)\} = e^{-as}F(s) = \dfrac{e^{-as}}{s}$$
+\end{examplebox}
+
+\subsection{Heaviside Step Function}
+Denote the Heaviside Step Function as $H(t)$, defined as:
+$$
+H(t) = \begin{cases}
+0 & \text{if } t < 0 \\
+1 & \text{if } t > 0
+\end{cases}
+$$
+Clearly, for any constant $a$, we have:
+$$
+H(t-a) = \begin{cases}
+0 & \text{if } t < a \\
+1 & \text{if } t > a
+\end{cases}
+$$
+
+\begin{examplebox}[Express this function in terms of a Heaviside step function]
+  $$f(t) = \begin{cases}
+    3 & \text{for } 0 \leq t < 2 \\
+    -1 & \text{for } t > 2 \\
+  \end{cases}$$
+  We write the general form of $f(t)$ as:
+  $$f(t) = \alpha + \beta H(t-2)$$
+  Now, settings $t$ to any value $\in [0,2)$ gives:
+  $$f(t) = \alpha + (\beta)(0) = 0 \Rightarrow \alpha = 3$$
+  Setting $t$ to any value greater than 2 gives:
+  $$f(t) = 3 + (\beta)(1) = -1 \Rightarrow \beta = -4 $$
+  Thus, we have:
+  $$f(t) = 3 - 4H(t-2)$$
+\end{examplebox}
+
+\begin{examplebox}[Express this function in terms of a Heaviside step function]
+  $$f(t) = \begin{cases}
+    3 & \text{for } 0 \leq t < 1 \\
+    5 & \text{for } 1 < t < 3 \\
+    -2 & \text{for } t > 3 \\
+  \end{cases}$$
+
+  We write the general form of $f(t)$ as:
+  $$f(t) = \alpha + \beta H(t-1) + \gamma H(t-3)$$
+  Setting $t$ to any value $\in [0,1)$ gives: $f(t) = \alpha + (\beta)(0) + (\gamma)(0) = 0 \Rightarrow \alpha = 3$ \\
+  Setting $t$ to any value $\in (1,3)$ gives: $f(t) = 3 + (\beta)(2) + (\gamma)(0) = 5 \Rightarrow \beta = 2$ \\
+  Setting $t$ to any value greater than 3 gives: $f(t) = 3 + 2 + (\gamma)(1) = -7 \Rightarrow \gamma = -5$
+  Thus, we have:
+  $$f(t) = 3 + 2H(t-1) - 7H(t-3)$$
+\end{examplebox}
+
+\pagebreak
+
+\subsection{The Second Shift Theorem}
+\begin{theorembox}
+  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function, 
+  $$
+  \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
+    0 & \text{if } t < a \\
+    f(t-a) & \text{if } t > a
+  \end{cases}
+  $$
+  has the transform $e^{-as}F(s)\; (s > k)$, that is:
+  $$L\{f(t-a)H(t-a)\} = e^{-as}F(s)$$
+\end{theorembox}
+
+\begin{proofbox}
+  $$L\{f(t-a)H(t-a)\} = \int_0^\infty e^{-st}f(t-a)H(t-a)\, dt = \int_a^\infty e^{-st}f(t-a)\;dt$$
+  We introduce a new integration variable $\tau = t-a$, we have
+  $$\int_0^\infty e^{-s(\tau + a)}f(\tau)\;d\tau = e^{-as}\int_0^\infty e^{-s\tau}f(\tau)\;d\tau = e^{-as}F(s)$$
+\end{proofbox}
+
+\begin{examplebox}[: Find the Laplace Transform of $H(t-a)$ for $a > 0$]
+  $$L\{H(t-a)\} = L\{H(t-a)f(t-a)\} = e^{-as}F(s) = \dfrac{e^{-as}}{s}$$
+\end{examplebox}
+
 \subsection{Practice Problems}
 \begin{enumerate}
   \item Use the First Shift Theorem \(\left( L \{ e^{at} f(t) \} = F(s - a) \right)\) to find the Laplace transform of the following functions:
@@ -373,6 +517,78 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
           \item \( \dfrac{e^{-5s}}{(s^2 + 1)(s^2 + 2)} \).
         \end{enumerate*}
 \end{enumerate}
+
+\subsection{Heaviside Step Function}
+Denote the Heaviside Step Function as $H(t)$, defined as:
+$$
+H(t) = \begin{cases}
+0 & \text{if } t < 0 \\
+1 & \text{if } t > 0
+\end{cases}
+$$
+Clearly, for any constant $a$, we have:
+$$
+H(t-a) = \begin{cases}
+0 & \text{if } t < a \\
+1 & \text{if } t > a
+\end{cases}
+$$
+
+\begin{examplebox}[Express this function in terms of a Heaviside step function]
+  $$f(t) = \begin{cases}
+    3 & \text{for } 0 \leq t < 2 \\
+    -1 & \text{for } t > 2 \\
+  \end{cases}$$
+  We write the general form of $f(t)$ as:
+  $$f(t) = \alpha + \beta H(t-2)$$
+  Now, settings $t$ to any value $\in [0,2)$ gives:
+  $$f(t) = \alpha + (\beta)(0) = 0 \Rightarrow \alpha = 3$$
+  Setting $t$ to any value greater than 2 gives:
+  $$f(t) = 3 + (\beta)(1) = -1 \Rightarrow \beta = -4 $$
+  Thus, we have:
+  $$f(t) = 3 - 4H(t-2)$$
+\end{examplebox}
+
+\begin{examplebox}[Express this function in terms of a Heaviside step function]
+  $$f(t) = \begin{cases}
+    3 & \text{for } 0 \leq t < 1 \\
+    5 & \text{for } 1 < t < 3 \\
+    -2 & \text{for } t > 3 \\
+  \end{cases}$$
+
+  We write the general form of $f(t)$ as:
+  $$f(t) = \alpha + \beta H(t-1) + \gamma H(t-3)$$
+  Setting $t$ to any value $\in [0,1)$ gives: $f(t) = \alpha + (\beta)(0) + (\gamma)(0) = 0 \Rightarrow \alpha = 3$ \\
+  Setting $t$ to any value $\in (1,3)$ gives: $f(t) = 3 + (\beta)(2) + (\gamma)(0) = 5 \Rightarrow \beta = 2$ \\
+  Setting $t$ to any value greater than 3 gives: $f(t) = 3 + 2 + (\gamma)(1) = -7 \Rightarrow \gamma = -5$
+  Thus, we have:
+  $$f(t) = 3 + 2H(t-1) - 7H(t-3)$$
+\end{examplebox}
+
+\pagebreak
+
+\subsection{The Second Shift Theorem}
+\begin{theorembox}
+  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function, 
+  $$
+  \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
+    0 & \text{if } t < a \\
+    f(t-a) & \text{if } t > a
+  \end{cases}
+  $$
+  has the transform $e^{-as}F(s)\; (s > k)$, that is:
+  $$L\{f(t-a)H(t-a)\} = e^{-as}F(s)$$
+\end{theorembox}
+
+\begin{proofbox}
+  $$L\{f(t-a)H(t-a)\} = \int_0^\infty e^{-st}f(t-a)H(t-a)\, dt = \int_a^\infty e^{-st}f(t-a)\;dt$$
+  We introduce a new integration variable $\tau = t-a$, we have
+  $$\int_0^\infty e^{-s(\tau + a)}f(\tau)\;d\tau = e^{-as}\int_0^\infty e^{-s\tau}f(\tau)\;d\tau = e^{-as}F(s)$$
+\end{proofbox}
+
+\begin{examplebox}[: Find the Laplace Transform of $H(t-a)$ for $a > 0$]
+  $$L\{H(t-a)\} = L\{H(t-a)f(t-a)\} = e^{-as}F(s) = \dfrac{e^{-as}}{s}$$
+\end{examplebox}
 
 \subsection{The Dirac Delta Function}
 The \textbf{Dirac Delta Function} models extremely brief but intense forces
