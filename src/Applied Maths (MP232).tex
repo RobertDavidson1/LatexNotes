@@ -377,7 +377,8 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
 \subsection{The Dirac Delta Function}
 The \textbf{Dirac Delta Function} models extremely brief but intense forces
 like a hammer hitting a nail. 
-Let $\delta_{\epsilon}(t)$ be a some function which is very large over a short intercal, $t \in [-\epsilon,\epsilon]$, with $\epsilon > 0$, but is $0$ elsewhere.
+It starts as a function $\delta_{\varepsilon}$, that equals $\frac{1}{2\varepsilon}$ over the interval
+$t \in  [-\varepsilon, \varepsilon]$ and $0$ elsewhere. 
 $$
   \begin{array}{r@{\quad}l}
     \begin{tikzpicture}[scale=0.8, baseline={(current bounding box.center)}]
@@ -403,17 +404,28 @@ $$
     \end{cases}
   \end{array}
 $$
-Notice that that the area under the curve is $1$:
-$$\int_{-\infty}^{\infty} \delta_{\epsilon}(t)\; dt = \int_{-\epsilon}^{\epsilon} \frac{1}{2 \epsilon} \; dt = \frac{2\epsilon}2{\epsilon}  = 1$$
-As $\epsilon \to 0$, the function becomes infinitely tall and thin, but the area remains $1$. The Dirac Delta Function is defined as:
-$$\delta(t) = \lim_{\epsilon \to 0+} \{\delta_{\epsilon}(t)\}$$
-The Dirac Delta Function has the property:
-$$\delta(t) = 0 \;\; \text{for} \;\; t \neq 0 \quad \text{and} \quad \int_{-\infty}^{\infty} \delta(t) \; dt = 1$$
-Futhermore, we may define the integral of the product of the Dirac Delta Function with a function $f(t)$ as:
-$$\int_{-\infty}^{\infty} \delta(t-t_0)f(t) \; dt = \lim_{\varepsilon \to 0+}\int_{-\infty}^{\infty} \delta_{\varepsilon} (t-t_0)f(t)\;dt = f(t_0)$$
-Thus, the Laplace Transform of the Dirac Delta Function is:
-$$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \;
-\; t_0 > 0$$
+This function creates a rectangular pulse with the following propertites:
+$$\textbf{Height: } \frac{1}{2 \varepsilon} \quad \textbf{Width: } 2\varepsilon \quad \textbf{Area: } 1\;\text{(always)}$$
+As $\varepsilon$ approaches 0, the function becomes infinitely tall and thin, but the area remains 1. This limit defines the Dirac Delta Function:
+$$\delta(t) = \lim_{\varepsilon \to 0+} \{\delta_{\varepsilon}(t)\}$$
+\textbf{Properties of the Dirac Delta Function:}
+\begin{align*}
+  \delta(t) &= 0 \text{ for } t \neq 0 \\
+  \int_{-\infty}^{\infty} \delta(t)\, dt &= 1
+  \int_{-\infty}^{\infty} \delta(t-t_0)\; dt = f(t_0) 
+\end{align*}
+
+% Notice that that the area under the curve is $1$:
+% $$\int_{-\infty}^{\infty} \delta_{\epsilon}(t)\; dt = \int_{-\epsilon}^{\epsilon} \frac{1}{2 \epsilon} \; dt = \frac{2\epsilon}2{\epsilon}  = 1$$
+% As $\epsilon \to 0$, the function becomes infinitely tall and thin, but the area remains $1$. The Dirac Delta Function is defined as:
+% $$\delta(t) = \lim_{\epsilon \to 0+} \{\delta_{\epsilon}(t)\}$$
+% The Dirac Delta Function has the property:
+% $$\delta(t) = 0 \;\; \text{for} \;\; t \neq 0 \quad \text{and} \quad \int_{-\infty}^{\infty} \delta(t) \; dt = 1$$
+% Futhermore, we may define the integral of the product of the Dirac Delta Function with a function $f(t)$ as:
+% $$\int_{-\infty}^{\infty} \delta(t-t_0)f(t) \; dt = \lim_{\varepsilon \to 0+}\int_{-\infty}^{\infty} \delta_{\varepsilon} (t-t_0)f(t)\;dt = f(t_0)$$
+% Thus, the Laplace Transform of the Dirac Delta Function is:
+% $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \;
+% \; t_0 > 0$$
 
 
 \end{document}
