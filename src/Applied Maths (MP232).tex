@@ -701,4 +701,10 @@ so that,
 $$L\{tf(t)\} = -F'(s)$$
 We can sometimes use this to calculate transforms and inverse transforms. For example:
 $$L\{t\} = L\{t \cdot 1\} = - \diff{}{s}L\{1\} = -\diff{}{s}\left(\frac{1}{s}\right) = \frac{1}{s^2}$$
+
+\subsection{The Convolution Function}
+Let $f(t), g(t)$ be two functions. Define the Convolution function 
+$$(f \star g)(t) = \int_0^t f(t-\tau)g(\tau) \; d\tau$
+Where $\tau$ is integrated over the interval $[0,t]$. 
+
 \end{document}
