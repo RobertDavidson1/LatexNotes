@@ -849,8 +849,27 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   \end{align*}
 \end{examplebox}
 
-\begin{examplebox}
-  
+\begin{examplebox}[Evaluate $\int_{\mathcal{C}} F(r) \cdot dr$ for $F(r) = (y+z, x+z, x+y)$, where $\mathcal{C}$ is the line segment joinint $A:(-2,2,-3) \to B(2,4,6)$ ]
+  We can parametrize any straight line in three dimensions by writing:
+  $$x = c_1t + c_2 \quad y=c_3t + c_4 \quad z = c_5t + c_6$$
+  where the $c_i$ are constants. \\
+  We can take $t = 0$ to correspond with $A$ and $t = 1$ to correspond with $B$. \\ 
+  Hence setting $t = 0$ gives:
+  $$c_2 = -2 \quad  c_4 = 2 \quad c_6 = -3$$
+  Setting $t = 1$ gives:
+  $c_1 + c_2 = 2 \quad c_3 + c_4 = 4 \quad c_5 + c_6 = 6$ so that:
+  $$c_1 = 4 \quad c_3 = 2 \quad c_5 = 9$$
+  Hence, the required line is given by:
+  $$x = 4t - 2 \quad y = 2t + 2 \quad z = 9t - 3$$
+  We have:
+  \begin{align*}
+    \int_\mathcal{C} F(r) \cdot dr &= \int_0^1 (11t - 1, 13t -5,6t) \cdot \diff{}{t}(4t-2, 2t+2, 9t-3) \; dt  \\
+                                    & = \int_0^1 (11t - 1, 13t -5,6t) \cdot (4,2,9) \; dt \\ 
+                                    & = \int_0^1 (44t - 2 + 26t - 10 + 54t) \; dt \\
+                                    & = \int_0^1 (124t - 12) \; dt \\
+                                    & = \left[62t^2 - 12t\right]_0^1 \\
+                                    & = 50
+  \end{align*}
 \end{examplebox}
 
 % Add the other examples here
