@@ -654,16 +654,23 @@ $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\
   Hence:
   $$L\{Q\} = V_0 e^{-as} \cdot \frac{1}{Ls^2 + Rs + \frac{1}{C}}$$
   Removing the $L$ from the denominator gives:
-  $$L\{Q\} = \frac{V_0}{L}e^{-as} \cdot \frac{1}{s^2 + \frac{R}{L}s + \frac{1}{LC}}$$
+  \begin{align*}
+  L\{Q\} &= \frac{V_0}{L}e^{-as} \cdot \frac{1}{s^2 + \frac{R}{L}s + \frac{1}{LC}} \\
+  &=\frac{V_0}{L}\cdot \frac{e^{-as}}{s^2 + \frac{R}{L}s + \frac{1}{LC}}
+  \end{align*}
+  
+  
   We notice that:
   \begin{align*}
-    (s+\frac{R}{2L})^2 &= s^2 + s \frac{2R}{2L} + \frac{R^2}{4L^2}
+    (s+\frac{R}{2L})^2 &= s^2 + s \frac{2R}{2L} + \frac{R^2}{4L^2} \\
     &= s^2 + \frac{R}{L}s + \frac{R^2}{4L^2}
   \end{align*}
-  So we have the following:
-  $$L\{Q\} = \frac{V_0 e^{-as}}{L(s+\frac{R}{2L})^2 + \frac{1}{C} - \frac{R^2}{4L^2}}$$
-  Substituting $\alpha = \frac{R}{2L}$ and $\beta = \frac{1}{LC} - \frac{R^2}{4L^2}$ gives:
-  $$L\{Q\} = \frac{V_0 e^{-as}}{L(s+\alpha)^2 + \beta}$$
+  We also note that:
+  $$L\{\sin(\beta t)\} = \frac{\beta}{s^2 + B^2} \xRightarrow{\text{First Shift Theorem}} L\{e^{-as} \sin(\beta t)\} = \frac{B}{(s+a)^2 + \beta^2}$$
+  Or, 
+  $$L^{-1} \{\frac{B}{(s+a)^2 + \beta^2}\} = e^{-at}\sin(\beta t)$$
+  We can also write:
+  $$L^{-1}\{F(s)\} = f(t)$$
 \end{examplebox}
 
 \end{document}
