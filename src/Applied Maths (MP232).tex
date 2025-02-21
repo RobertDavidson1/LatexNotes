@@ -631,24 +631,39 @@ $$\delta(t) = \lim_{\varepsilon \to 0+} \{\delta_{\varepsilon}(t)\}$$
   &\int_{-\infty}^{\infty} \delta(t-t_0)f(t)\; dt = f(t_0) 
 \end{align*}
 The Laplace Transform of the Dirac Delta Function is:
-$$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \; \; t_0 > 0$$
+$$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \; \; t_0 > 0$$
 
 \begin{examplebox}[ : Solve the following initial value problem which governs the behavious of an RLC circuit]
   \begin{align*}
     LQ'' + RQ' + \frac{Q}{C} &= V_0 \delta(t-a) \\
     Q(0) &= 0 \\ 
-    '(0) &= 0
+    Q'(0) &= 0
   \end{align*}
-  Where $a,L,R,C,V_0$ are all positive constans and $4l > R^2C$. \\
-  Note that the applied voltage corresponds to an impulse of stength $V_0$ at $t=a$ \\
-  ------------------------------------------------------------------------------------------------------------------------------------------ \\ 
+  Where $a,L,R,C,V_0$ are all positive constans and $4L > R^2C$. \\
+  Note that the applied voltage corresponds to an impulse of stength $V_0$ at $t=a$ \\ 
+  We note that:
   \begin{align*}
-    L\{Q''\} = s^2 L\{Q\} - sQ(0) - Q'(0) = s^2 L\{Q\} \\
-    L\{Q'\} = sL\{Q\} - Q(0) = sL\{Q\} \\
-    L\{\delta(t-a)\} = e^{-st_0} = e^{-as} 
+    L\{Q''\} = s^2 L\{Q\} - sQ(0) - Q'(0) &= s^2 L\{Q\} \\
+    L\{Q'\} = sL\{Q\} - Q(0) &= sL\{Q\} \\
+    L\{\delta(t-a)\} = e^{-sa} &= e^{-as} 
   \end{align*}
-  
-
+  Thus:
+  $$L\{LQ'' + RQ' + \frac{Q}{C} = V_0 \delta(t-a)\} = Ls^2L\{Q\} + RsL\{Q\} + \frac{1}{C}L\{Q\} = V_0 e^{-as}$$
+  Grouping terms:
+  $$L\{Q\}(Ls^2 + Rs + \frac{1}{C}) = V_0 e^{-as}$$
+  Hence:
+  $$L\{Q\} = V_0 e^{-as} \cdot \frac{1}{Ls^2 + Rs + \frac{1}{C}}$$
+  Removing the $L$ from the denominator gives:
+  $$L\{Q\} = \frac{V_0}{L}e^{-as} \cdot \frac{1}{s^2 + \frac{R}{L}s + \frac{1}{LC}}$$
+  We notice that:
+  \begin{align*}
+    (s+\frac{R}{2L})^2 &= s^2 + s \frac{2R}{2L} + \frac{R^2}{4L^2}
+    &= s^2 + \frac{R}{L}s + \frac{R^2}{4L^2}
+  \end{align*}
+  So we have the following:
+  $$L\{Q\} = \frac{V_0 e^{-as}}{L(s+\frac{R}{2L})^2 + \frac{1}{C} - \frac{R^2}{4L^2}}$$
+  Substituting $\alpha = \frac{R}{2L}$ and $\beta = \frac{1}{LC} - \frac{R^2}{4L^2}$ gives:
+  $$L\{Q\} = \frac{V_0 e^{-as}}{L(s+\alpha)^2 + \beta}$$
 \end{examplebox}
 
 \end{document}
