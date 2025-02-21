@@ -634,6 +634,7 @@ The Laplace Transform of the Dirac Delta Function is:
 $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \; \; t_0 > 0$$
 
 \begin{examplebox}[ : Solve the following initial value problem which governs the behavious of an RLC circuit]
+  \scriptsize
   \begin{align*}
     LQ'' + RQ' + \frac{Q}{C} &= V_0 \delta(t-a) \\
     Q(0) &= 0 \\ 
@@ -665,18 +666,20 @@ $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\
   \end{align*}
   So that:
   $$L\{Q\} = \frac{V_0}{L} \frac{e^{-as}}{(s+\frac{R}{2L})^2 - \frac{R^2}{4L^2} + \frac{1}{LC}}$$
+  Rewriting with $\alpha = \frac{R}{2L}$ and $\beta = \frac{1}{LC} - \frac{R^2}{4L^2}$
+  $$L\{Q\} = \frac{V_0}{L} \frac{e^{-as}}{(s+\alpha)^2 + \beta}$$
   
   We also note that:
   $$L\{\sin(\beta t)\} = \frac{\beta}{s^2 + B^2} \xRightarrow{\text{First Shift Theorem}} L\{e^{-as} \sin(\beta t)\} = \frac{B}{(s+a)^2 + \beta^2}$$
   Or, 
-  $$L^{-1} \{\frac{B}{(s+a)^2 + \beta^2}\} = e^{-at}\sin(\beta t)$$
+  $$L^{-1} \left\{\frac{B}{(s+a)^2 + \beta^2}\right\} = e^{-at}\sin(\beta t)$$
   We can also write:
   $$L^{-1}\{F(s)\} = f(t)$$
   Notice that:
   $$f(t-a) = e^{-a(t-a)} \sin(\beta [t-a])$$
   Applying the Second Shift Theorem gives:
   $$L^{-1}\{e^{-a} F(s)\} = f(t-a)H(t-a)$$
-  $$L^{-1} \{e^{-as}\frac{\beta}{(s+a)^2 + \beta^2}\} = e^{-a(t-a)}\sin(\beta[t-a])H(t-a)$$
+  $$L^{-1} \left\{e^{-as}\frac{\beta}{(s+a)^2 + \beta^2}\right\} = e^{-a(t-a)}\sin(\beta[t-a])H(t-a)$$
   Thus:
   \begin{align*}
   Q(t) &= \frac{V_0}{L\beta} e^{-a(t-a)}\sin(\beta[t-a])H(t-a) \\
@@ -685,6 +688,17 @@ $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\
     \dfrac{V_0}{L\beta} e^{-a(t-a)}\sin(\beta[t-a])H(t-a) &\text{for}\;\; t > a
   \end{cases}
   \end{align*}
+  \normalsize
 \end{examplebox}
-
+\pagebreak
+\subsection{Differentiation of the Laplace Transform}
+Suppose $f(t), t \geq 0$ satisfies the conditions of the existence theorem so
+that its Laplace Transform ($F(s))$ exists for some $s > k$. Then:
+$$F'(s) = \diff{}{s} \left\{ \int_0^\infty e^{-st}f(t)\; dt \right\} = \int_0^\infty \pdiff{}{s}\{e^{-st}f(t) \; dt\}$$
+We are allowed to bring the derivative inside the integral provided the conditions of the existence theorem are satisfied, hence:
+$$F'(s) = -\int_0^\infty e^{-st}\{tf(t)\}\; dt = -L\{tf(t)\}$$
+so that, 
+$$L\{tf(t)\} = -F'(s)$$
+We can sometimes use this to calculate transforms and inverse transforms. For example:
+$$L\{t\} = L\{t \cdot 1\} = - \diff{}{s}L\{1\} = -\diff{}{s}\left(\frac{1}{s}\right) = \frac{1}{s^2}$$
 \end{document}
