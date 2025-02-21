@@ -85,7 +85,7 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
 
 
 \pagebreak
-\section{Laplace Transforms}
+\section{Intro to Laplace Transforms}
 \subsection{What is a Laplace Transform?}
 The Laplace Transform, defined for $t \geq 0$, is given by
 $$L\{f(t)\}(s) = F(s) = \int_0^\infty e^{-st} dt$$
@@ -206,6 +206,7 @@ $$\int_0^\infty e^{-st}f(t)\, dt$$
 
 \pagebreak
 
+\section{Applications of Laplace Transforms}
 \subsection{Integration by Parts}
 Starting with the product rule:
 $$
@@ -310,6 +311,7 @@ $$L \left\{\diff{f^n}{t^n}\right\} = s^nL\left\{f\right\} - s^{n-1}f(0) - s^{n-2
   $$L\{\cos(t)\} = \frac{s}{s^2 + 1}$$
 \end{examplebox}
 \pagebreak
+
 \subsection{Solving Initial Value Problems}
 Consider an example from mechanics: A particle of mass $m > 0$ lies on rough table, attatched to a spring of stiffness $k > 0$. At any time $t > 0$, the mass is a distance $x(t)$ from the equillibrium position $O$, and $x(t)$ is much less than the length of the spring. \\
 The mass is subject to a driving force $F_d(t)$, from Newtons second law, we have:
@@ -338,7 +340,7 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
   $$x = L^{-1} \left\{\frac{1}{s+1} - \frac{1}{s+2}\right\} = L^{-1} \left\{ \frac{1}{s+1}\right\}  - L^{-1}\left\{ \frac{1}{s+2}\right\} = e^{-t} - e^{-2t}$$
 \end{examplebox}
 \pagebreak
-
+\section{Step Functions, Advanced Theorems, and Special Functions}
 \subsection{Heaviside Step Function}
 Denote the Heaviside Step Function as $H(t)$, defined as:
 $$
