@@ -865,12 +865,33 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   \begin{align*}
     \int_\mathcal{C} F(r) \cdot dr &= \int_0^1 (11t - 1, 13t -5,6t) \cdot \diff{}{t}(4t-2, 2t+2, 9t-3) \; dt  \\
                                     & = \int_0^1 (11t - 1, 13t -5,6t) \cdot (4,2,9) \; dt \\ 
-                                    & = \int_0^1 (44t - 2 + 26t - 10 + 54t) \; dt \\
+                                    & = \int_0^1 (44t - 4 + 26t - 10 + 54t) \; dt \\
                                     & = \int_0^1 (124t - 12) \; dt \\
-                                    & = \left[62t^2 - 12t\right]_0^1 \\
-                                    & = 50
+                                    & = \left[62t^2 - 14t\right]_0^1 \\
+                                    & = 48
   \end{align*}
 \end{examplebox}
+
+\begin{examplebox}[Find the circulation of the vector $F = (y, -x, 0)$ around the unit circle $\mathcal{C} = x^2 + y^2 = 1$, $z=0$, taken in an anti-clockwise direction]
+  We can parametrize the unit circle by setting $x,y$ and $z$ to:
+  $$x = \cos(t) \quad y = \sin(t) \quad z = 0$$
+  We can write the position vector as:
+  $$\mathbf{r} = (\cos(t), \sin(t), 0)$$
+  The tangent vector is:
+  $$\diff{\mathbf{r}}{t} = (-\sin(t), \cos(t), 0)$$
+  The force vector is:
+  $$F(\mathbf{r}) = (\sin(t), -\cos(t), 0)$$
+  The circulation is:
+  \begin{align}
+    \oint_{\mathcal{C}} F(r) \cdot dr &= \int_0^{2\pi} (\sin(t), -\cos(t), 0) \cdot (-\sin(t), \cos(t), 0) \; dt \\
+    &= \int_0^{2\pi} -\sin^2(t) - \cos^2(t) \; dt \\
+    &= -\int_0^{2\pi} (\sin^2(t) + \cos^2(t)) \; dt \\
+    &= -\int_0^{2\pi} 1 \; dt \\
+    &= -\left[t\right]_0^{2\pi} \\
+    &= -2\pi
+    \end{align}
+\end{examplebox}
+
 
 % Add the other examples here
 \subsection{Convervative Vector Fields}
@@ -907,39 +928,32 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
 
 \begin{examplebox}[By considering the line integral of $F = (y, x^2 -x, 0)$ around the square $C$ in the $x,y$ plane connecting for point $(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)$, show that $F$ cannot be conservative. ]
   Split $\mathcal{C}$ into four segments, $\mathcal{C}_1, \mathcal{C}_2, \mathcal{C}_3, \mathcal{C}_4$ and calculate the line integral of $F$ along each segment.
-
   \begin{center}
-    \begin{tikzpicture}[scale=2]
-      % Draw the square
-      \draw[thick, blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
-
-      % Add arrows for direction
-      \draw[->, thick, blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
-      \draw[->, thick, blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
-      \draw[->, thick, blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
-      \draw[->, thick, blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
-
-      % Label vertices
-      \node[below] at (0,0) {$(0,0,0)$};
-      \node[below] at (1,0) {$(1,0,0)$};
-      \node[above] at (1,1) {$(1,1,0)$};
-      \node[above] at (0,1) {$(0,1,0)$};
-    \end{tikzpicture}
+  \begin{tikzpicture}[scale=2]
+  % Draw the square
+  \draw[thick, blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+  % Add arrows for direction
+  \draw[->, thick, blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
+  \draw[->, thick, blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
+  \draw[->, thick, blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
+  \draw[->, thick, blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
+  % Label vertices
+  \node[below] at (0,0) {$(0,0,0)$};
+  \node[below] at (1,0) {$(1,0,0)$};
+  \node[above] at (1,1) {$(1,1,0)$};
+  \node[above] at (0,1) {$(0,1,0)$};
+  \end{tikzpicture}
   \end{center}
   We have:
-  % FIX THIS
-  % FIX THIS
-  % FIX THIS
-  % FIX THIS
   \begin{align*}
-    \int_{\mathcal{C}_1} F(r) \cdot dr & = \int_{0}^{1} (0, t^2 - t, 0) \cdot (1, 0, 0) \; dt = 0  \\
-    \int_{\mathcal{C}_2} F(r) \cdot dr & = \int_{0}^{1} (t, 1 - t, 0) \cdot (0, 1, 0) \; dt = 0    \\
-    \int_{\mathcal{C}_3} F(r) \cdot dr & = \int_{0}^{1} (1, 1 - t^2, 0) \cdot (-1, 0, 0) \; dt = 0 \\
-    \int_{\mathcal{C}_4} F(r) \cdot dr & = \int_{0}^{1} (1, 0, 0) \cdot (0, -1, 0) \; dt = 0
+  \int_{\mathcal{C}_1} F(r) \cdot dr & = \int_{0}^{1} (0, t^2 - t, 0) \cdot (1, 0, 0) \; dt = 0 \\
+  \int_{\mathcal{C}_2} F(r) \cdot dr & = \int_{0}^{1} (t, 1 - t, 0) \cdot (0, 1, 0) \; dt = \int_{0}^{1} (1-t) \; dt = [t - \frac{t^2}{2}]_{0}^{1} = 1 - \frac{1}{2} = \frac{1}{2} \\
+  \int_{\mathcal{C}_3} F(r) \cdot dr & = \int_{0}^{1} (1, (1-t)^2-(1-t), 0) \cdot (-1, 0, 0) \; dt = \int_{0}^{1} -1 \; dt = -1 \\
+  \int_{\mathcal{C}_4} F(r) \cdot dr & = \int_{0}^{1} (1-t, 0, 0) \cdot (0, -1, 0) \; dt = 0
   \end{align*}
   Hence:
-  $$\oint_{\mathcal{C}} F(r) \cdot dr = \oint_{\mathcal{C}_1} F(r) \cdot dr + \oint_{\mathcal{C}_2} F(r) \cdot dr + \oint_{\mathcal{C}_3} F(r) \cdot dr + \oint_{\mathcal{C}_4} F(r) \cdot dr = 1 \neq 0$$
+  $$\oint_{\mathcal{C}} F(r) \cdot dr = \int_{\mathcal{C}_1} F(r) \cdot dr + \int_{\mathcal{C}_2} F(r) \cdot dr + \int_{\mathcal{C}_3} F(r) \cdot dr + \int_{\mathcal{C}_4} F(r) \cdot dr = 0 + \frac{1}{2} + (-1) + 0 = -\frac{1}{2} \neq 0$$
   Thus, $F$ is not conservative.
-\end{examplebox}
+  \end{examplebox}
 
 \end{document}
