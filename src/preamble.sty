@@ -17,6 +17,9 @@
 \usepackage{etoolbox}
 \usepackage{tikz-3dplot}
 \tdplotsetmaincoords{75}{120}
+\usepackage[inline]{enumitem}
+\usepackage{bookmark}
+\usepackage{mathtools}
 
 % Micro-typography
 \usepackage{microtype}
@@ -55,14 +58,19 @@
 
 % (5) Custom tcolorbox Environments
 \newtcolorbox{definitionbox}{
-    title=Definition,
+    title=\textbf{Definition},
     fonttitle=\bfseries\boldmath,
-    colback=blue!5!white,
-    colframe=blue!30!white,
+    arc=0mm,
+    bottomtitle=0.5mm,
+    boxrule=0mm,
+    colbacktitle=black!10!white,
     coltitle=black,
-    boxrule=1.5pt,
-    arc=0pt,
-    outer arc=3pt,
+    left=2.5mm,
+    leftrule=1mm,
+    rightrule=1mm,
+    right=3.5mm,
+    toptitle=0.75mm,
+    colframe=purple2,
 }
 
 \newtcolorbox{proofbox}{
