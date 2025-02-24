@@ -1,147 +1,28 @@
-\documentclass[a4paper, 10pt ]{article} % Changed font size to 6pt
-\usepackage{amsmath} % Added for extended math commands
-% Encoding and fonts
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{xcolor}      % For color definitions
-\usepackage{caption}
-% Page layout
-\usepackage[margin=1in]{geometry}
+\documentclass[a4paper, 10pt]{article}
+\input{preamble.sty}
 
-% Micro-typography
-\usepackage{microtype}
-\usepackage{extarrows} 
-% Math packages
-\usepackage{amsmath, amssymb, amsthm}
+\input{macros.sty}
 
-% Graphics and plots
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-
-% Additional utilities
-\usepackage{etoolbox}
-\usepackage{pgfplots}
-\usepackage{tikz-3dplot}
-\tdplotsetmaincoords{75}{120}
-
-% Patching pgfplots warning
-\usepackage{pgfplots}
-\makeatletter
-\patchcmd{\pgfplots@applistXXpushback@smallbuf}{\pgfplots@error}{\pgfplots@warning}{}{}
-\makeatother
-
-% Theorem and color box settings
-\usepackage{tcolorbox}
-\tcbuselibrary{theorems}
-
-% Color definitions
-\definecolor{custom_green}{HTML}{a3be8c}
-\definecolor{custom_red}{HTML}{bf616a}
-\definecolor{custom_blue}{HTML}{5e81ac}
-\definecolor{blue0}{HTML}{142458}
-\definecolor{blue1}{HTML}{186BA1}
-\definecolor{blue2}{HTML}{19ABDE}
-\definecolor{blue3}{HTML}{1AC9E6}
-
-\definecolor{purple0}{HTML}{29066C}
-\definecolor{purple1}{HTML}{7D39C0}
-\definecolor{purple2}{HTML}{AF4BCF}
-\definecolor{purple3}{HTML}{DA4CB2}
-
-\definecolor{red0}{HTML}{810400}
-\definecolor{red1}{HTML}{BF2324}
-\definecolor{red2}{HTML}{DE542D}
-\definecolor{red3}{HTML}{EF7E32}
-% Definition of tcolorboxes
-\newtcolorbox{definitionbox}{
-  title=Definition,
-  fonttitle=\bfseries,
-  colback=blue!5!white,
-  colframe=blue!30!white,
-  coltitle=black,
-  boxrule=1.5pt,
-  arc=3pt,
-  outer arc=3pt,
-}
-
-\newtcolorbox{proofbox}{
-  title=Proof,
-  fonttitle=\bfseries,
-  colback=custom_blue!20!white,
-  colframe=custom_blue,
-  coltitle=white,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-\newtcolorbox{theorembox}[1][]{
-  title={#1},
-  fonttitle=\bfseries,
-  colback=custom_green!30!white,
-  colframe=custom_green,
-  coltitle=black,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-\newtcolorbox{notebox}{
-  title=Note,
-  fonttitle=\bfseries,
-  colback=red!5!white,
-  colframe=red!30!white,
-  coltitle=black,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-\newtcolorbox{examplebox}[1][]{
-  title=\textbf{Example:} {#1},
-  fonttitle=\bfseries,
-  colback=custom_red!20!white,
-  colframe=custom_red,
-  coltitle=white,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-% Theorem environments
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}[definition]{Example}
-
-\theoremstyle{plain}
-\newtheorem{theorem}[definition]{Theorem}
-
-% Hyperlinks
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=custom_blue,
-    urlcolor=custom_blue,
-    citecolor=custom_green,
-}
-
-% Title and author
 \title{
-Robert Davidson \\
-Complex Analysis Notes
+\textbf{MA2287: Complex Analysis} \\ 
 }
+
+
 \author{
-60\% Exam\\
-40\% Continuous Assessment (3 parts)
-}
+  60\% Exam\\
+  30\% Continuous Assessment (Homework) \\
+  Robert Davidson
+}   
+
+ 
+
 \date{} % Empty date
 
 \begin{document}
+
 \maketitle
-
+\pagebreak
 \tableofcontents
-
 \pagebreak
 
 
@@ -186,25 +67,23 @@ To correctly determine \( \theta \), adjust the angle returned by \(\tan^{-1}\le
         \[
           \theta = \tan^{-1}\left(\frac{y}{x}\right)
         \]
-        No adjustment needed since \( \theta \) is already between \( 0 \) and \( \frac{\pi}{2} \).
+        .
 
   \item \textbf{Quadrant II} (\( x < 0, y > 0 \)):
         \[
-          \theta = \pi - \tan^{-1}\left(\frac{y}{|x|}\right)
+          \theta =  \tan^{-1}\left(\frac{y}{x}\right) + \pi
         \]
-        Adjust by subtracting from \( \pi \) to place \( \theta \) between \( \frac{\pi}{2} \) and \( \pi \).
+
 
   \item \textbf{Quadrant III} (\( x < 0, y < 0 \)):
         \[
-          \theta = \pi + \tan^{-1}\left(\frac{|y|}{|x|}\right)
+          \theta = \pi + \tan^{-1}\left(\frac{y}{x}\right) - \pi
         \]
-        Add to \( \pi \) to position \( \theta \) between \( \pi \) and \( \frac{3\pi}{2} \).
 
   \item \textbf{Quadrant IV} (\( x > 0, y < 0 \)):
         \[
-          \theta = 2\pi - \tan^{-1}\left(\frac{|y|}{x}\right)
+          \theta = \tan^{-1}\left(\frac{y}{x}\right)
         \]
-        Subtract from \( 2\pi \) to set \( \theta \) between \( \frac{3\pi}{2} \) and \( 2\pi \).
 \end{enumerate}
 
 \begin{examplebox}[Let $z = 5 - 2i$]
@@ -252,7 +131,7 @@ To correctly determine \( \theta \), adjust the angle returned by \(\tan^{-1}\le
     \overline{z} = x - iy
   $$
   Geometrically, $\overline{z}$ is the \textbf{reflection of z in the real axis}
-\end{minipage}\hfill
+\end{minipage}
 \begin{minipage}{0.48\textwidth}
   \centering
   \begin{tikzpicture}[scale=0.6]
@@ -448,6 +327,14 @@ Note that we reserve the notation $\sqrt[n]{z}$ to denote the \textbf{principal 
   $$w_k = \sqrt[3]{2} \left[\cos\left(\frac{\theta + 2\pi k}{3}\right) + i\sin\left(\frac{\theta + 2\pi k}{3}\right)\right]$$
 \end{examplebox}
 
+\subsection{Problem Sheet 1}
+\begin{enumerate}
+  \item Simplify the following (write in form a + ib)
+        \begin{enumerate}
+          \item $3\left( \frac{1+ i}{1-i} \right)^2 - 2\left(\frac{1-i}{1+i}\right)^3$
+        \end{enumerate}
+\end{enumerate}
+
 \pagebreak
 
 \section{Complex Functions}
@@ -514,14 +401,16 @@ We can also write the \textbf{Complex logarithm} as:
 \begin{examplebox}[Find the log of $z = 1 + 0i$]
 
   \begin{minipage}{0.44\textwidth}
-    $\circ \;\; z = 1 + 0i = 1  \Rightarrow |z|  = 1$ \\
-    $\circ \;\; \text{Arg}(z) = \tan^{-1}{0/1} = 0$ \\
-    Thus, we have: \\
-    \begin{align*}
-      \log(1) & = \ln|1| + i(\text{Arg}(z) + 2k\pi)              \\
-              & = 0 + i(0 + 2k\pi)                               \\
-              & = 2k\pi i \quad \text{where} \; k \in \mathbb{Z}
-    \end{align*}
+    {\raggedright
+      $\circ\;\; z = 1 + 0i = 1 \Rightarrow |z| = 1$ \\[1ex]
+      $\circ\;\; \text{Arg}(z) = \tan^{-1}\!\bigl(\frac{0}{1}\bigr) = 0$ \\[1ex]
+      Thus, we have: \\
+      \begin{align*}
+        \log(1) & = \ln|1| + i\bigl(\text{Arg}(z) + 2k\pi\bigr)    \\
+                & = 0 + i\bigl(0 + 2k\pi\bigr)                     \\
+                & = 2k\pi i \quad \text{where} \; k \in \mathbb{Z}
+      \end{align*}
+    }
   \end{minipage}
   \hfill
   \begin{minipage}{0.5\textwidth}
@@ -674,27 +563,16 @@ $$\{w = u+iv: -\pi < v \leq \pi\}$$
 \end{tikzpicture}
 
 
-\subsubsection{Example Mapping 1}
-Let \( f(z) = z^3 \), we see that: \\
-\begin{minipage}{0.47\textwidth}
-  Using exponential rules and polar representation:
-  \begin{align*}
-    z   & = |z|e^{i\theta}                                   \\
-    z^3 & = \bigl(|z|e^{i\theta}\bigr)^3                     \\
-        & = |z|^3 e^{i3\theta}                               \\
-        & = |z|^3 \Bigl(\cos(3\theta) + i\sin(3\theta)\Bigr)
-  \end{align*}
-\end{minipage}\hfill
-\begin{minipage}{0.47\textwidth}
-  Alternatively, using our definition for complex powers:
-  \begin{align*}
-    z^3 & = e^{3\log(z)}                                     \\
-        & = e^{3\bigl(\ln|z| + i\,\mathrm{Arg}(z)\bigr)}     \\
-        & = e^{3\ln|z| + i3\,\mathrm{Arg}(z)}                \\
-        & = |z|^3 e^{i3\,\mathrm{Arg}(z)}                    \\
-        & = |z|^3 \Bigl(\cos(3\theta) + i\sin(3\theta)\Bigr)
-  \end{align*}
-\end{minipage}\hfill\\[1ex]
+\subsubsection{Example Mapping 1 :}
+Let \( f(z) = z^3 \) \\
+Using exponential rules and polar representation:
+\begin{align*}
+  z   & = |z|e^{i\theta}                                   \\
+  z^3 & = \bigl(|z|e^{i\theta}\bigr)^3                     \\
+      & = |z|^3 e^{i3\theta}                               \\
+      & = |z|^3 \Bigl(\cos(3\theta) + i\sin(3\theta)\Bigr)
+\end{align*}
+
 Letting $z = 1 + 1i$, we see:
 $\theta = \tan^{-1}\left(\frac{1}{1}\right) = 45^\circ = \frac{\pi}{4},$
 and $|z| = \sqrt{1^2 + 1^2} = \sqrt{2}$.  Thus, we have: \\
@@ -730,7 +608,7 @@ and $|z| = \sqrt{1^2 + 1^2} = \sqrt{2}$.  Thus, we have: \\
     \draw[red3, dashed] (0.65,0) arc (0:135:0.65) node[below, right] {\scriptsize$3\theta$};
 
   \end{tikzpicture}
-\end{minipage}\hfill\\\\\\
+\end{minipage}\hfill
 In essence, the mapping $f(z) = z^3$ rotates the complex number $z$ by $3\theta$ and scales it by $|z|^3$.
 We can imagine this, for the complex numbers with $|z| = 1$, and $0 < \theta \leq \frac{\pi}{2}$, as an arc of radius $1$, from the angle $0 \to 90^\circ$, mapped to an arc of radius $8$, from the angles $0 \to 270^\circ$.
 
@@ -889,11 +767,15 @@ The Riemann sphere is a way to "wrap  up" the entire complex plane into a compac
 \end{minipage}
 
 \subsubsection{Compactification of the Complex Plane}
-The complex plane $\mathbb{C}$ is not compact - it streches out infinitely in all directions. By adding a single point at infinity, we "close" the plane, turning it into a compact set. This new space, is \textbf{homeomorphic} (a one-to-one mapping that is continuous in both directions or toplogically equivalent) to  to the Riemann Sphere . We define the new space as:
+The complex plane $\mathbb{C}$ is not compact - it streches out infinitely in all directions.
+By adding a single point at infinity, we "close" the plane, turning it into a compact set.
+This new space, is \textbf{homeomorphic} (a one-to-one mapping that is continuous
+in both directions or toplogically equivalent) to  to the Riemann Sphere . We define the new space as:
 $$\tilde{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$$
-
 \subsection{Riemann Sphere}
-Define $\tilde{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$. Then $\tilde{\mathbb{C}} \xleftrightarrow{1:1} S^2 \{X = (x,y,z) : x^2 + y^2 + z^2 = 1 \}$ (\emph{homeomorphic}) via the sterographic projection, denoted $St$, defined as follows:\\[2ex]
+Define $\tilde{\mathbb{C}} = \mathbb{C} \cup \{\infty\}$. Then
+$\tilde{\mathbb{C}} \xleftrightarrow{1:1} S^2 \{X = (x,y,z) : x^2 + y^2 + z^2 = 1 \}$
+(\emph{homeomorphic}) via the sterographic projection, denoted $St$, defined as follows:\\[2ex]
 \textbf{1. Projection from $S^2 \to \tilde{\mathbb{C}}$}: \\
 For a point $(x, y,z ) \in S^2$, with $z \neq 1$ (the point is not the north pole) the projection is defined as:
 \begin{gather}
@@ -904,8 +786,8 @@ For a point $(x, y,z ) \in S^2$, with $z \neq 1$ (the point is not the north pol
 For a point $z \in \mathbb{C}$, the inverse projection is defined as:
 \begin{gather}
   St^{-1}(z) = \frac{1}{|z|^2 + 1}\langle 2\text{Re}(z), 2\text{Im}(z), |z|^2 - 1 \rangle \notag  \\
-  \text{\emph{This takes a complex number, $z$, written in terms of its real $($Re$(z))$}} \notag \\
-  \text{\emph{and imaginary $($Im$(z))$ parts, and maps it to the sphere}} \notag
+  \text{\emph{This takes a complex number, $z$, written in terms of its real} $($Re$(z))$} \notag \\
+  \text{\emph{and imaginary} $($Im$(z))$ \emph{parts, and maps it to the sphere}} \notag
 \end{gather}
 \textbf{3. Mapping the North Pole}:
 \\The projection leaves out the north pole from projection onto $\mathbb{C}$
@@ -981,7 +863,8 @@ Putting it all together, we can map any three points to any other three point:
     \end{tikzpicture}
   \end{center}
   Note that, $M, M_2$ and $T^{-1}\circ T_2$ have matrices: Three-Point Theorem for Mobius Transformations
-  $$M = \begin{bmatrix} a&b \\ c &d \end{bmatrix}, \quad M_2 = \begin{bmatrix} e&f \\ g &g \end{bmatrix}, \quad T^{-1} \circ T_2 =  \begin{bmatrix} d&-b \\ -c &a \end{bmatrix} \cdot \begin{bmatrix}e & f \\ g & h\end{bmatrix}$$
+  $$M = \begin{bmatrix} a&b \\ c &d \end{bmatrix}, \quad M_2 = \begin{bmatrix} e&f \\ g &g \end{bmatrix},
+    \quad T^{-1} \circ T_2 =  \begin{bmatrix} d&-b \\ -c &a \end{bmatrix} \cdot \begin{bmatrix}e & f \\ g & h\end{bmatrix}$$
 \end{theorembox}
 
 \begin{examplebox}[Find a Mobius transformation, $T:  (0,-i,-1) \mapsto (i, 1, 0)$]
@@ -1021,76 +904,89 @@ Putting it all together, we can map any three points to any other three point:
 
 \end{examplebox}
 
-% \subsection{Stereographic Projection}
-% \begin{figure}[h]
-%   \begin{minipage}{0.48\linewidth}
-%     \centering
-%     \begin{tikzpicture}[tdplot_main_coords, scale = 2.5]
-%       \shade[ball color = lightgray, opacity = 0.5] (0,0,0) circle (1cm);
+\pagebreak
 
-%       % Axes in 3D coordinate system
-%       \draw[->, very thin] (0,0,0) -- (1.80,0,0) node[anchor=north east] {$x$};
-%       \draw[->, very thin] (0,0,0) -- (0,1.40,0) node[anchor=north east] {$y$};
-%       \draw[->, very thin] (0,0,-1.4) -- (0,0,1.40) node[anchor=north east] {$z$};
+\subsection{Complex Differentiation}
+First we must define what is meant for a set to be \textbf{open} in the complex plane.
+\subsubsection{Open Sets in the Complex Plane}
+\begin{definitionbox}
+  We say a subset $\mathbb{U} \subseteq \mathbb{C}$ is \textbf{open} if $\forall\;  z_0 \in \mathbb{U} \quad \exists \; \varepsilon   > 0$
+  such that the open disc centered at $z_0$ of radius $\varepsilon$ is contained in $\mathbb{U}$:
+  $$D_{\varepsilon} (z_0) = \{z \in \mathbb{C} \mid |z-z_0| < \varepsilon\}$$ \\
+  \centering
+  \begin{tikzpicture}
+    \draw[dashed] (0,0) rectangle (4,2);
+    \draw[dotted] (1.5,1) circle (0.5);
+    \filldraw (1.5,1) circle (0.05) node[below] {$z_0$};
+    \draw[->] (1.5,1) -- (2,1) node[midway, above] {$\varepsilon$};
+    \node at (4.2,1.8) {$\mathbb{U}$};
+  \end{tikzpicture}
+\end{definitionbox}
+\noindent In essence, a set $\mathbb{U}$ in the complex plane is defined as open if for every point $z_0$ in $\mathbb{U}$,
+you can draw a small circle around $z_0$ that fits entirely within $\mathbb{U}$. This radius of this circle is $\varepsilon$. The
+radius can be very small but must be positive.
+\subsubsection{Differentiation}
+\begin{definitionbox}
+  Let $\mathbb{U} \subseteq \mathbb{C}$ be open, let $f: \mathbb{U} \to \mathbb{C}$ be a function and let $z_0 = x_0 + iy_0 \in \mathbb{U}$.
+  $$f'(z_0) = \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h}$$
+  If the limit exists, independant of the direction of approach we say $f$ is \textbf{holomorphic} (or complex differentiable / complex analytic) \textbf{at} $z_0$.
+  We also call $f'(z_0)$ the derivative of $f$ at $z_0$. \\
+  Similarly, if $f$ is holomorphic $\forall \; z \in \mathbb{U}$ we say $f$ is holomorphic \textbf{on} $\mathbb{U}$.
+\end{definitionbox}
 
-%       \tdplotsetrotatedcoords{0}{0}{0};
-%       % Define points
-%       \coordinate (X) at ({0},{0.882},{-0.47});
-%       \coordinate (P) at ({0},{0.6},{0});
-%       \coordinate (N) at ({0}, {0}, {1});
-%       \coordinate (O) at ({0}, {0}, {0});
-%       \coordinate (Q) at ({0}, {0}, {-0.47});
 
-%       \draw[dashed, gray] (0,0,0) circle (1);
+\subsubsection{Cauchy-Riemann Equations}
+\begin{theorembox}[: Cauchy-Riemann Equations]
+  If $f:\mathbb{U} \to \mathbb{C}$ is holomorphic on $\mathbb{U} \subseteq \mathbb{C}$, then for $z = x + iy$ and $f(z) = u(x,y) + iv(x,y)$, we have:
+  $$\pdiff{u}{x} = \pdiff{v}{y} \quad  \text{and} \quad \pdiff{u}{y} = - \pdiff{v}{x}$$
+\end{theorembox}
 
-%       % Draw points
-%       \filldraw[red] (X) circle (1pt) node[above right] {$X$};
-%       \filldraw[red] (P) circle (1pt) node[above right] {$P$};
-%       \filldraw[red] (N) circle (1pt) node[above right] {$N$};
-%       \filldraw[red] (O) circle (1pt) node[above right] {$O$};
-%       \filldraw[red] (Q) circle (1pt) node[above right] {$Q$};
+\pagebreak
 
-%       % Draw lines
-%       \draw[thick, -stealth] (O) -- (P);
-%       \draw[thick, -stealth] (O) -- (N);
-%       \draw[thick, -stealth] (Q) -- (X);
-%       \draw[thick, -stealth] (Q) -- (N);
-%       \draw[thick, -stealth] (N) -- (X);
-%     \end{tikzpicture}
-%   \end{minipage}%
-%   \hfill
-%   \begin{minipage}{0.48\linewidth}
-%     \centering
-%     \begin{tikzpicture}[scale = 2.5]
-%       \draw[->, very thin] (-1.4,0) -- (1.4,0) node[anchor=north east] {$y$};
-%       \draw[->, very thin] (0,-1.4) -- (0,1.40) node[anchor=north east] {$z$};
+\subsubsection{Jacobian Matrix}
+The Jacobian matrix represents how a function transforms small regions in space. For a function that maps $n$ dimensional space $\to$ $m$ dimensional space,
+the Jacobian contains all partial derivatives arranged in an $m \times n$ matrix.
+For example, $f$ as a map $f: \mathbb{R}^2 \to \mathbb{R}^2$, has the Jacobian matrix:
+$
+  Df =
+  \begin{pmatrix}
+    u_x & u_y \\
+    v_x & v_y
+  \end{pmatrix}$
+Which for $(x_0, y_0) \in \mathbb{R}^2$ gives an $2 \times 2$ matrix:
+$$Df(x_0, y_0) =
+  \begin{pmatrix}
+    u_x(x_0, y_0) & u_y(x_0, y_0) \\
+    v_x(x_0, y_0) & v_y(x_0, y_0)
+  \end{pmatrix}
+  :
+  \mathbb{R}^2 \to \mathbb{R}^2
+$$
+Now, $f$ statisfies the Cauchy-Riemann equations:
+$$
+  \begin{pmatrix}
+    u_x & u_y \\
+    v_x & v_y
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & -1 \\
+    1 & 0
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    0 & -1 \\
+    1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    u_x & u_y \\
+    v_x & v_y
+  \end{pmatrix}
+$$
+Where, the matrix $\begin{psmallmatrix} 0 & -1 \\ 1 & 0 \end{psmallmatrix}$ is the rotation matrix for $\pi / 2$ ($90^{\circ}$). Meaning that the map $Df$ is $\mathbb{C}$-linear, that is it preserves addition and complex scalar multiplication:
+$$f(x + y) = f(x) + f(y)$$
+$$f(\alpha x) = \alpha f(x), \quad \forall \alpha \in \mathbb{C}$$
 
-%       \coordinate (N) at (0,1);
-%       \coordinate (P) at (0.6,0);
-%       \coordinate (O) at (0,0);
-%       \coordinate (Q) at (0,-0.47);
-%       \coordinate (X) at (0.882,-0.47);
-
-%       % Draw points
-%       \draw[fill=black] (N) circle (0.025) node[above right] {$N$};
-%       \draw[fill=black] (P) circle (0.025) node[above right] {$P$};
-%       \draw[fill=black] (O) circle (0.025) node[above right] {$O$};
-%       \draw[fill=black] (Q) circle (0.025) node[above right] {$Q$};
-%       \draw[fill=black] (X) circle (0.025) node[above right] {$X$};
-
-%       % Draw lines
-%       \draw[red, very thick] (N) -- (P);
-%       \draw[red, very thick] (O) -- (P);
-%       \draw[red, very thick] (O) -- (N);
-%       \draw[blue] (N) -- (X);
-%       \draw[blue] (X) -- (Q);
-%       \draw[blue] (Q) -- (N);
-%     \end{tikzpicture}
-%   \end{minipage}
-%   \caption*{The stereographic projection from the unit sphere $S^2$ onto the complex plane $\mathbb{C}$}
-% \end{figure}
-
-% \noindent In the above figure, the point $N$ is the north pole of the sphere, and the projection of $X$ onto the plane, $Q$ is the intersection of the vertcial line through $X$ with the through
+\subsection{Complex Integration}
 
 
 \end{document}

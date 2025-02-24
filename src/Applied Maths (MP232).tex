@@ -6,7 +6,7 @@
 % Title and author
 \title{
 Robert Davidson \\
-Complex Analysis Notes
+\textbf{MP232: Applied Mathematics}
 }
 \author{
 60\% Exam\\
@@ -316,7 +316,7 @@ $$F_d(t) = m \diff{x^2}{t^2} + \gamma \diff{x}{t} + kx$$
 In order to solve this, we also need initial displacement $v_0 = x(0)$ and initial velocity $v_0 = \diff{x}{t}(0)$.
 
 \begin{examplebox}
-  \normalsize $$\diff{x^2}{t^2} = 3\diff{x}{t} + 2x = 0, \quad x(0) = 0, \quad \diff{x}{t}(0) = 1$$
+  \normalsize $$\diff{x^2}{t^2} + 3\diff{x}{t} + 2x = 0, \quad x(0) = 0, \quad \diff{x}{t}(0) = 1$$
   \textbf{1. Take Laplace of governing equation:}
   $$L\left\{\diff{x^2}{t^2}\right\} = s^2 L\{x\} - sx(0) - x'(0) = s^2 L\{x\} - 1$$
   $$L\left\{\diff{x}{t}\right\} = sL\{x\} - x(0) = sL{x}$$
@@ -335,5 +335,75 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
   $$x = L^{-1} \left\{\frac{1}{s+1} - \frac{1}{s+2}\right\} = L^{-1} \left\{ \frac{1}{s+1}\right\}  - L^{-1}\left\{ \frac{1}{s+2}\right\} = e^{-t} - e^{-2t}$$
 \end{examplebox}
 \pagebreak
+
+\subsection{Practice Problems}
+\begin{enumerate}
+  \item Use the First Shift Theorem \(\left( L \{ e^{at} f(t) \} = F(s - a) \right)\) to find the Laplace transform of the following functions:
+
+        \begin{enumerate*}
+          \item \( t^3 e^{-3t} \)
+          \item \( e^{-t} \cos(2t) \)
+          \item \( e^{-4t} \cosh(5t) \)
+          \item \( e^{-t} \sin^2(t) \)
+        \end{enumerate*}
+  \item Use the First Shift Theorem \(\left( L^{-1} \{ F(s - a) \} = e^{at} f(t) \right)\) to find the inverse Laplace transform of the following functions:
+
+        \begin{enumerate*}
+          \item \( \dfrac{6s - 4}{s^2 - 4s + 20} \)
+          \item \( \dfrac{3s + 7}{s^2 - 2s - 3} \)
+          \item \( \dfrac{4s + 12}{s^2 + 8s + 16} \)
+        \end{enumerate*}
+  \item Solve the following initial value problems using the method of Laplace transforms:
+
+        $$
+          y'' + y' - 6y = 0 , \quad  y(0) = 0 , \quad  y'(0) = 1 ;
+        $$
+        $$
+          y'' - y = t , \quad  y(0) = 1 , \quad  y'(0) = 1 .
+        $$
+  \item Find the inverse Laplace transform of the following functions using the method of partial fractions:
+
+        \begin{enumerate*}
+          \item \( \dfrac{2s^2 - 4}{(s + 1)(s - 2)(s - 3)} \).
+          \item \( \dfrac{5s^2 - 15s - 11}{(s + 1)(s - 2)^3} \).
+          \item \( \dfrac{3s + 1}{(s - 1)(s^2 + 1)} \).
+          \item \( \dfrac{e^{-5s}}{(s^2 + 1)(s^2 + 2)} \).
+        \end{enumerate*}
+\end{enumerate}
+
+\subsection{The Dirac Delta Function}
+Consider the action of very large forces acting over a very short time. Such as a nail hitting a hammer. The \textbf{Dirac Delta Function} can model these. \\
+Let $\delta_{\epsilon}(t)$ be a some function which is very large over a short intercal, $-\epsilon < t < \epsilon$, with $\epsilon > 0$, but is $0$ elsewhere.
+$$
+  \begin{array}{r@{\quad}l}
+    \begin{tikzpicture}[scale=0.8, baseline={(current bounding box.center)}]
+      \pgfmathsetmacro{\eps}{1} % for plotting purposes, assume epsilon=1
+      \pgfmathsetmacro{\hgt}{1/(\eps)}
+      % Axes
+      \draw[->] (-2,0) -- (2,0) node[right] {$t$};
+      \draw[->] (0,-0.2) -- (0,1.2) node[above] {$\delta_{\epsilon}(t)$};
+      % Plot: horizontal line over (-eps,eps) at height hgt
+      \draw[line width=1.2pt] (-\eps,\hgt) -- (\eps,\hgt);
+      % Dotted vertical lines showing the jump edges
+      \draw[dotted] (-\eps,0) -- (-\eps,\hgt);
+      \draw[dotted] (\eps,0) -- (\eps,\hgt);
+      % Optionally, label the edges
+      \node[below] at (-\eps,0) {$-\epsilon$};
+      \node[below] at (\eps,0) {$\epsilon$};
+    \end{tikzpicture}
+     &
+    \delta_{\epsilon}(t)=
+    \begin{cases}
+      \dfrac{1}{2\epsilon} & \text{if } -\epsilon < t < \epsilon, \\
+      0                    & \text{otherwise.}
+    \end{cases}
+  \end{array}
+$$
+Notice that that the area under the curve is $1$:
+$$\int_{-\infty}^{\infty} \delta_{\epsilon}(t)\; dt = \int_{-\epsilon}^{\epsilon} \frac{1}{2 \epsilon} \; dt = \frac{2\epsilon}2{\epsilon}  = 1$$
+As $\epsilon \to 0$, the function becomes infinitely tall and thin, but the area remains $1$. The Dirac Delta Function is defined as:
+$$\delta(t) = \lim_{\epsilon \to 0+} \{\delta_{\epsilon}(t)\}$$
+The Dirac Delta Function has the property:
+$$\delta(t) = 0 \;\; \text{for} \;\; t \neq 0 \quad \text{and} \quad \int_{-\infty}^{\infty} \delta(t) \; dt = 1$$
 
 \end{document}

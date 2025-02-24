@@ -1,121 +1,19 @@
-\documentclass[4pt]{article}
+\documentclass[a4paper, 10pt]{article}
+\input{preamble.sty}
+\input{macros.sty}
 
-%--------------------------------------------------------
-% Basic Page Setup
-%--------------------------------------------------------
-\usepackage[margin=1in]{geometry}
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{microtype}  % Improves typography
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}  % Use the latest available features
-
-% Slightly increase line spacing
-\renewcommand{\baselinestretch}{1}
-
-%--------------------------------------------------------
-% Math Packages
-%--------------------------------------------------------
-\usepackage{amsmath,amssymb,amsthm}
-
-%--------------------------------------------------------
-% tcolorbox for Call-Out Blocks
-%--------------------------------------------------------
-\usepackage{tcolorbox}
-\usepackage{xcolor}
-\tcbuselibrary{theorems}
-
-\definecolor{custom_green}{HTML}{a3be8c}
-\definecolor{custom_red}{HTML}{bf616a}
-\definecolor{custom_blue}{HTML}{5e81ac}
-
-% Definition box
-\newtcolorbox{definitionbox}{
-  title=Definition,
-  fonttitle=\bfseries,
-  colback=blue!5!white,    % Light blue background
-  colframe=blue!30!white,  % Darker blue frame
-  coltitle=black,
-  boxrule=1.5pt,
-  arc=3pt,
-  outer arc=3pt,
-}
-
-% Theorem box
-\newtcolorbox{theorembox}{
-  title=Theorem,
-  fonttitle=\bfseries,
-  colback=custom_green!30!white,
-  colframe=custom_green,
-  coltitle=black,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-% Example box
-\newtcolorbox{examplebox}{
-  title=Example,
-  fonttitle=\bfseries,
-  colback=custom_red!20!white,
-  colframe=custom_red,
-  coltitle=white,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-% Proof box
-\newtcolorbox{proofbox}{
-  title=Proof,
-  fonttitle=\bfseries,
-  colback=custom_blue!20!white,
-  colframe=custom_blue,
-  coltitle=white,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-% Corollary box
-\newtcolorbox{corollarybox}{
-  title=Corollary,
-  fonttitle=\bfseries,
-  colback=custom_blue!20!white,
-  colframe=custom_blue,
-  coltitle=white,
-  boxrule=0.5pt,
-  arc=4pt,
-  outer arc=4pt,
-}
-
-%--------------------------------------------------------
-% Theorem Environments (optional alternative)
-%--------------------------------------------------------
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}[definition]{Example}
-
-\theoremstyle{plain}
-\newtheorem{theorem}[definition]{Theorem}
-
-%--------------------------------------------------------
-% Title, Author, Date
-%--------------------------------------------------------
 \title{
-Linear Algebra\\[2ex]
-Exams:\\
-70\% Exam\\
-30\% Continuous Assessment (Homework) \\
-10\% Optional Project (Bonus)\\
+\textbf{MA283: Linear Algebra} \\ 
 }
-\author{}     % Optional: Add author details if desired
+
+\author{
+  70\% Exam\\
+30\% Continuous Assessment (Homework) \\
+10\% Optional Project (Bonus)\\ [2ex]
+Robert Davidson
+}     
 \date{}       % Optional: Add date if desired
 
-%--------------------------------------------------------
-% Document
-%--------------------------------------------------------
 \begin{document}
 
 \maketitle
