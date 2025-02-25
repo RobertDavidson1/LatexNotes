@@ -342,24 +342,24 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
 \subsection{Heaviside Step Function}
 Denote the Heaviside Step Function as $H(t)$, defined as:
 $$
-H(t) = \begin{cases}
-0 & \text{if } t < 0 \\
-1 & \text{if } t > 0
-\end{cases}
+  H(t) = \begin{cases}
+    0 & \text{if } t < 0 \\
+    1 & \text{if } t > 0
+  \end{cases}
 $$
 Clearly, for any constant $a$, we have:
 $$
-H(t-a) = \begin{cases}
-0 & \text{if } t < a \\
-1 & \text{if } t > a
-\end{cases}
+  H(t-a) = \begin{cases}
+    0 & \text{if } t < a \\
+    1 & \text{if } t > a
+  \end{cases}
 $$
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
-    3 & \text{for } 0 \leq t < 2 \\
-    -1 & \text{for } t > 2 \\
-  \end{cases}$$
+      3  & \text{for } 0 \leq t < 2 \\
+      -1 & \text{for } t > 2        \\
+    \end{cases}$$
   We write the general form of $f(t)$ as:
   $$f(t) = \alpha + \beta H(t-2)$$
   Now, settings $t$ to any value $\in [0,2)$ gives:
@@ -372,10 +372,10 @@ $$
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
-    3 & \text{for } 0 \leq t < 1 \\
-    5 & \text{for } 1 < t < 3 \\
-    -2 & \text{for } t > 3 \\
-  \end{cases}$$
+      3  & \text{for } 0 \leq t < 1 \\
+      5  & \text{for } 1 < t < 3    \\
+      -2 & \text{for } t > 3        \\
+    \end{cases}$$
 
   We write the general form of $f(t)$ as:
   $$f(t) = \alpha + \beta H(t-1) + \gamma H(t-3)$$
@@ -390,12 +390,12 @@ $$
 
 \subsection{The Second Shift Theorem}
 \begin{theorembox}
-  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function, 
+  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function,
   $$
-  \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
-    0 & \text{if } t < a \\
-    f(t-a) & \text{if } t > a
-  \end{cases}
+    \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
+      0      & \text{if } t < a \\
+      f(t-a) & \text{if } t > a
+    \end{cases}
   $$
   has the transform $e^{-as}F(s)\; (s > k)$, that is:
   $$L\{f(t-a)H(t-a)\} = e^{-as}F(s)$$
@@ -414,24 +414,24 @@ $$
 \subsection{Heaviside Step Function}
 Denote the Heaviside Step Function as $H(t)$, defined as:
 $$
-H(t) = \begin{cases}
-0 & \text{if } t < 0 \\
-1 & \text{if } t > 0
-\end{cases}
+  H(t) = \begin{cases}
+    0 & \text{if } t < 0 \\
+    1 & \text{if } t > 0
+  \end{cases}
 $$
 Clearly, for any constant $a$, we have:
 $$
-H(t-a) = \begin{cases}
-0 & \text{if } t < a \\
-1 & \text{if } t > a
-\end{cases}
+  H(t-a) = \begin{cases}
+    0 & \text{if } t < a \\
+    1 & \text{if } t > a
+  \end{cases}
 $$
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
-    3 & \text{for } 0 \leq t < 2 \\
-    -1 & \text{for } t > 2 \\
-  \end{cases}$$
+      3  & \text{for } 0 \leq t < 2 \\
+      -1 & \text{for } t > 2        \\
+    \end{cases}$$
   We write the general form of $f(t)$ as:
   $$f(t) = \alpha + \beta H(t-2)$$
   Now, settings $t$ to any value $\in [0,2)$ gives:
@@ -444,10 +444,10 @@ $$
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
-    3 & \text{for } 0 \leq t < 1 \\
-    5 & \text{for } 1 < t < 3 \\
-    -2 & \text{for } t > 3 \\
-  \end{cases}$$
+      3  & \text{for } 0 \leq t < 1 \\
+      5  & \text{for } 1 < t < 3    \\
+      -2 & \text{for } t > 3        \\
+    \end{cases}$$
 
   We write the general form of $f(t)$ as:
   $$f(t) = \alpha + \beta H(t-1) + \gamma H(t-3)$$
@@ -462,12 +462,12 @@ $$
 
 \subsection{The Second Shift Theorem}
 \begin{theorembox}
-  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function, 
+  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function,
   $$
-  \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
-    0 & \text{if } t < a \\
-    f(t-a) & \text{if } t > a
-  \end{cases}
+    \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
+      0      & \text{if } t < a \\
+      f(t-a) & \text{if } t > a
+    \end{cases}
   $$
   has the transform $e^{-as}F(s)\; (s > k)$, that is:
   $$L\{f(t-a)H(t-a)\} = e^{-as}F(s)$$
@@ -521,24 +521,24 @@ $$
 \subsection{Heaviside Step Function}
 Denote the Heaviside Step Function as $H(t)$, defined as:
 $$
-H(t) = \begin{cases}
-0 & \text{if } t < 0 \\
-1 & \text{if } t > 0
-\end{cases}
+  H(t) = \begin{cases}
+    0 & \text{if } t < 0 \\
+    1 & \text{if } t > 0
+  \end{cases}
 $$
 Clearly, for any constant $a$, we have:
 $$
-H(t-a) = \begin{cases}
-0 & \text{if } t < a \\
-1 & \text{if } t > a
-\end{cases}
+  H(t-a) = \begin{cases}
+    0 & \text{if } t < a \\
+    1 & \text{if } t > a
+  \end{cases}
 $$
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
-    3 & \text{for } 0 \leq t < 2 \\
-    -1 & \text{for } t > 2 \\
-  \end{cases}$$
+      3  & \text{for } 0 \leq t < 2 \\
+      -1 & \text{for } t > 2        \\
+    \end{cases}$$
   We write the general form of $f(t)$ as:
   $$f(t) = \alpha + \beta H(t-2)$$
   Now, settings $t$ to any value $\in [0,2)$ gives:
@@ -551,10 +551,10 @@ $$
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
-    3 & \text{for } 0 \leq t < 1 \\
-    5 & \text{for } 1 < t < 3 \\
-    -2 & \text{for } t > 3 \\
-  \end{cases}$$
+      3  & \text{for } 0 \leq t < 1 \\
+      5  & \text{for } 1 < t < 3    \\
+      -2 & \text{for } t > 3        \\
+    \end{cases}$$
 
   We write the general form of $f(t)$ as:
   $$f(t) = \alpha + \beta H(t-1) + \gamma H(t-3)$$
@@ -569,12 +569,12 @@ $$
 
 \subsection{The Second Shift Theorem}
 \begin{theorembox}
-  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function, 
+  If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function,
   $$
-  \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
-    0 & \text{if } t < a \\
-    f(t-a) & \text{if } t > a
-  \end{cases}
+    \tilde{f}(t) = f(t-a)H(t-a) = \begin{cases}
+      0      & \text{if } t < a \\
+      f(t-a) & \text{if } t > a
+    \end{cases}
   $$
   has the transform $e^{-as}F(s)\; (s > k)$, that is:
   $$L\{f(t-a)H(t-a)\} = e^{-as}F(s)$$
@@ -592,9 +592,9 @@ $$
 
 \subsection{The Dirac Delta Function}
 The \textbf{Dirac Delta Function} models extremely brief but intense forces
-like a hammer hitting a nail. 
+like a hammer hitting a nail.
 It starts as a function $\delta_{\varepsilon}$, that equals $\frac{1}{2\varepsilon}$ over the interval
-$t \in  [-\varepsilon, \varepsilon]$ and $0$ elsewhere. 
+$t \in  [-\varepsilon, \varepsilon]$ and $0$ elsewhere.
 $$
   \begin{array}{r@{\quad}l}
     \begin{tikzpicture}[scale=0.8, baseline={(current bounding box.center)}]
@@ -626,9 +626,9 @@ As $\varepsilon$ approaches 0, the function becomes infinitely tall and thin, bu
 $$\delta(t) = \lim_{\varepsilon \to 0+} \{\delta_{\varepsilon}(t)\}$$
 \textbf{Properties of the Dirac Delta Function:}
 \begin{align*}
-  &\delta(t) = 0 \text{ for } t \neq 0 \\
-  &\int_{-\infty}^{\infty} \delta(t)\, dt = 1 \\
-  &\int_{-\infty}^{\infty} \delta(t-t_0)f(t)\; dt = f(t_0) 
+   & \delta(t) = 0 \text{ for } t \neq 0                     \\
+   & \int_{-\infty}^{\infty} \delta(t)\, dt = 1              \\
+   & \int_{-\infty}^{\infty} \delta(t-t_0)f(t)\; dt = f(t_0)
 \end{align*}
 The Laplace Transform of the Dirac Delta Function is:
 $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \; \; t_0 > 0$$
@@ -636,17 +636,17 @@ $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\
 \begin{examplebox}[ : Solve the following initial value problem which governs the behavious of an RLC circuit]
   \scriptsize
   \begin{align*}
-    LQ'' + RQ' + \frac{Q}{C} &= V_0 \delta(t-a) \\
-    Q(0) &= 0 \\ 
-    Q'(0) &= 0
+    LQ'' + RQ' + \frac{Q}{C} & = V_0 \delta(t-a) \\
+    Q(0)                     & = 0               \\
+    Q'(0)                    & = 0
   \end{align*}
   Where $a,L,R,C,V_0$ are all positive constans and $4L > R^2C$. \\
-  Note that the applied voltage corresponds to an impulse of stength $V_0$ at $t=a$ \\ 
+  Note that the applied voltage corresponds to an impulse of stength $V_0$ at $t=a$ \\
   We note that:
   \begin{align*}
-    L\{Q''\} = s^2 L\{Q\} - sQ(0) - Q'(0) &= s^2 L\{Q\} \\
-    L\{Q'\} = sL\{Q\} - Q(0) &= sL\{Q\} \\
-    L\{\delta(t-a)\} = e^{-st_0} &= e^{-as} 
+    L\{Q''\} = s^2 L\{Q\} - sQ(0) - Q'(0) & = s^2 L\{Q\} \\
+    L\{Q'\} = sL\{Q\} - Q(0)              & = sL\{Q\}    \\
+    L\{\delta(t-a)\} = e^{-st_0}          & = e^{-as}
   \end{align*}
   Thus:
   $$L\{LQ'' + RQ' + \frac{Q}{C} = V_0 \delta(t-a)\} = Ls^2L\{Q\} + RsL\{Q\} + \frac{1}{C}L\{Q\} = V_0 e^{-as}$$
@@ -656,22 +656,22 @@ $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\
   $$L\{Q\} = V_0 e^{-as} \cdot \frac{1}{Ls^2 + Rs + \frac{1}{C}}$$
   Removing the $L$ from the denominator gives:
   \begin{align*}
-  L\{Q\} &= \frac{V_0}{L}e^{-as} \cdot \frac{1}{s^2 + \frac{R}{L}s + \frac{1}{LC}} \\
-  &=\frac{V_0}{L}\cdot \frac{e^{-as}}{s^2 + \frac{R}{L}s + \frac{1}{LC}}
+    L\{Q\} & = \frac{V_0}{L}e^{-as} \cdot \frac{1}{s^2 + \frac{R}{L}s + \frac{1}{LC}} \\
+           & =\frac{V_0}{L}\cdot \frac{e^{-as}}{s^2 + \frac{R}{L}s + \frac{1}{LC}}
   \end{align*}
   We notice that:
   \begin{align*}
-    (s+\frac{R}{2L})^2 &= s^2 + s \frac{2R}{2L} + \frac{R^2}{4L^2} \\
-    &= s^2 + \frac{R}{L}s + \frac{R^2}{4L^2}
+    (s+\frac{R}{2L})^2 & = s^2 + s \frac{2R}{2L} + \frac{R^2}{4L^2} \\
+                       & = s^2 + \frac{R}{L}s + \frac{R^2}{4L^2}
   \end{align*}
   So that:
   $$L\{Q\} = \frac{V_0}{L} \frac{e^{-as}}{(s+\frac{R}{2L})^2 - \frac{R^2}{4L^2} + \frac{1}{LC}}$$
   Rewriting with $\alpha = \frac{R}{2L}$ and $\beta = \frac{1}{LC} - \frac{R^2}{4L^2}$
   $$L\{Q\} = \frac{V_0}{L} \frac{e^{-as}}{(s+\alpha)^2 + \beta}$$
-  
+
   We also note that:
   $$L\{\sin(\beta t)\} = \frac{\beta}{s^2 + B^2} \xRightarrow{\text{First Shift Theorem}} L\{e^{-as} \sin(\beta t)\} = \frac{B}{(s+a)^2 + \beta^2}$$
-  Or, 
+  Or,
   $$L^{-1} \left\{\frac{B}{(s+a)^2 + \beta^2}\right\} = e^{-at}\sin(\beta t)$$
   We can also write:
   $$L^{-1}\{F(s)\} = f(t)$$
@@ -682,11 +682,11 @@ $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\
   $$L^{-1} \left\{e^{-as}\frac{\beta}{(s+a)^2 + \beta^2}\right\} = e^{-a(t-a)}\sin(\beta[t-a])H(t-a)$$
   Thus:
   \begin{align*}
-  Q(t) &= \frac{V_0}{L\beta} e^{-a(t-a)}\sin(\beta[t-a])H(t-a) \\
-  &= \begin{cases}
-    0 &\text{for}\;\; 0 \leq t < a  \\
-    \dfrac{V_0}{L\beta} e^{-a(t-a)}\sin(\beta[t-a])H(t-a) &\text{for}\;\; t > a
-  \end{cases}
+    Q(t) & = \frac{V_0}{L\beta} e^{-a(t-a)}\sin(\beta[t-a])H(t-a)                                \\
+         & = \begin{cases}
+               0                                                     & \text{for}\;\; 0 \leq t < a \\
+               \dfrac{V_0}{L\beta} e^{-a(t-a)}\sin(\beta[t-a])H(t-a) & \text{for}\;\; t > a
+             \end{cases}
   \end{align*}
   \normalsize
 \end{examplebox}
@@ -697,14 +697,225 @@ that its Laplace Transform ($F(s))$ exists for some $s > k$. Then:
 $$F'(s) = \diff{}{s} \left\{ \int_0^\infty e^{-st}f(t)\; dt \right\} = \int_0^\infty \pdiff{}{s}\{e^{-st}f(t) \; dt\}$$
 We are allowed to bring the derivative inside the integral provided the conditions of the existence theorem are satisfied, hence:
 $$F'(s) = -\int_0^\infty e^{-st}\{tf(t)\}\; dt = -L\{tf(t)\}$$
-so that, 
+so that,
 $$L\{tf(t)\} = -F'(s)$$
 We can sometimes use this to calculate transforms and inverse transforms. For example:
 $$L\{t\} = L\{t \cdot 1\} = - \diff{}{s}L\{1\} = -\diff{}{s}\left(\frac{1}{s}\right) = \frac{1}{s^2}$$
 
 \subsection{The Convolution Function}
-Let $f(t), g(t)$ be two functions. Define the Convolution function 
-$$(f \star g)(t) = \int_0^t f(t-\tau)g(\tau) \; d\tau$
-Where $\tau$ is integrated over the interval $[0,t]$. 
+Let $f(t), g(t)$ be two functions. Define the Convolution function
+$$(f \star g)(t) = \int_0^t f(t-\tau)g(\tau) \; d\tau$$
+Where $\tau$ is integrated over the interval $[0,t]$.  The Convolution is:
+\begin{align*}
+  \textbf{Commutative:}         & f \star g = g \star f                     \\
+  \textbf{Associative:}         & f \star (g \star h) = (f \star g) \star h \\
+  \textbf{Distruibutive:}       & f \star (g + h) = f \star g + f \star h   \\
+  \textbf{Multiplication by 0:} & = f \star (ag) = a(f \star g)
+\end{align*}
+
+\begin{theorembox}
+  Let $f(t)$ and $g(t)$ have Laplace Transforms $F(s)$ and $G(s)$ respectively defined for $s > k \geq 04$. Then
+  $$L\{f \star g\} = F(s)G(s), \quad s > k$$
+\end{theorembox}
+
+\begin{proofbox}
+  Write \( F(s) = \int_{0}^{\infty} e^{-s\sigma} f(\sigma) \, d\sigma \) and \( G(s) = \int_{0}^{\infty} e^{-s\tau} g(\tau) \, d\tau \).
+  Then:
+  \begin{align*}
+    F(s)G(s) & = \left\{ \int_{0}^{\infty} e^{-s\sigma} f(\sigma) \, d\sigma \right\} \left\{ \int_{0}^{\infty} e^{-s\tau} g(\tau) \, d\tau \right\} \\
+             & = \int_{0}^{\infty} e^{-s\tau} g(\tau) \left\{ \int_{0}^{\infty} e^{-s\sigma} f(\sigma) \, d\sigma \right\} d\tau                     \\
+             & = \int_{0}^{\infty} g(\tau) \left\{ \int_{0}^{\infty} e^{-s(\sigma+\tau)} f(\sigma) \, d\sigma \right\} d\tau.                        \\
+  \end{align*}
+\end{proofbox}
+
+\pagebreak
+
+\section{Line Integrals}
+Consider a mass which undergoes a displacement, $\boldsymbol{d}$, under a constant force $\boldsymbol{F}$. Define the work, $\boldsymbol{W}$, done by $\boldsymbol{F}$ to be the magnitude of the force multiplied by the distance moved in the direction of the force.
+
+\begin{center}
+  \begin{tikzpicture}
+    % Draw displacement vector
+    \draw[->, thick] (0,0) -- (4,0) node[right] {$\boldsymbol{d}$};
+
+    % Draw force vector
+    \draw[->, thick] (0,0) -- (3,2) node[above] {$\boldsymbol{F}$};
+
+    % Draw arc for angle
+    \draw (0.8,0) arc (0:33:0.8);
+
+    % Label angle
+    \node at (0.55,0.2) {$\theta$};
+
+    % Draw dotted projection line
+    \draw[dotted] (3,2) -- (3,0);
+  \end{tikzpicture}
+\end{center}
+Inspecting the diagram, we see that work done $\boldsymbol{W}$ is given by the dot product of $\boldsymbol{F}$ and $\boldsymbol{d}$:
+$$W = |F| \cdot |d| \cdot \cos(\theta) = \boldsymbol{F} \cdot \boldsymbol{d}$$
+Now, lets suppose $F$ is not constant:
+$$F = F(x,y,z) = F(r) = r(x,y,z)$$
+Suppose further, that $F$ acts for a time $t_1 \leq t \leq t_2$ and the path of the object in this time interval is given by a curve $\mathcal{C}$ defined by:
+$$\mathbf{r} = \left(x(t), y(t), z(t) \right) \quad t \in [t_1, t_2]$$
+But how do we calculate the work done by $F$ along $\mathcal{C}?$
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    % First graph - just curve C
+    \begin{scope}
+      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
+      \node[right] at (4,0) {$\mathcal{C}$};
+    \end{scope}
+
+    % Second graph - curve C and position vectors r
+    \begin{scope}[xshift=6cm]
+      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
+      \node[right] at (4,0) {$\mathcal{C}$};
+      \draw[->,dashed,  red] (0,0) -- (1,1) node[pos=0.7, below] {$\mathbf{r}_1$};
+      \draw[->, dashed,  red] (0,0) -- (2,0.5) node[pos=0.7, below] {$\mathbf{r}_2$};
+      \draw[->, dashed, red] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
+    \end{scope}
+
+    % Third graph - curve C, position vectors r, and displacement vectors Δr
+    \begin{scope}[xshift=12cm]
+      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
+      \node[right] at (4,0) {$\mathcal{C}$};
+      \draw[->, red] (0,0) -- (1,1) node[pos=0.7, below] {$\mathbf{r}_1$};
+      \draw[->, red] (0,0) -- (2,0.5) node[pos=0.7, below] {$\mathbf{r}_2$};
+      \draw[->, red] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
+      \draw[->] (0,0) -- (1,1) node[midway, above] {$\Delta \mathbf{r}_1$};
+      \draw[->] (1,1) -- (2,0.5) node[midway ] {$\Delta \mathbf{r}_2$};
+      \draw[->] (2,0.5) -- (3,1) node[midway, above] {$\Delta \mathbf{r}_3$};
+      \draw[->] (3,1) -- (4,0) node[midway, above] {$\Delta \mathbf{r}_4$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+As seen as the diagram above, we can divide $\mathcal{C}$ into a a large number $N-1$ of small segment of $\Delta \mathbf{r}_i$ and approximate the work done by $F$ along $\mathcal{C}$ by the sum of the work done along each segment:
+$$W \approx \sum_{i=1}^{N-1} F(\mathbf{r}_i) \cdot \Delta \mathbf{r}_i$$
+
+\pagebreak
+
+\subsection{The Line Integral}
+Taking the limit $N \to \infty$
+$$W = \lim_{N \to \infty} \left\{ \sum_{i=1}^{N-1} F(\mathbf{r}_i) \cdot \Delta \mathbf{r}_i \right\}$$
+This limit is called the \textbf{line integral} of $F$ along $\mathcal{C}$ and is denoted by $\int_{\mathcal{C}} F(r)\cdot d\mathbf{r}$, that is:
+$$\int_{\mathcal{C}} F(r) \cdot dr = \lim_{N \to \infty} \left\{ \sum_{i=1}^{N-1}F(r_i)\cdot \Delta r_i \right\}$$
+Since $r = r(t)$ we can calculate the line integral as:
+$$\int_{\mathcal{C}} F(r) \cdot dr = \int_{t_1}^{t_2} F(r(t)) \cdot \diff{r}{t} \; dt$$
+In general, $t$, may be any variable that parametrizes (traces out) the curve $\mathcal{C}$. Then $dr = \diff{r}{t} \; dt$ is the tangent vector to $\mathcal{C}$ at the point $r(t)$. We call $\mathcal{C}$ the \textbf{path of integration} and $r(t_1)$ the initial point, $r(t_2)$ the \textbf{terminal point}. $\mathcal{C}$ is now \textbf{oriented} from $r(t_1)$ to $r(t_2)$. \\
+The direction for $r(t_1) \to r(t_2)$, in which $t$ increases, is called the \textbf{positive direction} of $\mathcal{C}$, we indicate this by an arrow on $\mathcal{C}$.
+
+\begin{center}
+  \begin{tikzpicture}
+    % Draw curve C
+    \draw[very thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
+    \draw[->, very thick, blue] plot [smooth] coordinates {(2,0.5) (2,0.5) (2.1,0.5)};
+    \node[right] at (4,0) {$\mathcal{C}$};
+
+    % Draw position vectors 
+    \draw[->, dashed, red] (0,0) -- (1,1) node[pos=1, below=0.2cm] {$r(t_1)$};
+    \draw[->, dashed, red] (0,0) -- (4,0) node[pos=0.7, below] {$r(t_2)$};
+
+    % Add red dots at vector endpoints
+    \fill[red] (1,1) circle (2pt);
+    \fill[red] (4,0) circle (2pt);
+
+    % Draw tangent vector at a point
+    \draw[->, thick,  green!50!black] (3,1) -- (3.5,1) node[above] {$dr$};
+    \fill[green!50!black] (3,1) circle (2pt);
+
+    % Label points
+    \node[red, above left] at (1,1) {Initial point};
+    \node[red, below right] at (4,-0.2) {Terminal point};
+  \end{tikzpicture}
+\end{center}
+If $r(t_1) = r(t_2)$ then $\mathcal{C}$ is a \textbf{closed curve} and the line integral is denoted by:
+$$\oint_{\mathcal{C}} F(r) \cdot dr$$
+The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \textbf{circulation} of $F$ around $\mathcal{C}$.
+\begin{examplebox}[: For a time period $0 \leq t \leq 1$, a particle moves along a trajectory defined by $\mathcal{C} = x = t, y = t, z = 2t^2$, a force $F(r) = (y,x,z)$ acts. Calculate work done.]
+  We have:
+  \begin{align*}
+    \mathbf{r}           & = (t,t,2t^2) \\
+    \diff{\mathbf{r}}{t} & = (1,1,4t)   \\
+    F(\mathbf{r})        & = (t,t,2t^2)
+  \end{align*}
+  The work done is:
+  \begin{align*}
+    \int_{\mathcal{C}} F(r) \cdot dr & = \int_{0}^{1} (t,t,2t^2) \cdot (1,1,4t) \; dt \\
+                                     & = \int_{0}^{1} (t + t + 8t^3) \; dt            \\
+                                     & = \int_{0}^{1} (2t + 8t^3) \; dt               \\
+                                     & = \left[t^2 + 2t^4\right]_0^1                  \\
+                                     & = 1 + 2                                        \\
+                                     & = 3
+  \end{align*}
+\end{examplebox}
+% Add the other examples here
+\subsection{Convervative Vector Fields}
+A vector field $F$ is called \textbf{conservative} if the line integral of $F$ along any closed curve $\mathcal{C}$ is zero, that is:
+$$\oint_{\mathcal{C}} F(r) \cdot dr = 0$$
+An equivalent definition is that $F$ is conservative if the line integral of $F$ depends only on the end points of the curce, not on the path taken, so that:
+$$\int_{\mathcal{C}_1} F(r) \cdot dr = \int_{\mathcal{C}_2} F(r)\cdot dr$$
+Where $\mathcal{C}_1$ and $\mathcal{C}_2$ are two curves with the same initial and terminal points but different paths.
+
+\begin{center}
+  \begin{tikzpicture}[scale=0.7]
+    % First path - now closed
+    \begin{scope}
+      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1.5) (2,0.5) (3,0) (2,-0.5) (1,-0.2) (0,0)};
+      \draw[->, thick, blue] plot [smooth] coordinates {(2,-0.5) (2,-0.5) (2.01, -0.5)};
+      \node[below] at (1.5,-0.5) {Path $\mathcal{C}_1$};
+    \end{scope}
+
+    % Second path - now closed (5 units to the right)
+    \begin{scope}[xshift=6cm]
+      \draw[thick, green!50!black] plot [smooth] coordinates {(0,0) (1,-0.5) (2,-0.2) (3,0) (2,0.5) (1,0.2) (0,0)};
+      \draw[->, thick, green!50!black] plot [smooth] coordinates {(2,0.5) (2,0.5) (1.99, 0.5)}; % Fix this arrow
+      \node[below] at (1.5,-0.5) {Path $\mathcal{C}_2$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+Consider two curves, $\mathcal{C}_1$ and $\mathcal{C}_2$, that start at $A$ and end at $B$. Let $\mathcal{C}$ be the closed curve that starts at $A$ follows the curve $\mathcal{C}_1$  and then follows $\mathcal{C}_2$ in the reverse direction to $B$. Then:
+\begin{align*}
+  \oint_{\mathcal{C}} F(r) \cdot dr & = \int_{A\mathcal{C}_1}^B F(r) \cdot dr + \int_{B\mathcal{C}_2}^A F(r) \cdot dr     \\
+                                    & = \int_{A\mathcal{C}_1}^B F(r) \cdot dr - \int_{A\mathcal{C}_2}^B F(r) \cdot dr = 0
+\end{align*}
+Thus:
+$$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r) \cdot dr = \int_{A\mathcal{C}_2}^B F(r) \cdot dr$$
+
+\begin{examplebox}[By considering the line integral of $F = (y, x^2 -x, 0)$ around the square $C$ in the $x,y$ plane connecting for point $(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)$, show that $F$ cannot be conservative. ]
+  Split $\mathcal{C}$ into four segments, $\mathcal{C}_1, \mathcal{C}_2, \mathcal{C}_3, \mathcal{C}_4$ and calculate the line integral of $F$ along each segment.
+
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      % Draw the square
+      \draw[thick, blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+
+      % Add arrows for direction
+      \draw[->, thick, blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
+      \draw[->, thick, blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
+      \draw[->, thick, blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
+      \draw[->, thick, blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
+
+      % Label vertices
+      \node[below] at (0,0) {$(0,0,0)$};
+      \node[below] at (1,0) {$(1,0,0)$};
+      \node[above] at (1,1) {$(1,1,0)$};
+      \node[above] at (0,1) {$(0,1,0)$};
+    \end{tikzpicture}
+  \end{center}
+  We have:
+  % FIX THIS
+  % FIX THIS
+  % FIX THIS
+  % FIX THIS
+  \begin{align*}
+    \int_{\mathcal{C}_1} F(r) \cdot dr & = \int_{0}^{1} (0, t^2 - t, 0) \cdot (1, 0, 0) \; dt = 0  \\
+    \int_{\mathcal{C}_2} F(r) \cdot dr & = \int_{0}^{1} (t, 1 - t, 0) \cdot (0, 1, 0) \; dt = 0    \\
+    \int_{\mathcal{C}_3} F(r) \cdot dr & = \int_{0}^{1} (1, 1 - t^2, 0) \cdot (-1, 0, 0) \; dt = 0 \\
+    \int_{\mathcal{C}_4} F(r) \cdot dr & = \int_{0}^{1} (1, 0, 0) \cdot (0, -1, 0) \; dt = 0
+  \end{align*}
+  Hence:
+  $$\oint_{\mathcal{C}} F(r) \cdot dr = \oint_{\mathcal{C}_1} F(r) \cdot dr + \oint_{\mathcal{C}_2} F(r) \cdot dr + \oint_{\mathcal{C}_3} F(r) \cdot dr + \oint_{\mathcal{C}_4} F(r) \cdot dr = 1 \neq 0$$
+  Thus, $F$ is not conservative.
+\end{examplebox}
 
 \end{document}

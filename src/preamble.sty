@@ -1,12 +1,8 @@
-%----------------------------------------------------------------
-% Preamble with packages, settings, color definitions, etc.
-%----------------------------------------------------------------
 
 % (1) Encoding, Fonts, and Layout
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
-\usepackage{pagecolor}
 
 
 % (2) Common Packages
@@ -58,8 +54,7 @@
 \definecolor{base}{HTML}{eff1f5}
 \definecolor{gray1}{HTML}{e6e9ef}
 \definecolor{gray2}{HTML}{bcc0cc}
-
-\newpagecolor{base}
+\pagecolor{base}
 
 % (5) Custom tcolorbox Environments
 \newtcolorbox{definitionbox}{
@@ -85,7 +80,7 @@
     bottomtitle=0.5mm,
     boxrule=0mm,
     colbacktitle=gray2,
-    colback=gray1, 
+    colback=gray1,
     coltitle=black,
     left=2.5mm,
     leftrule=1mm,
@@ -102,14 +97,14 @@
     bottomtitle=0.5mm,
     boxrule=0mm,
     colbacktitle=gray2,
-    colback=gray1, 
+    colback=gray1,
     coltitle=black,
     left=2.5mm,
     leftrule=1mm,
     rightrule=1mm,
     right=3.5mm,
     toptitle=0.75mm,
-    colframe=custom_green,,
+    colframe=custom_green,
 }
 
 \newtcolorbox{notebox}{
@@ -135,7 +130,7 @@
     bottomtitle=0.5mm,
     boxrule=0mm,
     colbacktitle=gray2,
-    colback=gray1, 
+    colback=gray1,
     coltitle=black,
     left=2.5mm,
     leftrule=1mm,
