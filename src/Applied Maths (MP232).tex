@@ -785,15 +785,15 @@ Where $\mathcal{C}_1$ and $\mathcal{C}_2$ are two curves with the same initial a
   \begin{tikzpicture}[scale=0.7]
     % First path - now closed
     \begin{scope}
-      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1.5) (2,0.5) (3,0) (2,-0.5) (1,-0.2) (0,0)};
-      \draw[->, thick, blue] plot [smooth] coordinates {(2,-0.5) (2,-0.5) (2.01, -0.5)};
+      \draw[thick, gray3] plot [smooth] coordinates {(0,0) (1,1.5) (2,0.5) (3,0) (2,-0.5) (1,-0.2) (0,0)};
+      \draw[->, thick, gray3] plot [smooth] coordinates {(2,-0.5) (2,-0.5) (2.01, -0.5)};
       \node[below] at (1.5,-0.5) {Path $\mathcal{C}_1$};
     \end{scope}
 
     % Second path - now closed (5 units to the right)
     \begin{scope}[xshift=6cm]
-      \draw[thick, green!50!black] plot [smooth] coordinates {(0,0) (1,-0.5) (2,-0.2) (3,0) (2,0.5) (1,0.2) (0,0)};
-      \draw[->, thick, green!50!black] plot [smooth] coordinates {(2,0.5) (2,0.5) (1.99, 0.5)}; % Fix this arrow
+      \draw[thick, gray3] plot [smooth] coordinates {(0,0) (1,-0.5) (2,-0.2) (3,0) (2,0.5) (1,0.2) (0,0)};
+      \draw[->, thick, gray3] plot [smooth] coordinates {(2,0.5) (2,0.5) (1.99, 0.5)}; % Fix this arrow
       \node[below] at (1.5,-0.5) {Path $\mathcal{C}_2$};
     \end{scope}
   \end{tikzpicture}
@@ -811,12 +811,12 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
   \begin{center}
     \begin{tikzpicture}[scale=2]
       % Draw the square
-      \draw[thick, blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+      \draw[thick, custom_blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
       % Add arrows for direction
-      \draw[->, thick, blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
-      \draw[->, thick, blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
-      \draw[->, thick, blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
-      \draw[->, thick, blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
+      \draw[->, thick, custom_blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
+      \draw[->, thick, custom_blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
+      \draw[->, thick, custom_blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
+      \draw[->, thick, custom_blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
       % Label vertices
       \node[below] at (0,0) {$(0,0,0)$};
       \node[below] at (1,0) {$(1,0,0)$};
