@@ -87,8 +87,11 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
 \pagebreak
 \section{Intro to Laplace Transforms}
 \subsection{What is a Laplace Transform?}
-The Laplace Transform, defined for $t \geq 0$, is given by
-$$L\{f(t)\}(s) = F(s) = \int_0^\infty e^{-st} dt$$
+\begin{definitionbox}
+  The Laplace Transform, defined for $t \geq 0$, is given by
+  $$L\{f(t)\}(s) = F(s) = \int_0^\infty e^{-st} dt$$
+
+\end{definitionbox}
 
 \subsection{Common Laplace Transforms}
 
@@ -173,8 +176,6 @@ $$L\{af(t) + bg(t)\} = aL\{f(t)\} + bL\{g(t)\}$$
   \end{align*}
 \end{proofbox}
 
-\newpage
-
 \subsection{The First Shift Theorem}
 \begin{theorembox}[First Shift Theorem]
   If $f(t)$ has a Laplace Transform, $F(s)$, defined for $s > k$, then $e^{at}\ f(t)$ has a Laplace Transform, \\ $F(s-a)$ defined for $s - a > k$ and is given by:
@@ -203,8 +204,6 @@ $$\int_0^\infty e^{-st}f(t)\, dt$$
   If $s > k$, then from the equation above, we have:
   $$|F(s)| = \left | \int_0^\infty f(t)e^{-st} \; dt  \right | \leq \int_{0}^{\infty} |f(t)| e^{-st} \; dt \leq \int_{0}^\infty Me^{(k-s)t} \; dt = \frac{M}{s-k}$$
 \end{proofbox}
-
-\pagebreak
 
 \section{Applications of Laplace Transforms}
 \subsection{Integration by Parts}
@@ -261,7 +260,6 @@ $$
   $$L\{cos(t)\}= \dfrac{s}{1+s^2}$$
 \end{examplebox}
 
-\pagebreak
 \subsection{Table of Laplace Transforms}
 \renewcommand{\arraystretch}{1.5} % Increase vertical spacing in the table
 \small$$
@@ -388,8 +386,6 @@ $$
   $$f(t) = 3 + 2H(t-1) - 7H(t-3)$$
 \end{examplebox}
 
-\pagebreak
-
 \subsection{The Second Shift Theorem}
 \begin{theorembox}
   If $f(t)$ has the transform $F(s) \; (s > k)$ then the shifted function,
@@ -412,6 +408,8 @@ $$
 \begin{examplebox}[: Find the Laplace Transform of $H(t-a)$ for $a > 0$]
   $$L\{H(t-a)\} = L\{H(t-a)f(t-a)\} = e^{-as}F(s) = \dfrac{e^{-as}}{s}$$
 \end{examplebox}
+
+\newpage
 
 \subsection{Heaviside Step Function}
 Denote the Heaviside Step Function as $H(t)$, defined as:
@@ -855,7 +853,7 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   We can parametrize any straight line in three dimensions by writing:
   $$x = c_1t + c_2 \quad y=c_3t + c_4 \quad z = c_5t + c_6$$
   where the $c_i$ are constants. \\
-  We can take $t = 0$ to correspond with $A$ and $t = 1$ to correspond with $B$. \\ 
+  We can take $t = 0$ to correspond with $A$ and $t = 1$ to correspond with $B$. \\
   Hence setting $t = 0$ gives:
   $$c_2 = -2 \quad  c_4 = 2 \quad c_6 = -3$$
   Setting $t = 1$ gives:
@@ -865,12 +863,12 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   $$x = 4t - 2 \quad y = 2t + 2 \quad z = 9t - 3$$
   We have:
   \begin{align*}
-    \int_\mathcal{C} F(r) \cdot dr &= \int_0^1 (11t - 1, 13t -5,6t) \cdot \diff{}{t}(4t-2, 2t+2, 9t-3) \; dt  \\
-                                    & = \int_0^1 (11t - 1, 13t -5,6t) \cdot (4,2,9) \; dt \\ 
-                                    & = \int_0^1 (44t - 4 + 26t - 10 + 54t) \; dt \\
-                                    & = \int_0^1 (124t - 12) \; dt \\
-                                    & = \left[62t^2 - 14t\right]_0^1 \\
-                                    & = 48
+    \int_\mathcal{C} F(r) \cdot dr & = \int_0^1 (11t - 1, 13t -5,6t) \cdot \diff{}{t}(4t-2, 2t+2, 9t-3) \; dt \\
+                                   & = \int_0^1 (11t - 1, 13t -5,6t) \cdot (4,2,9) \; dt                      \\
+                                   & = \int_0^1 (44t - 4 + 26t - 10 + 54t) \; dt                              \\
+                                   & = \int_0^1 (124t - 12) \; dt                                             \\
+                                   & = \left[62t^2 - 14t\right]_0^1                                           \\
+                                   & = 48
   \end{align*}
 \end{examplebox}
 
@@ -885,13 +883,13 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   $$F(\mathbf{r}) = (\sin(t), -\cos(t), 0)$$
   The circulation is:
   \begin{align}
-    \oint_{\mathcal{C}} F(r) \cdot dr &= \int_0^{2\pi} (\sin(t), -\cos(t), 0) \cdot (-\sin(t), \cos(t), 0) \; dt \\
-    &= \int_0^{2\pi} -\sin^2(t) - \cos^2(t) \; dt \\
-    &= -\int_0^{2\pi} (\sin^2(t) + \cos^2(t)) \; dt \\
-    &= -\int_0^{2\pi} 1 \; dt \\
-    &= -\left[t\right]_0^{2\pi} \\
-    &= -2\pi
-    \end{align}
+    \oint_{\mathcal{C}} F(r) \cdot dr & = \int_0^{2\pi} (\sin(t), -\cos(t), 0) \cdot (-\sin(t), \cos(t), 0) \; dt \\
+                                      & = \int_0^{2\pi} -\sin^2(t) - \cos^2(t) \; dt                              \\
+                                      & = -\int_0^{2\pi} (\sin^2(t) + \cos^2(t)) \; dt                            \\
+                                      & = -\int_0^{2\pi} 1 \; dt                                                  \\
+                                      & = -\left[t\right]_0^{2\pi}                                                \\
+                                      & = -2\pi
+  \end{align}
 \end{examplebox}
 
 
@@ -931,31 +929,31 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
 \begin{examplebox}[By considering the line integral of $F = (y, x^2 -x, 0)$ around the square $C$ in the $x,y$ plane connecting for point $(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)$, show that $F$ cannot be conservative. ]
   Split $\mathcal{C}$ into four segments, $\mathcal{C}_1, \mathcal{C}_2, \mathcal{C}_3, \mathcal{C}_4$ and calculate the line integral of $F$ along each segment.
   \begin{center}
-  \begin{tikzpicture}[scale=2]
-  % Draw the square
-  \draw[thick, blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
-  % Add arrows for direction
-  \draw[->, thick, blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
-  \draw[->, thick, blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
-  \draw[->, thick, blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
-  \draw[->, thick, blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
-  % Label vertices
-  \node[below] at (0,0) {$(0,0,0)$};
-  \node[below] at (1,0) {$(1,0,0)$};
-  \node[above] at (1,1) {$(1,1,0)$};
-  \node[above] at (0,1) {$(0,1,0)$};
-  \end{tikzpicture}
+    \begin{tikzpicture}[scale=2]
+      % Draw the square
+      \draw[thick, blue] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+      % Add arrows for direction
+      \draw[->, thick, blue] (0.5,0) -- (0.6,0) node[below] {$\mathcal{C}_1$};
+      \draw[->, thick, blue] (1,0.5) -- (1,0.6) node[right] {$\mathcal{C}_2$};
+      \draw[->, thick, blue] (0.5,1) -- (0.4,1) node[above] {$\mathcal{C}_3$};
+      \draw[->, thick, blue] (0,0.5) -- (0,0.4) node[left] {$\mathcal{C}_4$};
+      % Label vertices
+      \node[below] at (0,0) {$(0,0,0)$};
+      \node[below] at (1,0) {$(1,0,0)$};
+      \node[above] at (1,1) {$(1,1,0)$};
+      \node[above] at (0,1) {$(0,1,0)$};
+    \end{tikzpicture}
   \end{center}
   We have:
   \begin{align*}
-  \int_{\mathcal{C}_1} F(r) \cdot dr & = \int_{0}^{1} (0, t^2 - t, 0) \cdot (1, 0, 0) \; dt = 0 \\
-  \int_{\mathcal{C}_2} F(r) \cdot dr & = \int_{0}^{1} (t, 1 - t, 0) \cdot (0, 1, 0) \; dt = \int_{0}^{1} (1-t) \; dt = [t - \frac{t^2}{2}]_{0}^{1} = 1 - \frac{1}{2} = \frac{1}{2} \\
-  \int_{\mathcal{C}_3} F(r) \cdot dr & = \int_{0}^{1} (1, (1-t)^2-(1-t), 0) \cdot (-1, 0, 0) \; dt = \int_{0}^{1} -1 \; dt = -1 \\
-  \int_{\mathcal{C}_4} F(r) \cdot dr & = \int_{0}^{1} (1-t, 0, 0) \cdot (0, -1, 0) \; dt = 0
+    \int_{\mathcal{C}_1} F(r) \cdot dr & = \int_{0}^{1} (0, t^2 - t, 0) \cdot (1, 0, 0) \; dt = 0                                                                                    \\
+    \int_{\mathcal{C}_2} F(r) \cdot dr & = \int_{0}^{1} (t, 1 - t, 0) \cdot (0, 1, 0) \; dt = \int_{0}^{1} (1-t) \; dt = [t - \frac{t^2}{2}]_{0}^{1} = 1 - \frac{1}{2} = \frac{1}{2} \\
+    \int_{\mathcal{C}_3} F(r) \cdot dr & = \int_{0}^{1} (1, (1-t)^2-(1-t), 0) \cdot (-1, 0, 0) \; dt = \int_{0}^{1} -1 \; dt = -1                                                    \\
+    \int_{\mathcal{C}_4} F(r) \cdot dr & = \int_{0}^{1} (1-t, 0, 0) \cdot (0, -1, 0) \; dt = 0
   \end{align*}
   Hence:
   $$\oint_{\mathcal{C}} F(r) \cdot dr = \int_{\mathcal{C}_1} F(r) \cdot dr + \int_{\mathcal{C}_2} F(r) \cdot dr + \int_{\mathcal{C}_3} F(r) \cdot dr + \int_{\mathcal{C}_4} F(r) \cdot dr = 0 + \frac{1}{2} + (-1) + 0 = -\frac{1}{2} \neq 0$$
   Thus, $F$ is not conservative.
-  \end{examplebox}
+\end{examplebox}
 
 \end{document}
