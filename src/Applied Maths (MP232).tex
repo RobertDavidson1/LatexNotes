@@ -471,15 +471,15 @@ $$
       \pgfmathsetmacro{\eps}{1} % for plotting purposes, assume epsilon=1
       \pgfmathsetmacro{\hgt}{1/(\eps)}
       % Axes
-      \draw[->] (-2,0) -- (2,0) node[right] {$t$};
-      \draw[->] (0,-0.2) -- (0,1.2) node[above] {$\delta_{\epsilon}(t)$};
+      \draw[->, gray3] (-2,0) -- (2,0) node[right] {$t$};
+      \draw[->, gray3] (0,-0.2) -- (0,1.2) node[above] {$\delta_{\epsilon}(t)$};
       % Plot: horizontal line over (-eps,eps) at height hgt
-      \draw[line width=1.2pt] (-\eps,\hgt) -- (\eps,\hgt);
+      \draw[line width=1.2pt, gray3] (-\eps,\hgt) -- (\eps,\hgt);
       % Dotted vertical lines showing the jump edges
-      \draw[dotted] (-\eps,0) -- (-\eps,\hgt);
-      \draw[dotted] (\eps,0) -- (\eps,\hgt);
-      % Optionally, label the edges
-      \node[below] at (-\eps,0) {$-\epsilon$};
+      \draw[dotted, gray3] (-\eps,0) -- (-\eps,\hgt);
+      \draw[dotted, gray3] (\eps,0) -- (\eps,\hgt);
+
+      \node[below, gray3] at (-\eps,0) {$-\epsilon$};
       \node[below] at (\eps,0) {$\epsilon$};
     \end{tikzpicture}
      &
@@ -638,33 +638,33 @@ Suppose further, that $F$ acts for a time $t_1 \leq t \leq t_2$ and the path of 
 $$\mathbf{r} = \left(x(t), y(t), z(t) \right) \quad t \in [t_1, t_2]$$
 But how do we calculate the work done by $F$ along $\mathcal{C}?$
 \begin{center}
-  \begin{tikzpicture}[scale=0.8]
+  \begin{tikzpicture}[scale=0.7]
     % First graph - just curve C
     \begin{scope}
-      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
-      \node[right] at (4,0) {$\mathcal{C}$};
+      \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
+      \node[right] at (3,1) {$\mathcal{C}$};
     \end{scope}
-
     % Second graph - curve C and position vectors r
     \begin{scope}[xshift=6cm]
-      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
-      \node[right] at (4,0) {$\mathcal{C}$};
-      \draw[->,dashed,  red] (0,0) -- (1,1) node[pos=0.7, below] {$\mathbf{r}_1$};
-      \draw[->, dashed,  red] (0,0) -- (2,0.5) node[pos=0.7, below] {$\mathbf{r}_2$};
-      \draw[->, dashed, red] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
+      \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
+      \node[right] at (3,1) {$\mathcal{C}$};
+      \draw[->,dashed, custom_red, thick] (0,0) -- (1,1) node[pos=0.7, left] {$\mathbf{r}_1$};
+      \draw[->, dashed, custom_red, thick] (0,0) -- (2,0) node[pos=0.7, below] {$\mathbf{r}_2$};
+      \draw[->, dashed, custom_red, thick] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
     \end{scope}
-
     % Third graph - curve C, position vectors r, and displacement vectors Δr
     \begin{scope}[xshift=12cm]
-      \draw[thick, blue] plot [smooth] coordinates {(0,0) (1,1) (2,0.5) (3,1) (4,0)};
-      \node[right] at (4,0) {$\mathcal{C}$};
-      \draw[->, red] (0,0) -- (1,1) node[pos=0.7, below] {$\mathbf{r}_1$};
-      \draw[->, red] (0,0) -- (2,0.5) node[pos=0.7, below] {$\mathbf{r}_2$};
-      \draw[->, red] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
-      \draw[->] (0,0) -- (1,1) node[midway, above] {$\Delta \mathbf{r}_1$};
-      \draw[->] (1,1) -- (2,0.5) node[midway ] {$\Delta \mathbf{r}_2$};
-      \draw[->] (2,0.5) -- (3,1) node[midway, above] {$\Delta \mathbf{r}_3$};
-      \draw[->] (3,1) -- (4,0) node[midway, above] {$\Delta \mathbf{r}_4$};
+      \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
+      \node[right] at (3,1) {$\mathcal{C}$};
+
+      \draw[->, thick, gray3] (0,0) -- (1,1) node[midway, sloped, above] {$\Delta \mathbf{r}_1$};
+      \draw[->, thick] (1,1) -- (2,0) node[midway, sloped, below] {$\Delta \mathbf{r}_2$};
+      \draw[->, thick] (2,0) -- (3,1) node[midway, sloped, above] {$\Delta \mathbf{r}_3$};
+    \end{scope}
+
+    \begin{scope}[xshift=18cm]
+      \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
+      \node[right] at (3,1) {$\mathcal{C}$};
     \end{scope}
   \end{tikzpicture}
 \end{center}
