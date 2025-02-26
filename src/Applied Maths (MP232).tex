@@ -15,6 +15,7 @@ Robert Davidson \\
 \date{} % Empty date
 
 \begin{document}
+\color{gray3}
 \maketitle
 
 \tableofcontents
@@ -601,29 +602,32 @@ Where $\tau$ is integrated over the interval $[0,t]$.  The Convolution is:
 \pagebreak
 
 \section{Line Integrals}
-\begin{minipage}{0.7\textwidth}
+\begin{minipage}{0.69\textwidth}
   Consider a mass which undergoes a displacement, $\boldsymbol{d}$, under a constant force $\boldsymbol{F}$. Define the work, $\boldsymbol{W}$, done by $\boldsymbol{F}$ to be the magnitude of the force multiplied by the distance moved in the direction of the force.
   Inspecting the diagram, we see that work done $\boldsymbol{W}$ is given by the dot product of $\boldsymbol{F}$ and $\boldsymbol{d}$:
   $$W = |F| \cdot |d| \cdot \cos(\theta) = \boldsymbol{F} \cdot \boldsymbol{d}$$
   Now, lets suppose $F$ is not constant:
 \end{minipage}
-\begin{minipage}{0.25\textwidth}
-  \begin{tikzpicture}[scale= 0.8, baseline={(-3,-1)}] % Added xshift=3cm
-    % Draw displacement vector
-    \draw[->, thick] (0,0) -- (4,0) node[right] {$\boldsymbol{d}$};
+\begin{minipage}{0.3\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale= 0.8, baseline={(-3,-1)}] % Added xshift=3cm
+      % Draw displacement vector
+      \draw[->, thick] (0,0) -- (4,0) node[right] {$\boldsymbol{d}$};
 
-    % Draw force vector
-    \draw[->, thick] (0,0) -- (3,2) node[above] {$\boldsymbol{F}$};
+      % Draw force vector
+      \draw[->, thick] (0,0) -- (3,2) node[above] {$\boldsymbol{F}$};
 
-    % Draw arc for angle
-    \draw (1.3,0) arc (0:33:1.3);
+      % Draw arc for angle
+      \draw (1.3,0) arc (0:33:1.3);
 
-    % Label angle
-    \node at (0.7,0.2) {$\theta$};
+      % Label angle
+      \node at (0.85,0.3) {$\theta$};
 
-    % Draw dotted projection line
-    \draw[dotted] (3,2) -- (3,0);
-  \end{tikzpicture}
+      % Draw dotted projection line
+      \draw[dotted] (3,2) -- (3,0);
+    \end{tikzpicture}
+  \end{center}
+
 \end{minipage}
 
 
@@ -704,6 +708,9 @@ The direction for $r(t_1) \to r(t_2)$, in which $t$ increases, is called the \te
 If $r(t_1) = r(t_2)$ then $\mathcal{C}$ is a \textbf{closed curve} and the line integral is denoted by:
 $$\oint_{\mathcal{C}} F(r) \cdot dr$$
 The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \textbf{circulation} of $F$ around $\mathcal{C}$.
+
+\pagebreak
+\subsubsection{Examples}
 \begin{examplebox}[: For a time period $0 \leq t \leq 1$, a particle moves along a trajectory defined by $\mathcal{C} = x = t, y = t, z = 2t^2$, a force $F(r) = (y,x,z)$ acts. Calculate work done.]
   We have:
   \begin{align*}
@@ -798,7 +805,7 @@ Consider two curves, $\mathcal{C}_1$ and $\mathcal{C}_2$, that start at $A$ and 
 \end{align*}
 Thus:
 $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r) \cdot dr = \int_{A\mathcal{C}_2}^B F(r) \cdot dr$$
-
+\subsubsection{Examples}
 \begin{examplebox}[By considering the line integral of $F = (y, x^2 -x, 0)$ around the square $C$ in the $x,y$ plane connecting for point $(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)$, show that $F$ cannot be conservative. ]
   Split $\mathcal{C}$ into four segments, $\mathcal{C}_1, \mathcal{C}_2, \mathcal{C}_3, \mathcal{C}_4$ and calculate the line integral of $F$ along each segment.
   \begin{center}
