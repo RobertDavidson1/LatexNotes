@@ -653,8 +653,13 @@ But how do we calculate the work done by $F$ along $\mathcal{C}?$
       \fill[custom_red] (2,0) circle (0.1);
       \fill[custom_red] (3,1) circle (0.1);
 
+      % Add labels for points
+      \node[above right] at (1,1) {$\mathbf{r}_1$};
+      \node[below] at (2,0) {$\mathbf{r}_2$};
+      \node[above right] at (3,1) {$\mathbf{r}_3$};
     \end{scope}
-    % Second graph - curve C and position vectors r
+
+    % Second graph - curve C and position vectors r  
     \begin{scope}[xshift=12cm]
       \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
       \node[right] at (3,1) {$\mathcal{C}$};
@@ -662,6 +667,7 @@ But how do we calculate the work done by $F$ along $\mathcal{C}?$
       \draw[->, dashed, custom_red, thick] (0,0) -- (2,0) node[pos=0.7, below] {$\mathbf{r}_2$};
       \draw[->, dashed, custom_red, thick] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
     \end{scope}
+
     % Third graph - curve C, position vectors r, and displacement vectors Δr
     \begin{scope}[xshift=18cm]
       \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
@@ -671,8 +677,6 @@ But how do we calculate the work done by $F$ along $\mathcal{C}?$
       \draw[->, thick] (1,1) -- (2,0) node[midway, sloped, below] {$\Delta \mathbf{r}_2$};
       \draw[->, thick] (2,0) -- (3,1) node[midway, sloped, above] {$\Delta \mathbf{r}_3$};
     \end{scope}
-
-    \
   \end{tikzpicture}
 \end{center}
 As seen as the diagram above, we can divide $\mathcal{C}$ into a a large number $N-1$ of small segment of $\Delta \mathbf{r}_i$ and approximate the work done by $F$ along $\mathcal{C}$ by the sum of the work done along each segment:
