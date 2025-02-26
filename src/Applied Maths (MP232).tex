@@ -644,8 +644,18 @@ But how do we calculate the work done by $F$ along $\mathcal{C}?$
       \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
       \node[right] at (3,1) {$\mathcal{C}$};
     \end{scope}
-    % Second graph - curve C and position vectors r
+
     \begin{scope}[xshift=6cm]
+      \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
+      \node[right] at (3,1) {$\mathcal{C}$};
+
+      \fill[custom_red] (1,1) circle (0.1);
+      \fill[custom_red] (2,0) circle (0.1);
+      \fill[custom_red] (3,1) circle (0.1);
+
+    \end{scope}
+    % Second graph - curve C and position vectors r
+    \begin{scope}[xshift=12cm]
       \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
       \node[right] at (3,1) {$\mathcal{C}$};
       \draw[->,dashed, custom_red, thick] (0,0) -- (1,1) node[pos=0.7, left] {$\mathbf{r}_1$};
@@ -653,7 +663,7 @@ But how do we calculate the work done by $F$ along $\mathcal{C}?$
       \draw[->, dashed, custom_red, thick] (0,0) -- (3,1) node[pos=0.7, above] {$\mathbf{r}_3$};
     \end{scope}
     % Third graph - curve C, position vectors r, and displacement vectors Δr
-    \begin{scope}[xshift=12cm]
+    \begin{scope}[xshift=18cm]
       \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
       \node[right] at (3,1) {$\mathcal{C}$};
 
@@ -662,10 +672,7 @@ But how do we calculate the work done by $F$ along $\mathcal{C}?$
       \draw[->, thick] (2,0) -- (3,1) node[midway, sloped, above] {$\Delta \mathbf{r}_3$};
     \end{scope}
 
-    \begin{scope}[xshift=18cm]
-      \draw[thick, custom_blue] plot [smooth] coordinates {(0,0) (1,1) (2,0) (3,1)};
-      \node[right] at (3,1) {$\mathcal{C}$};
-    \end{scope}
+    \
   \end{tikzpicture}
 \end{center}
 As seen as the diagram above, we can divide $\mathcal{C}$ into a a large number $N-1$ of small segment of $\Delta \mathbf{r}_i$ and approximate the work done by $F$ along $\mathcal{C}$ by the sum of the work done along each segment:
