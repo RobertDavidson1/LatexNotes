@@ -229,7 +229,7 @@ $$
   \int_a^b u\,dv = uv - \int_a^b v\,du,
 $$
 
-\subsection{Examples}
+\subsubsection{Examples}
 
 \begin{examplebox}[Use integration by parts to find the Laplace of $f(t) = t$]
   $$L\{t\} = \int_0^\infty te^{-st} \ dt$$
@@ -290,7 +290,7 @@ $$
 \noindent \normalsize We can easily extend this to higher order derivatives. Assume the Laplace Transform of $f^{(n)}(t)$ exists for $s > k$ and is given by:
 $$L \left\{\diff{f^n}{t^n}\right\} = s^nL\left\{f\right\} - s^{n-1}f(0) - s^{n-2}f'(0) - \ldots - f^{(n-1)}(0) \quad \text{for} \ s > k$$
 
-\subsection{Examples}
+\subsubsection{Examples}
 
 \begin{examplebox}[Find $L\{t^2\}$ using the fact $L\{s\} = 1/s$ for $s > 0$]
   $$L\{f''\} = s^2 L\{f\} - sf(0) - f'(0)$$
@@ -320,6 +320,8 @@ $$F_d(t) - kx - \gamma \diff{x}{t} = m \diff{x^2}{t^2}$$
 Where $\gamma > 0$ is the \textbf{damping constant} and the term $\gamma \diff{x}{t}$ models the \textbf{fricition due to roughness} of the table, which oppposes direction of motion. The \textbf{restoring force} due to the spring is $-kx$; and always points towards $O$. The term $m \diff{x^2}{t^2}$ is the \textbf{acceleration of the mass}. We can rewrite this as:
 $$F_d(t) = m \diff{x^2}{t^2} + \gamma \diff{x}{t} + kx$$
 In order to solve this, we also need initial displacement $v_0 = x(0)$ and initial velocity $v_0 = \diff{x}{t}(0)$.
+
+\subsubsection{Examples}
 
 \begin{examplebox}
   \normalsize $$\diff{x^2}{t^2} + 3\diff{x}{t} + 2x = 0, \quad x(0) = 0, \quad \diff{x}{t}(0) = 1$$
@@ -357,6 +359,8 @@ $$
     1 & \text{if } t > a
   \end{cases}
 $$
+
+\subsubsection{Examples}
 
 \begin{examplebox}[Express this function in terms of a Heaviside step function]
   $$f(t) = \begin{cases}
@@ -409,6 +413,8 @@ $$
   We introduce a new integration variable $\tau = t-a$, we have
   $$\int_0^\infty e^{-s(\tau + a)}f(\tau)\;d\tau = e^{-as}\int_0^\infty e^{-s\tau}f(\tau)\;d\tau = e^{-as}F(s)$$
 \end{proofbox}
+
+\subsubsection{Examples}
 
 \begin{examplebox}[: Find the Laplace Transform of $H(t-a)$ for $a > 0$]
   $$L\{H(t-a)\} = L\{H(t-a)f(t-a)\} = e^{-as}F(s) = \dfrac{e^{-as}}{s}$$
@@ -496,6 +502,7 @@ $$\delta(t) = \lim_{\varepsilon \to 0+} \{\delta_{\varepsilon}(t)\}$$
 The Laplace Transform of the Dirac Delta Function is:
 $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \; \; t_0 > 0$$
 
+\subsubsection{Examples}
 \begin{examplebox}[ : Solve the following initial value problem which governs the behavious of an RLC circuit]
   \scriptsize
   \begin{align*}
@@ -594,10 +601,14 @@ Where $\tau$ is integrated over the interval $[0,t]$.  The Convolution is:
 \pagebreak
 
 \section{Line Integrals}
-Consider a mass which undergoes a displacement, $\boldsymbol{d}$, under a constant force $\boldsymbol{F}$. Define the work, $\boldsymbol{W}$, done by $\boldsymbol{F}$ to be the magnitude of the force multiplied by the distance moved in the direction of the force.
-
-\begin{center}
-  \begin{tikzpicture}[scale=0.5]
+\begin{minipage}{0.7\textwidth}
+  Consider a mass which undergoes a displacement, $\boldsymbol{d}$, under a constant force $\boldsymbol{F}$. Define the work, $\boldsymbol{W}$, done by $\boldsymbol{F}$ to be the magnitude of the force multiplied by the distance moved in the direction of the force.
+  Inspecting the diagram, we see that work done $\boldsymbol{W}$ is given by the dot product of $\boldsymbol{F}$ and $\boldsymbol{d}$:
+  $$W = |F| \cdot |d| \cdot \cos(\theta) = \boldsymbol{F} \cdot \boldsymbol{d}$$
+  Now, lets suppose $F$ is not constant:
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+  \begin{tikzpicture}[scale= 0.8, baseline={(-3,-1)}] % Added xshift=3cm
     % Draw displacement vector
     \draw[->, thick] (0,0) -- (4,0) node[right] {$\boldsymbol{d}$};
 
@@ -605,18 +616,19 @@ Consider a mass which undergoes a displacement, $\boldsymbol{d}$, under a consta
     \draw[->, thick] (0,0) -- (3,2) node[above] {$\boldsymbol{F}$};
 
     % Draw arc for angle
-    \draw (0.8,0) arc (0:33:0.8);
+    \draw (1.3,0) arc (0:33:1.3);
 
     % Label angle
-    \node at (0.55,0.2) {$\theta$};
+    \node at (0.7,0.2) {$\theta$};
 
     % Draw dotted projection line
     \draw[dotted] (3,2) -- (3,0);
   \end{tikzpicture}
-\end{center}
-Inspecting the diagram, we see that work done $\boldsymbol{W}$ is given by the dot product of $\boldsymbol{F}$ and $\boldsymbol{d}$:
-$$W = |F| \cdot |d| \cdot \cos(\theta) = \boldsymbol{F} \cdot \boldsymbol{d}$$
-Now, lets suppose $F$ is not constant:
+\end{minipage}
+
+
+
+
 $$F = F(x,y,z) = F(r) = r(x,y,z)$$
 Suppose further, that $F$ acts for a time $t_1 \leq t \leq t_2$ and the path of the object in this time interval is given by a curve $\mathcal{C}$ defined by:
 $$\mathbf{r} = \left(x(t), y(t), z(t) \right) \quad t \in [t_1, t_2]$$
