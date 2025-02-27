@@ -131,6 +131,44 @@ $95 \%$ Confidence is most commonly used because increasing the confidence level
 \pagebreak
 \subsection{Confidence Intervals for a population mean}
 When $\sigma$ is known, a 95\% Confidence Interval for the population mean is given by:
-$$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}$$
+$$\bar{X} \pm 1.96  \cdot \frac{\sigma}{\sqrt{n}}$$
+When $\sigma$ is unknown, a 95\% Confidence Interval for the population mean is given by:
+$$\bar{X} \pm 1.96  \cdot \frac{s}{\sqrt{n}}$$
+But, what if $\sigma$ is unknown and $n < 30$?
+\begin{definitionbox}[Confidence Interval for $n < 30$]
+    For a small sample size, $n < 30$, we use the \textbf{t-distribution instead of the normal distribution}. \\
+    The t-distribution has heavier tails than the normal distribution and accounts for the additional uncertainty when estimating $\sigma$ with $s$ in small samples.
+
+    The confidence interval is given by:
+    $$\bar{X} \pm t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
+
+    Where $t_{\frac{\alpha}{2}}$ is the critical value from the t-distribution with $n-1$ \textbf{degrees of freedom}. \\
+    The degrees of freedom represent the \emph{number of independent pieces of information used to estimate the standard deviation}.
+    As the degrees of freedom increase, the t-distribution approaches the normal distribution - infinite degrees of freedom is the normal distribution.
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    width=12cm,
+                    height=8cm,
+                    xlabel=$x$,
+                    ylabel=$f(x)$,
+                    legend pos=north west,
+                    samples=100,
+                    domain=-4:4
+                ]
+                % Standard Normal Distribution
+                \addplot[blue, thick] {exp(-x^2/2)/sqrt(2*pi)};
+                % t-distribution with df=2 (approximated)
+                \addplot[red, thick] {0.5/(1+x^2)^1.5};
+                % t-distribution with df=5 (approximated)
+                \addplot[green, thick] {0.365/(1+x^2/5)^3};
+
+                \legend{Normal Distribution, t (df=2), t (df=5)}
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{definitionbox}
+
 
 \end{document}
