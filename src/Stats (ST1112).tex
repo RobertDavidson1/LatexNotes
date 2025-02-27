@@ -64,7 +64,8 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
 \pagebreak
 
 \section{Interential Statistics - Interval Estimation}
-\subsection{Confidence Intervals for a mean}
+\subsection{Confidence Intervals}
+\subsubsection{Confidence Intervals for a mean}
 
 \begin{definitionbox}[Confidence Interval for $n > 30$]
     For a large sample size, $n > 30$, a Confidence Interval for the population mean is given by:
@@ -129,7 +130,7 @@ $95 \%$ Confidence is most commonly used because increasing the confidence level
 \end{examplebox}
 
 \pagebreak
-\subsection{Confidence Intervals for a population mean}
+\subsubsection{Confidence Intervals for a small sample size}
 When $\sigma$ is known, a 95\% Confidence Interval for the population mean is given by:
 $$\bar{X} \pm 1.96  \cdot \frac{\sigma}{\sqrt{n}}$$
 When $\sigma$ is unknown, a 95\% Confidence Interval for the population mean is given by:
@@ -246,9 +247,41 @@ What do we do when our data is not normally distributed? We have two options:
 \subsubsection{Bootstrap}
 We can quantify the uncertainity in our estimate of the population mean by using the Central Limit Theorem or simulatiuon via the Bootstrap method, as follows:
 \begin{enumerate}
-    \item Take a bootstrap  sample - random sample taken with replacment from the original sample (same size as original sample) \\
+    \item Take a bootstrap  sample - random sample taken with replacment from the original sample (same size as original sample)
     \item Calculate the bootstrap statistic - such as mean, median, proportion, etc.
     \item Repeat steps 1 and 2 many times
     \item Calculate the bounds of the 95\% Confidence interval as the middle 95\% of the bootstrap distrubution
+\end{enumerate}
+
+\begin{examplebox}[: Simple bootstrap]
+    \begin{lstlisting}
+        my_date <- (1,1,1,2,3,4,5)
+        mean(my_data)
+        ## [1] 2.43
+
+        sample(my_data, replace = FALSE)
+        ## [1] 1 1 3 2 1 5 4
+
+        sample(my_data, replace = TRUE)
+        ## [1] 4 1 1 1 3 3 1
+
+        replicate(1000, mean(sample(my_data, replace = TRUE)))
+        ## [1]
+
+    \end{lstlisting}
+\end{examplebox}
+
+\section{Inferential Statistics - Hypothesis Testing}
+\subsection{Hypothesis Testing}
+A hypothesis test is intended to assess whether a population parameter of interest is equal to some
+specified value of direct interest to the researcher \\
+Hypothesis tests are structured in a very specific and, what may seem initially, peculiar manner. \\
+The p-value is central to the notion of a hypothesis test. \\
+The Central Limit Theorem (CLT) and t-distribution provide the framework for assessing how different \\
+the sample statistic is from the proposed parameter value.
+
+\subsubsection{Stages in Hypothesis Testing}
+\begin{enumerate}
+    \item State the null ($H_0$) and alternative ($H_1$) hypotheses
 \end{enumerate}
 \end{document}
