@@ -99,7 +99,7 @@ $95 \%$ Confidence is most commonly used because increasing the confidence level
                          fill="blue",alpha=0.5)+theme_bw()
     \end{lstlisting}
     \begin{center}
-        \includegraphics[scale=0.5]{images/image.png}
+        \includegraphics[scale=0.5]{images/exercise.png}
     \end{center}
 
     But a new survery on another 54 students would lead to a different estimate, so which should we report back to the newspaper?
@@ -188,5 +188,39 @@ But, what if $\sigma$ is unknown and $n < 30$?
 \pagebreak
 
 \subsection{Bootstrap, proportions and counts}
+What do we do when our data is not normally distributed? We have two options:
+\begin{itemize}
+    \item Transform the data to make it normally distributed (e.g. log transformation, square root transformation)
+    \item Use a non-parametric method (Bootstrap or CI for the population median)
+\end{itemize}
+\subsubsection{Log Transform of the Data}
+We produce an interval estimate for population mean.
+$$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
+\begin{examplebox}[ : NBA Salaries]
+    \begin{lstlisting}
+        sals <- read.csv("data/NBA_season1718_salary.csv")
+
+        sals %>% 
+            filter(Tm=="DAL", season17_18>50000) %>% 
+                ggplot(aes(x=season17_18)) + 
+                geom_histogram()  + xlab("Salary ($/year)")
+    \end{lstlisting}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/nba_salaries.png}
+    \end{center}
+    The data is right-skewed, so we can apply a log transformation to make it more normally distributed.
+    \begin{lstlisting}
+        sals %>% 
+        filter(Tm=="DAL", season17_18>50000) %>% 
+            ggplot(aes(x=log(season17_18))) +
+            geom_histogram() + xlab("log(Salary)")
+    \end{lstlisting}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/nba_log_salaries.png}
+    \end{center}
+
+\end{examplebox}
+
+
 
 \end{document}
