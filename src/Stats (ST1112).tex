@@ -3,6 +3,18 @@
 
 \input{macros.sty}
 
+\usepackage[svgnames]{xcolor}
+\usepackage{listings}
+
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
 
 \title{
 Robert Davidson \\
@@ -27,7 +39,7 @@ Robert Davidson \\
 \section{Descriptive Statisitcs}
 \subsection{Sampling the mean}
 In \textbf{probability} we consider the underlying process which has some randomness or uncertainity, and we try to figure out what happens \\[2ex]
-In \textbf{statistics} we consider the data that we have, and we try to figure out what the underlying process is. The basic aim to infer the population from the sample.\\[2ex]
+In \textbf{statistics} we consider the data that we have, and we try to figure out what the underlying process is. The basic aim to infer the population from the sample.
 \begin{examplebox}[Consider a jar of red and green jelly beans]
     A probabilist starts by knowing the proportion of red and green jelly beans in the jar, and then tries to figure out the probability of drawing a red jelly bean.\\
     A statistician starts by drawing a sample of jelly beans from the jar, and then tries to figure out the proportion of red and green jelly beans in the jar.
@@ -40,7 +52,7 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
 
 \begin{definitionbox}[ : Standard Error]
     The standard error is the variability in the sampling distrubution. \\
-    The standard error describes the typical difference between the sample measurement and the population parameter.\\
+    The standard error describes the typical difference between the sample measurement and the population parameter.
     $$SE = \frac{\sigma}{\sqrt{n}}$$
 \end{definitionbox}
 \begin{definitionbox}[ : Estimate $\sigma$]
@@ -58,6 +70,38 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
         \item Take a \textbf{sample from this population}
         \item Esimate the \textbf{population paramater} using the \textbf{sample statistic}
     \end{itemize}
+
+    \begin{lstlisting}
+        st1112_data %>% 
+            select(exercise) %>% 
+            summarise(n = n(),
+                mean = mean(exercise,na.rm=TRUE),
+                sd = sd(exercise,na.rm=TRUE))
+        
+        ##    n mean   sd
+        ## 1 54 6.19 4.11
+
+        st1112_data %>% 
+            ggplot(aes(x = exercise)) + 
+            labs(x = "Weekly exercise (hours)") +
+            geom_density(colour = "blue", 
+                         fill="blue",alpha=0.5)+theme_bw()
+    \end{lstlisting}
+    \begin{center}
+        \includegraphics[scale=0.5]{images/image.png}
+    \end{center}
+
+    But a new survery on another 54 students would lead to a different estimate, so which should we report back to the newspaper?
+    If we sample data from the population, there is uncertainity in our estimate of the population mean.
+    The standard error of the mean is a measure of this uncertainity. In our example, the standard error of the mean is:
+    $$SE = \frac{4.11}{\sqrt{54}} = 0.56$$
+    We use the Central Limit  Theorem to provide a range of values that will capture $95\%$ of the sample means
 \end{examplebox}
+
+\begin{definitionbox}[Confidence Interval for $n > 30$]
+    For a large sample size, $n > 30$, a Confidence Interval for the population mean is given by:
+    $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
+    The distrubutional cut-off $Z_{\frac{\alpha}{2}}$ allows us to adapt the Confidence Interval to the level of confidence we require, i.e. a $95\%$ Confidence Interval has a $Z_{\frac{\alpha}{2}}$ value of $1.96$.
+\end{definitionbox}
 
 \end{document}
