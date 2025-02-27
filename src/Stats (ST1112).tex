@@ -170,5 +170,23 @@ But, what if $\sigma$ is unknown and $n < 30$?
     \end{center}
 \end{definitionbox}
 
+\begin{examplebox}[: Find t-value from tables For a 95\% Confidence Interval]
+    We have:
+    $$a = 1 - 0.95 = 0.05 \Rightarrow \frac{a}{2} = 0.025$$
+    We also have:
+    $$n = 13 \Rightarrow df = 13 - 1$$
+    We want to find the $t_{12, 0.025}$ value from the t-distribution table, which is $2.179$.
+\end{examplebox}
+
+\begin{examplebox}[ : Finding the t-value using R]
+    \begin{lstlisting}
+        qt(1 - 0.025, df = 12)
+        ## [1] 2.179
+    \end{lstlisting}
+\end{examplebox}
+
+\pagebreak
+
+\subsection{Bootstrap, proportions and counts}
 
 \end{document}
