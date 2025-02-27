@@ -65,6 +65,17 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
 
 \section{Interential Statistics - Interval Estimation}
 \subsection{Confidence Intervals for a mean}
+
+\begin{definitionbox}[Confidence Interval for $n > 30$]
+    For a large sample size, $n > 30$, a Confidence Interval for the population mean is given by:
+    $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
+\end{definitionbox}
+\noindent  A $95\%$ Confidence Interval, $\alpha = 0.05$, meaning we accept a 5\% risk that our interval doesn't contain the true population mean. \\
+This $5\%$ is split into $2.5\%$ in each tail of the distrubution : $Z_{\frac{\alpha}{2}} = Z_{0.025}$. \\
+When using a normal table that shows "area to the left", we need to find the $Z$ value that corresponds to $1 - 0.025 = 0.975$.
+Thus: $Z_{0.025} = 1.96$. \\
+$95 \%$ Confidence is most commonly used because increasing the confidence level increases the width of the interval, this may not be useful.
+
 \begin{examplebox}[The student newspaper wants to know how many students are exercising per week on average]
     \begin{itemize}
         \item Take a \textbf{sample from this population}
@@ -94,16 +105,32 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
     But a new survery on another 54 students would lead to a different estimate, so which should we report back to the newspaper?
     If we sample data from the population, there is uncertainity in our estimate of the population mean.
     The standard error of the mean is a measure of this uncertainity. In our example, the standard error of the mean is:
-    $$SE = \frac{4.11}{\sqrt{54}} = 0.56$$
-    We use the Central Limit  Theorem to provide a range of values that will capture $95\%$ of the sample means
+    $$SE = \frac{4.11}{\sqrt{54}} = \approx 0.6$$
+    We use the Central Limit  Theorem to provide a range of values that will capture $95\%$ of the sample means.
+    $$\bar{X} \pm Z_{\frac{\alpha}{2}} \times \frac{s}{\sqrt{n}} = 6.23 \pm 1.96 \times 0.6 = 5, 7.4$$
+\end{examplebox}
+
+\begin{examplebox}[: Confidence intervals in R]
+    \begin{lstlisting}
+        st1112_data %>% select(exercise) %>% t.test()
+        ## 
+        ##  One Sample t-test
+        ## 
+        ## data:  .
+        ## t = 11, df = 53, p-value = 2e-15
+        ## alternative hypothesis: true mean is not equal to 0
+        ## 95 percent confidence interval:
+        ##  5.06 7.31
+        ## sample estimates:
+        ## mean of x 
+        ##      6.19
+
+    \end{lstlisting}
 \end{examplebox}
 
 \pagebreak
-
-\begin{definitionbox}[Confidence Interval for $n > 30$]
-    For a large sample size, $n > 30$, a Confidence Interval for the population mean is given by:
-    $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
-\end{definitionbox}
-For a $95\%$ Confidence Interval, $\alpha = 0.05$, and $Z_{\frac{\alpha}{2}} = Z_{0.25}$.
+\subsection{Confidence Intervals for a population mean}
+When $\sigma$ is known, a 95\% Confidence Interval for the population mean is given by:
+$$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}$$
 
 \end{document}
