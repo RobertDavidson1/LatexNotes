@@ -7,7 +7,7 @@
 \usepackage{listings}
 
 \lstset{language=R,
-    basicstyle=\small\ttfamily,
+    basicstyle=\footnotesize\ttfamily,
     stringstyle=\color{DarkGreen},
     otherkeywords={0,1,2,3,4,5,6,7,8,9},
     morekeywords={TRUE,FALSE},
@@ -185,8 +185,6 @@ But, what if $\sigma$ is unknown and $n < 30$?
     \end{lstlisting}
 \end{examplebox}
 
-\pagebreak
-
 \subsection{Bootstrap, proportions and counts}
 What do we do when our data is not normally distributed? We have two options:
 \begin{itemize}
@@ -194,8 +192,6 @@ What do we do when our data is not normally distributed? We have two options:
     \item Use a non-parametric method (Bootstrap or CI for the population median)
 \end{itemize}
 \subsubsection{Log Transform of the Data}
-We produce an interval estimate for population mean.
-$$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
 \begin{examplebox}[ : NBA Salaries]
     \begin{lstlisting}
         sals <- read.csv("data/NBA_season1718_salary.csv")
@@ -206,7 +202,7 @@ $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
                 geom_histogram()  + xlab("Salary ($/year)")
     \end{lstlisting}
     \begin{center}
-        \includegraphics[scale=0.3]{images/nba_salaries.png}
+        \includegraphics[scale=0.2]{images/nba_salaries.png}
     \end{center}
     The data is right-skewed, so we can apply a log transformation to make it more normally distributed.
     \begin{lstlisting}
@@ -216,11 +212,43 @@ $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
             geom_histogram() + xlab("log(Salary)")
     \end{lstlisting}
     \begin{center}
-        \includegraphics[scale=0.3]{images/nba_log_salaries.png}
+        \includegraphics[scale=0.2]{images/nba_log_salaries.png}
     \end{center}
 
+    We can now calculate the mean and standard deviation of the log-transformed data.
+    \begin{lstlisting}
+        sals %>% filter(Tm=="DAL", season17_18>50000) %>% 
+            mutate(log_sal = log(season17_18)) %>% 
+                select(log_sal) %>% summarise(n=n(),
+                            mean=mean(log_sal),
+                            sd=sd(log_sal))
+
+        ##    n mean   sd
+        ## 1 18 14.5 1.57
+
+        qt([p = 1 - 0.025, df = 18-1)])
+        ## [1] 2.11
+    \end{lstlisting}
+    Produce an interval estimate for the populat mean
+    \begin{lstlisting}
+        14.5 - 2.11 * (1.57/sqrt(18))
+        14.5 + 2.11 * (1.57/sqrt(18))
+        ## [1] 13.7 ## [1] 15.3 
+    \end{lstlisting}
+    Take exponentials of the resulting interval to get back to original scale
+    \begin{lstlisting}
+        exp(14.5 - 2.11 * (1.57/sqrt(18)))
+        exp(14.5 + 2.11 * (1.57/sqrt(18)))
+        ## [1] 908172 ## [1] 4238843
+    \end{lstlisting}
 \end{examplebox}
 
-
-
+\subsubsection{Bootstrap}
+We can quantify the uncertainity in our estimate of the population mean by using the Central Limit Theorem or simulatiuon via the Bootstrap method, as follows:
+\begin{enumerate}
+    \item Take a bootstrap  sample - random sample taken with replacment from the original sample (same size as original sample) \\
+    \item Calculate the bootstrap statistic - such as mean, median, proportion, etc.
+    \item Repeat steps 1 and 2 many times
+    \item Calculate the bounds of the 95\% Confidence interval as the middle 95\% of the bootstrap distrubution
+\end{enumerate}
 \end{document}
