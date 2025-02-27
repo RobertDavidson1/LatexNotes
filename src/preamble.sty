@@ -43,8 +43,8 @@
 \pagecolor{base}
 
 % (5) Custom tcolorbox Environments
-\newtcolorbox{definitionbox}{
-    title=\textbf{Definition},
+\newtcolorbox{definitionbox}[1][]{
+    title=\textbf{Definition} {#1},
     fonttitle=\bfseries\boldmath,
     arc=0mm,
     bottomtitle=0.5mm,

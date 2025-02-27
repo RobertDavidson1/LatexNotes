@@ -27,7 +27,37 @@ Robert Davidson \\
 \section{Descriptive Statisitcs}
 \subsection{Sampling the mean}
 In \textbf{probability} we consider the underlying process which has some randomness or uncertainity, and we try to figure out what happens \\[2ex]
-In \textbf{statistics} we consider the data that we have, and we try to figure out what the underlying process is.
+In \textbf{statistics} we consider the data that we have, and we try to figure out what the underlying process is. The basic aim to infer the population from the sample.\\[2ex]
+\begin{examplebox}[Consider a jar of red and green jelly beans]
+    A probabilist starts by knowing the proportion of red and green jelly beans in the jar, and then tries to figure out the probability of drawing a red jelly bean.\\
+    A statistician starts by drawing a sample of jelly beans from the jar, and then tries to figure out the proportion of red and green jelly beans in the jar.
+\end{examplebox}
 
+\begin{definitionbox}[ : Central Limit Theorem]
+    Sample means follow a normal distrubution, centered on the popular mean, with a standard deviation equal to population standard deviation divided by the square root of the sample size.
+    $$\bar{X} \sim N \left(\mu, \frac{\sigma}{\sqrt{n}}\right)$$
+\end{definitionbox}
+
+\begin{definitionbox}[ : Standard Error]
+    The standard error is the variability in the sampling distrubution. \\
+    The standard error describes the typical difference between the sample measurement and the population parameter.\\
+    $$SE = \frac{\sigma}{\sqrt{n}}$$
+\end{definitionbox}
+\begin{definitionbox}[ : Estimate $\sigma$]
+    Often the value of the population standard deviation is unknown, and hence the standard error of the mean is unknown. \\
+    We can estimate the value of the standard error using the sample standard deviation $(s)$ as an unbiased estimator of the population standard deviation $(\sigma)$.
+    $$\sigma_{\bar{X}} = \frac{s}{\sqrt{n}}$$
+\end{definitionbox}
+
+\pagebreak
+
+\section{Interential Statistics - Interval Estimation}
+\subsection{Confidence Intervals for a mean}
+\begin{examplebox}[The student newspaper wants to know how many students are exercising per week on average]
+    \begin{itemize}
+        \item Take a \textbf{sample from this population}
+        \item Esimate the \textbf{population paramater} using the \textbf{sample statistic}
+    \end{itemize}
+\end{examplebox}
 
 \end{document}
