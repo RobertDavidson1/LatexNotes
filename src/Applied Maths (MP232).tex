@@ -993,7 +993,70 @@ $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
 \begin{proofbox}
   From the definition of the dot product, we know that:
   $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi = |\hat{\mathbf{n}}| |\nabla \phi| \cos(\gamma) = |\nabla \phi| \cos(\gamma)$$
-  where $\gamma$ is the angle between $\hat{\mathbf{n}}$ and $\nabla \phi$. \\
+  \indent where $\gamma$ is the angle between $\hat{\mathbf{n}}$ and $\nabla \phi$. \\
+  For $\nabla \phi \mid_P \neq 0$ then $D_{\hat{\mathbf{n}}} \phi$ is maximized when $\cos(\gamma) = 1$, i.e. when $\gamma = 0$. That is, when $\hat{\mathbf{n}}$ is parallel to $\nabla \phi$. \\[2ex]
+
+  \textbf{Remark 1:} We note that $-\nabla \phi \mid_P$ is the direction of maximum decrease of $\phi$ at $P$. \\
+  \textbf{Remark 2:} If $\nabla \phi \mid_P = 0$, then, $P$ is a critical point of $\phi$.
 \end{proofbox}
+
+\subsection{Gradient as Normal to a Surface}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        width=10cm, height=8cm,
+        view={30}{30},
+        axis lines=center,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        xlabel style={anchor=north east},
+        ylabel style={anchor=north west},
+        zlabel style={anchor=south},
+        xmin=-2, xmax=2,
+        ymin=-2, ymax=2,
+        zmin=-0.5, zmax=2,
+        xtick=\empty,
+        ytick=\empty,
+        ztick=\empty,
+        colormap={bluered}{color(0)=(custom_blue!30) color(1)=(custom_red!50)}
+      ]
+      % Plot the surface z = 1 - x^2/4 - y^2/4
+      \addplot3[
+        surf,
+        domain=-2:2,
+        domain y=-2:2,
+        samples=20,
+        samples y=20,
+        opacity=0.8,
+      ] {1 - x^2/4 - y^2/4};
+
+      % Add normal vectors (gradients) at various points
+      \addplot3[
+        ->,
+        thick,
+        custom_blue,
+        quiver={u=0, v=0, w=1},
+      ] coordinates {
+          (0,0,1) % At center
+          (1,0,0.75) % At edge
+          (-1,0,0.75)
+          (0,1,0.75)
+          (0,-1,0.75)
+          (0.7,0.7,0.65)
+        };
+
+      % Label the surface
+      \node[right] at (axis cs:2,0,0) {$S: z = 1 - \frac{x^2}{4} - \frac{y^2}{4}$};
+
+      % Label the normal vectors
+      \node[above] at (axis cs:0,0,1.1) {$\nabla\phi = \text{normal to }S$};
+
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorembox}[Gradient Normal to Level Surface]
+  If $S$ is a level surface defined by $\phi(x,y,z) = C$ where $C$ is a constant, and if $\nabla\phi \neq 0$ at a point $P$ on $S$, then $\nabla\phi$ at $P$ is normal to the surface $S$ at $P$.
+\end{theorembox}
+
 
 \end{document}
