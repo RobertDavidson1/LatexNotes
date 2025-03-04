@@ -865,18 +865,20 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
       \draw[thick, custom_blue] (0,0) circle (2);
 
       % Draw gradient vectors - pointing outward from the center
-      \draw[->, thick, custom_red] (0,0) -- (0.5,0);
-      \draw[->, thick, custom_red] (0,0) -- (-0.5,0);
-      \draw[->, thick, custom_red] (0,0) -- (0,0.5);
-      \draw[->, thick, custom_red] (0,0) -- (0,-0.5);
+      \draw[->, thick, dashed, custom_red] (0,0) -- (2,0);
+      \draw[->, thick, dashed, custom_red] (0,0) -- (-2,0);
+      \draw[->, thick, dashed, custom_red] (0,0) -- (0,2);
+      \draw[->, thick, dashed, custom_red] (0,0) -- (0,-2);
 
-      % \draw[->]
+      \draw[->, thick, custom_red] (0,0) -- (1.414,1.414);
+      \draw[->, thick, custom_red] (0,0) -- (-1.414,1.414);
+      \draw[->, thick, custom_red] (0,0) -- (1.414,-1.414);
+      \draw[->, thick, dashed, custom_red] (0,0) -- (-1.414,-1.414);
 
 
 
       % Label contour lines
-      \node[right, custom_blue] at (2,0) {contour lines};
-      \draw[->] (2,0) -- (1.5,0);
+      \node[above, custom_blue] at (0,2) {contour lines};
     \end{tikzpicture}
     \caption{Contour Plot with Gradient Vectors}
   \end{subfigure}
@@ -982,6 +984,16 @@ $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
   $$D_{\hat{\mathbf{n}}} \phi \mid_P = \hat{\mathbf{n}} \cdot \nabla \phi\mid_P = \frac{\hat{i} - 2\hat{k} \cdot (8\hat{i} + 6\hat{j} + 6\hat{k})}{\sqrt{5}} = \frac{8 - 12}{\sqrt{5}} = -\frac{4}{\sqrt{5}}$$
   \emph{Note:} The fact the directional derivative is negative indicates that $\phi$ decreases in the direction of $\vec{a}$.
 \end{examplebox}
-
+\pagebreak
+\subsubsection{Meaning of $\nabla \phi$}
+\begin{theorembox}
+  Let $\phi(x,y,z)$ be a scalar function for which $\nabla \phi$ exists. \\
+  Then if $\nabla \phi \mid_P \neq 0$ at a point $P$, then $\nabla \phi \mid_P$ is the direction of maximum increase of $\phi$ at $P$.
+\end{theorembox}
+\begin{proofbox}
+  From the definition of the dot product, we know that:
+  $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi = |\hat{\mathbf{n}}| |\nabla \phi| \cos(\gamma) = |\nabla \phi| \cos(\gamma)$$
+  where $\gamma$ is the angle between $\hat{\mathbf{n}}$ and $\nabla \phi$. \\
+\end{proofbox}
 
 \end{document}
