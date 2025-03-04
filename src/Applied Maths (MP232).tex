@@ -855,27 +855,10 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
   The gradient of a differentiable function $\phi(x,y,z)$ is the vector field:
   $$\text{grad}(\phi) =  \nabla \phi = \diff{\phi}{x} \hat{i} + \diff{\phi}{y} \hat{j} + \diff{\phi}{z} \hat{k}$$
 \end{definitionbox}
-Consider a differentiable function $\phi(x,y,z)$ at a point $P$, with a position vector $\vec{r}_0$. We want to measure the
-rate of change of $\phi$ as we move away from $P$ in a given direction $\hat{\mathbf{n}}$. \\
+\noindent Consider a differentiable function $\phi(x,y,z)$ at a point $P$, with a position vector $\vec{r}_0$.  \\
+We want to measure the rate of change of $\phi$ as we move away from $P$ in a given direction $\hat{\mathbf{n}}$. \\
 Consider the line segment $L$ through $P$ in the direction of $\hat{\mathbf{n}}$ \\
-Let $Q(s)$ be the point on $L$ a distance $s$ from $P$
-
-Define the \textbf{Directional Derivative} of $\phi(x,y,z)$ in the direction of $\hat{\mathbf{n}}$ by:
-$$D_{\hat{\mathbf{n}}} \phi = \lim_{s \to 0} \frac{\phi(Q(s)) - \phi(P)}{s}$$
-With $L$ described by $r(s) = x(s) \hat{i} + y(s) \hat{j} + z(s) \hat{k}$, we have:
-\begin{align*}
-  D_{\hat{\mathbf{n}}} \phi & = \lim_{s \to 0} \frac{\phi(r(s)) - \phi(r(0))}{s}                         \\
-                            & = \lim_{s \to 0} \frac{\phi(x(s), y(s), z(s)) - \phi(x(0), y(0), z(0))}{s} \\
-                            & = \diff{\phi}{s}
-\end{align*}
-Writing $\hat{\mathbf{n}} = (n_1, n_2, n_3)$ and using the chain rule:
-\begin{align}
-  D_{\hat{\mathbf{n}}} \phi & = \diff{\phi}{s} = \diff{\phi}{x} \diff{x}{s} + \diff{\phi}{y} \diff{y}{s} + \diff{\phi}{z} \diff{z}{s} \nonumber \\
-                            & = \diff{\phi}{x} n_1 + \diff{\phi}{y} n_2 + \diff{\phi}{z} n_3
-\end{align}
-and so with $|\hat{\mathbf{n}}| = 1$, we have:
-$$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
-
+Let $Q(s)$ be the point on $L$ a distance $s$ from $P$ \\
 \begin{center}
   \begin{tikzpicture}[scale=1]
     \fill(0,3) circle (2pt) node[above] {$P$};
@@ -894,7 +877,28 @@ $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
 
   \end{tikzpicture}
 \end{center}
+Define the \textbf{Directional Derivative} of $\phi(x,y,z)$ in the direction of $\hat{\mathbf{n}}$ by:
+$$D_{\hat{\mathbf{n}}} \phi = \lim_{s \to 0} \frac{\phi(Q(s)) - \phi(P)}{s}$$
+That is, as $s$ gets smaller and smaller we get a better and better approximation of
+With $L$ described by $r(s) = x(s) \hat{i} + y(s) \hat{j} + z(s) \hat{k}$, we have:
+\begin{align*}
+  D_{\hat{\mathbf{n}}} \phi & = \lim_{s \to 0} \frac{\phi(r(s)) - \phi(r(0))}{s}                         \\
+                            & = \lim_{s \to 0} \frac{\phi(x(s), y(s), z(s)) - \phi(x(0), y(0), z(0))}{s} \\
+                            & = \diff{\phi}{s}
+\end{align*}
+Writing $\hat{\mathbf{n}} = (n_1, n_2, n_3)$ and using the chain rule:
+\begin{align}
+  D_{\hat{\mathbf{n}}} \phi & = \diff{\phi}{s} = \diff{\phi}{x} \diff{x}{s} + \diff{\phi}{y} \diff{y}{s} + \diff{\phi}{z} \diff{z}{s} \nonumber \\
+                            & = \diff{\phi}{x} n_1 + \diff{\phi}{y} n_2 + \diff{\phi}{z} n_3
+\end{align}
+and so with $|\hat{\mathbf{n}}| = 1$, we have:
+$$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
 
+\begin{examplebox}[Find the directional derivative of $\phi(x,y,z) = 2x^2 + 3y^2 + z^2$ at the point
+    $P: : (2,1,3)$ in the direction of the vector $\vec{a} = \hat{i} - 2\hat{k}$]
+  First we calculate the gradient of $\phi$:
+  $$\nabla \phi = \diff{\phi}{x} \hat{i} + \diff{\phi}{y} \hat{j} + \diff{\phi}{z} \hat{k} = 4x \hat{i} + 6y \hat{j} + 2z \hat{k}$$
+\end{examplebox}
 
 
 \end{document}
