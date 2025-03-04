@@ -884,9 +884,13 @@ $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
 
 
 
-    \draw[-, thick, custom_blue] (0,3) -- (3,1.5) node[midway, above] {$L$};
-    \draw[->, thick, custom_red] (0,0) -- (0,3) node[midway, left] {$\vec{r}_0$};
+    \draw[-, black] (0,3) -- (3,1.5) node[midway, above=0.1cm] {$L$};
 
+    \draw[<->, dashed, black] (0.3,2.5) -- (2.3,1.5) node[below, midway] {$s$};
+    \draw[->, thick, custom_blue] (0,3) -- (1.5,2.25) node[midway, above] {$\hat{\mathbf{n}}$};
+
+    \draw[->, thick, custom_red] (0,0) -- (0,3) node[midway, left] {$\vec{r}_0$};
+    \draw[->, thick, custom_red] (0,0) -- (3,1.5) node[midway, below] {$\vec{r}(s)$};
 
   \end{tikzpicture}
 \end{center}
