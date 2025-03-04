@@ -847,6 +847,8 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
   Thus, $F$ is not conservative.
 \end{examplebox}
 
+\pagebreak
+
 \section{Gradient, Divergence and Curl}
 \subsection{Gradient}
 \begin{definitionbox}
@@ -858,14 +860,87 @@ rate of change of $\phi$ as we move away from $P$ in a given direction $\hat{\ma
 Consider the line segment $L$ through $P$ in the direction of $\hat{\mathbf{n}}$ \\
 Let $Q(s)$ be the point on $L$ a distance $s$ from $P$
 
+Define the \textbf{Directional Derivative} of $\phi(x,y,z)$ in the direction of $\hat{\mathbf{n}}$ by:
+$$D_{\hat{\mathbf{n}}} \phi = \lim_{s \to 0} \frac{\phi(Q(s)) - \phi(P)}{s}$$
+With $L$ described by $r(s) = x(s) \hat{i} + y(s) \hat{j} + z(s) \hat{k}$, we have:
+\begin{align*}
+  D_{\hat{\mathbf{n}}} \phi & = \lim_{s \to 0} \frac{\phi(r(s)) - \phi(r(0))}{s}                         \\
+                            & = \lim_{s \to 0} \frac{\phi(x(s), y(s), z(s)) - \phi(x(0), y(0), z(0))}{s} \\
+                            & = \diff{\phi}{s}
+\end{align*}
+Writing $\hat{\mathbf{n}} = (n_1, n_2, n_3)$ and using the chain rule:
+\begin{align}
+  D_{\hat{\mathbf{n}}} \phi & = \diff{\phi}{s} = \diff{\phi}{x} \diff{x}{s} + \diff{\phi}{y} \diff{y}{s} + \diff{\phi}{z} \diff{z}{s} \nonumber \\
+                            & = \diff{\phi}{x} n_1 + \diff{\phi}{y} n_2 + \diff{\phi}{z} n_3
+\end{align}
+and so with $|\hat{\mathbf{n}}| = 1$, we have:
+$$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
+
 \begin{center}
   \begin{tikzpicture}[scale=1]
     \node at (0,3.5) {$P$};
     \draw[->] (0,0) -- (0,3) node[midway, left] {$\vec{r}_0$};
 
-    \node at (3.5, 1.5) {$Q(s)$};
+    \node at (3.5, 1.5) [right] {$Q(s)$};
+    \draw[->] (0,3) -- (3,1.5) node[midway, above] {$s$};
 
+    \draw[->] (0,0) -- (3,1.5) node[midway, below] {$\vec{r(s)}$};
+    \node at (0,0) [below] {$O$};
   \end{tikzpicture}
 \end{center}
+
+\begin{tikzpicture}[scale=1.5]
+
+  % Coordinate system
+  \draw[->] (-2,0,0) -- (2,0,0) node[right] {$x$};
+  \draw[->] (0,-2,0) -- (0,2,0) node[above] {$y$};
+  \draw[->] (0,0,-1) -- (0,0,2) node[above] {$z$};
+
+  % Point P
+  \coordinate (P) at (0,0,0);
+  \fill[black] (P) circle (2pt) node[below left] {$P(\vec{r}_0)$};
+
+  % Point Q
+  \coordinate (Q) at (1,1,1);
+  \fill[black] (Q) circle (2pt) node[above right] {$Q(s)$};
+
+  % Line segment L
+  \draw[thick] (P) -- (Q) node[midway, above] {$L$};
+
+  % Direction vector n
+  \draw[->, thick, blue] (P) -- (Q) node[midway, above right] {$\hat{\mathbf{n}}$};
+
+  % Position vector r0
+  \draw[->, thick, red] (0,0,0) -- (P) node[midway, below left] {$\vec{r}_0$};
+
+  % Position vector r0 + s*n
+  \draw[->, thick, green] (0,0,0) -- (Q) node[midway, above left] {$\vec{r}_0 + s\hat{\mathbf{n}}$};
+
+  % Surface representation (simplified plane)
+  \draw[fill=gray!20, opacity=0.5] (-1.5,-1.5,-0.5) -- (1.5,-1.5,1.5) -- (1.5,1.5,1.5) -- (-1.5,1.5,-0.5) -- cycle;
+
+  % Gradient vector at P
+  \draw[->, thick, orange] (P) -- (0.5, 0.2, 0.8) node[above right] {$\nabla \phi$};
+
+  % Label the distance s
+  \draw[dashed] (P) -- (Q);
+  \node at (0.5, 0.5, 0.5) [above right] {$s$};
+
+  % Definition Box
+  \node[anchor=north west, draw, rounded corners, fill=yellow!20, inner sep=5pt] (defbox) at (-2,1.5) {
+    \begin{minipage}{4cm}
+      \textbf{Definition:} The gradient of $\phi(x,y,z)$ is:
+      \[ \nabla \phi = \frac{\partial \phi}{\partial x} \hat{i} + \frac{\partial \phi}{\partial y} \hat{j} + \frac{\partial \phi}{\partial z} \hat{k} \]
+    \end{minipage}
+  };
+
+  % Directional Derivative Box
+  \node[anchor=south west, draw, rounded corners, fill=cyan!20, inner sep=5pt] (dirbox) at (-2,-1.5) {
+    \begin{minipage}{4cm}
+      \textbf{Directional Derivative:}
+      \[ D_{\hat{\mathbf{n}}} \phi = \lim_{s \to 0} \frac{\phi(Q(s)) - \phi(P)}{s} \]
+    \end{minipage}
+  };
+\end{tikzpicture}
 
 \end{document}
