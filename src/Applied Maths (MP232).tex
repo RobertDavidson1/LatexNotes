@@ -853,69 +853,73 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
   The gradient of a differentiable function $\phi(x,y,z)$ is the vector field:
   $$\text{grad}(\phi) =  \nabla \phi = \diff{\phi}{x} \hat{i} + \diff{\phi}{y} \hat{j} + \diff{\phi}{z} \hat{k}$$
 \end{definitionbox}
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+      % Draw hill contours (representing a function like z = x^2 + y^2)
+      \draw[thick, custom_blue] (0,0) circle (0.5);
+      \draw[thick, custom_blue] (0,0) circle (1);
+      \draw[thick, custom_blue] (0,0) circle (1.5);
+      \draw[thick, custom_blue] (0,0) circle (2);
 
-\begin{center}
-  \begin{tikzpicture}[scale=0.8]
-    % Draw hill contours (representing a function like z = x^2 + y^2)
-    \draw[thick, custom_blue] (0,0) circle (0.5);
-    \draw[thick, custom_blue] (0,0) circle (1);
-    \draw[thick, custom_blue] (0,0) circle (1.5);
-    \draw[thick, custom_blue] (0,0) circle (2);
+      % Draw gradient vectors - pointing outward from the center
+      \draw[->, thick, custom_red] (0,0) -- (0.5,0);
+      \draw[->, thick, custom_red] (0,0) -- (-0.5,0);
+      \draw[->, thick, custom_red] (0,0) -- (0,0.5);
+      \draw[->, thick, custom_red] (0,0) -- (0,-0.5);
 
-    % Draw gradient vectors - pointing outward from the center
-    \draw[->, thick, custom_red] (0.5,0) -- (1.2,0) node[right] {$\nabla\phi$};
-    \draw[->, thick, custom_red] (0,-0.5) -- (0,-1.2);
-    \draw[->, thick, custom_red] (-0.5,0.5) -- (-1,1) node[above left] {$\nabla\phi$};
-    \draw[->, thick, custom_red] (0.7,-0.7) -- (1.4,-1.4);
-
-    % Label lowest point and add explanation
-    \fill (0,0) circle (2pt) node[above right] {lowest point};
-    \node[below] at (0,-2.5) {Gradient vectors $\nabla\phi$ point in the direction};
-    \node[below] at (0,-2.9) {of steepest increase of $\phi(x,y)=x^2+y^2$};
-
-    % Label contour lines
-    \node[right] at (2,0) {contour lines};
-    \draw[->] (2,0) -- (1.5,0);
-  \end{tikzpicture}
-
-  \hspace{1cm}
-  \begin{tikzpicture}[scale=0.8]
-    % 3D plot using pgfplots
-    \begin{axis}[
-        width=7cm,
-        height=6cm,
-        view={30}{30},
-        axis lines=center,
-        xlabel=$x$,
-        ylabel=$y$,
-        zlabel=$z$,
-        xlabel style={anchor=north east},
-        ylabel style={anchor=north west},
-        zlabel style={anchor=south},
-        xmin=-2, xmax=2,
-        ymin=-2, ymax=2,
-        zmin=0, zmax=4,
-        xtick=\empty,
-        ytick=\empty,
-        ztick=\empty,
-        axis equal,
-        colormap={paraboloid}{color(0)=(custom_blue!20) color(1)=(custom_blue)},
-      ]
-      % 3D paraboloid surface
-      \addplot3[
-        surf,
-        domain=-2:2,
-        domain y=-2:2,
-        samples=20,
-        samples y=20,
-      ] {x*x + y*y};
+      % \draw[->]
 
 
-    \end{axis}
 
-    \node[below] at (3.5,-3.2) {3D surface of $\phi(x,y) = x^2 + y^2$};
-  \end{tikzpicture}
-\end{center}
+      % Label contour lines
+      \node[right, custom_blue] at (2,0) {contour lines};
+      \draw[->] (2,0) -- (1.5,0);
+    \end{tikzpicture}
+    \caption{Contour Plot with Gradient Vectors}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+      \begin{axis}[
+          width=7cm,
+          height=6cm,
+          view={30}{30},
+          axis lines=center,
+          xlabel=$x$,
+          ylabel=$y$,
+          zlabel=$z$,
+          xlabel style={anchor=north east},
+          ylabel style={anchor=north west},
+          zlabel style={anchor=south},
+          xmin=-2, xmax=2,
+          ymin=-2, ymax=2,
+          zmin=0, zmax=4,
+          xtick=\empty,
+          ytick=\empty,
+          ztick=\empty,
+          axis equal,
+          colormap={paraboloid}{color(0)=(custom_blue!5) color(1)=(custom_blue)},
+        ]
+        % 3D paraboloid surface
+        \addplot3[
+          surf,
+          domain=-1.8:1.8,
+          domain y=-1.8:1.8,
+          samples=25,
+          samples y=25,
+        ] {x*x + y*y};
+      \end{axis}
+
+    \end{tikzpicture}
+    \caption{3D Surface Plot}
+  \end{subfigure}
+  \caption{Illustration of the function $\phi(x,y)=x^2+y^2$ with its gradient vectors and corresponding 3D surface.}
+\end{figure}
+
 
 
 
