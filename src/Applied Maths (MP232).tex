@@ -849,7 +849,23 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
 
 \section{Gradient, Divergence and Curl}
 \subsection{Gradient}
-The gradient of a differentiable function $\phi(x,y,z)$ is the vector field:
-$$\text{grad}(\phi) =  \nabla \phi = \left(\diff{\phi}{x}, \diff{\phi}{y}, \diff{\phi}{z}\right)$$
+\begin{definitionbox}
+  The gradient of a differentiable function $\phi(x,y,z)$ is the vector field:
+  $$\text{grad}(\phi) =  \nabla \phi = \diff{\phi}{x} \hat{i} + \diff{\phi}{y} \hat{j} + \diff{\phi}{z} \hat{k}$$
+\end{definitionbox}
+Consider a differentiable function $\phi(x,y,z)$ at a point $P$, with a position vector $\vec{r}_0$. We want to measure the
+rate of change of $\phi$ as we move away from $P$ in a given direction $\hat{\mathbf{n}}$. \\
+Consider the line segment $L$ through $P$ in the direction of $\hat{\mathbf{n}}$ \\
+Let $Q(s)$ be the point on $L$ a distance $s$ from $P$
+
+\begin{center}
+  \begin{tikzpicture}[scale=1]
+    \node at (0,3.5) {$P$};
+    \draw[->] (0,0) -- (0,3) node[midway, left] {$\vec{r}_0$};
+
+    \node at (3.5, 1.5) {$Q(s)$};
+
+  \end{tikzpicture}
+\end{center}
 
 \end{document}
