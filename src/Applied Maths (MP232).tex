@@ -878,15 +878,14 @@ $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
 
 \begin{center}
   \begin{tikzpicture}[scale=1]
-    \node at (0,3.5) {$P$};
-    \draw[->] (0,0) -- (0,3) node[midway, left] {$\vec{r}_0$};
+    \fill(0,3) circle (2pt) node[above] {$P$};
+    \fill(0,0) circle (2pt) node[below] {$O$};
+    \fill(3,1.5) circle (2pt) node[right] {$Q(s)$};
 
-    \node at (3.5, 1.5) [right] {$Q(s)$};
-    \fill (3,1.5) circle (2pt);
-    \draw[->] (0,3) -- (3,1.5) node[midway, above] {$L$};
 
-    \draw[->] (0,0) -- (3,1.5) node[midway, below] {$\vec{r(s)}$};
-    \node at (0,0) [below] {$O$};
+    \draw[->, thick, custom_red] (0,0) -- (0,3) node[midway, left] {$\vec{r}_0$};
+
+
   \end{tikzpicture}
 \end{center}
 
