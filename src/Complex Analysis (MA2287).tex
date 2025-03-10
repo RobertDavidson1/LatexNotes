@@ -301,6 +301,34 @@ So we have, $z^n = e^{n(i \theta)}$:
 So $\theta$ is the angle corresponding to the $n$-th roots of unity. Using eulers formula again, the solutions are given as:
 $$z^k = e^{i\theta} = e^{i(\frac{2\pi k}{n})} = \cos\left(\frac{2\pi k}{n}\right) + i \sin\left(\frac{2\pi k}{n}\right)$$
 
+\begin{proofbox}{Conjugate Roots Theorem}
+
+  Let $p(z) = a_nz^n + a_{n-1}z^{n-1} + \cdots + a_1z + a_0$ be a polynomial with real coefficients $a_i \in \mathbb{R}$.
+
+  Suppose that $p(w) = 0$ for some complex number $w$. We need to show that $p(\overline{w}) = 0$.
+
+  We have:
+  \begin{align}
+    p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0 \\
+                    & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0
+  \end{align}
+
+  In the second line, we used the property that $\overline{w}^n = \overline{w^n}$ for any complex number $w$ and integer $n$.
+
+  Now, since all coefficients $a_i$ are real, we have $\overline{a_i} = a_i$. Therefore:
+  \begin{align}
+    p(\overline{w}) & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0            \\
+                    & = \overline{a_nw^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1w} + \overline{a_0} \\
+                    & = \overline{a_nw^n + a_{n-1}w^{n-1} + \cdots + a_1w + a_0}                                  \\
+                    & = \overline{p(w)}
+  \end{align}
+
+  Since $p(w) = 0$, we have $\overline{p(w)} = \overline{0} = 0$.
+
+  Therefore, $p(\overline{w}) = \overline{p(w)} = 0$.
+
+\end{proofbox}
+
 \subsection{Complex Roots}
 Recall, square roots can be written as $4^{1/2} = \sqrt{4} = 2$, thus, we can write the $n$-th root as $x^{1/n}$. \\
 \textbf{What if we wanted to find the $n$-th root of a complex number?} \\
