@@ -27,12 +27,8 @@
 \subsection*{Completing a Square}
 \begin{definitionbox}
     Given a quadratic expression $x^2 + bx$, we can complete the square by following these steps:
-    \begin{align*}
-                                              & \left(\frac{b}{2}\right)^2                                                        &  & \emph{Determine the term to complete the square:} \\
-        x^2 + bx                              & = \left(x^2 + bx + \left(\frac{b}{2}\right)^2\right) - \left(\frac{b}{2}\right)^2 &  & \emph{Add and subtract this term:}                \\
-        x^2 + bx + \left(\frac{b}{2}\right)^2 & = \left(x + \frac{b}{2}\right)^2                                                  &  & \emph{Rewrite as a perfect square:}               \\
-        x^2 + bx                              & = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2                     &  & \emph{Thus the expression becomes}                \\
-    \end{align*}
+
+    $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2$$
 \end{definitionbox}
 
 
@@ -87,8 +83,28 @@
     \end{align*}
     \textbf{Focus on x and complete the square}
     \begin{align*}
-        x^2 + bx = x^2 + 10x \Rightarrow \left(\frac{b}{2}\right)^2 = \left(\frac{10}{2}\right)^2 = (5)^2 = 25 \\
+        x + bx                   = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 & \Rightarrow  x^2 + 10x = (x + 5)^2 - 25 & \emph{Complete the square}             \\
+        (x+5)^2 - 25 + y^2 + 16                                                                & < 0                                     & \emph{Substitute back into inequality} \\
+        (x+5)^2 + y^2 + 9                                                                      & < 0                                     & \emph{Simplify}                        \\
+        (x+5)^2 + y^2                                                                          & < -9                                    & \emph{Subtract 9}                      \\
     \end{align*}
+    \textbf{Recall the eqation of a circle}
+    $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^2                                                                          < -9  $$
+    \textbf{Therefore the region is a circle with radius 3 and center at (-5, 0)}
+
+    \begin{center}
+        \begin{tikzpicture}[scale=0.2]
+            \draw[<->] (-10, 0) -- (5, 0) node[right] {$\text{Re}$};
+            \draw[<->] (0, -5) -- (0, 5) node[right] {$\text{Im}$};
+            \draw (-5,-0.5) -- (-5,0.5) node[below] {-5};
+
+            \draw{(-5, 0) circle [radius=3]};
+
+
+        \end{tikzpicture}
+    \end{center}
+
+
 \end{examplebox}
 
 
