@@ -206,12 +206,12 @@
 
     \begin{minipage}{0.49\textwidth}
         \begin{align*}
-            k = 0 : \quad & \cos\left(0\right) + i\sin\left(0\right) = 1 + i0                                                       \\
-            k = 1 : \quad & \cos\left(\frac{\pi}{3}\right) + i\sin\left(\frac{\pi}{3}\right)    = \frac{1}{2} + i\frac{\sqrt{3}}{2} \\
-            k = 2 : \quad & \cos\left(\frac{2\pi}{3}\right) + i\sin\left(\frac{2\pi}{3}\right) = -\frac{1}{2} + i\frac{\sqrt{3}}{2} \\
-            k = 3 : \quad & \cos\left(\pi\right) + i\sin\left(\pi\right)                        = -1                                \\
-            k = 4 : \quad & \cos\left(\frac{4\pi}{3}\right) + i\sin\left(\frac{4\pi}{3}\right) = -\frac{1}{2} - i\frac{\sqrt{3}}{2} \\
-            k = 5 : \quad & \cos\left(\frac{5\pi}{3}\right) + i\sin\left(\frac{5\pi}{3}\right) = \frac{1}{2} - i\frac{\sqrt{3}}{2}  \\
+            k = 0 : w_0 =  & \cos\left(0\right) + i\sin\left(0\right) = 1 + i0                                                       \\
+            k = 1 : w_1 =  & \cos\left(\frac{\pi}{3}\right) + i\sin\left(\frac{\pi}{3}\right)    = \frac{1}{2} + i\frac{\sqrt{3}}{2} \\
+            k = 2 : w_2  = & \cos\left(\frac{2\pi}{3}\right) + i\sin\left(\frac{2\pi}{3}\right) = -\frac{1}{2} + i\frac{\sqrt{3}}{2} \\
+            k = 3 : w_3 =  & \cos\left(\pi\right) + i\sin\left(\pi\right)                        = -1                                \\
+            k = 4 : w_4 =  & \cos\left(\frac{4\pi}{3}\right) + i\sin\left(\frac{4\pi}{3}\right) = -\frac{1}{2} - i\frac{\sqrt{3}}{2} \\
+            k = 5 : w_5 =  & \cos\left(\frac{5\pi}{3}\right) + i\sin\left(\frac{5\pi}{3}\right) = \frac{1}{2} - i\frac{\sqrt{3}}{2}  \\
         \end{align*}
     \end{minipage}
     \begin{minipage}{0.5\textwidth}
@@ -247,11 +247,8 @@
         \end{center}
     \end{minipage}
 
-    \textbf{Our real roots are when k = 0 and k = 3}
-    $$(x+1) \quad \text{and} \quad (x+1)$$
-    \textbf{Note that the complex conjugates}
-    $$k = 1 : \quad \frac{1}{2} + i\frac{\sqrt{3}}{2} \quad \text{and} \quad k = 5 : \quad \frac{1}{2} - i\frac{\sqrt{3}}{2}$$
-    $$k = 2 : \quad -\frac{1}{2} + i\frac{\sqrt{3}}{2} \quad \text{and} \quad k = 4 : \quad -\frac{1}{2} - i\frac{\sqrt{3}}{2}$$
+    \textbf{We can write:}
+    $$x^6 -1 = (x - w_0)(x - w_1)(x - w_2)(x - w_3)(x - w_4)(x - w_5)$$
 \end{examplebox}
 
 \end{document}
