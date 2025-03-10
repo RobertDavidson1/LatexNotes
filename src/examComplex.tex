@@ -288,7 +288,7 @@
     $$x^6 -1 = (x+1)(x-1)(x^2 + x + 1)(x^2 - x + 1)$$
 \end{examplebox}
 
-\begin{examplebox}
+\begin{examplebox}[: Determine all solutions to $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$]
     \phantomsection
     \label{sol:20188Q1b}
     \textbf{Given} $z^4 = -81i$, we want to find $z^{4\left(\frac{1}{4}\right)} = w $ \\
@@ -327,20 +327,21 @@
     In other words, we want $p(w) = 0$ and $p(\overline{w}) \neq 0$ \\
     Using the most simple polynomial, $p(z) = z - w$ and letting $w = 3e^{i\frac{-\pi}{8}}$ we have
     $$p(z) = z - 3e^{i\frac{-\pi}{8}}$$
-    \begin{minipage}{0.5\textwidth}
-        \begin{align*}
-            p(w) & = w - w                                       \\
-                 & = 3e^{i\frac{-\pi}{8}} - 3e^{i\frac{-\pi}{8}} \\
-                 & = 0
-        \end{align*}
-    \end{minipage}
-    \begin{minipage}{0.5\textwidth}
-        \begin{align*}
-            p(\overline{w}) & = \overline{w} - 3e^{i\frac{-\pi}{8}}                                            \\
-                            & = 3e^{-i\frac{\pi}{8}} - 3e^{i\frac{-\pi}{8}}                                    \\
-                            & = 3\left[\cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right)\right]
-        \end{align*}
-    \end{minipage}
+    \begin{align*}
+        p(w) & = w - w                                       \\
+             & = 3e^{i\frac{-\pi}{8}} - 3e^{i\frac{-\pi}{8}} \\
+             & = 0
+    \end{align*}
+    \begin{align*}
+        p(\overline{w}) & = \overline{w} - 3e^{i\frac{-\pi}{8}}                                                                                                                            \\
+                        & = 3e^{-i\frac{\pi}{8}} - 3e^{i\frac{-\pi}{8}}                                                                                                                    \\
+                        & = 3\left[\cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right) - \left(\cos\left(\frac{\pi}{8}\right) + i\sin\left(\frac{\pi}{8}\right)\right)\right] \\
+                        & = 3\left[\cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right) - cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right)\right]               \\
+                        & = 3\left[-2i\sin\left(\frac{\pi}{8}\right)\right]                                                                                                                \\
+                        & = -6i\sin\left(\frac{\pi}{8}\right)                                                                                                                              \\
+                        & \approx -2.3i \neq 0
+    \end{align*}
+
 
 \end{examplebox}
 
