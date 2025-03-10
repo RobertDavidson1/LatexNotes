@@ -294,10 +294,12 @@
     \textbf{Given} $z^4 = -81i$, we want to find $z^{4\left(\frac{1}{4}\right)} = w $ \\
     \textbf{Recall:}
     $$z^{1/n} = R^{1/n}[\cos\phi + i\sin \phi] \quad \text{with} \; \phi = \frac{\theta + 2k\pi}{n}, \; k \in (0,1,2,\dots, n-1) \quad \text{and} \; R = |z|$$
-    \begin{minipage}{0.5\textwidth}
+    \begin{minipage}{0.49\textwidth}
         \textbf{Thus}
         \begin{align*}
-            R & = \sqrt{0^2 + 81^2} = 81 \\
+            R      & = \sqrt{0^2 + 81^2} = 81                                                                        \\
+            \theta & = -\frac{\pi}{2}                                                                                \\
+            \phi   & = \frac{\theta + 2k\pi}{n} = \frac{-\frac{\pi}{2} + 2k\pi}{4} = \frac{-\pi}{8} + \frac{k\pi}{2}
         \end{align*}
     \end{minipage}
     \begin{minipage}{0.5\textwidth}
@@ -305,11 +307,17 @@
             \begin{tikzpicture}
                 \draw[->] (-1, 0) -- (1, 0) node[right] {$\text{Re}$};
                 \draw[->] (0, -1) -- (0, 1) node[right] {$\text{Im}$};
+                \draw[->, custom_blue, thick] (0,0) -- (0, -0.707) node[right] {$81i$};
             \end{tikzpicture}
         \end{center}
-
     \end{minipage}
 
+    \textbf{Therefore}
+    \begin{align*}
+        w_k & = 81^{1/4}\left[\cos\left(\frac{-\pi}{8} + \frac{k\pi}{2}\right) + i\sin\left(\frac{-\pi}{8} + \frac{k\pi}{2}\right)\right] \quad k \in (0,1,2,3) \\
+        w_0 & = 3\left[\cos\left(\frac{-\pi}{8}\right) + i\sin\left(\frac{-\pi}{8}\right)\right] \approx 2.77 - 1.15i                                           \\
+        w_2 & = 3\left[\cos\left(\frac{3\pi}{8}\right) + i\sin\left(\frac{3\pi}{8}\right)\right] \approx -1.15 + 2.77i                                          \\
+    \end{align*}
 
 
 \end{examplebox}
