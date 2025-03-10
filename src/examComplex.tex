@@ -32,7 +32,7 @@
 \subsection{Determine all solutions to roots of unity}
 \begin{itemize}
     \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill \hyperref[sol:2023Q1b]{\uline{2023 Q1(b),2021 Q1(c)}}
-    \item $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$ \hfill 2022 Q1(b), 2018 Q1(b)
+    \item $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$ \hfill 2022 Q1(b), \hyperref[sol:20188Q1b]{\uline{2018 Q1(b)}}
     \item $z^3 = 1+i$, let $n \in \mathbb{N}$ and $w \neq 1$ be an n-th root of unity. Prove $1 + w + w^2 + \ldots + w^{n-1} = 0$ \hfill 2016 Q1(c)
 \end{itemize}
 \subsection{Determine and sketch the image under the mapping}
@@ -288,6 +288,31 @@
     $$x^6 -1 = (x+1)(x-1)(x^2 + x + 1)(x^2 - x + 1)$$
 \end{examplebox}
 
+\begin{examplebox}
+    \phantomsection
+    \label{sol:20188Q1b}
+    \textbf{Given} $z^4 = -81i$, we want to find $z^{4\left(\frac{1}{4}\right)} = w $ \\
+    \textbf{Recall:}
+    $$z^{1/n} = R^{1/n}[\cos\phi + i\sin \phi] \quad \text{with} \; \phi = \frac{\theta + 2k\pi}{n}, \; k \in (0,1,2,\dots, n-1) \quad \text{and} \; R = |z|$$
+    \begin{minipage}{0.5\textwidth}
+        \textbf{Thus}
+        \begin{align*}
+            R & = \sqrt{0^2 + 81^2} = 81 \\
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[->] (-1, 0) -- (1, 0) node[right] {$\text{Re}$};
+                \draw[->] (0, -1) -- (0, 1) node[right] {$\text{Im}$};
+            \end{tikzpicture}
+        \end{center}
+
+    \end{minipage}
+
+
+
+\end{examplebox}
 
 
 \end{document}
