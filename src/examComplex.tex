@@ -315,11 +315,32 @@
     \textbf{Therefore}
     \begin{align*}
         w_k & = 81^{1/4}\left[\cos\left(\frac{-\pi}{8} + \frac{k\pi}{2}\right) + i\sin\left(\frac{-\pi}{8} + \frac{k\pi}{2}\right)\right] \quad k \in (0,1,2,3) \\
-        w_0 & = 3\left[\cos\left(\frac{-\pi}{8}\right) + i\sin\left(\frac{-\pi}{8}\right)\right] \approx 2.77 - 1.15i                                           \\
-        w_1 & = 3\left[\cos\left(-\frac{\pi}{8} + \frac{\pi}{2}\right) + i\sin\left(-\frac{\pi}{8} + \frac{\pi}{2}\right)\right] \approx 1.15 + 2.77i           \\
-        w_2 & = 3\left[\cos\left(-\frac{\pi}{8} + \pi\right) + i\sin\left(-\frac{\pi}{8} + \pi\right)\right] \approx -2.77 + 1.15i                              \\
+        w_0 & = 3\left[\cos\left(\frac{-\pi}{8}\right) + i\sin\left(\frac{-\pi}{8}\right)\right] \approx 2.77 - 1.155i                                          \\
+        w_1 & = 3\left[\cos\left(-\frac{\pi}{8} + \frac{\pi}{2}\right) + i\sin\left(-\frac{\pi}{8} + \frac{\pi}{2}\right)\right] \approx 1.155 + 2.77i          \\
+        w_2 & = 3\left[\cos\left(-\frac{\pi}{8} + \pi\right) + i\sin\left(-\frac{\pi}{8} + \pi\right)\right] \approx -1.55 + 2.77i                              \\
+        w_3 & = 3\left[\cos\left(-\frac{\pi}{8} + \frac{3\pi}{2}\right) + i\sin\left(-\frac{\pi}{8} + \frac{3\pi}{2}\right)\right] \approx -2.77 - 1.55i
     \end{align*}
 
+
+    \textbf{Part 2:} \\
+    \textbf{Given} $p(z)$ with complex coefficients has root $w$ and $p(\overline{w}) \neq 0$ \\
+    In other words, we want $p(w) = 0$ and $p(\overline{w}) \neq 0$ \\
+    Using the most simple polynomial, $p(z) = z - w$ and letting $w = 3e^{i\frac{-\pi}{8}}$ we have
+    $$p(z) = z - 3e^{i\frac{-\pi}{8}}$$
+    \begin{minipage}{0.5\textwidth}
+        \begin{align*}
+            p(w) & = w - w                                       \\
+                 & = 3e^{i\frac{-\pi}{8}} - 3e^{i\frac{-\pi}{8}} \\
+                 & = 0
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{align*}
+            p(\overline{w}) & = \overline{w} - 3e^{i\frac{-\pi}{8}}                                            \\
+                            & = 3e^{-i\frac{\pi}{8}} - 3e^{i\frac{-\pi}{8}}                                    \\
+                            & = 3\left[\cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right)\right]
+        \end{align*}
+    \end{minipage}
 
 \end{examplebox}
 
