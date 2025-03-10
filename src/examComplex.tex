@@ -31,9 +31,8 @@
 \end{itemize}
 \subsection{Determine all solutions to roots of unity}
 \begin{itemize}
-    \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill 2023 Q1(b),
+    \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill 2023 Q1(b),2021 Q1(c)
     \item $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$ \hfill 2022 Q1(b), 2018 Q1(b)
-    \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill 2021 Q1(c)
     \item $z^3 = 1+i$, let $n \in \mathbb{N}$ and $w \neq 1$ be an n-th root of unity. Prove $1 + w + w^2 + \ldots + w^{n-1} = 0$ \hfill 2016 Q1(c)
 \end{itemize}
 \subsection{Determine and sketch the image under the mapping}
@@ -185,14 +184,31 @@
                 \draw (-0.167,-0.1) -- (-0.167,0.1) node[below=0.4cm, left=-0.2cm] {$-\frac{1}{6}$};
                 \draw (-0.1,0.66) -- (0.1,0.66) node[right=0.1cm] {$\frac{2}{3}$};
                 \draw[custom_blue, thick]{(-0.167, 0.666) circle [radius=0.471]};
-
-
-
-
             \end{tikzpicture}
         \end{center}
     \end{minipage}
+\end{examplebox}
+\begin{examplebox}[Determine all solutions to $z^6 -1 = 0$ and factor $x^6-1$ as a product of linear and quadratic factors]
+    \phantomsection
+    \label{sol:2023Q1b}
+    \textbf{Given} $z^6 -1 = 0$ \\
+    \textbf{Write} $z = e^{i \theta}$ and $1 = e^{i 2 \pi k}$ for $k \in \mathbb{Z}$
 
+    \begin{align*}
+        z^6 -1                         & = 0                                                 \\
+        e^{i 6 \theta} - e^{i 2 \pi k} & = 0                                                 \\
+        e^{i 6 \theta}                 & = e^{i 2 \pi k}                                     \\
+        r^6                            & = 1 \quad \text{and} \quad 6 \theta = 2 \pi k       \\
+        r                              & = 1 \quad \text{and} \quad \theta = \frac{\pi k}{3} \\
+    \end{align*}
+    \textbf{Therefore the solutions are}
+    $$z = e^{i \frac{\pi k}{3}} \quad \text{for} \quad k = 0, 1, 2, 3, 4, 5$$
+    \textbf{Factorize $x^6 -1$}
+    \begin{align*}
+        x^6 -1 & = (x^3 -1)(x^3 +1)                     \\
+        x^6 -1 & = (x-1)(x^2 + x + 1)(x+1)(x^2 - x + 1) \\
+    \end{align*}
 \end{examplebox}
 
 \end{document}
+
