@@ -1,6 +1,5 @@
 \documentclass[a4paper, 8pt]{extarticle}
 \input{preamble.sty}
-
 \input{macros.sty}
 
 \title{
@@ -23,20 +22,12 @@
 \tableofcontents
 \pagebreak
 
-\section*{Prelims}
-\subsection*{Completing a Square}
-\begin{definitionbox}
-    Given a quadratic expression $x^2 + bx$, we can complete the square by following these steps:
-
-    $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2$$
-\end{definitionbox}
-
 
 \section{Question 1: }
 \subsection{Sketch the region in the complex plane determined by the inequality}
 \begin{itemize}
-    \item $|z - 4| > 3|z+4|$ \hfill 2023 Q1(a)
-    \item $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|$\} \hfill  2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)
+    \item $|z - 4| > 3|z+4|$ \hfill \hyperref[sol:2023Q1a]{\uline{2023 Q1(a)}}
+    \item $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|$\} \hfill  \hyperref[sol:2022Q1a]{\uline{2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)}}
 \end{itemize}
 \subsection{Determine all solutions to roots of unity}
 \begin{itemize}
@@ -70,6 +61,7 @@
 
 \pagebreak
 
+
 \section{Question 2: }
 \subsection{Determine image of the line}
 \begin{itemize}
@@ -100,7 +92,14 @@
     \item $T(z) : (-i, -1, i) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2018 Q2(d), 2017 Q2(d)
     \item $T(z) : (-1, \frac{1}{2}, 2) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2016 Q2(d)
 \end{itemize}
+
+\pagebreak
+
+\section{Worked Examples - Q1}
+
 \begin{examplebox}[2023 Q1(a)]
+    \phantomsection
+    \label{sol:2023Q1a}
 
     \textbf{Given} $|z - 4| > 3|z+4|$ \\
     \textbf{Write} $\boldsymbol{z = x + iy}$
@@ -145,9 +144,9 @@
         \end{center}
     \end{minipage}
 \end{examplebox}
-
 \begin{examplebox}[2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)]
-
+    \phantomsection
+    \label{sol:2022Q1a}
     \textbf{Given} $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|\}$ \\
     \textbf{Write} $z = x + iy$
     \begin{align*}
@@ -166,9 +165,8 @@
     $$y^2 + by = \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)$$
     \textbf{Substitute back into inequality}
     \begin{align*}
-        \left(x + \frac{1}{6}\right)^2 - \left(\frac{1}{36}\right) + \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)  + \frac{1}{4} & > 0            & \emph{Substitute back into inequality} \\
-        \left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2 - \frac{2}{9}                                                         & > 0            & \emph{Simplify}                        \\
-        \left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2                                                                       & >  \frac{2}{9} & \emph{Move constant across}            \\
+        \left(x + \frac{1}{6}\right)^2 - \left(\frac{1}{36}\right) + \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)  + \frac{1}{4} & > 0            & \emph{Substitute back into inequality}   \\
+        \left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2                                                                       & >  \frac{2}{9} & \emph{Simplify and move constant across} \\
     \end{align*}
 
     \begin{minipage}{0.49\textwidth}
