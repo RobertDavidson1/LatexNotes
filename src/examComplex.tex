@@ -249,6 +249,25 @@
 
     \textbf{We can write:}
     $$x^6 -1 = (x - w_0)(x - w_1)(x - w_2)(x - w_3)(x - w_4)(x - w_5)$$
+    \textbf{Rewriting to group complex conjugates}
+    $$x^6 -1 = (z-w_0)(z-w_3) \cdot (z-w_1)(z-w_5) \cdot (z-w_2)(z-w_4)$$
+    \textbf{Note that}
+    \begin{align*}
+        (w-z)(w-\overline{z}) & = w^2 - w\overline{z} - zw + z\overline{z} \\
+                              & = w^2 - 2(\overline{z} + z) + 1
+    \end{align*}
+    \textbf{We recall that}
+    \begin{align*}
+        z = x + iy = e^{i\theta} = \cos(\theta) + i\sin(\theta)             \\
+        \overline{z} = x - iy = e^{-i\theta} = \cos(\theta) - i\sin(\theta) \\
+    \end{align*}
+    \textbf{Then}
+    \begin{align*}
+        \overline{z} + z & = cos(\theta) + i\sin(\theta) + cos(\theta) - i\sin(\theta) \\
+                         & = 2\cos(\theta)                                             \\
+    \end{align*}
+    \textbf{Thus}
+    $$(w-z)(w-\overline{z}) & = w^2 - 2\cos(\theta) + 1$$
 \end{examplebox}
 
 \end{document}
