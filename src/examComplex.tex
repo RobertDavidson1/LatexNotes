@@ -92,12 +92,12 @@
 
     \begin{minipage}{0.49\textwidth}
         \textbf{Recall the eqation of a circle}
-        $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^ < -9  $$
+        $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^2 < -9  $$
         \textbf{Therefore the region is all the points inside circle with radius 3 and center at (-5, 0)}
     \end{minipage}
     \begin{minipage}{0.5\textwidth}
         \begin{center}
-            \begin{tikzpicture}[scale=0.2]
+            \begin{tikzpicture}[scale=0.15]
                 \draw[<->] (-10, 0) -- (5, 0) node[right] {$\text{Re}$};
                 \draw[<->] (0, -5) -- (0, 5) node[right] {$\text{Im}$};
                 \draw (-5,-0.5) -- (-5,0.5) node[below=0.2cm] {-5};
@@ -133,8 +133,22 @@
         \left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2 - \frac{2}{9}                                                         & > 0            & \emph{Simplify}                        \\
         \left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2                                                                       & >  \frac{2}{9} & \emph{Move constant across}            \\
     \end{align*}
-    \textbf{Recall the eqation of a circle}
-    $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^ < -9  $$
+
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Recall the eqation of a circle}
+        $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  \left(x+ \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2 < \frac{2}{9}  $$
+        \textbf{Therefore the region is all the points OUTSIDE the circle with radius $\frac{\sqrt{2}}{3}$ and center at $(-\frac{1}{6}, \frac{2}{3})$}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{center}
+            \begin{tikzpicture}[scale=0.75]
+                \draw[<->] (-2, 0) -- (2, 0) node[right] {$\text{Re}$};
+                \draw[<->] (0, -1) -- (0, 2) node[right] {$\text{Im}$};
+                \draw (-0.167,-0.1) -- (-0.167,0.1) node[below=0.4cm, left=-0.2cm] {$-\frac{1}{6}$};
+                \draw[custom_blue, thick]{(-0.167, 0.666) circle [radius=0.471]};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
 
 \end{examplebox}
 
