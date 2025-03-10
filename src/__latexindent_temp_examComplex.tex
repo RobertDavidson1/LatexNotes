@@ -1,6 +1,5 @@
 \documentclass[a4paper, 8pt]{extarticle}
 \input{preamble.sty}
-
 \input{macros.sty}
 
 \title{
@@ -23,26 +22,17 @@
 \tableofcontents
 \pagebreak
 
-\section*{Prelims}
-\subsection*{Completing a Square}
-\begin{definitionbox}
-    Given a quadratic expression $x^2 + bx$, we can complete the square by following these steps:
-
-    $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2$$
-\end{definitionbox}
-
 
 \section{Question 1: }
 \subsection{Sketch the region in the complex plane determined by the inequality}
 \begin{itemize}
-    \item $|z - 4| > 3|z+4|$ \hfill 2023 Q1(a)
-    \item $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|$\} \hfill  2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)
+    \item $|z - 4| > 3|z+4|$ \hfill \hyperref[sol:2023Q1a]{\uline{2023 Q1(a)}}
+    \item $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|$\} \hfill  \hyperref[sol:2022Q1a]{\uline{2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)}}
 \end{itemize}
 \subsection{Determine all solutions to roots of unity}
 \begin{itemize}
-    \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill 2023 Q1(b),
+    \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill 2023 Q1(b),2021 Q1(c)
     \item $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$ \hfill 2022 Q1(b), 2018 Q1(b)
-    \item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill 2021 Q1(c)
     \item $z^3 = 1+i$, let $n \in \mathbb{N}$ and $w \neq 1$ be an n-th root of unity. Prove $1 + w + w^2 + \ldots + w^{n-1} = 0$ \hfill 2016 Q1(c)
 \end{itemize}
 \subsection{Determine and sketch the image under the mapping}
@@ -64,56 +54,12 @@
     \item Define the complex exponential function $e^z$ and prove Eulers Formula $e^{i \theta} = \cos(\theta) + i \sin(\theta)$ \hfill 2017 Q1(b)
 \end{itemize}
 
-\begin{examplebox}[2023 Q1(a)]
-    \normalsize
-    \textbf{Given} $|z - 4| > 3|z+4|$ \\
-    \textbf{Write} $\boldsymbol{z = x + iy}$
-    \begin{align*}
-        | x + iy -4|         & > 3 |x + iy + 4|         \\
-        | (x - 4) + iy|      & > 3 |(x + 4) + iy|       \\
-        \sqrt{(x-4)^2 + y^2} & > 3 \sqrt{(x+4)^2 + y^2} \\
-    \end{align*}
-    \textbf{Square both sides}
-    \begin{align*}
-        (x-4)^2 + y^2                                 & > 9((x+4)^2 + y^2)                                                         \\
-        (x^2 - 8x + 16 + y^2)                         & > 9x^2 + 72x + 144 + 9y^2                                                  \\
-        x^2 - 8x + 16 + y^2 - 9x^2 - 72x - 144 - 9y^2 & > 0                       & \emph{Moving all terms to one side}            \\
-        -8x^2 - 80x - 8y^2 - 128                      & > 0                       & \emph{Simplify }                               \\
-        x^2 + 10x + y^2 - 16                          & < 0                       & \emph{Dividing by -8 and reversing inequality} \\
-    \end{align*}
-    \textbf{Focus on x and complete the square}
-    \begin{align*}
-        x + bx                   = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 & \Rightarrow  x^2 + 10x = (x + 5)^2 - 25 & \emph{Complete the square}             \\
-        (x+5)^2 - 25 + y^2 + 16                                                                & < 0                                     & \emph{Substitute back into inequality} \\
-        (x+5)^2 + y^2 + 9                                                                      & < 0                                     & \emph{Simplify}                        \\
-        (x+5)^2 + y^2                                                                          & < -9                                    & \emph{Subtract 9}                      \\
-    \end{align*}
-    \begin{minipage}{0.5\textwidth}
-        \textbf{Recall the eqation of a circle}
-        $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^< -9  $$
-        \textbf{Therefore the region is a circle with radius 3 and center at (-5, 0)}
-    \end{minipage}
-    \begin{minipage}{0.5\textwidth}
-        \begin{center}
-            \begin{tikzpicture}[scale=0.2]
-                \draw[<->] (-10, 0) -- (5, 0) node[right] {$\text{Re}$};
-                \draw[<->] (0, -5) -- (0, 5) node[right] {$\text{Im}$};
-                \draw (-5,-0.5) -- (-5,0.5) node[below=0.2cm] {-5};
-                \draw (-0.5,3) -- (0.5,3) node[right=0.2cm] {3};
-                \draw[->, custom_red] (-5, 0) -- (-5+ 2.12132034356,2.12132034356) node[above=0.2cm] {$r = 3$};
-                \draw[custom_blue, thick]{(-5, 0) circle [radius=3]};
-            \end{tikzpicture}
-        \end{center}
-    \end{minipage}
 
-
-
-
-\end{examplebox}
 
 
 
 \pagebreak
+
 
 \section{Question 2: }
 \subsection{Determine image of the line}
@@ -146,5 +92,151 @@
     \item $T(z) : (-1, \frac{1}{2}, 2) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2016 Q2(d)
 \end{itemize}
 
+\pagebreak
+
+\section{Worked Examples - Q1}
+
+\begin{examplebox}[2023 Q1(a)]
+    \phantomsection
+    \label{sol:2023Q1a}
+
+    \textbf{Given} $|z - 4| > 3|z+4|$ \\
+    \textbf{Write} $\boldsymbol{z = x + iy}$
+    \begin{align*}
+        | x + iy -4|         & > 3 |x + iy + 4|         \\
+        | (x - 4) + iy|      & > 3 |(x + 4) + iy|       \\
+        \sqrt{(x-4)^2 + y^2} & > 3 \sqrt{(x+4)^2 + y^2} \\
+    \end{align*}
+    \textbf{Square both sides}
+    \begin{align*}
+        (x-4)^2 + y^2                                 & > 9((x+4)^2 + y^2)                                                         \\
+        (x^2 - 8x + 16 + y^2)                         & > 9x^2 + 72x + 144 + 9y^2                                                  \\
+        x^2 - 8x + 16 + y^2 - 9x^2 - 72x - 144 - 9y^2 & > 0                       & \emph{Moving all terms to one side}            \\
+        -8x^2 - 80x - 8y^2 - 128                      & > 0                       & \emph{Simplify }                               \\
+        x^2 + 10x + y^2 - 16                          & < 0                       & \emph{Dividing by -8 and reversing inequality} \\
+    \end{align*}
+
+    \textbf{Focus on x and complete the square}
+    \begin{align*}
+        x + bx                   = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 & \Rightarrow  x^2 + 10x = (x + 5)^2 - 25 & \emph{Complete the square}             \\
+        (x+5)^2 - 25 + y^2 + 16                                                                & < 0                                     & \emph{Substitute back into inequality} \\
+        (x+5)^2 + y^2 + 9                                                                      & < 0                                     & \emph{Simplify}                        \\
+        (x+5)^2 + y^2                                                                          & < -9                                    & \emph{Subtract 9}                      \\
+    \end{align*}
+
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Recall the eqation of a circle}
+        $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^2 < -9  $$
+        \textbf{Therefore the region is all the points inside circle with radius 3 and center at (-5, 0)}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{center}
+            \begin{tikzpicture}[scale=0.15]
+                \fill[custom_blue!20, even odd rule] (-5,0) circle [radius=3];
+                \draw[<->] (-10, 0) -- (5, 0) node[right] {$\text{Re}$};
+                \draw[<->] (0, -5) -- (0, 5) node[right] {$\text{Im}$};
+                \draw (-5,-0.5) -- (-5,0.5) node[below=0.2cm] {-5};
+                \draw (-0.5,3) -- (0.5,3) node[right=0.2cm] {3};
+                \draw[custom_blue, thick]{(-5, 0) circle [radius=3]};
+
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+\end{examplebox}
+\begin{examplebox}[2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)]
+    \phantomsection
+    \label{sol:2022Q1a}
+    \textbf{Given} $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|\}$ \\
+    \textbf{Write} $z = x + iy$
+    \begin{align*}
+        |2x + i2y -1 |                                        & < 2 |2x + i2y - i|                                                        \\
+        |(2x -1) + i2y|                                       & < 2 |2x + i(2y -1)|                                                       \\
+        \sqrt{(2x-1)^2 + 4y^2}                                & < 2 \sqrt{4x^2 + (2y-1)^2}                                                \\
+        (2x-1)^2 + 4y^2                                       & < 4[4x^2 + (2y-1)^2]       & \emph{Square both sides}                     \\
+        4x^2 - 4x + 1 + 4y^2                                  & < 16x^2 + 16y^2 -16y +4    & \emph{Expand}                                \\
+        -12x^2 - 4x - 12y^2 + 16y -3                          & < 0                        & \emph{Move all terms to one side}            \\
+        12x^2 + 4x + 12y^2 - 16y + 3                          & > 0                        & \emph{Multiply by -1 and reverse inequality} \\
+        x^2 + \frac{1}{3}x + y^2 - \frac{4}{3}y + \frac{1}{4} & > 0                        & \emph{Divide by 12}                          \\
+    \end{align*}
+    \textbf{Complete square for x}
+    $$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 \Rightarrow x^2 + \frac{1}{3}x = \left(x + \frac{1}{6}\right)^2 - \left(\frac{1}{36}\right)$$
+    \textbf{Complete square for y}
+    $$y^2 + by = \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)$$
+    \textbf{Substitute back into inequality}
+    \begin{align*}
+        \left(x + \frac{1}{6}\right)^2 - \left(\frac{1}{36}\right) + \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)  + \frac{1}{4} & > 0            & \emph{Substitute back into inequality}   \\
+        \left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2                                                                       & >  \frac{2}{9} & \emph{Simplify and move constant across} \\
+    \end{align*}
+
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Recall the eqation of a circle}
+        $$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  \left(x+ \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2 < \frac{2}{9}  $$
+        \textbf{Therefore the region is all the points OUTSIDE the circle with radius $\frac{\sqrt{2}}{3}$ and center at $(-\frac{1}{6}, \frac{2}{3})$}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{center}
+            \begin{tikzpicture}[scale=0.75]
+                \fill[custom_blue!20, even odd rule]
+                (-1,-1) rectangle (3,2)
+                (-0.167,0.666) circle [radius=0.471];
+                \draw[<->] (-1, 0) -- (2, 0) node[right] {$\text{Re}$};
+                \draw[<->] (0, -1) -- (0, 2) node[right] {$\text{Im}$};
+                \draw (-0.167,-0.1) -- (-0.167,0.1) node[below=0.4cm, left=-0.2cm] {$-\frac{1}{6}$};
+                \draw (-0.1,0.66) -- (0.1,0.66) node[right=0.1cm] {$\frac{2}{3}$};
+                \draw[custom_blue, thick]{(-0.167, 0.666) circle [radius=0.471]};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+\end{examplebox}
+\begin{examplebox}[Determine all solutions to $z^6 -1 = 0$ and factor $x^6-1$ as a product of linear and quadratic factors]
+    \phantomsection
+    \label{sol:2023Q1b}
+    \textbf{Given} $z^6 -1 = 0$ \\
+    \textbf{Write} $z = e^{i \theta}$ and $1 = e^{i 2 \pi k}$ for $k \in \mathbb{Z}$
+
+    \begin{align*}
+        z^6 -1                         & = 0               \\
+        e^{i 6 \theta} - e^{i 2 \pi k} & = 0               \\
+        e^{i 6 \theta}                 & = e^{i 2 \pi k}   \\
+        6 \theta                       & = 2 \pi k         \\
+        \theta                         & = \frac{\pi k}{3} \\
+    \end{align*}
+    \textbf{Therefore the solutions are}
+    $$z = e^{i \theta} = e^{i \frac{\pi k}{3}} = \cos\left(\frac{\pi k}{3}\right) + i\sin\left(\frac{\pi k}{3}\right) \quad \text{for} \quad k = 0, 1, 2, 3, 4, 5$$
+    \begin{minipage}{0.49\textwidth}
+        \begin{align*}
+            k = 0 : & \cos(0) + i\sin(0)                         = 1                                                          \\
+            k = 1 : & \cos\left(\frac{\pi}{3}\right) + i\sin\left(\frac{\pi}{3}\right)    = \frac{1}{2} + i\frac{\sqrt{3}}{2} \\
+            k = 2 : & \cos\left(\frac{2\pi}{3}\right) + i\sin\left(\frac{2\pi}{3}\right) = -\frac{1}{2} + i\frac{\sqrt{3}}{2} \\
+            k = 3 : & \cos\left(\pi\right) + i\sin\left(\pi\right)                        = -1                                \\
+            k = 4 : & \cos\left(\frac{4\pi}{3}\right) + i\sin\left(\frac{4\pi}{3}\right) = -\frac{1}{2} - i\frac{\sqrt{3}}{2} \\
+            k = 5 : & \cos\left(\frac{5\pi}{3}\right) + i\sin\left(\frac{5\pi}{3}\right) = \frac{1}{2} - i\frac{\sqrt{3}}{2}  \\
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[<->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
+                \draw[<->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
+
+                \draw[custom_blue!60, thick] (0,0) circle [radius=1];
+
+
+                \draw (1,-0.1) -- (1,0.1) node[below=0.4cm, left=-0.2cm] {1};
+                \draw (-0.1,1) -- (0.1,1) node[right=0.1cm] {i};
+                \draw (-1,-0.1) -- (-1,0.1) node[below=0.4cm, left=-0.2cm] {-1};
+
+
+                \node at (1, 0) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(-1,0) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(0.5,0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(-0.5,0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(-0.5,-0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(0.5,-0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+\end{examplebox}
 
 \end{document}
+

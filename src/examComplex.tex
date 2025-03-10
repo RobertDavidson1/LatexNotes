@@ -213,7 +213,29 @@
             k = 5 : & \cos\left(\frac{5\pi}{3}\right) + i\sin\left(\frac{5\pi}{3}\right) = \frac{1}{2} - i\frac{\sqrt{3}}{2}  \\
         \end{align*}
     \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[<->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
+                \draw[<->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
 
+                \draw[custom_red!60, thick] (0,0) circle [radius=1];
+
+
+                \draw (1,-0.1) -- (1,0.1) node[below=0.4cm, left=-0.2cm] {1};
+                \draw (-0.1,1) -- (0.1,1) node[right=0.1cm] {i};
+                \draw (-1,-0.1) -- (-1,0.1) node[below=0.4cm, left=-0.2cm] {-1};
+
+
+                \node at (1, 0) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(-1,0) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(0.5,0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(-0.5,0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(-0.5,-0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+                \node at(0.5,-0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
 \end{examplebox}
 
 \end{document}
