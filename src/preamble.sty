@@ -63,8 +63,8 @@
     colframe=custom_red,
 }
 
-\newtcolorbox{proofbox}{
-    title=\textbf{Proof},
+\newtcolorbox{proofbox}[1][]{
+    title=\textbf{Proof:} {#1},
     fonttitle=\bfseries\boldmath,
     arc=0mm,
     bottomtitle=0.5mm,

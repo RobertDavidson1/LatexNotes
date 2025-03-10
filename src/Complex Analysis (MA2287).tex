@@ -301,31 +301,52 @@ So we have, $z^n = e^{n(i \theta)}$:
 So $\theta$ is the angle corresponding to the $n$-th roots of unity. Using eulers formula again, the solutions are given as:
 $$z^k = e^{i\theta} = e^{i(\frac{2\pi k}{n})} = \cos\left(\frac{2\pi k}{n}\right) + i \sin\left(\frac{2\pi k}{n}\right)$$
 
-\begin{proofbox}{Conjugate Roots Theorem}
+\begin{proofbox}[Conjugate Roots Theorem]
 
-  Let $p(z) = a_nz^n + a_{n-1}z^{n-1} + \cdots + a_1z + a_0$ be a polynomial with real coefficients $a_i \in \mathbb{R}$.
+  Let $p(z) = a_nz^n + a_{n-1}z^{n-1} + \cdots + a_1z + a_0$ be a polynomial with real coefficients $a_i \in \mathbb{R}$ for all $i \in \{0,1,\ldots,n\}$.
 
-  Suppose that $p(w) = 0$ for some complex number $w$. We need to show that $p(\overline{w}) = 0$.
+  Suppose that $w \in \mathbb{C}$ is a root of $p(z)$, meaning that $p(w) = 0$. We aim to prove that the complex conjugate $\overline{w}$ is also a root of $p(z)$, i.e., $p(\overline{w}) = 0$.
 
-  We have:
+  Let's evaluate $p(\overline{w})$ step by step:
+  \begin{align}
+    p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0
+  \end{align}
+
+  We'll use the fundamental property of complex conjugates: for any complex number $z$ and any integer $k$, $(\overline{z})^k = \overline{z^k}$.
+
+  Applying this property to each term:
   \begin{align}
     p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0 \\
                     & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0
   \end{align}
 
-  In the second line, we used the property that $\overline{w}^n = \overline{w^n}$ for any complex number $w$ and integer $n$.
+  Now, we use a critical property of real numbers: for any $a \in \mathbb{R}$, we have $\overline{a} = a$. Since all coefficients $a_i$ are real, this means $\overline{a_i} = a_i$ for all $i$.
 
-  Now, since all coefficients $a_i$ are real, we have $\overline{a_i} = a_i$. Therefore:
+  For any complex number $z$ and real number $a$, we have the property $\overline{az} = \overline{a} \cdot \overline{z} = a \cdot \overline{z}$. Using this property:
   \begin{align}
-    p(\overline{w}) & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0            \\
-                    & = \overline{a_nw^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1w} + \overline{a_0} \\
-                    & = \overline{a_nw^n + a_{n-1}w^{n-1} + \cdots + a_1w + a_0}                                  \\
+    p(\overline{w}) & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0              \\
+                    & = \overline{a_n w^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1 w} + \overline{a_0}
+  \end{align}
+
+  Another important property of complex conjugation is that it distributes over addition: $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$. Applying this property:
+  \begin{align}
+    p(\overline{w}) & = \overline{a_n w^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1 w} + \overline{a_0} \\
+                    & = \overline{a_n w^n + a_{n-1}w^{n-1} + \cdots + a_1 w + a_0}                                  \\
                     & = \overline{p(w)}
   \end{align}
 
-  Since $p(w) = 0$, we have $\overline{p(w)} = \overline{0} = 0$.
+  Since we assumed that $p(w) = 0$, we have:
+  \begin{align}
+    p(\overline{w}) & = \overline{p(w)} \\
+                    & = \overline{0}    \\
+                    & = 0
+  \end{align}
 
-  Therefore, $p(\overline{w}) = \overline{p(w)} = 0$.
+  The last step follows because the complex conjugate of zero is zero: $\overline{0} = 0$.
+
+  Therefore, we have proven that if $w$ is a root of $p(z)$ (i.e., $p(w) = 0$), then $\overline{w}$ is also a root of $p(z)$ (i.e., $p(\overline{w}) = 0$).
+
+  This result has an important corollary: the non-real roots of polynomials with real coefficients always occur in complex conjugate pairs.
 
 \end{proofbox}
 
