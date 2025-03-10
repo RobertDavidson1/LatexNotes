@@ -64,6 +64,42 @@
     \item Define the complex exponential function $e^z$ and prove Eulers Formula $e^{i \theta} = \cos(\theta) + i \sin(\theta)$ \hfill 2017 Q1(b)
 \end{itemize}
 
+
+
+
+
+\pagebreak
+
+\section{Question 2: }
+\subsection{Determine image of the line}
+\begin{itemize}
+    \item $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 2\}$ \hfill 2023 Q2(a), 2021 Q2(b)
+    \item $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 1\}$ \hfill 2022 Q2(a), 2018 Q2(a), 2017 Q2(a)
+\end{itemize}
+\subsection{State and Use Cauchy-Riemann Equations}
+\begin{itemize}
+    \item State CRE, and use to prove $f(z) = \frac{1}{z}$ is holomoprhic on $\mathbb{C} \backslash \{0\}$ \hfill 2023 Q2(a)
+    \item State CRE, and use to prove $f(z) = z^2$ is holomoprhic on $\mathbb{C}$ \hfill 2022 Q2(b)
+    \item State CRE. Let $f = u+iv$ be holomoprhic on $\Omega \subset \mathbb{C}$. Prove $\nabla u$ and $\nabla v$ are perpendicular of equal length \hfill 2016 Q2(b)
+\end{itemize}
+\subsection{Show that}
+\begin{itemize}
+    \item If $\overline{f(z)} = f(\overline{z})$ for all $z \in \mathbb{C}$ then $f(x)$ is real for all $x \in \mathbb{R}$. And if in addition $f$ is holomoprhic at $x \in \mathbb{R}$ then $f'(x)$ is real. \hfill 2023 Q2(c)
+    \item Define that is meant for a function $g$ to be harmonic. If $f = u +iv$ is holomoprhic on $\Omega \subset \mathbb{C}$, prove that $v(x,y)$ is a harmonic function, and that $\nabla u$ and $\nabla v$ are perpendicular of equal length. \hfill 2022 Q2(c), 2018 Q2(b)
+    \item If $\overline{f(z)} = f(\overline{z})$ for all $z \in \mathbb{C}$ then $f(x)$ is real for all $x \in \mathbb{R}$. And if in addition $f$ is holomoprhic at $0$ then the function $f'(0)$ is real.\hfill 2021 Q2(a), 2017 Q2(c)
+    \item Let $f(z) = u +iv$ be holomoprhic on an open subset $\Omega$ of the complex plane and let $h(u,v)$ be a harmonic function of $u$ and $v$ on $f(\Omega)$. Prove that $g(x,y) = h(u(x,y), v(x,y))$ is harmonic on $\Omega$ (You may assume $\nabla u, \nabla v$ are equal length and perpendicular)\hfill 2021 Q2(c)
+    \item Define what is meant for a function $f(z)$ to be holomoprhic at a point $z_0 \in \mathbb{C}$ and prove that $f(z) = z^2$ is holomoprhic and find its derivative there. Hence prove that the product $uv$ is harmonic where $f=u +iv$ \hfill 2018 Q2(c)
+    \item Define what is meant for a function $f(z)$ to be holomoprhic at a point $z_0 \in \mathbb{C}$ and prove that $f(z) = \frac{1}{z}$ is holomoprhic on $\mathbb{C} \backslash 0$ and find its derivative there (State any theorems used) \hfill 2017 Q2(b)
+    \item Let $h(u,v)$ be a harmonic function of $u, v$ on $f(\Omega)$ (See 2016 Q2(b)). Prove that $g(x,y) = h(u(x,y), v(x,y))$ is harmonic on $\Omega$ \hfill 2016 Q2(c)
+\end{itemize}
+\subsection{Find Mobius Transformation}
+\begin{itemize}
+    \item $T(z) : (-1, 1, \infty) \mapsto (-1, -i, 1)$ \hfill 2023 Q2(d)
+    \item $T(z) : (2, 1, -1) \mapsto (1, 0, \infty)$    \hfill 2022 Q2(d)
+    \item $T(z) : (-i, -1, 1) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2021 Q2(d)
+    \item $T(z) : (-i, -1, i) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2018 Q2(d), 2017 Q2(d)
+    \item $T(z) : (-1, \frac{1}{2}, 2) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2016 Q2(d)
+\end{itemize}
 \begin{examplebox}[2023 Q1(a)]
 
     \textbf{Given} $|z - 4| > 3|z+4|$ \\
@@ -98,12 +134,13 @@
     \begin{minipage}{0.5\textwidth}
         \begin{center}
             \begin{tikzpicture}[scale=0.15]
+                \fill[custom_blue!20, even odd rule] (-5,0) circle [radius=3];
                 \draw[<->] (-10, 0) -- (5, 0) node[right] {$\text{Re}$};
                 \draw[<->] (0, -5) -- (0, 5) node[right] {$\text{Im}$};
                 \draw (-5,-0.5) -- (-5,0.5) node[below=0.2cm] {-5};
                 \draw (-0.5,3) -- (0.5,3) node[right=0.2cm] {3};
-                \draw[->, custom_red] (-5, 0) -- (-5+ 2.12132034356,2.12132034356) node[above=0.2cm] {$r = 3$};
                 \draw[custom_blue, thick]{(-5, 0) circle [radius=3]};
+
             \end{tikzpicture}
         \end{center}
     \end{minipage}
@@ -142,50 +179,22 @@
     \begin{minipage}{0.5\textwidth}
         \begin{center}
             \begin{tikzpicture}[scale=0.75]
-                \draw[<->] (-2, 0) -- (2, 0) node[right] {$\text{Re}$};
+                \fill[custom_blue!20, even odd rule]
+                (-1,-1) rectangle (3,2)
+                (-0.167,0.666) circle [radius=0.471];
+                \draw[<->] (-1, 0) -- (2, 0) node[right] {$\text{Re}$};
                 \draw[<->] (0, -1) -- (0, 2) node[right] {$\text{Im}$};
                 \draw (-0.167,-0.1) -- (-0.167,0.1) node[below=0.4cm, left=-0.2cm] {$-\frac{1}{6}$};
+                \draw (-0.1,0.66) -- (0.1,0.66) node[right=0.1cm] {$\frac{2}{3}$};
                 \draw[custom_blue, thick]{(-0.167, 0.666) circle [radius=0.471]};
+
+
+
+
             \end{tikzpicture}
         \end{center}
     \end{minipage}
 
 \end{examplebox}
-
-
-
-\pagebreak
-
-\section{Question 2: }
-\subsection{Determine image of the line}
-\begin{itemize}
-    \item $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 2\}$ \hfill 2023 Q2(a), 2021 Q2(b)
-    \item $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 1\}$ \hfill 2022 Q2(a), 2018 Q2(a), 2017 Q2(a)
-\end{itemize}
-\subsection{State and Use Cauchy-Riemann Equations}
-\begin{itemize}
-    \item State CRE, and use to prove $f(z) = \frac{1}{z}$ is holomoprhic on $\mathbb{C} \backslash \{0\}$ \hfill 2023 Q2(a)
-    \item State CRE, and use to prove $f(z) = z^2$ is holomoprhic on $\mathbb{C}$ \hfill 2022 Q2(b)
-    \item State CRE. Let $f = u+iv$ be holomoprhic on $\Omega \subset \mathbb{C}$. Prove $\nabla u$ and $\nabla v$ are perpendicular of equal length \hfill 2016 Q2(b)
-\end{itemize}
-\subsection{Show that}
-\begin{itemize}
-    \item If $\overline{f(z)} = f(\overline{z})$ for all $z \in \mathbb{C}$ then $f(x)$ is real for all $x \in \mathbb{R}$. And if in addition $f$ is holomoprhic at $x \in \mathbb{R}$ then $f'(x)$ is real. \hfill 2023 Q2(c)
-    \item Define that is meant for a function $g$ to be harmonic. If $f = u +iv$ is holomoprhic on $\Omega \subset \mathbb{C}$, prove that $v(x,y)$ is a harmonic function, and that $\nabla u$ and $\nabla v$ are perpendicular of equal length. \hfill 2022 Q2(c), 2018 Q2(b)
-    \item If $\overline{f(z)} = f(\overline{z})$ for all $z \in \mathbb{C}$ then $f(x)$ is real for all $x \in \mathbb{R}$. And if in addition $f$ is holomoprhic at $0$ then the function $f'(0)$ is real.\hfill 2021 Q2(a), 2017 Q2(c)
-    \item Let $f(z) = u +iv$ be holomoprhic on an open subset $\Omega$ of the complex plane and let $h(u,v)$ be a harmonic function of $u$ and $v$ on $f(\Omega)$. Prove that $g(x,y) = h(u(x,y), v(x,y))$ is harmonic on $\Omega$ (You may assume $\nabla u, \nabla v$ are equal length and perpendicular)\hfill 2021 Q2(c)
-    \item Define what is meant for a function $f(z)$ to be holomoprhic at a point $z_0 \in \mathbb{C}$ and prove that $f(z) = z^2$ is holomoprhic and find its derivative there. Hence prove that the product $uv$ is harmonic where $f=u +iv$ \hfill 2018 Q2(c)
-    \item Define what is meant for a function $f(z)$ to be holomoprhic at a point $z_0 \in \mathbb{C}$ and prove that $f(z) = \frac{1}{z}$ is holomoprhic on $\mathbb{C} \backslash 0$ and find its derivative there (State any theorems used) \hfill 2017 Q2(b)
-    \item Let $h(u,v)$ be a harmonic function of $u, v$ on $f(\Omega)$ (See 2016 Q2(b)). Prove that $g(x,y) = h(u(x,y), v(x,y))$ is harmonic on $\Omega$ \hfill 2016 Q2(c)
-\end{itemize}
-\subsection{Find Mobius Transformation}
-\begin{itemize}
-    \item $T(z) : (-1, 1, \infty) \mapsto (-1, -i, 1)$ \hfill 2023 Q2(d)
-    \item $T(z) : (2, 1, -1) \mapsto (1, 0, \infty)$    \hfill 2022 Q2(d)
-    \item $T(z) : (-i, -1, 1) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2021 Q2(d)
-    \item $T(z) : (-i, -1, i) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2018 Q2(d), 2017 Q2(d)
-    \item $T(z) : (-1, \frac{1}{2}, 2) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2016 Q2(d)
-\end{itemize}
-
 
 \end{document}
