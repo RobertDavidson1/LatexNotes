@@ -51,7 +51,7 @@
 \subsection{Prove the following}
 \begin{itemize}
 	\item Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$ \hfill \hyperref[sol:2021Q1b]{\uline{2021 Q1(b), 2018 Q1(a), 2016 Q1(b)}}
-	\item Define the complex exponential function $e^z$ and prove Eulers Formula $e^{i \theta} = \cos(\theta) + i \sin(\theta)$ \hfill 2017 Q1(b)
+	\item Define the complex exponential function $e^z$ and prove Eulers Formula $e^{i \theta} = \cos(\theta) + i \sin(\theta)$ \hfill \hyperref[sol:2017Q1b]{\uline{2017 Q1(b)}}
 \end{itemize}
 
 
@@ -510,6 +510,8 @@
 	$$p(\overline{w}) = \overline{p(w)} = 0$$
 \end{examplebox}
 \begin{examplebox}[Define the complex exponential function $e^z$ and prove Eulers Foruma $e^{i \theta} = \cos(\theta) + i\sin\theta$]
+	\phantomsection
+	\label{sol:2017Q1b}
 	\textbf{Defition :} For any $z \in mathbb{C}$, $e^z$ is defined by its power series:
 	$$e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!}$$
 	The series converges for all $z \in \mathbb{C}$ and has the following properties:
@@ -533,11 +535,9 @@
 		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty} \frac{(-1)^n(\theta)^{2n}}{(2n)!}
 		+ \sum_{n=0}^{\infty} \frac{i(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\
 		             & = \textstyle\sum_{n=0}^{\infty} \frac{(-1)^n(\theta)^{2n}}{(2n)!}
-		+ i\sum_{n=0}^{\infty} \frac{(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\
+		+ i\sum_{n=0}^{\infty} \frac{(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\:
 		             & = \cos(\theta) + i\sin(\theta)
 	\end{align*}
-
-
 \end{examplebox}
 \
 \end{document}
