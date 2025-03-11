@@ -518,9 +518,12 @@
 		e^{z} \cdot e^{-z} & = 1
 	\end{align*}
 	\textbf{Proof of Eulers Formula}
+
 	$$\text{Eulers Formula} \quad e^{i \theta} = \cos(\theta) + i\sin(\theta)$$
 	\begin{align*}
-		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty} \displaystyle \frac{(i\theta)^n}{n!}
+		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty}  \frac{(i\theta)^n}{n!}                                                                   & \textit{Substitute}\; z=i\theta         \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!}        & \textit{Split into even and odd powers} \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i)^{2n}(\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!}
 	\end{align*}
 
 \end{examplebox}
