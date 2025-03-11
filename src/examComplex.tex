@@ -411,10 +411,14 @@
 	\label{sol:2023Q1d}
 	We want $cos(z) = \frac{e^{iz} + e^{-iz}}{2} = 0$
 	\begin{align*}
-		\cos(z)          = \frac{e^{iz} + e^{-iz}}{2} & = 0                    \\
-		e^{iz} + e^{-iz}                              & = 0                    \\
-		e^{iz}                                        & = -e^{-iz}             \\
-		e^{iz} \cdot e^{iz}                           & = -e^{iz} \cdot e^{iz} \\
+		\cos(z)          = \frac{e^{iz} + e^{-iz}}{2} & = 0                                                                                                  \\
+		e^{iz} + e^{-iz}                              & = 0                                                                                                  \\
+		e^{iz}                                        & = -e^{-iz}                                                                                           \\
+		e^{iz} \cdot e^{iz}                           & = -e^{-iz} \cdot e^{iz}                                     & \emph{Multiply both sides by $e^{iz}$} \\
+		e^{2iz}                                       & = -e^{-iz + iz}                                                                                      \\
+		e^{2iz}                                       & = -1                                                                                                 \\
+		2^{iz}                                        & = e^{i(\pi +2k\pi)} \quad \text{for} \quad k \in \mathbb{Z}                                          \\
+		2iz                                           & = i\pi(1+2k)                                                & \emph{Taking the natural logaritm}
 	\end{align*}
 \end{examplebox}
 
