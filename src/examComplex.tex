@@ -434,6 +434,28 @@
 \begin{examplebox}[Calculate the principal value Log($z$) of $z = -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$ and prove $e^z$ is the inverse function of Log($z$)]
 	\phantomsection
 	\label{sol:2022Q1c}
+	\textbf{Part 1.} \\[2ex]
+	\begin{minipage}{0.5\textwidth}
+		\textbf{Given} $z = -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$:
+		$$\ln|z| = \sqrt{\left(-\frac{1}{\sqrt{2}}\right)^2 + \left(\frac{1}{\sqrt{2}}\right)^2} = 1$$
+		and
+		\begin{align*}
+			\text{Arg}(z) & = \tan^{-1}\left(\frac{-1/\sqrt{2}}{1/\sqrt{2}}\right) \\
+			              & = \tan^{-1}(-1)                                        \\
+			              & = -\tan^{-1}(1)                                        \\
+			              & =-\frac{\pi}{4} \Rightarrow \frac{3\pi}{4}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{tikzpicture}
+			\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
+			\draw[->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
+			\draw[custom_blue, thick] (0,0) -- (-0.707,0.707) node[midway, below left] {$1$};
+			\draw[custom_blue, thick] (-0.707,0.707) -- (-0.707,0) node[midway, below left] {$1$};
+			\draw[custom_blue, thick] (0,0) -- (-0.707,0) node[midway, below] {$\frac{\pi}{4}$};
+		\end{tikzpicture}
+	\end{minipage}
+
 \end{examplebox}
 
 
