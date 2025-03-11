@@ -521,10 +521,22 @@
 
 	$$\text{Eulers Formula} \quad e^{i \theta} = \cos(\theta) + i\sin(\theta)$$
 	\begin{align*}
-		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty}  \frac{(i\theta)^n}{n!}                                                                   & \textit{Substitute}\; z=i\theta         \\
-		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!}        & \textit{Split into even and odd powers} \\
-		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i)^{2n}(\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!}
+		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty}  \frac{(i\theta)^n}{n!}                                                                             & \textit{Substitute}\; z=i\theta         \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!}                  & \textit{Split into even and odd powers} \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i)^{2n}(\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i)^{2n+1} (\theta)^{2n+1}}{(2n+1)!} & \textit{Seperate powers}                \\
 	\end{align*}
+	\quad We note that:
+	$$i^{2n} = (i^{2})^n = (-1)^n$$
+	$$i^{2n+1} = i \cdot i^{2n} = i(-1)^n$$
+	Thus:
+	\begin{align*}
+		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty} \frac{(-1)^n(\theta)^{2n}}{(2n)!}
+		+ \sum_{n=0}^{\infty} \frac{i(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(-1)^n(\theta)^{2n}}{(2n)!}
+		+ i\sum_{n=0}^{\infty} \frac{(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\
+		             & = \cos(\theta) + i\sin(\theta)
+	\end{align*}
+
 
 \end{examplebox}
 \
