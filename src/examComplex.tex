@@ -409,16 +409,23 @@
 \begin{examplebox}[Find where the function is 0 : $\cos(z) = \frac{e^{iz} + e^{-iz}}{2}$]
 	\phantomsection
 	\label{sol:2023Q1d}
-	We want $cos(z) = \frac{e^{iz} + e^{-iz}}{2} = 0$
+	We want $cos(z) = \frac{e^{iz} + e^{-iz}}{2} = 0$, some basic algebra gives us:
 	\begin{align*}
-		\cos(z)          = \frac{e^{iz} + e^{-iz}}{2} & = 0                                                                                                  \\
-		e^{iz} + e^{-iz}                              & = 0                                                                                                  \\
-		e^{iz}                                        & = -e^{-iz}                                                                                           \\
-		e^{iz} \cdot e^{iz}                           & = -e^{-iz} \cdot e^{iz}                                     & \emph{Multiply both sides by $e^{iz}$} \\
-		e^{2iz}                                       & = -e^{-iz + iz}                                                                                      \\
-		e^{2iz}                                       & = -1                                                                                                 \\
-		2^{iz}                                        & = e^{i(\pi +2k\pi)} \quad \text{for} \quad k \in \mathbb{Z}                                          \\
-		2iz                                           & = i\pi(1+2k)                                                & \emph{Taking the natural logaritm}
+		\cos(z)          = \frac{e^{iz} + e^{-iz}}{2} & = 0                                                              \\
+		e^{iz} + e^{-iz}                              & = 0                                                              \\
+		e^{iz}                                        & = -e^{-iz}                                                       \\
+		e^{iz} \cdot e^{iz}                           & = -e^{-iz} \cdot e^{iz} & \emph{Multiply both sides by $e^{iz}$} \\
+		e^{2iz}                                       & = -e^{0}                & e^{a}          \cdot e^{b} = e^{a+b}   \\
+		e^{2iz}                                       & = -1                                                             \\
+	\end{align*}
+	\textbf{Recall:}
+	$$-1 = cos(\pi + 2\pi k) + i\sin(\pi + 2\pi k) = e^{i(\pi + 2\pi k)}$$
+	\textbf{Thus}
+	\begin{align*}
+		e^{2iz} & = e^{i(\pi + 2\pi k)}                                                 \\
+		2iz     & = i(\pi + 2\pi k)       & \emph{Taking the natrual log of both sides} \\
+		2z      & = \pi + 2\pi k          & \emph{Divide by 2}                          \\
+		z       & = \frac{\pi}{2} + \pi k & \emph{Divide by i}                          \\
 	\end{align*}
 \end{examplebox}
 
