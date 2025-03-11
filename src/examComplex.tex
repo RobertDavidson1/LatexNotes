@@ -547,11 +547,20 @@
 	$$w = \frac{1}{z}, \quad \text{so that } zw = 1 \quad \Rightarrow \quad z = \frac{1}{w},                               $$
 	$$z = \frac{1}{u+iv} = \frac{u-iv}{(u+iv)(u-iv)} = \frac{u-iv}{u^2 + v^2} = \frac{u}{u^2 + v^2} - i\frac{v}{u^2 + v^2}$$
 	\textbf{We note that:} $\text{Re}(z) = \frac{u}{u^2 + v^2} = a$
-	$$u = a(u^2 + v^2) \quad \Rightarrow \quad u = au^2 + av^2 \quad \Rightarrow \quad au^2 - u + av^2 = 0 \Rightarrow u^2 - \frac{1}{a} + v^2 = 0 $$
-	\textbf{Completing the square in $u$:}
-	$$\left(u^2 - \frac{1}{2a}\right)^2 - \frac{1}{4a^2} + av^2 = 0$$
-	\textbf{Letting $a = 2$:}
-	$$\left(u^2 - \frac{1}{4}\right)^2 - \frac{1}{16} + 4v^2 = 0$$
+	$$u = a(u^2 + v^2) \quad \Rightarrow \quad \frac{1}{a}u = u^2 + v^2 \quad  \Rightarrow u^2 - \frac{1}{a}u + v^2 = 0 $$
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Completing the square in $u$:}
+		$$\left(u^2 - \frac{1}{2a}\right)^2 - \frac{1}{4a^2} + av^2 = 0 \Rightarrow \left(u^2 - \frac{1}{2a}\right)^2 + av^2 = \frac{1}{4a^2}$$
+		\textbf{Letting $a = 2$:}
+		$$\left(u^2 - \frac{1}{4}\right)^2  + 4v^2 = \frac{1}{16}$$
+		\textbf{Thus the image is sphere with radius $\frac{1}{4}$ and centre $(\frac{1}{4}, 0)$}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{tikzpicture}
+			\draw{-} (-1.5, 0) -- (0.5, 0) node[right] {$\text{Re}$};
+		\end{tikzpicture}
+	\end{minipage}
+
 \end{examplebox}
 
 \begin{examplebox}[Determine the image of the line $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 1\}$]
