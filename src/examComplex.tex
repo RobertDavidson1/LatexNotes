@@ -344,9 +344,31 @@
 \end{examplebox}
 \begin{examplebox}[Determine and sketch the image under the map $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$ ]
     \begin{align*}
-        w & = e^z = e^{x + iy}                       \\
-          & = = e^x e^{iy} = e^x[\cos(y) + i\sin(y)] \\
+        w & = e^z = e^{x + iy}        \\
+          & = e^x e^{iy}              \\
+          & = e^x[\cos(y) + i\sin(y)] \\
     \end{align*}
+    \textbf{Recall} the polar form of a complex number $z = |z|[\cos(\theta) + i\sin(\theta)]$ \\
+    We see, $e^x$ acts as the radius, and is always positive, and $[\cos(y) + i\sin(y)]$ acts draws out a section of the unit circle, thus the mapping $w=e^z$ sends the set to:
+    $$\left\{w \in \mathbb{C} : |w| > 0, \frac{\pi}{4} \leq \text{arg}(w) \leq \frac{\pi}{2}\right\}$$
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[->] (-0.1,0) -- (2,0) node[right] {$\text{Re}$};
+            \draw[->] (0,-0.1) -- (0,2) node[above] {$\text{Im}$};
+
+            \def\radius{1.5}
+
+            \draw[custom_blue, thick] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)}) node[midway, below right] {$\pi/4$};
+            \draw[custom_blue, thick] (0,0) -- ({\radius*cos(90)},{\radius*sin(90)}) node[midway, left] {$\pi/2$};
+
+            \draw[custom_blue, thick] ({\1*cos(45)},{\1*sin(45)}) arc (45:90:\radius);
+            \draw[custom_blue, thick] ({\radius*cos(45)},{\radius*sin(45)}) arc (45:90:\radius);
+
+            \fill[custom_blue!20, opacity=0.3] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)})
+            arc (45:90:\radius) -- cycle;
+
+        \end{tikzpicture}
+    \end{center}
 \end{examplebox}
 \begin{tikzpicture}[scale=3]
     % Draw axes
@@ -361,7 +383,7 @@
     \draw[blue, thick] (0,0) -- ({\radius*cos(90)},{\radius*sin(90)}) node[midway, left] {$\pi/2$};
 
     % Draw the circular arc connecting these two rays at radius = 2
-    \draw[blue, thick] ({\radius*cos(45)},{\radius*sin(45)}) arc (45:90:\radius);
+
 
     % Optionally, fill the sector region
     \fill[blue!20, opacity=0.3] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)})
