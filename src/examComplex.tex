@@ -494,13 +494,63 @@
 		\overline{zw} = \overline{z} \cdot \overline{w} \\
 		\overline{(w^n)} = \left(\overline{z}\right)^n
 	\end{align*}
-	\textbf{Proof:} If $w$ is zero of a polynomial $p(z) = a_0 + a_1 z + \ldots + a_n z^n$ then $p(\overline{w}) = 0$\\
+	\textbf{Proof:} If $w$ is zero of a polynomial $p(z) = a_0 + a_1 z + \ldots + a_n z^n$ then $p(\overline{w}) = 0$
 	\begin{align*}
-		\text{Assume :}                                  \quad       & p(w) = a_0 + a_1 w + \ldots + a_n w^n = 0 \\
-		\text{Take the complex conjugate of both sides:}       \quad & \overline{p(w)} = \overline{0} = 0
+		\text{Assume} \quad                           & p(w) = a_0 + a_1 w + \ldots + a_n w^n = 0                                    \\
+		\text{Take the conjugate of both sides} \quad & \overline{p(w)} = \overline{0} = 0                                           \\
+		\text{Evalute} \quad                          & p(\overline{w}) = a_0 + a_1 \overline{w} + \ldots + a_n \overline{w}^n       \\
+		                                              & = a_0 + a_1 \overline{w} + \ldots + a_n \overline{w^n}                       \\
+		                                              & = \overline{a_0} + \overline{a_1} \overline{w} + \ldots + \overline{a_n w^n} \\
+		                                              & = \overline{a_0 + a_1 w + \ldots + a_n w^n}                                  \\
+		                                              & = \overline{p(w)} = 0
 	\end{align*}
-	\\
-\end{examplebox}
 
+\end{examplebox}
+\begin{proof}
+	Let $p(z) = a_nz^n + a_{n-1}z^{n-1} + \cdots + a_1z + a_0$ be a polynomial with real coefficients $a_i \in \mathbb{R}$ for all $i \in \{0,1,\ldots,n\}$.
+
+	Suppose that $w \in \mathbb{C}$ is a root of $p(z)$, meaning that $p(w) = 0$. We aim to prove that the complex conjugate $\overline{w}$ is also a root of $p(z)$, i.e., $p(\overline{w}) = 0$.
+
+	Let's evaluate $p(\overline{w})$ step by step:
+	\begin{align}
+		p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0
+	\end{align}
+
+	We'll use the fundamental property of complex conjugates: for any complex number $z$ and any integer $k$, $(\overline{z})^k = \overline{z^k}$.
+
+	Applying this property to each term:
+	\begin{align}
+		p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0 \\
+		                & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0
+	\end{align}
+
+	Now, we use a critical property of real numbers: for any $a \in \mathbb{R}$, we have $\overline{a} = a$. Since all coefficients $a_i$ are real, this means $\overline{a_i} = a_i$ for all $i$.
+
+	For any complex number $z$ and real number $a$, we have the property $\overline{az} = \overline{a} \cdot \overline{z} = a \cdot \overline{z}$. Using this property:
+	\begin{align}
+		p(\overline{w}) & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0              \\
+		                & = \overline{a_n w^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1 w} + \overline{a_0}
+	\end{align}
+
+	Another important property of complex conjugation is that it distributes over addition: $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$. Applying this property:
+	\begin{align}
+		p(\overline{w}) & = \overline{a_n w^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1 w} + \overline{a_0} \\
+		                & = \overline{a_n w^n + a_{n-1}w^{n-1} + \cdots + a_1 w + a_0}                                  \\
+		                & = \overline{p(w)}
+	\end{align}
+
+	Since we assumed that $p(w) = 0$, we have:
+	\begin{align}
+		p(\overline{w}) & = \overline{p(w)} \\
+		                & = \overline{0}    \\
+		                & = 0
+	\end{align}
+
+	The last step follows because the complex conjugate of zero is zero: $\overline{0} = 0$.
+
+	Therefore, we have proven that if $w$ is a root of $p(z)$ (i.e., $p(w) = 0$), then $\overline{w}$ is also a root of $p(z)$ (i.e., $p(\overline{w}) = 0$).
+
+	This result has an important corollary: the non-real roots of polynomials with real coefficients always occur in complex conjugate pairs.
+\end{proof}
 \end{document}
 
