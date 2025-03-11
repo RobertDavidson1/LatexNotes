@@ -440,9 +440,8 @@
 		$$\ln|z| = \sqrt{\left(1/\sqrt{2}\right)^2 + \left(1/ \sqrt{2}\right)^2} = 1$$
 		and
 		\begin{align*}
-			\text{Arg}(z) & = \tan^{-1}\left(\frac{-1/\sqrt{2}}{1/\sqrt{2}}\right) \\
-			              & = \tan^{-1}(-1)                                        \\
-			              & = -\tan^{-1}(1)                                        \\
+			\text{Arg}(z) & = \tan^{-1}(-1)                            \\
+			              & = -\tan^{-1}(1)                            \\
 			              & =-\frac{\pi}{4} \Rightarrow \frac{3\pi}{4}
 		\end{align*}
 	\end{minipage}
@@ -487,7 +486,21 @@
 		\text{Log}(e^z) & = z
 	\end{align*}
 \end{examplebox}
-
+\begin{examplebox}[Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$ ]
+	\textbf{Definition:} For a complex number $w = a+bi$ the complex conjugate of $w$ is defined as $\overline{w} = a - bi$ (with $a,b \in \mathbb{R}$ and $i = \sqrt{-1}$)\\
+	This has several properties:
+	\begin{align*}
+		\overline{z+w} = \overline{z} + \overline{w}    \\
+		\overline{zw} = \overline{z} \cdot \overline{w} \\
+		\overline{(w^n)} = \left(\overline{z}\right)^n
+	\end{align*}
+	\textbf{Proof:} If $w$ is zero of a polynomial $p(z) = a_0 + a_1 z + \ldots + a_n z^n$ then $p(\overline{w}) = 0$\\
+	\begin{align*}
+		\text{Assume :}                                  \quad       & p(w) = a_0 + a_1 w + \ldots + a_n w^n = 0 \\
+		\text{Take the complex conjugate of both sides:}       \quad & \overline{p(w)} = \overline{0} = 0
+	\end{align*}
+	\\
+\end{examplebox}
 
 \end{document}
 
