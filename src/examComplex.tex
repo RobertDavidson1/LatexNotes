@@ -560,7 +560,9 @@
 			\begin{tikzpicture}[scale=2]
 				\draw[->] (-0.6, 0) -- (0.6, 0) node[right] {$\text{Re}$};
 				\draw[->] (0, -0.6) -- (0, 0.5) node[right] {$\text{Im}$};
-				\draw (0.25, 0) circle [radius=0.25];
+				\draw[custom_blue, thick] (0.25, 0) circle [radius=0.25];
+
+				\draw (0.25, -0.05) -- (0.25, 0.05) node[below=0.1cm] {$^1 /_4 \pi$};
 			\end{tikzpicture}
 		\end{center}
 
@@ -569,6 +571,31 @@
 \end{examplebox}
 
 \begin{examplebox}[Determine the image of the line $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 1\}$]
+	\textbf{Let:}
+	$$w = f(z) = \frac{1}{z}$$
+	Then we have:
+	$$w = \frac{1}{z}, \quad \text{so that } zw = 1 \quad \Rightarrow \quad z = \frac{1}{w},                               $$
+	$$z = \frac{1}{u+iv} = \frac{u-iv}{(u+iv)(u-iv)} = \frac{u-iv}{u^2 + v^2} = \frac{u}{u^2 + v^2} - i\frac{v}{u^2 + v^2}$$
+	\textbf{We note that:} $\text{Re}(z) = \frac{u}{u^2 + v^2} = a$
+	$$u = a(u^2 + v^2) \quad \Rightarrow \quad \frac{1}{a}u = u^2 + v^2 \quad  \Rightarrow u^2 - \frac{1}{a}u + v^2 = 0 $$
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Completing the square in $u$:}
+		$$\left(u^2 - \frac{1}{2a}\right)^2 - \frac{1}{4a^2} + av^2 = 0 \Rightarrow \left(u^2 - \frac{1}{2a}\right)^2 + av^2 = \frac{1}{4a^2}$$
+		\textbf{Letting $a = 1$:}
+		$$\left(u^2 - \frac{1}{2}\right)^2  + v^2 = \frac{1}{4}$$
+		\textbf{Thus the image is sphere with radius $\frac{1}{2}$ and centre $(\frac{1}{2}, 0)$}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[->] (-0.6, 0) -- (0.6, 0) node[right] {$\text{Re}$};
+				\draw[->] (0, -0.6) -- (0, 0.5) node[right] {$\text{Im}$};
+				\draw[custom_blue, thick] (0.5, 0) circle [radius=0.5];
+
+				\draw (0.5, -0.05) -- (0.5, 0.05) node[below=0.1cm] {$^1 /_2 \pi$};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
 
 \end{examplebox}
 \end{document}
