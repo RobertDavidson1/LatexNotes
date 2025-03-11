@@ -393,7 +393,7 @@
 	\end{minipage}
 	\begin{minipage}{0.49\textwidth}
 		\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[scale=0.5]
 				\fill[custom_blue!20] (0,0) rectangle (1.8,1.57);
 				\draw[->] (-0.1,0) -- (2,0) node[right] {$\text{Re}$};
 				\draw[->] (0,-0.1) -- (0,2) node[above] {$\text{Im}$};
@@ -448,7 +448,7 @@
 	\end{minipage}
 	\begin{minipage}{0.5\textwidth}
 		\begin{center}
-			\begin{tikzpicture}[scale=1.3]
+			\begin{tikzpicture}[scale=1]
 				\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
 				\draw[->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
 
@@ -465,11 +465,27 @@
 		\end{center}
 	\end{minipage}
 	\textbf{Therefore}
+	$$
+		\text{Log}(z) = \ln|z| + i\text{Arg}(z) = i\frac{3\pi}{4}
+	$$
+	\textbf{Part 2: We need to show that (a) $e^{\text{Log(z)}} = z$ and (b) $\text{Log}(e^z) = z$} \\
+	\textbf{(a)} Let $z = |z| e^{i \theta}, |z| > 0$ and $\theta = \text{Arg}(z)$
 	\begin{align*}
-		\text{Log}(z) & = \ln|z| + i\text{Arg}(z) \\
-		              & = 0 + i\frac{3\pi}{4}
+		\text{Log}(z)     & = \ln|z| + i \theta                                             \\
+		e^{\text{Log}(z)} & = e^{\ln|z| + i\theta}         & \emph{Exponentiate both sides} \\
+		                  & = e^{\ln|z|} \cdot e^{i\theta} & \emph{Exponentiation rules}    \\
+		                  & = |z| \cdot e^{i\theta}                                         \\
+		e^{\text{Log}(z)} & = z
 	\end{align*}
-	\textbf{Part 2: We need to show that a) $e^{\text{Log(z)}}$}
+	\textbf{(b)} Let $z = x+iy, y \in [-\pi, \pi]$
+	\begin{align*}
+		e^z             & = e^{x+iy}                                                     \\
+		                & = e^x \cdot e^{iy}                                             \\
+		\text{Log}(e^z) & = \ln|e^x \cdot e^{iy}|  & \emph{Take log of both sides}       \\
+		                & = \ln|e^x| + \ln|e^{iy}| & \log(a \cdot b) = \log(a) + \log(b) \\
+		                & = x + iy                                                       \\
+		\text{Log}(e^z) & = z
+	\end{align*}
 \end{examplebox}
 
 
