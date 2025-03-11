@@ -41,82 +41,34 @@ The complex plane is a two-dimensional plane where the horizontal axis represent
 \hfill
 
 \subsection{Diagram of the Quadrants}
-\hfill \hfill
+
 \begin{center}
   \begin{tikzpicture}[scale=1]
     % Draw axes
-    \draw[->] (-1.2,0) -- (1.2,0) node[right] {\text{Re}};
-    \draw[->] (0,-1.2) -- (0,1.2) node[above] {\text{Im}};
+    \draw[->] (-2,0) -- (2,0) node[right] {\text{Re}};
+    \draw[->] (0,-2) -- (0,2) node[above] {\text{Im}};
 
 
     % Label quadrants
-    \node at (0.75,0.75) {I};
-    \node at (-0.75,0.75) {II};
-    \node at (-0.75,-0.75) {III};
-    \node at (0.75,-0.75) {IV};
+    \node at (1,1.25) {I};
+    \node at (-1,1.25) {II};
+    \node at (-1,-0.75) {III};
+    \node at (1,-0.75) {IV};
+
+    \node at (1,0.75) {$\theta$};
+    \node at (-1,0.75) {$\theta + \pi$};
+    \node at (-1,-1.25) {$\theta + \pi$};
+    \node at (1,-1.25) {$\theta$};
   \end{tikzpicture}
 \end{center}
 
 
+
+
 \subsection{Adjusting Angles Based on Quadrants}
 
-To correctly determine \( \theta \), adjust the angle returned by \(\tan^{-1}\left(\frac{y}{x}\right)\) according to the quadrant where \( z \) lies.
-
-\begin{enumerate}
-  \item \textbf{Quadrant I} (\( x > 0, y > 0 \)):
-        \[
-          \theta = \tan^{-1}\left(\frac{y}{x}\right)
-        \]
-        .
-
-  \item \textbf{Quadrant II} (\( x < 0, y > 0 \)):
-        \[
-          \theta =  \tan^{-1}\left(\frac{y}{x}\right) + \pi
-        \]
 
 
-  \item \textbf{Quadrant III} (\( x < 0, y < 0 \)):
-        \[
-          \theta = \pi + \tan^{-1}\left(\frac{y}{x}\right) - \pi
-        \]
-
-  \item \textbf{Quadrant IV} (\( x > 0, y < 0 \)):
-        \[
-          \theta = \tan^{-1}\left(\frac{y}{x}\right)
-        \]
-\end{enumerate}
-
-\begin{examplebox}[Let $z = 5 - 2i$]
-  $x = 5$ and $y = -2$. Thus, we have:
-  $\theta = 2\pi - \tan^{-1}({2/5}) \approx 338.20^\circ$
-  \begin{center}
-    \begin{tikzpicture}[scale=0.5]
-
-      % Draw axes
-      \draw[->] (-1, 0) -- (6, 0) node[right] {$\text{Re}$};
-      \draw[->] (0, -3) -- (0, 2) node[above] {$\text{Im}$};
-
-      % Draw the complex number z = 5 - 2i
-      \coordinate (z) at (5, -2);
-      \filldraw[red] (z) circle (1.5pt) node[below] {$z = 5 - 2i$};
-
-      % Draw the line from origin to z
-      \draw[thick, ->] (0, 0) -- (z);
-
-      % Draw the angle theta
-      \draw[->, custom_red, thick] (0.5, 0) arc (0:338.20:0.5);
-      \node[custom_red] at (1,1) {$\theta \approx 338.20^\circ$};
-
-      % Label x and y
-      \draw[dashed, thin] (5, 0) -- (5, -2);
-      \draw[dashed, thin] (0, -2) -- (5, -2);
-      \node at (5, 0.3) {$x = 5$};
-      \node at (-0.5, -2) {$y = -2$};
-
-    \end{tikzpicture}
-  \end{center}
-
-\end{examplebox}
 
 \section{Foundations}
 \subsection{Intro to Complex Numbers}
