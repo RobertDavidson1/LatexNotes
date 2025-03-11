@@ -383,8 +383,30 @@
     \end{minipage}
 \end{examplebox}
 \begin{examplebox}[Determine and sketch the region $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$ ]
-    $$w = \text{Log}(z) = \ln|z| + i\text{Arg}(z)$$
+    $$w = \text{Log}(z) = \ln|z| + i\text{Arg}(z) = u + iv$$
     Note that $|z| > 1$ implies $\ln|z| > 0$
+    Thus:\\
+    \begin{minipage}{0.5\textwidth}
+        $$\left\{w = u+iv \in \mathbb{C} : u > 0, 0 \leq v \leq \frac{\pi}{2}\right\}$$
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[->] (-0.1,0) -- (2,0) node[right] {$\text{Re}$};
+                \draw[->] (0,-0.1) -- (0,2) node[above] {$\text{Im}$};
+
+                \fill[custom_blue!20] (1,0) -- (1,1.5) arc (90:0:1.5) -- cycle;
+
+                \draw[custom_blue, thick] (1,0) -- (1,1.5) node[midway, right] {$\pi/2$};
+                \draw[custom_blue, thick] (1,0) -- (0,0) node[midway, below] {0};
+                \draw[custom_blue, thick] (1,0) -- (1,1) node[midway, right] {$\pi/4$};
+
+                \draw[custom_blue, thick] (1,0) -- (1,0.5) node[midway, right] {$\pi/8$};
+                \draw[custom_blue, thick] (1,0) -- (1,1.25) node[midway, right] {$3\pi/8$};
+                \draw[custom_blue, thick] (1,0) -- (1,1.75) node[midway, right] {$\pi/2$};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
 
 \end{examplebox}
 
