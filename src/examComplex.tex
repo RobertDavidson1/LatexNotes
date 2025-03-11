@@ -38,7 +38,7 @@
 \subsection{Determine and sketch the image under the mapping}
 \begin{itemize}
     \item $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$ \hfill \hyperref[sol:2023Q1c]{\uline{2023 Q1(c), 2021 Q1(a), 2017 Q1(d)}}
-    \item $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$  \hfill 2022 Q1(d), 2018 Q1(d), 2016 Q1(d)
+    \item $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$  \hfill \hyperref[sol:2022Q1d]{\uline{2022 Q1(d), 2018 Q1(d), 2016 Q1(d)}}
 \end{itemize}
 \subsection{Find z where the function is 0}
 \begin{itemize}
@@ -383,6 +383,8 @@
     \end{minipage}
 \end{examplebox}
 \begin{examplebox}[Determine and sketch the region $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$ ]
+    \phantomsection
+    \label{sol:2022Q1d}
     $$w = \text{Log}(z) = \ln|z| + i\text{Arg}(z) = u + iv$$
     Note that $|z| > 1$ implies $\ln|z| > 0$
     Thus:\\
@@ -392,22 +394,21 @@
     \begin{minipage}{0.49\textwidth}
         \begin{center}
             \begin{tikzpicture}
+                \fill[custom_blue!20] (0,0) rectangle (1.8,1.57);
                 \draw[->] (-0.1,0) -- (2,0) node[right] {$\text{Re}$};
                 \draw[->] (0,-0.1) -- (0,2) node[above] {$\text{Im}$};
+                \draw[custom_blue, thick] (0,1.57) -- (1.8,1.57);
 
-                \fill[custom_blue!20] (1,0) -- (1,1.5) arc (90:0:1.5) -- cycle;
+                \draw (-0.05, 1.57) -- (0.05, 1.57) node[left] {$\frac{\pi}{2}$};
 
-                \draw[custom_blue, thick] (1,0) -- (1,1.5) node[midway, right] {$\pi/2$};
-                \draw[custom_blue, thick] (1,0) -- (0,0) node[midway, below] {0};
-                \draw[custom_blue, thick] (1,0) -- (1,1) node[midway, right] {$\pi/4$};
-
-                \draw[custom_blue, thick] (1,0) -- (1,0.5) node[midway, right] {$\pi/8$};
-                \draw[custom_blue, thick] (1,0) -- (1,1.25) node[midway, right] {$3\pi/8$};
-                \draw[custom_blue, thick] (1,0) -- (1,1.75) node[midway, right] {$\pi/2$};
             \end{tikzpicture}
         \end{center}
     \end{minipage}
+\end{examplebox}
 
+\begin{examplebox}
+    \phantomsection
+    \label{sol:2022Q1d}
 \end{examplebox}
 
 
