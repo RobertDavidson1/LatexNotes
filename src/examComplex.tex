@@ -434,10 +434,10 @@
 \begin{examplebox}[Calculate the principal value Log($z$) of $z = -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$ and prove $e^z$ is the inverse function of Log($z$)]
 	\phantomsection
 	\label{sol:2022Q1c}
-	\textbf{Part 1.} \\[2ex]
-	\begin{minipage}{0.5\textwidth}
+	\textbf{Part 1.} \\
+	\begin{minipage}{0.49\textwidth}
 		\textbf{Given} $z = -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$:
-		$$\ln|z| = \sqrt{\left(-\frac{1}{\sqrt{2}}\right)^2 + \left(\frac{1}{\sqrt{2}}\right)^2} = 1$$
+		$$\ln|z| = \sqrt{\left(1/\sqrt{2}\right)^2 + \left(1/ \sqrt{2}\right)^2} = 1$$
 		and
 		\begin{align*}
 			\text{Arg}(z) & = \tan^{-1}\left(\frac{-1/\sqrt{2}}{1/\sqrt{2}}\right) \\
@@ -447,15 +447,29 @@
 		\end{align*}
 	\end{minipage}
 	\begin{minipage}{0.5\textwidth}
-		\begin{tikzpicture}
-			\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
-			\draw[->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
-			\draw[custom_blue, thick] (0,0) -- (-0.707,0.707) node[midway, below left] {$1$};
-			\draw[custom_blue, thick] (-0.707,0.707) -- (-0.707,0) node[midway, below left] {$1$};
-			\draw[custom_blue, thick] (0,0) -- (-0.707,0) node[midway, below] {$\frac{\pi}{4}$};
-		\end{tikzpicture}
-	\end{minipage}
+		\begin{center}
+			\begin{tikzpicture}[scale=1.3]
+				\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
+				\draw[->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
 
+				\draw (-0.707, 0.05) -- (-0.707, -0.05) node[below] {$-\frac{1}{\sqrt{2}}$};
+				\draw (0.05, 0.707) -- (-0.05, 0.707) node[right] {$\frac{1}{\sqrt{2}}$};
+				\draw[->, thick, custom_blue] (0,0) -- (-0.707, 0.707) node[midway, above=0.1cm] {$z$};
+
+				\draw[custom_red, thick] (-0.807,0) arc (180:135:0.807);
+				\node at (-0.5, 0.2) [custom_red] {$-\frac{\pi}{4}$};
+
+				\draw[custom_blue, thick] (0.5,0) arc (0:135:0.5);
+				\node at (0.2, 0.2) [custom_blue] {$\frac{3\pi}{4}$};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+	\textbf{Therefore}
+	\begin{align*}
+		\text{Log}(z) & = \ln|z| + i\text{Arg}(z) \\
+		              & = 0 + i\frac{3\pi}{4}
+	\end{align*}
+	\textbf{Part 2: We need to show that a) $e^{\text{Log(z)}}$}
 \end{examplebox}
 
 
