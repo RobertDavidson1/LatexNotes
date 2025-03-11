@@ -37,7 +37,7 @@
 \end{itemize}
 \subsection{Determine and sketch the image under the mapping}
 \begin{itemize}
-    \item $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$ \hfill 2023 Q1(c), 2021 Q1(a), 2017 Q1(d)
+    \item $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$ \hfill \hyperref[sol:20231Q1c]{\uline{2023 Q1(c), 2021 Q1(a), 2017 Q1(d)}}
     \item $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$ \hfill 2022 Q1(d), 2018 Q1(d), 2016 Q1(d)
 \end{itemize}
 \subsection{Find z where the function is 0}
@@ -341,10 +341,35 @@
                         & = -6i\sin\left(\frac{\pi}{8}\right)                                                                                                                              \\
                         & \approx -2.3i \neq 0
     \end{align*}
-
-
 \end{examplebox}
+\begin{examplebox}[Determine and sketch the image under the map $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$ ]
+    \begin{align*}
+        w & = e^z = e^{x + iy}                       \\
+          & = = e^x e^{iy} = e^x[\cos(y) + i\sin(y)] \\
+    \end{align*}
+\end{examplebox}
+\begin{tikzpicture}[scale=3]
+    % Draw axes
+    \draw[->] (-0.1,0) -- (2.5,0) node[right] {$\Re w$};
+    \draw[->] (0,-0.1) -- (0,2.5) node[above] {$\Im w$};
 
+    % Define the radius to display (this is arbitrary since |w|>0 in general)
+    \def\radius{2}
+
+    % Draw the two boundary rays: angle = pi/4 and pi/2
+    \draw[blue, thick] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)}) node[midway, below right] {$\pi/4$};
+    \draw[blue, thick] (0,0) -- ({\radius*cos(90)},{\radius*sin(90)}) node[midway, left] {$\pi/2$};
+
+    % Draw the circular arc connecting these two rays at radius = 2
+    \draw[blue, thick] ({\radius*cos(45)},{\radius*sin(45)}) arc (45:90:\radius);
+
+    % Optionally, fill the sector region
+    \fill[blue!20, opacity=0.3] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)})
+    arc (45:90:\radius) -- cycle;
+
+    % Label the region (optional)
+    \node at (1.5,1.5) {$w=e^z$ Sector};
+\end{tikzpicture}
 
 \end{document}
 
