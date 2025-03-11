@@ -50,7 +50,7 @@
 \end{itemize}
 \subsection{Prove the following}
 \begin{itemize}
-	\item Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$ \hfill 2021 Q1(b), 2018 Q1(a), 2016 Q1(b)
+	\item Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$ \hfill \hyperref[sol:2021Q1b]{\uline{2021 Q1(b), 2018 Q1(a), 2016 Q1(b)}}
 	\item Define the complex exponential function $e^z$ and prove Eulers Formula $e^{i \theta} = \cos(\theta) + i \sin(\theta)$ \hfill 2017 Q1(b)
 \end{itemize}
 
@@ -487,12 +487,14 @@
 	\end{align*}
 \end{examplebox}
 \begin{examplebox}[Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$ ]
+	\phantomsection
+	\label{sol:2021Q1b}
 	\textbf{Definition:} For a complex number $w = a+bi$ the complex conjugate of $w$ is defined as $\overline{w} = a - bi$ (with $a,b \in \mathbb{R}$ and $i = \sqrt{-1}$)\\
 	This has several properties:
 	\begin{align*}
 		\overline{z+w} = \overline{z} + \overline{w}    \\
 		\overline{zw} = \overline{z} \cdot \overline{w} \\
-		\overline{(w^n)} = \left(\overline{z}\right)^n
+		\overline{(w^n)} = \left(\overline{w}\right)^n
 	\end{align*}
 	\textbf{Proof:} If $w$ is zero of a polynomial $p(z) = a_0 + a_1 z + \ldots + a_n z^n$ then $p(\overline{w}) = 0$
 	\begin{align*}
@@ -504,53 +506,21 @@
 		                                              & = \overline{a_0 + a_1 w + \ldots + a_n w^n}                                  \\
 		                                              & = \overline{p(w)} = 0
 	\end{align*}
-
+	Thus, since we assumed $p(w) = 0$:
+	$$p(\overline{w}) = \overline{p(w)} = 0$$
 \end{examplebox}
-\begin{proof}
-	Let $p(z) = a_nz^n + a_{n-1}z^{n-1} + \cdots + a_1z + a_0$ be a polynomial with real coefficients $a_i \in \mathbb{R}$ for all $i \in \{0,1,\ldots,n\}$.
+\begin{examplebox}[Define the complex exponential function $e^z$ and prove Eulers Foruma $e^{i \theta} = \cos(\theta) + i\sin\theta$]
+	\textbf{Defition :} For any $z \in mathbb{C}$, $e^z$ is defined by its power series:
+	$$e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!}$$
+	The series converges for all $z \in \mathbb{C}$ and has the following properties:
+	\begin{align*}
+		e^{z_1 + z_2}      & = e^{z_1} \cdot e^{z_2} \\
+		e^{z} \cdot e^{-z} & = 1
+	\end{align*}
+	\textbf{Proof of Eulers Formula} \\
 
-	Suppose that $w \in \mathbb{C}$ is a root of $p(z)$, meaning that $p(w) = 0$. We aim to prove that the complex conjugate $\overline{w}$ is also a root of $p(z)$, i.e., $p(\overline{w}) = 0$.
-
-	Let's evaluate $p(\overline{w})$ step by step:
-	\begin{align}
-		p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0
-	\end{align}
-
-	We'll use the fundamental property of complex conjugates: for any complex number $z$ and any integer $k$, $(\overline{z})^k = \overline{z^k}$.
-
-	Applying this property to each term:
-	\begin{align}
-		p(\overline{w}) & = a_n(\overline{w})^n + a_{n-1}(\overline{w})^{n-1} + \cdots + a_1(\overline{w}) + a_0 \\
-		                & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0
-	\end{align}
-
-	Now, we use a critical property of real numbers: for any $a \in \mathbb{R}$, we have $\overline{a} = a$. Since all coefficients $a_i$ are real, this means $\overline{a_i} = a_i$ for all $i$.
-
-	For any complex number $z$ and real number $a$, we have the property $\overline{az} = \overline{a} \cdot \overline{z} = a \cdot \overline{z}$. Using this property:
-	\begin{align}
-		p(\overline{w}) & = a_n\overline{w^n} + a_{n-1}\overline{w^{n-1}} + \cdots + a_1\overline{w} + a_0              \\
-		                & = \overline{a_n w^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1 w} + \overline{a_0}
-	\end{align}
-
-	Another important property of complex conjugation is that it distributes over addition: $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$. Applying this property:
-	\begin{align}
-		p(\overline{w}) & = \overline{a_n w^n} + \overline{a_{n-1}w^{n-1}} + \cdots + \overline{a_1 w} + \overline{a_0} \\
-		                & = \overline{a_n w^n + a_{n-1}w^{n-1} + \cdots + a_1 w + a_0}                                  \\
-		                & = \overline{p(w)}
-	\end{align}
-
-	Since we assumed that $p(w) = 0$, we have:
-	\begin{align}
-		p(\overline{w}) & = \overline{p(w)} \\
-		                & = \overline{0}    \\
-		                & = 0
-	\end{align}
-
-	The last step follows because the complex conjugate of zero is zero: $\overline{0} = 0$.
-
-	Therefore, we have proven that if $w$ is a root of $p(z)$ (i.e., $p(w) = 0$), then $\overline{w}$ is also a root of $p(z)$ (i.e., $p(\overline{w}) = 0$).
-
-	This result has an important corollary: the non-real roots of polynomials with real coefficients always occur in complex conjugate pairs.
-\end{proof}
+	$$e^{i \theta} = \cos(\theta) + i\sin(\theta)$$
+\end{examplebox}
+\
 \end{document}
 
