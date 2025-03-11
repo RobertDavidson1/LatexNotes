@@ -29,43 +29,30 @@
 \section{Preliminary}
 \subsection{The Complex Plane and the Four Quadrants}
 
-The complex plane is a two-dimensional plane where the horizontal axis represents the real part and the vertical axis represents the imaginary part of a complex number. It is divided into four quadrants:
-
-\begin{enumerate}
-  \item \textbf{Quadrant I} ($0^\circ < \theta < 90^\circ$): Both $x$ and $y$ are positive.
-  \item \textbf{Quadrant II} ($90^\circ < \theta < 180^\circ$): $x$ is negative, $y$ is positive.
-  \item \textbf{Quadrant III} ($180^\circ < \theta < 270^\circ$): Both $x$ and $y$ are negative.
-  \item \textbf{Quadrant IV} ($270^\circ < \theta < 360^\circ$): $x$ is positive, $y$ is negative.
-\end{enumerate}
-
-\hfill
-
-\subsection{Diagram of the Quadrants}
-
-\begin{center}
-  \begin{tikzpicture}[scale=1]
-    % Draw axes
-    \draw[->] (-2,0) -- (2,0) node[right] {\text{Re}};
-    \draw[->] (0,-2) -- (0,2) node[above] {\text{Im}};
+\begin{minipage}{0.5\textwidth}
+  The complex plane is a two-dimensional plane where the horizontal axis represents the real part and the vertical axis represents the imaginary part of a complex number. It is divided into four quadrants:
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale=1]
+      % Draw axes
+      \draw[->] (-1.75,0) -- (1.75,0) node[right] {\text{Re}};
+      \draw[->] (0,-1.75) -- (0,1.75) node[above] {\text{Im}};
 
 
-    % Label quadrants
-    \node at (1,1.25) {I};
-    \node at (-1,1.25) {II};
-    \node at (-1,-0.75) {III};
-    \node at (1,-0.75) {IV};
+      % Label quadrants
+      \node at (1,1.25) {I};
+      \node at (-1,1.25) {II};
+      \node at (-1,-0.75) {III};
+      \node at (1,-0.75) {IV};
 
-    \node at (1,0.75) {$\theta$};
-    \node at (-1,0.75) {$\theta + \pi$};
-    \node at (-1,-1.25) {$\theta + \pi$};
-    \node at (1,-1.25) {$\theta$};
-  \end{tikzpicture}
-\end{center}
-
-
-
-
-\subsection{Adjusting Angles Based on Quadrants}
+      \node at (1,0.75) {$\theta$};
+      \node at (-1,0.75) {$\theta + \pi$};
+      \node at (-1,-1.25) {$\theta + \pi$};
+      \node at (1,-1.25) {$\theta$};
+    \end{tikzpicture}
+  \end{center}
+\end{minipage}
 
 
 
