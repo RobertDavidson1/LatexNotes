@@ -614,6 +614,13 @@ The \texttt{fopen()} is a function that is use for file opening. It takes two ar
 \end{itemize}\vspace{1em}
 \textbf{Closing a File}
 $$\texttt{fclose(fileptr);}$$
+Once a file is “closed” we can no longer read from it or write to it, unless
+we open it again. If we don’t do this, the file will still be closed when the
+program terminates. But until then, no other program on the same node
+(computer) can work with the file, and it might but be fully written to
+storage\\[2ex]
+\textbf{Reading from a file}
+$$\textttt{fgets(char *str, int n, FILE *fileptr);}$$
 \section{Algorithms}
 \begin{definitionbox}[: Algorithm]
     An algorithm is a finite set of precise intructions for performing a computation or solving a problem.
