@@ -655,6 +655,17 @@ to write to the file, we use one of:
     \item \texttt{fputs(char *str, FILE *fileptr);} : writes the string str to the file pointed to by fileptr, without its trailing '\texttt{\textbackslash 0}' character. The string is not formatted.
     \item \texttt{fputc(int c, FILE *fileptr);} : writes the character c to the file pointed to by fileptr. The character is not formatted.
 \end{itemize}
+\textbf{Issues concerining the use of files in C, we should be aware of:}
+\begin{itemize}
+    \item There are 6 modes a file can have: \texttt{r, w, a, r+, w+, a+}
+    \item To open a binary file, also add a \texttt{b} to the mode. For example, \texttt{rb} opens a file for reading in binary mode.
+    \item \texttt{freopen()} attaches a new file to an existing file pointer. It is used to redirect the standard input or output to a file. For example, \texttt{freopen("myList.txt", "w", stdout);} redirects the standard output to the file \texttt{myList.txt}. This means that any output that would normally go to the screen will now go to the file.
+    \item \texttt{tmpfile()} open a tempory file in binary read/write and is automatically deleted when closed or when the program terminates
+    \item \texttt{fflush(fileptr);} flushes the output buffer of the file pointer. This means that any data that has been buffered but not yet written to the file will be written to the file.
+    \item \texttt{remove("myList.txt");} deletes the file \texttt{myList.txt} from the disk.
+    \item \texttt{rename("myList.txt", "myList2.txt");} renames the file \texttt{myList.txt} to \texttt{myList2.txt}. If the new name already exists, it will be overwritten.
+    \item \texttt{int feof(FILE *fileptr);} returns a non-zero value if the end of the file has been reached. It is used to check if we have reached the end of the file while reading it.
+\end{itemize}
 
 
 
