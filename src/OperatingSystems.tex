@@ -593,6 +593,26 @@ This is the standard way to access a two-dimensional array element. It directly 
     \item If the layout of the array is such that the element \texttt{a[1][2]} is the 7th element (this is true, for example, if the row length is at least 3), then dereferencing this pointer retrieves \texttt{a[1][2]}.
 \end{itemize}
 
+\section{Files}
+Taking an input from a file is not much different than taking input from a keyboard. All we do is:
+\begin{itemize}
+    \item Declare an identifier of type \texttt{FILE} to hold the file pointer.
+    \item Open the file (\texttt{fopen()})
+    \item Read the file
+    \item Close the file (\texttt{fclose()})
+\end{itemize}
+\textbf{Declaring a file indentifier:}
+$$\texttt{FILE *datafile;}$$
+The datafile is now a pointer we can associate with a file. The \texttt{FILE} type is defined in the \texttt{stdio.h} library. \\[2ex]
+\textbf{Opening a file:}
+$$\texttt{fileptr = fopen(char *filename, char *mode);}$$
+The \texttt{fopen()} is a function that is use for file opening. It takes two arguments: the name of a file and the mode it will operrate in. A file pointer is returned. The mode can be:
+\begin{itemize}
+    \item \texttt{r} : read (open an existing file for reading)
+    \item \texttt{w} : write (overrwite the file or create a new one)
+    \item \texttt{a} : append (add to the end of the file)
+\end{itemize}
+
 \section{Algorithms}
 \begin{definitionbox}[: Algorithm]
     An algorithm is a finite set of precise intructions for performing a computation or solving a problem.
