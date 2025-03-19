@@ -620,63 +620,108 @@ program terminates. But until then, no other program on the same node
 (computer) can work with the file, and it might but be fully written to
 storage\\[2ex]
 \textbf{Reading from a file}
-$$\textttt{fgets(char *str, int n, FILE *fileptr);}$$
-\section{Algorithms}
-\begin{definitionbox}[: Algorithm]
-    An algorithm is a finite set of precise intructions for performing a computation or solving a problem.
-\end{definitionbox}
+$$\texttt{fgets(char *str, int n, FILE *fileptr);}$$
+reads in a line of text from the fileptr stream and stores at most n
+characters in array sting. The mew line character is stored.
+If the string can’t be read, because we have reached the end of the file,
+then NULL is returned.
+$$\texttt{fgetc(FILE *fileptr);}$$
+reads the next character in the file and stores it in the char variable c. If
+the end of the file has been reached, EOF is returned.
+$$\texttt{fscanf(FILE *fileptr, char *format, ...);}$$
+reads formatted input from the file. The format string is similar to the
+one used in \texttt{printf()} \\[2ex]
+\textbf{Navigating a file} \\
+Each time a character is reader from the input stream, a counter associated with the stream is incremented.
+$$\texttt{rewind(FILE *fileptr);}$$
+sets the indicator to the start of the file
+$$\texttt{ftell(FILE *fileptr);}$$
+is used to check the current value of the file position indivator in the form of a long int.
+$$\texttt{fseek(FILE *fileptr, long offset, int place);}$$
+the value of offset is the amount the indicator will be changed by, while placce is one of:
+\begin{itemize}
+    \item \texttt{SEEK\_SET(0)} : the start of the file
+    \item \texttt{SEEK\_CUR(1)} : the current position in the file
+    \item \texttt{SEEK\_END(2)} : the end of the file
+\end{itemize}
+\textbf{Writing to a file} \\
+To write to a file, we declare a file pointer:
+$$\texttt{FILE *outfile;}$$
+and open a new file in write mode:
+$$\texttt{outfile = fopen("myList.txt", "w");}$$
+to write to the file, we use one of:
+\begin{itemize}
+    \item \texttt{fprintf(outfile, char *format, ...);} : works like \texttt{printf()} except its first argument is a file pointer
+    \item \texttt{fputs(char *str, FILE *fileptr);} : writes the string str to the file pointed to by fileptr, without its trailing '\texttt{\textbackslash 0}' character. The string is not formatted.
+    \item \texttt{fputc(int c, FILE *fileptr);} : writes the character c to the file pointed to by fileptr. The character is not formatted.
+\end{itemize}
 
-\begin{algorithm}
-    \caption{Linear Search}
-    \begin{algorithmic}
-        \State $m \gets a_1$
-        \For{$k \gets 2$ to $n$}
-        \If{$m < a_k$}
-        \State $m \gets a_k$
-        \EndIf
-        \EndFor
-        \State \textbf{return} $m$
-    \end{algorithmic}
-\end{algorithm}
 
-\begin{examplebox}[Write a short C program that creates an array of 8 random integers between 0 and 20 and find the largest]
-    We should:
-    \begin{itemize}
-        \item Maike an array of random numbers using the \texttt{rand()} function from the \texttt{stdlib.h} library.
-        \item \texttt{rand()} generates a random number between 0 and 2147483647. To get a number between 0 and 20 we can use the modulo operator.
-        \item Use a for loop to implement linear search.
-    \end{itemize}
 
-    \begin{lstlisting}[style=cStyle, caption={Finding the largest element in an array}, numbers=none]
-    #include <stdio.h>
-    #include <stdlib.h> // Header file for rand function
 
-    int main(void)
-    {
-        int a[8];
-        printf("\nThe list is: ");
 
-        for (int k = 0; k < 8; k++)
-        {
-            a[k] = rand() % 21;
-            printf("\t%d", a[k]);
-        }
 
-        int m = a[0];
 
-        for (int k = 1; k < 8; k++)
-        {
-            if (m < a[k])
-            {
-                m = a[k];
-            }
-        }
 
-        printf("\nThe largest element is: %d\n", m);
-        return 0;
-    }
-    \end{lstlisting}
-\end{examplebox}
+
+
+
+% \section{Algorithms}
+% \begin{definitionbox}[: Algorithm]
+%     An algorithm is a finite set of precise intructions for performing a computation or solving a problem.
+% \end{definitionbox}
+
+% \begin{algorithm}
+%     \caption{Linear Search}
+%     \begin{algorithmic}
+%         \State $m \gets a_1$
+%         \For{$k \gets 2$ to $n$}
+%         \If{$m < a_k$}
+%         \State $m \gets a_k$
+%         \EndIf
+%         \EndFor
+%         \State \textbf{return} $m$
+%     \end{algorithmic}
+% \end{algorithm}
+
+% \begin{examplebox}[Write a short C program that creates an array of 8 random integers between 0 and 20 and find the largest]
+%     We should:
+%     \begin{itemize}
+%         \item Maike an array of random numbers using the \texttt{rand()} function from the \texttt{stdlib.h} library.
+%         \item \texttt{rand()} generates a random number between 0 and 2147483647. To get a number between 0 and 20 we can use the modulo operator.
+%         \item Use a for loop to implement linear search.
+%     \end{itemize}
+
+%     \begin{lstlisting}[style=cStyle, caption={Finding the largest element in an array}, numbers=none]
+%     #include <stdio.h>
+%     #include <stdlib.h> // Header file for rand function
+
+%     int main(void)
+%     {
+%         int a[8];
+%         printf("\nThe list is: ");
+
+%         for (int k = 0; k < 8; k++)
+%         {
+%             a[k] = rand() % 21;
+%             printf("\t%d", a[k]);
+%         }
+
+%         int m = a[0];
+
+%         for (int k = 1; k < 8; k++)
+%         {
+%             if (m < a[k])
+%             {
+%                 m = a[k];
+%             }
+%         }
+
+%         printf("\nThe largest element is: %d\n", m);
+%         return 0;
+%     }
+%     \end{lstlisting}
+% \end{examplebox}
 
 
 
