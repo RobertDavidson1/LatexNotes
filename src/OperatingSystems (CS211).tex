@@ -17,23 +17,7 @@
 \definecolor{commentgreen}{rgb}{0,0.5,0}
 \definecolor{keywordsblue}{rgb}{0,0,0.8}
 \definecolor{stringspurple}{rgb}{0.58,0,0.82}
-\lstdefinestyle{cStyle}{
-    language=C,
-    columns=fullflexible,            % Better handling of spaces & tabs
-    tabsize=4,
-    keepspaces=true,
-    showstringspaces=false,          % Do not underline string spaces
-    numbersep=5pt,
-    numbers=left,                    % Line numbers on the left
-    stepnumber=1,
-    basicstyle=\ttfamily\small,      % Base font style
-    keywordstyle=\bfseries\color{keywordsblue},
-    commentstyle=\itshape\color{commentgreen},
-    stringstyle=\color{stringspurple},
-    frame=single,                    % (Optional) draws a frame around the code
-    breaklines=true,                 % Automatic line breaking
-    breakatwhitespace=false
-}
+
 
 \title{
 \textbf{CS211: Programing For Operating Systems} \\ 
@@ -58,6 +42,15 @@ Robert Davidson
     \item  \texttt{string.h} : String manipulation functions (\texttt{strncpy, strcat, strcmp, strstr, strlen})
     \item \texttt{unistd.h} : Standard library for system calls (\texttt{fork, getpid, getppid})
 \end{itemize}
+
+\begin{definitionlisting}[]{My C Program}
+    #include <stdio.h>
+
+    int main(void) {
+            // ...
+        }
+\end{definitionlisting}
+
 
 \pagebreak
 \section{Intro to C}
@@ -337,13 +330,13 @@ In C is it important to distuinguish between a variable and the value stored in 
 int i = 10;
 \end{lstlisting}
 tells the system to allocate a location in memory to store the value 10. The variable \texttt{i} is a pointer to that location in memory. One of the distuinguihing features of C is it we can manipulate the memory address of the variable almost as easily as we can manipulate the value stored in it.
-\begin{definitionbox}[Pointers]
+\begin{conceptbox}[Pointers]
     \begin{itemize}
         \item if \texttt{i} is a variable, then \texttt{\&i} is a pointer to the location in memory where the value of \texttt{i} is stored.
         \item The declaration \texttt{int *p;} creates a variable \texttt{p} that can store the memory address of an integer. The \texttt{*} indicates that \texttt{p} is a pointer to an integer.
         \item If a memory address is stored in the variable \texttt{p}, then \texttt{*p} is the value stored at that address.
     \end{itemize}
-\end{definitionbox}
+\end{conceptbox}
 \pagebreak
 \subsection{Characters}
 \begin{conceptbox}[Character representation]
