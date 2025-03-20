@@ -1,47 +1,35 @@
-\documentclass[10pt]{article}
-\usepackage{lmodern}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage[most]{tcolorbox}
+\documentclass[french]{article}
+\usepackage[T1]{fontenc}
 \usepackage{xcolor}
-
-% Define custom purple color to match the image
-\definecolor{definitionpurple}{RGB}{88, 44, 131}
-
-% Create a sleek definition box with purple accents
-\newtcolorbox{definition}[2][]{%
-  enhanced,
-  breakable,
-  colback=white,
-  colframe=definitionpurple,
-  fonttitle=\bfseries\sffamily\color{white},
-  coltitle=definitionpurple,
-  boxrule=0.5pt,
-  leftrule=5pt,
-  rightrule=0.5pt,
-  toprule=0.5pt,
-  bottomrule=0.5pt,
-  left=12pt,
-  right=12pt,
-  top=8pt,
-  bottom=8pt,
-  attach boxed title to top left={xshift=0mm, yshift=0mm},
-  boxed title style={size=small, colback=definitionpurple},
-  title={Definition},
-  overlay unbroken and first={
-    \node[anchor=west, font=\bfseries\sffamily, text=definitionpurple, 
-          inner sep=0pt, outer sep=0pt] 
-          at ([xshift=2.5cm, yshift=-8pt]frame.north west) {#2};
-  },
-  #1
+\usepackage{fontawesome5}
+\usepackage{babel}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted, skins}
+% Création de ma box
+\newtcblisting{boxPython}{
+  enhanced, 
+  colback=black!3!white, 
+  toprule=1pt, 
+  bottomrule=1pt,
+  leftrule=0pt, 
+  rightrule=0pt, 
+  arc=0mm, 
+  attach boxed title to top left={yshift=-9pt, xshift=4pt},
+  title =  \textcolor{blue!80!black}{\faPython}, 
+  coltitle= black, 
+  boxed title style={colback=white},
+  listing engine=minted,
+  listing only,
+  minted language=python,
+  minted options={breaklines, autogobble, linenos, numbersep=8mm},
 }
-
-
-% Usage example
 \begin{document}
-
-\begin{definition}{Continuous Function}
-    A function $f: X \rightarrow Y$
-\end{definition}
-
+\begin{boxPython}
+    # Une première boucle
+    for i in range(0,5):
+    print(i)
+    # Une autre boucle
+    while i != "4":
+    print("Encore ? Eh bien oui, on est reparti pour un  tour de plus !!!")
+\end{boxPython}
 \end{document}
