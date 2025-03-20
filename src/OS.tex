@@ -812,5 +812,80 @@ Instead of our classic view of a single point of execution withing a program, a 
 \begin{definitionbox}[Task]
     A task is a collection of threads that belong to the same process and share code section, data section, and operating-system resources.
 \end{definitionbox}
+\begin{conceptbox}[Why use threads over processes]
+    \begin{itemize}
+        \item \textbf{Parallization} - Each thread can execute on a different processor core.
+        \item \textbf{Responsiveness} - A part of a process may continue working, even if another part is blocked, i.e. waiting for an I/O operation
+        \item \textbf{Resource Sharing} - For exampl we can have several hundred threads running at the same time. If they were all processes, we would have to allocate memory for each one. This is not the case with threads, as they share the same address space.
+        \item \textbf{Economy} - Thread creation is faster than process creation and context switching is faster
+        \item \textbf{Efficiency} - Threads belong to the same proc share common memory space and do not need support from the OS to communicate.
+    \end{itemize}
+\end{conceptbox}
+\subsubsection{Two types of threads - User and Kernel}
+\begin{center}
+    \begin{tabular}{|p{0.2\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}|}
+        \hline
+        \textbf{Thread Type}    & \textbf{User Threads}                                                                                         & \textbf{Kernel Threads}                                                                                                      \\
+        \hline
+        \textbf{Implementation} & Implemented by a thread library at compiler/library level above the OS kernel                                 & Created, managed and scheduled by the operating system kernel                                                                \\
+        \hline
+        \textbf{Advantages}     & Quick to create and destroy since system calls are not required                                               & Do not suffer from blocking problems; if one thread blocks, the kernel can schedule another thread from the same application \\
+        \hline
+        \textbf{Disadvantages}  & If the kernel is not threaded and one thread makes a blocking system call, the entire process will be blocked & Slower to manipulate compared to user threads due to system call overhead                                                    \\
+        \hline
+    \end{tabular}
+    \captionof{table}{Comparison of User and Kernel Threads}
+\end{center}
+\subsection{Constasting subprocs and threads}
+These programs will have a globl int \texttt{GlobalVar}, initalised as 0. First we'll see that subprocces that increment GlobalVar do not change the parents value.
+\begin{lstlisting}[style=cStyle, caption={Subprocs and GlobalVar}]
+    /* forkmem.c: forks don't share memory */
+#include <stdio.h>
+#include <assert.h>
+#include <pthread.h> // not used here, but needed in Example 2
+#include <unistd.h>
+
+int val = 0; // Global variable; will check if really shared
+
+int main(void)
+{
+    printf("--------------------------------------\n");
+    printf(" An example showing that fork()'ed \n");
+    printf(" child process has a copy of its parent's \n");
+    printf("START:\tThis is parent (PID=%d); val=%d\n",
+           getpid(), val);
+    
+    int pid = fork();
+    if (pid == 0) { // child
+        val++;
+        printf("\tThis is child (PID=%d); val=%d\n",
+               getpid(), val);
+    } else { // parent
+        sleep(1); // make sure the subprocess does its thing first
+        printf("END:\tThis is parent (PID=%d); val=%d\n",
+               getpid(), val);
+    }
+    
+    return 0;
+
+    Output:
+    "An example showing that fork()ed subprocess has a copy of its parents memory, but it is not shared.
+    START: This is parent (PID=24875); val=0
+    This is child (PID=24876); val=1
+    END: This is parent (PID=24875); val=0"
+}
+\end{lstlisting}
+
+On Linux, Mac and related systems, in C we can create threads called \texttt{pthreads} (POSIX threads). We will use two functions:
+\begin{itemize}
+    \item \texttt{pthread\_create()} - used for creating thread and takes four arguments.
+          \begin{itemize}
+              \item ID of thread process
+              \item Thread attributes (we'll ignore and use NULL)
+              \item A function called by thread when created
+              \item Argument to pass to the function.
+          \end{itemize}
+    \item \texttt{pthread\_join()} - tells parent to wait for a thread to finish
+\end{itemize}
 
 \end{document}
