@@ -26,7 +26,7 @@
     numbersep=5pt,
     numbers=left,                    % Line numbers on the left
     stepnumber=1,
-    basicstyle=\ttfamily\small,      % Base font style
+    basicstyle=\ttfamily\scriptsize,      % Base font style
     keywordstyle=\bfseries\color{keywordsblue},
     commentstyle=\itshape\color{commentgreen},
     stringstyle=\color{stringspurple},
@@ -51,4 +51,247 @@ Robert Davidson
 
 \tableofcontents
 \pagebreak
+
+\section{Intro to C}
+C is a compiled language, not an interpretive language. Meaning we need a program called a compiler to convert the code into machine code. The compiler is called \textbf{gcc} \\[2ex]
+It is a \textbf{very small language and relies heavily on libraries}. The compiler must be told in advance how these functions should be used. So before the compilation process, the \textbf{preprocessor} is run to include the function prototypes The compiler then compiles the code into an object file.
+
+\subsection{Variables}
+In C, variables must be declared before they're used. Declarion should have a type to tell compiler what data the variable will hold
+\begin{itemize}
+    \item \textbf{int} : Integer (1, 2, 3, 4, 5, ...)
+    \item \textbf{float} : Floating-point number (7 decimal digits)
+    \item \textbf{double} : Double-precision floating-point number (15 decimal digits)
+    \item \textbf{char} : Character (a, b, c, ...)
+    \item \textbf{void} : No type  (used for functions that do not return a value)
+\end{itemize}
+
+\subsection{Operators}
+
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operator & Description    & Example         \\
+        \hline
+        +        & Addition       & \texttt{a + b}  \\
+        \hline
+        -        & Subtraction    & \texttt{a - b}  \\
+        \hline
+        *        & Multiplication & \texttt{a * b}  \\
+        \hline
+        /        & Division       & \texttt{a / b}  \\
+        \hline
+        \%       & Modulus        & \texttt{a \% b} \\
+        \hline
+    \end{tabular}
+    \captionof{table}{Arithmetic Operators}
+\end{minipage}
+\hfill
+\begin{minipage}{0.50\textwidth}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operator & Description         & Example          \\
+        \hline
+        =        & Assignment          & \texttt{a = b}   \\
+        \hline
+        +=       & Add and assign      & \texttt{a += b}  \\
+        \hline
+        -=       & Subtract and assign & \texttt{a -= b}  \\
+        \hline
+        *=       & Multiply and assign & \texttt{a *= b}  \\
+        \hline
+        /=       & Divide and assign   & \texttt{a /= b}  \\
+        \hline
+        \%=      & Modulus and assign  & \texttt{a \%= b} \\
+        \hline
+        ++       & Increment           & \texttt{a++}     \\
+        \hline
+        --       & Decrement           & \texttt{a--}     \\
+        \hline
+    \end{tabular}
+    \captionof{table}{Assignment and Arithmetic Assignment Operators}
+\end{minipage}
+
+\vspace{1em}
+\begin{minipage}{0.50\textwidth}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operator & Description      & Example         \\
+        \hline
+        ==       & Equal            & \texttt{a == b} \\
+        \hline
+        !=       & Not Equal        & \texttt{a != b} \\
+        \hline
+        >        & Greater          & \texttt{a > b}  \\
+        \hline
+        <        & Less             & \texttt{a < b}  \\
+        \hline
+        >=       & Greater or Equal & \texttt{a >= b} \\
+        \hline
+        <=       & Less or Equal    & \texttt{a <= b} \\
+        \hline
+    \end{tabular}
+    \captionof{table}{Relational Operators}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Operator & Description & Example           \\
+        \hline
+        \&\&     & Logical AND & \texttt{a \&\& b} \\
+        \hline
+        ||       & Logical OR  & \texttt{a || b}   \\
+        \hline
+        !        & Logical NOT & \texttt{!a}       \\
+        \hline
+    \end{tabular}
+    \captionof{table}{Logical Operators}
+\end{minipage}
+
+\pagebreak
+
+\subsection{Control Flow}
+
+\subsection{If Else}
+\begin{lstlisting}[style=cStyle, caption={If-Else}]
+int a = 10;
+if(a > 10){
+        printf("a is greater than 10\n");
+    }else if(a == 10){
+        printf("a is equal to 10\n");
+    }else{
+printf("a is less than 10\n");
+}
+\end{lstlisting}
+Logical opeators, \texttt{\&\&} and \texttt{||} can be used to make more complex conditions.
+\begin{lstlisting}[style=cStyle, caption={Complex If-Else}]
+if(a > 10 && a < 20){
+    printf("a is between 10 and 20\n");
+}
+\end{lstlisting}
+\subsubsection*{For loop}
+$$\texttt{for(initial val; continuation condition; increment/decrement)\{...\}}$$
+
+\begin{lstlisting}[style=cStyle, caption={Print numbers from 0 to 9}]
+for(int i = 0; i < 10; i++){
+    printf("i is %d\n", i);
+}
+\end{lstlisting}
+\subsubsection*{While loop}
+$$\texttt{while(expression)\{...\}}$$
+\begin{lstlisting}[style=cStyle, caption={Print numbers from 0 to 9}]
+int i = 0;
+while(i < 10){
+    printf("i is %d\n", i);
+    i++;
+}
+\end{lstlisting}
+\subsubsection*{Do While loop}
+$$\texttt{do\{...\}while(expression);}$$
+\begin{lstlisting}[style=cStyle, caption={Print numbers from 0 to 9}]
+int i = 0;
+do{
+    printf("i is %d\n", i);
+    i++;
+}while(i < 10);
+\end{lstlisting}
+
+\newpage
+
+\subsection{Output}
+\texttt{printf()} is used to print formatted output to the screen. It is a variadic function, meaning it can take any number of arguments. The first argument is a format string, followed by the values to be printed.\\[2ex]
+The format string may contain a number of escape characters, represented by a backslash. Some of the most common escape characters are:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        Sequence                               & Description                                  \\
+        \hline
+        \texttt{\textbackslash a}              & Produces a beep or flash                     \\
+        \hline
+        \texttt{\textbackslash b}              & Moves cursor to last column of previous line \\
+        \hline
+        \texttt{\textbackslash f}              & Moves cursor to start of next page           \\
+        \hline
+        \texttt{\textbackslash n}              & New line                                     \\
+        \hline
+        \texttt{\textbackslash r}              & Carriage return                              \\
+        \hline
+        \texttt{\textbackslash t}              & Tab                                          \\
+        \hline
+        \texttt{\textbackslash v}              & Vertical tab                                 \\
+        \hline
+        \texttt{\textbackslash \textbackslash} & Prints a backslash                           \\
+        \hline
+        \texttt{\textbackslash '}              & Prints a single quote                        \\
+        \hline
+    \end{tabular}
+\end{center}
+A conversion character is a letter that follows a \texttt{\%} and tells \texttt{printf()} to display the value stored in the corresponding variable. Some of the most common conversion characters are:
+\begin{center}
+    \begin{tabular}{|l|l|}
+        \hline
+        Specifier                    & Description                                  \\
+        \hline
+        \texttt{\%c}                 & Single character (char)                      \\
+        \hline
+        \texttt{\%d} or \texttt{\%i} & Decimal integer (int)                        \\
+        \hline
+        \texttt{\%e} or \texttt{\%E} & Floating-point (scientific notation)         \\
+        \hline
+        \texttt{\%f}                 & Floating-point value (float)                 \\
+        \hline
+        \texttt{\%g} or \texttt{\%G} & Same as \%e/\%E or \%f, whichever is shorter \\
+        \hline
+        \texttt{\%s}                 & String (char array)                          \\
+        \hline
+        \texttt{\%u}                 & Unsigned int                                 \\
+        \hline
+        \texttt{\%x}                 & Hexadecimal integer                          \\
+        \hline
+        \texttt{\%p}                 & Pointer (memory address)                     \\
+        \hline
+        \texttt{\%\%}                & Prints the \% character                      \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Input}
+\texttt{scanf()} reads input from standat input, format it, as directed by a conversion character and store the address of a specified variable.
+\begin{lstlisting}[style=cStyle, caption={Reading an integer}]
+    int number; 
+    char letter; 
+    printf("Enter a number and a char: ");
+    scanf("%d %c", &number, &letter);
+
+    printf("You entered: %d and %c\n", number, letter);
+\end{lstlisting}
+\begin{itemize}
+    \item The scan \texttt{scanf()} returns an integer equal to the number of successfull conversions made.
+    \item There is related function \texttt{fscanf()} that reads from a file. \texttt{scanf()} is really just a wrapper for \texttt{fscanf()} that treats the keyboard as a file.
+    \item There are other useful functions for readint the standard input stream: \texttt{getchar()} and \texttt{gets()}.
+\end{itemize}
+\begin{lstlisting}[style=cStyle, caption={Check for no input}]
+    int number;
+    printf("Enter a number between 1 and 30: ");
+    scanf("%d", &number);
+
+    while ((number<1) || (number>30))
+    {
+        printf("Invalid number. Please enter a number between 1 and 30: ");
+        scanf("%d", &number);
+    }
+\end{lstlisting}
+
+\section{Functions}
+\subsection{Protype and Definition}
+\textgbf{Protype :} A function prototype is a declaration of a function that tells the compiler what the function looks like. It includes the function name, return type, and parameter types. The prototype must be declared before the function is called.\\[2ex]
+\textbf{Definition :} A function definition is the actual implementation of the function. It includes the function name, return type, parameter types, and the body of the function. The definition must be declared after the function is called.
+
+
+
 \end{document}
