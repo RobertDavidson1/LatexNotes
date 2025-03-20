@@ -288,7 +288,6 @@ A conversion character is a letter that follows a \texttt{\%} and tells \texttt{
     \end{tabular}
 \end{center}
 
-\pagebreak
 \subsection{Input}
 \texttt{scanf()} reads input from standat input, format it, as directed by a conversion character and store the address of a specified variable.
 \begin{lstlisting}[style=cStyle, caption={Reading an integer}]
@@ -328,7 +327,7 @@ Each function consists of two parts:
           these are treated like comments, and ignored
     \item \textbf{Definition:} The function definition contains the code that is executed when the function is called. It begins with the function name, followed by the parameter list, and the body of the function.
 \end{itemize}
-\pagebreak
+
 \begin{lstlisting}[style=cStyle, caption={Calculate Mean},basicstyle=\ttfamily\scriptsize]
 #include <stdio.h>
 #include <stdlib.h>
@@ -404,7 +403,7 @@ int main(void)
 }
 \end{lstlisting}
 
-\pagebreak
+
 
 \subsection{Call-by-value and Pointers}
 In C is it important to distuinguish between a variable and the value stored in it. \\[2ex]
@@ -667,12 +666,17 @@ to write to the file, we use one of:
     \item \texttt{int feof(FILE *fileptr);} returns a non-zero value if the end of the file has been reached. It is used to check if we have reached the end of the file while reading it.
 \end{itemize}
 
-
-
-
-
-
-
+\section{The Process}
+$$\textbf{"A process is a running program."}$$
+The operating system gives the impression many programs are running at the same time, but in reality, only one program is running at a time. This is made possible by abstracting the the concept of a running program as a process.
+\subsubsection*{Every process consists of}
+\begin{itemize}
+    \item The process text - the program code
+    \item The program counter - the address of the next instruction to be executed
+    \item The process stack - temporary data, local variables, function parameters, return addresses
+    \item The data section - global variables
+\end{itemize}
+A process is not just a program - if two users run the same program at the same time, they create different processes. Each process has its own memory space, so they do not interfere with each other. \\[2ex]
 
 
 
