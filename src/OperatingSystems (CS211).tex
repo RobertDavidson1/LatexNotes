@@ -741,7 +741,19 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
     \item \texttt{pthread\_join()} - tells parent to wait for a thread to finish
 \end{itemize}
 
-
-
+\begin{table}[h!]
+    \centering
+    \caption{Models}
+    \begin{tabularx}{\textwidth}{@{} l c X @{}}
+        \toprule
+        Thread Type    & User Threads                                                                  & Kernel Threads                                                                                                               \\
+        \midrule
+        Implementation & Implemented by a thread library at compiler/library level above the OS kernel & Created, managed and scheduled by the operating system kernel
+        \\
+        Advantages     & Quick to create and destroy since system calls are not required               & Do not suffer from blocking problems; if one thread blocks, the kernel can schedule another thread from the same application \\
+        Disadvantages  & CM                                                                            & hello                                                                                                                        \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \end{document}
