@@ -954,6 +954,18 @@ The dispatcher is a module that gives control of the CPU process selected by the
 \end{itemize}
 This gives rise to dispatch latency, the time it takes for the dispatcher to stop one process and start another. This is a very small amount of time, but it is important to keep it as low as possible.
 
-\subsection{Algorithms}
+\subsection{Scheduling Algorithms}
+\begin{itemize}
+    \item First Come First Served (FCFS) - the process that arrives first is executed first. This is a non-preemptive algorithm.
+    \item Shortest Job First (SJF) - the process with the shortest CPU burst time is executed first. This is a non-preemptive algorithm.
+    \item Shortest Time To Completion (STC) - the process with the shortest time to completion is executed first. This is a preemptive algorithm.
+    \item Round Robin (RR) - each process is given a fixed time slice (quantum) to execute. If the process does not finish within the time slice, it is preempted and the next process is executed. This is a preemptive algorithm.
+\end{itemize}
+We'll consider a few examples when describing these, and assume each proc has a single CPU burst, measured in milliseconds. We would like to compare and determine which is best, but there are many choices of what quallifies as best. Here are a few metrics.
+\begin{itemize}
+    \item Turnaround time - the time that elapses between when proc arrives in system and when it is completed.
+    \item Wait time - time between when a proc arrives and when it comples, that it is spent doing nothing.
+    \item Reponse time - time between when proc arrives and when it first starts executing.
+\end{itemize}
 
 \end{document}
