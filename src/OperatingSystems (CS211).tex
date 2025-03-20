@@ -745,9 +745,54 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
 \section{Sheduling Algorithms}
 $$\textbf{"Several process/jobs are available to be run. In what order should they be executed?}$$
 \subsection{Metrics to Compare Algoritms}
+\begin{conceptbox}[Metrics to Compare Algorithms]
+    \begin{itemize}
+        \item \textbf{Turnaround time} - the total time taken to execute a process. It is the sum of the waiting time and the burst time.
+        \item \textbf{Waiting time} - the total time a process has been waiting in the ready queue.
+        \item \textbf{Response time} - the time taken from when a request was submitted until the first response is produced.
+    \end{itemize}
+\end{conceptbox}
+\subsubsection{First in First out}
+The simplest algorithm, the first process that requests the CPU is the first to be executed.
+\subsubsection{}
+
+\begin{minipage}{0.5\textwidth}
+    Scenario 1: \\
+    \centering
+
+    \begin{tabularx}{\textwidth}{@{} l X X @{}}
+        \toprule
+        Proc  & Arrival Time & Burst Time \\
+        \midrule
+        $P_1$ & 0            & 10         \\
+        $P_2$ & 0            & 10         \\
+        $P_3$ & 0            & 10         \\
+    \end{tabularx}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+    Scenario 2: \\
+    \centering
+
+    \begin{tabularx}{\textwidth}{@{} l l l @{}}
+        \toprule
+        Proc  & Arrival Time & Burst Time \\
+        \midrule
+        $P_1$ & 0            & 19         \\
+        $P_2$ & 0            & 10         \\
+        $P_3$ & 0            & 1          \\
+    \end{tabularx}
+\end{minipage}
+Lets compute the average turnaround for both scenarios:
+\begin{itemize}
+    \item Scenario 1: $TAT = \frac{10 + 20 + 30}{3} = 20$
+    \item Scenario 2: $TAT = \frac{19 + 29 + 30}{3} = 26$
+\end{itemize}
+
+
+
 \begin{table}[h!]
     \centering
-    \begin{tabularx}{\textwidth}{@{} l X X @{}}
+    \begin{tabularx}{\textwidth}{@{} X X X @{}}
         \toprule
         Algorithm                & Advantages                                                                                                                    & Disadvantages \\
         \midrule
@@ -760,6 +805,7 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
         Is non pre-eemptive.
                                  & Cannot be emplyed in a realisting setting because we would be required to know the length of next CPU Burst before it happens
         \\
+        \addlinespace[2ex]
         STCF (Shortest Time to Completion First)
                                  & more optimal” than SJF when processes arrive at
         different times
