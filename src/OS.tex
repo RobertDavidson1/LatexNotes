@@ -10,32 +10,22 @@
 
 % Create a clean definition box with left purple bar
 \newtcolorbox{definition}[2][]{%
-  enhanced,
-  breakable,
-  colback=white,
-  colframe=definitionpurple!30!white,
-  coltext=black,
-  leftrule=5pt,
-  rightrule=0.5pt,
-  toprule=0.5pt,
-  bottomrule=0.5pt,
-  left=12pt,
-  right=12pt,
-  top=6pt,
-  bottom=6pt,
-  fonttitle=\large\sffamily\color{definitionpurple}\bfseries,
-  title=#2,
-overlay={
-    \node[anchor=west, font=\sffamily\small\bfseries, 
-          text=white, fill=definitionpurple, inner sep=3pt,
-          minimum height=3mm] 
-          at ([xshift=12pt]frame.north west) {\textsc Definition};
-  },
-attach boxed title to top left={xshift=-10pt},
-title style={left=65pt},
-  attach boxed title to top left,
-  boxed title style={colback=white, colframe=white},
-  #1
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=definitionpurple!30!white,
+    coltext=black,
+    leftrule=5pt,
+    rightrule=0.5pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
+    left=12pt,
+    right=12pt,
+    top=6pt,
+    bottom=6pt,
+    fonttitle=\large\sffamily\bfseries,
+    title={\makebox[\linewidth][l]{\textsc{Definition}}\hfill\colorbox{gray!20}{\textcolor{definitionpurple}{#2}}},
+    #1
 }
 
 % Usage example
