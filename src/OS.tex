@@ -8,37 +8,40 @@
 % Define custom purple color to match the image
 \definecolor{definitionpurple}{RGB}{88, 44, 131}
 
-% Create a clean definition box with left purple bar
+% Create a sleek definition box with purple accents
 \newtcolorbox{definition}[2][]{%
-    enhanced,
-    breakable,
-    colback=white,
-    colframe=definitionpurple!30!white,
-    coltext=black,
-    leftrule=5pt,
-    rightrule=0.5pt,
-    toprule=0.5pt,
-    bottomrule=0.5pt,
-    left=12pt,
-    right=12pt,
-    top=6pt,
-    bottom=6pt,
-    fonttitle=\large\sffamily\bfseries,
-    title={\makebox[\linewidth][l]{\textsc{Definition}}\hfill\colorbox{gray!20}{\textcolor{definitionpurple}{#2}}},
-    #1
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=definitionpurple,
+  sharp corners,
+  boxrule=0.5pt,
+  leftrule=5pt,
+  rightrule=0.5pt,
+  toprule=0.5pt,
+  bottomrule=0.5pt,
+  left=12pt,
+  right=12pt,
+  top=5mm,
+  bottom=5pt,
+  title={\begin{tcbclipinterior}
+         \fill[definitionpurple] (frame.north west) rectangle ([xshift=5.5cm]frame.north-|interior.east);
+         \node[anchor=west, font=\sffamily\bfseries, text=white, inner xsep=7pt] 
+              at (frame.north west) {Definition};
+         \node[anchor=west, font=\sffamily\bfseries, text=definitionpurple, inner xsep=10pt] 
+              at ([xshift=5.5cm]frame.north west) {#2};
+         \end{tcbclipinterior}},
+  top=1.5cm,
+  coltitle=black,
+  fonttitle=\sffamily\large,
+  #1
 }
 
 % Usage example
 \begin{document}
 
 \begin{definition}{Continuous Function}
-    A function $f: X \rightarrow Y$ between topological spaces is said to be \textbf{continuous} if for every open set $V \subseteq Y$, the preimage $f^{-1}(V)$ is an open set in $X$.
-
-    Equivalently, a function $f: \mathbb{R} \rightarrow \mathbb{R}$ is continuous at a point $c$ if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that
-    \begin{align}
-        |x - c| < \delta \implies |f(x) - f(c)| < \varepsilon
-    \end{align}
-    for all $x$ in the domain of $f$.
+    A function $f: X \rightarrow Y$
 \end{definition}
 
 \end{document}
