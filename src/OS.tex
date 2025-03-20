@@ -1,41 +1,37 @@
-% Load the tcolorbox package with required options
+\documentclass{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[most]{tcolorbox}
 \usepackage{xcolor}
-\usepackage{geometry}
 
-% Define custom colors for a sleek, modern look
-\definecolor{definitionbg}{RGB}{248, 249, 250}
-\definecolor{definitionborder}{RGB}{42, 59, 87}
-\definecolor{definitiontitle}{RGB}{42, 59, 87}
+% Define custom purple color to match the image
+\definecolor{definitionpurple}{RGB}{88, 44, 131}
 
-% Define a modern, sleek definition box
+% Create a clean definition box with left purple bar
 \newtcolorbox{definition}[2][]{%
   enhanced,
   breakable,
-  colback=definitionbg,
-  colframe=definitionborder,
-  arc=0pt, % Sharp corners for modern look
-  outer arc=0pt,
-  leftrule=2pt, % Only left border is thick
+  colback=white,
+  colframe=definitionpurple!30!white,
+  coltext=black,
+  leftrule=5pt,
   rightrule=0.5pt,
   toprule=0.5pt,
   bottomrule=0.5pt,
-  left=10pt,
-  right=10pt,
-  top=8pt,
-  bottom=8pt,
-  toptitle=3pt,
-  bottomtitle=3pt,
-  fonttitle=\sffamily\bfseries\color{white},
-  coltitle=white,
-  colbacktitle=definitiontitle,
-  title={\sffamily\textsc{Definition} \normalfont#2},
-  overlay unbroken and first={
-    \node[anchor=west, font=\sffamily\small\bfseries, text=definitionborder, 
-          xshift=10pt, yshift=-8pt] at (frame.north west) {};
+  left=12pt,
+  right=12pt,
+  top=6pt,
+  bottom=6pt,
+  fonttitle=\large\sffamily\color{definitionpurple}\bfseries,
+  title=#2,
+  overlay={
+    \node[anchor=north, font=\sffamily\small\bfseries, 
+          text=white, fill=definitionpurple, inner sep=3pt,
+          minimum height=7mm] 
+          at ([yshift=10pt]frame.west) {Definition};
   },
+  attach boxed title to top left,
+  boxed title style={colback=white, colframe=white},
   #1
 }
 
