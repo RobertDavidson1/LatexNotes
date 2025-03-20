@@ -685,9 +685,54 @@ A process is not just a program - if two users run the same program at the same 
     \item \textbf{Supsend and Resume} similar to wait but more explicit
     \item \textbf{Status}  report info about a process (e.g. how much memory it is using, how long it has been running, etc.)
 \end{itemize}
+\subsubsection*{The state of a process}
+The state of a process is defined by the current activity of that process.
+\begin{itemize}
+    \item \textbf{New} - the process is being created
+    \item \textbf{Running} - instructions being executed
+    \item \textbf{Block / Waiting} - waiting for some event to occur (e.g. I/O operation)
+    \item \textbf{Ready} - waiting to be assigned to a processor
+    \item \textbf{Terminated} - the process has finished executing
+\end{itemize}
+\subsection{Process Creation}
+A parent createas a child process, which create other child processes, forming a tree of processes. After a parent creates a child process it may:
+\begin{itemize}
+    \item Execute concurrently with the child process
+    \item Wait until the child process terminates to continue
+\end{itemize}
+The parent may share all, some or none of the resources with the child process (resources include memory space, open files, etc.).
 
+\subsubsection*{Process Indentification Number (PID)}
+All processes have a unique identifier called a PID. If we create a child process in C, using a \texttt{fork()} a new process is created:
+\begin{itemize}
+    \item The new process runs concurrently with the parent, unless we instruct it to \texttt{wait()}.
+    \item The subproc (child) is given a copy of the parents memory space
+    \item At the time of creation, the two processes are identical, except the \texttt{fork()} returns te child process' PID to the parent and 0 to the child.
+\end{itemize}
+In order to use this function, we must include the \texttt{unistd.h} library, which includes:
+\begin{itemize}
+    \item \texttt{fork()} - creates a new process
+    \item \texttt{getpid()} - returns the PID of the calling process
+    \item \texttt{getppid()} - returns the PID of the parent process
+\end{itemize}
+\begin{lstlisting}[style=cStyle, caption={Forking a process}]
+    #include <unistd.h>
+    #include <stdio.h>
 
+    int main(void)
+    {
+        pid_t pid1, mypid;
+        pid1 = fork();
+        mypid = getpid();
+        printf("I am %d\t", mypid);
+        printf("Fork returned %d\n", pid1);
+        return 0;
+    }
 
+    Output:
+    I am 7791. Fork returned 0
+    I am 7790. Fork returned 7791
+\end{lstlisting}
 
 % \section{Algorithms}
 % \begin{definitionbox}[: Algorithm]
