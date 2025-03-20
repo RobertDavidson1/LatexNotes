@@ -847,7 +847,38 @@ The \texttt{kill()} function can send other signals, but most (such as SIGABRT, 
     \item \textbf{SIGUSR1} - user defined signal 1
     \item \textbf{SIGUSR2} - user defined signal 2
 \end{itemize}
-With the \textttt{signal()} function, we can send a signal that tells the process to preform a specific asction, when it recieves a \texttt{SIGUSR1} or \texttt{SIGUSR2} signal. The \texttt{signal()} function takes two arguments:
+With the \texttt{signal()} function, we can send a signal that tells the process to preform a specific asction, when it recieves a \texttt{SIGUSR1} or \texttt{SIGUSR2} signal.
+\begin{lstlisting}[style=cStyle, caption={Signal handling}]
+    void signal_handler1(int sig);
+
+    int main(void)
+    {
+        pid_t subproc_pid = fork(); // New process will send signal to parent
+        
+        if (subproc_pid != 0) {
+            // parent
+            signal(SIGUSR1, signal_handler1); // What to do if I get signaled
+            sleep(100); // Wait potentially a long time
+            printf("%d got woken \n", getpid());
+            kill(subproc_pid, SIGKILL); // tell watcher to terminate.
+        } else {
+            // child
+            printf("I am the sub-proc (%d)\n", getpid());
+            printf("Should %d signal parent (%d)? ('y'/'n')\n",
+                   getpid(), getppid());
+            if (getchar() == 'y') {
+                printf("Sending siguser 1 to parent\n");
+                kill(getppid(), SIGUSR1);
+            }
+        }
+        return 0;
+    }
+
+    void signal_handler1(int sig) {
+        printf("Proc %d called signal_handler1() with signal %d\n",
+               getpid(), sig);
+    }
+\end{lstlisting}
 
 
 % \section{Algorithms}
