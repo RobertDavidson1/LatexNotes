@@ -775,7 +775,8 @@ Often we don't want the parent to continue running while the child is running, t
     to 10: 1... 4... 2... 5... 6... 3... 7... 4... 8... 5...
     9... 6... 10... 7... 8... 9... 10...
 \end{lstlisting}
-A call to the wait() function suspends the execution of the parent
+$$\texttt{pid\_t wait(int *wstatus);}$$
+It returns the PID of the child process the parent was waiting for and its status. Acall to the wait() function suspends the execution of the parent
 process until such time as the child process completes (or, at least,
 signals to the parent – more about that later)
 \begin{lstlisting}[style=cStyle, caption={Wait for a process}]
@@ -797,7 +798,57 @@ signals to the parent – more about that later)
     }
 \end{lstlisting}
 Recall, a sub-proc will share the parents memory only in a sense that it recieves a copy. The  child process can mimic the parents execution as in the examples above or its memory space may be overlaid with a new program/set of instructions. \\
-Often when a cild process is created it is overlaid with another program. In C, this can be done with the {exelclp()}
+Often when a cild process is created it is overlaid with another program. In C, this can be done with the {exelclp()} function. In the following example, the sub-procs memory space is overlaid the program text of the ls command.  Again we will use the \texttt{wait()} function.
+
+\begin{lstlisting}[style=cStyle, caption={Overlaying a process using execlp}]
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(void)
+{
+    pid_t pid1 = fork();
+    if (pid1 == 0) {
+        // child
+        printf("This is process %d\t", getpid());
+        printf("Here is a directory listing:\n");
+        execlp("ls", "ls", NULL);
+    } else {
+        // parent
+        int p = wait(NULL);
+        printf("This is process %d\t", getpid());
+        printf("Wait returned %d, so subproc %d is done.\n", p, pid1);
+    }
+    return 0;
+}
+\end{lstlisting}
+The OS is responsible for de-allocating the resources of a process that has finished. It may also be responsible for terminating a process that is not responding. Process termination occurs when:
+\begin{itemize}
+    \item The proc executes its last instruction and asks the operating system to delete it (\texttt{exit()}). At that time it will usualy:
+          \begin{itemize}
+              \item Output data from subproc to parent (via \texttt{wait()})
+              \item Have its resources de-allocated by the OS
+          \end{itemize}
+    \item Parent terminates a child process because:
+          \begin{itemize}
+              \item Sub-proc has exceeded allocated resources
+              \item The task assigned to the sub-proc is no longer needed
+          \end{itemize}
+    \item The parent is existing and the Os does not allow subproc to continue if the parent is terminated
+\end{itemize}
+On unix system, when a process terminates, its subprocs are reparented (adopted) by the init process. The mechanism for this is through "signals" and the \texttt{kill()} function. The \texttt{kill()} function is used to send a signal to a process.
+\section{Signals}
+The \texttt{kill()} system call is an example of a signal - a form of communication from one process to another. These provide a facility for asynchronus event handling. Note - when the subproc sends the kill() signal to the parent, the subproc also terminates. \\
+The \texttt{kill()} function can send other signals, but most (such as SIGABRT, SIGILL, SIGQUIT, SIGTERM) are just variants of SIGKILL. However there are signals that preform other taks:
+\begin{itemize}
+    \item \textbf{SIGSTOP} - stops a process
+    \item \textbf{SIGCONT} - continues a stopped process
+    \item \textbf{SIGUSR1} - user defined signal 1
+    \item \textbf{SIGUSR2} - user defined signal 2
+\end{itemize}
+
+
 
 
 % \section{Algorithms}
