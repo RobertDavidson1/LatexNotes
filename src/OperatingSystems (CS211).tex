@@ -730,7 +730,6 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
 
 \begin{table}[h!]
     \centering
-    \caption{Models}
     \begin{tabularx}{\textwidth}{@{} l X X @{}}
         \toprule
         Thread Type    & User Threads                                                                                                  & Kernel Threads                                                                                                               \\
@@ -740,6 +739,31 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
         Disadvantages  & If the kernel is not threaded and one thread makes a blocking system call, the entire process will be blocked & Slower to manipulate compared to user threads due to system call overhead                                                    \\
         \addlinespace[2ex]
         \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Sheduling Algorithms}
+$$\textbf{"Several process/jobs are available to be run. In what order should they be executed?}$$
+\subsection{Metrics to Compare Algoritms}
+\begin{table}[h!]
+    \centering
+    \begin{tabularx}{\textwidth}{@{} l X X @{}}
+        \toprule
+        Algorithm                & Advantages                                                                                                                    & Disadvantages \\
+        \midrule
+        FIFO (First In First Out)
+                                 & Simple to implement, only need a FIFO queue. It is non-preemptive
+                                 & Has a long average weight time, and suffers from the \textbf{convoy effect} (short jobs wait for long jobs)
+        \\
+        \addlinespace[2ex]
+        SJF (Shortest Job First) & optimal – minimum average waiting time for a given set of processes.
+        Is non pre-eemptive.
+                                 & Cannot be emplyed in a realisting setting because we would be required to know the length of next CPU Burst before it happens
+        \\
+        STCF (Shortest Time to Completion First)
+                                 & more optimal” than SJF when processes arrive at
+        different times
+                                 & Needs preempting
     \end{tabularx}
 \end{table}
 
