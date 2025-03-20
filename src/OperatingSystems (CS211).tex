@@ -715,20 +715,7 @@ Instead of our classic view of a single point of execution withing a program, a 
     \end{itemize}
 \end{conceptbox}
 \subsection{Two types of threads - User and Kernel}
-\begin{center}
-    \begin{tabular}{|p{0.2\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}|}
-        \hline
-        \textbf{Thread Type}    & \textbf{User Threads}                                                                                         & \textbf{Kernel Threads}                                                                                                      \\
-        \hline
-        \textbf{Implementation} & Implemented by a thread library at compiler/library level above the OS kernel                                 & Created, managed and scheduled by the operating system kernel                                                                \\
-        \hline
-        \textbf{Advantages}     & Quick to create and destroy since system calls are not required                                               & Do not suffer from blocking problems; if one thread blocks, the kernel can schedule another thread from the same application \\
-        \hline
-        \textbf{Disadvantages}  & If the kernel is not threaded and one thread makes a blocking system call, the entire process will be blocked & Slower to manipulate compared to user threads due to system call overhead                                                    \\
-        \hline
-    \end{tabular}
-    \captionof{table}{Comparison of User and Kernel Threads}
-\end{center}
+
 On Linux, Mac and related systems, in C we can create threads called \texttt{pthreads} (POSIX threads) which are defined in the \texttt{pthread.h} header. We will use two functions:
 \begin{itemize}
     \item \texttt{pthread\_create()} - used for creating thread and takes four arguments.
@@ -744,14 +731,13 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
 \begin{table}[h!]
     \centering
     \caption{Models}
-    \begin{tabularx}{\textwidth}{@{} l c X @{}}
+    \begin{tabularx}{\textwidth}{@{} l X X @{}}
         \toprule
-        Thread Type    & User Threads                                                                  & Kernel Threads                                                                                                               \\
+        Thread Type    & User Threads                                                                                                  & Kernel Threads                                                                                                               \\
         \midrule
-        Implementation & Implemented by a thread library at compiler/library level above the OS kernel & Created, managed and scheduled by the operating system kernel
-        \\
-        Advantages     & Quick to create and destroy since system calls are not required               & Do not suffer from blocking problems; if one thread blocks, the kernel can schedule another thread from the same application \\
-        Disadvantages  & CM                                                                            & hello                                                                                                                        \\
+        Implementation & Implemented by a thread library at compiler/library level above the OS kernel                                 & Created, managed and scheduled by the operating system kernel                                                                \\[2ex]
+        Advantages     & Quick to create and destroy since system calls are not required                                               & Do not suffer from blocking problems; if one thread blocks, the kernel can schedule another thread from the same application \\
+        Disadvantages  & If the kernel is not threaded and one thread makes a blocking system call, the entire process will be blocked & Slower to manipulate compared to user threads due to system call overhead                                                    \\
         \bottomrule
     \end{tabularx}
 \end{table}
