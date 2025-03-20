@@ -755,5 +755,48 @@ For procs to communicae they must know the name of the mailbox. More than two pr
 \end{itemize}
 \subsection{\texttt{pipe()}}
 A means of communication, based around the \texttt{pipe(), write(), read()} functions that allows one process to send data to another. The data can be anything, but we will use examples of sending integers. This is an example of \textbf{Symmetric direct communication}.
+\begin{itemize}
+    \item Use \texttt{pipe(fd)} to create a pipe. Where \texttt{fd} is an array of two integers.
+    \item To put a message into the pripe, write to \texttt{name[1]}
+    \item To read a message from the pipe, read from \texttt{name[0]}
+\end{itemize}
+\begin{lstlisting}[style=cStyle, caption={Pipe example}]
+    #include <unistd.h>  // For pipe(), fork(), read(), write()
+    #include <stdio.h>   // For printf()
 
+    int main(void)
+    {
+        int childpid, parentpid, pipefd[2];
+        pipe(pipefd);    // Create a pipe with two file descriptors:
+                         // pipefd[0] for reading, pipefd[1] for writing
+        childpid = fork(); // Create child process (returns child PID to parent, 0 to child)
+        
+        if (childpid != 0) // This is the parent process (fork returned child's PID)
+        {
+            parentpid = getpid();  // Get parent's process ID
+            printf("I'm the Parent proc (%d); my child is: %d\n",
+                   getpid(), childpid);
+            write(pipefd[1], &parentpid, 4); // Write parent's PID to the pipe. Child will be able to read this value
+        }
+        else // This is the child process (fork returned 0)
+        {
+            read(pipefd[0], &parentpid, 4); //Read into parentpid. This blocks until data is available
+            printf("I'm the Child proc (%d); what I read from pipe: %d\n",
+                   getpid(), parentpid);
+        }
+        
+        return 0;
+    }
+\end{lstlisting}
+\subsection{Intro to threads}
+So far, we've assumed that every process has its own program counter (PC), which tells the OS where it is in its instruction set (think line of program currently executing). So even when we duplicate using \texttt{fork()} the new subproc has its own PC, even though they have the same value as the parents PC. \\[2ex]
+
+However, modern OS's allow for threads: single process that can have mulitple PC's.
+\begin{conceptbox}[Why threads are useful]
+    \begin{itemize}
+        \item The process may need to preform lots of operations at the same time (on different cores) on the same data - i.e. adding vectors
+        \item Processes have to preform different operation that run at different speeds, such as adding vectors (fast) and waiting for user input (slow)
+    \end{itemize}
+\end{conceptbox}
+But, with subprocs made with \texttt{fork()} memory is not really shared, so the advantage of being able to do things at once is lost by the need to communicate.
 \end{document}
