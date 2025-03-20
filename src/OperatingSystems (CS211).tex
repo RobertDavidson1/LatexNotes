@@ -212,6 +212,7 @@ for(int i = 0; i < 10; i++){
     printf("i is %d\n", i);
 }
 \end{lstlisting}
+\pagebreak
 \subsubsection{While loop}
 \texttt{while(expression)\{...\}}
 \begin{lstlisting}[style=cStyle, caption={Print numbers from 0 to 9}]
@@ -287,7 +288,7 @@ A conversion character is a letter that follows a \texttt{\%} and tells \texttt{
         \hline
     \end{tabular}
 \end{center}
-
+\pagebreak
 \subsection{Input}
 \texttt{scanf()} reads input from standat input, format it, as directed by a conversion character and store the address of a specified variable.
 \begin{lstlisting}[style=cStyle, caption={Reading an integer}]
@@ -314,6 +315,75 @@ A conversion character is a letter that follows a \texttt{\%} and tells \texttt{
         scanf("%d", &number);
     }
 \end{lstlisting}
+
+\subsection{Functions}
+\begin{definitionbox}[Protype and Definition]
+    \textbf{Protype :} A function prototype is a declaration of a function that tells the compiler what the function looks like. It includes the function name, return type, and parameter types. The prototype must be declared before the function is called.\\[2ex]
+    \textbf{Definition :} A function definition is the actual implementation of the function. It includes the function name, return type, parameter types, and the body of the function. The definition must be declared after the function is called.
+\end{definitionbox}
+
+\subsection{Call-by-Value and Pointers}
+In C is it important to distuinguish between a variable and the value stored in it. A variable has a location in memory. The value of the variable is stored in that location. For example:
+\begin{lstlisting}[style=cStyle]
+int i = 10;
+\end{lstlisting}
+tells the system to allocate a location in memory to store the value 10. The variable \texttt{i} is a pointer to that location in memory. One of the distuinguihing features of C is it we can manipulate the memory address of the variable almost as easily as we can manipulate the value stored in it.
+\begin{definitionbox}[Pointers]
+    \begin{itemize}
+        \item if \texttt{i} is a variable, then \texttt{\&i} is a pointer to the location in memory where the value of \texttt{i} is stored.
+        \item The declaration \texttt{int *p;} creates a variable \texttt{p} that can store the memory address of an integer. The \texttt{*} indicates that \texttt{p} is a pointer to an integer.
+        \item If a memory address is stored in the variable \texttt{p}, then \texttt{*p} is the value stored at that address.
+    \end{itemize}
+\end{definitionbox}
+\pagebreak
+\subsection{Characters}
+\begin{conceptbox}[Character representation]
+    In C, a character is just an unsigned integer. Each character is represented by an integer between 0 and 127.
+\end{conceptbox}
+
+\begin{minipage}{0.45\textwidth}
+    \textbf{Printing characters:}
+
+    \begin{itemize}
+        \item \texttt{printf("\&c", c)}
+        \item \texttt{putchar(c)}
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \textbf{Reading characters:}
+    \begin{itemize}
+        \item \texttt{scanf("\&c", c)}
+        \item \texttt{c = getchar()}
+    \end{itemize}
+\end{minipage}
+\subsection{Strings}
+\begin{conceptbox}[String representation]
+    C does not have a string data type. Instead it uses arrays of type char to represent strings. For example if we make a declaration:
+    $$\texttt{char greeting[20]="Hello. How are you?";}$$
+    the system stores each character as an element of the array greeting.
+\end{conceptbox}
+\subsubsection{String Functions}
+Useful functions defined in \texttt{string.h}: \\[2ex]
+\textbf{srncpy()} \\
+\texttt{char *strncp(char *dest, char *src, int n)} \\
+Copies at most \texttt{n} characters from \texttt{src} to \texttt{dest}. The advantage of this is that we don't copy more chatavyers to \texttt{dest} than it can hold (prevents buffer overflow). \texttt{strncpy()} does not append a null character to the end of the string, so we need to do that manually. \\[2ex]
+\textbf{strcat()} \\
+\texttt{char *strcat(char *dest, char *src)} \\
+Concatenates the string \texttt{src} to the end of the string \texttt{dest}. The destination string must be large enough to hold the concatenated result. \texttt{strcat()} appends a null character to the end of the string. \\[2ex]
+\textbf{strcmp()} \\
+\texttt{int strcmp(char *str1, char *str2)} \\
+Compares two strings annd returns an intger:
+\begin{itemize}
+    \item 0 if the strings are equal
+    \item A negative integer if \texttt{str1} comes first alphabetically
+    \item A negative integer if \texttt{str2} comes first alphabetically
+\end{itemize}
+\textbf{strstr()} \\
+\texttt{char *strstr(char *haystack, char *needle)} \\
+Searches for the first occurrence of the string \texttt{needle} in the string \texttt{haystack}. If found, it returns a pointer to the first occurrence of \texttt{needle} in \texttt{haystack}. If not found, it returns NULL. \\[2ex]
+\textbf{strlen()} \\
+\texttt{int strlen(char *str)} \\
+Returns the length of the string \texttt{str} (not including the null character).
 
 
 
