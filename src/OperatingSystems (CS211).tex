@@ -642,7 +642,7 @@ Inter process communication (IPC) is a mechanism that allows processes to commun
         \item \textbf{Computational Speed} - on a multiprocessing system tasks are sub-divided and executred conrurrently on different processors.
     \end{itemize}
 \end{conceptbox}
-Communication between cooperative may be described in terms of the \textbf{producer consumer model}
+
 \begin{definitionbox}[Producer Consumer Model]
     One process (editor) has information it wants to produce for consumption by another (printer). This may be done by a \textbf{mutual/shared buffer}. Producer write to the buffer and consumer reads from it.
 \end{definitionbox}
@@ -659,19 +659,17 @@ Communication between cooperative may be described in terms of the \textbf{produ
     \end{itemize}
 \end{conceptbox}
 \noindent The two standard forms of IPC are \textbf{Direct} and \textbf{Indirect} communication. Furthermore, IPC may also be \textbf{Symmetric} or \textbf{Asymmetric}.
-\subsubsection{Direct Communication}
-\begin{itemize}
-    \item Processes must nomiate the other process they want to communicate with
-    \item Pairs of communicating processes must know eachothers ID's in order to send and recieve messages
-    \item A link is established automitcally.
-    \item There are exactly two processes in the link
-    \item There can be at most one link between two processes
-\end{itemize}
-This is an example of \textbf{Symmetric addressing}. In the \textbf{Asymmetric addressing} model, the recipient listens out for any messages addressed to it (like making a phone call).\\[2ex]
-\textbf{Disadvantages}
-\begin{itemize}
-    \item Processes must have details of eachother befoe they can communicate
-    \item One link between processes only
-    \item Only two processes can communicate at a time
-\end{itemize}
+\begin{center}
+    \begin{tabular}{|p{0.15\textwidth}|p{0.4\textwidth}|p{0.4\textwidth}|}
+        \multicolumn{3}{|c|}{\textbf{Disadvantages}}                                                                                             \\
+        \hline
+         & Processes need each other's details before communication & Mailbox is owned by only one process; many can write but only one can read \\
+        \hline
+         & Only one link between processes                          & When owned by the OS, permissions must be granted for mailbox operations   \\
+        \hline
+         & Limited to two processes at a time                       &                                                                            \\
+        \hline
+    \end{tabular}
+\end{center}
+
 \end{document}
