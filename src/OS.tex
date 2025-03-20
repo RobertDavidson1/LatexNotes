@@ -876,7 +876,7 @@ int main(void)
 }
 \end{lstlisting}
 
-On Linux, Mac and related systems, in C we can create threads called \texttt{pthreads} (POSIX threads). We will use two functions:
+On Linux, Mac and related systems, in C we can create threads called \texttt{pthreads} (POSIX threads) which are defined in the \texttt{pthread.h} header. We will use two functions:
 \begin{itemize}
     \item \texttt{pthread\_create()} - used for creating thread and takes four arguments.
           \begin{itemize}
@@ -887,5 +887,73 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
           \end{itemize}
     \item \texttt{pthread\_join()} - tells parent to wait for a thread to finish
 \end{itemize}
+\begin{lstlisting}[style=cStyle, caption={Threads and GlobalVar}]
+    /* pthreadmem.c: threads share memory */
+    #include <stdio.h>
+    #include <assert.h>
+    #include <pthread.h> // Where the pthread functions are defined
+    #include <unistd.h>
+
+    int val = 0; // Global variable; will check if really shared
+
+    void *mythread(void *arg) // This is the function the thread will call
+    {
+        val++;
+        printf("\tThread with (PID=%d); val=%d\n",
+            getpid(), val);
+        return(NULL);
+    }
+
+    int main(void)
+    {
+        printf("------------------------------------------\n");
+        printf(" An example showing that a pthread \n");
+        printf(" shares its parent's memory \n");
+        printf("START:\tParent with (PID=%d); val=%d\n",
+            getpid(), val);
+        
+        pthread_t p1; // declare the thread's ID
+        pthread_create(&p1, NULL, mythread, "N"); // create the thread
+        pthread_join(p1, NULL); // wait for it to finish
+        
+        printf("END:\tParent with (PID=%d); val=%d\n",
+            getpid(), val);
+        return 0;
+
+        Output:
+        "An example showing that a pthread shares its parent's memory
+        START: Parent with (PID=25149); val=0
+        Thread with (PID=25149); val=1
+        END: Parent with (PID=25149); val=1"
+    }
+\end{lstlisting}
+\section{Scheduling Processes}
+CPU scheduling is the basis of multipogrammed operating systems.
+\begin{conceptbox}[Underling concepts of CPU scheduling]
+    \begin{itemize}
+        \item \textbf{Goal}: Maximum CPU utilization, there should be something running at any given time.
+        \item \textbf{Based around}: CPU burst or I/O burst Cycle. A running process alternates between executing instructions (CPU burst) and waiting for I/O operations to complete (I/O burst).
+        \item \textbf{Depends on}: the burst distribution, given a proc predominantly concerned with computation or I/O. Also a proc usually begins with a long CPU burst and alomst always ends with a CPU burst.
+    \end{itemize}
+\end{conceptbox}
+The CPU scheduler selects from among the processes in memory that are ready to execute and allocates CPU to one of them. This occurs when a process:
+\begin{itemize}
+    \item Switches from running $\to$ waiting state (non preemptive)
+    \item Terminates (non preemptive)
+    \item Switches from running $\to$ ready state (preemptive)
+    \item Switches from waiting $\to$ ready state (preemptive)
+\end{itemize}
+If a scheduler uses only non-premptive methods, once a process is allocated to the CPU it will reamin there until it terminates or changes states. \\[2ex]
+For premptive methods, the scheduler must have an algorithm for deicing when control of CPU must be given to another process.
+\subsection{The Dispatcher}
+The dispatcher is a module that gives control of the CPU process selected by the short-term scheduler. It is responsible for:
+\begin{itemize}
+    \item Switching context
+    \item Switching to user mode
+    \item Jumping to the proper location in the user program to restart that program
+\end{itemize}
+This gives rise to dispatch latency, the time it takes for the dispatcher to stop one process and start another. This is a very small amount of time, but it is important to keep it as low as possible.
+
+\subsection{Algorithms}
 
 \end{document}
