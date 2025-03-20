@@ -1,4 +1,5 @@
-\documentclass{article}
+\documentclass[10pt]{article}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[most]{tcolorbox}
@@ -24,12 +25,14 @@
   bottom=6pt,
   fonttitle=\large\sffamily\color{definitionpurple}\bfseries,
   title=#2,
-  overlay={
+overlay={
     \node[anchor=west, font=\sffamily\small\bfseries, 
           text=white, fill=definitionpurple, inner sep=3pt,
-          minimum height=7mm] 
-          at ([xshift=5pt]frame.west) {\textsc Definition};
+          minimum height=3mm] 
+          at ([xshift=12pt]frame.north west) {\textsc Definition};
   },
+attach boxed title to top left={xshift=-10pt},
+title style={left=65pt},
   attach boxed title to top left,
   boxed title style={colback=white, colframe=white},
   #1
