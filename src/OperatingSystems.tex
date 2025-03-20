@@ -676,7 +676,15 @@ The operating system gives the impression many programs are running at the same 
     \item The process stack - temporary data, local variables, function parameters, return addresses
     \item The data section - global variables
 \end{itemize}
-A process is not just a program - if two users run the same program at the same time, they create different processes. Each process has its own memory space, so they do not interfere with each other. \\[2ex]
+A process is not just a program - if two users run the same program at the same time, they create different processes. Each process has its own memory space, so they do not interfere with each other. A program is a passive entity, while a process is an active / dynamic entity.
+\subsubsection*{A set of operations OS must apply to a process}
+\begin{itemize}
+    \item \textbf{Create} a new process (open a new program)
+    \item \textbf{Terminate / Destory} a process (close a program)
+    \item \textbf{Wait} or pause a process until some event occurs (e.g. waiting for user input)
+    \item \textbf{Supsend and Resume} similar to wait but more explicit
+    \item \textbf{Status}  report info about a process (e.g. how much memory it is using, how long it has been running, etc.)
+\end{itemize}
 
 
 
