@@ -706,14 +706,14 @@ With the \texttt{signal()} function, we can send a signal that tells the process
     }
 \end{lstlisting}
 What the process does after it has finished calling the signal hander function depends on the situation. In the example above, it stopped sleeping. However if it had been making a blocking call, such as taking input from the keyboard, or reading from a pipe, it returns to doing that.
-\subsubsection{IPC - Inter Process Communication}
-\begin{definition}
+\subsection{IPC - Inter Process Communication}
+\begin{definitionbox}[Process Communication Types]
     Two processes that are executing on the same computer may be either:
     \begin{itemize}
-        \item Independent - cannot affect or be affected by each other
-        \item Co-operating - Can be affected by the execution of eachother
+        \item \textbf{Independent} : Cannot affect or be affected by each other
+        \item \textbf{Co-operating} : Can be affected by the execution of eachother
     \end{itemize}
-\end{definition}
+\end{definitionbox}
 We allow processes communication so we can faciliate:
 \begin{itemize}
     \item \textbf{Information sharing} - two procs might require acess to the same file
@@ -723,15 +723,20 @@ We allow processes communication so we can faciliate:
 \end{itemize}
 Communication between cooperative may be described in terms of the \textbf{producer consumer model}
 
-\begin{definitionbox}[ Producer Consumer Model]
+\begin{definitionbox}[Producer Consumer Model]
     One process (editor) has information it wants to produce for consumption by another (printer). This may be done by a \textbf{mutual buffer}. Producer write to the buffer and consumer reads from it.
 \end{definitionbox}
 
 \begin{conceptbox}[Shared Buffer Types]
-
+    Shared buffers may be:
+    \begin{itemize}
+        \item \textbf{Un-bounded} : no size limit placed on the buffer. The producer may continue to produce and write to the buffer as long as it wants to.
+        \item \textbf{Bounded} : strict size limit on the buffer. If full, producer must wait until consumer removes some data.
+    \end{itemize}
 \end{conceptbox}
-
-
-
+This may be implemnted \textbf{Physically} by a set of shared variables (shared memory addresses), the implementation of this is the responsibility of the programmer. It also may be inplemented \textbf{Logically} by Message passing using an Inter Process Communication. Such system is inplemented by the OS.. The IPC prodives a logical communcation link via a message passing facilitiy with two funadmental operations : \textbf{send message} and \textbf{recieve message}.
+Two standard forms of IPC are \textbf{Direct} and \textbf{Indirect} communication. Furthermore, IPC may also be \textbf{Symmetric} or \textbf{Asymmetric}.
+\subsubsection{Direct Communication}
+Each process must nomiate the process they want to communicate it. Pairs of cumminicting processes must know each others ID's in order to etablish a link.
 
 \end{document}
