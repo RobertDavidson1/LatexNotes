@@ -796,8 +796,8 @@ signals to the parent – more about that later)
         return 0;
     }
 \end{lstlisting}
-
-
+Recall, a sub-proc will share the parents memory only in a sense that it recieves a copy. The  child process can mimic the parents execution as in the examples above or its memory space may be overlaid with a new program/set of instructions. \\
+Often when a cild process is created it is overlaid with another program. In C, this can be done with the {exelclp()}
 
 
 % \section{Algorithms}
