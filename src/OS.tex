@@ -14,7 +14,8 @@
   breakable,
   colback=white,
   colframe=definitionpurple,
-  sharp corners,
+  fonttitle=\bfseries\sffamily\color{white},
+  coltitle=definitionpurple,
   boxrule=0.5pt,
   leftrule=5pt,
   rightrule=0.5pt,
@@ -22,20 +23,19 @@
   bottomrule=0.5pt,
   left=12pt,
   right=12pt,
-  top=5mm,
-  bottom=5pt,
-  title={\begin{tcbclipinterior}
-         \fill[definitionpurple] (frame.north west) rectangle ([xshift=5.5cm]frame.north-|interior.east);
-         \node[anchor=west, font=\sffamily\bfseries, text=white, inner xsep=7pt] 
-              at (frame.north west) {Definition};
-         \node[anchor=west, font=\sffamily\bfseries, text=definitionpurple, inner xsep=10pt] 
-              at ([xshift=5.5cm]frame.north west) {#2};
-         \end{tcbclipinterior}},
-  top=1.5cm,
-  coltitle=black,
-  fonttitle=\sffamily\large,
+  top=8pt,
+  bottom=8pt,
+  attach boxed title to top left={xshift=0mm, yshift=0mm},
+  boxed title style={size=small, colback=definitionpurple},
+  title={Definition},
+  overlay unbroken and first={
+    \node[anchor=west, font=\bfseries\sffamily, text=definitionpurple, 
+          inner sep=0pt, outer sep=0pt] 
+          at ([xshift=2.5cm, yshift=-8pt]frame.north west) {#2};
+  },
   #1
 }
+
 
 % Usage example
 \begin{document}
