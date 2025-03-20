@@ -7,23 +7,23 @@
 \tcbuselibrary{minted, skins}
 % Création de ma box
 \newtcblisting{boxPython}{
-  enhanced, 
-  colback=black!3!white, 
-  toprule=1pt, 
-  bottomrule=1pt,
-  leftrule=0pt, 
-  rightrule=0pt, 
-  arc=0mm, 
-  attach boxed title to top left={yshift=-9pt, xshift=4pt},
-  title =  \textcolor{blue!80!black}{\faPython}, 
-  coltitle= black, 
-  boxed title style={colback=white},
-  listing engine=minted,
-  listing only,
-  minted language=python,
-  minted options={breaklines, autogobble, linenos, numbersep=8mm},
+    enhanced,
+    colback=black!3!white,
+    toprule=1pt,
+    bottomrule=1pt,
+    leftrule=0pt,
+    rightrule=0pt,
+    arc=0mm,
+    attach boxed title to top left={yshift=-9pt, xshift=4pt},
+    title =  \textcolor{blue!80!black}{\faPython},
+    coltitle= black,
+    boxed title style={colback=white},
+    listing engine=minted,
+    listing only,
+    minted language=python,
+    minted options={breaklines, autogobble, linenos, numbersep=8mm},
 }
-\begin{document}
+
 \begin{boxPython}
     # Une première boucle
     for i in range(0,5):
