@@ -1,0 +1,54 @@
+\documentclass[a4paper, 10pt]{article}
+\input{preamble.sty}
+\input{macros.sty}
+\usepackage{listings}
+\usepackage[hypcap=false]{caption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+% 2) Adjust itemize settings globally:
+\setlist[itemize]{
+  leftmargin=2em,   % Indent from left
+  itemsep=-0.4em,    % Vertical spacing between bullets
+  topsep=0.5em      % Vertical space at the start of the list
+}
+
+\definecolor{commentgreen}{rgb}{0,0.5,0}
+\definecolor{keywordsblue}{rgb}{0,0,0.8}
+\definecolor{stringspurple}{rgb}{0.58,0,0.82}
+\lstdefinestyle{cStyle}{
+    language=C,
+    columns=fullflexible,            % Better handling of spaces & tabs
+    tabsize=4,
+    keepspaces=true,
+    showstringspaces=false,          % Do not underline string spaces
+    numbersep=5pt,
+    numbers=left,                    % Line numbers on the left
+    stepnumber=1,
+    basicstyle=\ttfamily\small,      % Base font style
+    keywordstyle=\bfseries\color{keywordsblue},
+    commentstyle=\itshape\color{commentgreen},
+    stringstyle=\color{stringspurple},
+    frame=single,                    % (Optional) draws a frame around the code
+    breaklines=true,                 % Automatic line breaking
+    breakatwhitespace=false
+}
+
+\title{
+\textbf{CS211: Programing For Operating Systems} \\ 
+}
+
+\author{
+Robert Davidson
+}     
+\date{}       
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+\tableofcontents
+\pagebreak
+\end{document}
