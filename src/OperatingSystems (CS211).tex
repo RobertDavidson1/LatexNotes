@@ -570,11 +570,7 @@ In order to use \texttt{fork()} , we must include the \texttt{unistd.h} library,
     \item \texttt{getppid()} - returns the PID of the parent process
 \end{itemize}
 \subsubsection{\texttt{unistd.h} functions}
-\subsubsection*{\texttt{fork()}}
-\begin{blockC}
-    pid_t fork(void)
-\end{blockC}
-
+$$\boxed{\texttt{pid\_t fork(void);}}$$
 \begin{itemize}
     \item It takes no arguments
     \item It really returns an \texttt{int}
@@ -585,10 +581,57 @@ In order to use \texttt{fork()} , we must include the \texttt{unistd.h} library,
     \item Both parent and child process run concurrently
     \item Starting from the \texttt{fork()} call, the parent and child process execute the same instruction set.
 \end{itemize}
-$$\texttt{pid\_t getpid(void);}$$
+$$\boxed{\texttt{pid\_t getpid(void);}}$$
 Returns the value of the processes own PID
-$$\texttt{pid\_t getppid(void);}$$
+$$\boxed{\texttt{pid\_t getppid(void);}}$$
 Returns the value of the parent process' PID
 Since the parent and subproc (child) have copies of the same memory space and instruction set, \texttt{getpid()}  and \texttt{getppid()} are useful for working out which is which.
+\pagebreak
+\subsection{Process Programming}
+Often we don't want the parent to continue running while the child is running, the results may be non-deterministic. Recall a sub-proc will share the parents memory only in a sense that it recieves a copy. The  child process can mimic the parents execution  or its memory space may be overlaid with a new program/set of instructions. \\[2ex]
+
+Often when a child process is created it is overlaid with another program. In C, this can be done with the {exelclp()} function. In the following example, the sub-procs memory space is overlaid the program text of the ls command.  Again we will use the \texttt{wait()} function.\\[2ex]
+The OS is responsible for \textbf{de-allocating the resources} of a process that has finished. It may also be responsible for terminating a process that is not responding.
+\begin{conceptbox}[Processes are terminated when]
+    \begin{itemize}
+        \item The proc executes its last instruction and asks the operating system to delete it (\texttt{exit()}). At that time it will usualy:
+              \begin{itemize}
+                  \item Output data from subproc to parent (via \texttt{wait()})
+                  \item Have its resources de-allocated by the OS
+              \end{itemize}
+        \item Parent terminates a child process because:
+              \begin{itemize}
+                  \item Sub-proc has exceeded allocated resources
+                  \item The task assigned to the sub-proc is no longer needed
+              \end{itemize}
+        \item The parent is exiting and the OS does not allow subproc to continue if the parent is terminated
+    \end{itemize}
+\end{conceptbox}
+\subsection{Signals}
+The \texttt{kill()} system call is an example of a signal - a form of communication from one process to another. These provide a facility for asynchronus event handling. Note - when the subproc sends the kill() signal to the parent, the subproc also terminates. \\[2ex]
+The \texttt{kill()} function can send other signals, but most (such as SIGABRT, SIGILL, SIGQUIT, SIGTERM) are just variants of SIGKILL. However there are signals that preform other taks.
+\begin{conceptbox}[Types of Signals]
+    \begin{itemize}
+        \item \textbf{SIGSTOP:} stops a process
+        \item \textbf{SIGCONT:} continues a stopped process
+        \item \textbf{SIGUSR1:} user defined signal 1
+        \item \textbf{SIGUSR2:}  user defined signal 2
+    \end{itemize}
+\end{conceptbox}
+The kill function can take two arguments:
+$$\texttt{kill(pid\_t pid, int sig);}$$
+the PID of the process to send the signal to and the signal to send. The function returns 0 on success and -1 on failure. The \texttt{kill()} function can be used to send any signal to any process, including itself. \\
+With the \texttt{signal()} function, we can send a signal that tells the process to preform a specific asction, when it recieves a \texttt{SIGUSR1} or \texttt{SIGUSR2} signal.
+
+\pagebreak
+
+\subsection{Inter Process Communication}
+\begin{conceptbox}[Types of Process Communication]
+Two processes that are executing on the same computer may be either:
+\begin{itemize}
+    \item \textbf{Independent} : Cannot affect or be affected by each other
+    \item \textbf{Co-operating} : Can be affected by the execution of eachother
+\end{itemize}
+\end{concpetbox}
 
 \end{document}
