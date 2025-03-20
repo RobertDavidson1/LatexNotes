@@ -847,6 +847,8 @@ The \texttt{kill()} function can send other signals, but most (such as SIGABRT, 
     \item \textbf{SIGUSR1} - user defined signal 1
     \item \textbf{SIGUSR2} - user defined signal 2
 \end{itemize}
+$$\texttt{int kill(pid\_t pid, int sig);}$$
+The \texttt{kill()} function takes two arguments: the PID of the process to send the signal to and the signal to send. The function returns 0 on success and -1 on failure. The \texttt{kill()} function can be used to send any signal to any process, including itself. \\
 With the \texttt{signal()} function, we can send a signal that tells the process to preform a specific asction, when it recieves a \texttt{SIGUSR1} or \texttt{SIGUSR2} signal.
 \begin{lstlisting}[style=cStyle, caption={Signal handling}]
     void signal_handler1(int sig);
@@ -879,8 +881,7 @@ With the \texttt{signal()} function, we can send a signal that tells the process
                getpid(), sig);
     }
 \end{lstlisting}
-
-
+What the process does after it has finished calling the signal hander function depends on the situation. In the example above, it stopped sleeping. However if it had been making a blocking call, such as taking input from the keyboard, or reading from a pipe, it reutns to doing that.
 % \section{Algorithms}
 % \begin{definitionbox}[: Algorithm]
 %     An algorithm is a finite set of precise intructions for performing a computation or solving a problem.
