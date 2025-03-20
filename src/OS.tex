@@ -799,4 +799,18 @@ However, modern OS's allow for threads: single process that can have mulitple PC
     \end{itemize}
 \end{conceptbox}
 But, with subprocs made with \texttt{fork()} memory is not really shared, so the advantage of being able to do things at once is lost by the need to communicate.
+\subsubsection{Single Point of Exuction vs Multiple Points of Execution}
+Instead of our classic view of a single point of execution withing a program, a multi-threaded program has more than one point of execution. Each thread is very much like a seperate process, except for \textbf{one difference:} they share the same address and space and thus can acess the same data.
+\begin{definitionbox}[Thread]
+    A thread (or lightweight process) is a basic unit of CPU utilization. Rather than a process being dedicated to one sequential list of tasks it may be broken into threads. These consists a set of distinct:
+    \begin{itemize}
+        \item \textbf{Program Counter} - the next instruction to be executed
+        \item \textbf{Register set} - operands for CPU instructions
+        \item \textbf{Stack} - temporary variables, etc.
+    \end{itemize}
+\end{definitionbox}
+\begin{definitionbox}[Task]
+    A task is a collection of threads that belong to the same process and share code section, data section, and operating-system resources.
+\end{definitionbox}
+
 \end{document}
