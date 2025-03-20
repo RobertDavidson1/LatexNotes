@@ -626,12 +626,52 @@ With the \texttt{signal()} function, we can send a signal that tells the process
 \pagebreak
 
 \subsection{Inter Process Communication}
-\begin{conceptbox}[Types of Process Communication]
-Two processes that are executing on the same computer may be either:
-\begin{itemize}
-    \item \textbf{Independent} : Cannot affect or be affected by each other
-    \item \textbf{Co-operating} : Can be affected by the execution of eachother
-\end{itemize}
-\end{concpetbox}
+Inter process communication (IPC) is a mechanism that allows processes to communicate with each other. This is important because processes may need to share data or synchronize their actions
 
+\begin{conceptbox}[Types of Process Communication]
+    \begin{itemize}
+        \item \textbf{Independent} : Cannot affect or be affected by each other
+        \item \textbf{Co-operating} : Can be affected by the execution of eachother
+    \end{itemize}
+\end{conceptbox}
+\begin{conceptbox}[Why we allow IPC]
+    \begin{itemize}
+        \item \textbf{Information sharing} - two procs might require acess to the same file
+        \item \textbf{Modularity} - Different procs might be dedicated to different system functions
+        \item \textbf{Convenience} - a user might be running an editor, spell checker and printer all for the same file
+        \item \textbf{Computational Speed} - on a multiprocessing system tasks are sub-divided and executred conrurrently on different processors.
+    \end{itemize}
+\end{conceptbox}
+Communication between cooperative may be described in terms of the \textbf{producer consumer model}
+\begin{definitionbox}[Producer Consumer Model]
+    One process (editor) has information it wants to produce for consumption by another (printer). This may be done by a \textbf{mutual/shared buffer}. Producer write to the buffer and consumer reads from it.
+\end{definitionbox}
+\begin{conceptbox}[Shared Buffer Types]
+    \begin{itemize}
+        \item \textbf{Un-bounded} : no size limit placed on the buffer. The producer may continue to produce and write to the buffer as long as it wants to.
+        \item \textbf{Bounded} : strict size limit on the buffer. If full, producer must wait until consumer removes some data.
+    \end{itemize}
+\end{conceptbox}
+\begin{conceptbox}[How we implement shared buffers]
+    \begin{itemize}
+        \item \textbf{Physically} by a set of shared variables (shared memory addresses), the implementation of this is the responsibility of the programmer.
+        \item \textbf{Logically} by message passing using an Inter Process Communication. Such system is inplemented by the OS.. The IPC prodives a logical communcation link via a message passing facilitiy with two funadmental operations : \textbf{send message} and \textbf{recieve message}.
+    \end{itemize}
+\end{conceptbox}
+\noindent The two standard forms of IPC are \textbf{Direct} and \textbf{Indirect} communication. Furthermore, IPC may also be \textbf{Symmetric} or \textbf{Asymmetric}.
+\subsubsection{Direct Communication}
+\begin{itemize}
+    \item Processes must nomiate the other process they want to communicate with
+    \item Pairs of communicating processes must know eachothers ID's in order to send and recieve messages
+    \item A link is established automitcally.
+    \item There are exactly two processes in the link
+    \item There can be at most one link between two processes
+\end{itemize}
+This is an example of \textbf{Symmetric addressing}. In the \textbf{Asymmetric addressing} model, the recipient listens out for any messages addressed to it (like making a phone call).\\[2ex]
+\textbf{Disadvantages}
+\begin{itemize}
+    \item Processes must have details of eachother befoe they can communicate
+    \item One link between processes only
+    \item Only two processes can communicate at a time
+\end{itemize}
 \end{document}
