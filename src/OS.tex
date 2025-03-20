@@ -5,7 +5,6 @@
 \usepackage[hypcap=false]{caption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{enumitem}
 
 
 % 2) Adjust itemize settings globally:
@@ -707,3 +706,28 @@ With the \texttt{signal()} function, we can send a signal that tells the process
     }
 \end{lstlisting}
 What the process does after it has finished calling the signal hander function depends on the situation. In the example above, it stopped sleeping. However if it had been making a blocking call, such as taking input from the keyboard, or reading from a pipe, it returns to doing that.
+\subsubsection{IPC - Inter Process Communication}
+\begin{definition}
+    Two processes that are executing on the same computer may be either:
+    \begin{itemize}
+        \item Independent - cannot affect or be affected by each other
+        \item Co-operating - Can be affected by the execution of eachother
+    \end{itemize}
+\end{definition}
+We allow processes communication so we can faciliate:
+\begin{itemize}
+    \item \textbf{Information sharing} - two procs might require acess to the same file
+    \item \textbf{Modularity} - Different procs might be dedicated to different system functions
+    \item \textbf{Convenience} - a user might be running an editor, spell checker and printer all for the same file
+    \item \textbf{Computational Speed} - on a multiprocessing system tasks are sub-divided and executred conrurrently on different processors.
+\end{itemize}
+Communication between cooperative may be described in terms of the \textbf{producer consumer model}
+
+\begin{definitionbox}[: Producer Consumer Model]
+    One process (editor) has information it wants to produce for consumption by another (printer). This may be done by a \textbf{mutual buffer}. Producer write to the buffer and consumer reads from it.
+\end{definitionbox}
+
+
+
+
+\end{document}
