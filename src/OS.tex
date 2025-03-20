@@ -525,4 +525,203 @@ A parent createas a child process, which create other child processes, forming a
 \end{itemize}
 The parent may share all, some or none of the resources with the child process (resources include memory space, open files, etc.).
 
+\subsubsection{Process Indentification Number (PID)}
+All processes have a unique identifier called a PID. If we create a child process in C, using a \texttt{fork()} a new process is created:
+\begin{itemize}
+    \item The new process runs concurrently with the parent, unless we instruct it to \texttt{wait()}.
+    \item The subproc (child) is given a copy of the parents memory space
+    \item At the time of creation, the two processes are identical, except the \texttt{fork()} returns te child process' PID to the parent and 0 to the child.
+\end{itemize}
+In order to use this function, we must include the \texttt{unistd.h} library, which includes:
+\begin{itemize}
+    \item \texttt{fork()} - creates a new process
+    \item \texttt{getpid()} - returns the PID of the calling process
+    \item \texttt{getppid()} - returns the PID of the parent process
+\end{itemize}
+\begin{lstlisting}[style=cStyle, caption={Forking a process}]
+    #include <unistd.h>
+    #include <stdio.h>
+
+    int main(void)
+    {
+        pid_t pid1, mypid;
+        pid1 = fork();
+        mypid = getpid();
+        printf("I am %d\t", mypid);
+        printf("Fork returned %d\n", pid1);
+        return 0;
+    }
+
+    Output:
+    I am 7791. Fork returned 0
+    I am 7790. Fork returned 7791
+\end{lstlisting}
+\subsubsection*{\texttt{fork()}}
+The proptype for \texttt{fork()} is:
+$$\texttt{pid\_t fork(void);}$$
+\begin{itemize}
+    \item It takes no arguments
+    \item It really returns an \texttt{int}
+    \item It returns -1 if the fork failed
+    \item Otherwise, it returns the PID of the newly created child process to the parent process
+    \item It returns 0 to the child process
+    \item The child process is distinct from the parent (it gets its own copy of the parent's memory space)
+    \item Both parent and child process run concurrently
+    \item Starting from the \texttt{fork()} call, the parent and child process execute the same instruction set.
+\end{itemize}
+$$\texttt{pid\_t getpid(void);}$$
+Returns the value of the processes own PID
+$$\texttt{pid\_t getppid(void);}$$
+Returns the value of the parent process' PID
+Since the parent and subproc (child) have copies of the same memory space and instruction set, \texttt{getpid()}  and \texttt{getppid()} are useful for working out which is which.
+\subsubsection{Process Programing}
+Often we don't want the parent to continue running while the child is running, the results may be non-deterministic. For example:
+\begin{lstlisting}[style=cStyle, caption={Unpredictable a process}]
+    int main(void)
+    {
+        int i;
+        fork();
+        srand(getpid()); // different seed for each process
+        printf("Watch me (%d) count to 10: ", getpid());
+        for (i=1; i<=10; i++)
+        {
+            sleep(rand()%2); // sleep for 0 or 1 seconds
+            printf("%3d...", i);
+            fflush(stdout);
+        }
+        printf("\n");
+        return 0;
+    }
+
+    Output:
+    Watch me (11695) count to 10: 1... 2... 3...Watch me (11696) count
+    to 10: 1... 4... 2... 5... 6... 3... 7... 4... 8... 5...
+    9... 6... 10... 7... 8... 9... 10...
+\end{lstlisting}
+$$\texttt{pid\_t wait(int *wstatus);}$$
+It returns the PID of the child process the parent was waiting for and its status. Acall to the wait() function suspends the execution of the parent
+process until such time as the child process completes (or, at least,
+signals to the parent – more about that later)
+\begin{lstlisting}[style=cStyle, caption={Wait for a process}]
+    #include <sys/wait.h>
+    int main(void)
+    {
+        pid_t pid1 = fork();
+        srand(getpid()); // different seed for each process
+        if (pid1 != 0) // Parent follows this path
+            wait(NULL);
+        printf("Watch me (%d) count to 10: ", getpid());
+        for (int i = 1; i <= 10; i++) {
+            sleep(rand() % 2); // sleep for 0 or 1 seconds
+            printf("%3d...", i);
+            fflush(stdout);
+        }
+        printf("\n");
+        return 0;
+    }
+\end{lstlisting}
+Recall, a sub-proc will share the parents memory only in a sense that it recieves a copy. The  child process can mimic the parents execution as in the examples above or its memory space may be overlaid with a new program/set of instructions. \\
+Often when a cild process is created it is overlaid with another program. In C, this can be done with the {exelclp()} function. In the following example, the sub-procs memory space is overlaid the program text of the ls command.  Again we will use the \texttt{wait()} function.
+
+\begin{lstlisting}[style=cStyle, caption={Overlaying a process using execlp}]
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(void)
+{
+    pid_t pid1 = fork();
+    if (pid1 == 0) {
+        // child
+        printf("This is process %d\t", getpid());
+        printf("Here is a directory listing:\n");
+        execlp("ls", "ls", NULL);
+    } else {
+        // parent
+        int p = wait(NULL);
+        printf("This is process %d\t", getpid());
+        printf("Wait returned %d, so subproc %d is done.\n", p, pid1);
+    }
+    return 0;
+}
+\end{lstlisting}
+The OS is responsible for de-allocating the resources of a process that has finished. It may also be responsible for terminating a process that is not responding. Process termination occurs when:
+\begin{itemize}
+    \item The proc executes its last instruction and asks the operating system to delete it (\texttt{exit()}). At that time it will usualy:
+          \begin{itemize}
+              \item Output data from subproc to parent (via \texttt{wait()})
+              \item Have its resources de-allocated by the OS
+          \end{itemize}
+    \item Parent terminates a child process because:
+          \begin{itemize}
+              \item Sub-proc has exceeded allocated resources
+              \item The task assigned to the sub-proc is no longer needed
+          \end{itemize}
+    \item The parent is existing and the Os does not allow subproc to continue if the parent is terminated
+\end{itemize}
+On unix system, when a process terminates, its subprocs are reparented (adopted) by the init process. The mechanism for this is through "signals" and the \texttt{kill()} function. The \texttt{kill()} function is used to send a signal to a process.
+
+\subsection{Signals}
+The \texttt{kill()} system call is an example of a signal - a form of communication from one process to another. These provide a facility for asynchronus event handling. Note - when the subproc sends the kill() signal to the parent, the subproc also terminates. \\
+The \texttt{kill()} function can send other signals, but most (such as SIGABRT, SIGILL, SIGQUIT, SIGTERM) are just variants of SIGKILL. However there are signals that preform other taks:
+\begin{itemize}
+    \item \textbf{SIGSTOP} - stops a process
+    \item \textbf{SIGCONT} - continues a stopped process
+    \item \textbf{SIGUSR1} - user defined signal 1
+    \item \textbf{SIGUSR2} - user defined signal 2
+\end{itemize}
+$$\texttt{int kill(pid\_t pid, int sig);}$$
+The \texttt{kill()} function takes two arguments: the PID of the process to send the signal to and the signal to send. The function returns 0 on success and -1 on failure. The \texttt{kill()} function can be used to send any signal to any process, including itself. \\
+With the \texttt{signal()} function, we can send a signal that tells the process to preform a specific asction, when it recieves a \texttt{SIGUSR1} or \texttt{SIGUSR2} signal.
+\begin{lstlisting}[style=cStyle, caption={Signal handling}]
+    void signal_handler1(int sig);
+
+    int main(void)
+    {
+        pid_t subproc_pid = fork(); // New process will send signal to parent
+        
+        if (subproc_pid != 0) {
+            // parent
+            signal(SIGUSR1, signal_handler1); // What to do if I get signaled
+            sleep(100); // Wait potentially a long time
+            printf("%d got woken \n", getpid());
+            kill(subproc_pid, SIGKILL); // tell watcher to terminate.
+        } else {
+            // child
+            printf("I am the sub-proc (%d)\n", getpid());
+            printf("Should %d signal parent (%d)? ('y'/'n')\n",
+                   getpid(), getppid());
+            if (getchar() == 'y') {
+                printf("Sending siguser 1 to parent\n");
+                kill(getppid(), SIGUSR1);
+            }
+        }
+        return 0;
+    }
+
+    void signal_handler1(int sig) {
+        printf("Proc %d called signal_handler1() with signal %d\n",
+               getpid(), sig);
+    }
+\end{lstlisting}
+What the process does after it has finished calling the signal hander function depends on the situation. In the example above, it stopped sleeping. However if it had been making a blocking call, such as taking input from the keyboard, or reading from a pipe, it returns to doing that.
+
+\subsubsection{IPC - Inter Process Communication}
+Two processes that are executing on the same computer may be either:
+\begin{itemize}
+    \item Independent - cannot affect or be affected by each other
+    \item Co-operating - Can be affected by the execution of eachother
+\end{itemize}
+We allow processes communication so we can faciliate:
+\begin{itemize}
+    \item \textbf{Information sharing} - two procs might require acess to the same file
+    \item \textbf{Modularity} - Different procs might be dedicated to different system functions
+    \item \textbf{Convenience} - a user might be running an editor, spell checker and printer all for the same file
+    \item \textbf{Computational Speed} - on a multiprocessing system tasks are sub-divided and executred conrurrently on different processors.
+\end{itemize}
+\begin{definitionbox}Producer-Consumer Model
+    One process (editor) has information it wants to produce for consumption by another process (printer-driver). This may be done using a \textbf{mutual buffer}. The producer write to the buffer and consumer reads for it.
+\end{definitionbox}
+
 \end{document}

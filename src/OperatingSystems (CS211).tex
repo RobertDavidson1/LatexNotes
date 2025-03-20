@@ -702,7 +702,7 @@ A parent createas a child process, which create other child processes, forming a
 \end{itemize}
 The parent may share all, some or none of the resources with the child process (resources include memory space, open files, etc.).
 
-\subsubsection*{Process Indentification Number (PID)}
+\subsubsection{Process Indentification Number (PID)}
 All processes have a unique identifier called a PID. If we create a child process in C, using a \texttt{fork()} a new process is created:
 \begin{itemize}
     \item The new process runs concurrently with the parent, unless we instruct it to \texttt{wait()}.
@@ -884,11 +884,13 @@ With the \texttt{signal()} function, we can send a signal that tells the process
 What the process does after it has finished calling the signal hander function depends on the situation. In the example above, it stopped sleeping. However if it had been making a blocking call, such as taking input from the keyboard, or reading from a pipe, it returns to doing that.
 
 \subsubsection*{IPC - Inter Process Communication}
-Two processes that are executing on the same computer may be either:
-\begin{itemize}
-    \item Independent - cannot affect or be affected by each other
-    \item Co-operating - Can be affected by the execution of eachother
-\end{itemize}
+\begin{definition}
+    Two processes that are executing on the same computer may be either:
+    \begin{itemize}
+        \item Independent - cannot affect or be affected by each other
+        \item Co-operating - Can be affected by the execution of eachother
+    \end{itemize}
+\end{definition}
 We allow processes communication so we can faciliate:
 \begin{itemize}
     \item \textbf{Information sharing} - two procs might require acess to the same file
