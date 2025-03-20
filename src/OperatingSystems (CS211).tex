@@ -43,13 +43,7 @@ Robert Davidson
     \item \texttt{unistd.h} : Standard library for system calls (\texttt{fork, getpid, getppid})
 \end{itemize}
 
-\begin{definitionlisting}[]{My C Program}
-    #include <stdio.h>
 
-    int main(void) {
-            // ...
-        }
-\end{definitionlisting}
 
 
 \pagebreak
@@ -575,4 +569,26 @@ In order to use \texttt{fork()} , we must include the \texttt{unistd.h} library,
     \item \texttt{getpid()} - returns the PID of the calling process
     \item \texttt{getppid()} - returns the PID of the parent process
 \end{itemize}
+\subsubsection{\texttt{unistd.h} functions}
+\subsubsection*{\texttt{fork()}}
+\begin{blockC}
+    pid_t fork(void)
+\end{blockC}
+
+\begin{itemize}
+    \item It takes no arguments
+    \item It really returns an \texttt{int}
+    \item It returns -1 if the fork failed
+    \item Otherwise, it returns the PID of the newly created child process to the parent process
+    \item It returns 0 to the child process
+    \item The child process is distinct from the parent (it gets its own copy of the parent's memory space)
+    \item Both parent and child process run concurrently
+    \item Starting from the \texttt{fork()} call, the parent and child process execute the same instruction set.
+\end{itemize}
+$$\texttt{pid\_t getpid(void);}$$
+Returns the value of the processes own PID
+$$\texttt{pid\_t getppid(void);}$$
+Returns the value of the parent process' PID
+Since the parent and subproc (child) have copies of the same memory space and instruction set, \texttt{getpid()}  and \texttt{getppid()} are useful for working out which is which.
+
 \end{document}
