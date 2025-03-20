@@ -737,6 +737,23 @@ Communication between cooperative may be described in terms of the \textbf{produ
 This may be implemnted \textbf{Physically} by a set of shared variables (shared memory addresses), the implementation of this is the responsibility of the programmer. It also may be inplemented \textbf{Logically} by Message passing using an Inter Process Communication. Such system is inplemented by the OS.. The IPC prodives a logical communcation link via a message passing facilitiy with two funadmental operations : \textbf{send message} and \textbf{recieve message}.
 Two standard forms of IPC are \textbf{Direct} and \textbf{Indirect} communication. Furthermore, IPC may also be \textbf{Symmetric} or \textbf{Asymmetric}.
 \subsubsection{Direct Communication}
-Each process must nomiate the process they want to communicate it. Pairs of cumminicting processes must know each others ID's in order to etablish a link.
+Each process must nomiate the process they want to communicate it. Pairs of cumminicting processes must know each others ID's in order to etablish a link. With this system a link is established by the two processes automatically, there are exactly two processes in the link and there can be at most one link between two procss\\[2ex]
+This is an example of \textbf{Symmetric addressing}. In the \textbf{Asymmetric addressing} model, the recipient listens out for any messages addressed to it (like making a phone call).\\[2ex]
+\textbf{Disadvantages}
+\begin{itemize}
+    \item Processes must have details of eachother befoe they can communicate
+    \item One link between processes only
+    \item Only two processes can communicate at a time
+\end{itemize}
+\subsubsection{Indirect Communication}
+The alternative is to have a number of ports (mailboxes) in the sytem. Each with a unique ID. \\[2ex]
+For procs to communicae they must know the name of the mailbox. More than two procs can share a mailbox . Two procs may share more than one mailbox \\[2ex]
+\textbf{Disadvantages}
+\begin{itemize}
+    \item Mailbox is owned by only one proc. Several procs can write to it, but only one can read from it.
+    \item Procs are owned only by the OS. Permissions are then granted to processes to create and delete mailbox and to send and receive messages.
+\end{itemize}
+\subsection{\texttt{pipe()}}
+A means of communication, based around the \texttt{pipe(), write(), read()} functions that allows one process to send data to another. The data can be anything, but we will use examples of sending integers. This is an example of \textbf{Symmetric direct communication}.
 
 \end{document}
