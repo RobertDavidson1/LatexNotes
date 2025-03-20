@@ -752,7 +752,50 @@ $$\texttt{pid\_t getppid(void);}$$
 Returns the value of the parent process' PID
 Since the parent and subproc (child) have copies of the same memory space and instruction set, \texttt{getpid()}  and \texttt{getppid()} are useful for working out which is which.
 \subsubsection*{Process Programing}
+Often we don't want the parent to continue running while the child is running, the results may be non-deterministic. For example:
+\begin{lstlisting}[style=cStyle, caption={Unpredictable a process}]
+    int main(void)
+    {
+        int i;
+        fork();
+        srand(getpid()); // different seed for each process
+        printf("Watch me (%d) count to 10: ", getpid());
+        for (i=1; i<=10; i++)
+        {
+            sleep(rand()%2); // sleep for 0 or 1 seconds
+            printf("%3d...", i);
+            fflush(stdout);
+        }
+        printf("\n");
+        return 0;
+    }
 
+    Output:
+    Watch me (11695) count to 10: 1... 2... 3...Watch me (11696) count
+    to 10: 1... 4... 2... 5... 6... 3... 7... 4... 8... 5...
+    9... 6... 10... 7... 8... 9... 10...
+\end{lstlisting}
+A call to the wait() function suspends the execution of the parent
+process until such time as the child process completes (or, at least,
+signals to the parent – more about that later)
+\begin{lstlisting}[style=cStyle, caption={Wait for a process}]
+    #include <sys/wait.h>
+    int main(void)
+    {
+        pid_t pid1 = fork();
+        srand(getpid()); // different seed for each process
+        if (pid1 != 0) // Parent follows this path
+            wait(NULL);
+        printf("Watch me (%d) count to 10: ", getpid());
+        for (int i = 1; i <= 10; i++) {
+            sleep(rand() % 2); // sleep for 0 or 1 seconds
+            printf("%3d...", i);
+            fflush(stdout);
+        }
+        printf("\n");
+        return 0;
+    }
+\end{lstlisting}
 
 
 
