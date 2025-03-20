@@ -741,13 +741,7 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
     \item \texttt{pthread\_join()} - tells parent to wait for a thread to finish
 \end{itemize}
 
-\begin{boxC}
-    void *threadFunc(void *arg) \{
-    int i;
-    for (i = 0; i < 5; i++) \{
-    printf("Thread %d: %d\n", (int)arg, i);
-    sleep(1);
-    \}
-\end{boxC}
+
+
 
 \end{document}
