@@ -504,38 +504,41 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
 \subsection{Stages in Hypothesis Testing}
 \begin{conceptbox}{Stages in Hypothesis Testing}{}
     A typical hypothesis test follows these steps:
+    \begin{enumerate}
+        \item State the hypotheses
+        \begin{itemize}
+            \item $H0$ The null hypothesis (e.g., $\mu = \mu_0$).
+            \item $H_1$ The alternative hypothesis (e.g., $\mu \neq \mu_0$, $\mu < \mu_0$ or $\mu > \mu_0$).
+        \end{itemize}
+    \end{enumerate}
+    \item  Collect a random sample and compute the test statistic:
+        
 
-    State the hypotheses:
-
-        H0H0​: The null hypothesis (e.g., μ=μ0μ=μ0​).
-
-        H1H1​: The alternative hypothesis (e.g., μ≠μ0μ=μ0​ or μ>μ0μ>μ0​ or μ<μ0μ<μ0​).
-
-    Collect a random sample and compute the test statistic:
+   
 
         The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
 
     Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
 
-        For large nn, use a z-approximation.
+        For large $n$, use a z-approximation.
 
-        For smaller nn (and unknown σσ), use a t-distribution with n−1n−1 degrees of freedom, assuming approximate normality of the population.
+        For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
 
-    Decide whether the observed test statistic would be rare or common if H0H0​ were true:
+        Decide whether the observed test statistic would be rare or common if $H_0$ were true:
 
-        p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given H0H0​ is true.
+        p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
 
-        Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level αα.
+        Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
 
     Make a decision:
 
-        If p-value ≤α≤α, we reject H0H0​.
+        If p-value $< \alpha$, we reject $H_0$
 
-        If p-value >α>α, we do not reject H0H0​. (We do not conclude H0H0​ is “proven,” just that the sample does not contradict H0H0​ strongly.)
+        If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
 
     Draw a conclusion:
 
-        Summarize the practical meaning and state whether there is “sufficient evidence” that H1H1​ holds
+    Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
 \end{conceptbox}
 
 
