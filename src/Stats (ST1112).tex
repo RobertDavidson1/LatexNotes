@@ -38,12 +38,29 @@ The ultimate goal in statistical inference is to estimate population paramaters 
     A \textbf{population} is the complete set of items (or individuals) of interest.
 \end{definitionbox}
 \begin{definitionbox}{Sample}{}
-    A \textbf{sample} is a subset of that populaton, intended to represent the population
+    A \textbf{sample} is a subset of that populaton, intended to represent the population\\
+    
+    For example the sample mean $\bar{X}$ is an estimate of the population mean $\mu$.
 \end{definitionbox}
 \begin{conceptbox}{Sampling Variation}{}
-    When we take multiple samples from the same population, each sample's mean $\bar{X}$ will be different. This is variability is called \textbf{sampling variation}. \\[2ex]
+    When we take multiple samples from the same population, each sample's mean $\bar{X}$ will be different. This is variability is called \textbf{sampling variation}. \\
+
     Larger sample sizes tend to reduce this variation, that is as $n$ gros, the sample mean $\bar{X}$ becomes a better estimate of the population mean $\mu$.
 \end{conceptbox}
-  
+\begin{conceptbox}{Sampling Distributions}{}
+    The sample mean itself is a \textbf{random variable} becuase different samples yield different mean values.\\
 
+    The distribution of all possible sample means (of a given sample size $n$) is called the \textbf{sampling distribution} of the sample mean ($\bar{X}$).
+\end{conceptbox}
+
+\begin{definitionbox}{Expected Value of the Sample Mean}{}
+    $$E(\bar{X}) = \mu$$
+    This means if you averaged all possible sample means, you would get the population mean $\mu$.
+\end{definitionbox}
+\begin{definitionbox}{Standard Error of the Mean}{}
+    $$SD(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
+    where $\sigma$ is the population standard deviation and $n$ is the sample size.\\
+    
+    This value is valled the \textbf{standard error} of the mean and measures how much the sample mean $\bar{X}$ fluctuates around the population mean $\mu$.
+\end{definitionbox}
 \end{document}
