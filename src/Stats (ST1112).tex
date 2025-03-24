@@ -248,20 +248,28 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
         \end{tikzpicture}        
     \end{center}
 \end{conceptbox}
+\vfill
 \begin{conceptbox}{Degrees of Freedom (df)}{}
     A t-distribution is characterized by its degrees of freedom, where 
     $$df = n - 1 \quad \text{for a sample mean}$$
     As the sample size $n$ increases, the t-distribution approaches the standard normal distribution.\\
     For example, for $n = 30$, $df = 29$ and the t-distribution is very close to the normal distribution.\\
 \end{conceptbox}
-
+\vfill
 \begin{definitionbox}{Confidece Intervals (t-based)}{}
     $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
     where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df = n - 1$ degrees of freedom - or from a function like \texttt{qt()} in R.\\
 
     \textbf{Assumption}: The population itself should be approximately normally distributed when using t-based methods for small sample sizes.
 \end{definitionbox}
-
+\vfill
+\begin{examplebox}{Finding t-critical values}{}
+    Find the critical value for a 95\% confidence interval with $n = 12$ (so $df = 11$).\\
+    We look for the row associated with $df = 11$ and the column associated with $\alpha/2 = 0.025$.\\
+    The critical value is:
+    $$t_{0.025, 11} \approx 2.201$$
+\end{examplebox}
+\pagebreak
 \subsubsection{CI with large $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
 The $z$-based critical interval is given as:
 $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
@@ -274,9 +282,34 @@ $$\bar{X} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
 \subsubsection{CI with small $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
 If the sample size is small ($n < 30$) and the population standard deviation $\sigma$ is unknown, we use the t-distribution to construct the confidence interval. This gives us the following confidence interval:
 $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
+where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df = n - 1$ degrees of freedom.\\
+\textbf{Interpretation}: around 95\% of all possible 95\% confidence intervals will contain the true population mean $\mu$. We can visualize that if we drew many repeated samples, sample means will form an overlapping $\mu$ and a small fraction will not.
 
 \begin{examplebox}{Turin Shroud}{}
-    A historical cloth's age was tested by carbon dating on 12 pieces ($n = 12$). The sample mean was $x \approx 1261 \ AD$ 
+    A historical cloth's age was tested by carbon dating on 12 pieces ($n = 12$). The sample mean was $x \approx 1261 \ AD$ and the sample standard deviation was $s \approx 61.2 \ AD$. Find the 95\% confidence interval for the population mean age of the cloth. \\[2ex]
+    The standard error is given by:
+    $$SE = \frac{s}{\sqrt{n}} = \frac{61.2}{\sqrt{12}} \approx 17.67$$
+    For a 95\% confidence interval with $n-1 = 11$ degrees of freedom, the critical value is $t_{0.025, 11} \approx 2.201$.\\
+    The confidence interval is given by:
+    $$\bar{X} \pm t_{\alpha/2, df} \times SE = 1261 \pm 2.201 \times 17.67$$
+    The resulting confidence interval is:
+    $$(1222, 1300)$$
+    \textbf{Interpretation}: The cloth’s true average carbon-dated age is plausibly within about 1222–1300 AD. This range casts doubt on claims that the cloth dates from centuries earlier.
+\end{examplebox}
+\begin{examplebox}{Unathorized Computer Acess}{}
+    Find 95\% CI given:
+    \begin{itemize}
+        \item \textbf{Data}: 18 times between keystokes 
+        \item \textbf{Sample mean}: $\bar{X} = 0.29$ seconds
+        \item Sample standard deviation: $s = 0.0074$ seconds
+    \end{itemize}
+    $$n  = 19 \Rightarrow df = 18$$
+    $$SE = \frac{s}{\sqrt{n}} = \frac{0.0074}{\sqrt{19}} \approx 0.0017$$
+    For a 95\% confidence interval with $n-1 = 18$ degrees of freedom, the critical value is $t_{0.025, 18} \approx 2.101$.\\
+    The confidence interval is given by:
+    $$\bar{X} \pm t_{\alpha/2, df} \times SE = 0.29 \pm 2.101 \times 0.0017$$
+    The resulting confidence interval is:
+    $$(0.286, 0.294)$$
 \end{examplebox}
 
 \end{document}
