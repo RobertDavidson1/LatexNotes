@@ -26,15 +26,14 @@ Robert Davidson \\
 \tableofcontents
 \pagebreak
 
-\section{Inferential Statistics}
+\section{Inferential Statistics - Interval Estimation}
 The ultimate goal in statistical inference is to estimate population parameters (like the mean $\mu$) based on sample statistics (like the sample mean $\bar{X}$).
-\subsection{Part 1}
-\subsubsection{Probability vs Statistics}
+\subsection{Probability vs Statistics}
 \begin{itemize}
     \item \textbf{Probability} deals with known underlying processes: one starts with a model (like proportion of red vs. green jelly beans in a jar) and computes probability of specific outcomes
     \item \textbf{Statistics} works in reverse: one observes outcomes (sample data) and attempts to infer the underlying process or population parameters (e.g. proportion of red jellybeans)
 \end{itemize}
-\subsubsection{Definitions and Concepts}
+\subsection{Definitions and Concepts}
 
 \begin{definitionbox}{Population}{}
     A \textbf{population} is the complete set of items (or individuals) of interest.
@@ -102,19 +101,18 @@ The ultimate goal in statistical inference is to estimate population parameters 
     The sample standard deviation $s$ (using Bessel's correction, dividing by multiplying by $\frac{1}{n-1}$ rather than $\frac{1}{N}$) is an unbiased estimator of the population standard deviation $\sigma$.
 \end{definitionbox}
 
-\subsubsection{Example}
+\subsection{Example}
 \begin{examplebox}{Weekly rent}{}
     If a population mean rent is $\mu = 225$, with $\sigma = 25$ for a population sample size $n = 30$, the sample distribution of the sample mean is approximately:
     $$\bar{X} \sim N\left(225, \frac{25^2}{30}\right)$$
     This lets us compute probabilities for specific sample mean ranges using the normal distribution (e.g. $P(\bar{X} < 220)$).
 \end{examplebox}
-\subsection{Part 2 - Confidence Intervals}
-\subsubsection{Recap}
+\subsection{Recap}
 A \textbf{sample statistic} (e.g. the sample mean $\bar{X}$) varies from one sample to another. Understanding this variation (and quantifying it via the standard error) is crucial for knowing how precise (or imprecise) an estimate really is. \\[2ex]
 If we have a large sample size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, then our sample distribution of the sample mean $\bar{X}$ is approximately normal:
 $$\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)$$
 In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed even if the original population is not strictly normal.
-\subsubsection{Confidence Intervals}
+\subsection{Confidence Intervals}
 \begin{conceptbox}{Why confidence intervals?}{}
     Why do we need confidence intervals, instead of a single point estimate, like the sample mean $\bar{X}$? \\
 
@@ -203,14 +201,14 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     $$(502.541, 589.938)$$
     \textbf{Interpretation}: We are 95\% confident that the true mean weekly rent for all NUI Galway students (population) is roughly 503 to 590 euros.
 \end{examplebox}
-\subsubsection{Higher Confidence Levels means Wider Intervals}
+\subsection{Higher Confidence Levels means Wider Intervals}
 \begin{itemize}
     \item To achieve a \textbf{higher confidence level}, we need to increase the critical value $z_{\alpha/2}$, which in turn increases the margin of error.
     \item This results in a wider confidence interval, which means we are more certain that the true population parameter lies within that interval.
     \item Conversely a \textbf{lower confidence level} results in a smaller critical value, leading to a narrower confidence interval.
 \end{itemize}
 \pagebreak
-\subsubsection{t-Distribution}
+\subsection{t-Distribution}
 \begin{conceptbox}{Why the $t-$distribution}{}
     When the sample size is small ($n < 30$) and the population standard deviation $\sigma$ is unknown, simply substituting the sample standard deviation $s$ no longer suffices because the standard error is itself estimated with more uncertainty.\\[2ex]
     The $\textbf{t-distributution has thicker}$ tails than the normal distributution. This extra "fatness" in the tails accounts for the additional uncertainty in using $s$ instead of $\sigma$.
@@ -270,7 +268,7 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     $$t_{0.025, 11} \approx 2.201$$
 \end{examplebox}
 \pagebreak
-\subsubsection{CI with large $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
+\subsection{CI with large $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
 The $z$-based critical interval is given as:
 $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
 where $z_{\alpha/2}$ is the critical value from the standard normal distribution.
@@ -279,7 +277,7 @@ This gives us the following confidence interval:
 $$\bar{X} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
 \textbf{Interpretation}: around 95\% of all possible 95\% confidence intervals will contain the true population mean $\mu$. We can visualize that if we drew many repeated samples, sample means will form an overlapping $\mu$ and a small fraction will not.
 
-\subsubsection{CI with small $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
+\subsection{CI with small $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
 If the sample size is small ($n < 30$) and the population standard deviation $\sigma$ is unknown, we use the t-distribution to construct the confidence interval. This gives us the following confidence interval:
 $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
 where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df = n - 1$ degrees of freedom.\\
@@ -303,13 +301,55 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
         \item \textbf{Sample mean}: $\bar{X} = 0.29$ seconds
         \item Sample standard deviation: $s = 0.0074$ seconds
     \end{itemize}
-    $$n  = 19 \Rightarrow df = 18$$
-    $$SE = \frac{s}{\sqrt{n}} = \frac{0.0074}{\sqrt{19}} \approx 0.0017$$
-    For a 95\% confidence interval with $n-1 = 18$ degrees of freedom, the critical value is $t_{0.025, 18} \approx 2.101$.\\
-    The confidence interval is given by:
-    $$\bar{X} \pm t_{\alpha/2, df} \times SE = 0.29 \pm 2.101 \times 0.0017$$
+    $$n  = 18 \Rightarrow df = 17$$
+    For a 95\% confidence interval with $n-1 = 18$ degrees of freedom, the critical value is $t_{0.025, 17} \approx 1.740$.\\
     The resulting confidence interval is:
-    $$(0.286, 0.294)$$
+    $$(0.2532, 0.3268)$$
+    \textbf{Interpretation}: We are 95\% confident that the true mean time between keystrokes is between 0.2532 and 0.3268 seconds.
 \end{examplebox}
 
+\section{Inferential Statistics - Hypothesis Testing}
+\section{When normality is questionable}
+Recall that for small $n$, the t-distribution-based confidence interval requires data to be approximately normally distributed in the population. But many real datasets violate this assumption. - e.g. skewed data, heavily tailed data etc.
+
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}[scale = 0.9]
+            \begin{axis}[
+                domain=0.1:5,
+                samples=100,
+                xlabel={$$},
+                title={Skewed Data (Log-normal)},
+                width=\linewidth,
+                axis x line=bottom,
+                axis y line=left,
+                ytick=\empty,
+                xtick=\empty
+            ]
+            \addplot [custom_blue, thick] {1/(x*0.5*sqrt(2*pi)) * exp(-(ln(x))^2/(2*0.5^2))};
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}[scale = 0.9]
+            \begin{axis}[
+                domain=-10:10,
+                samples=100,
+                xlabel={$$},
+                title={Heavy Tailed Data (Cauchy)},
+                width=\linewidth,
+                axis x line=bottom,
+                axis y line=left,
+                ytick=\empty,
+                xtick=\empty
+            ]
+            \addplot [custom_red, thick] {1/(pi*(1+x^2))};
+            \end{axis}
+        \end{tikzpicture}
+    \end{minipage}
+\end{figure}
 \end{document}
