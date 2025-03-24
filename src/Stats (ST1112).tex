@@ -147,6 +147,32 @@ We can quantify the uncertainity in our estimate of the population mean by using
 
 \section{Inferential Statistics - Hypothesis Testing}
 \subsection{Hypothesis Testing}
-\subsubsection{Hypthesis Testing Framework}
-
+\begin{definitionbox}{Hypothesis Testing}{}
+    A structured procedure to evaluate claims about a population paramater by comparing sample evidence against a proposed hypothesis
+\end{definitionbox}
+\begin{definitionbox}{Null Hypothesis $H_0$}{}
+    The defauly claim stating the population parameter equals a specific value (e.g. $\mu = 6.5$). It assumes that anu difference between the sample statistic and hypothesized value is due to random variation.
+\end{definitionbox}
+\begin{definitionbox}{Alternative Hypothesis $H_a$}{}
+    The competing claim the population paramater differs from the null hypothesis. It can be:
+    \begin{itemize}
+        \item \textbf{One-sided}: Claiming the paramater is either greater than or less than the specific value
+        \item \textbf{Two-sided}: Claiming the paramater is not equal to the specific value
+    \end{itemize}
+\end{definitionbox}
+\subsection{Core Definitions and Concepts}
+\begin{definitionbox}{Test Statistic}{}
+    A standardized measure that quantifies the diffence of the sample sample statisitic from the hypothesized population paramater, taking into account sample variability and size.
+    $$T_0 = \frac{\overline{X} - \mu_0}{s / \sqrt{n}}$$
+    Where:
+    \begin{itemize}
+        \item $\overline{X}$ is the sample mean
+        \item $\mu_0$ is the hypothesized population mean
+        \item $s$ is the sample standard deviation
+        \item $n$ is the sample size
+    \end{itemize}
+\end{definitionbox}
+\begin{definitionbox}{p-value}{}
+    The probability of obsevering data as extreme (or more extreme than) the current sammple result if the null hypothesis is true. A smaller $p$-value indicates stronger evidence against $H_0$. It is not the probability that $H_0$ is true given the data.
+\end{definitionbox}
 \end{document}
