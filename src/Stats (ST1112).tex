@@ -358,6 +358,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 \end{itemize}
 \section{Inferential Statistics - Hypothesis Testing}
 \subsection*{Recap: Confidence Intervals for a Population Mean}
+\vfill
 \begin{itemize}
     \item A \textbf{Confidence interval (CI)} provides a range of plausible values for a population parameter
     \item For a large sample ($n \geq 30$) or a known $\sigma$, we often use a z-based interval:
@@ -368,13 +369,15 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     where $df = n - 1$. Provided the population is approximately normal.
     \item If normality is questionable, we may use transformations or bootstrapping. 
 \end{itemize}
-
+\vfill
 \subsection{Proportions}
+\vfill
 \begin{definitionbox}{Proportion}{}
     The \textbf{proportion} is a way to express the frequency of a specific outcome (labeled as “success”) relative to the total number of trials or observations. 
     $$p = \frac{X}{n}$$
     where $p$ is the proportion, $X$ is the number of successes, and $n$ is the total number of trials.
 \end{definitionbox}
+\vfill
 \begin{conceptbox}{Why proportions?}{}
     Many outcomes are binary or categorical with two possible outcomes (e.g. success/failure, yes/no). Examples:
     \begin{itemize}
@@ -382,12 +385,28 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
         \item Whether a business has fallen victim to a scam
     \end{itemize}
     In such cases, we often estimate a population proportion $\pi$ of successes rather than a mean $\mu$.
-\end{conceptbox}  
+\end{conceptbox} 
+\vfill 
 \subsubsection{Binomial Distribution}
-If $X \sim Binom(n, \pi)$, then $X$ is the number of successes in $n$ independent Bernoulli trials, each probability of success $\pi$.\\[2ex]
-The \textbf{sample proportion} $p = \frac{X}{n}$ is the observed successes in the sample. 
-\subsubsection{Normal Approximation of $p$}
-For large enough $n$, so that $n\pi \geq 5$ and $n(1 - \pi) \geq 5$, the sampling distribution of the sample proportion $p$ can be approximated by a normal distribution:
-$$X \approx N\left(n\pi, \  n\pi(1- \pi)\right) \Rightarrow p = \frac{X}{n} \approx N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$
-Thus $p$ can be treated as approximately normally distributed for large $n$, centered at the true proportion $\pi$ with variance $\frac{\pi(1 - \pi)}{n}$.
+\begin{conceptbox}{Bernoulli Trials}{}
+   When we repeat an experiment or observation, each trial is assumed to be independant and has two possible outcomes. If each trial has a probability of $\pi$ success, these trials are called \textbf{Bernoulli trials}.
+\end{conceptbox}
+\vfill
+\noindent If we perform $n$ independent Bernoulli trials, the number of successes $X$ follows a \textbf{binomial distribution} with $n$, the number of trials and $\pi$,the probability of success on each trial.
+$$X \sim B(n, \pi)$$
+This tells us how likely we are to observe a certain number of successes in $n$ trials.\\[2ex]
+\textbf{Link to Proportion}: \\
+The sample proportion $p$ is just the normalized version of $X$, calculated by $p = \frac{X}{n}$. It provides a direct, interpretable measure of success rate in the sample.
+\pagebreak
+\subsubsection{Normal Approximation of the Sample Proportion}
+\textbf{When is the normal approximation valid?}\\
+The approximation of the distribution of $p$ by a normal distribution is valid when both of the following conditions are met:   
+$$n\pi \geq 5 \quad \text{and} \quad n(1 - \pi) \geq 5$$
+These conditions ensure there are enough successes and failures for the approximation to hold. \\[2ex]
+\textbf{How does it work?}
+Since $X$ is binomially distributed, its mean is $n\pi$ and its variance is $n\pi(1 - \pi)$. When we convert $X$ into the proportion $p$, the mean and variance transform as follows:
+\begin{itemize}
+    \item Mean of $p$: $E(p) = \frac{E(X)}{n} = \pi$
+    \item Variance of $p$: $Var(p) = \frac{Var(X)}{n^2} = \frac{\pi(1 - \pi)}{n}$
+\end{itemize}
 \end{document}
