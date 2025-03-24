@@ -502,14 +502,17 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
 \end{conceptbox}
 
 \subsection{Stages in Hypothesis Testing}
-\begin{enumerate}
-    \item State the hypotheses ($H_0$ and $H_1$)
-    \item Take a random sample, and calculate a suitable test statistic ($T_0$)
-    \item Write down the sampling distribution of $T_0$ (e.g. t-distribution)
-    \item We asses how likely $T_0$ is, if $H_0$ is true (this involves the p-value or a rejection region)
-    \item Make a decision (reject $H_0$ or fail to reject $H_0$)
-    \item Write down the conclusion in plain English
-\end{enumerate}
+\begin{conceptbox}{Stages in Hypothesis Testing}{}
+    \begin{enumerate}
+        \item State the hypotheses ($H_0$ and $H_1$)
+        \item Take a random sample, and calculate a suitable test statistic ($T_0$)
+        \item Write down the sampling distribution of $T_0$ (e.g. t-distribution)
+        \item We asses how likely $T_0$ is, if $H_0$ is true (this involves the p-value or a rejection region)
+        \item Make a decision (reject $H_0$ or fail to reject $H_0$)
+        \item Write down the conclusion in plain English
+    \end{enumerate}
+\end{conceptbox}
+
 
 \subsection{Hypothesis Testing for a Population Mean}
 \begin{definitionbox}{One-sided tests vs Two-sided tests}{}
@@ -562,5 +565,35 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
     \textbf{Important Clarification}: \\
     The p-value is \textbf{not} the probability that $H_0$ is true. It is the probability of seeing data at least as extreme as what we got, assuming $H_0$ is correct. If the p-value is large (e.g. $> 0.05$), we do not automatically conclude $H_0$ is true; we simply fail to reject it.
 \end{conceptbox}
+
+\begin{conceptbox}{Using \texttt{R} for Hypothesis Testing}{}
+    $$\texttt{t.test(x, alternative, mu, conf.level)}$$
+    \begin{itemize}
+        \item \texttt{x}: Numeric vector of data
+        \item \texttt{alternative}: "two.sided", "less", or "greater"
+        \item \texttt{mu}: the hypothesized population mean
+        \item \texttt{conf.level}: confidence level (default is 0.95)
+    \end{itemize}
+\end{conceptbox}
+\begin{examplebox}{Golf Club Design}{}
+    \textbf{Claim}: The mean coefficient of restitution exceeds 0.82\\
+    \textbf{Data}: 15 drivers selected, with a mean coefficient of restitution of $\bar{X} =0.84$ and a standard sample deviation of $s = 0.02456$.\\[2ex]
+
+    \begin{enumerate}
+        \item \textbf{State the hypotheses:}
+        $$H_0: \mu = 0.82 \quad H_1: \mu > 0.82$$
+        \item \textbf{Take a random sample, and calculate a suitable test statistic}
+        $$T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}} = \frac{0.84 - 0.82}{0.02456/\sqrt{15}} \approx 2.45$$
+        \item \textbf{Write down the sampling distribution of $T_0$}
+        $$T_0 \sim t_{14}$$
+        \item Asses how likely $T_0$ is, if $H_0$ is true \\
+        Compare $2.72$ to critical value $t{0.05, 14} \approx 1.761$. 
+        \item Make a decision (reject $H_0$ or fail to reject $H_0$) \\
+        Since $2.72 > 1.761$, we reject $H_0$. Alternatively, the p-value is $0.01$ which is less than $0.05$, so again we reject $H_0$. 
+        \item Write down the conclusion in plain English \\
+        Strong evidence suggests the mean coefficient of restitution exceeds 0.82.
+    \end{enumerate}
+    
+\end{examplebox}
 
 \end{document}
