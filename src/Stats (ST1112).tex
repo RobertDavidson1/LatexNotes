@@ -27,12 +27,12 @@ Robert Davidson \\
 \pagebreak
 
 \section{Inferential Statistics}
-The ultimate goal in statistical inference is to estimate population paramaters (like the mean $\mu$) based on sample statistics (like the sample mean $\bar{X}$).
+The ultimate goal in statistical inference is to estimate population parameters (like the mean $\mu$) based on sample statistics (like the sample mean $\bar{X}$).
 \subsection{Part 1}
 \subsubsection{Probability vs Statistics}
 \begin{itemize}
     \item \textbf{Probability} deals with known underlying processes: one starts with a model (like proportion of red vs. green jelly beans in a jar) and computes probability of specific outcomes 
-    \item \textbf{Statistics} works in reverse: one observes outcomes (sample data) and attempts to infer the underlying process or population paramaters (e.g. proportion of red jellybeans)
+    \item \textbf{Statistics} works in reverse: one observes outcomes (sample data) and attempts to infer the underlying process or population parameters (e.g. proportion of red jellybeans)
 \end{itemize}
 \subsubsection{Definitions and Concepts}
 
@@ -41,13 +41,13 @@ The ultimate goal in statistical inference is to estimate population paramaters 
 \end{definitionbox}
 
 \begin{definitionbox}{Sample}{}
-    A \textbf{sample} is a subset of that populaton, intended to represent the population\\
+    A \textbf{sample} is a subset of that population, intended to represent the population\\
     
     For example the sample mean $\bar{X}$ is an estimate of the population mean $\mu$.
 \end{definitionbox}
 
 \begin{definitionbox}{Population Mean ($\mu$)}{}
-    $\mu$ represents the central tendence of a population distribution.
+    $\mu$ represents the central tendency of a population distribution.
     $$\mu = \frac{1}{N} \sum_{i=1}^{N} x_i$$
     where $N$ is the population size and $x_i$ are the individual values in the population.\\
 
@@ -66,7 +66,7 @@ The ultimate goal in statistical inference is to estimate population paramaters 
     Larger sample sizes tend to reduce this variation, that is as $n$ gros, the sample mean $\bar{X}$ becomes a better estimate of the population mean $\mu$.
 \end{conceptbox}
 \begin{conceptbox}{Sampling Distributions}{}
-    The sample mean itself is a \textbf{random variable} becuase different samples yield different mean values.\\
+    The sample mean itself is a \textbf{random variable} because different samples yield different mean values.\\
 
     The distribution of all possible sample means (of a given sample size $n$) is called the \textbf{sampling distribution} of the sample mean ($\bar{X}$).
 \end{conceptbox}
@@ -79,18 +79,18 @@ The ultimate goal in statistical inference is to estimate population paramaters 
     $$SD(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
     where $\sigma$ is the population standard deviation and $n$ is the sample size.\\
 
-    This value is valled the \textbf{standard error} of the mean and measures how much the sample mean $\bar{X}$ fluctuates around the population mean $\mu$.
+    This value is called the \textbf{standard error} of the mean and measures how much the sample mean $\bar{X}$ fluctuates around the population mean $\mu$.
 \end{definitionbox}
 
 \begin{definitionbox}{Central Limit Theorem}{}
-    $$\bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$$
+    $$\bar{X} \sim N\left(\mu, \frac{\sigma^m}{n}\right)$$
     where $\bar{X}$ is the sample mean, $\mu$ is the population mean, and $\sigma$ is the population standard deviation.\\
 
     The \textbf{Central Limit Theorem} states that the sampling distribution of the sample mean $\bar{X}$ (the distribution of all sample means)  approaches a normal distribution as the sample size $n$ increases, \textbf{regardless of the shape of the population distribution.}\\
 
     This means that for large enough sample sizes, we can use the normal distribution to make inferences about the population mean $\mu$. \\
 
-    \textbf{Practically}, many apply the rule of thumb $n \geq 30$ to treate $\bar{X}$ as normally distributed.
+    \textbf{Practically}, many apply the rule of thumb $n \geq 30$ to treat $\bar{X}$ as normally distributed.
 \end{definitionbox}
 
 
@@ -110,6 +110,19 @@ The ultimate goal in statistical inference is to estimate population paramaters 
 \end{examplebox}
 \subsection{Part 2 - Confidence Intervals}
 \subsubsection{Recap}
-A \textbf{sample statistic} (e.g. the sample mean $\bar{X}$) varies from one sample to another. Understanding this variation (and quantifying it via the standard error) is crucial for knowing how precise (or imprecise) an estimate really is.
+A \textbf{sample statistic} (e.g. the sample mean $\bar{X}$) varies from one sample to another. Understanding this variation (and quantifying it via the standard error) is crucial for knowing how precise (or imprecise) an estimate really is. \\[2ex]
+If we have a large sample size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, then our sample distribution of the sample mean $\bar{X}$ is approximately normal:
+$$\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)$$
+In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed even if the original population is not strictly normal. 
+\subsubsection{Confidence Intervals}
+\begin{conceptbox}{Why confidence intervals?}{}
+    Why do we need confidence intervals, instead of a single point estimate, like the sample mean $\bar{X}$? \\
+    
+    A confidence interval provides a range of plausible values for the population parameter (e.g. $\mu$) based on the sample data.
+\end{conceptbox}
+\noindent\textbf{Analogy:}  Using a single point estimate is like trying to catch a fish wih a spear; your aim may not be perfect. Using a confidence interval is like using a net; we have a better chance of "catching" (capturing) the true population parameter.
+
+
+
 
 \end{document}
