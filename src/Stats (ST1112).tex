@@ -196,6 +196,24 @@ $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
 where $z_{\alpha/2}$ is the critical value from the standard normal distribution.
 However, if the population standard deviation $\sigma$ is unknown, we can use the sample standard deviation $s$ as an estimate.\\
 This gives us the following confidence interval:
-$$\bar{X} \pm t_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
-\textbf{Interpretation}: around 95\% of all possible 95\% confidence intervals will contain the true population mean $\mu$. We can visualize that if we drew many repeated samples, sample means will form an overlapping $\mu$ and a small fraction will not
+$$\bar{X} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
+\textbf{Interpretation}: around 95\% of all possible 95\% confidence intervals will contain the true population mean $\mu$. We can visualize that if we drew many repeated samples, sample means will form an overlapping $\mu$ and a small fraction will not.
+
+\begin{examplebox}{Average student rent}{}
+    A dataset of 103 students, of whom 71 pay rent, was used to estimate the average weekly rent $\mu$. \\
+    Find the 95\% confidence interval for the population mean $\mu$ given: 
+    \begin{itemize}
+        \item \textbf{Point estimate}: the sample mean $\bar{X} \approx 546.239$.
+        \item \textbf{Sample standard deviation}: $s \approx 187.862$.
+        \item \textbf{Sample size}: $n = 71$.
+    \end{itemize}
+    Confidence Interval is given by:
+    $$\bar{X} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
+    where $z_{\alpha/2} = 1.96$ for a 95\% confidence level.\\
+    Thus:
+    $$546.239 \pm 1.96 \times \frac{187.862}{\sqrt{71}}$$
+    The resulting confidence interval is:
+    $$(502.541, 589.938)$$
+    \textbf{Interpretation}: We are 95\% confident that the true mean weekly rent for all NUI Galway students (population) is roughly 503 to 590 euros.\\
+\end{examplebox}
 \end{document}

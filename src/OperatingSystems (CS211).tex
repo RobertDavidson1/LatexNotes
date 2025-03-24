@@ -6,14 +6,6 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
-
-% 2) Adjust itemize settings globally:
-\setlist[itemize]{
-  leftmargin=2em,   % Indent from left
-  itemsep=-0.2em,    % Vertical spacing between bullets
-  topsep=0.5em      % Vertical space at the start of the list
-}
-
 \definecolor{commentgreen}{rgb}{0,0.5,0}
 \definecolor{keywordsblue}{rgb}{0,0,0.8}
 \definecolor{stringspurple}{rgb}{0.58,0,0.82}
@@ -324,16 +316,16 @@ In C is it important to distuinguish between a variable and the value stored in 
 int i = 10;
 \end{lstlisting}
 tells the system to allocate a location in memory to store the value 10. The variable \texttt{i} is a pointer to that location in memory. One of the distuinguihing features of C is it we can manipulate the memory address of the variable almost as easily as we can manipulate the value stored in it.
-\begin{conceptbox}[Pointers]
+\begin{conceptbox}{Pointers}{}
     \begin{itemize}
         \item if \texttt{i} is a variable, then \texttt{\&i} is a pointer to the location in memory where the value of \texttt{i} is stored.
-        \item The declaration \texttt{int *p;} creates a variable \texttt{p} that can store the memory address of an integer. The \texttt{*} indicates that \texttt{p} is a pointer to an integer.
+        If a memory address is stored in the variable \texttt{p}, then \texttt{*p} is the value stored at that address.
         \item If a memory address is stored in the variable \texttt{p}, then \texttt{*p} is the value stored at that address.
     \end{itemize}
 \end{conceptbox}
 \pagebreak
 \subsection{Characters}
-\begin{conceptbox}[Character representation]
+\begin{conceptbox}{Character representation}{}
     In C, a character is just an unsigned integer. Each character is represented by an integer between 0 and 127.
 \end{conceptbox}
 
@@ -353,7 +345,7 @@ tells the system to allocate a location in memory to store the value 10. The var
     \end{itemize}
 \end{minipage}
 \subsection{Strings}
-\begin{conceptbox}[String representation]
+\begin{conceptbox}{String representation}{}
     C does not have a string data type. Instead it uses arrays of type char to represent strings. For example if we make a declaration:
     $$\texttt{char greeting[20]="Hello. How are you?";}$$
     the system stores each character as an element of the array greeting.
@@ -520,7 +512,7 @@ to write to the file, we use one of:
 \section{The Process}
 $$\textbf{"A process is a running program."}$$
 The operating system gives the impression many programs are running at the same time, but in reality, only one program is running at a time. This is made possible by abstracting the the concept of a running program as a process.
-\begin{conceptbox}[Every process has]
+\begin{conceptbox}{Every process has}{}
     \begin{itemize}
         \item \textbf{The process text:} the program code
         \item \textbf{The program counter:} the address of the next instruction to be executed
@@ -529,7 +521,7 @@ The operating system gives the impression many programs are running at the same 
     \end{itemize}
 \end{conceptbox}
 A process is not just a program - if two users run the same program at the same time, they create different processes. Each process has its own memory space, so they do not interfere with each other. A program is a passive entity, while a process is an active / dynamic entity.
-\begin{conceptbox}[Operations OS must perform on a process]
+\begin{conceptbox}{Operations OS must perform on a process}{}
     \begin{itemize}
         \item \textbf{Create} a new process (open a new program)
         \item \textbf{Terminate / Destory} a process (close a program)
@@ -538,7 +530,7 @@ A process is not just a program - if two users run the same program at the same 
         \item \textbf{Status}  report info about a process (e.g. how much memory it is using, how long it has been running, etc.)
     \end{itemize}
 \end{conceptbox}
-\begin{conceptbox}[States of a process]
+\begin{conceptbox}{States of a process}{}
     \begin{itemize}
         \item \textbf{New} : the process is being created
         \item \textbf{Running} : instructions being executed
@@ -592,7 +584,7 @@ Often we don't want the parent to continue running while the child is running, t
 
 Often when a child process is created it is overlaid with another program. In C, this can be done with the {exelclp()} function. In the following example, the sub-procs memory space is overlaid the program text of the ls command.  Again we will use the \texttt{wait()} function.\\[2ex]
 The OS is responsible for \textbf{de-allocating the resources} of a process that has finished. It may also be responsible for terminating a process that is not responding.
-\begin{conceptbox}[Processes are terminated when]
+\begin{conceptbox}{Processes are terminated when}{}
     \begin{itemize}
         \item The proc executes its last instruction and asks the operating system to delete it (\texttt{exit()}). At that time it will usualy:
               \begin{itemize}
@@ -610,7 +602,7 @@ The OS is responsible for \textbf{de-allocating the resources} of a process that
 \subsection{Signals}
 The \texttt{kill()} system call is an example of a signal - a form of communication from one process to another. These provide a facility for asynchronus event handling. Note - when the subproc sends the kill() signal to the parent, the subproc also terminates. \\[2ex]
 The \texttt{kill()} function can send other signals, but most (such as SIGABRT, SIGILL, SIGQUIT, SIGTERM) are just variants of SIGKILL. However there are signals that preform other taks.
-\begin{conceptbox}[Types of Signals]
+\begin{conceptbox}{Types of Signals}{}
     \begin{itemize}
         \item \textbf{SIGSTOP:} stops a process
         \item \textbf{SIGCONT:} continues a stopped process
@@ -628,13 +620,13 @@ With the \texttt{signal()} function, we can send a signal that tells the process
 \subsection{Inter Process Communication}
 Inter process communication (IPC) is a mechanism that allows processes to communicate with each other. This is important because processes may need to share data or synchronize their actions
 
-\begin{conceptbox}[Types of Process Communication]
+\begin{conceptbox}{Types of Process Communication}{}
     \begin{itemize}
         \item \textbf{Independent} : Cannot affect or be affected by each other
         \item \textbf{Co-operating} : Can be affected by the execution of eachother
     \end{itemize}
 \end{conceptbox}
-\begin{conceptbox}[Why we allow IPC]
+\begin{conceptbox}{Why we allow IPC}{}
     \begin{itemize}
         \item \textbf{Information sharing} - two procs might require acess to the same file
         \item \textbf{Modularity} - Different procs might be dedicated to different system functions
@@ -646,13 +638,13 @@ Inter process communication (IPC) is a mechanism that allows processes to commun
 \begin{definitionbox}{Producer Consumer Model}{}
     One process (editor) has information it wants to produce for consumption by another (printer). This may be done by a \textbf{mutual/shared buffer}. Producer write to the buffer and consumer reads from it.
 \end{definitionbox}
-\begin{conceptbox}[Shared Buffer Types]
+\begin{conceptbox}{Shared Buffer Types}{}
     \begin{itemize}
         \item \textbf{Un-bounded} : no size limit placed on the buffer. The producer may continue to produce and write to the buffer as long as it wants to.
         \item \textbf{Bounded} : strict size limit on the buffer. If full, producer must wait until consumer removes some data.
     \end{itemize}
 \end{conceptbox}
-\begin{conceptbox}{How we implement shared buffers}
+\begin{conceptbox}{How we implement shared buffers}{}
     \begin{itemize}
         \item \textbf{Physically} by a set of shared variables (shared memory addresses), the implementation of this is the responsibility of the programmer.
         \item \textbf{Logically} by message passing using an Inter Process Communication. Such system is inplemented by the OS.. The IPC prodives a logical communcation link via a message passing facilitiy with two funadmental operations : \textbf{send message} and \textbf{recieve message}.
@@ -684,7 +676,7 @@ A means of communication, based around the \texttt{pipe(), write(), read()} func
 So far, we've assumed that every process has its own program counter (PC), which tells the OS where it is in its instruction set (think line of program currently executing). So even when we duplicate using \texttt{fork()} the new subproc has its own PC, even though they have the same value as the parents PC. \\[2ex]
 However, modern OS's allow for threads: single process that can have mulitple PC's.
 
-\begin{conceptbox}[Why threads are useful]
+\begin{conceptbox}{Why threads are useful}{}
     \begin{itemize}
         \item The process may need to preform lots of operations at the same time (on different cores) on the same data - i.e. adding vectors
         \item Processes have to preform different operation that run at different speeds, such as adding vectors (fast) and waiting for user input (slow)
@@ -705,7 +697,7 @@ Instead of our classic view of a single point of execution withing a program, a 
 \begin{definitionbox}{Task}{}
     A task is a collection of threads that belong to the same process and share code section, data section, and operating-system resources.
 \end{definitionbox}
-\begin{conceptbox}[Why use threads over processes]
+\begin{conceptbox}{Why use threads over processes}{}
     \begin{itemize}
         \item \textbf{Parallization} - Each thread can execute on a different processor core.
         \item \textbf{Responsiveness} - A part of a process may continue working, even if another part is blocked, i.e. waiting for an I/O operation
@@ -745,7 +737,7 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
 \section{Sheduling Algorithms}
 $$\textbf{"Several process/jobs are available to be run. In what order should they be executed?}$$
 \subsection{Metrics to Compare Algoritms}
-\begin{conceptbox}[Metrics to Compare Algorithms]
+\begin{conceptbox}{Metrics to Compare Algorithms}{}
     \begin{itemize}
         \item \textbf{Turnaround time} - the total time taken to execute a process. It is the sum of the waiting time and the burst time.
         \item \textbf{Waiting time} - the total time a process has been waiting in the ready queue.
