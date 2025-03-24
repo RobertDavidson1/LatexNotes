@@ -447,4 +447,27 @@ $$SE = \sqrt{\frac{p(1 - p)}{n}}$$
 This maximizes at $p = 0.5$. Thus the worst-case margin of error for a 95\% confidence interval is:
 $$\approx \pm 2 \times \sqrt{\frac{0.5\times0.5}{n}} = \pm \frac{1}{\sqrt{n}}$$
 \textbf{Rule of thumb}: for $n = 1000$, the margin of error is about $1/\sqrt{1000} \approx 0.03$, i.e. 3\% error.
+\subsection{Confidence Intervals for Counts}
+\subsubsection{Possion Setup}
+A count variable $X$, over a fixed interval (e.g. "number of emails per day") often follows a \textbf{Poisson} distribution. with parameter $\lambda$.  \\
+Recall $X \sim Poisson(\lambda)$ implies $E(X) = \lambda$ and $Var(X) = \lambda$.
+\subsubsection{Central Limit Theorem Approximation}
+For large enough $\lambda$, the Central Limit Theorem, implies the sample mean of a Possion variable is approximately normally distributed:
+$$X \sim N(\lambda, \frac{\lambda}{n})$$
+If we have $n$ observations of some Poisson process, the overall mean $\bar{\lambda}$ is used to estimate the population mean $\lambda$. \\[2ex]
+\textbf{Criteria}: The product $n\lambda$ should be sufficiently large (e.g. $\geq 50$) for the approximation to hold well.
+\begin{examplebox}{Emails per Day}{}
+    Given a sample of $n=64$ students with a mean of $\bar{\lambda} = 53$ emails per day, find the 95\% confidence interval for the population mean $\lambda$.\\[2ex]
+
+    Standard Error: 
+    $$SE = \sqrt{\bar{\lambda}} = \sqrt{53} \approx 7.28$$
+    For a 95\% confidence interval $\alpha = 0.05, z_{\alpha/2} = 1.96$.
+    The 95\% confidence interval is given by:
+    $$\bar{\lambda} \pm z_{\alpha/2} \times SE = 53 \pm 1.96 \times 7.28$$
+    The resulting confidence interval is:
+    $$(38.7, 67.3)$$
+    \textbf{Interpretation}: We are 95\% confident that the true mean number of emails per day for all students is between 39 and 67.
+    
+\end{examplebox}
+
 \end{document}
