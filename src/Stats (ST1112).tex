@@ -586,14 +586,24 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
         $$T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}} = \frac{0.84 - 0.82}{0.02456/\sqrt{15}} \approx 2.45$$
         \item \textbf{Write down the sampling distribution of $T_0$}
         $$T_0 \sim t_{14}$$
-        \item Asses how likely $T_0$ is, if $H_0$ is true \\
+        \item \textbf{Asses how likely $T_0$ is, if $H_0$ is true} \\
         Compare $2.72$ to critical value $t{0.05, 14} \approx 1.761$. 
-        \item Make a decision (reject $H_0$ or fail to reject $H_0$) \\
+        \item \textbf{Make a decision (reject $H_0$ or fail to reject $H_0$)} \\
         Since $2.72 > 1.761$, we reject $H_0$. Alternatively, the p-value is $0.01$ which is less than $0.05$, so again we reject $H_0$. 
         \item Write down the conclusion in plain English \\
         Strong evidence suggests the mean coefficient of restitution exceeds 0.82.
     \end{enumerate}
-    
 \end{examplebox}
+\begin{conceptbox}{Statistical Significance vs Practical Significance}{}
+    \begin{itemize}
+        \item A small p-value indicates statistical significance, meaning the true value likely differs from the null hypothesis.
+        \item Statistical significance does not necessarily imply scientific or practical importance.
+        \item A difference is only meaningful if it has a practical impact.
+        \item The p-value measures the confidence in the difference from the null hypothesis, not the magnitude or practical importance of the difference.
+        \item A low p-value suggests high confidence in a difference, but it does not guarantee that the difference is large or important.
+        \item Interval estimation (confidence intervals) is generally more useful than a p-value because it provides an estimate of the parameter and the range of plausible values.
+        \item While a hypothesis test offers a binary decision regarding the plausibility of a parameter value, a confidence interval shows the spectrum of plausible values.
+    \end{itemize}
+\end{conceptbox}
 
 \end{document}
