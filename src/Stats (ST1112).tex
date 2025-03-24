@@ -135,7 +135,7 @@ In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed e
 \begin{tikzpicture}[
     domain=-1:1, 
     xscale=1, 
-    yscale=1,
+    yscale=6,
     smooth,
     line cap=round,
     line join=round,
@@ -144,45 +144,37 @@ In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed e
     % Define critical z values
     \def\zcrit{1.96}
     
-    % Fill background
-    \fill[blue!15] (-3.5,0) rectangle (3.5,0.45);
+  
     
     % Fill left tail area (2.5%)
-    \fill[yellow!80] (-3.5,0) -- plot[domain=-3.5:-\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (-\zcrit,0) -- cycle;
+    \fill[custom_blue] (-3.5,0) -- plot[domain=-3.5:-\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (-\zcrit,0) -- cycle;
     
     % Fill right tail area (2.5%)
-    \fill[yellow!80] (3.5,0) -- plot[domain=3.5:\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (\zcrit,0) -- cycle;
+    \fill[custom_blue] (3.5,0) -- plot[domain=3.5:\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (\zcrit,0) -- cycle;
     
     % Draw the normal distribution curve
-    \draw[thick, yellow!95!black] plot[domain=-3.5:3.5] (\x, {0.4*exp(-(\x)^2/2)});
-    
-    % Draw horizontal axis
-    \draw[->, thick] (-3.7,0) -- (3.7,0) node[right] {};
-    
-    % Draw vertical axis
-    \draw[->, thick] (0,0) -- (0,0.45) node[above] {};
-    
+    \draw[thick, custom_blue] plot[domain=-3.5:3.5] (\x, {0.4*exp(-(\x)^2/2)});
+
     % Mark the critical values
     \draw[thick] (-\zcrit,0) -- (-\zcrit,0.05);
     \node[below] at (-\zcrit,0) {$-z_{0.025}$};
     \draw[thick] (\zcrit,0) -- (\zcrit,0.05);
     \node[below] at (\zcrit,0) {$z_{0.025}$};
+
+    \draw[<->] (-\zcrit, -0.1) -- (\zcrit, -0.1) node[midway, below] {$95\%$};
+    \draw[<->] (-\zcrit, -0.1) -- (-3.7, -0.1) node[midway, below] {$2.5\%$};
+    \draw[<->] (\zcrit, -0.1) -- (3.7, -0.1) node[midway, below] {$2.5\%$};
     
+
+    % Draw horizontal axis
+    \draw[->] (-3.7,0) -- (3.7,0) node[right] {};
+    % Draw vertical axis
+    \draw[->] (0,0) -- (0,0.5) node[above] {};
     % Mark the center
     \node[below] at (0,0) {$0$};
-    
-    % Add labels
-    \node[above left] at (-2.5,0.1) {$\text{P}(z < -z_{0.025}) = 0.025$};
-    \node[above] at (0,0.25) {$\text{P}(-z_{0.025} < z < z_{0.025}) = 0.95$};
-    \node[above right] at (2.5,0.1) {$\text{P}(z > z_{0.025}) = 0.025$};
-    
     % Title
-    \node[above] at (0,0.43) {\Large \textbf{Standard Normal Distribution ($z$)}};
-    
-    % Question marks
-    \node[below, green!60!black] at (-\zcrit,-0.1) {?};
-    \node[below, green!60!black] at (\zcrit,-0.1) {?};
-    
+    \node[above] at (0,0.55) {\textbf{Standard Normal Distribution ($z$)}};
+    \node at (0,0.55) {\textbf{with $\alpha = 0.05$}};    
 \end{tikzpicture}
 
 
