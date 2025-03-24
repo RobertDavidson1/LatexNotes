@@ -534,5 +534,22 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
         \item If $n < 30$, $T_0$ follows a t-distribution with $df = n - 1$ degrees of freedom (assuming normality of the underlying population).
     \end{itemize}
 \end{conceptbox}
-
+\begin{conceptbox}{Rejection Region (Classical Approach)}{}
+    Depends on the alternative hypothesis: 
+    \begin{itemize}
+        \item \textbf{Left Tailed (One sided) ($\mu < \mu_0$)}: reject if $T_0 < -t_{\alpha, df}$.
+        \item \textbf{Right Tailed (One sided) ($\mu > \mu_0$)}: reject if $T_0 > t_{\alpha, df}$.
+        \item \textbf{Two-Sided ($\mu \neq \mu_0$)}: reject if $T_0 < -t_{\alpha/2, df}$ or $T_0 > t_{\alpha/2, df}$.
+    \end{itemize}
+\end{conceptbox}
+\begin{conceptbox}{p-value Method}{}
+    The p-value is the probability (under $H_0$) of observing a test statistic as extreme or more extreme than the observed $T_0$
+    \begin{itemize}
+        \item \textbf{Two-sided p-value} = area in both tails beyond $\pm T_0$.
+        \item \textbf{One-sided p-value} = area in one tail $T_0$.
+    \end{itemize}
+    If the p value $\leq \alpha$, we reject $H_0$ in favour of $H_1$.
+\end{conceptbox}
+\noindent\textbf{Important Clarification}: \\
+The p-value is \textbf{not} the probability that $H_0$ is true. It is the probability of seeing data at least as extreme as what we got, assuming $H_0$ is correct. If the p-value is large (e.g. $> 0.05$), we do not automatically conclude $H_0$ is true; we simply fail to reject it.
 \end{document}
