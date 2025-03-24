@@ -31,7 +31,7 @@ The ultimate goal in statistical inference is to estimate population parameters 
 \subsection{Part 1}
 \subsubsection{Probability vs Statistics}
 \begin{itemize}
-    \item \textbf{Probability} deals with known underlying processes: one starts with a model (like proportion of red vs. green jelly beans in a jar) and computes probability of specific outcomes 
+    \item \textbf{Probability} deals with known underlying processes: one starts with a model (like proportion of red vs. green jelly beans in a jar) and computes probability of specific outcomes
     \item \textbf{Statistics} works in reverse: one observes outcomes (sample data) and attempts to infer the underlying process or population parameters (e.g. proportion of red jellybeans)
 \end{itemize}
 \subsubsection{Definitions and Concepts}
@@ -42,7 +42,7 @@ The ultimate goal in statistical inference is to estimate population parameters 
 
 \begin{definitionbox}{Sample}{}
     A \textbf{sample} is a subset of that population, intended to represent the population\\
-    
+
     For example the sample mean $\bar{X}$ is an estimate of the population mean $\mu$.
 \end{definitionbox}
 
@@ -113,17 +113,17 @@ The ultimate goal in statistical inference is to estimate population parameters 
 A \textbf{sample statistic} (e.g. the sample mean $\bar{X}$) varies from one sample to another. Understanding this variation (and quantifying it via the standard error) is crucial for knowing how precise (or imprecise) an estimate really is. \\[2ex]
 If we have a large sample size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, then our sample distribution of the sample mean $\bar{X}$ is approximately normal:
 $$\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)$$
-In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed even if the original population is not strictly normal. 
+In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed even if the original population is not strictly normal.
 \subsubsection{Confidence Intervals}
 \begin{conceptbox}{Why confidence intervals?}{}
     Why do we need confidence intervals, instead of a single point estimate, like the sample mean $\bar{X}$? \\
-    
-    A confidence interval provides a range of plausible values for the population parameter (e.g. $\mu$) based on the sample data. \\ 
-    
+
+    A confidence interval provides a range of plausible values for the population parameter (e.g. $\mu$) based on the sample data. \\
+
     \textbf{Analogy:}  Using a single point estimate is like trying to catch a fish wih a spear; your aim may not be perfect. Using a confidence interval is like using a net; we have a better chance of "catching" (capturing) the true population parameter.
 \end{conceptbox}
 \begin{definitionbox}{Confidence Interval}{}
-  $$\bar{X} \pm (\text{critical value}) \times SE(\bar{X})$$
+    $$\bar{X} \pm (\text{critical value}) \times SE(\bar{X})$$
     where $SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}$ is the standard error of the sample mean, $\pm$ is the margin of error. \\
     The general formula for a desired confidence level 100(1- $\alpha$)\% is:
     $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
@@ -131,7 +131,7 @@ In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed e
 \end{definitionbox}
 \noindent\textbf{Interpretation}: \\
 If we repeat the sampling process many times and construct confidence intervals from each sample, then approximately $100 \times (1 - \alpha)\%$ of those intervals will contain the true population parameter $\mu$.\\
-In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in my interval"}. Rather we say, \textbf{"on repeated sampling 95\% of such intervals will contain the true population mean $\mu$."} 
+In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in my interval"}. Rather we say, \textbf{"on repeated sampling 95\% of such intervals will contain the true population mean $\mu$."}
 
 
 \begin{definitionbox}{Critical Values}{}
@@ -140,45 +140,45 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     This means that 95\% of the area under the normal curve lies within $1.96$ standard deviations of the mean. \\[2ex]
     \begin{center}
         \begin{tikzpicture}[
-        domain=-1:1, 
-        xscale=-0.5, 
-        yscale=3.5,
-        smooth,
-        line cap=round,
-        line join=round,
-    ]
-        % Define critical z values
-        \def\zcrit{1.96}
-        
-        % Fill left tail area (2.5%)
-        \fill[custom_red] (-3.5,0) -- plot[domain=-3.5:-\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (-\zcrit,0) -- cycle;
-        
-        % Fill right tail area (2.5%)
-        \fill[custom_red] (3.5,0) -- plot[domain=3.5:\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (\zcrit,0) -- cycle;
-        
-        % Draw the normal distribution curve
-        \draw[thick, custom_red] plot[domain=-3.5:3.5] (\x, {0.4*exp(-(\x)^2/2)});
-    
-        % Mark the critical values
-        \draw[thick] (-\zcrit,0) -- (-\zcrit,0.05);
-        \node[below] at (-\zcrit,0) {$-z_{0.025}$};
-        \draw[thick] (\zcrit,0) -- (\zcrit,0.05);
-        \node[below] at (\zcrit,0) {$z_{0.025}$};
-    
-        \draw[<->] (-\zcrit, -0.15) -- (\zcrit, -0.15) node[midway, below] {$95\%$};
-        \draw[<->] (-\zcrit, -0.15) -- (-3.7, -0.15) node[midway, below] {$2.5\%$};
-        \draw[<->] (\zcrit, -0.15) -- (3.7, -0.15) node[midway, below] {$2.5\%$};
-        
-    
-        % Draw horizontal axis
-        \draw[->] (-3.7,0) -- (3.7,0) node[right] {};
-        % Draw vertical axis
-        \draw[->] (0,0) -- (0,0.5) node[above] {};
-        % Mark the center
-        \node[below] at (0,0) {$0$};
-        % Title
-        \node[above] at (0,0.55) {\textbf{Standard Normal Distribution ($z$)}};
-        \node at (0,0.55) {\textbf{with $\alpha = 0.05$}};    
+                domain=-1:1,
+                xscale=-0.5,
+                yscale=3.5,
+                smooth,
+                line cap=round,
+                line join=round,
+            ]
+            % Define critical z values
+            \def\zcrit{1.96}
+
+            % Fill left tail area (2.5%)
+            \fill[custom_red] (-3.5,0) -- plot[domain=-3.5:-\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (-\zcrit,0) -- cycle;
+
+            % Fill right tail area (2.5%)
+            \fill[custom_red] (3.5,0) -- plot[domain=3.5:\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (\zcrit,0) -- cycle;
+
+            % Draw the normal distribution curve
+            \draw[thick, custom_red] plot[domain=-3.5:3.5] (\x, {0.4*exp(-(\x)^2/2)});
+
+            % Mark the critical values
+            \draw[thick] (-\zcrit,0) -- (-\zcrit,0.05);
+            \node[below] at (-\zcrit,0) {$-z_{0.025}$};
+            \draw[thick] (\zcrit,0) -- (\zcrit,0.05);
+            \node[below] at (\zcrit,0) {$z_{0.025}$};
+
+            \draw[<->] (-\zcrit, -0.15) -- (\zcrit, -0.15) node[midway, below] {$95\%$};
+            \draw[<->] (-\zcrit, -0.15) -- (-3.7, -0.15) node[midway, below] {$2.5\%$};
+            \draw[<->] (\zcrit, -0.15) -- (3.7, -0.15) node[midway, below] {$2.5\%$};
+
+
+            % Draw horizontal axis
+            \draw[->] (-3.7,0) -- (3.7,0) node[right] {};
+            % Draw vertical axis
+            \draw[->] (0,0) -- (0,0.5) node[above] {};
+            % Mark the center
+            \node[below] at (0,0) {$0$};
+            % Title
+            \node[above] at (0,0.55) {\textbf{Standard Normal Distribution ($z$)}};
+            \node at (0,0.55) {\textbf{with $\alpha = 0.05$}};
         \end{tikzpicture}
     \end{center}
 \end{definitionbox}
@@ -191,7 +191,7 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
 \end{examplebox}
 
 \begin{examplebox}{Find the 95\% confidence interval for the population mean $\mu$ given}{}
-    A dataset of 103 students, of whom 71 pay rent, was used to estimate the average weekly rent $\mu$. 
+    A dataset of 103 students, of whom 71 pay rent, was used to estimate the average weekly rent $\mu$.
     \begin{itemize}
         \item \textbf{Point estimate}: the sample mean $\bar{X} \approx 546.239$.
         \item \textbf{Sample standard deviation}: $s \approx 187.862$.
@@ -220,5 +220,42 @@ $$\bar{X} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
 \textbf{Interpretation}: around 95\% of all possible 95\% confidence intervals will contain the true population mean $\mu$. We can visualize that if we drew many repeated samples, sample means will form an overlapping $\mu$ and a small fraction will not.
 
 \subsubsection{Confidence Intervals with small $n$ and $\sigma$ unknown}
+\begin{conceptbox}{Why the $t-$distribution}{}
+    When the sample size is small ($n < 30$) and the population standard deviation $\sigma$ is unknown, simply substituting the sample standard deviation $s$ no longer suffices because the standard error is itself estimated with more uncertainty.\\[2ex]
+    The $\textbf{t-distributution has thicker}$ tails than the normal distributution. This extra "fatness" in the tails accounts for the additional uncertainty in using $s$ instead of $\sigma$.
+    \begin{center}
+        \begin{tikzpicture}[
+            domain=-3.5:3.5,
+            xscale=0.5,
+            yscale=3.5,
+            smooth,
+            line cap=round,
+            line join=round
+        ]
+            % Draw axes
+            \draw[->] (-3.7,0) -- (3.7,0) node[right] {$x$};
+            \draw[->] (0,0) -- (0,0.5) node[above] {$f(x)$};
+            \node[below] at (0,0) {$0$};
+        
+            % Plot the Normal Distribution (dotted red)
+            \draw[dotted, thick, custom_red] plot (\x, {0.4*exp(-(\x)^2/2)});
+        
+            % Plot the t-Distribution (solid blue) for df = 5.
+            % The t-density: f(t) = (8/(3*pi*sqrt(5)))*(1+t^2/5)^(-3)
+            \draw[thick, custom_blue] plot (\x, {(8/(3*3.14159*sqrt(5)))*((1+(\x)^2/5)^(-3))});
+        
+            % Title and legend
+            \node[above] at (0,0.55) {\textbf{Normal (dotted) vs.\ t-Distribution (solid)}};
+        
+            % Legend (placed at the top-right)
+            \begin{scope}[shift={(3,0.4)}]
+                \draw[dotted, thick, custom_red] (0,0) -- (1,0);
+                \node[right] at (1,0) {Normal};
+                \draw[thick, custom_blue] (0,-0.2) -- (1,-0.2);
+                \node[right] at (1,-0.2) {t-Distribution ($df=5$)};
+            \end{scope}
+        \end{tikzpicture}        
+    \end{center}
+\end{conceptbox}
 
 \end{document}
