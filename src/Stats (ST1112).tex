@@ -6,15 +6,6 @@
 \usepackage[svgnames]{xcolor}
 \usepackage{listings}
 
-\lstset{language=R,
-    basicstyle=\footnotesize\ttfamily,
-    stringstyle=\color{DarkGreen},
-    otherkeywords={0,1,2,3,4,5,6,7,8,9},
-    morekeywords={TRUE,FALSE},
-    deletekeywords={data,frame,length,as,character},
-    keywordstyle=\color{blue},
-    commentstyle=\color{DarkGreen},
-}
 
 \title{
 Robert Davidson \\
@@ -32,147 +23,9 @@ Robert Davidson \\
 \maketitle
 \pagebreak
 
-
-
 \tableofcontents
 \pagebreak
-\section{Descriptive Statisitcs}
-\subsection{Sampling the mean}
-In \textbf{probability} we consider the underlying process which has some randomness or uncertainity, and we try to figure out what happens \\[2ex]
-In \textbf{statistics} we consider the data that we have, and we try to figure out what the underlying process is. The basic aim to infer the population from the sample.
-\begin{examplebox}{Consider a jar of red and green jelly beans}{}
-    A probabilist starts by knowing the proportion of red and green jelly beans in the jar, and then tries to figure out the probability of drawing a red jelly bean.\\
-    A statistician starts by drawing a sample of jelly beans from the jar, and then tries to figure out the proportion of red and green jelly beans in the jar.
-\end{examplebox}
 
-\begin{definitionbox}{Central Limit Theorem}{}
-    Sample means follow a normal distrubution, centered on the popular mean, with a standard deviation equal to population standard deviation divided by the square root of the sample size.
-    $$\bar{X} \sim N \left(\mu, \frac{\sigma}{\sqrt{n}}\right)$$
-\end{definitionbox}
+\section{Inferential Statistics}
 
-\begin{definitionbox}{Standard Error}{}
-    The standard error is the variability in the sampling distrubution. \\
-    The standard error describes the typical difference between the sample measurement and the population parameter.
-    $$SE = \frac{\sigma}{\sqrt{n}}$$
-\end{definitionbox}
-\begin{definitionbox}{Estimate $\sigma$}{}
-    Often the value of the population standard deviation is unknown, and hence the standard error of the mean is unknown. \\
-    We can estimate the value of the standard error using the sample standard deviation $(s)$ as an unbiased estimator of the population standard deviation $(\sigma)$.
-    $$\sigma_{\bar{X}} = \frac{s}{\sqrt{n}}$$
-\end{definitionbox}
-
-
-\section{Interential Statistics - Interval Estimation}
-\subsection{Confidence Intervals}
-\subsubsection{Confidence Intervals for a mean}
-
-\begin{definitionbox}{Confidence Interval for $n > 30$}{}
-    For a large sample size, $n > 30$, a Confidence Interval for the population mean is given by:
-    $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
-\end{definitionbox}
-\noindent  A $95\%$ Confidence Interval, $\alpha = 0.05$, meaning we accept a 5\% risk that our interval doesn't contain the true population mean. \\
-This $5\%$ is split into $2.5\%$ in each tail of the distrubution : $Z_{\frac{\alpha}{2}} = Z_{0.025}$. \\
-When using a normal table that shows "area to the left", we need to find the $Z$ value that corresponds to $1 - 0.025 = 0.975$.
-Thus: $Z_{0.025} = 1.96$. \\
-$95 \%$ Confidence is most commonly used because increasing the confidence level increases the width of the interval, this may not be useful.
-
-
-\subsubsection{Confidence Intervals for a small sample size}
-When $\sigma$ is known, a 95\% Confidence Interval for the population mean is given by:
-$$\bar{X} \pm 1.96  \cdot \frac{\sigma}{\sqrt{n}}$$
-When $\sigma$ is unknown, a 95\% Confidence Interval for the population mean is given by:
-$$\bar{X} \pm 1.96  \cdot \frac{s}{\sqrt{n}}$$
-But, what if $\sigma$ is unknown and $n < 30$?
-\begin{definitionbox}{Confidence Interval for $n < 30$}{}
-    For a small sample size, $n < 30$, we use the \textbf{t-distribution instead of the normal distribution}. \\
-    The t-distribution has heavier tails than the normal distribution and accounts for the additional uncertainty when estimating $\sigma$ with $s$ in small samples.
-
-    The confidence interval is given by:
-    $$\bar{X} \pm t_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
-
-    Where $t_{\frac{\alpha}{2}}$ is the critical value from the t-distribution with $n-1$ \textbf{degrees of freedom}. \\
-    The degrees of freedom represent the \emph{number of independent pieces of information used to estimate the standard deviation}.
-    As the degrees of freedom increase, the t-distribution approaches the normal distribution - infinite degrees of freedom is the normal distribution.
-
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    width=12cm,
-                    height=8cm,
-                    xlabel=$x$,
-                    ylabel=$f(x)$,
-                    legend pos=north west,
-                    samples=100,
-                    domain=-4:4
-                ]
-                % Standard Normal Distribution
-                \addplot[blue, thick] {exp(-x^2/2)/sqrt(2*pi)};
-                % t-distribution with df=2 (approximated)
-                \addplot[red, thick] {0.5/(1+x^2)^1.5};
-                % t-distribution with df=5 (approximated)
-                \addplot[green, thick] {0.365/(1+x^2/5)^3};
-
-                \legend{Normal Distribution, t (df=2), t (df=5)}
-            \end{axis}
-        \end{tikzpicture}
-    \end{center}
-\end{definitionbox}
-
-\begin{examplebox}{Find t-value from tables For a 95\% Confidence Interval}{}
-    We have:
-    $$a = 1 - 0.95 = 0.05 \Rightarrow \frac{a}{2} = 0.025$$
-    We also have:
-    $$n = 13 \Rightarrow df = 13 - 1$$
-    We want to find the $t_{12, 0.025}$ value from the t-distribution table, which is $2.179$.
-\end{examplebox}
-
-
-\subsection{Bootstrap, proportions and counts}
-What do we do when our data is not normally distributed? We have two options:
-\begin{itemize}
-    \item Transform the data to make it normally distributed (e.g. log transformation, square root transformation)
-    \item Use a non-parametric method (Bootstrap or CI for the population median)
-\end{itemize}
-
-
-\subsubsection{Bootstrap}
-We can quantify the uncertainity in our estimate of the population mean by using the Central Limit Theorem or simulatiuon via the Bootstrap method, as follows:
-\begin{enumerate}
-    \item Take a bootstrap  sample - random sample taken with replacment from the original sample (same size as original sample)
-    \item Calculate the bootstrap statistic - such as mean, median, proportion, etc.
-    \item Repeat steps 1 and 2 many times
-    \item Calculate the bounds of the 95\% Confidence interval as the middle 95\% of the bootstrap distrubution
-\end{enumerate}
-
-
-\section{Inferential Statistics - Hypothesis Testing}
-\subsection{Hypothesis Testing}
-\begin{definitionbox}{Hypothesis Testing}{}
-    A structured procedure to evaluate claims about a population paramater by comparing sample evidence against a proposed hypothesis
-\end{definitionbox}
-\begin{definitionbox}{Null Hypothesis $H_0$}{}
-    The defauly claim stating the population parameter equals a specific value (e.g. $\mu = 6.5$). It assumes that anu difference between the sample statistic and hypothesized value is due to random variation.
-\end{definitionbox}
-\begin{definitionbox}{Alternative Hypothesis $H_a$}{}
-    The competing claim the population paramater differs from the null hypothesis. It can be:
-    \begin{itemize}
-        \item \textbf{One-sided}: Claiming the paramater is either greater than or less than the specific value
-        \item \textbf{Two-sided}: Claiming the paramater is not equal to the specific value
-    \end{itemize}
-\end{definitionbox}
-\subsection{Core Definitions and Concepts}
-\begin{definitionbox}{Test Statistic}{}
-    A standardized measure that quantifies the diffence of the sample sample statisitic from the hypothesized population paramater, taking into account sample variability and size.
-    $$T_0 = \frac{\overline{X} - \mu_0}{s / \sqrt{n}}$$
-    Where:
-    \begin{itemize}
-        \item $\overline{X}$ is the sample mean
-        \item $\mu_0$ is the hypothesized population mean
-        \item $s$ is the sample standard deviation
-        \item $n$ is the sample size
-    \end{itemize}
-\end{definitionbox}
-\begin{definitionbox}{p-value}{}
-    The probability of obsevering data as extreme (or more extreme than) the current sammple result if the null hypothesis is true. A smaller $p$-value indicates stronger evidence against $H_0$. It is not the probability that $H_0$ is true given the data.
-\end{definitionbox}
 \end{document}
