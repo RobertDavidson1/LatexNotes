@@ -310,48 +310,7 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
 
 
 \subsection{When normality is questionable}
-Recall that for small $n$, the t-distribution-based confidence interval requires data to be approximately normally distributed in the population. But many real datasets violate this assumption. - e.g. skewed data, heavily tailed data etc.
-
-\begin{figure}[ht]
-    \centering
-    \begin{minipage}{0.45\linewidth}
-        \centering
-        \begin{tikzpicture}[scale = 0.5]
-            \begin{axis}[
-                domain=0.1:5,
-                samples=100,
-                xlabel={$$},
-                title={\Huge Skewed Data (Log-normal)},
-                width=\linewidth,
-                axis x line=bottom,
-                axis y line=left,
-                ytick=\empty,
-                xtick=\empty
-            ]
-            \addplot [custom_blue, thick] {1/(x*0.5*sqrt(2*pi)) * exp(-(ln(x))^2/(2*0.5^2))};
-            \end{axis}
-        \end{tikzpicture}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\linewidth}
-        \centering
-        \begin{tikzpicture}[scale = 0.5]
-            \begin{axis}[
-                domain=-10:10,
-                samples=100,
-                xlabel={$$},
-                title={\Huge Heavy Tailed Data (Cauchy)},
-                width=\linewidth,
-                axis x line=bottom,
-                axis y line=left,
-                ytick=\empty,
-                xtick=\empty
-            ]
-            \addplot [custom_red, thick] {1/(pi*(1+x^2))};
-            \end{axis}
-        \end{tikzpicture}
-    \end{minipage}
-\end{figure}
+Recall that for small $n$, the t-distribution-based confidence interval requires data to be approximately normally distributed in the population. But many real datasets violate this assumption. - e.g. skewed data, heavily tailed data etc. \\[2ex]
 \noindent Two broad remedies exist:
 \begin{itemize}
     \item \textbf{Data transformation}: Apply a mathematical transformation to make the data more symmetric or bell shape (e.g.log-transformation). Then use t-based or z-based methods on the transformed scale.
@@ -386,7 +345,6 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item \textbf{Construct CI}: The bootstrap distribution of the resampled statistics can be used to determine the middle 95\% (or chosen confidence level) as the CI bounds.
 \end{enumerate}
 
-\pagebreak
 
 \textbf{Advantages}:
 \begin{itemize}
@@ -410,6 +368,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     where $df = n - 1$. Provided the population is approximately normal.
     \item If normality is questionable, we may use transformations or bootstrapping. 
 \end{itemize}
+
 \subsection{Proportions}
 \begin{definitionbox}{Proportion}{}
     A \textbf{proportion} is the ratio of the number of times a particular outcomes occurs (successes) to the total number of trials (or observations). Formally if $X$ represents the number of successes and $n$ is the total number of trials, then the proportion $p$ is given by:
@@ -429,5 +388,6 @@ If $X \sim B(n, \pi)$, then $X$ is the number of successes in $n$ independent Be
 The \textbf{sample proportion} $p = \frac{X}{n}$ is the observed successes in the sample. 
 \subsubsection{Normal Approximation of $p$}
 For large enough $n$, so that $n\pi \geq 5$ and $n(1 - \pi) \geq 5$, the sampling distribution of the sample proportion $p$ can be approximated by a normal distribution:
-$$X \simeq N\left(n\pi, n\pi(1- \pi)\right) \Rightarrow p = \frac{X}{n} \simeq N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$
+$$X \approx N\left(n\pi, \  n\pi(1- \pi)\right) \Rightarrow p = \frac{X}{n} \approx N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$
+Thus $p$ can be treated as approximately normally distributed for large $n$, centered at the true proportion $\pi$ with variance $\frac{\pi(1 - \pi)}{n}$.
 \end{document}
