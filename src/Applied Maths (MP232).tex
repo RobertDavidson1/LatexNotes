@@ -88,7 +88,7 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
 \pagebreak
 \section{Intro to Laplace Transforms}
 \subsection{What is a Laplace Transform?}
-\begin{definitionbox}
+\begin{definitionbox}{}{}
   The Laplace Transform, defined for $t \geq 0$, is given by
   $$L\{f(t)\}(s) = F(s) = \int_0^\infty e^{-st} dt$$
 
@@ -96,7 +96,7 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
 
 \subsection{Common Laplace Transforms}
 
-\begin{examplebox}[Find the Laplace Transform of \boldmath$f(t) = 1$]
+\begin{examplebox}{Find the Laplace Transform of \boldmath$f(t) = 1$}{}
   We have:
   $$L\{1\} = \int_0^\infty 1 \cdot e^{-st } dt = \lim_{R \to \infty} \int_0^R e^{-st} dt$$
   This integral is equal to:
@@ -106,7 +106,7 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
   $$L\{1\} = \lim_{R \to \infty} \frac{1 - e^{-sR}}{s} = \frac{1}{s}$$
 \end{examplebox}
 
-\begin{examplebox}[ Find the Laplace Transform of $f(t) = e^{2t}$]
+\begin{examplebox}{Find the Laplace Transform of $f(t) = e^{2t}$}{}
   \begin{align*}
     L\{e^{2t}\}
      & = \int_0^\infty e^{2t}e^{-st}\, dt
@@ -119,7 +119,7 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
   \end{align*}
 \end{examplebox}
 
-\begin{examplebox}[Find the Laplace Transform of $f(t) = \cosh(at)$]
+\begin{examplebox}{Find the Laplace Transform of $f(t) = \cosh(at)$}{}
   We have:
   \begin{align*}
     L\{\cosh(at)\} & = L\left\{ \frac{e^{at} + e^{-at}}{2}\right\} \quad \text{from the definition of }\cosh(at)           \\
@@ -132,7 +132,7 @@ $$\frac{1}{(s^2 + 1)^2 (s-1)} = \frac{As + B}{(s^2 + 1)^2} + \frac{Cs + D}{s^2 +
   $$L\{\sinh(at)\} = \frac{a}{(s^2 - a^2)}$$
 \end{examplebox}
 
-\begin{examplebox}[Find the Laplace Transform of $\cos(wt)$ and $\sin(wt)$ where $w$ is a constant.]
+\begin{examplebox}{Find the Laplace Transform of $\cos(wt)$ and $\sin(wt)$ where $w$ is a constant.}{}
   We first compute the Laplace Transform of $e^{iwt}$ using its definition:
   \[
     L\{e^{iwt}\} = \int_0^\infty e^{-st}e^{iwt}\,dt
@@ -185,7 +185,7 @@ $$L\{af(t) + bg(t)\} = aL\{f(t)\} + bL\{g(t)\}$$
   $$e^{at}f(t) = L^{-1}\{F(s-a)\}$$
 \end{theorembox}
 \subsubsection{Examples}
-\begin{examplebox}[Find the Laplace Transform of $e^{at}\cos(wt)$, where $a,w$ are constants.]
+\begin{examplebox}{Find the Laplace Transform of $e^{at}\cos(wt)$, where $a,w$ are constants.}
   We know that $L\{\cos(wt)\} = \frac{s}{s^2 + w^2}$, so by the First Shift Theorem:
   \begin{align*}
     L\{e^{at}\cos(wt)\} & = \frac{s-a}{(s-a)^2 + w^2}         \\
@@ -232,7 +232,7 @@ $$
 
 \subsubsection{Examples}
 
-\begin{examplebox}[Use integration by parts to find the Laplace of $f(t) = t$]
+\begin{examplebox}{Use integration by parts to find the Laplace of $f(t) = t$}{}
   $$L\{t\} = \int_0^\infty te^{-st} \ dt$$
   We integrate by parts by setting:
   $$u = t, \quad dv = e^{-st}, \quad du = 1, \quad v = -\frac{e^{-st}}{s}$$
@@ -245,7 +245,7 @@ $$
   $$L\{t\} = \frac{1}{s^2}$$
 \end{examplebox}
 
-\begin{examplebox}[Use integration by parts to find the Laplace of $f(t) = \cos(t)$]
+\begin{examplebox}{Use integration by parts to find the Laplace of $f(t) = \cos(t)$}{}
   Let:
   $$u = e^{-st}, \quad du = -se^{-st}, \quad dv = \cos(t), \quad v = \sin(t)$$
   Then:
@@ -293,7 +293,7 @@ $$L \left\{\diff{f^n}{t^n}\right\} = s^nL\left\{f\right\} - s^{n-1}f(0) - s^{n-2
 
 \subsubsection{Examples}
 
-\begin{examplebox}[Find $L\{t^2\}$ using the fact $L\{s\} = 1/s$ for $s > 0$]
+\begin{examplebox}{Find $L\{t^2\}$ using the fact $L\{s\} = 1/s$ for $s > 0$}{}
   $$L\{f''\} = s^2 L\{f\} - sf(0) - f'(0)$$
   With $f(t) = t^2$.
   Since $f'(t) = 2t$, $f''(t) = 2$, $f'(0) = 0, f(0) = 0$, gives:
@@ -302,7 +302,7 @@ $$L \left\{\diff{f^n}{t^n}\right\} = s^nL\left\{f\right\} - s^{n-1}f(0) - s^{n-2
   $$L\{t^2\} = \frac{L\{2\}}{s^2} = \frac{2}{s^3}$$
 \end{examplebox}
 
-\begin{examplebox}[Find $L\{\sin(t)\}$ and $L\{\cos(t)\}$]
+\begin{examplebox}{Find $L\{\sin(t)\}$ and $L\{\cos(t)\}$}{}
   We again use ther equation:
   $$L\{f''\} = s^2 L\{f\} - sf(0) - f'(0)$$
   With $f(t) = \sin(t)$, $f'(t) = \cos(t)$, $f''(t) = -\sin(t)$, $\sin(0) = 0$, $\cos(0) = 1$. This gives:
@@ -324,7 +324,7 @@ In order to solve this, we also need initial displacement $v_0 = x(0)$ and initi
 
 \subsubsection{Examples}
 
-\begin{examplebox}
+\begin{examplebox}{}{}
   \normalsize $$\diff{x^2}{t^2} + 3\diff{x}{t} + 2x = 0, \quad x(0) = 0, \quad \diff{x}{t}(0) = 1$$
   \textbf{1. Take Laplace of governing equation:}
   $$L\left\{\diff{x^2}{t^2}\right\} = s^2 L\{x\} - sx(0) - x'(0) = s^2 L\{x\} - 1$$
@@ -363,7 +363,7 @@ $$
 
 \subsubsection{Examples}
 
-\begin{examplebox}[Express this function in terms of a Heaviside step function]
+\begin{examplebox}{Express this function in terms of a Heaviside step function}{}
   $$f(t) = \begin{cases}
       3  & \text{for } 0 \leq t < 2 \\
       -1 & \text{for } t > 2        \\
@@ -378,7 +378,7 @@ $$
   $$f(t) = 3 - 4H(t-2)$$
 \end{examplebox}
 
-\begin{examplebox}[Express this function in terms of a Heaviside step function]
+\begin{examplebox}{Express this function in terms of a Heaviside step function}{}
   $$f(t) = \begin{cases}
       3  & \text{for } 0 \leq t < 1 \\
       5  & \text{for } 1 < t < 3    \\
@@ -417,7 +417,7 @@ $$
 
 \subsubsection{Examples}
 
-\begin{examplebox}[: Find the Laplace Transform of $H(t-a)$ for $a > 0$]
+\begin{examplebox}{Find the Laplace Transform of $H(t-a)$ for $a > 0$}{}
   $$L\{H(t-a)\} = L\{H(t-a)f(t-a)\} = e^{-as}F(s) = \dfrac{e^{-as}}{s}$$
 \end{examplebox}
 
@@ -504,7 +504,7 @@ The Laplace Transform of the Dirac Delta Function is:
 $$L\{\delta(t-t_0)\} = \int_{0}^{\infty} e^{-st}\delta(t - t_0) \; dt = \int_{-\infty}^{\infty} e^{-st}\delta(t-t_0) \; dt = e^{-st_0} \quad \text{for} \; \; t_0 > 0$$
 
 \subsubsection{Examples}
-\begin{examplebox}[ : Solve the following initial value problem which governs the behavious of an RLC circuit]
+\begin{examplebox}{Solve the following initial value problem which governs the behavious of an RLC circuit}{}
   \scriptsize
   \begin{align*}
     LQ'' + RQ' + \frac{Q}{C} & = V_0 \delta(t-a) \\
@@ -722,7 +722,7 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
 
 \pagebreak
 \subsubsection{Examples}
-\begin{examplebox}[: For a time period $0 \leq t \leq 1$, a particle moves along a trajectory defined by $\mathcal{C} = x = t, y = t, z = 2t^2$, a force $F(r) = (y,x,z)$ acts. Calculate work done.]
+\begin{examplebox}{For a time period $0 \leq t \leq 1$, a particle moves along a trajectory defined by $\mathcal{C} = x = t, y = t, z = 2t^2$, a force $F(r) = (y,x,z)$ acts. Calculate work done.}{}
   We have:
   \begin{align*}
     \mathbf{r}           & = (t,t,2t^2) \\
@@ -740,7 +740,7 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   \end{align*}
 \end{examplebox}
 
-\begin{examplebox}[Evaluate $\int_{\mathcal{C}} F(r) \cdot dr$ for $F(r) = (y+z, x+z, x+y)$, where $\mathcal{C}$ is the line segment joinint $A:(-2,2,-3) \to B(2,4,6)$ ]
+\begin{examplebox}{Evaluate $\int_{\mathcal{C}} F(r) \cdot dr$ for $F(r) = (y+z, x+z, x+y)$, where $\mathcal{C}$ is the line segment joinint $A:(-2,2,-3) \to B(2,4,6)$}{}
   We can parametrize any straight line in three dimensions by writing:
   $$x = c_1t + c_2 \quad y=c_3t + c_4 \quad z = c_5t + c_6$$
   where the $c_i$ are constants. \\
@@ -763,7 +763,7 @@ The line integral of $F$ alonged a closed curve $\mathcal{C}$ is called the \tex
   \end{align*}
 \end{examplebox}
 
-\begin{examplebox}[Find the circulation of the vector $F = (y, -x, 0)$ around the unit circle $\mathcal{C} = x^2 + y^2 = 1$, $z=0$, taken in an anti-clockwise direction]
+\begin{examplebox}{Find the circulation of the vector $F = (y, -x, 0)$ around the unit circle $\mathcal{C} = x^2 + y^2 = 1$, $z=0$, taken in an anti-clockwise direction}{}
   We can parametrize the unit circle by setting $x,y$ and $z$ to:
   $$x = \cos(t) \quad y = \sin(t) \quad z = 0$$
   We can write the position vector as:
@@ -817,7 +817,7 @@ Consider two curves, $\mathcal{C}_1$ and $\mathcal{C}_2$, that start at $A$ and 
 Thus:
 $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r) \cdot dr = \int_{A\mathcal{C}_2}^B F(r) \cdot dr$$
 \subsubsection{Examples}
-\begin{examplebox}[By considering the line integral of $F = (y, x^2 -x, 0)$ around the square $C$ in the $x,y$ plane connecting for point $(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)$, show that $F$ cannot be conservative. ]
+\begin{examplebox}{By considering the line integral of $F = (y, x^2 -x, 0)$ around the square $C$ in the $x,y$ plane connecting for point $(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)$, show that $F$ cannot be conservative.}{}
   Split $\mathcal{C}$ into four segments, $\mathcal{C}_1, \mathcal{C}_2, \mathcal{C}_3, \mathcal{C}_4$ and calculate the line integral of $F$ along each segment.
   \begin{center}
     \begin{tikzpicture}[scale=2]
@@ -849,7 +849,7 @@ $$\oint_{\mathcal{C}} F(r) \cdot dr = 0 \Rightarrow \int_{A\mathcal{C}_1}^B F(r)
 
 \section{Gradient, Divergence and Curl}
 \subsection{Gradient}
-\begin{definitionbox}
+\begin{definitionbox}{}{}
   The gradient of a differentiable function $\phi(x,y,z)$ is the vector field:
   $$\text{grad}(\phi) =  \nabla \phi = \diff{\phi}{x} \hat{i} + \diff{\phi}{y} \hat{j} + \diff{\phi}{z} \hat{k}$$
 \end{definitionbox}
@@ -972,8 +972,7 @@ Writing $\hat{\mathbf{n}} = (n_1, n_2, n_3)$ and using the chain rule:
 and so with $|\hat{\mathbf{n}}| = 1$, we have:
 $$D_{\hat{\mathbf{n}}} \phi = \hat{\mathbf{n}} \cdot \nabla \phi $$
 
-\begin{examplebox}[Find the directional derivative of $\phi(x,y,z) = 2x^2 + 3y^2 + z^2$ at the point
-    $P: : (2,1,3)$ in the direction of the vector $\vec{a} = \hat{i} - 2\hat{k}$]
+\begin{examplebox}{Find the directional derivative of $\phi(x,y,z) = 2x^2 + 3y^2 + z^2$ at the point $P: : (2,1,3)$ in the direction of the vector $\vec{a} = \hat{i} - 2\hat{k}$}{}
   First we calculate the gradient of $\phi$:
   $$\nabla \phi = \diff{}{x}(2x^2) \hat{i} + \diff{}{y}(3y^2) \hat{j} + \diff{}{z}(z^2) \hat{k} = 4x \hat{i} + 6y \hat{j} + 2z \hat{k}$$
   At $P : (2,1,3)$, the gradient is evaluated as
