@@ -399,5 +399,17 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item Requires the sample itself to be a good representation of the population; if the sample is biased, the bootstrap may not work well.
 \end{itemize}
 \section{Inferential Statistics - Hypothesis Testing}
+\subsection{Recap: Confidence Intervals for a Population Mean}
+\begin{itemize}
+    \item A \textbf{Confidence interval (CI)} provides a range of plausible values for a population parameter
+    \item For a large sample ($n \geq 30$) or a known $\sigma$, we often use a z-based interval:
+    $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
+    or replacing $\sigma$ with $s$ if $\sigma$ is unknown.
+    \item For a small sample ($n < 30$) and unknown $\sigma$, we use a t-based interval:
+    $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
+    where $df = n - 1$. Provided the population is approximately normal.
+    \item If normality is questionable, we may use transformations or bootstrapping. 
+\end{itemize}
+\subsection{Proportions}
 
 \end{document}
