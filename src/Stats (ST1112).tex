@@ -76,7 +76,7 @@ The ultimate goal in statistical inference is to estimate population parameters 
     This means if you averaged all possible sample means, you would get the population mean $\mu$.
 \end{definitionbox}
 \begin{definitionbox}{Standard Error of the Mean}{}
-    $$SD(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
+    $$SE = SD(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
     where $\sigma$ is the population standard deviation and $n$ is the sample size.\\
 
     This value is called the \textbf{standard error} of the mean and measures how much the sample mean $\bar{X}$ fluctuates around the population mean $\mu$.
@@ -190,11 +190,12 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
 
 
 
-\subsubsection{CI with large $n$, $\sigma$ uknown but replaced with $s$}
-\textbf{Form of the 95\% CI ($Z$ based)}: \\
-For a large sample ($n \geq 30$) or when the population standard deviation $\sigma$ is known \textbf{or} reasonably approximated, the confidence interval for $\mu$ is:
-$$\bar{X} \pm Z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
-where $Z_{\alpha/2}$ is the z-score for the chosen confidence level (e.g. $Z_{0.025} = 1.96$ for a 95\% CI). If $\sigma$ is not known but $n$ is large, we replace $\sigma$ with the sample standard deviation $s$:
-
-
+\subsubsection{CI with large $\boldsymbol{n}$, $\boldsymbol{\sigma}$ unknown but replaced with $\boldsymbol{s}$}
+The $z$-based critical interval is given as:
+$$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
+where $z_{\alpha/2}$ is the critical value from the standard normal distribution.
+However, if the population standard deviation $\sigma$ is unknown, we can use the sample standard deviation $s$ as an estimate.\\
+This gives us the following confidence interval:
+$$\bar{X} \pm t_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
+\textbf{Interpretation}: around 95\% of all possible 95\% confidence intervals will contain the true population mean $\mu$. We can visualize that if we drew many repeated samples, sample means will form an overlapping $\mu$ and a small fraction will not
 \end{document}
