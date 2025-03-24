@@ -34,6 +34,7 @@ The ultimate goal in statistical inference is to estimate population paramaters 
     \item \textbf{Statistics} works in reverse: one observes outcomes (sample data) and attempts to infer the underlying process or population paramaters (e.g. proportion of red jellybeans)
 \end{itemize}
 \subsection{Definitions and Concepts}
+
 \begin{definitionbox}{Population}{}
     A \textbf{population} is the complete set of items (or individuals) of interest.
 \end{definitionbox}
@@ -42,6 +43,16 @@ The ultimate goal in statistical inference is to estimate population paramaters 
     
     For example the sample mean $\bar{X}$ is an estimate of the population mean $\mu$.
 \end{definitionbox}
+\begin{definitionbox}{Population Mean ($\mu$)}{}
+    $\mu$ represents the central tendence of a population distribution.
+    $$\mu = \frac{1}{N} \sum_{i=1}^{N} x_i$$
+    where $N$ is the population size and $x_i$ are the individual values in the population.\\
+
+    $\mu$ is sometimes called the expected value or average.
+\end{definitionbox}
+\begin{definitionbox}{Population standard deviation}{}
+\end{definitionbox}
+
 \begin{conceptbox}{Sampling Variation}{}
     When we take multiple samples from the same population, each sample's mean $\bar{X}$ will be different. This is variability is called \textbf{sampling variation}. \\
 
@@ -60,7 +71,28 @@ The ultimate goal in statistical inference is to estimate population paramaters 
 \begin{definitionbox}{Standard Error of the Mean}{}
     $$SD(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
     where $\sigma$ is the population standard deviation and $n$ is the sample size.\\
-    
+
     This value is valled the \textbf{standard error} of the mean and measures how much the sample mean $\bar{X}$ fluctuates around the population mean $\mu$.
+\end{definitionbox}
+\begin{definitionbox}{Central Limit Theorem}{}
+    $$\bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$$
+    where $\bar{X}$ is the sample mean, $\mu$ is the population mean, and $\sigma$ is the population standard deviation.\\
+
+    The \textbf{Central Limit Theorem} states that the sampling distribution of the sample mean $\bar{X}$ (the distribution of all sample means)  approaches a normal distribution as the sample size $n$ increases, \textbf{regardless of the shape of the population distribution.}\\
+
+    This means that for large enough sample sizes, we can use the normal distribution to make inferences about the population mean $\mu$. \\
+
+    \textbf{Practically}, many apply the rule of thumb $n \geq 30$ to treate $\bar{X}$ as normally distributed.
+\end{definitionbox}
+
+\begin{definitionbox}{Bessel's Correction}{}
+\end{definitionbox}
+
+\begin{definitionbox}{Unbiased Estimators}{}
+    We say a statistic $T$ is an \textbf{unbiased estimator} of a population parameter $\theta$,  if $E(T) = \theta$.\\
+
+    For example, the sample mean $\bar{X}$ is an unbiased estimator of the population mean $\mu$ because $E(\bar{X}) = \mu$.\\
+
+    The sample standard deviation $s$ (using Bessel's correction, dividing by $n-1$) is an unbiased estimator of the population standard deviation $\sigma$.
 \end{definitionbox}
 \end{document}
