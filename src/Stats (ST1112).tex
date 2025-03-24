@@ -399,7 +399,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item Requires the sample itself to be a good representation of the population; if the sample is biased, the bootstrap may not work well.
 \end{itemize}
 \section{Inferential Statistics - Hypothesis Testing}
-\subsection{Recap: Confidence Intervals for a Population Mean}
+\subsection*{Recap: Confidence Intervals for a Population Mean}
 \begin{itemize}
     \item A \textbf{Confidence interval (CI)} provides a range of plausible values for a population parameter
     \item For a large sample ($n \geq 30$) or a known $\sigma$, we often use a z-based interval:
@@ -411,5 +411,23 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item If normality is questionable, we may use transformations or bootstrapping. 
 \end{itemize}
 \subsection{Proportions}
-
+\begin{definitionbox}{Proportion}{}
+    A \textbf{proportion} is the ratio of the number of times a particular outcomes occurs (successes) to the total number of trials (or observations). Formally if $X$ represents the number of successes and $n$ is the total number of trials, then the proportion $p$ is given by:
+    $$p = \frac{X}{n}$$
+    where $x$ is the number of successes and $n$ is the total number of trials.
+\end{definitionbox}
+\begin{conceptbox}{Why proportions?}{}
+    Many outcomes are binary or categorical with two possible outcomes (e.g. success/failure, yes/no). Examples:
+    \begin{itemize}
+        \item Whether a student has a part-time job
+        \item Whether a business has fallen victim to a scam
+    \end{itemize}
+    In such cases, we often estimate a population proportion $\pi$ of successes rather than a mean $\mu$.
+\end{conceptbox}  
+\subsubsection{Binomial Distribution}
+If $X \sim B(n, \pi)$, then $X$ is the number of successes in $n$ independent Bernoulli trials, each probability of success $\pi$.\\[2ex]
+The \textbf{sample proportion} $p = \frac{X}{n}$ is the observed successes in the sample. 
+\subsubsection{Normal Approximation of $p$}
+For large enough $n$, so that $n\pi \geq 5$ and $n(1 - \pi) \geq 5$, the sampling distribution of the sample proportion $p$ can be approximated by a normal distribution:
+$$X \simeq N\left(n\pi, n\pi(1- \pi)\right) \Rightarrow p = \frac{X}{n} \simeq N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$
 \end{document}
