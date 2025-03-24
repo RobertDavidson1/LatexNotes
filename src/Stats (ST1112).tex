@@ -61,7 +61,6 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
     $$\sigma_{\bar{X}} = \frac{s}{\sqrt{n}}$$
 \end{definitionbox}
 
-\pagebreak
 
 \section{Interential Statistics - Interval Estimation}
 \subsection{Confidence Intervals}
@@ -77,59 +76,7 @@ When using a normal table that shows "area to the left", we need to find the $Z$
 Thus: $Z_{0.025} = 1.96$. \\
 $95 \%$ Confidence is most commonly used because increasing the confidence level increases the width of the interval, this may not be useful.
 
-\begin{examplebox}[The student newspaper wants to know how many students are exercising per week on average]
-    \begin{itemize}
-        \item Take a \textbf{sample from this population}
-        \item Esimate the \textbf{population paramater} using the \textbf{sample statistic}
-    \end{itemize}
 
-    \begin{lstlisting}
-        st1112_data %>% 
-            select(exercise) %>% 
-            summarise(n = n(),
-                mean = mean(exercise,na.rm=TRUE),
-                sd = sd(exercise,na.rm=TRUE))
-        
-        ##    n mean   sd
-        ## 1 54 6.19 4.11
-
-        st1112_data %>% 
-            ggplot(aes(x = exercise)) + 
-            labs(x = "Weekly exercise (hours)") +
-            geom_density(colour = "blue", 
-                         fill="blue",alpha=0.5)+theme_bw()
-    \end{lstlisting}
-    \begin{center}
-        \includegraphics[scale=0.5]{images/exercise.png}
-    \end{center}
-
-    But a new survey on another 54 students would lead to a different estimate, so which should we report back to the newspaper?
-    If we sample data from the population, there is uncertainty in our estimate of the population mean.
-    The standard error of the mean is a measure of this uncertainty. In our example, the standard error of the mean is:
-    $$SE = \frac{4.11}{\sqrt{54}} = \approx 0.6$$
-    We use the Central Limit  Theorem to provide a range of values that will capture $95\%$ of the sample means.
-    $$\bar{X} \pm Z_{\frac{\alpha}{2}} \times \frac{s}{\sqrt{n}} = 6.23 \pm 1.96 \times 0.6 = 5, 7.4$$
-\end{examplebox}
-
-\begin{examplebox}[: Confidence intervals in R]
-    \begin{lstlisting}
-        st1112_data %>% select(exercise) %>% t.test()
-        ## 
-        ##  One Sample t-test
-        ## 
-        ## data:  .
-        ## t = 11, df = 53, p-value = 2e-15
-        ## alternative hypothesis: true mean is not equal to 0
-        ## 95 percent confidence interval:
-        ##  5.06 7.31
-        ## sample estimates:
-        ## mean of x 
-        ##      6.19
-
-    \end{lstlisting}
-\end{examplebox}
-
-\pagebreak
 \subsubsection{Confidence Intervals for a small sample size}
 When $\sigma$ is known, a 95\% Confidence Interval for the population mean is given by:
 $$\bar{X} \pm 1.96  \cdot \frac{\sigma}{\sqrt{n}}$$
@@ -179,12 +126,6 @@ But, what if $\sigma$ is unknown and $n < 30$?
     We want to find the $t_{12, 0.025}$ value from the t-distribution table, which is $2.179$.
 \end{examplebox}
 
-\begin{examplebox}[ : Finding the t-value using R]
-    \begin{lstlisting}
-        qt(1 - 0.025, df = 12)
-        ## [1] 2.179
-    \end{lstlisting}
-\end{examplebox}
 
 \subsection{Bootstrap, proportions and counts}
 What do we do when our data is not normally distributed? We have two options:
@@ -192,57 +133,7 @@ What do we do when our data is not normally distributed? We have two options:
     \item Transform the data to make it normally distributed (e.g. log transformation, square root transformation)
     \item Use a non-parametric method (Bootstrap or CI for the population median)
 \end{itemize}
-\subsubsection{Log Transform of the Data}
-\begin{examplebox}[ : NBA Salaries]
-    \begin{lstlisting}
-        sals <- read.csv("data/NBA_season1718_salary.csv")
 
-        sals %>% 
-            filter(Tm=="DAL", season17_18>50000) %>% 
-                ggplot(aes(x=season17_18)) + 
-                geom_histogram()  + xlab("Salary ($/year)")
-    \end{lstlisting}
-    \begin{center}
-        \includegraphics[scale=0.2]{images/nba_salaries.png}
-    \end{center}
-    The data is right-skewed, so we can apply a log transformation to make it more normally distributed.
-    \begin{lstlisting}
-        sals %>% 
-        filter(Tm=="DAL", season17_18>50000) %>% 
-            ggplot(aes(x=log(season17_18))) +
-            geom_histogram() + xlab("log(Salary)")
-    \end{lstlisting}
-    \begin{center}
-        \includegraphics[scale=0.2]{images/nba_log_salaries.png}
-    \end{center}
-
-    We can now calculate the mean and standard deviation of the log-transformed data.
-    \begin{lstlisting}
-        sals %>% filter(Tm=="DAL", season17_18>50000) %>% 
-            mutate(log_sal = log(season17_18)) %>% 
-                select(log_sal) %>% summarise(n=n(),
-                            mean=mean(log_sal),
-                            sd=sd(log_sal))
-
-        ##    n mean   sd
-        ## 1 18 14.5 1.57
-
-        qt([p = 1 - 0.025, df = 18-1)])
-        ## [1] 2.11
-    \end{lstlisting}
-    Produce an interval estimate for the populat mean
-    \begin{lstlisting}
-        14.5 - 2.11 * (1.57/sqrt(18))
-        14.5 + 2.11 * (1.57/sqrt(18))
-        ## [1] 13.7 ## [1] 15.3 
-    \end{lstlisting}
-    Take exponentials of the resulting interval to get back to original scale
-    \begin{lstlisting}
-        exp(14.5 - 2.11 * (1.57/sqrt(18)))
-        exp(14.5 + 2.11 * (1.57/sqrt(18)))
-        ## [1] 908172 ## [1] 4238843
-    \end{lstlisting}
-\end{examplebox}
 
 \subsubsection{Bootstrap}
 We can quantify the uncertainity in our estimate of the population mean by using the Central Limit Theorem or simulatiuon via the Bootstrap method, as follows:
@@ -253,23 +144,6 @@ We can quantify the uncertainity in our estimate of the population mean by using
     \item Calculate the bounds of the 95\% Confidence interval as the middle 95\% of the bootstrap distrubution
 \end{enumerate}
 
-\begin{examplebox}[: Simple bootstrap]
-    \begin{lstlisting}
-        my_date <- (1,1,1,2,3,4,5)
-        mean(my_data)
-        ## [1] 2.43
-
-        sample(my_data, replace = FALSE)
-        ## [1] 1 1 3 2 1 5 4
-
-        sample(my_data, replace = TRUE)
-        ## [1] 4 1 1 1 3 3 1
-
-        replicate(1000, mean(sample(my_data, replace = TRUE)))
-        ## [1]
-
-    \end{lstlisting}
-\end{examplebox}
 
 \section{Inferential Statistics - Hypothesis Testing}
 \subsection{Hypothesis Testing}
