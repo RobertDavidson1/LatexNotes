@@ -308,7 +308,7 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
     \textbf{Interpretation}: We are 95\% confident that the true mean time between keystrokes is between 0.2532 and 0.3268 seconds.
 \end{examplebox}
 
-\section{Inferential Statistics - Hypothesis Testing}
+
 \subsection{When normality is questionable}
 Recall that for small $n$, the t-distribution-based confidence interval requires data to be approximately normally distributed in the population. But many real datasets violate this assumption. - e.g. skewed data, heavily tailed data etc.
 
@@ -316,12 +316,12 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \centering
     \begin{minipage}{0.45\linewidth}
         \centering
-        \begin{tikzpicture}[scale = 0.9]
+        \begin{tikzpicture}[scale = 0.5]
             \begin{axis}[
                 domain=0.1:5,
                 samples=100,
                 xlabel={$$},
-                title={Skewed Data (Log-normal)},
+                title={\Huge Skewed Data (Log-normal)},
                 width=\linewidth,
                 axis x line=bottom,
                 axis y line=left,
@@ -335,12 +335,12 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \hfill
     \begin{minipage}{0.45\linewidth}
         \centering
-        \begin{tikzpicture}[scale = 0.9]
+        \begin{tikzpicture}[scale = 0.5]
             \begin{axis}[
                 domain=-10:10,
                 samples=100,
                 xlabel={$$},
-                title={Heavy Tailed Data (Cauchy)},
+                title={\Huge Heavy Tailed Data (Cauchy)},
                 width=\linewidth,
                 axis x line=bottom,
                 axis y line=left,
@@ -386,5 +386,18 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item \textbf{Construct CI}: The bootstrap distribution of the resampled statistics can be used to determine the middle 95\% (or chosen confidence level) as the CI bounds.
 \end{enumerate}
 
+\pagebreak
+
+\textbf{Advantages}:
+\begin{itemize}
+    \item Works for all kinds of statistics (mean, median, proportion, regression coefficients, etc.) even when no closed-form CI exists.
+    \item Far fewer assumptions about the underlying population distribution.
+\end{itemize}
+\textbf{Disadvantages}:
+\begin{itemize}
+    \item Computationally intensive; requires many resamples (e.g. 1000) to get a good approximation.
+    \item Requires the sample itself to be a good representation of the population; if the sample is biased, the bootstrap may not work well.
+\end{itemize}
+\section{Inferential Statistics - Hypothesis Testing}
 
 \end{document}
