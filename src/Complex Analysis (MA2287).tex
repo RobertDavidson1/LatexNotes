@@ -187,7 +187,7 @@ Thus, the pair (r, arg(z)) is called the \textbf{polar coordinates of z}.
 We introduce the idea that $\arg(z)$ is a version of Arg$(z)$ that can take multiple values outside of Arg$(z)$'s bounds, ($-\pi, \pi$), more precisely:
 $$\arg(z) = \text{Arg}(z) + 2 n \pi, \quad n \in \mathbb{Z}$$
 
-\begin{examplebox}[Find $\text{Arg}(i)$ and $\arg(i)$]
+\begin{examplebox}{Find $\text{Arg}(i)$ and $\arg(i)$}{}
   Since $i = 0 + 1i$, we have $x = 0$ and $y = 1$.
 
   Using $\tan^{-1}\left(\frac{y}{x}\right) \Rightarrow \arg(z) = \tan^{-1}\left(\frac{1}{0}\right) = \frac{\pi}{2}$
@@ -306,7 +306,7 @@ So we have:
 $$z^{1/n} = R^{1/n} [\cos\phi + i \sin\phi] \quad \text{with} \quad \phi = \frac{\theta+ 2k\pi}{n}, \quad k \in (0, 1, 2, \dots, n-1)$$
 Note that we reserve the notation $\sqrt[n]{z}$ to denote the \textbf{principal root}, defined when $k = 0$.
 
-\begin{examplebox}[Find the cube roots of $z = -1 + i$]
+\begin{examplebox}{Find the cube roots of $z = -1 + i$}{}
   $R = \sqrt{(-1)^2 + 1^2} = \sqrt{2}$ \\
   We know $z$ is in the second quadrant, so must adjust $\theta$ accordingly:
   $$\theta = \pi - \tan^{-1}\left(\frac{1}{1}\right) = \pi - \frac{\pi}{4} = \frac{3\pi}{4}$$
@@ -386,7 +386,7 @@ We can also write the \textbf{Complex logarithm} as:
           & = \ln|z| + i\text{Arg}(z) + 2k\pi i
 \end{align*}
 
-\begin{examplebox}[Find the log of $z = 1 + 0i$]
+\begin{examplebox}{Find the log of $z = 1 + 0i$}{}
 
   \begin{minipage}{0.44\textwidth}
     {\raggedright
@@ -855,7 +855,7 @@ Putting it all together, we can map any three points to any other three point:
     \quad T^{-1} \circ T_2 =  \begin{bmatrix} d&-b \\ -c &a \end{bmatrix} \cdot \begin{bmatrix}e & f \\ g & h\end{bmatrix}$$
 \end{theorembox}
 
-\begin{examplebox}[Find a Mobius transformation, $T:  (0,-i,-1) \mapsto (i, 1, 0)$]
+\begin{examplebox}{Find a Mobius transformation, $T:  (0,-i,-1) \mapsto (i, 1, 0)$}{}
   \footnotesize If we can find a map $T_1 : (0, -i, 1) \mapsto (1, 0, \infty)$ and a map \\
   $T_2 : (1, -i, -1) \mapsto (i, 1, 0)$. Then, by the Theorem above, we can find a $T$ such that: $T:(0, -i, -1) \mapsto (i, 1,0)$
   Recall, we define a general transform $T$, that takes 3 points $(z_1, z_2, z_3) \mapsto (1, 0, \infty)$
@@ -897,7 +897,7 @@ Putting it all together, we can map any three points to any other three point:
 \subsection{Complex Differentiation}
 First we must define what is meant for a set to be \textbf{open} in the complex plane.
 \subsubsection{Open Sets in the Complex Plane}
-\begin{definitionbox}
+\begin{definitionbox}{}{}
   We say a subset $\mathbb{U} \subseteq \mathbb{C}$ is \textbf{open} if $\forall\;  z_0 \in \mathbb{U} \quad \exists \; \varepsilon   > 0$
   such that the open disc centered at $z_0$ of radius $\varepsilon$ is contained in $\mathbb{U}$:
   $$D_{\varepsilon} (z_0) = \{z \in \mathbb{C} \mid |z-z_0| < \varepsilon\}$$ \\
@@ -914,7 +914,7 @@ First we must define what is meant for a set to be \textbf{open} in the complex 
 you can draw a small circle around $z_0$ that fits entirely within $\mathbb{U}$. This radius of this circle is $\varepsilon$. The
 radius can be very small but must be positive.
 \subsubsection{Differentiation}
-\begin{definitionbox}
+\begin{definitionbox}{}{}
   Let $\mathbb{U} \subseteq \mathbb{C}$ be open, let $f: \mathbb{U} \to \mathbb{C}$ be a function and let $z_0 = x_0 + iy_0 \in \mathbb{U}$.
   $$f'(z_0) = \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h}$$
   If the limit exists, independant of the direction of approach we say $f$ is \textbf{holomorphic} (or complex differentiable / complex analytic) \textbf{at} $z_0$.
