@@ -17,10 +17,19 @@
 \usepackage[inline]{enumitem}
 \usepackage{bookmark}
 \usepackage{mathtools}
-\usepackage{subcaption} % For subfigures
-\usepackage[normalem]{ulem} % For better underline commands
+\usepackage{subcaption} 
+\usepackage[normalem]{ulem}
+\usepackage{booktabs,tabularx}
+\usepackage{cleveref}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{babel}
 
-% Micro-typography
+\usepackage{minted}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{listingsutf8, skins}
 \usepackage{microtype}
 
 % Patching pgfplots warning
@@ -28,40 +37,106 @@
 \patchcmd{\pgfplots@applistXXpushback@smallbuf}{\pgfplots@error}{\pgfplots@warning}{}{}
 \makeatother
 
-% (3) tcolorbox and Theorem Libraries
-\usepackage{tcolorbox}
-\tcbuselibrary{theorems}
 
-% (4) Define Colors
 \definecolor{custom_green}{HTML}{a3be8c}
 \definecolor{custom_red}{HTML}{dc322f}
 \definecolor{custom_blue}{HTML}{268bd2}
 \definecolor{custom_purple}{HTML}{b48ead}
 
 \definecolor{base}{HTML}{eceff4}
-\definecolor{gray1}{HTML}{e5e9f0}
-\definecolor{gray2}{HTML}{d8dee9}
+\definecolor{gray1}{HTML}{f8f9fa}
+\definecolor{gray2}{HTML}{e9ecef}
 \definecolor{gray3}{HTML}{2e3440}
-\pagecolor{base}
+\definecolor{off-white}{HTML}{f4f4f6}
+
 
 % (5) Custom tcolorbox Environments
-\newtcolorbox{definitionbox}[1][]{
-    title=\textbf{Definition} {#1},
-    fonttitle=\bfseries\boldmath,
+\newtcbtheorem[number within=section]{definitionbox}{Definition}{%
+    enhanced,
+    sharp corners,
+    attach boxed title to top left={yshift=-0.1mm},
+    colback=custom_red!10,
+    colframe=custom_red,
+    fonttitle=\bfseries,
+    boxed title style={
+            sharp corners,
+            size=small,
+            colback=custom_red,
+            colframe=custom_red,
+        },
+    % Put (#1) after the definition number if a name is given
+    description delimiters none,
+    % Add a line to the ToC whenever the environment begins
+    before upper={%
+            \addcontentsline{toc}{subsection}{%
+                Definition \thetcbcounter\ifstrempty{#1}{}{#1}%
+            }%
+        }%
+}{def}
+
+
+
+
+
+\newtcolorbox{conceptbox}[1][]{
+    title={#1},
+    fonttitle=\bfseries\color{white},
+    attach boxed title to top left={yshift=-2mm},
+    colbacktitle=custom_blue,
+    coltitle=white,
+    colframe=custom_blue,
+    colback=custom_blue!10,
+    boxrule=1mm,
     arc=0mm,
     bottomtitle=0.5mm,
-    boxrule=0mm,
-    colbacktitle=gray2,
-    colback=gray1,
-    coltitle=gray3,
-    coltext=gray3,
     left=2.5mm,
     leftrule=1mm,
-    rightrule=1mm,
     right=3.5mm,
-    toptitle=0.75mm,
-    colframe=custom_red,
+    rightrule=1mm,
+    toptitle=1mm,
+    enhanced
 }
+
+\lstdefinestyle{cStyle}{
+    language=C,
+    columns=fullflexible,
+    tabsize=4,
+    keepspaces=true,
+    showstringspaces=false,
+    numbersep=5pt,
+    numbers=left,
+    stepnumber=1,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{keywordsblue},
+    commentstyle=\itshape\color{commentgreen},
+    stringstyle=\color{stringspurple},
+    frame=none,
+    breaklines=true,
+    xleftmargin=0.5em,
+}
+
+\newtcblisting{codeexample}[2][]{
+    listing only,                        
+    title=\emph{Example Code:}\quad  \textbf{#2},         
+    fonttitle=\bfseries\scriptsize\color{white},
+    attach boxed title to top center={yshift=-1.5mm},
+    colbacktitle=custom_green,
+    coltitle=white,
+    colframe=custom_red,
+    colback=custom_red!10,
+    boxrule=0.5mm,
+    arc=0mm,
+    bottomtitle=0.5mm,
+    left=2.5mm,
+    leftrule=0.5mm,
+    right=3.5mm,
+    rightrule=0.5mm,
+    toptitle=1mm,
+    enhanced,
+    listing options={style=cStyle} 
+}
+
+
 
 \newtcolorbox{proofbox}[1][]{
     title=\textbf{Proof:} {#1},
@@ -116,26 +191,50 @@
     coltext=gray3
 }
 
-\newtcolorbox{examplebox}[1][]{
-    title=\textbf{Example} {#1},
-    fonttitle=\bfseries\boldmath,
-    arc=0mm,
-    bottomtitle=0.5mm,
-    boxrule=0mm,
-    colbacktitle=gray2,
-    colback=gray1,
-    coltitle=gray3,
-    left=2.5mm,
-    leftrule=1mm,
-    rightrule=1mm,
-    right=3.5mm,
-    toptitle=0.75mm,
-    colframe=gray3,
-    fontupper=\footnotesize,
-    coltext=gray3
-}
+% \newtcolorbox{examplebox}[1][]{
+%     title=\textbf{Example} {#1},
+%     fonttitle=\bfseries\boldmath,
+%     arc=0mm,
+%     bottomtitle=0.5mm,
+%     boxrule=0mm,
+%     colbacktitle=gray2,
+%     colback=gray1,
+%     coltitle=gray3,
+%     left=2.5mm,
+%     leftrule=1mm,
+%     rightrule=1mm,
+%     right=3.5mm,
+%     toptitle=0.75mm,
+%     colframe=gray3,
+%     fontupper=\footnotesize,
+%     coltext=gray3
+% }
 
-% (6) Theorem Environments
+\newtcbtheorem[number within=section]{examplebox}{Example}{
+    enhanced,
+    sharp corners,
+    attach boxed title to top left={yshift=-0.1mm},
+    colback=gray3!10,
+    colframe=gray3,
+    colbacktitle=gray2,
+    fonttitle=\bfseries,
+    boxed title style={
+            sharp corners,
+            size=small,
+            colback=gray3,
+            colframe=gray3,
+        },
+    % Put (#1) after the definition number if a name is given
+    description delimiters none,
+    % Add a line to the ToC whenever the environment begins
+    before upper={%
+            \addcontentsline{toc}{subsection}{%
+                Example \thetcbcounter\ifstrempty{#1}{}{#1}%
+            }%
+        }%
+}{ex}
+
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{example}[definition]{Example}
@@ -146,7 +245,8 @@
 % (7) Hyperlinks
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,    % Use colored text for links
-    linkcolor=custom_red,      % Set link text color to red
-    pdfborder={0 0 0}   % Remove the default box around links
+    colorlinks=true,    
+    linkcolor=black,      
+    pdfborder={0 0 0}   
 }
+
