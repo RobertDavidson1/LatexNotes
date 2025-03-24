@@ -309,7 +309,7 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
 \end{examplebox}
 
 \section{Inferential Statistics - Hypothesis Testing}
-\section{When normality is questionable}
+\subsection{When normality is questionable}
 Recall that for small $n$, the t-distribution-based confidence interval requires data to be approximately normally distributed in the population. But many real datasets violate this assumption. - e.g. skewed data, heavily tailed data etc.
 
 \begin{figure}[ht]
@@ -352,4 +352,13 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
         \end{tikzpicture}
     \end{minipage}
 \end{figure}
+\noindent Two broad remedies exist:
+\begin{itemize}
+    \item \textbf{Data transformation}: Apply a mathematical transformation to make the data more symmetric or bell shape (e.g.log-transformation). Then use t-based or z-based methods on the transformed scale.
+    \item \textbf{Non-parametric methods}: Rely less on strict distributional assumptions. The bootstrap is a common and versatile non-parametric method approach to estimating confidence intervals and sampling variability.
+\end{itemize}
+
+\subsection{Data Transformations}
+\subsubsection{Purpose}
+If the data has a strongly skewed or otherwise non-normal distribution, applying a suitable transformation (e.g. $\log(x)$, $\sqrt{x}$) can help to make the data more symmetric and bell-shaped.\\ After the transformation, we can apply t-based or z-based methods can be applied more safely. 
 \end{document}
