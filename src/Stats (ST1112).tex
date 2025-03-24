@@ -409,4 +409,28 @@ Since $X$ is binomially distributed, its mean is $n\pi$ and its variance is $n\p
     \item Mean of $p$: $E(p) = \frac{E(X)}{n} = \pi$
     \item Variance of $p$: $Var(p) = \frac{Var(X)}{n^2} = \frac{\pi(1 - \pi)}{n}$
 \end{itemize}
+For large $n$ (above conditions), the distribution of $p$ can be approximated by a normal distribution:
+$$p \sim N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$\\
+\textbf{Interpretation}: \\
+This approximation means if we were to make many samples of size $n$, the distribution of the same proportions would cluster around the true proportion, $pi$, with variability decreasing as the sample size $n$ increases. This normality is what allows statisticians to construct confidence intervals and perform hypothesis tests on population proportions.
+\subsection{Confidence Intervals for Proportion $\pi$}
+For a large sample size where $np$ and $n(1-p)$ are both greater or equal to 5, a 95\% C.I for the population proportion $\pi$ is given by:
+$$p \pm z_{\alpha/2} \times \sqrt{\frac{p(1 - p)}{n}}$$
+where:
+\begin{itemize}
+    \item $p$ is the sample proportion (e.g. $\frac{X}{n}$)
+    \item $z_{\alpha/2}$ is the critical value from the standard normal distribution (e.g. $1.96$ for 95\% confidence)
+    \item The quantity under the square root is the standard error of the sample proportion.
+\end{itemize}
+
+\begin{examplebox}{Financial Scams}{}
+    A survey of $n=80$ small businesses found that $X = 16$ had fallen victim to a financial scam. Find the 95\% confidence that all small businesses have fallen victim to a scam. \\[2ex]
+
+    \begin{itemize}
+        \item Sample proportion: $p = \frac{X}{n} = \frac{16}{80} = 0.20$
+        \item 
+    \end{itemize}
+
+\end{examplebox}
+
 \end{document}
