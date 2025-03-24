@@ -371,9 +371,9 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 
 \subsection{Proportions}
 \begin{definitionbox}{Proportion}{}
-    A \textbf{proportion} is the ratio of the number of times a particular outcomes occurs (successes) to the total number of trials (or observations). Formally if $X$ represents the number of successes and $n$ is the total number of trials, then the proportion $p$ is given by:
+    The \textbf{proportion} is a way to express the frequency of a specific outcome (labeled as “success”) relative to the total number of trials or observations. 
     $$p = \frac{X}{n}$$
-    where $x$ is the number of successes and $n$ is the total number of trials.
+    where $p$ is the proportion, $X$ is the number of successes, and $n$ is the total number of trials.
 \end{definitionbox}
 \begin{conceptbox}{Why proportions?}{}
     Many outcomes are binary or categorical with two possible outcomes (e.g. success/failure, yes/no). Examples:
@@ -384,7 +384,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     In such cases, we often estimate a population proportion $\pi$ of successes rather than a mean $\mu$.
 \end{conceptbox}  
 \subsubsection{Binomial Distribution}
-If $X \sim B(n, \pi)$, then $X$ is the number of successes in $n$ independent Bernoulli trials, each probability of success $\pi$.\\[2ex]
+If $X \sim Binom(n, \pi)$, then $X$ is the number of successes in $n$ independent Bernoulli trials, each probability of success $\pi$.\\[2ex]
 The \textbf{sample proportion} $p = \frac{X}{n}$ is the observed successes in the sample. 
 \subsubsection{Normal Approximation of $p$}
 For large enough $n$, so that $n\pi \geq 5$ and $n(1 - \pi) \geq 5$, the sampling distribution of the sample proportion $p$ can be approximated by a normal distribution:
