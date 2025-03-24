@@ -40,22 +40,22 @@ Robert Davidson \\
 \subsection{Sampling the mean}
 In \textbf{probability} we consider the underlying process which has some randomness or uncertainity, and we try to figure out what happens \\[2ex]
 In \textbf{statistics} we consider the data that we have, and we try to figure out what the underlying process is. The basic aim to infer the population from the sample.
-\begin{examplebox}[Consider a jar of red and green jelly beans]
+\begin{examplebox}{Consider a jar of red and green jelly beans}{}
     A probabilist starts by knowing the proportion of red and green jelly beans in the jar, and then tries to figure out the probability of drawing a red jelly bean.\\
     A statistician starts by drawing a sample of jelly beans from the jar, and then tries to figure out the proportion of red and green jelly beans in the jar.
 \end{examplebox}
 
-\begin{definitionbox}[ : Central Limit Theorem]
+\begin{definitionbox}{Central Limit Theorem}{}
     Sample means follow a normal distrubution, centered on the popular mean, with a standard deviation equal to population standard deviation divided by the square root of the sample size.
     $$\bar{X} \sim N \left(\mu, \frac{\sigma}{\sqrt{n}}\right)$$
 \end{definitionbox}
 
-\begin{definitionbox}[ : Standard Error]
+\begin{definitionbox}{Standard Error}{}
     The standard error is the variability in the sampling distrubution. \\
     The standard error describes the typical difference between the sample measurement and the population parameter.
     $$SE = \frac{\sigma}{\sqrt{n}}$$
 \end{definitionbox}
-\begin{definitionbox}[ : Estimate $\sigma$]
+\begin{definitionbox}{Estimate $\sigma$}{}
     Often the value of the population standard deviation is unknown, and hence the standard error of the mean is unknown. \\
     We can estimate the value of the standard error using the sample standard deviation $(s)$ as an unbiased estimator of the population standard deviation $(\sigma)$.
     $$\sigma_{\bar{X}} = \frac{s}{\sqrt{n}}$$
@@ -66,7 +66,7 @@ In \textbf{statistics} we consider the data that we have, and we try to figure o
 \subsection{Confidence Intervals}
 \subsubsection{Confidence Intervals for a mean}
 
-\begin{definitionbox}[Confidence Interval for $n > 30$]
+\begin{definitionbox}{Confidence Interval for $n > 30$}{}
     For a large sample size, $n > 30$, a Confidence Interval for the population mean is given by:
     $$\bar{X} \pm Z_{\frac{\alpha}{2}} \frac{s}{\sqrt{n}}$$
 \end{definitionbox}
@@ -83,7 +83,7 @@ $$\bar{X} \pm 1.96  \cdot \frac{\sigma}{\sqrt{n}}$$
 When $\sigma$ is unknown, a 95\% Confidence Interval for the population mean is given by:
 $$\bar{X} \pm 1.96  \cdot \frac{s}{\sqrt{n}}$$
 But, what if $\sigma$ is unknown and $n < 30$?
-\begin{definitionbox}[Confidence Interval for $n < 30$]
+\begin{definitionbox}{Confidence Interval for $n < 30$}{}
     For a small sample size, $n < 30$, we use the \textbf{t-distribution instead of the normal distribution}. \\
     The t-distribution has heavier tails than the normal distribution and accounts for the additional uncertainty when estimating $\sigma$ with $s$ in small samples.
 
@@ -118,7 +118,7 @@ But, what if $\sigma$ is unknown and $n < 30$?
     \end{center}
 \end{definitionbox}
 
-\begin{examplebox}[: Find t-value from tables For a 95\% Confidence Interval]
+\begin{examplebox}{Find t-value from tables For a 95\% Confidence Interval}{}
     We have:
     $$a = 1 - 0.95 = 0.05 \Rightarrow \frac{a}{2} = 0.025$$
     We also have:
