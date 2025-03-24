@@ -7,7 +7,7 @@ cd ~/Desktop/College/LatexNotes || exit
 git pull origin main
 
 # Add only .tex and from src and .pdf files from src/pdf
-git add src/*.tex  src/pdf/*.pdf
+git add src/*.tex  pdf/*.pdf
 # Commit with current date
 git commit -m "Automated commit: Notes updated on $(date '+%Y-%m-%d %H:%M:%S')"
 
