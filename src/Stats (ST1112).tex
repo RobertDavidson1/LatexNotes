@@ -503,14 +503,39 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
 
 \subsection{Stages in Hypothesis Testing}
 \begin{conceptbox}{Stages in Hypothesis Testing}{}
-    \begin{enumerate}
-        \item State the hypotheses ($H_0$ and $H_1$)
-        \item Take a random sample, and calculate a suitable test statistic ($T_0$)
-        \item Write down the sampling distribution of $T_0$ (e.g. t-distribution)
-        \item We asses how likely $T_0$ is, if $H_0$ is true (this involves the p-value or a rejection region)
-        \item Make a decision (reject $H_0$ or fail to reject $H_0$)
-        \item Write down the conclusion in plain English
-    \end{enumerate}
+    A typical hypothesis test follows these steps:
+
+    State the hypotheses:
+
+        H0H0​: The null hypothesis (e.g., μ=μ0μ=μ0​).
+
+        H1H1​: The alternative hypothesis (e.g., μ≠μ0μ=μ0​ or μ>μ0μ>μ0​ or μ<μ0μ<μ0​).
+
+    Collect a random sample and compute the test statistic:
+
+        The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
+
+    Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
+
+        For large nn, use a z-approximation.
+
+        For smaller nn (and unknown σσ), use a t-distribution with n−1n−1 degrees of freedom, assuming approximate normality of the population.
+
+    Decide whether the observed test statistic would be rare or common if H0H0​ were true:
+
+        p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given H0H0​ is true.
+
+        Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level αα.
+
+    Make a decision:
+
+        If p-value ≤α≤α, we reject H0H0​.
+
+        If p-value >α>α, we do not reject H0H0​. (We do not conclude H0H0​ is “proven,” just that the sample does not contradict H0H0​ strongly.)
+
+    Draw a conclusion:
+
+        Summarize the practical meaning and state whether there is “sufficient evidence” that H1H1​ holds
 \end{conceptbox}
 
 
@@ -530,13 +555,13 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
         \item $\mu_0$ is the hypothesized population mean
         \item $n$ is the sample size
     \end{itemize}
-\end{definitionbox}
-\begin{conceptbox}{Underlying Distributions}{}
     \begin{itemize}
-        \item If $n \geq 30$, by the Central Limit Theorem, $T_0$ follows approximately a standard normal distribution - $N(0, 1)$.
-        \item If $n < 30$, $T_0$ follows a t-distribution with $df = n - 1$ degrees of freedom (assuming normality of the underlying population).
+        \item If $n \geq 30$,  $T_0$ is compared to a normal distribution - $N(0, 1)$.
+        \item If $n < 30$, $T_0$ is compared to a t-distribution with $n-1$ degrees of freedom, assuming the population is approximately normal.
     \end{itemize}
-\end{conceptbox}
+\end{definitionbox}
+
+
 \begin{definitionbox}{Rejection Region}{}
         \centering
         \begin{tabularx}{\textwidth}{@{} X X X @{}}
