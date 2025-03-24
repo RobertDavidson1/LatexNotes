@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt]{article}
+\documentclass[9pt]{extarticle}
 \input{preamble.sty}
 
 \input{macros.sty}
@@ -28,21 +28,24 @@ Robert Davidson \\
 
 \section{Inferential Statistics}
 The ultimate goal in statistical inference is to estimate population paramaters (like the mean $\mu$) based on sample statistics (like the sample mean $\bar{X}$).
-\subsection{Probability vs Statistics}
+\subsection{Part 1}
+\subsubsection{Probability vs Statistics}
 \begin{itemize}
     \item \textbf{Probability} deals with known underlying processes: one starts with a model (like proportion of red vs. green jelly beans in a jar) and computes probability of specific outcomes 
     \item \textbf{Statistics} works in reverse: one observes outcomes (sample data) and attempts to infer the underlying process or population paramaters (e.g. proportion of red jellybeans)
 \end{itemize}
-\subsection{Definitions and Concepts}
+\subsubsection{Definitions and Concepts}
 
 \begin{definitionbox}{Population}{}
     A \textbf{population} is the complete set of items (or individuals) of interest.
 \end{definitionbox}
+
 \begin{definitionbox}{Sample}{}
     A \textbf{sample} is a subset of that populaton, intended to represent the population\\
     
     For example the sample mean $\bar{X}$ is an estimate of the population mean $\mu$.
 \end{definitionbox}
+
 \begin{definitionbox}{Population Mean ($\mu$)}{}
     $\mu$ represents the central tendence of a population distribution.
     $$\mu = \frac{1}{N} \sum_{i=1}^{N} x_i$$
@@ -50,7 +53,11 @@ The ultimate goal in statistical inference is to estimate population paramaters 
 
     $\mu$ is sometimes called the expected value or average.
 \end{definitionbox}
-\begin{definitionbox}{Population standard deviation}{}
+
+\begin{definitionbox}{Population standard deviation ($\sigma$)}{}
+    $\sigma$ measures the dispersion or spread of values around the mean in a population.
+    $$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2}$$
+    where $N$ is the population size and $x_i$ are the individual values in the population.\\
 \end{definitionbox}
 
 \begin{conceptbox}{Sampling Variation}{}
@@ -74,6 +81,7 @@ The ultimate goal in statistical inference is to estimate population paramaters 
 
     This value is valled the \textbf{standard error} of the mean and measures how much the sample mean $\bar{X}$ fluctuates around the population mean $\mu$.
 \end{definitionbox}
+
 \begin{definitionbox}{Central Limit Theorem}{}
     $$\bar{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$$
     where $\bar{X}$ is the sample mean, $\mu$ is the population mean, and $\sigma$ is the population standard deviation.\\
@@ -85,14 +93,23 @@ The ultimate goal in statistical inference is to estimate population paramaters 
     \textbf{Practically}, many apply the rule of thumb $n \geq 30$ to treate $\bar{X}$ as normally distributed.
 \end{definitionbox}
 
-\begin{definitionbox}{Bessel's Correction}{}
-\end{definitionbox}
 
 \begin{definitionbox}{Unbiased Estimators}{}
     We say a statistic $T$ is an \textbf{unbiased estimator} of a population parameter $\theta$,  if $E(T) = \theta$.\\
 
     For example, the sample mean $\bar{X}$ is an unbiased estimator of the population mean $\mu$ because $E(\bar{X}) = \mu$.\\
 
-    The sample standard deviation $s$ (using Bessel's correction, dividing by $n-1$) is an unbiased estimator of the population standard deviation $\sigma$.
+    The sample standard deviation $s$ (using Bessel's correction, dividing by multiplying by $\frac{1}{n-1}$ rather than $\frac{1}{N}$) is an unbiased estimator of the population standard deviation $\sigma$.
 \end{definitionbox}
+
+\subsubsection{Example}
+\begin{examplebox}{Weekly rent}{}
+    If a population mean rent is $\mu = 225$, with $\sigma = 25$ for a population sample size $n = 30$, the sample distribution of the sample mean is approximately:
+    $$\bar{X} \sim N\left(225, \frac{25^2}{30}\right)$$
+    This lets us compute probabilities for specific sample mean ranges using the normal distribution (e.g. $P(\bar{X} < 220)$).
+\end{examplebox}
+\subsection{Part 2 - Confidence Intervals}
+\subsubsection{Recap}
+A \textbf{sample statistic} (e.g. the sample mean $\bar{X}$) varies from one sample to another. Understanding this variation (and quantifying it via the standard error) is crucial for knowing how precise (or imprecise) an estimate really is.
+
 \end{document}
