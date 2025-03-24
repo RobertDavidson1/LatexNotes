@@ -118,10 +118,17 @@ In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed e
 \begin{conceptbox}{Why confidence intervals?}{}
     Why do we need confidence intervals, instead of a single point estimate, like the sample mean $\bar{X}$? \\
     
-    A confidence interval provides a range of plausible values for the population parameter (e.g. $\mu$) based on the sample data.
+    A confidence interval provides a range of plausible values for the population parameter (e.g. $\mu$) based on the sample data. \\ 
+    
+    \textbf{Analogy:}  Using a single point estimate is like trying to catch a fish wih a spear; your aim may not be perfect. Using a confidence interval is like using a net; we have a better chance of "catching" (capturing) the true population parameter.
 \end{conceptbox}
-\noindent\textbf{Analogy:}  Using a single point estimate is like trying to catch a fish wih a spear; your aim may not be perfect. Using a confidence interval is like using a net; we have a better chance of "catching" (capturing) the true population parameter.
-
+\begin{definitionbox}{Confidence Interval}{}
+  $$\bar{X} \pm (\text{critical value}) \times SE(\bar{X})$$
+    where $SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}$ is the standard error of the sample mean, $\pm$ is the margin of error.\\
+\end{definitionbox}
+\noindent\textbf{Interpretation}: \\
+If we repeat the sampling process many times and construct confidence intervals from each sample, then approximately $100 \times (1 - \alpha)\%$ of those intervals will contain the true population parameter $\mu$.\\
+In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in my interval"}. Rather we say, \textbf{"on repeated sampling 95\% of such intervals will contain the true population mean $\mu$."}
 
 
 
