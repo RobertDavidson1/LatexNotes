@@ -1,6 +1,5 @@
 \documentclass[9pt]{extarticle}
 \input{preamble.sty}
-
 \input{macros.sty}
 
 \usepackage[svgnames]{xcolor}
@@ -471,14 +470,14 @@ If we have $n$ observations of some Poisson process, the overall mean $\bar{\lam
 \end{examplebox}
 
 \pagebreak
-\subsection{Hypothesis Testing}
+\section{Hypothesis Testing}
 Hypothesis testing is a systematic framework to evaluate claims about a population parameter (e.g. a population mean $\mu$).
 \begin{examplebox}{Introdcutory Example}{}
     A claim has been made that students, on average, have been in 4 different relationships. \\
     The corresponding 95\% CI is $[2.7, 3.7]$ which did not include 4, suggesting the claim was unlikely to be true.
 \end{examplebox}
 Hypothesis testing relies on evidence (sample data) to decide whether a claim (the "null hypothesis") is plausible. Confidence intervals and hypothesis tests are the main building blocks of statistical inference.
-\subsubsection{Hypothesus Testing Basics}
+\subsection{Hypothesis Testing Basics}
 \textbf{Purpose}: \\
 Asses whether a parameter (often the mean, $\mu$) is equal to a specific value or if it differs in a particular direction  \\[2ex]
 \textbf{Null and Alternative Hypotheses}:
@@ -492,5 +491,20 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
     \item A smaller p-value  indicates stronger evidence against the null hypothesis
     \item Conventionally, if $p \leq 0.05\%$ we say the result is statistically significant and we reject the null hypothesis $H_0$. 
 \end{itemize}
+\begin{conceptbox}{Key Notes}{}
+    \begin{itemize}
+        \item The test statistic is computed under the assumption $H_0$ is true
+        \item We compare the test statistic to its reference distribution
+        \item We decide whether $H_0$ should be rejected in favour of $H_1$
+        \item A low p-value ($<0.05$) indicates rejection of $H_0$    
+        \item We never say "we accept $H_0$" - we only say "we fail to reject $H_0$" when the dtat does not provide strong evidence against it.      
+    \end{itemize}
+\end{conceptbox}
+
+\subsection{Stages in Hypothesis Testing}
+\begin{enumerate}
+    \item State the hypotheses ($H_0$ and $H_1$)
+    \item Take a random sample, and calculate a suitable test statistic ($T_0$)
+\end{enumerate}
 
 \end{document}
