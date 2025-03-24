@@ -359,6 +359,32 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 \end{itemize}
 
 \subsection{Data Transformations}
-\subsubsection{Purpose}
-If the data has a strongly skewed or otherwise non-normal distribution, applying a suitable transformation (e.g. $\log(x)$, $\sqrt{x}$) can help to make the data more symmetric and bell-shaped.\\ After the transformation, we can apply t-based or z-based methods can be applied more safely. 
+\textbf{Purpose}:
+\begin{itemize}
+    \item If the data has a strongly skewed or otherwise non-normal distribution, applying a suitable transformation (e.g. $\log(x)$, $\sqrt{x}$) can help to make the data more symmetric and bell-shaped.
+    \item After the transformation, we can apply t-based or z-based methods can be applied more safely.
+\end{itemize}
+\textbf{Cautions}:
+\begin{itemize}
+    \item Finding the write transformation can be tricky; sometimes no simple transformation works well.
+    \item Interpretation of results becomes more complex; if you compute a CI for the transformed mean, you must convert (e.g. exponentiate) the results back to the original scale.
+    \item Despite these challenges, transformation often prove very useful in practice.
+\end{itemize} 
+
+\subsection{The Bootstrap}
+\textbf{Motivation}:
+\begin{itemize}
+    \item Bootstrap methods do not require normality assumptions or a large $n$. They rely on the principle that the observed sample can server a reasonable proxy for the populations shape. 
+    \item By resampling with replacement from the original sample (many times), one creates a "bootstrap distribution" that mimics the statistic (e.g. mean, median) of interest.
+    \item This bootstrap distribution is then used to estimate hpw the statistic varies, allowing for confidence interval construction and hypothesis testing without explicit formulas.
+\end{itemize}
+\textbf{Basic Steps (Bootstrap Scheme)}
+\begin{enumerate}
+    \item \textbf{Resample with replacement}: Take a bootstrap sample of the same size $n$ as the original dataset, but drawn from the dataset with replacement.
+    \item \textbf{Calculate Bootstrap statistic}: Compute the same summary measure of interest (e.g. mean, median) on the bootstrap sample.
+    \item \textbf{Repeat}: Repeat steps (1) and (2) many times (e.g. 1000 times) to create a distribution of the bootstrap statistic.
+    \item \textbf{Construct CI}: The bootstrap distribution of the resampled statistics can be used to determine the middle 95\% (or chosen confidence level) as the CI bounds.
+\end{enumerate}
+
+
 \end{document}
