@@ -413,7 +413,7 @@ For large $n$ (above conditions), the distribution of $p$ can be approximated by
 $$p \sim N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$\\
 \textbf{Interpretation}: \\
 This approximation means if we were to make many samples of size $n$, the distribution of the same proportions would cluster around the true proportion, $pi$, with variability decreasing as the sample size $n$ increases. This normality is what allows statisticians to construct confidence intervals and perform hypothesis tests on population proportions.
-\subsection{Confidence Intervals for Proportion $\pi$}
+\subsubsection{Confidence Intervals for Proportion $\pi$}
 For a large sample size where $np$ and $n(1-p)$ are both greater or equal to 5, a 95\% C.I for the population proportion $\pi$ is given by:
 $$p \pm z_{\alpha/2} \times \sqrt{\frac{p(1 - p)}{n}}$$
 where:
@@ -424,13 +424,27 @@ where:
 \end{itemize}
 
 \begin{examplebox}{Financial Scams}{}
-    A survey of $n=80$ small businesses found that $X = 16$ had fallen victim to a financial scam. Find the 95\% confidence that all small businesses have fallen victim to a scam. \\[2ex]
+    A survey of $n=80$ small businesses found that $X = 16$ had fallen victim to a financial scam. Find the 95\% confidence that all small businesses have fallen victim to this scam. \\[2ex]
 
     \begin{itemize}
         \item Sample proportion: $p = \frac{X}{n} = \frac{16}{80} = 0.20$
-        \item 
+        \item Standard Error = $SE = \sqrt{\frac{p(1 - p)}{n}} = \sqrt{\frac{0.20(1 - 0.20)}{80}} = \sqrt{\frac{0.20 \times 0.80}{80}} \approx 0.05$
+        \item For a 95\% confidence interval $\alpha = 0.05, z_{\alpha/2} = 1.96$.
     \end{itemize}
-
+    The 95\% confidence interval is given by:
+    $$p \pm z_{\alpha/2} \times SE = 0.20 \pm 1.96 \times 0.05$$
+    The resulting confidence interval is:
+    $$\approx (0.10, 0.30)$$
+    \textbf{Interpretation}: We are 95\% confident that between 10\% and 30\% of all small businesses have fallen victim to this scam.
 \end{examplebox}
-
+\begin{conceptbox}{Proportion CI Test IN R}{}
+    The function \texttt{prop.test(x, n, conf.level, correct=False)}  gives a confidence interval for a proportion.
+\end{conceptbox}
+\pagebreak
+\subsubsection{Maximizing the Standard Error}
+The standard error for a proportion $p$ is given by:
+$$SE = \sqrt{\frac{p(1 - p)}{n}}$$
+This maximizes at $p = 0.5$. Thus the worst-case margin of error for a 95\% confidence interval is:
+$$\approx \pm 2 \times \sqrt{\frac{0.5\times0.5}{n}} = \pm \frac{1}{\sqrt{n}}$$
+\textbf{Rule of thumb}: for $n = 1000$, the margin of error is about $1/\sqrt{1000} \approx 0.03$, i.e. 3\% error.
 \end{document}
