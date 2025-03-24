@@ -126,76 +126,75 @@ In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed e
   $$\bar{X} \pm (\text{critical value}) \times SE(\bar{X})$$
     where $SE(\bar{X}) = \frac{\sigma}{\sqrt{n}}$ is the standard error of the sample mean, $\pm$ is the margin of error.\\
 \end{definitionbox}
-
-
-
-
-
-
-\begin{tikzpicture}[
-    domain=-1:1, 
-    xscale=1, 
-    yscale=6,
-    smooth,
-    line cap=round,
-    line join=round,
-    >={Stealth[scale=1.5]}
-]
-    % Define critical z values
-    \def\zcrit{1.96}
-    
-  
-    
-    % Fill left tail area (2.5%)
-    \fill[custom_blue] (-3.5,0) -- plot[domain=-3.5:-\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (-\zcrit,0) -- cycle;
-    
-    % Fill right tail area (2.5%)
-    \fill[custom_blue] (3.5,0) -- plot[domain=3.5:\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (\zcrit,0) -- cycle;
-    
-    % Draw the normal distribution curve
-    \draw[thick, custom_blue] plot[domain=-3.5:3.5] (\x, {0.4*exp(-(\x)^2/2)});
-
-    % Mark the critical values
-    \draw[thick] (-\zcrit,0) -- (-\zcrit,0.05);
-    \node[below] at (-\zcrit,0) {$-z_{0.025}$};
-    \draw[thick] (\zcrit,0) -- (\zcrit,0.05);
-    \node[below] at (\zcrit,0) {$z_{0.025}$};
-
-    \draw[<->] (-\zcrit, -0.1) -- (\zcrit, -0.1) node[midway, below] {$95\%$};
-    \draw[<->] (-\zcrit, -0.1) -- (-3.7, -0.1) node[midway, below] {$2.5\%$};
-    \draw[<->] (\zcrit, -0.1) -- (3.7, -0.1) node[midway, below] {$2.5\%$};
-    
-
-    % Draw horizontal axis
-    \draw[->] (-3.7,0) -- (3.7,0) node[right] {};
-    % Draw vertical axis
-    \draw[->] (0,0) -- (0,0.5) node[above] {};
-    % Mark the center
-    \node[below] at (0,0) {$0$};
-    % Title
-    \node[above] at (0,0.55) {\textbf{Standard Normal Distribution ($z$)}};
-    \node at (0,0.55) {\textbf{with $\alpha = 0.05$}};    
-\end{tikzpicture}
-
-
-\begin{definitionbox}{Crritical Values}{}
-    The \textbf{critical value} is a z-score that corresponds to the desired confidence level. \\
-    
-    For example, for a 95\% confidence level, the critical value is $Z_{\alpha/2} = 1.96$ (where $\alpha = 0.05$).\\
-    This means that 95\% of the area under the normal curve lies within $1.96$ standard deviations of the mean.
-\end{definitionbox}
-
-
 \noindent\textbf{Interpretation}: \\
 If we repeat the sampling process many times and construct confidence intervals from each sample, then approximately $100 \times (1 - \alpha)\%$ of those intervals will contain the true population parameter $\mu$.\\
 In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in my interval"}. Rather we say, \textbf{"on repeated sampling 95\% of such intervals will contain the true population mean $\mu$."} 
 
-\subsubsection{CI with large $n$, $\sigma$ known, replaced with $s$}
+
+\begin{definitionbox}{Critical Values}{}
+    The \textbf{critical value} is a z-score that corresponds to the desired confidence level. \\[2ex]
+    For example, for a 95\% confidence level, the critical value is $Z_{\alpha/2} = 1.96$ (where $\alpha = 0.05$).
+    This means that 95\% of the area under the normal curve lies within $1.96$ standard deviations of the mean. \\[2ex]
+    \begin{center}
+        \begin{tikzpicture}[
+        domain=-1:1, 
+        xscale=-0.5, 
+        yscale=3.5,
+        smooth,
+        line cap=round,
+        line join=round,
+    ]
+        % Define critical z values
+        \def\zcrit{1.96}
+        
+        % Fill left tail area (2.5%)
+        \fill[custom_red] (-3.5,0) -- plot[domain=-3.5:-\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (-\zcrit,0) -- cycle;
+        
+        % Fill right tail area (2.5%)
+        \fill[custom_red] (3.5,0) -- plot[domain=3.5:\zcrit] (\x, {0.4*exp(-(\x)^2/2)}) -- (\zcrit,0) -- cycle;
+        
+        % Draw the normal distribution curve
+        \draw[thick, custom_red] plot[domain=-3.5:3.5] (\x, {0.4*exp(-(\x)^2/2)});
+    
+        % Mark the critical values
+        \draw[thick] (-\zcrit,0) -- (-\zcrit,0.05);
+        \node[below] at (-\zcrit,0) {$-z_{0.025}$};
+        \draw[thick] (\zcrit,0) -- (\zcrit,0.05);
+        \node[below] at (\zcrit,0) {$z_{0.025}$};
+    
+        \draw[<->] (-\zcrit, -0.15) -- (\zcrit, -0.15) node[midway, below] {$95\%$};
+        \draw[<->] (-\zcrit, -0.15) -- (-3.7, -0.15) node[midway, below] {$2.5\%$};
+        \draw[<->] (\zcrit, -0.15) -- (3.7, -0.15) node[midway, below] {$2.5\%$};
+        
+    
+        % Draw horizontal axis
+        \draw[->] (-3.7,0) -- (3.7,0) node[right] {};
+        % Draw vertical axis
+        \draw[->] (0,0) -- (0,0.5) node[above] {};
+        % Mark the center
+        \node[below] at (0,0) {$0$};
+        % Title
+        \node[above] at (0,0.55) {\textbf{Standard Normal Distribution ($z$)}};
+        \node at (0,0.55) {\textbf{with $\alpha = 0.05$}};    
+        \end{tikzpicture}
+    \end{center}
+\end{definitionbox}
+
+\begin{examplebox}{Find crtitical value for the 95\% CI}{}
+    For a confidence interval of 95\%, we want to find the z-score that leaves 2.5\% in each tail of the normal distribution.\\
+    We want to find the $z$-value where the cumulative area )from the left up to that $z-score$) is $1 - 0.025 = 0.975$.\\
+    We look in the $z$-tables for the value closest to $0.975$ and read the row and column headers to find the $z$-value.\\
+    The $z$-value is $1.96$.\\
+\end{examplebox}
+
+
+
+
+\subsubsection{CI with large $n$, $\sigma$ uknown but replaced with $s$}
 \textbf{Form of the 95\% CI ($Z$ based)}: \\
 For a large sample ($n \geq 30$) or when the population standard deviation $\sigma$ is known \textbf{or} reasonably approximated, the confidence interval for $\mu$ is:
 $$\bar{X} \pm Z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
-where $Z_{\alpha/2}$ is the z-score for the chosen confidence level (e.g. $Z_{0.025} = 1.96$ for a 95\% CI).
-
+where $Z_{\alpha/2}$ is the z-score for the chosen confidence level (e.g. $Z_{0.025} = 1.96$ for a 95\% CI). If $\sigma$ is not known but $n$ is large, we replace $\sigma$ with the sample standard deviation $s$:
 
 
 \end{document}
