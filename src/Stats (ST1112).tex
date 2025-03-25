@@ -748,5 +748,44 @@ A company claims that the average lifetime of their LED bulbs is 50{,}000 hours.
     There is very strong evidence to suggest that the true mean lifetime differs from 50{,}000 hours.
 \end{enumerate}
 \end{examplebox}
+\begin{conceptbox}{Hypothesis Test Using p-values}{}
+    Instead of using a formal "rejection", many prefer to use the \textbf{p-value}:
+    \begin{itemize}
+        \item \textbf{Compute} $T_0$ from the data \\
+        \item \textbf{Compute p-value} = probability under $H_$ of observing a test statistic or more extreme than $T_0$
+        \item \textbf{Compare p-value to $\alpha$}:
+        \begin{itemize}
+            \item p-value $\leq \alpha$, reject $H_0$
+            \item p-value $> \alpha$ do not reject $H_0$
+        \end{itemize}
+    \end{itemize}
+\end{conceptbox}
+
+\begin{conceptbox}{Statistical Significance}{}
+    We say "the result is statistically significant at the $\alpha$ level" when the p-value $\leq alpha$ \\
+    Common $\alpha$ levels:
+    \begin{itemize}
+        \item 0.05 level 
+        \item 0.01 level
+    \end{itemize}
+\end{conceptbox}
+
+\begin{conceptbox}{}{}
+    \begin{itemize}
+        \item A \textbf{small p-value} means: "Given $H_0$, it would be unlikely to observe data this extreme" 
+        \item \textbf{It does not mean}: "There is a 5\% chanc that $H_0$ is true". (p-values are not the probability of the null hypothesis itself)
+        \item If the p-value is not small, that does not prove $H_0$ is correct - only that the data failed to provide strong evidence against it. 
+    \end{itemize}
+\end{conceptbox}
+
+\begin{conceptbox}{Connection to Confidence Intervals}{}
+    \textbf{Confidence interval approach}:
+    \begin{itemize}
+        \item  If the hypothesized paramater value $(u_0)$, lies \textbf{outside} the $(1-\alpha)\%$ CI then the data 
+        suggests rejecting $H_0$
+        \item If $\mu_0$ is \textbf{inside} the data is consistent with $H_0$. 
+    \end{itemize}
+    Hence, hypothesis testing and confidence intervals are closely linked.
+\end{conceptbox}
 
 \end{document}
