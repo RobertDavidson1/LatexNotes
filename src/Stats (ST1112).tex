@@ -496,7 +496,6 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
             \item $H0$ The null hypothesis (e.g., $\mu = \mu_0$).
             \item $H_1$ The alternative hypothesis (e.g., $\mu \neq \mu_0$, $\mu < \mu_0$ or $\mu > \mu_0$).
         \end{itemize}
-<<<<<<< HEAD
     \item  Collect a random sample and compute the test statistic:
         \begin{itemize}
             \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
@@ -505,45 +504,22 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
     \begin{itemize}
         \item For large $n$, use a z-approximation.
         \item For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
-=======
- 
-    \item  Collect a random sample and compute the test statistic:
-    \begin{itemize}
-        \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
-    \end{itemize}
-    \item Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
-    \begin{itemize}
-        \item For large $n$, use a z-approximation.
-        \item For smaller $n$ (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
->>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
     \end{itemize}
     \item Decide whether the observed test statistic would be rare or common if $H_0$ were true:
     \begin{itemize}
         \item p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
         \item Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
     \end{itemize}
-<<<<<<< HEAD
     \item  Make a decision:
-=======
-    \item Make a decision:
->>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
     \begin{itemize}
         \item If p-value $< \alpha$, we reject $H_0$
         \item If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
     \end{itemize}
-<<<<<<< HEAD
     \item Draw a conclusion:
     \begin{itemize}
         \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
     \end{itemize}
     \end{enumerate}
-=======
-    \item Draw a conclusion
-    \begin{itemize}
-        \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
-    \end{itemize}
-\end{enumerate}
->>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
 \end{conceptbox}
 
 
@@ -797,7 +773,6 @@ When conducting a hypothesis test, there are two possible decisions:
     By evaluating this function across different values of $\mu$, we get a power curve showing how likely the test is to detect a shift from $\mu_0$ to $\mu$.
 \end{definitionbox}
 
-<<<<<<< HEAD
 \begin{conceptbox}{Balancing $\boldsymbol{\alpha}$ and $\boldsymbol{\beta}$}{}
     \begin{itemize}
         \item When designing a test, we typically fix $\alpha$ (Type I error rate) e.g.5\%
@@ -1113,35 +1088,140 @@ Under $H_0$, $F_0 \sim F_{n_1-1,\;n_2-1}$. If $F_0$ is too large or too small (i
 \end{itemize}
 \end{takeaway-box}
 
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
 
-=======
+\begin{document}
 
-\begin{conceptbox}{Statistical Significance}{}
-    We say "the result is statistically significant at the $\alpha$ level" when the p-value $\leq alpha$ \\
-    Common $\alpha$ levels:
+Below is a detailed summary of the \textbf{Bootstrap and Permutation Test} material. It addresses how to compare two populations (in particular, their means) when the usual assumptions (e.g., normality) may be questionable, especially for small samples. These methods offer flexible, non-parametric (or distribution-free) alternatives.
+
+\bigskip
+
+\section{When Normality (or Other Assumptions) Is Questionable}
+
+In comparing two populations with standard parametric tests (z-test or t-test), we typically assume:
+\begin{itemize}
+    \item The sample sizes are sufficiently large, or
+    \item The underlying data are (approximately) normally distributed.
+\end{itemize}
+
+If these assumptions fail---for instance, if data are skewed, have heavy tails, or sample sizes are small---we can:
+\begin{enumerate}
+    \item \textbf{Transform the data} to approximate normality (e.g., log-transform), or
+    \item \textbf{Use non-parametric/resampling methods}, such as 
     \begin{itemize}
-        \item 0.05 level 
-        \item 0.01 level
+        \item \textbf{Bootstrap} confidence intervals, or
+        \item \textbf{Permutation tests} for hypothesis testing.
     \end{itemize}
-\end{conceptbox}
+\end{enumerate}
 
-\begin{conceptbox}{}{}
-    \begin{itemize}
-        \item A \textbf{small p-value} means: "Given $H_0$, it would be unlikely to observe data this extreme" 
-        \item \textbf{It does not mean}: "There is a 5\% chanc that $H_0$ is true". (p-values are not the probability of the null hypothesis itself)
-        \item If the p-value is not small, that does not prove $H_0$ is correct - only that the data failed to provide strong evidence against it. 
-    \end{itemize}
-\end{conceptbox}
+These methods rely less on strict distributional assumptions, making them particularly useful in real-world scenarios where normality is questionable.
 
-\begin{conceptbox}{Connection to Confidence Intervals}{}
-    \textbf{Confidence interval approach}:
+\bigskip
+
+\section{Bootstrap CI for the Difference of Two Means}
+
+\subsection{Rationale}
+The \textbf{bootstrap} is a resampling method that constructs an empirical distribution of a statistic (e.g., the mean difference) by sampling \emph{with replacement} from the observed data. For two independent samples, one resamples each sample separately and computes the difference in their means repeatedly, building a “bootstrap distribution” of those differences.
+
+\subsection{Steps for Two-Sample Mean Difference}
+\begin{enumerate}
+    \item \textbf{Separate the data} by group A and group B.
+    \item \textbf{Resample with replacement} from group A’s data and from group B’s data to create “bootstrap samples” of the same sizes as the originals.
+    \item \textbf{Compute the mean difference} of these two bootstrap samples.
+    \item \textbf{Repeat} the above many times (e.g., 1000 or 10,000 times).
+    \item \textbf{Use percentiles} of the resulting bootstrap distribution (e.g., the 2.5th and 97.5th percentiles for a 95\% CI) to form the confidence interval for $\mu_B - \mu_A$.
+\end{enumerate}
+
+\subsection{Example: Ankle Fractures}
+Using R’s \texttt{infer} package, one can execute:
+\begin{lstlisting}[language=r]
+specify(AOFAS ~ Treatment) %>%
+  generate(reps = 1000, type = "bootstrap") %>%
+  calculate(stat = "diff in means", order = c("B", "A"))
+\end{lstlisting}
+\begin{itemize}
+    \item This generates 1000 bootstrap differences in means (Group B minus Group A).
+    \item Then \texttt{get\_ci(..., level = 0.95)} provides the 95\% CI from the empirical distribution of differences.
+    \item A histogram (via \texttt{visualize()}) displays the spread of bootstrap differences with shading for the CI bounds.
+\end{itemize}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item If the entire bootstrap CI is above zero, it suggests that $\mu_B$ is likely larger than $\mu_A$.
+    \item Likewise, if the entire interval is below zero, it suggests that $\mu_B$ is likely smaller than $\mu_A$.
+    \item If it straddles zero, there is no strong evidence of a difference.
+\end{itemize}
+
+\bigskip
+
+\section{Permutation Test for Two-Sample Comparison}
+
+\subsection{Motivation}
+A \textbf{permutation test} is a non-parametric hypothesis test that makes minimal assumptions about the data distribution. It tests whether two samples come from populations with the \textbf{same} mean (or more generally, the same distribution).
+\begin{itemize}
+    \item \textbf{Null hypothesis} ($H_0$): The two groups are exchangeable---there is no real difference in their underlying population means (or distributions).
+    \item \textbf{Alternative hypothesis} ($H_1$): The groups differ (e.g., $\mu_1 \neq \mu_2$).
+\end{itemize}
+
+\subsection{Conceptual Steps}
+\begin{enumerate}
+    \item \textbf{Observed difference}: Compute the actual mean difference $\bar{X}_1 - \bar{X}_2$ in the sample data.
+    \item \textbf{Permute group labels}: Shuffle or reassign the observed data points randomly between the two groups, effectively destroying any “true” difference by mixing the data. Under $H_0$, any labeling is equally plausible.
+    \item \textbf{Compute new difference}: For each permutation, compute the mean difference in the permuted dataset.
+    \item \textbf{Build the null distribution}: After many permutations, collect the distribution of permuted mean differences; this is the empirical distribution under the null (i.e., assuming no difference).
+    \item \textbf{p-value}: Calculate the fraction of permuted differences that are as or more extreme than the observed difference.
+    \[
+    \text{p-value} = \frac{\sum (\text{permuted difference} \ge |\text{observed difference}|)}{\text{number of permutations}}.
+    \]
+    For a two-sided test, count how many permuted differences are either $\ge +|\text{observed diff}|$ or $\le -|\text{observed diff}|$.
+\end{enumerate}
+
+If the empirical p-value is below the significance threshold ($\alpha$), we conclude there is evidence of a real difference between groups.
+
+\subsection{Example}
+Suppose you have 6 observations from group 1 and 6 from group 2. The observed mean difference is 2.5. By randomly reassigning the 12 data points to “group 1” vs. “group 2” many times, we generate a \textbf{null distribution} of differences typically centered near 0. If only about 3\% of those permuted differences exceed 2.5 in magnitude, then the p-value is 0.03, providing evidence that the observed 2.5 difference is unlikely to arise under the null hypothesis of no difference.
+
+\bigskip
+
+\section{Comparison of Bootstrap CI vs. Permutation Test}
+
+\begin{itemize}
+    \item \textbf{Bootstrap}: Provides a \textbf{confidence interval} for the difference of means by resampling each group independently.
+    \item \textbf{Permutation}: Provides a \textbf{hypothesis test} by shuffling group labels to generate a null distribution for the test statistic.
+    \item Both methods are \textbf{non-parametric} (distribution-free) and rely on the sample data to represent the underlying populations well.
+\end{itemize}
+
+\bigskip
+
+\section{Key Takeaways}
+\begin{enumerate}
+    \item \textbf{Non-parametric options}: If normality is doubtful or sample sizes are small, bootstrap and permutation methods can be more robust than standard t-tests.
+    \item \textbf{Bootstrap for Confidence Intervals}:
     \begin{itemize}
-        \item  If the hypothesized paramater value $(u_0)$, lies \textbf{outside} the $(1-\alpha)\%$ CI then the data 
-        suggests rejecting $H_0$
-        \item If $\mu_0$ is \textbf{inside} the data is consistent with $H_0$. 
+        \item Straightforward to implement.
+        \item Relies on the data themselves to estimate sampling variability.
     \end{itemize}
-    Hence, hypothesis testing and confidence intervals are closely linked.
-\end{conceptbox}
->>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
+    \item \textbf{Permutation Test for Hypothesis Testing}:
+    \begin{itemize}
+        \item Constructs a null distribution by reassigning the data to groups at random.
+        \item Yields an \textbf{empirical p-value} for the difference in means (or other statistics).
+    \end{itemize}
+    \item \textbf{Minimal assumptions}: Both methods require fewer assumptions than parametric tests, particularly about the shape of the distribution.
+    \item \textbf{Implementation}:
+    \begin{itemize}
+        \item In R, packages like \texttt{infer} or custom code loops can handle bootstrapping and permutation procedures.
+        \item Typically repeated many times (e.g., 1000, 10,000) to obtain stable estimates of intervals or p-values.
+    \end{itemize}
+\end{enumerate}
+
+In sum, \textbf{bootstrap} and \textbf{permutation} methods provide powerful alternatives for two-sample comparisons when standard assumptions (like normality or large sample sizes) may not hold. They expand the analyst’s toolbox for making statistically sound inferences under less restrictive conditions.
+
+\end{document}
+
+
 
 \end{document}
