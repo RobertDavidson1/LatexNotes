@@ -15,9 +15,7 @@ Robert Davidson \\
 30\% Continuous Assessment (3 parts)
 }
 \date{}       % Optional: Add date if desired
-%--------------------------------------------------------
-% Document
-%--------------------------------------------------------
+
 \begin{document}
 \maketitle
 \pagebreak
@@ -1147,7 +1145,7 @@ specify(AOFAS ~ Treatment) %>%
 \subsubsection{Motivation}
 A \textbf{permutation test} is a non-parametric hypothesis test that makes minimal assumptions about the data distribution. It tests whether two samples come from populations with the \textbf{same} mean (or more generally, the same distribution).
 \begin{itemize}
-    \item \textbf{Null hypothesis} ($H_0$): The two groups are exchangeable---there is no real difference in their underlying population means (or distributions).
+    \item \textbf{Null hypothesis} ($H_0$): The two groups are exchangeable - there is no real difference in their underlying population means (or distributions).
     \item \textbf{Alternative hypothesis} ($H_1$): The groups differ (e.g., $\mu_1 \neq \mu_2$).
 \end{itemize}
 
@@ -1474,7 +1472,7 @@ $$\small\texttt{prop.test(x = c(x1, x2), n = c(n1, n2), alternative = "two.sided
 \begin{itemize}
     \item \textbf{Check sample size criteria} ($n p_i \ge 15$ and $n (1-p_i) \ge 15$) to justify the normal approximation.
     \item \textbf{Compute the difference} of sample proportions.
-    \item \textbf{Form a confidence interval} or perform a \textbf{hypothesis test}---or both.
+    \item \textbf{Form a confidence interval} or perform a \textbf{hypothesis test} - or both.
     \item If the CI for $\pi_2 - \pi_1$ excludes 0 or the test statistic is extreme (p-value $\le \alpha$), we infer that the two population proportions differ significantly.
     \item If the CI straddles 0 or the p-value is large, we do not have strong evidence of a difference.
 \end{itemize}
@@ -1761,7 +1759,7 @@ $$
 \section{Correlation}
 \subsection{Motivation: Exploring Relationships Between Variables}
 
-In many real-world settings, you measure multiple variables on the **same set of individuals** (e.g., students). You may want to understand whether and how two quantitative variables (e.g., exercise time and study time) are related:
+In many real-world settings, you measure multiple variables on the \textbf{same set of individuals} (e.g., students). You may want to understand whether and how two quantitative variables (e.g., exercise time and study time) are related:
 \begin{itemize}
     \item \textbf{Direction}: Do both variables increase together (positive)? Does one increase while the other decreases (negative)?
     \item \textbf{Strength}: Are they weakly or strongly related?
@@ -1787,14 +1785,14 @@ Studying these relationships can clarify patterns, help in predictions (as in re
           \end{enumerate}
 \end{itemize}
 
-\paragraph{Example} Plotting **ExerciseTime** vs. **StudyTime** for a group of students might reveal a fairly weak linear relationship. A scatterplot is essential before computing correlation to check for outliers or non-linear patterns.
+\paragraph{Example} Plotting \textbf{ExerciseTime} vs. \textbf{StudyTime} for a group of students might reveal a fairly weak linear relationship. A scatterplot is essential before computing correlation to check for outliers or non-linear patterns.
 
 
 \subsection{Pearson's Correlation Coefficient}
 
 \subsubsection{Definition}
 
-For **two quantitative variables** $X$ and $Y$, the sample correlation coefficient $r$ (often called Pearson's $r$) measures the **strength and direction** of their *linear* relationship:
+For \textbf{two quantitative variables} $X$ and $Y$, the sample correlation coefficient $r$ (often called Pearson's $r$) measures the \textbf{strength and direction} of their *linear* relationship:
 \[
     r \;=\; \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}
     {\sqrt{\sum (x_i - \bar{x})^2}\,\sqrt{\sum (y_i - \bar{y})^2}}
@@ -1826,24 +1824,24 @@ where
     \item \textbf{Outliers} can distort correlation substantially. Always examine a scatterplot first.
 \end{enumerate}
 
-\paragraph{Example} If **ExerciseTime** vs. **StudyTime** yields $r \approx 0.04$, that suggests effectively no linear relationship. Looking at the scatterplot may confirm the points are widely scattered, with no clear upward or downward trend.
+\paragraph{Example} If ExerciseTime vs. StudyTime yields $r \approx 0.04$, that suggests effectively no linear relationship. Looking at the scatterplot may confirm the points are widely scattered, with no clear upward or downward trend.
 
 
 \subsubsection{Subgroups and Conditional Correlation}
 
-When data are grouped by another factor (e.g., **Gender**: male vs. female), the overall correlation might differ from the correlation within each subgroup. It is often helpful to color code or facet the scatterplot by the grouping variable to see if separate patterns exist. Then you can compute correlation separately within each subgroup.
+When data are grouped by another factor (e.g., Gender: male vs. female), the overall correlation might differ from the correlation within each subgroup. It is often helpful to color code or facet the scatterplot by the grouping variable to see if separate patterns exist. Then you can compute correlation separately within each subgroup.
 
 
 \subsection{Nonparametric Correlation Coefficients}
 
 \subsubsection{Rationale}
 
-Pearson's $r$ assumes the relationship is approximately linear and often that the data do not deviate too strongly from normal distributions (especially in smaller samples). In more general scenarios---particularly with skewed or ordinal data---**Spearman's rank correlation** or **Kendall's $\tau$** can be used.
+Pearson's $r$ assumes the relationship is approximately linear and often that the data do not deviate too strongly from normal distributions (especially in smaller samples). In more general scenarios - particularly with skewed or ordinal data - \textbf{Spearman's rank correlation} or \textbf{Kendall's $\tau$} can be used.
 
-\subsubsection{5.2 Spearman's $\rho$}
+\subsubsection{Spearman's $\rho$}
 
 \begin{enumerate}
-    \item \textbf{Definition}: Apply Pearson's formula but to the **ranks** of $X$ and $Y$ rather than their raw values.
+    \item \textbf{Definition}: Apply Pearson's formula but to the \textbf{ranks} of $X$ and $Y$ rather than their raw values.
     \item \textbf{Interpretation}: $\rho$ ranges from -1 to +1, measuring whether higher ranks of $X$ tend to accompany higher ranks of $Y$ (positive) or lower ranks of $Y$ (negative).
     \item \textbf{Formula} (one approach):
           \[
@@ -1889,7 +1887,286 @@ Pearson's $r$ assumes the relationship is approximately linear and often that th
 \end{takeaway-box}
 
 \section{Regression}
+\subsection{Recap: Relationships Between Variables}
 
+\begin{itemize}
+    \item We often have two quantitative variables and suspect a \textbf{linear relationship}:
+          \begin{itemize}
+              \item \textbf{Explanatory / Predictor (x-axis)}: $X$
+              \item \textbf{Response / Outcome (y-axis)}: $Y$
+          \end{itemize}
+    \item \textbf{Scatterplots} and \textbf{Correlation (r)} are preliminary tools:
+          \begin{enumerate}
+              \item Scatterplots let us visually check direction, form, strength, outliers.
+              \item Correlation ($r$) measures the \textbf{strength} and \textbf{direction} of any linear association (not causation).
+          \end{enumerate}
+\end{itemize}
+
+
+
+\subsection{Simple Linear Regression (SLR)}
+
+\textbf{Objective}: Model the \textbf{mean} (or expected) response $Y$ as a linear function of a single predictor $X$. Symbolically:
+
+\[
+    Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i,
+\]
+where:
+\begin{itemize}
+    \item $\beta_0$ = population \textbf{intercept},
+    \item $\beta_1$ = population \textbf{slope},
+    \item $\varepsilon_i$ are random errors $\sim N(0,\sigma_e^2)$.
+\end{itemize}
+
+\subsubsection{Fitted Model}
+
+From sample data $(x_1,y_1),\dots,(x_n,y_n)$, we estimate $\beta_0$ and $\beta_1$ by $\hat{\beta}_0 = b_0$ and $\hat{\beta}_1 = b_1$. Hence, the fitted model is:
+
+\[
+    \hat{y} = b_0 + b_1 x.
+\]
+
+\begin{itemize}
+    \item $\hat{y}$ is the predicted (fitted) response for a given $x$.
+    \item The difference $y_i - \hat{y}_i$ is the \textbf{residual} (error in prediction).
+\end{itemize}
+
+
+
+\subsection{The Least Squares Criterion}
+
+\subsubsection{Method}
+
+We choose $b_0$ and $b_1$ to \textbf{minimize} the sum of squared residuals:
+
+\[
+    \sum_{i=1}^n \left(y_i - \left(b_0 + b_1 x_i\right)\right)^2.
+\]
+
+\subsubsection{Formulas}
+
+It can be shown:
+
+\[
+    b_1 = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2}
+    = r \frac{s_y}{s_x},
+\]
+\[
+    b_0 = \bar{y} - b_1\,\bar{x}.
+\]
+
+\begin{itemize}
+    \item $r$: correlation between $X$ and $Y$.
+    \item $s_x$, $s_y$: sample standard deviations of $X$ and $Y$.
+\end{itemize}
+
+\subsubsection{Interpretation}
+
+\begin{itemize}
+    \item \textbf{Slope ($b_1$)}: The estimated change in $Y$ per 1-unit increase in $X$.
+    \item \textbf{Intercept ($b_0$)}: The estimated mean $Y$ when $X=0$. (Sometimes not meaningful if $X=0$ is outside the data range.)
+\end{itemize}
+
+
+
+\subsubsection{Example: Windfarms}
+
+\begin{itemize}
+    \item \textbf{Data}: 34 days, measuring wind speed (mi/h) vs. current (kA).
+    \item Scatterplot + correlation ($r=0.82$) suggests a strong positive linear relationship.
+    \item Fitting SLR yields:
+          \[
+              \hat{Y} = 1.0573 + 0.2113\,(\text{Wind Speed}).
+          \]
+\end{itemize}
+
+\textbf{Interpretation}:
+\begin{enumerate}
+    \item Slope = 0.2113 kA per mi/h $\rightarrow$ For each additional mi/h of wind, the average current increases by about 0.2113 kA.
+    \item Intercept = 1.0573 kA $\rightarrow$ At wind speed 0, the average current is 1.0573 kA (though it may or may not make physical sense depending on the domain).
+\end{enumerate}
+
+
+
+\subsection{Variability and Goodness of Fit}
+
+\subsubsection{Residual Standard Error ($\sigma_e$ estimate)}
+
+The typical scatter of points around the regression line is measured by
+
+\[
+    s_e = \sqrt{\frac{\sum (y_i - \hat{y}_i)^2}{n - 2}}.
+\]
+
+\begin{itemize}
+    \item Also called \textbf{residual standard error}.
+    \item Interpreted as: the typical error in predicting $Y$ from $X$ using the fitted line.
+\end{itemize}
+
+\subsubsection{ANOVA Decomposition}
+
+Total variability in $y_i$ is:
+
+\[
+    \text{SSTotal} = \sum (y_i - \bar{y})^2.
+\]
+
+Can be decomposed into:
+\begin{itemize}
+    \item \textbf{Explained} by regression: $\text{SSReg} = \sum (\hat{y}_i - \bar{y})^2.$
+    \item \textbf{Unexplained} error: $\text{SSE} = \sum (y_i - \hat{y}_i)^2.$
+\end{itemize}
+
+Hence, $\text{SSTotal} = \text{SSReg} + \text{SSE}.$
+
+\subsubsection{Coefficient of Determination ($R^2$)}
+
+\[
+    R^2 = \frac{\text{SSReg}}{\text{SSTotal}} = \frac{\sum (\hat{y}_i - \bar{y})^2}{\sum (y_i - \bar{y})^2}.
+\]
+
+\begin{itemize}
+    \item Ranges from 0 to 1 (or 0\% to 100\%).
+    \item $R^2=1$ = perfect linear fit, $R^2=0$ = no linear relationship.
+    \item The fraction of the variance in $Y$ explained by $X$.
+\end{itemize}
+
+\textbf{Windfarms}: $R^2 \approx 0.668$ $\rightarrow$ about 66.8\% of the variability in current is explained by wind speed.
+
+
+
+\subsection{Inference for SLR}
+
+\subsubsection{Estimating $\beta_1$ and $\beta_0$}
+
+We treat $b_1$, $b_0$ as \emph{sample} estimates, subject to sampling variation. We can form \textbf{confidence intervals} and \textbf{hypothesis tests}:
+\begin{itemize}
+    \item \textbf{Confidence interval for slope}:
+          \[
+              b_1 \pm t_{n-2,\;\alpha/2}\; \text{SE}(b_1),
+          \]
+          where
+          \[
+              \text{SE}(b_1) = \frac{s_e}{s_x\sqrt{n-1}},
+          \]
+          with $n-2$ degrees of freedom.
+    \item \textbf{Confidence interval for intercept}:
+          \[
+              b_0 \pm t_{n-2,\;\alpha/2}\; \text{SE}(b_0).
+          \]
+\end{itemize}
+
+\subsubsection{Testing $\beta_1 = 0$}
+
+\textbf{Null}: $H_0: \beta_1 = 0$ \quad \textbf{vs.} \quad \textbf{Alternative}: $H_1: \beta_1\neq0$ (two-sided, or could be one-sided).
+Test statistic:
+\[
+    T_0 = \frac{b_1 - 0}{\text{SE}(b_1)} \;\sim\; t_{n-2}.
+\]
+\begin{itemize}
+    \item If $\lvert T_0\rvert$ is large or p-value $< \alpha$, we reject $H_0$, concluding there is a significant linear relationship.
+\end{itemize}
+
+\subsubsection{Testing $\beta_0 = 0$}
+
+\textbf{Null}: $H_0: \beta_0=0$ \quad \textbf{vs.} \quad $H_1: \beta_0\neq0$.
+Test statistic:
+\[
+    T_0 = \frac{b_0 - 0}{\text{SE}(b_0)} \;\sim\; t_{n-2}.
+\]
+In practice, intercept tests often are less essential unless we specifically care about the mean response at $X=0$.
+
+\subsubsection{Checking R's Output}
+
+In R, \texttt{summary(lm(...))} yields estimates, standard errors, t-statistics, p-values, RSE, and $R^2$. The line:
+
+\begin{verbatim}
+Coefficients:
+(Intercept)     ...     ...
+X             ...     ...
+\end{verbatim}
+
+indicates $b_0$ and $b_1$. The row for the explanatory variable's slope typically includes a p-value for $H_0: \beta_1=0$. The "Multiple R-squared" is the $R^2$.
+
+
+
+\subsection{Using the Fitted Model for Prediction}
+
+\subsubsection{Two Kinds of Prediction}
+
+\begin{enumerate}
+    \item \textbf{Mean Response (Confidence Interval)}: Predicting the average $Y$-value at a certain $x$.
+    \item \textbf{Individual Response (Prediction Interval)}: Predicting an \textbf{individual} outcome at a certain $x$. This interval is \textbf{wider} because individual observations vary more than the mean does.
+\end{enumerate}
+
+\subsubsection{Formulas}
+
+\begin{itemize}
+    \item \textbf{Confidence interval} for $\hat{y}_{\text{mean}}(x)$:
+          \[
+              \hat{y} \pm t_{n-2,\;\alpha/2}\; s_e\sqrt{\frac{1}{n} + \frac{(x - \bar{x})^2}{\sum (x_i - \bar{x})^2}}.
+          \]
+    \item \textbf{Prediction interval} for a \textbf{new} observation $y_{\text{new}}$:
+          \[
+              \hat{y} \pm t_{n-2,\;\alpha/2}\; s_e\sqrt{1 + \frac{1}{n} + \frac{(x - \bar{x})^2}{\sum (x_i - \bar{x})^2}}.
+          \]
+\end{itemize}
+
+\subsubsection{Example in R}
+
+Use \texttt{predict(model, newdata = ..., interval = "confidence")} for mean response or \texttt{interval = "prediction"} for an individual's response. The difference in the resulting intervals highlights that predicting a single future observation is less precise than predicting the average of many.
+
+
+
+\subsection{Regression Assumptions (LINE)}
+
+\begin{enumerate}
+    \item \textbf{Linearity}: The mean of $Y$ is a linear function of $X$.
+    \item \textbf{Independence}: Observations are independent.
+    \item \textbf{Normality}: At each $X$-value, $Y$ is normally distributed about the line.
+    \item \textbf{Equal Variance}: The standard deviation of $Y$ is constant for all $X$-values (no "megaphone" shape).
+\end{enumerate}
+
+\subsubsection{Residual Diagnostics}
+
+We check assumptions via \textbf{residual plots}:
+\begin{itemize}
+    \item \textbf{Residuals vs. Fitted}: Look for no obvious pattern, random scatter.
+    \item \textbf{Histogram or Q-Q plot} of residuals: Check approximate normality.
+    \item For time-series data, check residuals over time to test independence.
+\end{itemize}
+
+If assumptions appear grossly violated (e.g., curvature, non-constant variance, outliers), the SLR model may be inadequate without adjustments or transformations.
+
+
+
+\subsection{Model Adequacy and Common Pitfalls}
+
+\subsubsection{Adequacy}
+
+\begin{itemize}
+    \item The standard error $s_e$ measures typical scatter about the line.
+    \item $R^2$ measures fraction of variance explained by $X$.
+    \item Residual plots check for deviations from linearity or constant variance.
+\end{itemize}
+
+\subsubsection{Pitfalls}
+
+\begin{enumerate}
+    \item \textbf{Non-linearity}: A linear fit may be inappropriate if the scatterplot shows a curved trend.
+    \item \textbf{Extrapolation}: Predicting beyond the observed $x$-range can be unreliable.
+    \item \textbf{Outliers and Influential Points}: A single unusual point can distort the slope, correlation, or $R^2$.
+    \item \textbf{Causation}: Even a strong linear model does not prove that $X$ causes $Y$. Lurking variables could be in play.
+    \item \textbf{Overreliance on $R^2$}: A large $R^2$ alone does not guarantee a suitable model if assumptions are violated or the relationship is not linear.
+\end{enumerate}
+\begin{takeaway-box}{}{}
+\textbf{Simple linear regression} is a powerful tool to:
+\begin{enumerate}
+    \item Estimate how a response $Y$ changes with a single predictor $X$.
+    \item Determine if a linear relationship is statistically significant ($H_0:\beta_1=0$).
+    \item Predict both mean responses (confidence intervals) and individual observations (prediction intervals).
+\end{enumerate}
+\end{takeaway-box}
 
 \end{document}
 
