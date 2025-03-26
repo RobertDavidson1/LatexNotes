@@ -1497,7 +1497,7 @@ So far, we’ve considered two-sample comparisons of \textbf{binary} proportions
     \item \textbf{Test of association} (or independence) between two categorical variables: checking whether the distribution across categories of one variable is related to the categories of another variable.
 \end{enumerate}
 
-\bigskip
+\pagebreak
 
 \subsection{Multinomial (Multi-Category) Goodness-of-Fit Test}
 
@@ -1520,19 +1520,17 @@ $$
 
 \subsubsection{Collecting Data}
 
-From a sample of $n$ individuals, we observe \textbf{counts} $O_1, O_2, \dots, O_k$, where $O_i$ is the number of observations falling in category $i$. The sample proportions are $O_i / n$.
-
+From a sample of $n$ individuals, we observe \textbf{counts} $O_1, O_2, \dots, O_k$, where $O_i$ is the number of observations falling in category $i$. The sample proportions are $O_i / n$.\\
 \subsubsection{Expected Counts Under $H_0$}
 
 If the null hypothesis is true (i.e. category $i$ truly has probability $p_i^*$), then the \textbf{expected} number of observations in category $i$ is:
-\[
+$$
 E_i = n \times p_i^*.
-\]
+$$
 
 \subsubsection{Chi-squared Goodness-of-Fit Test}
 
 \textbf{Test Statistic} \\
-
 We compare the observed counts $O_i$ to the expected counts $E_i$. The chi-squared test statistic:
 \[
 \chi^2_0 \;=\; \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
@@ -1541,21 +1539,16 @@ We compare the observed counts $O_i$ to the expected counts $E_i$. The chi-squar
     \item If the data match the hypothesized proportions well, the observed $O_i$ will be close to $E_i$, making each term small and $\chi^2_0$ near 0.
     \item If they differ a lot, $\chi^2_0$ will be large, suggesting evidence against $H_0$.
 \end{itemize}
-
-\subsubsection*{2.4.2 Distribution Under $H_0$}
-
-If certain conditions hold (large enough sample so that every $E_i \ge 5$), the test statistic follows approximately a chi-squared distribution with \textbf{degrees of freedom} $\nu = k - 1$.
-
-\subsubsection*{2.4.3 Decision}
-
+\textbf{Distribution Under $H_0$} \\
+If certain conditions hold (large enough sample so that every $E_i \ge 5$), the test statistic follows approximately a chi-squared distribution with \textbf{degrees of freedom} $\nu = k - 1$. \\
+\textbf{Decision} \\
 \begin{itemize}
     \item \textbf{Reject $H_0$} if $\chi^2_0$ exceeds the critical value $\chi^2_{\nu,\,\alpha}$ for a one-sided test, or equivalently if the p-value (the probability that $\chi^2_{\nu}$ is at least as large as $\chi^2_0$) is below $\alpha$.
     \item If $\chi^2_0$ is moderate or small, do not reject $H_0$.
 \end{itemize}
 
-\bigskip
 
-\subsection*{2.5 Example: Dishonest Casino?}
+\begin{examplebox}{Dishonest Casino?}{}
 
 \textbf{Scenario}: A gambler suspects a casino’s six-sided die is not fair. He records the outcomes of $n=41$ throws:
 
@@ -1608,21 +1601,19 @@ E_i = \frac{1}{6} \times 41 \approx 6.8333 \text{ (for each }i).
 \end{itemize}
 
 \textbf{Conclusion}: The test suggests the die is not fair (p-value $\approx 0.021$).
+\end{examplebox}
 
-\bigskip
+\subsection{Test of Association (Two-Way Contingency Tables)}
 
-\section*{3. Test of Association (Two-Way Contingency Tables)}
-
-\subsection*{3.1 Purpose}
-
+\subsubsection{3.1 Purpose}
 We have \textbf{two categorical variables} (each with multiple categories). We record frequencies in every combination of categories (forming a contingency table). We want to test:
-\[
+$$
 H_0 : \text{There is no association (independence) between the two variables.}
 \quad
 H_1 : \text{There is some association (dependence).}
-\]
+$$
 
-\subsection*{3.2 Observed Counts}
+\subsubsection{3.2 Observed Counts}
 
 Arrange the data in a $r \times c$ table (with $r$ rows, $c$ columns):
 \[
@@ -1640,46 +1631,41 @@ Arrange the data in a $r \times c$ table (with $r$ rows, $c$ columns):
 
 Each cell in row $i$ and column $j$ has the observed frequency $O_{i,j}$. The total number of observations is $n$. Row $i$ sum is $R_i$, column $j$ sum is $C_j$.
 
-\subsection*{3.3 Expected Counts (Under Independence)}
+\subsubsection{Expected Counts (Under Independence)}
 
 If the two variables are independent, the probability of being in row $i$ and column $j$ equals the product of the marginal probabilities for row $i$ and column $j$:
-\[
+$$
 P(\text{A}=i \cap \text{B}=j) 
 = P(\text{A}=i)\times P(\text{B}=j).
-\]
+$$
 Within the sample, those probabilities are approximated by $\frac{R_i}{n}$ and $\frac{C_j}{n}$, respectively. So the \textbf{expected} frequency if the variables are independent:
-\[
+$$
 E_{i,j}
 = n\,P(\text{A}=i \cap \text{B}=j)
 = \frac{R_i}{n}\,\times \frac{C_j}{n}\,\times n
 = \frac{R_i \, C_j}{n}.
-\]
+$$
 
-\subsection*{3.4 Chi-squared Test Statistic}
+\subsubsection{Chi-squared Test Statistic}
 
 Compare each observed $O_{i,j}$ with the expected $E_{i,j}$. Then:
-\[
+$$
 \chi^2_0 
 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}.
-\]
+$$
 
-\subsection*{3.5 Degrees of Freedom}
-
-\[
+\subsubsection{Degrees of Freedom}
+$$
 \nu = (r - 1)\times(c - 1).
-\]
+$$
 
-\subsection*{3.6 Decision and p-value}
+\subsubsection{Decision and p-value}
 
 \begin{itemize}
     \item \textbf{Reject $H_0$} (no association) if $\chi^2_0$ is large (p-value < $\alpha$).
     \item Conclude the data show evidence that the two variables are associated.
 \end{itemize}
-
-\bigskip
-
-\subsection*{3.7 Example: Driving License vs. Owning a Car}
-
+\begin{examplebox}{Driving License vs. Owning a Car}
 \textbf{Observed data} from 142 first-year students:
 
 \begin{center}
@@ -1705,7 +1691,7 @@ H_1:
 \text{There is an association (dependence).}
 \]
 
-\subsubsection*{3.7.1 Expected Counts}
+\textbf{Expected Counts}
 
 For each cell (i, j):
 \[
@@ -1723,7 +1709,7 @@ Compute all cells similarly:
 \begin{center}
 \begin{tabular}{lccr}
 \toprule
- & Don’t Own Car (116) & Own Car (26) & Row Tot. \\
+ & Don't Own Car (116) & Own Car (26) & Row Tot. \\
 \midrule
 \textbf{Do not drive} & 54.0? (calc) & ? & 54 \\
 \textbf{Full driving license} & 33.49 & 7.51 & 41 \\
@@ -1741,13 +1727,13 @@ Then:
 = 38.52.
 \]
 
-\subsubsection*{3.7.2 Degrees of Freedom}
+\textbf{3.7.2 Degrees of Freedom}
 
 \[
 (r - 1)(c - 1) = (3 - 1)(2 - 1) = 2.
 \]
 
-\subsubsection*{3.7.3 Decision}
+\textbf{3.7.3 Decision}
 
 \begin{itemize}
     \item $\chi^2_{2,0.05}\approx 5.99$.
@@ -1756,8 +1742,8 @@ Then:
 \end{itemize}
 
 \textbf{Conclusion}: The data strongly suggest that the category of driver’s license is \textbf{not} independent of whether a student owns a car.
+\end{examplebox}
 
-\bigskip
 
 \section*{4. Requirements and Tips}
 
