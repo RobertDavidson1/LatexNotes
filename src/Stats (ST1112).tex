@@ -510,35 +510,30 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
             \item $H0$ The null hypothesis (e.g., $\mu = \mu_0$).
             \item $H_1$ The alternative hypothesis (e.g., $\mu \neq \mu_0$, $\mu < \mu_0$ or $\mu > \mu_0$).
         \end{itemize}
-    \end{enumerate}
     \item  Collect a random sample and compute the test statistic:
-        
-
-   
-
-        The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
-
-    Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
-
-        For large $n$, use a z-approximation.
-
-        For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
-
-        Decide whether the observed test statistic would be rare or common if $H_0$ were true:
-
-        p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
-
-        Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
-
-    Make a decision:
-
-        If p-value $< \alpha$, we reject $H_0$
-
-        If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
-
-    Draw a conclusion:
-
-    Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
+        \begin{itemize}
+            \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
+        \end{itemize}
+    \item Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
+    \begin{itemize}
+        \item For large $n$, use a z-approximation.
+        \item For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
+    \end{itemize}
+    \item Decide whether the observed test statistic would be rare or common if $H_0$ were true:
+    \begin{itemize}
+        \item p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
+        \item Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
+    \end{itemize}
+    \item  Make a decision:
+    \begin{itemize}
+        \item If p-value $< \alpha$, we reject $H_0$
+        \item If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
+    \end{itemize}
+    \item Draw a conclusion:
+    \begin{itemize}
+        \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
+    \end{itemize}
+    \end{enumerate}
 \end{conceptbox}
 
 
@@ -578,175 +573,10 @@ Asses whether a parameter (often the mean, $\mu$) is equal to a specific value o
             $u \neq \mu _0$ & $T_0 < -Z_{\alpha/2}$ or $T_0 > Z_{\alpha/2}$ & $T_0 < -t_{\alpha/2, df}$ or $T_0 > t_{\alpha/2, df}$ \\
             \bottomrule
         \end{tabularx}
-\end{definitionbox}
+\end{definitionbox}  
 
 
+% Contd from 5
 
-\begin{conceptbox}{p-value Method}{}
-    The p-value is the probability (under $H_0$) of observing a test statistic as extreme or more extreme than the observed $T_0$
-    \begin{itemize}
-        \item \textbf{Two-sided p-value} = area in both tails beyond $\pm T_0$.
-        \item \textbf{One-sided p-value} = area in one tail $T_0$.
-    \end{itemize}
-    If the p value $\leq \alpha$, we reject $H_0$ in favour of $H_1$. \\[2ex]
-
-    \textbf{Important Clarification}: \\
-    The p-value is \textbf{not} the probability that $H_0$ is true. It is the probability of seeing data at least as extreme as what we got, assuming $H_0$ is correct. If the p-value is large (e.g. $> 0.05$), we do not automatically conclude $H_0$ is true; we simply fail to reject it.
-\end{conceptbox}
-
-\begin{conceptbox}{Using \texttt{R} for Hypothesis Testing}{}
-    $$\texttt{t.test(x, alternative, mu, conf.level)}$$
-    \begin{itemize}
-        \item \texttt{x}: Numeric vector of data
-        \item \texttt{alternative}: "two.sided", "less", or "greater"
-        \item \texttt{mu}: the hypothesized population mean
-        \item \texttt{conf.level}: confidence level (default is 0.95)
-    \end{itemize}
-\end{conceptbox}
-\begin{conceptbox}{Statistical Significance vs Practical Significance}{}
-    \begin{itemize}
-        \item A small p-value indicates statistical significance, meaning the true value likely differs from the null hypothesis.
-        \item Statistical significance does not necessarily imply scientific or practical importance.
-        \item A difference is only meaningful if it has a practical impact.
-        \item The p-value measures the confidence in the difference from the null hypothesis, not the magnitude or practical importance of the difference.
-        \item A low p-value suggests high confidence in a difference, but it does not guarantee that the difference is large or important.
-        \item Interval estimation (confidence intervals) is generally more useful than a p-value because it provides an estimate of the parameter and the range of plausible values.
-        \item While a hypothesis test offers a binary decision regarding the plausibility of a parameter value, a confidence interval shows the spectrum of plausible values.
-    \end{itemize}
-\end{conceptbox}
-\begin{examplebox}{Golf Club Design}{}
-    \scriptsize\textbf{Problem Statement:}\\
-    \textbf{Claim}: The mean coefficient of restitution exceeds 0.82\\
-    \textbf{Data}: 15 drivers selected, with a mean coefficient of restitution of $\bar{X} =0.84$ and a standard sample deviation of $s = 0.02456$.\\[2ex]
-
-    \begin{enumerate}
-        \item \textbf{State the hypotheses:}
-        $$H_0: \mu = 0.82 \quad H_1: \mu > 0.82$$
-        \item \textbf{Take a random sample, and calculate a suitable test statistic}
-        $$T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}} = \frac{0.84 - 0.82}{0.02456/\sqrt{15}} \approx 2.45$$
-        \item \textbf{Write down the sampling distribution of $T_0$}
-        $$T_0 \sim t_{14}$$
-        \item \textbf{Asses how likely $T_0$ is, if $H_0$ is true} \\
-        Compare $2.72$ to critical value $t{0.05, 14} \approx 1.761$. 
-        \item \textbf{Make a decision (reject $H_0$ or fail to reject $H_0$)} \\
-        Since $2.72 > 1.761$, we reject $H_0$. Alternatively, the p-value is $0.01$ which is less than $0.05$, so again we reject $H_0$. 
-        \item Write down the conclusion in plain English \\
-        Strong evidence suggests the mean coefficient of restitution exceeds 0.82.
-    \end{enumerate}
-\end{examplebox}
-
-\begin{examplebox}{Example 1: Testing a Claimed Mean}{}
-\scriptsize\textbf{Problem Statement:}\\
-A cereal manufacturer claims that the average weight of cereal in each box is 500 grams. You collect a random sample of 25 boxes and find that the sample has a mean weight of $\bar{x} = 494$ grams and a sample standard deviation of $s = 12$ grams. Test the manufacturer's claim at the 5\% significance level.
-
-\textbf{Solution:}\\
-\begin{enumerate}
-    \item \textbf{State the hypotheses.}\\
-    We want to test if the true mean $\mu$ differs from 500 grams:
-    \[
-        H_0: \mu = 500 \quad\text{vs.}\quad H_1: \mu \neq 500.
-    \]
-    
-    \item \textbf{Compute the test statistic.}\\
-    Since the population standard deviation is unknown, we use a one-sample \emph{t}-test:
-    \[
-        T_0 = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
-        = \frac{494 - 500}{12 / \sqrt{25}}
-        = \frac{-6}{12 / 5}
-        = \frac{-6}{2.4}
-        = -2.5.
-    \]
-    
-    \item \textbf{Determine the sampling distribution of the test statistic.}\\
-    Under $H_0$, $T_0$ follows a \emph{t}-distribution with $n - 1 = 25 - 1 = 24$ degrees of freedom.
-    
-    \item \textbf{Obtain the p-value.}\\
-    This is a two-tailed test. The p-value is
-    \[
-        p = 2 \cdot P\big(T \leq -2.5\big)\quad\text{where }T \sim t_{24}.
-    \]
-    Using \emph{t}-tables or software, you would find $p \approx 0.020$ (approximately).
-    
-    \item \textbf{Make a decision.}\\
-    Since $p \approx 0.020 < 0.05$ (the significance level), we reject $H_0$.
-    
-    \item \textbf{Conclusion in plain English.}\\
-    There is significant evidence at the 5\% level to conclude the true mean weight is different from 500 grams.
-\end{enumerate}
-\end{examplebox}
-
-\begin{examplebox}{Example 2: One-Sided Test}{}
-\scriptsize\textbf{Problem Statement:}\\
-A training program director claims that participants in a new study plan spend at least 8 hours per day studying. You suspect the true mean might be \textit{less} than 8 hours. You sample 36 participants and find $\bar{x} = 7.6$ hours, with a sample standard deviation $s = 1.2$ hours. Test at the 5\% significance level whether the true mean is below 8 hours.
-
-\textbf{Solution:}\\
-\begin{enumerate}
-    \item \textbf{State the hypotheses.}\\
-    We are testing if the mean is less than 8:
-    \[
-        H_0: \mu = 8 \quad\text{vs.}\quad H_1: \mu < 8.
-    \]
-    (Equivalently, $H_0: \mu \ge 8$ and $H_1: \mu < 8$.)
-
-    \item \textbf{Compute the test statistic.}\\
-    \[
-        T_0 = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
-        = \frac{7.6 - 8}{1.2 / \sqrt{36}}
-        = \frac{-0.4}{1.2 / 6}
-        = \frac{-0.4}{0.2}
-        = -2.
-    \]
-    \item \textbf{Sampling distribution.}\\
-    Under $H_0$, $T_0$ follows a \emph{t}-distribution with $n - 1 = 35$ degrees of freedom.
-
-    \item \textbf{p-value for a one-sided test.}\\
-    \[
-        p = P\big(T \leq -2\big)\quad\text{where }T \sim t_{35}.
-    \]
-    Looking up or using software, $p \approx 0.028$ (approximately).
-    
-    \item \textbf{Decision.}\\
-    Since $p \approx 0.028 < 0.05$, we reject $H_0$.
-    
-    \item \textbf{Conclusion in plain English.}\\
-    The data provide sufficient evidence to conclude that the average study time is less than 8 hours per day.
-\end{enumerate}
-\end{examplebox}
-
-\begin{examplebox}{Example 3: Testing a Mean with a Large Sample (Z-test)}{}
-\scriptsize\textbf{Problem Statement:}\\
-A company claims that the average lifetime of their LED bulbs is 50{,}000 hours. You collect a sample of 100 bulbs (a large sample) and find that the sample mean is $\bar{x} = 49{,}500$ hours. Suppose the population standard deviation is known to be $\sigma = 1{,}200$ hours. Test the claim at the 5\% significance level.
-
-\textbf{Solution:}\\
-\begin{enumerate}
-    \item \textbf{State the hypotheses.}\\
-    \[
-        H_0: \mu = 50{,}000
-        \quad \text{vs.} \quad
-        H_1: \mu \neq 50{,}000.
-    \]
-    \item \textbf{Compute the test statistic (Z-test).}\\
-    Since $\sigma$ is known and $n$ is large, we use the $Z$ statistic:
-    \[
-        Z_0 = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}
-        = \frac{49{,}500 - 50{,}000}{1{,}200 / \sqrt{100}}
-        = \frac{-500}{1{,}200 / 10}
-        = \frac{-500}{120}
-        = -4.17.
-    \]
-    \item \textbf{Sampling distribution.}\\
-    Under $H_0$, $Z_0$ follows a standard normal distribution $N(0,1)$.
-    \item \textbf{p-value.}\\
-    This is a two-tailed test:
-    \[
-        p = 2 \cdot P\big(Z \leq -4.17\big)\quad\text{where }Z \sim N(0,1).
-    \]
-    From $Z$ tables or software, $p$ is extremely small (less than 0.0001).
-    \item \textbf{Decision.}\\
-    Because $p < 0.05$, we reject $H_0$.
-    \item \textbf{Conclusion in plain English.}\\
-    There is very strong evidence to suggest that the true mean lifetime differs from 50{,}000 hours.
-\end{enumerate}
-\end{examplebox}
 
 \end{document}
