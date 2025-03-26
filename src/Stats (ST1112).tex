@@ -216,28 +216,28 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     The $\textbf{t-distributution has thicker}$ tails than the normal distributution. This extra "fatness" in the tails accounts for the additional uncertainty in using $s$ instead of $\sigma$.
     \begin{center}
         \begin{tikzpicture}[
-            domain=-3.5:3.5,
-            xscale=0.5,
-            yscale=3.5,
-            smooth,
-            line cap=round,
-            line join=round
-        ]
+                domain=-3.5:3.5,
+                xscale=0.5,
+                yscale=3.5,
+                smooth,
+                line cap=round,
+                line join=round
+            ]
             % Draw axes
             \draw[->] (-3.7,0) -- (3.7,0) node[right] {$$};
             \draw[->] (0,0) -- (0,0.5) node[above] {$$};
             \node[below] at (0,0) {$0$};
-        
+
             % Plot the Normal Distribution (dotted red)
             \draw[dotted, thick, custom_red] plot (\x, {0.4*exp(-(\x)^2/2)});
-        
+
             % Plot the t-Distribution (solid blue) for df = 5.
             % The t-density: f(t) = (8/(3*pi*sqrt(5)))*(1+t^2/5)^(-3)
             \draw[thick, custom_blue] plot (\x, {(2/(3.14159*sqrt(3)))*((1+(\x)^2/3)^(-2))});
-        
+
             % Title and legend
             \node[above] at (0,0.55) {\textbf{Normal vs.\ t-Distribution}};
-        
+
             % Legend (placed at the top-right)
             \begin{scope}[shift={(3,0.4)}]
                 \draw[dotted, thick, custom_red] (0,0) -- (1,0);
@@ -245,12 +245,12 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
                 \draw[thick, custom_blue] (0,-0.2) -- (1,-0.2);
                 \node[right] at (1,-0.2) {t-Distribution ($df=3$)};
             \end{scope}
-        \end{tikzpicture}        
+        \end{tikzpicture}
     \end{center}
 \end{conceptbox}
 \vfill
 \begin{conceptbox}{Degrees of Freedom (df)}{}
-    A t-distribution is characterized by its degrees of freedom, where 
+    A t-distribution is characterized by its degrees of freedom, where
     $$df = n - 1 \quad \text{for a sample mean}$$
     As the sample size $n$ increases, the t-distribution approaches the standard normal distribution.\\
     For example, for $n = 30$, $df = 29$ and the t-distribution is very close to the normal distribution.\\
@@ -299,7 +299,7 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
 \begin{examplebox}{Unathorized Computer Acess}{}
     Find 95\% CI given:
     \begin{itemize}
-        \item \textbf{Data}: 18 times between keystrokes 
+        \item \textbf{Data}: 18 times between keystrokes
         \item \textbf{Sample mean}: $\bar{X} = 0.29$ seconds
         \item Sample standard deviation: $s = 0.0074$ seconds
     \end{itemize}
@@ -329,12 +329,12 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item Finding the write transformation can be tricky; sometimes no simple transformation works well.
     \item Interpretation of results becomes more complex; if you compute a CI for the transformed mean, you must convert (e.g. exponentiate) the results back to the original scale.
     \item Despite these challenges, transformation often prove very useful in practice.
-\end{itemize} 
+\end{itemize}
 
 \subsection{The Bootstrap}
 \textbf{Motivation}:
 \begin{itemize}
-    \item Bootstrap methods do not require normality assumptions or a large $n$. They rely on the principle that the observed sample can server a reasonable proxy for the populations shape. 
+    \item Bootstrap methods do not require normality assumptions or a large $n$. They rely on the principle that the observed sample can server a reasonable proxy for the populations shape.
     \item By resampling with replacement from the original sample (many times), one creates a "bootstrap distribution" that mimics the statistic (e.g. mean, median) of interest.
     \item This bootstrap distribution is then used to estimate hpw the statistic varies, allowing for confidence interval construction and hypothesis testing without explicit formulas.
 \end{itemize}
@@ -363,18 +363,18 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 \begin{itemize}
     \item A \textbf{Confidence interval (CI)} provides a range of plausible values for a population parameter
     \item For a large sample ($n \geq 30$) or a known $\sigma$, we often use a z-based interval:
-    $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
-    or replacing $\sigma$ with $s$ if $\sigma$ is unknown.
+          $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
+          or replacing $\sigma$ with $s$ if $\sigma$ is unknown.
     \item For a small sample ($n < 30$) and unknown $\sigma$, we use a t-based interval:
-    $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
-    where $df = n - 1$. Provided the population is approximately normal.
-    \item If normality is questionable, we may use transformations or bootstrapping. 
+          $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
+          where $df = n - 1$. Provided the population is approximately normal.
+    \item If normality is questionable, we may use transformations or bootstrapping.
 \end{itemize}
 \vfill
 \subsection{Proportions}
 \vfill
 \begin{definitionbox}{Proportion}{}
-    The \textbf{proportion} is a way to express the frequency of a specific outcome (labeled as “success”) relative to the total number of trials or observations. 
+    The \textbf{proportion} is a way to express the frequency of a specific outcome (labeled as “success”) relative to the total number of trials or observations.
     $$p = \frac{X}{n}$$
     where $p$ is the proportion, $X$ is the number of successes, and $n$ is the total number of trials.
 \end{definitionbox}
@@ -386,11 +386,11 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
         \item Whether a business has fallen victim to a scam
     \end{itemize}
     In such cases, we often estimate a population proportion $\pi$ of successes rather than a mean $\mu$.
-\end{conceptbox} 
-\vfill 
+\end{conceptbox}
+\vfill
 \subsubsection{Binomial Distribution}
 \begin{conceptbox}{Bernoulli Trials}{}
-   When we repeat an experiment or observation, each trial is assumed to be independent and has two possible outcomes. If each trial has a probability of $\pi$ success, these trials are called \textbf{Bernoulli trials}.
+    When we repeat an experiment or observation, each trial is assumed to be independent and has two possible outcomes. If each trial has a probability of $\pi$ success, these trials are called \textbf{Bernoulli trials}.
 \end{conceptbox}
 \vfill
 \noindent If we perform $n$ independent Bernoulli trials, the number of successes $X$ follows a \textbf{binomial distribution} with $n$, the number of trials and $\pi$,the probability of success on each trial.
@@ -401,7 +401,7 @@ The sample proportion $p$ is just the normalized version of $X$, calculated by $
 \pagebreak
 \subsubsection{Normal Approximation of the Sample Proportion}
 \textbf{When is the normal approximation valid?}\\
-The approximation of the distribution of $p$ by a normal distribution is valid when both of the following conditions are met:   
+The approximation of the distribution of $p$ by a normal distribution is valid when both of the following conditions are met:
 $$n\pi \geq 5 \quad \text{and} \quad n(1 - \pi) \geq 5$$
 These conditions ensure there are enough successes and failures for the approximation to hold. \\[2ex]
 \textbf{How does it work?}
@@ -460,7 +460,7 @@ If we have $n$ observations of some Poisson process, the overall mean $\bar{\lam
 \begin{examplebox}{Emails per Day}{}
     Given a sample of $n=64$ students with a mean of $\bar{\lambda} = 53$ emails per day, find the 95\% confidence interval for the population mean $\lambda$.\\[2ex]
 
-    Standard Error: 
+    Standard Error:
     $$SE = \sqrt{\bar{\lambda}} = \sqrt{53} \approx 7.28$$
     For a 95\% confidence interval $\alpha = 0.05, z_{\alpha/2} = 1.96$.
     The 95\% confidence interval is given by:
@@ -468,7 +468,7 @@ If we have $n$ observations of some Poisson process, the overall mean $\bar{\lam
     The resulting confidence interval is:
     $$(38.7, 67.3)$$
     \textbf{Interpretation}: We are 95\% confident that the true mean number of emails per day for all students is between 39 and 67.
-    
+
 \end{examplebox}
 
 \pagebreak
@@ -492,33 +492,33 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
     A typical hypothesis test follows these steps:
     \begin{enumerate}
         \item State the hypotheses
-        \begin{itemize}
-            \item $H0$ The null hypothesis (e.g., $\mu = \mu_0$).
-            \item $H_1$ The alternative hypothesis (e.g., $\mu \neq \mu_0$, $\mu < \mu_0$ or $\mu > \mu_0$).
-        \end{itemize}
-    \item  Collect a random sample and compute the test statistic:
-        \begin{itemize}
-            \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
-        \end{itemize}
-    \item Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
-    \begin{itemize}
-        \item For large $n$, use a z-approximation.
-        \item For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
-    \end{itemize}
-    \item Decide whether the observed test statistic would be rare or common if $H_0$ were true:
-    \begin{itemize}
-        \item p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
-        \item Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
-    \end{itemize}
-    \item  Make a decision:
-    \begin{itemize}
-        \item If p-value $< \alpha$, we reject $H_0$
-        \item If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
-    \end{itemize}
-    \item Draw a conclusion:
-    \begin{itemize}
-        \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
-    \end{itemize}
+              \begin{itemize}
+                  \item $H0$ The null hypothesis (e.g., $\mu = \mu_0$).
+                  \item $H_1$ The alternative hypothesis (e.g., $\mu \neq \mu_0$, $\mu < \mu_0$ or $\mu > \mu_0$).
+              \end{itemize}
+        \item  Collect a random sample and compute the test statistic:
+              \begin{itemize}
+                  \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
+              \end{itemize}
+        \item Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
+              \begin{itemize}
+                  \item For large $n$, use a z-approximation.
+                  \item For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
+              \end{itemize}
+        \item Decide whether the observed test statistic would be rare or common if $H_0$ were true:
+              \begin{itemize}
+                  \item p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
+                  \item Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
+              \end{itemize}
+        \item  Make a decision:
+              \begin{itemize}
+                  \item If p-value $< \alpha$, we reject $H_0$
+                  \item If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
+              \end{itemize}
+        \item Draw a conclusion:
+              \begin{itemize}
+                  \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
+              \end{itemize}
     \end{enumerate}
 \end{conceptbox}
 
@@ -545,19 +545,19 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
 
 
 \begin{definitionbox}{Rejection Region}{}
-        \centering
-        \begin{tabularx}{\textwidth}{@{} X X X @{}}
-            \toprule
-            $H_1$ & Rejection region if $n \geq 30$ & Rejection region if $n < 30$ \\
-            \midrule
-            $u < \mu _0$ & $T_0 < -Z_{\alpha}$ & $T_0 < -t_{\alpha, df}$ \\
-            \addlinespace[2ex]
-            $u > \mu _0$ & $T_0 > Z_{\alpha}$ & $T_0 > t_{\alpha, df}$ \\
-            \addlinespace[2ex]
-            $u \neq \mu _0$ & $|T_0| > Z_{\alpha / 2}$ & $|T_0| > t_{\alpha / 2, df}$ \\
-            \bottomrule
-        \end{tabularx}
-\end{definitionbox}  
+    \centering
+    \begin{tabularx}{\textwidth}{@{} X X X @{}}
+        \toprule
+        $H_1$           & Rejection region if $n \geq 30$ & Rejection region if $n < 30$ \\
+        \midrule
+        $u < \mu _0$    & $T_0 < -Z_{\alpha}$             & $T_0 < -t_{\alpha, df}$      \\
+        \addlinespace[2ex]
+        $u > \mu _0$    & $T_0 > Z_{\alpha}$              & $T_0 > t_{\alpha, df}$       \\
+        \addlinespace[2ex]
+        $u \neq \mu _0$ & $|T_0| > Z_{\alpha / 2}$        & $|T_0| > t_{\alpha / 2, df}$ \\
+        \bottomrule
+    \end{tabularx}
+\end{definitionbox}
 \subsection{Test using p-values}
 Instead of a formal "rejection region" many prefer the p-value approach.\\
 
@@ -566,10 +566,10 @@ Instead of a formal "rejection region" many prefer the p-value approach.\\
         \item \textbf{Compute} $T_0$ from the data
         \item \textbf{Compute p-value} ~ probability under $H_0$ of of observing a test statistic as or more extreme than $T_0$.
         \item \textbf{Compare p-value to $\boldsymbol{\alpha}$}:
-        \begin{itemize}
-            \item p-value $< \alpha$: reject $H_0$ in favor of $H_1$
-            \item p-value $> \alpha$: fail to reject $H_0$
-        \end{itemize}
+              \begin{itemize}
+                  \item p-value $< \alpha$: reject $H_0$ in favor of $H_1$
+                  \item p-value $> \alpha$: fail to reject $H_0$
+              \end{itemize}
     \end{enumerate}
 \end{conceptbox}
 
@@ -581,7 +581,7 @@ A small p-value means: \emph{"Given $H_0$, it would be unlikely to observe data 
     \item \textbf{CI approach}: If the hypothesized value $\mu_0$ lies outside the $(1-\alpha)\%$ confidence interval, the data suggests rejecting $H_0$.
     \item If $\mu_0$ ies inside the CI, the data is consistent with $H_0$.
 \end{itemize}
-Hence, hypothesis testing and confidence examples are closely linked. For example, if the 95\% CI for a mean $[2.7, 3.7]$ and $\mu_0 = $, we see that $4$ is not in the interval $\Rightarrow$ strongly consider rejecting $H_0$. 
+Hence, hypothesis testing and confidence examples are closely linked. For example, if the 95\% CI for a mean $[2.7, 3.7]$ and $\mu_0 = $, we see that $4$ is not in the interval $\Rightarrow$ strongly consider rejecting $H_0$.
 \begin{examplebox}{Study time in NUI Galway}{}
     \textbf{Problem:}
     \begin{itemize}
@@ -589,43 +589,43 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
         \item \textbf{Sample}: 102 students, with sample mean $\bar{X} = 6.77$
     \end{itemize}
     \textbf{Solution:}
-        We're conducting a two-sided test with $H_0: \mu = 6.5$ and $H_1: \mu \neq 6.5$.
-        \begin{enumerate}
-            \item \textbf{Hypotheses}
-            $$H_0 = \mu = 6.5 \quad \text{vs} \quad H_1: \mu \neq 6.5$$
-            \item \textbf{Compute the test statistic}\\
-            $$SE = \frac{s}{\sqrt{n}} \approx 0.65$$
-            $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{6.77 - 6.5}{0.65} \approx 0.41$$
-            \item \textbf{Identify the sampling distribution}\\[1.5ex]
-            Since $n > 30$ we can use a a t-distribution with $df = n - 1 = 101$ degrees of freedom.\\[-1.5ex]
-            \item \textbf{Decide whether test statistic is rare or common}\\[1.5ex]
-            \textbf{Rejection Region Approach}: \\
-            For a two-tailed test at the 5\% significant level, the critical values are approximately $\pm 1.984$. Since:
-            $$|T_0| \approx 0.41 \not>  1.984$$ 
-            The test statistic is not in the rejection region. \\[1.5ex]
-            \textbf{p-value Approach}:\\
-            Since $T_0 \approx 0.41$, we need the probability of obtaining a value as extreme as $0.41$ or more, given $H_0$ is true. That is: $P(T > 0.41)$.
-            \begin{itemize}
-                \item Find the one-tailed probability. Look up the value for $Z = 0.41$ This value is approximately $P(z > 0.41) = 1- 0.6591 \approx 0.3409$.
-                \item Compute two-tailed p-value: $p = 2 \times P(z > 0.41) \approx 2 \times 0.3409 \approx 0.6818$.
-            \end{itemize}
-            The $p$ corresponding to $T_0 \approx 0.41$ is approximately $0.6818$, which is much larger than the significance level $\alpha = 0.05$. 
-            \item \textbf{Make a Decision}
-            \begin{itemize}
-                \item If p-value $< \alpha$, reject $H_0$.
-                \item Since p-value $\approx(0.68)$ is greater than $\alpha = 0.05$ and $T_0$ does not lie in the rejection region, we do not reject $H_0$.
-            \end{itemize}
-            \item \textbf{Conclusion}
-            \begin{itemize}
-                \item The data does not provide sufficient evidence to reject the claim the the true mean study time is 6.5 hours per week.
-                \item The sample results are consistent with a true mean study time of $6.5$ hours per week. Additionally, the 95\% confidence interval is:
-                $$6.77 \pm 1.98 \times 0.65 \approx (5.5, 8.0)$$
-                which includes $6.5$, reinforcing our conclusion.
-            \end{itemize}
-        \end{enumerate}
+    We're conducting a two-sided test with $H_0: \mu = 6.5$ and $H_1: \mu \neq 6.5$.
+    \begin{enumerate}
+        \item \textbf{Hypotheses}
+              $$H_0 = \mu = 6.5 \quad \text{vs} \quad H_1: \mu \neq 6.5$$
+        \item \textbf{Compute the test statistic}\\
+              $$SE = \frac{s}{\sqrt{n}} \approx 0.65$$
+              $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{6.77 - 6.5}{0.65} \approx 0.41$$
+        \item \textbf{Identify the sampling distribution}\\[1.5ex]
+              Since $n > 30$ we can use a a t-distribution with $df = n - 1 = 101$ degrees of freedom.\\[-1.5ex]
+        \item \textbf{Decide whether test statistic is rare or common}\\[1.5ex]
+              \textbf{Rejection Region Approach}: \\
+              For a two-tailed test at the 5\% significant level, the critical values are approximately $\pm 1.984$. Since:
+              $$|T_0| \approx 0.41 \not>  1.984$$
+              The test statistic is not in the rejection region. \\[1.5ex]
+              \textbf{p-value Approach}:\\
+              Since $T_0 \approx 0.41$, we need the probability of obtaining a value as extreme as $0.41$ or more, given $H_0$ is true. That is: $P(T > 0.41)$.
+              \begin{itemize}
+                  \item Find the one-tailed probability. Look up the value for $Z = 0.41$ This value is approximately $P(z > 0.41) = 1- 0.6591 \approx 0.3409$.
+                  \item Compute two-tailed p-value: $p = 2 \times P(z > 0.41) \approx 2 \times 0.3409 \approx 0.6818$.
+              \end{itemize}
+              The $p$ corresponding to $T_0 \approx 0.41$ is approximately $0.6818$, which is much larger than the significance level $\alpha = 0.05$.
+        \item \textbf{Make a Decision}
+              \begin{itemize}
+                  \item If p-value $< \alpha$, reject $H_0$.
+                  \item Since p-value $\approx(0.68)$ is greater than $\alpha = 0.05$ and $T_0$ does not lie in the rejection region, we do not reject $H_0$.
+              \end{itemize}
+        \item \textbf{Conclusion}
+              \begin{itemize}
+                  \item The data does not provide sufficient evidence to reject the claim the the true mean study time is 6.5 hours per week.
+                  \item The sample results are consistent with a true mean study time of $6.5$ hours per week. Additionally, the 95\% confidence interval is:
+                        $$6.77 \pm 1.98 \times 0.65 \approx (5.5, 8.0)$$
+                        which includes $6.5$, reinforcing our conclusion.
+              \end{itemize}
+    \end{enumerate}
 \end{examplebox}
 \begin{examplebox}{Golf Club Design}{}
-    \textbf{Problem:} 
+    \textbf{Problem:}
     \begin{itemize}
         \item \textbf{Claim}: The true mean coefficient of restitution is $\mu > 0.82$
         \item \textbf{Sample}: $n = 15$ clubs, with sample mean $\bar{X} = 0.83725$ and sample standard deviation $s = 0.02456$.
@@ -634,44 +634,44 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
     We're conducting a one-sided test with $H_0: \mu = 0.82$ and $H_1: \mu > 0.82$.
     \begin{enumerate}
         \item \textbf{Hypotheses}
-        $$H_0: \mu = 0.82 \quad \text{vs} \quad H_1: \mu > 0.82$$
+              $$H_0: \mu = 0.82 \quad \text{vs} \quad H_1: \mu > 0.82$$
         \item \textbf{Compute the test statistic}
-        $$SE = \frac{s}{\sqrt{n}} = \frac{0.02456}{\sqrt{15}} \approx 0.00634$$
-        $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{0.83725 - 0.82}{0.00634} \approx 2.72$$
+              $$SE = \frac{s}{\sqrt{n}} = \frac{0.02456}{\sqrt{15}} \approx 0.00634$$
+              $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{0.83725 - 0.82}{0.00634} \approx 2.72$$
         \item \textbf{Identify the sampling distribution}\\[1.5ex]
-        Since $n < 30$ and the population standard deviation is unknown, we use a t-distribution with $df = n - 1 = 14$ degrees of freedom.\\[-1.5ex]
+              Since $n < 30$ and the population standard deviation is unknown, we use a t-distribution with $df = n - 1 = 14$ degrees of freedom.\\[-1.5ex]
         \item \textbf{Decide whether test statistic is rare or common}\\[1.5ex]
-        \textbf{Rejection Region Approach}: \\
-        For a one-sides test at the $\alpha = 0.05$ significance level, the critical value is approximately $t_{0.05, 14} \approx 1.761$. Since:
-        $$T_0 \approx 2.72 > 1.761$$
-        The test statistic is in the rejection region. \\[1.5ex]
-        \textbf{p-value Approach}:\\
-        The p-value associated with $T_0 \approx 2.72 > 0.05$ (from the tables)
+              \textbf{Rejection Region Approach}: \\
+              For a one-sides test at the $\alpha = 0.05$ significance level, the critical value is approximately $t_{0.05, 14} \approx 1.761$. Since:
+              $$T_0 \approx 2.72 > 1.761$$
+              The test statistic is in the rejection region. \\[1.5ex]
+              \textbf{p-value Approach}:\\
+              The p-value associated with $T_0 \approx 2.72 > 0.05$ (from the tables)
         \item \textbf{Make a Decision}
-        \begin{itemize}
-            \item If  p-value $< \alpha$, or $T_0$ exceeds the critical value, reject $H_0$.
-        \end{itemize}
-        Since $2.72 > 1.761$ and the p-value is less than $\alpha = 0.05$, we reject $H_0$.
+              \begin{itemize}
+                  \item If  p-value $< \alpha$, or $T_0$ exceeds the critical value, reject $H_0$.
+              \end{itemize}
+              Since $2.72 > 1.761$ and the p-value is less than $\alpha = 0.05$, we reject $H_0$.
         \item \textbf{Conclusion}
-        \begin{itemize}
-            \item The evidence from the sample indicates that the true mean coefficient of restitution is greater than $0.82$.
-            \item With a one sides test, the data provides strong evidence to support the claim that the true mean coefficient of restitution is greater than $0.82$.
-            \item The 95\% confidence interval is:
-            $$0.83725 \pm 1.761 \times 0.00634 \approx (0.824, 0.850)$$
-            which does not include $0.82$, reinforcing our conclusion.
-        \end{itemize}
+              \begin{itemize}
+                  \item The evidence from the sample indicates that the true mean coefficient of restitution is greater than $0.82$.
+                  \item With a one sides test, the data provides strong evidence to support the claim that the true mean coefficient of restitution is greater than $0.82$.
+                  \item The 95\% confidence interval is:
+                        $$0.83725 \pm 1.761 \times 0.00634 \approx (0.824, 0.850)$$
+                        which does not include $0.82$, reinforcing our conclusion.
+              \end{itemize}
     \end{enumerate}
 \end{examplebox}
 \begin{takeaway-box}{}{}
-    \begin{itemize}
-        \item \textbf{Null Hypothesis and Alternative}: Formulate them carefully based on research question/claim
-        \item \textbf{Test Statistic}: For means is typically $T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}}$.
-        \item \textbf{p-value}: Probability (assuming $H_0$) of observing a result at least as extreme as the actual sample result.
-        \item \textbf{Significance level $\alpha$}: Commonly 0.05, if p-value $< \alpha$, reject $H_0$.
-        \item \textbf{Confidence Intervals Link:} If $\mu_0$ lies outside the CI, that typically corresponds to rejecting $H_0$
-        \item \textbf{Check conditions}: Independence of observations, approximate normality, random sampling, etc.
-        \item \textbf{Practical vs Statistical Significance}: Even a small difference can be “statistically significant” with a large enough sample—but might not be practically meaningful.
-    \end{itemize}
+\begin{itemize}
+    \item \textbf{Null Hypothesis and Alternative}: Formulate them carefully based on research question/claim
+    \item \textbf{Test Statistic}: For means is typically $T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}}$.
+    \item \textbf{p-value}: Probability (assuming $H_0$) of observing a result at least as extreme as the actual sample result.
+    \item \textbf{Significance level $\alpha$}: Commonly 0.05, if p-value $< \alpha$, reject $H_0$.
+    \item \textbf{Confidence Intervals Link:} If $\mu_0$ lies outside the CI, that typically corresponds to rejecting $H_0$
+    \item \textbf{Check conditions}: Independence of observations, approximate normality, random sampling, etc.
+    \item \textbf{Practical vs Statistical Significance}: Even a small difference can be “statistically significant” with a large enough sample—but might not be practically meaningful.
+\end{itemize}
 \end{takeaway-box}
 \subsection{Decision Outcomes in Hypothesis Testing}
 When conducting a hypothesis test, there are two possible decisions:
@@ -683,11 +683,11 @@ When conducting a hypothesis test, there are two possible decisions:
 \begin{center}
     \begin{tabularx}{\textwidth}{@{} X X X @{}}
         \toprule
-        \textbf{Decision} & \textbf{$\boldsymbol{H_0}$ true} & \textbf{$\boldsymbol{H_0}$ false} \\
+        \textbf{Decision}    & \textbf{$\boldsymbol{H_0}$ true}       & \textbf{$\boldsymbol{H_0}$ false}       \\
         \midrule
-        Reject $H_0$ & \textbf{Type I Error} (False Positive) & \textbf{Correct Decision} \\
+        Reject $H_0$         & \textbf{Type I Error} (False Positive) & \textbf{Correct Decision}               \\
         \addlinespace[2ex]
-        Fail to reject $H_0$ & \textbf{Correct Decision} & \textbf{Type II Error} (False Negative) \\
+        Fail to reject $H_0$ & \textbf{Correct Decision}              & \textbf{Type II Error} (False Negative) \\
         \bottomrule
     \end{tabularx}
 \end{center}
@@ -708,12 +708,12 @@ When conducting a hypothesis test, there are two possible decisions:
         \item The population standard deviation of the fill volume is known to be $\sigma = 50ml$
         \item The sample size is $n = 100$
         \item Test:
-        $$H_0: \mu = 750ml \; \text{vs} \; H_1: \mu \neq 750ml$$
+              $$H_0: \mu = 750ml \; \text{vs} \; H_1: \mu \neq 750ml$$
         \item Significance level $\alpha = 0.05$
         \item The test statistic is z-based because $n$ is large and $\sigma$ is known.
-        $$Z_0 = \frac{\bar{X} - 750}{50/\sqrt{100}}$$
+              $$Z_0 = \frac{\bar{X} - 750}{50/\sqrt{100}}$$
         \item The rejection region for a two-sided test at $\alpha = 0.05$ is:
-        $$|Z_0| > 1.96 \Longleftrightarrow \bar{X} < 750 - 196\times 5 = 740.2 \; \text{or} \; \bar{X} > 750 + 1.96 \times 5 = 759.8$$
+              $$|Z_0| > 1.96 \Longleftrightarrow \bar{X} < 750 - 196\times 5 = 740.2 \; \text{or} \; \bar{X} > 750 + 1.96 \times 5 = 759.8$$
     \end{itemize}
     \noindent\rule{\textwidth}{1pt} \\ [2ex]
     \textbf{Type I Error $\boldsymbol{\alpha}$} \\
@@ -727,7 +727,7 @@ When conducting a hypothesis test, there are two possible decisions:
     Converting to standard normal:
     $$\beta = P\left(\frac{740.2 - 740}{5} \leq Z \leq \frac{759.8 - 740}{5}\right) = P(0.04 < Z < 3.96) = 0.484$$
     \textbf{Power of the test $\boldsymbol{1-\beta}$}
-    The power is the probability of correctly rejecting $H_0$ when in fact $\mu = 740$ So, 
+    The power is the probability of correctly rejecting $H_0$ when in fact $\mu = 740$ So,
     $$\text{Power} = 1 - \beta = 1 - 0.484 = 0.516$$
     \noindent\rule{\textwidth}{1pt} \\ [2ex]
     \textbf{Interpretation}\\
@@ -737,38 +737,38 @@ When conducting a hypothesis test, there are two possible decisions:
     \begin{itemize}
         \item $\sigma = 25$ml and $n = 45$
         \item Test:
-        $$H_0 : \mu = 200 \; \text{vs} \; H_1 : mu > 200$$
+              $$H_0 : \mu = 200 \; \text{vs} \; H_1 : mu > 200$$
         \item Significance level $\alpha = 0.05$
         \item The test statistic is z-based because $n$ is large and $\sigma$ is known.
-        $$Z_0 = \frac{\bar{X} - 200}{25/\sqrt{45}}$$
+              $$Z_0 = \frac{\bar{X} - 200}{25/\sqrt{45}}$$
         \item The rejection region for a one-sided test at $\alpha = 0.05$ is:
-        $$Z_0 > Z_0.05 \approx 1.645$$
-        \noindent\rule{\textwidth}{1pt} \\ [2ex]
-        \textbf{Type I Error $\boldsymbol{\alpha}$} \\
-        By definition, for a test with significance level $\alpha = 0.05$:
-        $$P(\text{Type I error}) = \alpha = 0.05$$
-        \textbf{Type II Error $\boldsymbol{\beta}$} \\
-        Suppose the true mean is 210, then under repeated sampling $\bar{X}$ is distributed approximately:
-        $$\bar{X} \sim N\left(210, \frac{25^2}{45}\right) = N(210, 3.727)$$
-        Reject $H_0$ if $\bar{X} > 206.11$. ($206.11 \approx 200 + 1.64 \times 3.727)$\\
-        Therefore, \textbf{Type II Error} $(\beta)$ we do no reject $H_0$ when $\mu = 210$, i.e $\bar{X} \leq 206.11$:
-        $$\beta = P(\bar{X} \leq 206.11 | \mu = 210)$$
-        Converting to z scores:
-        $$B = P(Z < \frac{206.11 - 210}{3.727}) = P(Z < -1.04) = 0.1492$$
-        \textbf{Power of the test $\boldsymbol{1-\beta}$}
-        $$1 - \beta = 0.8505$$
-        \noindent\rule{\textwidth}{1pt} \\ [2ex]
-        \textbf{Interpretation}\\
-        If $\mu = 210$, the probability of rejecting $H_0$ (detecting the mean is $> 200$) is $85.05\%$. 
+              $$Z_0 > Z_0.05 \approx 1.645$$
+              \noindent\rule{\textwidth}{1pt} \\ [2ex]
+              \textbf{Type I Error $\boldsymbol{\alpha}$} \\
+              By definition, for a test with significance level $\alpha = 0.05$:
+              $$P(\text{Type I error}) = \alpha = 0.05$$
+              \textbf{Type II Error $\boldsymbol{\beta}$} \\
+              Suppose the true mean is 210, then under repeated sampling $\bar{X}$ is distributed approximately:
+              $$\bar{X} \sim N\left(210, \frac{25^2}{45}\right) = N(210, 3.727)$$
+              Reject $H_0$ if $\bar{X} > 206.11$. ($206.11 \approx 200 + 1.64 \times 3.727)$\\
+              Therefore, \textbf{Type II Error} $(\beta)$ we do no reject $H_0$ when $\mu = 210$, i.e $\bar{X} \leq 206.11$:
+              $$\beta = P(\bar{X} \leq 206.11 | \mu = 210)$$
+              Converting to z scores:
+              $$B = P(Z < \frac{206.11 - 210}{3.727}) = P(Z < -1.04) = 0.1492$$
+              \textbf{Power of the test $\boldsymbol{1-\beta}$}
+              $$1 - \beta = 0.8505$$
+              \noindent\rule{\textwidth}{1pt} \\ [2ex]
+              \textbf{Interpretation}\\
+              If $\mu = 210$, the probability of rejecting $H_0$ (detecting the mean is $> 200$) is $85.05\%$.
     \end{itemize}
 \end{examplebox}
 \begin{definitionbox}{The Power Function}{}
     The power of a test depends on the actual true value of $\mu$.
     \begin{itemize}
         \item \textbf{For one sided-test} $H_0: \mu = mu_0 \; \text{vs} \; H_1 : \mu > mu_0$ if our rejection region is $\bar{X} > a$ then the power at a given true $\mu$ is:
-        $$\text{Power}(\mu) = P(\text{reject}\; H_0 | \mu) =  P(\bar{X} > a | \bar{X} \sim N(\mu, \sigma^2/n)) = 1 - \phi\left(\frac{a - \mu}{\sigma / \sqrt{n}}\right)$$
+              $$\text{Power}(\mu) = P(\text{reject}\; H_0 | \mu) =  P(\bar{X} > a | \bar{X} \sim N(\mu, \sigma^2/n)) = 1 - \phi\left(\frac{a - \mu}{\sigma / \sqrt{n}}\right)$$
         \item \textbf{For a two-sided test} $H_0: \mu = \mu_0 \; \text{vs} \; H_1 : \mu \neq \mu_0$ if our rejection region is $\bar{X} < a$ or $\bar{X} > b$ then the power at a given true $\mu$ is:
-        $$\text{Power}(\mu) = P(\bar{X} < a | \mu) + P(\bar{X} > b | \mu) = \phi\left(\frac{a - \mu}{\sigma / \sqrt{n}}\right) + 1 - \phi\left(\frac{b - \mu}{\sigma / \sqrt{n}}\right)$$
+              $$\text{Power}(\mu) = P(\bar{X} < a | \mu) + P(\bar{X} > b | \mu) = \phi\left(\frac{a - \mu}{\sigma / \sqrt{n}}\right) + 1 - \phi\left(\frac{b - \mu}{\sigma / \sqrt{n}}\right)$$
     \end{itemize}
     By evaluating this function across different values of $\mu$, we get a power curve showing how likely the test is to detect a shift from $\mu_0$ to $\mu$.
 \end{definitionbox}
@@ -781,24 +781,24 @@ When conducting a hypothesis test, there are two possible decisions:
     \textbf{Trade-off}: Lowering $\alpha$ typically raises $\beta$ for a given sample size, because making the threshold for a rejection more stringent also makes it harder to detect real deviations.
 \end{conceptbox}
 \begin{takeaway-box}{}{}
-    \begin{itemize}
-        \item \textbf{Type I Error ($\alpha$):} Rejecting $H_0$ when $H_0$ is true; this is set as the significance level.
-        \item \textbf{Type II Error ($\beta$):} Failing to reject $H_0$ when it is false.
-        \item \textbf{Power ($1-\beta$):} The probability of rejecting $H_0$ given that the true parameter is not what $H_0$ claims. High power (typically $>0.8$) is often desired.
-        \item \textbf{Relation:} $\text{Power} = 1 - \beta$. A large $\beta$ implies that the test frequently misses a real effect.
-        \item \textbf{Implementation:} Once $\alpha$ and the sample size $n$ are chosen, the power depends on the true (unknown) parameter value. The further the true mean is from the hypothesized value, the higher the power.
-    \end{itemize}    
+\begin{itemize}
+    \item \textbf{Type I Error ($\alpha$):} Rejecting $H_0$ when $H_0$ is true; this is set as the significance level.
+    \item \textbf{Type II Error ($\beta$):} Failing to reject $H_0$ when it is false.
+    \item \textbf{Power ($1-\beta$):} The probability of rejecting $H_0$ given that the true parameter is not what $H_0$ claims. High power (typically $>0.8$) is often desired.
+    \item \textbf{Relation:} $\text{Power} = 1 - \beta$. A large $\beta$ implies that the test frequently misses a real effect.
+    \item \textbf{Implementation:} Once $\alpha$ and the sample size $n$ are chosen, the power depends on the true (unknown) parameter value. The further the true mean is from the hypothesized value, the higher the power.
+\end{itemize}
 \end{takeaway-box}
 \section{Hypothesis Test for a Proportion}
 \subsection{Possible Forms of the Hypotheses}
 \begin{definitionbox}{Hypotheses for Proportions}{}
     \begin{enumerate}
         \item \textbf{Left-tailed (one-sided)} \\
-        $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi < \pi_0$$
+              $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi < \pi_0$$
         \item \textbf{Right-tailed (one-sided)} \\
-        $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi > \pi_0$$
+              $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi > \pi_0$$
         \item \textbf{Two-sided} \\
-        $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi \neq \pi_0$$
+              $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi \neq \pi_0$$
     \end{enumerate}
     Where $\pi_0$ is the specific hypothesized proportion. The decisions depends on the sample data from $n$ trials and $x$ successes.
 \end{definitionbox}
@@ -823,36 +823,36 @@ When conducting a hypothesis test, there are two possible decisions:
     \end{itemize}
 \end{definitionbox}
 \begin{definitionbox}{p-value}{}
-The \textbf{p-value} is the probability (under $H_0$) of observing a test statistic as extreme or more extreme than the actual $T_0$.
-\begin{itemize}
-    \item For a two-sided test:
-    $$\text{p-value} = P\bigl(Z \le -|T_0|\bigr) + P\bigl(Z \ge |T_0|\bigr)$$
-    \item For a right-tailed test ($\pi > \pi_0$):
-    $$
-    \text{p-value} = P\bigl(Z \ge T_0\bigr)
-    $$
-    \item For a left-tailed test ($\pi < \pi_0$):
-    $$
-    \text{p-value} = P\bigl(Z \le T_0\bigr)
-    $$
-\end{itemize}
-If the p-value $\le \alpha$, we reject $H_0$. Otherwise, we fail to reject $H_0$.
+    The \textbf{p-value} is the probability (under $H_0$) of observing a test statistic as extreme or more extreme than the actual $T_0$.
+    \begin{itemize}
+        \item For a two-sided test:
+              $$\text{p-value} = P\bigl(Z \le -|T_0|\bigr) + P\bigl(Z \ge |T_0|\bigr)$$
+        \item For a right-tailed test ($\pi > \pi_0$):
+              $$
+                  \text{p-value} = P\bigl(Z \ge T_0\bigr)
+              $$
+        \item For a left-tailed test ($\pi < \pi_0$):
+              $$
+                  \text{p-value} = P\bigl(Z \le T_0\bigr)
+              $$
+    \end{itemize}
+    If the p-value $\le \alpha$, we reject $H_0$. Otherwise, we fail to reject $H_0$.
 \end{definitionbox}
 
 \begin{examplebox}{Online Communication}{}
     \textbf{Setup}
-\begin{itemize}
-    \item \textbf{Claim}: A study suggests $\pi = 0.63$ (63\% of college students spend 10+ hours/week communicating online).
-    \item \textbf{Sample}: $n=150$ students, among whom $x=99$ do so, so $\hat{p} = \frac{99}{150} \approx 0.66$.
-    \item \textbf{Hypotheses} (two-sided test):
-    $$
-    H_0:\,\pi=0.63 \quad\text{vs.}\quad H_1:\,\pi\neq0.63.
-    $$
+    \begin{itemize}
+        \item \textbf{Claim}: A study suggests $\pi = 0.63$ (63\% of college students spend 10+ hours/week communicating online).
+        \item \textbf{Sample}: $n=150$ students, among whom $x=99$ do so, so $\hat{p} = \frac{99}{150} \approx 0.66$.
+        \item \textbf{Hypotheses} (two-sided test):
+              $$
+                  H_0:\,\pi=0.63 \quad\text{vs.}\quad H_1:\,\pi\neq0.63.
+              $$
     \end{itemize}
     \textbf{Solution}:\\
     \textbf{Test Statistic}:
     $$
-    T_0 = \frac{0.66 - 0.63}{\sqrt{\frac{0.63\,(1-0.63)}{150}}} \;\approx\; 0.76.
+        T_0 = \frac{0.66 - 0.63}{\sqrt{\frac{0.63\,(1-0.63)}{150}}} \;\approx\; 0.76.
     $$
 
     \textbf{Decision} \\
@@ -860,7 +860,7 @@ If the p-value $\le \alpha$, we reject $H_0$. Otherwise, we fail to reject $H_0$
 
     \textbf{p-value}
     $$
-    \text{p-value} = P(Z \ge 0.76) + P(Z \le -0.76) \approx 0.4466.
+        \text{p-value} = P(Z \ge 0.76) + P(Z \le -0.76) \approx 0.4466.
     $$
     Since $0.4466 > 0.05$, we again fail to reject $H_0$.\\[1.5ex]
 
@@ -869,91 +869,91 @@ If the p-value $\le \alpha$, we reject $H_0$. Otherwise, we fail to reject $H_0$
 \end{examplebox}
 
 \begin{conceptbox}{Using \texttt{prop.test()} in R}{}
-$$\texttt{prop.test(x, n, p, alternative = "two.sided", conf.level = 0.95, correct = FALSE)}$$
-where:
-\begin{itemize}
-    \item \texttt{x} is the number of successes.
-    \item \texttt{n} is the sample size.
-    \item \texttt{p} is the hypothesized proportion under $H_0$.
-    \item \texttt{alternative} can be \texttt{"less"}, \texttt{"greater"}, or \texttt{"two.sided"}.
-    \item \texttt{correct = FALSE} disables the Yates continuity correction (commonly used for small sample sizes).
-\end{itemize}
-The function returns:
-\begin{itemize}
-    \item A test statistic (given as \texttt{X-squared}, whose square root is the z-value).
-    \item The p-value.
-    \item A confidence interval for the true proportion.
-\end{itemize}
+    $$\texttt{prop.test(x, n, p, alternative = "two.sided", conf.level = 0.95, correct = FALSE)}$$
+    where:
+    \begin{itemize}
+        \item \texttt{x} is the number of successes.
+        \item \texttt{n} is the sample size.
+        \item \texttt{p} is the hypothesized proportion under $H_0$.
+        \item \texttt{alternative} can be \texttt{"less"}, \texttt{"greater"}, or \texttt{"two.sided"}.
+        \item \texttt{correct = FALSE} disables the Yates continuity correction (commonly used for small sample sizes).
+    \end{itemize}
+    The function returns:
+    \begin{itemize}
+        \item A test statistic (given as \texttt{X-squared}, whose square root is the z-value).
+        \item The p-value.
+        \item A confidence interval for the true proportion.
+    \end{itemize}
 \end{conceptbox}
 
-\begin{takeaway-box}{}{}    
-    \begin{enumerate}
-        \item \textbf{Hypothesis Test Setup}: For proportions, we specify $H_0: \pi=\pi_0$ and check if the data strongly contradict $\pi_0$.
-        \item \textbf{z-Test Statistic}:
-        $$
-        T_0 = \frac{\hat{p}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}.
-        $$
-        This requires $n\hat{p}\ge5$ and $n(1-\hat{p})\ge5$ to ensure that the normal approximation is valid.
-        \item \textbf{Decision Rule or p-value}: Compare $\lvert T_0\rvert$ to $z_{\alpha/2}$ for two-sided tests (or use the appropriate one-sided cutoff), or compute the p-value.
-        \item \textbf{Interpretation}: A \textbf{small p-value} ($\le \alpha$) means the data provide strong evidence that $\pi$ differs from $\pi_0$, whereas a \textbf{large p-value} indicates insufficient evidence against $H_0$.
-        \item \textbf{Connection to Confidence Intervals}: If $\pi_0$ lies outside the confidence interval for $\pi$, this typically corresponds to rejecting $H_0$. Conversely, if $\pi_0$ lies inside, we fail to reject $H_0$.
-    \end{enumerate}
+\begin{takeaway-box}{}{}
+\begin{enumerate}
+    \item \textbf{Hypothesis Test Setup}: For proportions, we specify $H_0: \pi=\pi_0$ and check if the data strongly contradict $\pi_0$.
+    \item \textbf{z-Test Statistic}:
+          $$
+              T_0 = \frac{\hat{p}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}.
+          $$
+          This requires $n\hat{p}\ge5$ and $n(1-\hat{p})\ge5$ to ensure that the normal approximation is valid.
+    \item \textbf{Decision Rule or p-value}: Compare $\lvert T_0\rvert$ to $z_{\alpha/2}$ for two-sided tests (or use the appropriate one-sided cutoff), or compute the p-value.
+    \item \textbf{Interpretation}: A \textbf{small p-value} ($\le \alpha$) means the data provide strong evidence that $\pi$ differs from $\pi_0$, whereas a \textbf{large p-value} indicates insufficient evidence against $H_0$.
+    \item \textbf{Connection to Confidence Intervals}: If $\pi_0$ lies outside the confidence interval for $\pi$, this typically corresponds to rejecting $H_0$. Conversely, if $\pi_0$ lies inside, we fail to reject $H_0$.
+\end{enumerate}
 \end{takeaway-box}
 \pagebreak
 \section{Two Sample Comparisons}
 \begin{conceptbox}{Recap: One-Sample Inference}{}
-\begin{itemize}
-    \item We learned how to make inferences about a single population parameter (mean $\mu$ or proportion $\pi$) using:
-    \begin{enumerate}
-        \item \textbf{Confidence Intervals (CIs)} for providing a plausible range of values.
-        \item \textbf{Hypothesis Tests} for deciding whether the parameter equals a specific value.
-    \end{enumerate}
-    \item While hypothesis tests yield a yes/no conclusion about a particular value, CIs reveal the magnitude and practical significance of differences.
-\end{itemize}
+    \begin{itemize}
+        \item We learned how to make inferences about a single population parameter (mean $\mu$ or proportion $\pi$) using:
+              \begin{enumerate}
+                  \item \textbf{Confidence Intervals (CIs)} for providing a plausible range of values.
+                  \item \textbf{Hypothesis Tests} for deciding whether the parameter equals a specific value.
+              \end{enumerate}
+        \item While hypothesis tests yield a yes/no conclusion about a particular value, CIs reveal the magnitude and practical significance of differences.
+    \end{itemize}
 \end{conceptbox}
 \begin{conceptbox}{Why Compare Two Samples?}{}
     In practice, we often want to compare parameters from \textbf{two} different populations or groups. Examples:
-\begin{itemize}
-    \item Do female vs. male students differ in average study time?
-    \item Does a new treatment for ankle fractures produce a higher average recovery score than the standard treatment?
-    \item Does one manufacturing process have a higher mean output than another?
-\end{itemize}
-In such scenarios, each group represents a distinct population, and we want to compare (for means) the difference $\mu_2 - \mu_1$.
+    \begin{itemize}
+        \item Do female vs. male students differ in average study time?
+        \item Does a new treatment for ankle fractures produce a higher average recovery score than the standard treatment?
+        \item Does one manufacturing process have a higher mean output than another?
+    \end{itemize}
+    In such scenarios, each group represents a distinct population, and we want to compare (for means) the difference $\mu_2 - \mu_1$.
 \end{conceptbox}
 
 \subsection{Comparing Two Independent Population Means}
 
 \begin{definitionbox}{The Parameter of Interest}{}
-We want to estimate or test hypotheses about:
-$$
-\mu_2 - \mu_1.
-$$
-\begin{itemize}
-    \item A \textbf{point estimate} of this difference is $\bar{X}_2 - \bar{X}_1$.
-    \item If $\mu_2 = \mu_1$, then their difference is zero (i.e., no difference in means).
-\end{itemize}
+    We want to estimate or test hypotheses about:
+    $$
+        \mu_2 - \mu_1.
+    $$
+    \begin{itemize}
+        \item A \textbf{point estimate} of this difference is $\bar{X}_2 - \bar{X}_1$.
+        \item If $\mu_2 = \mu_1$, then their difference is zero (i.e., no difference in means).
+    \end{itemize}
 \end{definitionbox}
 
 \begin{examplebox}{Ankle Fractures}{}
-\small
-\textbf{Context}: 60 patients split into two treatment groups (30 each).  
-\begin{itemize}
-    \item \textbf{Treatment A}: Cast immobilization.
-    \item \textbf{Treatment B}: Early mobilization.
-\end{itemize}
-\textbf{Outcome}: AOFAS scores (a measure of ankle function/pain) at 24 weeks; range 0--100 (higher is better).  \\
-\textbf{Question}: Does Treatment B lead to a higher mean AOFAS score than Treatment A?
-\
-\textbf{Exploratory Analysis:}
-\begin{enumerate}
-    \item Summary statistics show:
+    \small
+    \textbf{Context}: 60 patients split into two treatment groups (30 each).
     \begin{itemize}
-        \item Treatment A: $\bar{X} \approx 79.3$, $s \approx 7.0$.
-        \item Treatment B: $\bar{X} \approx 85.8$, $s \approx 2.8$.
+        \item \textbf{Treatment A}: Cast immobilization.
+        \item \textbf{Treatment B}: Early mobilization.
     \end{itemize}
-    \item Boxplots or violin plots indicate that Treatment B appears to have higher scores on average, with less variation, and the data distribution appears reasonably symmetric.
-\end{enumerate}
-While these summaries are informative, a \textbf{formal two-sample inference} is needed to confirm whether the observed difference is statistically significant in the underlying populations.
+    \textbf{Outcome}: AOFAS scores (a measure of ankle function/pain) at 24 weeks; range 0--100 (higher is better).  \\
+    \textbf{Question}: Does Treatment B lead to a higher mean AOFAS score than Treatment A?
+    \
+    \textbf{Exploratory Analysis:}
+    \begin{enumerate}
+        \item Summary statistics show:
+              \begin{itemize}
+                  \item Treatment A: $\bar{X} \approx 79.3$, $s \approx 7.0$.
+                  \item Treatment B: $\bar{X} \approx 85.8$, $s \approx 2.8$.
+              \end{itemize}
+        \item Boxplots or violin plots indicate that Treatment B appears to have higher scores on average, with less variation, and the data distribution appears reasonably symmetric.
+    \end{enumerate}
+    While these summaries are informative, a \textbf{formal two-sample inference} is needed to confirm whether the observed difference is statistically significant in the underlying populations.
 \end{examplebox}
 
 \subsection{Four Main Cases for Two-Sample Inference on Means}
@@ -968,27 +968,27 @@ When comparing two means $\mu_1$ versus $\mu_2$, we choose the appropriate appro
 \subsubsection{Case 1: Large Samples, Known Variances}
 If both population variances $\sigma_1^2$ and $\sigma_2^2$ are known and each sample is large ($n_1, n_2 \ge 30$), then by the Central Limit Theorem:
 $$
-\bar{X}_2 - \bar{X}_1 \sim N\!\left(\mu_2 - \mu_1, \; \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\right).
+    \bar{X}_2 - \bar{X}_1 \sim N\!\left(\mu_2 - \mu_1, \; \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\right).
 $$
 \begin{align*}
-   \textbf{Standard Error (SE) for} \; \bar{X}_2 - \bar{X}_1 \quad\quad & \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \\
-   \textbf{Confidence Interval (CI)} \quad\quad & (\bar{X}_2 - \bar{X}_1) \pm z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \\
-   \textbf{Hypothesis Test} \; \text{(we commonly test)} \quad\quad & H_0 : \mu_2 - \mu_1 = 0 \quad \text{vs.} \quad H_1 : \mu_2 - \mu_1 \neq 0. \\
-   \textbf{z-test statistic} \quad\quad & Z_0 = \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
+    \textbf{Standard Error (SE) for} \; \bar{X}_2 - \bar{X}_1 \quad\quad & \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}                                                                        \\
+    \textbf{Confidence Interval (CI)} \quad\quad                         & (\bar{X}_2 - \bar{X}_1) \pm z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}                               \\
+    \textbf{Hypothesis Test} \; \text{(we commonly test)} \quad\quad     & H_0 : \mu_2 - \mu_1 = 0 \quad \text{vs.} \quad H_1 : \mu_2 - \mu_1 \neq 0.                                                    \\
+    \textbf{z-test statistic} \quad\quad                                 & Z_0 = \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
 \end{align*}
 
 \subsubsection{Case 2: Large Samples, Unknown Variances}
 If both samples are large but $\sigma_1^2$ and $\sigma_2^2$ are unknown, we estimate them with $s_1^2$ and $s_2^2$. Then:
 $$
-\bar{X}_2 - \bar{X}_1 \approx N\!\left(\mu_2 - \mu_1, \; \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right), \quad \text{with }\textbf{Standard Error} \quad \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.
+    \bar{X}_2 - \bar{X}_1 \approx N\!\left(\mu_2 - \mu_1, \; \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right), \quad \text{with }\textbf{Standard Error} \quad \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.
 $$
 And a \textbf{z-interval} or \textbf{z-test} is used similarly, substituting $s_i^2$ for $\sigma_i^2$.
 
 \subsubsection{Case 3: Small Samples, Unknown Variances, Assumed Equal}
 When at least one sample is small ($n < 30$) and we assume $\sigma_1^2 = \sigma_2^2 = \sigma^2$:
 \begin{align*}
-    \text{Compute the} \ \textbf{pooled variance}: &\quad\quad s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}. \\
-    \text{The} \ \textbf{Standard Error} \ is: &\quad\quad s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\
+    \text{Compute the} \ \textbf{pooled variance}: & \quad\quad s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}. \\
+    \text{The} \ \textbf{Standard Error} \ is:     & \quad\quad s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}                       \\
 \end{align*}
 The test statistic follows a \textbf{t-distribution} with $n_1 + n_2 - 2$ degrees of freedom:
 $$\frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t_{n_1 + n_2 - 2}.
@@ -998,11 +998,11 @@ $$
 \subsubsection{Case 4: Small Samples, Unknown Variances, Not Assumed Equal}
 If at least one sample is small and we do \textbf{not} assume equality of variances:
 $$
-\text{Standard Error} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
+    \text{Standard Error} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
 $$
 with a \textbf{t-distribution} whose degrees of freedom are approximated by the \textbf{Welch-Satterthwaite} formula:
 $$
-\mathrm{df}^* = \frac{\Bigl(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\Bigr)^2}{\frac{(s_1^2/n_1)^2}{n_1 - 1} + \frac{(s_2^2/n_2)^2}{n_2 - 1}}.
+    \mathrm{df}^* = \frac{\Bigl(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\Bigr)^2}{\frac{(s_1^2/n_1)^2}{n_1 - 1} + \frac{(s_2^2/n_2)^2}{n_2 - 1}}.
 $$
 \textbf{Conditions}: Each population is approximately normal and the variances $\sigma_1^2$ and $\sigma_2^2$ may differ.
 
@@ -1012,33 +1012,33 @@ $$
     \begin{itemize}
         \item $n_1 = n_2 = 30$ (both large enough), $\sigma_1^2$, $\sigma_2^2$ unknown $\Rightarrow$ \textbf{Case 2} applies.
         \item Sample means:
-        $$
-        \bar{X}_A = 79.30,\quad \bar{X}_B = 85.77.
-        $$
+              $$
+                  \bar{X}_A = 79.30,\quad \bar{X}_B = 85.77.
+              $$
         \item Sample variances:
-        $$
-        s_A^2 \approx 49.39,\quad s_B^2 \approx 7.84.
-        $$
+              $$
+                  s_A^2 \approx 49.39,\quad s_B^2 \approx 7.84.
+              $$
         \item \textbf{Estimated difference}: $\bar{X}_B - \bar{X}_A = 6.47$.
     \end{itemize}
     \textbf{Confidence Interval for $\mu_B - \mu_A$}
     $$
-    \text{SE} = \sqrt{\frac{49.39}{30} + \frac{7.84}{30}} \approx 1.38.
+        \text{SE} = \sqrt{\frac{49.39}{30} + \frac{7.84}{30}} \approx 1.38.
     $$
     At 95\% confidence ($z_{0.025}=1.96$):
     $$
-    6.47 \pm 1.96 \times 1.38 = (3.77,\; 9.17).
+        6.47 \pm 1.96 \times 1.38 = (3.77,\; 9.17).
     $$
-\textbf{Interpretation}: We are 95\% confident that, on average, Treatment B yields between about 3.8 and 9.2 points higher AOFAS score than Treatment A.
+    \textbf{Interpretation}: We are 95\% confident that, on average, Treatment B yields between about 3.8 and 9.2 points higher AOFAS score than Treatment A.
 
-\noindent\rule{\textwidth}{1pt} \\ [2ex]
-\textbf{Hypothesis Test}
-\textbf{Null Hypothesis}: $H_0 : \mu_B - \mu_A = 0$.  
-\textbf{Alternative Hypothesis}: $H_1 : \mu_B - \mu_A \neq 0$.
-$$
-Z_0 = \frac{6.47 - 0}{1.38} \approx 4.69.
-$$
-Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-value} is effectively zero (less than $10^{-5}$), indicating strong evidence that Treatment B's mean AOFAS score is higher than Treatment A's.
+    \noindent\rule{\textwidth}{1pt} \\ [2ex]
+    \textbf{Hypothesis Test}
+    \textbf{Null Hypothesis}: $H_0 : \mu_B - \mu_A = 0$.
+    \textbf{Alternative Hypothesis}: $H_1 : \mu_B - \mu_A \neq 0$.
+    $$
+        Z_0 = \frac{6.47 - 0}{1.38} \approx 4.69.
+    $$
+    Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-value} is effectively zero (less than $10^{-5}$), indicating strong evidence that Treatment B's mean AOFAS score is higher than Treatment A's.
 \end{examplebox}
 \begin{conceptbox}{Using \texttt{t.test()} in R:}{}
     For two independent samples (Welch's method by default), use:
@@ -1057,11 +1057,11 @@ Sometimes we want to test if $\sigma_1^2 = \sigma_2^2$ for two populations.
 \end{itemize}
 \textbf{F-test:}
 $$
-H_0: \sigma_1^2 = \sigma_2^2 \quad \text{vs.} \quad H_1: \sigma_1^2 \neq \sigma_2^2.
+    H_0: \sigma_1^2 = \sigma_2^2 \quad \text{vs.} \quad H_1: \sigma_1^2 \neq \sigma_2^2.
 $$
 \textbf{Test Statistic:}
 $$
-F_0 = \frac{s_1^2}{s_2^2}.
+    F_0 = \frac{s_1^2}{s_2^2}.
 $$
 Under $H_0$, $F_0 \sim F_{n_1-1,\;n_2-1}$. If $F_0$ is too large or too small (i.e., falls outside the critical interval), we reject $H_0$.
 \begin{examplebox}{Paper Mills}{}
@@ -1070,7 +1070,7 @@ Under $H_0$, $F_0 \sim F_{n_1-1,\;n_2-1}$. If $F_0$ is too large or too small (i
         \item Mill 2: $n_2=18$, $\bar{X}_2=19.89$, $s_2=4.85$.
     \end{itemize}
     $$
-    F_0 = \frac{8.36^2}{4.85^2} \approx 2.97.
+        F_0 = \frac{8.36^2}{4.85^2} \approx 2.97.
     $$
     If $F_0$ is outside the interval $(F_{0.025}, F_{0.975})$, we reject $H_0$. Here, with a p-value $\approx 0.04$, we reject the null hypothesis that $\sigma_1^2=\sigma_2^2$.
 \end{examplebox}
@@ -1095,11 +1095,11 @@ In comparing two populations with standard parametric tests (z-test or t-test), 
 If these assumptions fail (for instance, if data are skewed, have heavy tails, or sample sizes are small) we can:
 \begin{enumerate}
     \item \textbf{Transform the data} to approximate normality (e.g., log-transform), or
-    \item \textbf{Use non-parametric/resampling methods}, such as 
-    \begin{itemize}
-        \item \textbf{Bootstrap} confidence intervals, or
-        \item \textbf{Permutation tests} for hypothesis testing.
-    \end{itemize}
+    \item \textbf{Use non-parametric/resampling methods}, such as
+          \begin{itemize}
+              \item \textbf{Bootstrap} confidence intervals, or
+              \item \textbf{Permutation tests} for hypothesis testing.
+          \end{itemize}
 \end{enumerate}
 These methods rely less on strict distributional assumptions, making them particularly useful in real-world scenarios where normality is questionable.
 
@@ -1121,16 +1121,16 @@ The \textbf{bootstrap} is a resampling method that constructs an empirical distr
 
 \begin{examplebox}{Ankle Fractures}{}
     Using R's \texttt{infer} package, one can execute:
-\begin{lstlisting}[language=r]
+    \begin{lstlisting}[language=r]
 specify(AOFAS ~ Treatment) %>%
   generate(reps = 1000, type = "bootstrap") %>%
   calculate(stat = "diff in means", order = c("B", "A"))
 \end{lstlisting}
-\begin{itemize}
-    \item This generates 1000 bootstrap differences in means (Group B minus Group A).
-    \item Then \texttt{get\_ci(..., level = 0.95)} provides the 95\% CI from the empirical distribution of differences.
-    \item A histogram (via \texttt{visualize()}) displays the spread of bootstrap differences with shading for the CI bounds.
-\end{itemize}
+    \begin{itemize}
+        \item This generates 1000 bootstrap differences in means (Group B minus Group A).
+        \item Then \texttt{get\_ci(..., level = 0.95)} provides the 95\% CI from the empirical distribution of differences.
+        \item A histogram (via \texttt{visualize()}) displays the spread of bootstrap differences with shading for the CI bounds.
+    \end{itemize}
 \end{examplebox}
 
 \begin{conceptbox}{Interpretation of Bootstrap CI}{}
@@ -1152,22 +1152,22 @@ A \textbf{permutation test} is a non-parametric hypothesis test that makes minim
 \end{itemize}
 
 \begin{conceptbox}{Steps for Permutation Test}{}
-\begin{enumerate}
-    \item \textbf{Observed difference}: Compute the actual mean difference $\bar{X}_1 - \bar{X}_2$ in the sample data.
-    \item \textbf{Permute group labels}: Shuffle or reassign the observed data points randomly between the two groups, effectively destroying any “true” difference by mixing the data. Under $H_0$, any labeling is equally plausible.
-    \item \textbf{Compute new difference}: For each permutation, compute the mean difference in the permuted dataset.
-    \item \textbf{Build the null distribution}: After many permutations, collect the distribution of permuted mean differences; this is the empirical distribution under the null (i.e., assuming no difference).
-    \item \textbf{p-value}: Calculate the fraction of permuted differences that are as or more extreme than the observed difference.
-    $$
-    \text{p-value} = \frac{\sum (\text{permuted difference} \ge |\text{observed difference}|)}{\text{number of permutations}}.
-    $$
-    For a two-sided test, count how many permuted differences are either $\ge +|\text{observed diff}|$ or $\le -|\text{observed diff}|$.
-\end{enumerate}
-If the empirical p-value is below the significance threshold ($\alpha$), we conclude there is evidence of a real difference between groups.
+    \begin{enumerate}
+        \item \textbf{Observed difference}: Compute the actual mean difference $\bar{X}_1 - \bar{X}_2$ in the sample data.
+        \item \textbf{Permute group labels}: Shuffle or reassign the observed data points randomly between the two groups, effectively destroying any “true” difference by mixing the data. Under $H_0$, any labeling is equally plausible.
+        \item \textbf{Compute new difference}: For each permutation, compute the mean difference in the permuted dataset.
+        \item \textbf{Build the null distribution}: After many permutations, collect the distribution of permuted mean differences; this is the empirical distribution under the null (i.e., assuming no difference).
+        \item \textbf{p-value}: Calculate the fraction of permuted differences that are as or more extreme than the observed difference.
+              $$
+                  \text{p-value} = \frac{\sum (\text{permuted difference} \ge |\text{observed difference}|)}{\text{number of permutations}}.
+              $$
+              For a two-sided test, count how many permuted differences are either $\ge +|\text{observed diff}|$ or $\le -|\text{observed diff}|$.
+    \end{enumerate}
+    If the empirical p-value is below the significance threshold ($\alpha$), we conclude there is evidence of a real difference between groups.
 \end{conceptbox}
 \begin{examplebox}{}{}
     \begin{itemize}
-        \item Suppose you have 6 observations from group 1 and 6 from group 2. The observed mean difference is 2.5. 
+        \item Suppose you have 6 observations from group 1 and 6 from group 2. The observed mean difference is 2.5.
         \item By randomly reassigning the 12 data points to “group 1” vs. “group 2” many times, we generate a \textbf{null distribution} of differences typically centered near 0.
         \item  If only about 3\% of those permuted differences exceed 2.5 in magnitude, then the p-value is 0.03, providing evidence that the observed 2.5 difference is unlikely to arise under the null hypothesis of no difference.
     \end{itemize}
@@ -1183,28 +1183,28 @@ If the empirical p-value is below the significance threshold ($\alpha$), we conc
 \end{itemize}
 
 \begin{takeaway-box}{}{}
-    \small
-    \begin{enumerate}
-        \item \textbf{Non-parametric options}: If normality is doubtful or sample sizes are small, bootstrap and permutation methods can be more robust than standard t-tests.
+\small
+\begin{enumerate}
+    \item \textbf{Non-parametric options}: If normality is doubtful or sample sizes are small, bootstrap and permutation methods can be more robust than standard t-tests.
     \item \textbf{Bootstrap for Confidence Intervals}:
-    \begin{itemize}
-        \item Straightforward to implement.
-        \item Relies on the data themselves to estimate sampling variability.
-    \end{itemize}
+          \begin{itemize}
+              \item Straightforward to implement.
+              \item Relies on the data themselves to estimate sampling variability.
+          \end{itemize}
     \item \textbf{Permutation Test for Hypothesis Testing}:
-    \begin{itemize}
-        \item Constructs a null distribution by reassigning the data to groups at random.
-        \item Yields an \textbf{empirical p-value} for the difference in means (or other statistics).
-    \end{itemize}
+          \begin{itemize}
+              \item Constructs a null distribution by reassigning the data to groups at random.
+              \item Yields an \textbf{empirical p-value} for the difference in means (or other statistics).
+          \end{itemize}
     \item \textbf{Minimal assumptions}: Both methods require fewer assumptions than parametric tests, particularly about the shape of the distribution.
     \item \textbf{Implementation}:
-    \begin{itemize}
-        \item In R, packages like \texttt{infer} or custom code loops can handle bootstrapping and permutation procedures.
-        \item Typically repeated many times (e.g., 1000, 10,000) to obtain stable estimates of intervals or p-values.
-    \end{itemize}
+          \begin{itemize}
+              \item In R, packages like \texttt{infer} or custom code loops can handle bootstrapping and permutation procedures.
+              \item Typically repeated many times (e.g., 1000, 10,000) to obtain stable estimates of intervals or p-values.
+          \end{itemize}
 \end{enumerate}
 \end{takeaway-box}
-    
+
 \section{Paired Samples}
 \subsection{Motivation for Paired Samples}
 
@@ -1241,20 +1241,20 @@ Thus, the sample data become $(D_1, D_2, \dots, D_n$, which is one difference sc
         \item Reading score using the right eye only.
         \item Reading score using the left eye only.
     \end{enumerate}
-\textbf{Goal}: Determine whether the \textbf{population mean} reading score for the right eye differs from that for the left eye.
+    \textbf{Goal}: Determine whether the \textbf{population mean} reading score for the right eye differs from that for the left eye.
 
 
-\textbf{Forming the Differences}: For student $i$,
-\[
-D_i = (\text{score right eye}) - (\text{score left eye}).
-\]
-Collect the $D_i$'s into a single list of 20 differences. Compute:
-\begin{itemize}
-    \item $\bar{D}$: the sample mean of these differences.
-    \item $s_D$: the sample standard deviation of these differences.
-\end{itemize}
+    \textbf{Forming the Differences}: For student $i$,
+    \[
+        D_i = (\text{score right eye}) - (\text{score left eye}).
+    \]
+    Collect the $D_i$'s into a single list of 20 differences. Compute:
+    \begin{itemize}
+        \item $\bar{D}$: the sample mean of these differences.
+        \item $s_D$: the sample standard deviation of these differences.
+    \end{itemize}
 
-If $\bar{D}$ is significantly above 0, it suggests that the right-eye score is systematically higher. If $\bar{D}$ is significantly below 0, it suggests that the left-eye score is systematically higher. If $\bar{D}$ is close to 0, there is no evidence of a real difference.
+    If $\bar{D}$ is significantly above 0, it suggests that the right-eye score is systematically higher. If $\bar{D}$ is significantly below 0, it suggests that the left-eye score is systematically higher. If $\bar{D}$ is close to 0, there is no evidence of a real difference.
 \end{examplebox}
 \subsection{Paired-Sample t-Test (One-Sample t-Test on the Differences)}
 
@@ -1288,9 +1288,9 @@ For large $n$, the Central Limit Theorem justifies the approximate normality of 
 \begin{itemize}
     \item $\bar{D}$ indicates the direction and magnitude of the difference. For instance, if $\bar{D} = +5$, it means that condition 1's scores exceed condition 2's by an average of 5 points.
     \item A confidence interval for $\mu_D$ can be constructed similarly to a one-sample CI:
-    \[
-    \bar{D} \pm t_{n-1,\;\alpha/2} \frac{s_D}{\sqrt{n}}.
-    \]
+          \[
+              \bar{D} \pm t_{n-1,\;\alpha/2} \frac{s_D}{\sqrt{n}}.
+          \]
     \item It is important to evaluate whether the observed difference is not only statistically significant but also practically meaningful.
 \end{itemize}
 
@@ -1305,28 +1305,28 @@ For large $n$, the Central Limit Theorem justifies the approximate normality of 
 \begin{enumerate}
     \item \textbf{Goal}: Compare two treatments or conditions measured on the same or matched subjects.
     \item \textbf{Method}:
-    \begin{enumerate}
-        \item Compute the difference for each subject:
-        \[
-        D_i = X_{i1} - X_{i2}.
-        \]
-        \item Analyze the differences $D_i$ as a single sample.
-        \item Use a one-sample t-test on these differences to assess whether $\mu_D$ differs from 0.
-    \end{enumerate}
+          \begin{enumerate}
+              \item Compute the difference for each subject:
+                    \[
+                        D_i = X_{i1} - X_{i2}.
+                    \]
+              \item Analyze the differences $D_i$ as a single sample.
+              \item Use a one-sample t-test on these differences to assess whether $\mu_D$ differs from 0.
+          \end{enumerate}
     \item \textbf{Interpretation}:
-    \begin{itemize}
-        \item A significantly positive $\bar{D}$ indicates that condition 1 is greater than condition 2 on average.
-        \item A significantly negative $\bar{D}$ indicates that condition 1 is less than condition 2 on average.
-        \item A non-significant $\bar{D}$ suggests no evidence of a mean difference between the conditions.
-    \end{itemize}
+          \begin{itemize}
+              \item A significantly positive $\bar{D}$ indicates that condition 1 is greater than condition 2 on average.
+              \item A significantly negative $\bar{D}$ indicates that condition 1 is less than condition 2 on average.
+              \item A non-significant $\bar{D}$ suggests no evidence of a mean difference between the conditions.
+          \end{itemize}
 \end{enumerate}
 
 \begin{takeaway-box}{}{}
-    \begin{itemize}
-        \item \textbf{Paired vs. Independent} use a paired approach when the same individual is measured under both conditions or when subjects are closely matched.
-        \item \textbf{Reduced Variability} Comparing within-subject differences typically reduces variability, thereby enhancing the test's sensitivity.
-        \item \textbf{One-Sample t-Test:} The paired-sample t-test is mathematically equivalent to performing a one-sample t-test on the difference scores.
-    \end{itemize}
+\begin{itemize}
+    \item \textbf{Paired vs. Independent} use a paired approach when the same individual is measured under both conditions or when subjects are closely matched.
+    \item \textbf{Reduced Variability} Comparing within-subject differences typically reduces variability, thereby enhancing the test's sensitivity.
+    \item \textbf{One-Sample t-Test:} The paired-sample t-test is mathematically equivalent to performing a one-sample t-test on the difference scores.
+\end{itemize}
 \end{takeaway-box}
 
 \section{ Two Sample Proportion Comparisons}
@@ -1341,11 +1341,11 @@ In many settings, we want to compare the \textbf{proportions} of “successes”
     \item $\pi_2$: the true proportion of “successes” in population 2.
 \end{itemize}
 We take \textbf{independent samples} of sizes $n_1$ and $n_2$ from the two populations, observing $x_1$ successes in sample 1 and $x_2$ successes in sample 2.
-\textbf{Sample proportions}:  
+\textbf{Sample proportions}:
 $$
-p_1 = \frac{x_1}{n_1}, 
-\quad
-p_2 = \frac{x_2}{n_2}.
+    p_1 = \frac{x_1}{n_1},
+    \quad
+    p_2 = \frac{x_2}{n_2}.
 $$
 
 
@@ -1360,7 +1360,7 @@ $$(p_2 - p_1)$$
 
 Under the \textbf{large-sample} assumption (i.e., each sample individually satisfies $n_i p_i \ge 15$ and $n_i(1 - p_i) \ge 15$), the Central Limit Theorem implies $p_1$ and $p_2$ are each approximately normally distributed around $\pi_1$ and $\pi_2$. Hence,
 $$
-\text{SE} = \sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}}.
+    \text{SE} = \sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}}.
 $$
 
 
@@ -1368,10 +1368,10 @@ $$
 
 A \textbf{$(1-\alpha)$\%} confidence interval is given by
 \[
-(p_2 - p_1) 
-\;\pm\;
-z_{\alpha/2}
-\sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}},
+    (p_2 - p_1)
+    \;\pm\;
+    z_{\alpha/2}
+    \sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}},
 \]
 where $z_{\alpha/2}$ is the critical value from the standard Normal distribution (e.g. 1.96 for 95\% confidence). This provides a plausible range for the difference in proportions in the underlying populations.
 
@@ -1388,11 +1388,11 @@ where $z_{\alpha/2}$ is the critical value from the standard Normal distribution
 
 Often, we test whether $\pi_1$ and $\pi_2$ are equal ($\pi_2 - \pi_1 = 0$):
 $$
-H_0 : (\pi_2 - \pi_1) = 0
-\quad
-\text{vs.}
-\quad
-H_1 : (\pi_2 - \pi_1) \neq 0,
+    H_0 : (\pi_2 - \pi_1) = 0
+    \quad
+    \text{vs.}
+    \quad
+    H_1 : (\pi_2 - \pi_1) \neq 0,
 $$
 or a one-sided version such as $H_1: \pi_2 - \pi_1 > 0$.
 
@@ -1400,7 +1400,7 @@ or a one-sided version such as $H_1: \pi_2 - \pi_1 > 0$.
 
 A \textbf{z-test} statistic:
 $$
-Z_0 = \frac{(p_2 - p_1) - 0}{\sqrt{\frac{p_1(1 - p_1)}{n_1} \;+\; \frac{p_2(1 - p_2)}{n_2}}}.
+    Z_0 = \frac{(p_2 - p_1) - 0}{\sqrt{\frac{p_1(1 - p_1)}{n_1} \;+\; \frac{p_2(1 - p_2)}{n_2}}}.
 $$
 \begin{itemize}
     \item Under $H_0$, $Z_0$ approximately follows a standard Normal distribution (by the Central Limit Theorem), assuming large enough sample sizes and independence.
@@ -1409,54 +1409,54 @@ $$
 \subsubsection{4.2 Decision \& p-value}
 
 \begin{itemize}
-    \item \textbf{Decision rule}:  
-    \begin{itemize}
-        \item Two-sided test at $\alpha$: reject $H_0$ if $\lvert Z_0\rvert > z_{\alpha/2}$.
-    \end{itemize}
+    \item \textbf{Decision rule}:
+          \begin{itemize}
+              \item Two-sided test at $\alpha$: reject $H_0$ if $\lvert Z_0\rvert > z_{\alpha/2}$.
+          \end{itemize}
     \item \textbf{p-value}: Probability (under $H_0$) of obtaining a test statistic at least as extreme as the observed $Z_0$.
 \end{itemize}
 
 \begin{examplebox}{}{}
     \small
-    A survey of 1069 young people: 
-\begin{itemize}
-    \item 537 women: 328 use Instagram $\rightarrow p_{\text{women}} = 328/537 \approx 0.6108$.
-    \item 532 men: 234 use Instagram $\rightarrow p_{\text{men}} = 234/532 \approx 0.439$.
-\end{itemize}
+    A survey of 1069 young people:
+    \begin{itemize}
+        \item 537 women: 328 use Instagram $\rightarrow p_{\text{women}} = 328/537 \approx 0.6108$.
+        \item 532 men: 234 use Instagram $\rightarrow p_{\text{men}} = 234/532 \approx 0.439$.
+    \end{itemize}
 
-\textbf{Difference}: $0.6108 - 0.439 = 0.1710$.
+    \textbf{Difference}: $0.6108 - 0.439 = 0.1710$.
 
-\textbf{Standard error}:
-$$
-\text{SE} = \sqrt{\frac{0.439 \,(1-0.439)}{532} + \frac{0.6108 \,(1-0.6108)}{537}}
-\;\approx\;
-0.0301.
-$$
+    \textbf{Standard error}:
+    $$
+        \text{SE} = \sqrt{\frac{0.439 \,(1-0.439)}{532} + \frac{0.6108 \,(1-0.6108)}{537}}
+        \;\approx\;
+        0.0301.
+    $$
 
-\textbf{95\% Confidence Interval}
-$$
-0.1710 \;\pm\; 1.96 \times 0.0301 
-= (\,0.11,\;0.23).
-$$
+    \textbf{95\% Confidence Interval}
+    $$
+        0.1710 \;\pm\; 1.96 \times 0.0301
+        = (\,0.11,\;0.23).
+    $$
 
-\textbf{Interpretation}: We are 95\% confident that women's Instagram usage proportion exceeds men's by between 11\% and 23\%.
+    \textbf{Interpretation}: We are 95\% confident that women's Instagram usage proportion exceeds men's by between 11\% and 23\%.
 
-\textbf{5.2 Hypothesis Test}
+    \textbf{5.2 Hypothesis Test}
 
-\begin{itemize}
-    \item \textbf{$H_0$}: $\pi_{\text{women}} - \pi_{\text{men}} = 0$.
-    \item \textbf{$H_1$}: $\pi_{\text{women}} - \pi_{\text{men}} \neq 0$.
-\end{itemize}
+    \begin{itemize}
+        \item \textbf{$H_0$}: $\pi_{\text{women}} - \pi_{\text{men}} = 0$.
+        \item \textbf{$H_1$}: $\pi_{\text{women}} - \pi_{\text{men}} \neq 0$.
+    \end{itemize}
 
-$$Z_0 = \frac{0.1710 - 0}{0.0301} \;\approx\; 5.68.$$
+    $$Z_0 = \frac{0.1710 - 0}{0.0301} \;\approx\; 5.68.$$
 
-Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p-value $\approx 0$. This strongly indicates a difference (women $>$ men in Instagram usage proportion).
-    
+    Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p-value $\approx 0$. This strongly indicates a difference (women $>$ men in Instagram usage proportion).
+
 \end{examplebox}
 
 
 \subsection{Using \texttt{prop.test()} in R}
-    $$\small\texttt{prop.test(x = c(x1, x2), n = c(n1, n2), alternative = "two.sided", conf.level = 0.95, correct = FALSE)}$$
+$$\small\texttt{prop.test(x = c(x1, x2), n = c(n1, n2), alternative = "two.sided", conf.level = 0.95, correct = FALSE)}$$
 
 \begin{itemize}
     \item \texttt{x} is a vector of counts of successes in each sample.
@@ -1469,8 +1469,8 @@ Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p
 \textbf{Output} A test statistic (labelled \texttt{X-squared} whose square root is effectively $\lvert Z_0\rvert$), The p-value and A confidence interval for $\pi_2 - \pi_1$.
 
 \begin{takeaway-box}{}{}
-    \small
-    \textbf{Two-sample proportion comparisons} extend the same logic as for a single proportion or two-sample means, using the difference in sample proportions and its standard error. As always:
+\small
+\textbf{Two-sample proportion comparisons} extend the same logic as for a single proportion or two-sample means, using the difference in sample proportions and its standard error. As always:
 \begin{itemize}
     \item \textbf{Check sample size criteria} ($n p_i \ge 15$ and $n (1-p_i) \ge 15$) to justify the normal approximation.
     \item \textbf{Compute the difference} of sample proportions.
@@ -1478,7 +1478,7 @@ Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p
     \item If the CI for $\pi_2 - \pi_1$ excludes 0 or the test statistic is extreme (p-value $\le \alpha$), we infer that the two population proportions differ significantly.
     \item If the CI straddles 0 or the p-value is large, we do not have strong evidence of a difference.
 \end{itemize}
-    This approach allows us to make inferences about whether one group (e.g. women) has a higher or lower proportion of a characteristic than the other group (e.g. men).
+This approach allows us to make inferences about whether one group (e.g. women) has a higher or lower proportion of a characteristic than the other group (e.g. men).
 \end{takeaway-box}
 
 \section{Chi Squared Test of Association}
@@ -1498,13 +1498,13 @@ So far, we've considered two-sample comparisons of \textbf{binary} proportions. 
 
 We have a \textbf{single} categorical variable $X$ that can fall into $k > 2$ categories. We want to see if the \textbf{population distribution} of these $k$ categories matches some hypothesized proportions:
 $$
-H_0: 
-\pi_1 = p_1^*, \;\pi_2 = p_2^*, \;\dots,\;\pi_k = p_k^*
-\quad
-\text{vs.}
-\quad
-H_1: 
-\text{at least one } \pi_i \neq p_i^*.
+    H_0:
+    \pi_1 = p_1^*, \;\pi_2 = p_2^*, \;\dots,\;\pi_k = p_k^*
+    \quad
+    \text{vs.}
+    \quad
+    H_1:
+    \text{at least one } \pi_i \neq p_i^*.
 $$
 \begin{itemize}
     \item Here, $\pi_i$ is the true proportion of the population belonging to category $i$, and $p_i^*$ is the hypothesized proportion for that category.
@@ -1518,7 +1518,7 @@ From a sample of $n$ individuals, we observe \textbf{counts} $O_1, O_2, \dots, O
 
 If the null hypothesis is true (i.e. category $i$ truly has probability $p_i^*$), then the \textbf{expected} number of observations in category $i$ is:
 $$
-E_i = n \times p_i^*.
+    E_i = n \times p_i^*.
 $$
 
 \subsubsection{Chi-squared Goodness-of-Fit Test}
@@ -1526,7 +1526,7 @@ $$
 \textbf{Test Statistic} \\
 We compare the observed counts $O_i$ to the expected counts $E_i$. The chi-squared test statistic:
 \[
-\chi^2_0 \;=\; \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
+    \chi^2_0 \;=\; \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
 \]
 \begin{itemize}
     \item If the data match the hypothesized proportions well, the observed $O_i$ will be close to $E_i$, making each term small and $\chi^2_0$ near 0.
@@ -1543,57 +1543,57 @@ If certain conditions hold (large enough sample so that every $E_i \ge 5$), the 
 
 \begin{examplebox}{Dishonest Casino?}{}
 
-\textbf{Scenario}: A gambler suspects a casino's six-sided die is not fair. He records the outcomes of $n=41$ throws:
+    \textbf{Scenario}: A gambler suspects a casino's six-sided die is not fair. He records the outcomes of $n=41$ throws:
 
-\begin{center}
-\begin{tabular}{lr}
-\toprule
-Face & Observed Count $O_i$ \\
-\midrule
-1 & 6 \\
-2 & 3 \\
-3 & 6 \\
-4 & 15 \\
-5 & 4 \\
-6 & 7 \\
-\midrule
-\textbf{Total} & 41 \\
-\bottomrule
-\end{tabular}
-\end{center}
+    \begin{center}
+        \begin{tabular}{lr}
+            \toprule
+            Face           & Observed Count $O_i$ \\
+            \midrule
+            1              & 6                    \\
+            2              & 3                    \\
+            3              & 6                    \\
+            4              & 15                   \\
+            5              & 4                    \\
+            6              & 7                    \\
+            \midrule
+            \textbf{Total} & 41                   \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
 
-\textbf{Hypothesis}:
-\[
-H_0: 
-\pi_1 = \pi_2 = \dots = \pi_6 = \tfrac{1}{6}
-\quad
-\text{vs.}
-\quad
-H_1: 
-\text{at least one face has }\pi_i \neq \tfrac{1}{6}.
-\]
+    \textbf{Hypothesis}:
+    \[
+        H_0:
+        \pi_1 = \pi_2 = \dots = \pi_6 = \tfrac{1}{6}
+        \quad
+        \text{vs.}
+        \quad
+        H_1:
+        \text{at least one face has }\pi_i \neq \tfrac{1}{6}.
+    \]
 
-\textbf{Expected Counts} (under fairness, each face has probability $1/6$):
-\[
-E_i = \frac{1}{6} \times 41 \approx 6.8333 \text{ (for each }i).
-\]
+    \textbf{Expected Counts} (under fairness, each face has probability $1/6$):
+    \[
+        E_i = \frac{1}{6} \times 41 \approx 6.8333 \text{ (for each }i).
+    \]
 
-\textbf{Test Statistic}:
-\[
-\chi^2_0 
-= \sum_{i=1}^{6} \frac{(O_i - E_i)^2}{E_i}
-= 13.293.
-\]
+    \textbf{Test Statistic}:
+    \[
+        \chi^2_0
+        = \sum_{i=1}^{6} \frac{(O_i - E_i)^2}{E_i}
+        = 13.293.
+    \]
 
-\textbf{Degrees of Freedom}: $\nu = k-1 = 6 - 1 = 5$.
+    \textbf{Degrees of Freedom}: $\nu = k-1 = 6 - 1 = 5$.
 
-\textbf{Compare}: Using a $\chi^2_5$ distribution:
-\begin{itemize}
-    \item $\chi^2_{5,\,0.05} \approx 11.07$.
-    \item Since $13.293 > 11.07$, we reject $H_0$.
-\end{itemize}
+    \textbf{Compare}: Using a $\chi^2_5$ distribution:
+    \begin{itemize}
+        \item $\chi^2_{5,\,0.05} \approx 11.07$.
+        \item Since $13.293 > 11.07$, we reject $H_0$.
+    \end{itemize}
 
-\textbf{Conclusion}: The test suggests the die is not fair (p-value $\approx 0.021$).
+    \textbf{Conclusion}: The test suggests the die is not fair (p-value $\approx 0.021$).
 \end{examplebox}
 
 \subsection{Test of Association (Two-Way Contingency Tables)}
@@ -1601,25 +1601,25 @@ E_i = \frac{1}{6} \times 41 \approx 6.8333 \text{ (for each }i).
 \subsubsection{3.1 Purpose}
 We have \textbf{two categorical variables} (each with multiple categories). We record frequencies in every combination of categories (forming a contingency table). We want to test:
 $$
-H_0 : \text{There is no association (independence) between the two variables.}
-\quad
-H_1 : \text{There is some association (dependence).}
+    H_0 : \text{There is no association (independence) between the two variables.}
+    \quad
+    H_1 : \text{There is some association (dependence).}
 $$
 
-\subsubsection{3.2 Observed Counts}
+\subsubsection{Observed Counts}
 
 Arrange the data in a $r \times c$ table (with $r$ rows, $c$ columns):
 \[
-\begin{array}{lcccc}
- & \text{Cat. B1} & \text{Cat. B2} & \dots & \text{Cat. B}c \\
-\hline
-\textbf{Cat. A1} & O_{1,1} & O_{1,2} & \dots & O_{1,c} \\
-\textbf{Cat. A2} & O_{2,1} & O_{2,2} & \dots & O_{2,c} \\
-\textbf{\dots} & \dots & \dots & \dots & \dots \\
-\textbf{Cat. A}r & O_{r,1} & O_{r,2} & \dots & O_{r,c} \\
-\hline
-\textbf{Column Tot.} & C_1 & C_2 & \dots & n \\
-\end{array}
+    \begin{array}{lcccc}
+                             & \text{Cat. B1} & \text{Cat. B2} & \dots & \text{Cat. B}c \\
+        \hline
+        \textbf{Cat. A1}     & O_{1,1}        & O_{1,2}        & \dots & O_{1,c}        \\
+        \textbf{Cat. A2}     & O_{2,1}        & O_{2,2}        & \dots & O_{2,c}        \\
+        \textbf{\dots}       & \dots          & \dots          & \dots & \dots          \\
+        \textbf{Cat. A}r     & O_{r,1}        & O_{r,2}        & \dots & O_{r,c}        \\
+        \hline
+        \textbf{Column Tot.} & C_1            & C_2            & \dots & n              \\
+    \end{array}
 \]
 
 Each cell in row $i$ and column $j$ has the observed frequency $O_{i,j}$. The total number of observations is $n$. Row $i$ sum is $R_i$, column $j$ sum is $C_j$.
@@ -1628,28 +1628,28 @@ Each cell in row $i$ and column $j$ has the observed frequency $O_{i,j}$. The to
 
 If the two variables are independent, the probability of being in row $i$ and column $j$ equals the product of the marginal probabilities for row $i$ and column $j$:
 $$
-P(\text{A}=i \cap \text{B}=j) 
-= P(\text{A}=i)\times P(\text{B}=j).
+    P(\text{A}=i \cap \text{B}=j)
+    = P(\text{A}=i)\times P(\text{B}=j).
 $$
 Within the sample, those probabilities are approximated by $\frac{R_i}{n}$ and $\frac{C_j}{n}$, respectively. So the \textbf{expected} frequency if the variables are independent:
 $$
-E_{i,j}
-= n\,P(\text{A}=i \cap \text{B}=j)
-= \frac{R_i}{n}\,\times \frac{C_j}{n}\,\times n
-= \frac{R_i \, C_j}{n}.
+    E_{i,j}
+    = n\,P(\text{A}=i \cap \text{B}=j)
+    = \frac{R_i}{n}\,\times \frac{C_j}{n}\,\times n
+    = \frac{R_i \, C_j}{n}.
 $$
 
 \subsubsection{Chi-squared Test Statistic}
 
 Compare each observed $O_{i,j}$ with the expected $E_{i,j}$. Then:
 $$
-\chi^2_0 
-= \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}.
+    \chi^2_0
+    = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}.
 $$
 
 \subsubsection{Degrees of Freedom}
 $$
-\nu = (r - 1)\times(c - 1).
+    \nu = (r - 1)\times(c - 1).
 $$
 
 \subsubsection{Decision and p-value}
@@ -1658,88 +1658,8 @@ $$
     \item \textbf{Reject $H_0$} (no association) if $\chi^2_0$ is large (p-value < $\alpha$).
     \item Conclude the data show evidence that the two variables are associated.
 \end{itemize}
-\begin{examplebox}{Driving License vs. Owning a Car}{}
-\textbf{Observed data} from 142 first-year students:
-
-\begin{center}
-\begin{tabular}{lccr}
-\toprule
- & Don't Own Car & Own Car & Row Tot. \\
-\midrule
-\textbf{Do not drive} & 54 & 0 & 54 \\
-\textbf{Full driving license} & 21 & 20 & 41 \\
-\textbf{Provisional license} & 41 & 6 & 47 \\
-\midrule
-\textbf{Column Tot.} & 116 & 26 & 142 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\textbf{Hypothesis}:
-\[
-H_0: 
-\text{Drive's-license category is independent of owning a car.}
-\quad
-H_1: 
-\text{There is an association (dependence).}
-\]
-
-\textbf{Expected Counts}
-
-For each cell (i, j):
-\[
-E_{i,j} 
-= \frac{R_i \, C_j}{n}.
-\]
-E.g., for “Full license \& Own car”:
-\begin{itemize}
-    \item $R_{\text{Full}} = 41$, $C_{\text{OwnCar}} = 26$, $n=142$.
-    \item $E_{\text{Full, OwnCar}} = \frac{41\times 26}{142}\approx 7.51.$
-\end{itemize}
-
-Compute all cells similarly:
-
-\begin{center}
-\begin{tabular}{lccr}
-\toprule
- & Don't Own Car (116) & Own Car (26) & Row Tot. \\
-\midrule
-\textbf{Do not drive} & 54.0? (calc) & ? & 54 \\
-\textbf{Full driving license} & 33.49 & 7.51 & 41 \\
-\textbf{Provisional license} & 38.39 & 8.61 & 47 \\
-\midrule
-\textbf{Column Tot.} & 116 & 26 & 142 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Then:
-\[
-\chi^2_0 
-= \sum \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}
-= 38.52.
-\]
-
-\textbf{Degrees of Freedom}
-
-\[
-(r - 1)(c - 1) = (3 - 1)(2 - 1) = 2.
-\]
-
-\textbf{Decision}
-
-\begin{itemize}
-    \item $\chi^2_{2,0.05}\approx 5.99$.
-    \item Since $38.52 > 5.99$, we reject $H_0$.
-    \item p-value is extremely small, confirming the variables are associated.
-\end{itemize}
-
-\textbf{Conclusion}: The data strongly suggest that the category of driver's license is \textbf{not} independent of whether a student owns a car.
-\end{examplebox}
-
 
 \subsection{Requirements and Tips}
-
 \begin{enumerate}
     \item \textbf{Expected counts $\ge 5$}: Each cell in the contingency table should have an expected value of at least 5 for the chi-squared approximation to be valid.
     \item \textbf{Large enough sample}: The total $n$ must be large enough to ensure these expected-cell-count conditions are met.
@@ -1747,15 +1667,229 @@ Then:
 \end{enumerate}
 
 \begin{takeaway-box}{}{}
-    \begin{enumerate}
-        \item \textbf{Chi-squared Goodness-of-Fit}: Tests whether a single categorical variable with $k$ categories matches a specific distribution.
-        \item \textbf{Chi-squared Test of Association}: Tests whether two categorical variables are independent.
-        \item \textbf{Test Statistic}: Summation of $\frac{(O-E)^2}{E}$ over categories/cells.
-        \item \textbf{Degrees of Freedom}: For goodness-of-fit with $k$ categories, $\nu = k-1$. For an $r \times c$ contingency table, $\nu = (r-1)(c-1)$.
-        \item \textbf{Interpretation}: A large $\chi^2$ or small p-value implies the data deviate substantially from what we'd expect under independence (for two variables) or from hypothesized category proportions (for one variable).
-        \item \textbf{Check}: All expected counts should be $\ge5$. If not, consider combining categories or using an alternative method (e.g., exact tests).
-    \end{enumerate}
+\begin{enumerate}
+    \item \textbf{Chi-squared Goodness-of-Fit}: Tests whether a single categorical variable with $k$ categories matches a specific distribution.
+    \item \textbf{Chi-squared Test of Association}: Tests whether two categorical variables are independent.
+    \item \textbf{Test Statistic}: Summation of $\frac{(O-E)^2}{E}$ over categories/cells.
+    \item \textbf{Degrees of Freedom}: For goodness-of-fit with $k$ categories, $\nu = k-1$. For an $r \times c$ contingency table, $\nu = (r-1)(c-1)$.
+    \item \textbf{Interpretation}: A large $\chi^2$ or small p-value implies the data deviate substantially from what we'd expect under independence (for two variables) or from hypothesized category proportions (for one variable).
+    \item \textbf{Check}: All expected counts should be $\ge5$. If not, consider combining categories or using an alternative method (e.g., exact tests).
+\end{enumerate}
 \end{takeaway-box}
+
+\begin{examplebox}{Driving License vs. Owning a Car}{}
+    \small
+    \textbf{Observed data} from 142 first-year students:
+
+    \begin{center}
+        \begin{tabular}{lccr}
+            \toprule
+                                          & Don't Own Car & Own Car & Row Tot. \\
+            \midrule
+            \textbf{Do not drive}         & 54            & 0       & 54       \\
+            \textbf{Full driving license} & 21            & 20      & 41       \\
+            \textbf{Provisional license}  & 41            & 6       & 47       \\
+            \midrule
+            \textbf{Column Tot.}          & 116           & 26      & 142      \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    \textbf{Hypothesis}:
+    \[
+        H_0:
+        \text{Drive's-license category is independent of owning a car.}
+        \quad
+        H_1:
+        \text{There is an association (dependence).}
+    \]
+
+    \textbf{Expected Counts}
+
+    For each cell (i, j):
+    \[
+        E_{i,j}
+        = \frac{R_i \, C_j}{n}.
+    \]
+    E.g., for “Full license \& Own car”:
+    \begin{itemize}
+        \item $R_{\text{Full}} = 41$, $C_{\text{OwnCar}} = 26$, $n=142$.
+        \item $E_{\text{Full, OwnCar}} = \frac{41\times 26}{142}\approx 7.51.$
+    \end{itemize}
+
+    Compute all cells similarly:
+
+    \begin{center}
+        \begin{tabular}{lccr}
+            \toprule
+                                          & Don't Own Car (116) & Own Car (26) & Row Tot. \\
+            \midrule
+            \textbf{Do not drive}         & 54.0? (calc)        & ?            & 54       \\
+            \textbf{Full driving license} & 33.49               & 7.51         & 41       \\
+            \textbf{Provisional license}  & 38.39               & 8.61         & 47       \\
+            \midrule
+            \textbf{Column Tot.}          & 116                 & 26           & 142      \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    Then:
+    \[
+        \chi^2_0
+        = \sum \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}
+        = 38.52.
+    \]
+
+    \textbf{Degrees of Freedom}
+
+    \[
+        (r - 1)(c - 1) = (3 - 1)(2 - 1) = 2.
+    \]
+
+    \textbf{Decision}
+
+    \begin{itemize}
+        \item $\chi^2_{2,0.05}\approx 5.99$.
+        \item Since $38.52 > 5.99$, we reject $H_0$.
+        \item p-value is extremely small, confirming the variables are associated.
+    \end{itemize}
+
+    \textbf{Conclusion}: The data strongly suggest that the category of driver's license is \textbf{not} independent of whether a student owns a car.
+\end{examplebox}
+
+\pagebreak
+\section{Correlation}
+\subsection{Motivation: Exploring Relationships Between Variables}
+
+In many real-world settings, you measure multiple variables on the **same set of individuals** (e.g., students). You may want to understand whether and how two quantitative variables (e.g., exercise time and study time) are related:
+\begin{itemize}
+    \item \textbf{Direction}: Do both variables increase together (positive)? Does one increase while the other decreases (negative)?
+    \item \textbf{Strength}: Are they weakly or strongly related?
+    \item \textbf{Form}: Is the relationship linear or non-linear?
+\end{itemize}
+
+Studying these relationships can clarify patterns, help in predictions (as in regression), or reveal potential causal or confounding factors.
+
+
+
+\subsection{Visualizing Quantitative Associations: Scatterplots}
+
+\subsubsection*{Scatterplots}
+
+\begin{itemize}
+    \item \textbf{Axes}: By convention, the "explanatory" (predictor) variable on the x-axis, the "response" (outcome) variable on the y-axis.
+    \item \textbf{Interpretation}: Look for:
+          \begin{enumerate}
+              \item \textbf{Direction} (positive, negative, or none).
+              \item \textbf{Form} (roughly linear, curved, etc.).
+              \item \textbf{Strength} (tight clustering vs. scatter).
+              \item \textbf{Outliers} (points that deviate markedly from the general pattern).
+          \end{enumerate}
+\end{itemize}
+
+\paragraph{Example} Plotting **ExerciseTime** vs. **StudyTime** for a group of students might reveal a fairly weak linear relationship. A scatterplot is essential before computing correlation to check for outliers or non-linear patterns.
+
+
+\subsection{Pearson's Correlation Coefficient}
+
+\subsubsection{Definition}
+
+For **two quantitative variables** $X$ and $Y$, the sample correlation coefficient $r$ (often called Pearson's $r$) measures the **strength and direction** of their *linear* relationship:
+\[
+    r \;=\; \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}
+    {\sqrt{\sum (x_i - \bar{x})^2}\,\sqrt{\sum (y_i - \bar{y})^2}}
+\]
+where
+\begin{itemize}
+    \item $x_i$ and $y_i$ are individual observations of $X$ and $Y$,
+    \item $\bar{x}$ and $\bar{y}$ are the sample means of $X$ and $Y$.
+\end{itemize}
+
+\subsubsection{Properties}
+
+\begin{enumerate}
+    \item \textbf{Range}: $-1 \le r \le +1$.
+          \begin{itemize}
+              \item $r = +1$ $\rightarrow$ perfect positive linear relationship (points lie exactly on a line sloping upward).
+              \item $r = -1$ $\rightarrow$ perfect negative linear relationship (points lie exactly on a line sloping downward).
+              \item $r = 0$ $\rightarrow$ no *linear* relationship (though a non-linear relationship might exist).
+          \end{itemize}
+    \item \textbf{Symmetry}: $\text{corr}(X, Y) = \text{corr}(Y, X)$.
+    \item \textbf{Scale invariance}: Changing units (scaling or shifting) does not affect $r$.
+    \item \textbf{Linear}: Pearson's correlation specifically measures the *linear* form of association.
+\end{enumerate}
+
+\subsubsection{Cautions}
+
+\begin{enumerate}
+    \item \textbf{Correlation != Causation}: A large $|r|$ means a strong linear association, not necessarily that $X$ causes $Y$. A lurking/confounding variable could influence both.
+    \item \textbf{Outliers} can distort correlation substantially. Always examine a scatterplot first.
+\end{enumerate}
+
+\paragraph{Example} If **ExerciseTime** vs. **StudyTime** yields $r \approx 0.04$, that suggests effectively no linear relationship. Looking at the scatterplot may confirm the points are widely scattered, with no clear upward or downward trend.
+
+
+\subsubsection{Subgroups and Conditional Correlation}
+
+When data are grouped by another factor (e.g., **Gender**: male vs. female), the overall correlation might differ from the correlation within each subgroup. It is often helpful to color code or facet the scatterplot by the grouping variable to see if separate patterns exist. Then you can compute correlation separately within each subgroup.
+
+
+\subsection{Nonparametric Correlation Coefficients}
+
+\subsubsection{Rationale}
+
+Pearson's $r$ assumes the relationship is approximately linear and often that the data do not deviate too strongly from normal distributions (especially in smaller samples). In more general scenarios---particularly with skewed or ordinal data---**Spearman's rank correlation** or **Kendall's $\tau$** can be used.
+
+\subsubsection{5.2 Spearman's $\rho$}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Apply Pearson's formula but to the **ranks** of $X$ and $Y$ rather than their raw values.
+    \item \textbf{Interpretation}: $\rho$ ranges from -1 to +1, measuring whether higher ranks of $X$ tend to accompany higher ranks of $Y$ (positive) or lower ranks of $Y$ (negative).
+    \item \textbf{Formula} (one approach):
+          \[
+              \rho = 1 \;-\; \frac{6 \sum d_i^2}{n (n^2 - 1)},
+          \]
+          where $d_i$ is the difference in ranks for observation $i$, and $n$ is the number of pairs.
+\end{enumerate}
+
+\subsubsection{Kendall's $\tau$}
+
+\begin{enumerate}
+    \item \textbf{Definition}: Based on the idea of \emph{concordant} vs. \emph{discordant} pairs.
+          \begin{itemize}
+              \item Two observations $(x_i, y_i)$ and $(x_j, y_j)$ are \emph{concordant} if $x_i > x_j$ and $y_i > y_j$ (or both $<$), \emph{discordant} otherwise.
+          \end{itemize}
+    \item \textbf{Formula}:
+          \[
+              \tau
+              = \frac{\text{\#concordant} - \text{\#discordant}}{\binom{n}{2}}.
+          \]
+    \item \textbf{Range}: Also -1 to +1. Kendall's $\tau$ often has a more direct interpretation in terms of probability of concordance.
+\end{enumerate}
+
+\paragraph{Example of Spearman's and Kendall's} Observing "Emails received" vs. "Hours exercising" might be heavily non-linear or ordinal. Calculating Spearman's $\rho \approx -0.83$ and Kendall's $\tau \approx -0.73$ suggests a strong negative association.
+
+\begin{takeaway-box}{}{}
+\begin{enumerate}
+    \item \textbf{Scatterplots} are essential for examining possible associations between two quantitative variables.
+    \item \textbf{Correlation} measures the *linear* association's direction and strength:
+          \begin{itemize}
+              \item \textbf{Pearson's $r$} for data that is approximately linear (and not heavily outlier-ridden).
+              \item \textbf{Spearman's $\rho$} or \textbf{Kendall's $\tau$} for non-linear or heavily skewed data, or when dealing with ranks.
+          \end{itemize}
+    \item \textbf{Interpretation}:
+          \begin{itemize}
+              \item Closer to +1 $\rightarrow$ strong positive linear relationship.
+              \item Closer to -1 $\rightarrow$ strong negative linear relationship.
+              \item Near 0 $\rightarrow$ no *linear* relationship (though other patterns might exist).
+          \end{itemize}
+    \item \textbf{Correlation != Causation}: A strong correlation does not imply that changes in one variable cause changes in the other; a lurking variable might explain the observed association.
+    \item \textbf{Check subgroups}: The overall correlation might be misleading if subgroups exist and differ from the combined data.
+\end{enumerate}
+\end{takeaway-box}
+
+\section{Regression}
+
 
 \end{document}
 
