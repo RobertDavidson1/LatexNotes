@@ -111,6 +111,9 @@ A \textbf{sample statistic} (e.g. the sample mean $\bar{X}$) varies from one sam
 If we have a large sample size $n$ from a population with mean $\mu$ and standard deviation $\sigma$, then our sample distribution of the sample mean $\bar{X}$ is approximately normal:
 $$\bar{X} \sim N\left(\mu, \frac{\sigma^2}{n}\right)$$
 In practice, for $n \geq 30$, $\bar{X}$ can be treated as normally distributed even if the original population is not strictly normal.
+
+\section{Confidence Intervals}
+
 \subsection{Confidence Intervals}
 \begin{conceptbox}{Why confidence intervals?}{}
     Why do we need confidence intervals, instead of a single point estimate, like the sample mean $\bar{X}$? \\
@@ -306,8 +309,7 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
     $$(0.2532, 0.3268)$$
     \textbf{Interpretation}: We are 95\% confident that the true mean time between keystrokes is between 0.2532 and 0.3268 seconds.
 \end{examplebox}
-
-
+\section{Transformations and the Bootstrap.}
 \subsection{When normality is questionable}
 Recall that for small $n$, the t-distribution-based confidence interval requires data to be approximately normally distributed in the population. But many real datasets violate this assumption. - e.g. skewed data, heavily tailed data etc. \\[2ex]
 \noindent Two broad remedies exist:
@@ -355,7 +357,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \item Computationally intensive; requires many resamples (e.g. 1000) to get a good approximation.
     \item Requires the sample itself to be a good representation of the population; if the sample is biased, the bootstrap may not work well.
 \end{itemize}
-\section{Inferential Statistics - Hypothesis Testing}
+\section{Confidence Intervals for Population Proportions and Counts}
 \subsection*{Recap: Confidence Intervals for a Population Mean}
 \vfill
 \begin{itemize}
@@ -649,7 +651,27 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
         \begin{itemize}
             \item If  p-value $< \alpha$, or $T_0$ exceeds the critical value, reject $H_0$.
         \end{itemize}
+        Since $2.72 > 1.761$ and the p-value is less than $\alpha = 0.05$, we reject $H_0$.
+        \item \textbf{Conclusion}
+        \begin{itemize}
+            \item The evidence from the sample indicates that the true mean coefficient of restitution is greater than $0.82$.
+            \item With a one sides test, the data provides strong evidence to support the claim that the true mean coefficient of restitution is greater than $0.82$.
+            \item The 95\% confidence interval is:
+            $$0.83725 \pm 1.761 \times 0.00634 \approx (0.824, 0.850)$$
+            which does not include $0.82$, reinforcing our conclusion.
+        \end{itemize}
     \end{enumerate}
 \end{examplebox}
-
+\begin{takeaway-box}{}{}
+    \begin{itemize}
+        \item \textbf{Null Hypothesis and Alternative}: Formulate them carefully based on research question/claim
+        \item \textbf{Test Statistic}: For means is typically $T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}}$.
+        \item \textbf{p-value}: Probability (assuming $H_0$) of observing a result at least as extreme as the actual sample result.
+        \item \textbf{Significance level $\alpha$}: Commonly 0.05, if p-value $< \alpha$, reject $H_0$.
+        \item \textbf{Confidence Intervals Link:} If $\mu_0$ lies outside the CI, that typically corresponds to rejecting $H_0$
+        \item \textbf{Check conditions}: Independence of observations, approximate normality, random sampling, etc.
+        \item \textbf{Practical vs Statistical Significance}: Even a small difference can be “statistically significant” with a large enough sample—but might not be practically meaningful.
+    \end{itemize}
+\end{takeaway-box}
+\section{Decision Outcomes in Hypothesis Testing}
 \end{document}
