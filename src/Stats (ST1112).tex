@@ -1,4 +1,4 @@
-\documentclass[9pt]{extarticle}
+\documentclass[10pt]{extarticle}
 \input{preamble.sty}
 \input{macros.sty}
 
@@ -570,8 +570,17 @@ Instead of a formal "rejection region" many prefer the p-value approach.\\
         \end{itemize}
     \end{enumerate}
 \end{conceptbox}
-\subsubsection{Statistical Significance}
-We say \emph{"the result is statistically significant at the $\alpha$ level"} when $p \leq \alpha$
 
+\subsubsection{Significance Levels and p-values}
+We say \emph{"the result is statistically significant at the $\alpha$ level"} when $p \leq \alpha$. Common values for $\alpha$ are: $0.05$ and $0.01$ (5\% and 1\% significance levels).\\[2ex]
+A small p-value means: \emph{"Given $H_0$, it would be unlikely to observe data this extreme."} \textbf{It does not mean}: \emph{"There is 5\% chance $H_0$ is true.:} (p-values are not the probability of the null hypothesis itself.) If the p-value is not small, that does not prove $H_0$ is correct - only that the data fails to provide strong evidence against it.
+\subsection{Connection to Confidence Intervals}
+\begin{itemize}
+    \item \textbf{CI approach}: If the hypothesized value $\mu_0$ lies outside the $(1-\alpha)\%$ confidence interval, the data suggests rejecting $H_0$.
+    \item If $\mu_0$ ies inside the CI, the data is consistent with $H_0$.
+\end{itemize}
+Hence, hypothesis testing and confidence examples are closely linked. For example, if the 95\% CI for a mean $[2.7, 3.7]$ and $\mu_0 = $, we see that $4$ is not in the interval $\Rightarrow$ strongly consider rejecting $H_0$. 
+\begin{examplebox}{Study time in NUI Galway}{}
+\end{examplebox}
 
 \end{document}
