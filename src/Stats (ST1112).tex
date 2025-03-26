@@ -1163,9 +1163,9 @@ A \textbf{permutation test} is a non-parametric hypothesis test that makes minim
     \item \textbf{Compute new difference}: For each permutation, compute the mean difference in the permuted dataset.
     \item \textbf{Build the null distribution}: After many permutations, collect the distribution of permuted mean differences; this is the empirical distribution under the null (i.e., assuming no difference).
     \item \textbf{p-value}: Calculate the fraction of permuted differences that are as or more extreme than the observed difference.
-    \[
+    $$
     \text{p-value} = \frac{\sum (\text{permuted difference} \ge |\text{observed difference}|)}{\text{number of permutations}}.
-    \]
+    $$
     For a two-sided test, count how many permuted differences are either $\ge +|\text{observed diff}|$ or $\le -|\text{observed diff}|$.
 \end{enumerate}
 If the empirical p-value is below the significance threshold ($\alpha$), we conclude there is evidence of a real difference between groups.
@@ -1187,11 +1187,10 @@ If the empirical p-value is below the significance threshold ($\alpha$), we conc
     \item Both methods are \textbf{non-parametric} (distribution-free) and rely on the sample data to represent the underlying populations well.
 \end{itemize}
 
-\bigskip
-
-\section{Key Takeaways}
-\begin{enumerate}
-    \item \textbf{Non-parametric options}: If normality is doubtful or sample sizes are small, bootstrap and permutation methods can be more robust than standard t-tests.
+\begin{takeaway-box}{}{}
+    \small
+    \begin{enumerate}
+        \item \textbf{Non-parametric options}: If normality is doubtful or sample sizes are small, bootstrap and permutation methods can be more robust than standard t-tests.
     \item \textbf{Bootstrap for Confidence Intervals}:
     \begin{itemize}
         \item Straightforward to implement.
@@ -1209,8 +1208,145 @@ If the empirical p-value is below the significance threshold ($\alpha$), we conc
         \item Typically repeated many times (e.g., 1000, 10,000) to obtain stable estimates of intervals or p-values.
     \end{itemize}
 \end{enumerate}
+\end{takeaway-box}
+    
+\section{Paired Samples}
+\subsection{Motivation for Paired Samples}
 
-In sum, \textbf{bootstrap} and \textbf{permutation} methods provide powerful alternatives for two-sample comparisons when standard assumptions (like normality or large sample sizes) may not hold. They expand the analyst’s toolbox for making statistically sound inferences under less restrictive conditions.
+When comparing two sets of measurements, \textbf{paired data} arises if each observation in one group has a unique counterpart in the other group. In other words, measurements are taken on the \textbf{same individual} (or matched individuals) under two different conditions.\\[2ex]
+\textbf{Examples}:
+\begin{enumerate}
+    \item The same person’s reading score measured using the \textbf{left eye} vs. the \textbf{right eye}.
+    \item The same patient’s blood pressure \textbf{before} and \textbf{after} treatment.
+    \item Taste ratings from a single consumer for \textbf{two different soft drinks}.
+\end{enumerate}
+By pairing, individual-to-individual variability is controlled for: each subject essentially acts as their own control.
+\subsubsection{Why Not Treat As Two Independent Samples?}
+\begin{itemize}
+    \item When the same person is measured under both conditions, the data are \emph{not} independent across groups—measurements within a person are typically more similar than those from different persons.
+    \item Analyzing them as if they were from independent samples ignores this correlation and may obscure actual effects or inflate variability.
+    \item A \textbf{paired} approach (i.e., a one-sample t-test on the differences) accounts for individual-level variability, thus improving statistical precision.
+\end{itemize}
+\pagebreak
+\subsection{Key Idea: Reduce Paired Data to One-Sample of Differences}
+
+Let:
+$$X_{i1}: \text{measurement of individual } i \text{ under condition 1 (e.g., right eye)},$$
+$$X_{i2}: \text{measurement of individual } i \text{ under condition 2 (e.g., left eye)}.$$
+Define the \textbf{difference} for individual $i$ as:
+$$D_i = X_{i1} - X_{i2}.$$
+Thus, the sample data become $(D_1, D_2, \dots, D_n$, which is one difference score per individual. The paired-sample problem is then converted to a one-sample problem of analyzing $D$:
+\begin{itemize}
+    \item \textbf{Population}: All possible differences $D = X_1 - X_2$ (over the population of individuals).
+    \item \textbf{Parameter}: $\mu_D = E(D)$. Typically, we test whether $\mu_D = 0$.
+\end{itemize}
+\begin{examplebox}{ Reading Score with Left Eye vs. Right Eye}{}
+    \textbf{Data}: For 20 students, each is measured on:
+    \begin{enumerate}
+        \item Reading score using the right eye only.
+        \item Reading score using the left eye only.
+    \end{enumerate}
+\textbf{Goal}: Determine whether the \textbf{population mean} reading score for the right eye differs from that for the left eye.
+
+
+\textbf{Forming the Differences}: For student $i$,
+\[
+D_i = (\text{score right eye}) - (\text{score left eye}).
+\]
+Collect the $D_i$'s into a single list of 20 differences. Compute:
+\begin{itemize}
+    \item $\bar{D}$: the sample mean of these differences.
+    \item $s_D$: the sample standard deviation of these differences.
+\end{itemize}
+
+If $\bar{D}$ is significantly above 0, it suggests that the right-eye score is systematically higher. If $\bar{D}$ is significantly below 0, it suggests that the left-eye score is systematically higher. If $\bar{D}$ is close to 0, there is no evidence of a real difference.
+\end{examplebox}
+\subsection{Paired-Sample t-Test (One-Sample t-Test on the Differences)}
+
+\subsection{Hypotheses}
+We typically set:
+\[
+H_0: \mu_D = 0 \quad \text{vs.} \quad H_1: \mu_D \neq 0,
+\]
+where $\mu_D$ is the true mean difference (e.g., $\mu_{\text{right}} - \mu_{\text{left}}$).
+
+\subsection{Test Statistic}
+Assuming the differences $D_i$ are a sample from a (roughly) normal distribution with unknown variance, the test statistic is given by:
+\[
+T_0 = \frac{\bar{D} - 0}{s_D / \sqrt{n}} \sim t_{n-1}.
+\]
+For large $n$, the Central Limit Theorem justifies the approximate normality of $\bar{D}$.
+
+\subsection{Decision Rule}
+\begin{itemize}
+    \item If $|T_0|$ exceeds the critical value $t_{n-1,\;\alpha/2}$ (or the p-value is less than $\alpha$), we reject $H_0$.
+    \item Otherwise, we fail to reject $H_0$.
+\end{itemize}
+
+\subsection{Example Results}
+For 20 students, suppose:
+\[
+\bar{D} = 10.73 \quad \text{and} \quad s_D = 5.87.
+\]
+Then, with $n = 20$, the test statistic is:
+\[
+T_0 = \frac{10.73}{5.87/\sqrt{20}} \approx \frac{10.73}{1.31} \approx 8.19.
+\]
+If the critical t-value for 19 degrees of freedom at $\alpha = 0.05$ is about 2.09, then since $8.19 > 2.09$, we reject $H_0$. The p-value would be extremely small, indicating a strong difference favoring one eye’s reading score over the other. In another scenario, if $\bar{D}$ were smaller (e.g., yielding a test statistic of 1.26), we would fail to reject $H_0$.
+
+\bigskip
+
+\section{Interpretation \& Conclusion}
+
+\begin{itemize}
+    \item $\bar{D}$ indicates the direction and magnitude of the difference. For instance, if $\bar{D} = +5$, it means that condition 1’s scores exceed condition 2’s by an average of 5 points.
+    \item A confidence interval for $\mu_D$ can be constructed similarly to a one-sample CI:
+    \[
+    \bar{D} \pm t_{n-1,\;\alpha/2} \frac{s_D}{\sqrt{n}}.
+    \]
+    \item It is important to evaluate whether the observed difference is not only statistically significant but also practically meaningful.
+\end{itemize}
+
+\bigskip
+
+\section{Why Pairing Usually Helps}
+\begin{itemize}
+    \item By focusing on within-subject differences (rather than between-subject differences), you remove much of the variability due to individual differences.
+    \item This often results in a lower standard error and a more powerful test, provided the differences themselves are not excessively noisy.
+    \item Pairing is valid only when each subject can be measured under both conditions or when reliable matching between subjects is feasible.
+\end{itemize}
+
+\bigskip
+
+\section{Summary of the Paired-Sample Approach}
+\begin{enumerate}
+    \item \textbf{Goal}: Compare two treatments or conditions measured on the same or matched subjects.
+    \item \textbf{Method}:
+    \begin{enumerate}
+        \item Compute the difference for each subject:
+        \[
+        D_i = X_{i1} - X_{i2}.
+        \]
+        \item Analyze the differences $D_i$ as a single sample.
+        \item Use a one-sample t-test on these differences to assess whether $\mu_D$ differs from 0.
+    \end{enumerate}
+    \item \textbf{Interpretation}:
+    \begin{itemize}
+        \item A significantly positive $\bar{D}$ indicates that condition 1 is greater than condition 2 on average.
+        \item A significantly negative $\bar{D}$ indicates that condition 1 is less than condition 2 on average.
+        \item A non-significant $\bar{D}$ suggests no evidence of a mean difference between the conditions.
+    \end{itemize}
+\end{enumerate}
+
+\bigskip
+
+\textbf{Final Takeaways:}
+\begin{itemize}
+    \item Use a paired approach when the same individual is measured under both conditions or when subjects are closely matched.
+    \item Comparing within-subject differences typically reduces variability, thereby enhancing the test’s sensitivity.
+    \item The paired-sample t-test is mathematically equivalent to performing a one-sample t-test on the difference scores.
+\end{itemize}
+
 
 \end{document}
 
