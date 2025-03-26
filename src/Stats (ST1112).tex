@@ -471,35 +471,17 @@ If we have $n$ observations of some Poisson process, the overall mean $\bar{\lam
 
 \pagebreak
 \section{Hypothesis Testing}
-Hypothesis testing is a systematic framework to evaluate claims about a population parameter (e.g. a population mean $\mu$).
-\begin{examplebox}{Introdcutory Example}{}
-    A claim has been made that students, on average, have been in 4 different relationships. \\
-    The corresponding 95\% CI is $[2.7, 3.7]$ which did not include 4, suggesting the claim was unlikely to be true.
-\end{examplebox}
-Hypothesis testing relies on evidence (sample data) to decide whether a claim (the "null hypothesis") is plausible. Confidence intervals and hypothesis tests are the main building blocks of statistical inference.
-\subsection{Hypothesis Testing Basics}
-\textbf{Purpose}: \\
-Asses whether a parameter (often the mean, $\mu$) is equal to a specific value or if it differs in a particular direction  \\[2ex]
-\textbf{Null and Alternative Hypotheses}:
-\begin{itemize}
-    \item \textbf{Null hypothesis} ($H_0$): Usually states "no difference" or "no effect" or a specific claimed value (e.g. $\mu = 6.5$) 
-    \item \textbf{Alternative Hypothesis} ($H_1$ or $H_a$) Represents what we suspect or want to test for, such as $\mu \neq 6.5$, $\mu < 6.5$, or $\mu > 6.5$.
-\end{itemize}
-\textbf{p-Value}: 
-\begin{itemize}
-    \item A core concept in hypothesis testing that measures how likely the observed data (or something more extreme)  would be, assuming $H_0$ is true. 
-    \item A smaller p-value  indicates stronger evidence against the null hypothesis
-    \item Conventionally, if $p \leq 0.05\%$ we say the result is statistically significant and we reject the null hypothesis $H_0$. 
-\end{itemize}
-\begin{conceptbox}{Key Notes}{}
-    \begin{itemize}
-        \item The test statistic is computed under the assumption $H_0$ is true
-        \item We compare the test statistic to its reference distribution
-        \item We decide whether $H_0$ should be rejected in favour of $H_1$
-        \item A low p-value ($<0.05$) indicates rejection of $H_0$    
-        \item We never say "we accept $H_0$" - we only say "we fail to reject $H_0$" when the dtat does not provide strong evidence against it.      
-    \end{itemize}
-\end{conceptbox}
+A \textbf{hypothesis test} is a statistical framework used to evaluate claims (hypotheses) about population parameters (e.g. means, proportions). \\[2ex]
+\textbf{Example scenario}: A claim is made that college students have been in, on average, at least 4 exclusive relationships. Observing a random sample mean of 3.2 (with 95\% CI [2.7, 3.7]) suggests that 4 is not within the plausible range, thus casting doubt on the claim.
+\subsection{The purposes of Hypothesis Testing}
+\begin{definitionbox}{Null hypotheses ($H_0$)}{}
+    A baseline or status-quo assumption about the population parameter (often an equality claim such as $\mu = 4$")
+\end{definitionbox}
+\begin{definitionbox}{Alternative (or Research) Hypothesis ($H_1$)}{}
+    A competing claim that contradicts $H_0$. It can be \textbf{one sided} (e.g. $\mu > 4$ or $\mu < 4$) or \textbf{two sided} (e.g. $\mu \neq 4$).
+\end{definitionbox}
+\noindent The test uses sample data to decided whether the evidence strongly contradict $H_0$. If so, we reject $H_0$ in favor of $H_1$. If not, we do not reject $H_0$ - but we conclude that  the data does not provide enough evidence to reject $H_0$
+
 
 \subsection{Stages in Hypothesis Testing}
 \begin{conceptbox}{Stages in Hypothesis Testing}{}
