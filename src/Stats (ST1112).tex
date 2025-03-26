@@ -765,7 +765,28 @@ When conducting a hypothesis test, there are two possible decisions:
 \begin{definitionbox}{The Power Function}{}
     The power of a test depends on the actual true value of $\mu$.
     \begin{itemize}
-        \item \textbf{For one sided-test} $H: \mu = mu_0 \; \text{vs} \; H_1 : \mu > mu_0$:
+        \item \textbf{For one sided-test} $H_0: \mu = mu_0 \; \text{vs} \; H_1 : \mu > mu_0$ if our rejection region is $\bar{X} > a$ then the power at a given true $\mu$ is:
+        $$\text{Power}(\mu) = P(\text{reject}\; H_0 | \mu) =  P(\bar{X} > a | \bar{X} \sim N(\mu, \sigma^2/n)) = 1 - \phi\left(\frac{a - \mu}{\sigma / \sqrt{n}}\right)$$
+        \item \textbf{For a two-sided test} $H_0: \mu = \mu_0 \; \text{vs} \; H_1 : \mu \neq \mu_0$ if our rejection region is $\bar{X} < a$ or $\bar{X} > b$ then the power at a given true $\mu$ is:
+        $$\text{Power}(\mu) = P(\bar{X} < a | \mu) + P(\bar{X} > b | \mu) = \phi\left(\frac{a - \mu}{\sigma / \sqrt{n}}\right) + 1 - \phi\left(\frac{b - \mu}{\sigma / \sqrt{n}}\right)$$
     \end{itemize}
+    By evaluating this function across different values of $\mu$, we get a power curve showing how likely the test is to detect a shift from $\mu_0$ to $\mu$.
 \end{definitionbox}
+
+\begin{conceptbox}{Balancing $\boldsymbol{\alpha}$ and $\boldsymbol{\beta}$}{}
+    \begin{itemize}
+        \item When designing a test, we typically fix $\alpha$ (Type I error rate) e.g.5\%
+        \item This choice influences the probability of Type II error $\beta$ (and thus the power of the test).
+    \end{itemize}
+    \textbf{Trade-off}: Lowering $\alpha$ typically raises $\beta$ for a given sample size, because making the threshold for a rejection more stringent also makes it harder to detect real deviations.
+\end{conceptbox}
+\begin{takeaway-box}{}{}
+    \begin{itemize}
+        \item \textbf{Type I Error ($\alpha$):} Rejecting $H_0$ when $H_0$ is true; this is set as the significance level.
+        \item \textbf{Type II Error ($\beta$):} Failing to reject $H_0$ when it is false.
+        \item \textbf{Power ($1-\beta$):} The probability of rejecting $H_0$ given that the true parameter is not what $H_0$ claims. High power (typically $>0.8$) is often desired.
+        \item \textbf{Relation:} $\text{Power} = 1 - \beta$. A large $\beta$ implies that the test frequently misses a real effect.
+        \item \textbf{Implementation:} Once $\alpha$ and the sample size $n$ are chosen, the power depends on the true (unknown) parameter value. The further the true mean is from the hypothesized value, the higher the power.
+    \end{itemize}    
+\end{takeaway-box}
 \end{document}
