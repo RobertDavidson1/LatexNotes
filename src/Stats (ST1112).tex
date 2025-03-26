@@ -975,43 +975,30 @@ If both population variances $\sigma_1^2$ and $\sigma_2^2$ are known and each sa
 $$
 \bar{X}_2 - \bar{X}_1 \sim N\!\left(\mu_2 - \mu_1, \; \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\right).
 $$
-\textbf{Standard Error (SE)} for $\bar{X}_2 - \bar{X}_1$:
-$$
-\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.
-$$
+\begin{align*}
+   \textbf{Standard Error (SE) for} \; \bar{X}_2 - \bar{X}_1 \quad\quad & \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \\
+   \textbf{Confidence Interval (CI)} \quad\quad & (\bar{X}_2 - \bar{X}_1) \pm z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}} \\
+   \textbf{Hypothesis Test} \; \text{(we commonly test)} \quad\quad & H_0 : \mu_2 - \mu_1 = 0 \quad \text{vs.} \quad H_1 : \mu_2 - \mu_1 \neq 0. \\
+   \textbf{z-test statistic} \quad\quad & Z_0 = \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
+\end{align*}
 
-\textbf{Confidence Interval:}
-\[
-(\bar{X}_2 - \bar{X}_1) \pm z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.
-\]
 
-\textbf{Hypothesis Test:} Commonly test 
-\[
-H_0 : \mu_2 - \mu_1 = 0 \quad \text{vs.} \quad H_1 : \mu_2 - \mu_1 \neq 0.
-\]
-\textbf{z-test statistic}:
-\[
-Z_0 = \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
-\]
+
 
 \subsubsection{Case 2: Large Samples, Unknown Variances}
 If both samples are large but $\sigma_1^2$ and $\sigma_2^2$ are unknown, we estimate them with $s_1^2$ and $s_2^2$. Then:
-\[
-\bar{X}_2 - \bar{X}_1 \approx N\!\left(\mu_2 - \mu_1, \; \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right),
-\]
-with \textbf{Standard Error}:
-\[
-\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.
-\]
-A \textbf{z-interval} or \textbf{z-test} is used similarly, substituting $s_i^2$ for $\sigma_i^2$.
+$$
+\bar{X}_2 - \bar{X}_1 \approx N\!\left(\mu_2 - \mu_1, \; \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right), \quad \text{with }\textbf{Standard Error} \quad \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.
+$$
+And a \textbf{z-interval} or \textbf{z-test} is used similarly, substituting $s_i^2$ for $\sigma_i^2$.
 
 \subsubsection{Case 3: Small Samples, Unknown Variances, Assumed Equal}
 When at least one sample is small ($n < 30$) and we assume $\sigma_1^2 = \sigma_2^2 = \sigma^2$:
 \begin{enumerate}
     \item Compute the \textbf{pooled variance}:
-    \[
+    $$
     s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}.
-    \]
+    $$
     \item The \textbf{Standard Error} is:
     \[
     s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}.
