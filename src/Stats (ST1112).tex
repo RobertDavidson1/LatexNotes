@@ -595,7 +595,7 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
             $$SE = \frac{s}{\sqrt{n}} \approx 0.65$$
             $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{6.77 - 6.5}{0.65} \approx 0.41$$
             \item \textbf{Identify the sampling distribution}\\[1.5ex]
-            We can use a normal approximation since $n \geq 30$, or more precisely, a t-distribution with $df = n - 1 = 101$ degrees of freedom.\\[-1.5ex]
+            Since $n > 30$ we can use a a t-distribution with $df = n - 1 = 101$ degrees of freedom.\\[-1.5ex]
             \item \textbf{Decide whether test statistic is rare or common}\\[1.5ex]
             \textbf{Rejection Region Approach}: \\
             For a two-tailed test at the 5\% significant level, the critical values are approximately $\pm 1.984$. Since:
@@ -621,7 +621,35 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
                 which includes $6.5$, reinforcing our conclusion.
             \end{itemize}
         \end{enumerate}
-
+\end{examplebox}
+\begin{examplebox}{Golf Club Design}{}
+    \textbf{Problem:} 
+    \begin{itemize}
+        \item \textbf{Claim}: The true mean coefficient of restitution is $\mu > 0.82$
+        \item \textbf{Sample}: $n = 15$ clubs, with sample mean $\bar{X} = 0.83725$ and sample standard deviation $s = 0.02456$.
+    \end{itemize}
+    \textbf{Solution:}\\
+    We're conducting a one-sided test with $H_0: \mu = 0.82$ and $H_1: \mu > 0.82$.
+    \begin{enumerate}
+        \item \textbf{Hypotheses}
+        $$H_0: \mu = 0.82 \quad \text{vs} \quad H_1: \mu > 0.82$$
+        \item \textbf{Compute the test statistic}
+        $$SE = \frac{s}{\sqrt{n}} = \frac{0.02456}{\sqrt{15}} \approx 0.00634$$
+        $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{0.83725 - 0.82}{0.00634} \approx 2.72$$
+        \item \textbf{Identify the sampling distribution}\\[1.5ex]
+        Since $n < 30$ and the population standard deviation is unknown, we use a t-distribution with $df = n - 1 = 14$ degrees of freedom.\\[-1.5ex]
+        \item \textbf{Decide whether test statistic is rare or common}\\[1.5ex]
+        \textbf{Rejection Region Approach}: \\
+        For a one-sides test at the $\alpha = 0.05$ significance level, the critical value is approximately $t_{0.05, 14} \approx 1.761$. Since:
+        $$T_0 \approx 2.72 > 1.761$$
+        The test statistic is in the rejection region. \\[1.5ex]
+        \textbf{p-value Approach}:\\
+        The p-value associated with $T_0 \approx 2.72 > 0.05$ (from the tables)
+        \item \textbf{Make a Decision}
+        \begin{itemize}
+            \item If  p-value $< \alpha$, or $T_0$ exceeds the critical value, reject $H_0$.
+        \end{itemize}
+    \end{enumerate}
 \end{examplebox}
 
 \end{document}
