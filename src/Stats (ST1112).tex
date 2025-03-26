@@ -496,6 +496,7 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
             \item $H0$ The null hypothesis (e.g., $\mu = \mu_0$).
             \item $H_1$ The alternative hypothesis (e.g., $\mu \neq \mu_0$, $\mu < \mu_0$ or $\mu > \mu_0$).
         \end{itemize}
+<<<<<<< HEAD
     \item  Collect a random sample and compute the test statistic:
         \begin{itemize}
             \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
@@ -504,22 +505,45 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
     \begin{itemize}
         \item For large $n$, use a z-approximation.
         \item For smaller nn (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
+=======
+ 
+    \item  Collect a random sample and compute the test statistic:
+    \begin{itemize}
+        \item The test statistic measures how far the observed sample statistic is from the hypothesized parameter, in standardized units.
+    \end{itemize}
+    \item Identify the sampling distribution of the test statistic (usually via the Central Limit Theorem or a t-distribution):
+    \begin{itemize}
+        \item For large $n$, use a z-approximation.
+        \item For smaller $n$ (and unknown $\sigma$), use a t-distribution with $n-1$ degrees of freedom, assuming approximate normality of the population.
+>>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
     \end{itemize}
     \item Decide whether the observed test statistic would be rare or common if $H_0$ were true:
     \begin{itemize}
         \item p-value approach: Probability of obtaining a result at least as extreme as the actual sample result, given $H_0$ is true.
         \item Rejection region approach: Compare the test statistic to a critical value derived from the chosen distribution and significance level $\alpha$
     \end{itemize}
+<<<<<<< HEAD
     \item  Make a decision:
+=======
+    \item Make a decision:
+>>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
     \begin{itemize}
         \item If p-value $< \alpha$, we reject $H_0$
         \item If p-value $ > \alpha$, we do not reject $H_0$ (We do not conclude $H_0$ is “proven,” just that the sample does not contradict $H_0$ strongly.)
     \end{itemize}
+<<<<<<< HEAD
     \item Draw a conclusion:
     \begin{itemize}
         \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
     \end{itemize}
     \end{enumerate}
+=======
+    \item Draw a conclusion
+    \begin{itemize}
+        \item Summarize the practical meaning and state whether there is “sufficient evidence” that $H_1$ holds
+    \end{itemize}
+\end{enumerate}
+>>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
 \end{conceptbox}
 
 
@@ -773,6 +797,7 @@ When conducting a hypothesis test, there are two possible decisions:
     By evaluating this function across different values of $\mu$, we get a power curve showing how likely the test is to detect a shift from $\mu_0$ to $\mu$.
 \end{definitionbox}
 
+<<<<<<< HEAD
 \begin{conceptbox}{Balancing $\boldsymbol{\alpha}$ and $\boldsymbol{\beta}$}{}
     \begin{itemize}
         \item When designing a test, we typically fix $\alpha$ (Type I error rate) e.g.5\%
@@ -1089,5 +1114,34 @@ Under $H_0$, $F_0 \sim F_{n_1-1,\;n_2-1}$. If $F_0$ is too large or too small (i
 \end{takeaway-box}
 
 
+=======
+
+\begin{conceptbox}{Statistical Significance}{}
+    We say "the result is statistically significant at the $\alpha$ level" when the p-value $\leq alpha$ \\
+    Common $\alpha$ levels:
+    \begin{itemize}
+        \item 0.05 level 
+        \item 0.01 level
+    \end{itemize}
+\end{conceptbox}
+
+\begin{conceptbox}{}{}
+    \begin{itemize}
+        \item A \textbf{small p-value} means: "Given $H_0$, it would be unlikely to observe data this extreme" 
+        \item \textbf{It does not mean}: "There is a 5\% chanc that $H_0$ is true". (p-values are not the probability of the null hypothesis itself)
+        \item If the p-value is not small, that does not prove $H_0$ is correct - only that the data failed to provide strong evidence against it. 
+    \end{itemize}
+\end{conceptbox}
+
+\begin{conceptbox}{Connection to Confidence Intervals}{}
+    \textbf{Confidence interval approach}:
+    \begin{itemize}
+        \item  If the hypothesized paramater value $(u_0)$, lies \textbf{outside} the $(1-\alpha)\%$ CI then the data 
+        suggests rejecting $H_0$
+        \item If $\mu_0$ is \textbf{inside} the data is consistent with $H_0$. 
+    \end{itemize}
+    Hence, hypothesis testing and confidence intervals are closely linked.
+\end{conceptbox}
+>>>>>>> dce634ed17e3f890f224af32b5cbd6599bf6e540
 
 \end{document}
