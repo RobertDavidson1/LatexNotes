@@ -789,4 +789,23 @@ When conducting a hypothesis test, there are two possible decisions:
         \item \textbf{Implementation:} Once $\alpha$ and the sample size $n$ are chosen, the power depends on the true (unknown) parameter value. The further the true mean is from the hypothesized value, the higher the power.
     \end{itemize}    
 \end{takeaway-box}
+\section{Hypothesis Test for a Proportion}
+\subsection{Possible Forms of the Hypotheses}
+\begin{definitionbox}{Hypotheses for Proportions}{}
+    \begin{enumerate}
+        \item \textbf{Left-tailed (one-sided)} \\
+        $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi < \pi_0$$
+        \item \textbf{Right-tailed (one-sided)} \\
+        $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi > \pi_0$$
+        \item \textbf{Two-sided} \\
+        $$H_0 = \pi = \pi_0 \quad \text{vs} \quad H_1: \pi \neq \pi_0$$
+    \end{enumerate}
+    Where $\pi_0$ is the specific hypothesized proportion. The decisions depends on the sample data from $n$ trials and $x$ successes.
+\end{definitionbox}
+\subsection{Test Statistic for Proportions}
+\begin{definitionbox}{Test Statistic for Proportions}{}
+    Provided $n\hat{\pi} \geq 5$ and $n(1-\hat{\pi}) \geq 5$, we can use a normal approximation to the distribution of the sample proportion. The \textbf{z-test statistic} is
+    $$T_0 = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}$$
+
+\end{definitionbox}
 \end{document}
