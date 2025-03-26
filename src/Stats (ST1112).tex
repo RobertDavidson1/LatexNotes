@@ -16,24 +16,22 @@
     \large
     \textbf{Statistics (ST1112) notes}\\[6pt]
     \small
-    Date: \today\\[12pt]
+    Date: \today\\[48pt]
     \small
 \end{center}
 \begin{abstract}
     \begin{adjustwidth}{1cm}{1cm}
-        These notes provide a concise overview of foundational topics in inferential statistics, focusing on how to use sample data to estimate unknown population parameters and assess the strength of evidence against hypothesized values. Beginning with key distinctions between probability (forward calculations from models) and statistics (inference from observed data), the document introduces core definitions—population vs. sample, sampling distributions, and the Central Limit Theorem—to justify the use of normal approximations in many practical settings.
-
-        Subsequent sections cover confidence intervals, highlighting both $z$-based and $t$-based methods for estimating a population mean (depending on sample size and variance knowledge), and analogous approaches for proportions and counts (including Poisson-based reasoning). The role of transformations and bootstrap procedures is emphasized when normal assumptions are questionable or for robust nonparametric estimation.
-
-        Readers are then guided through hypothesis testing, from one-sample and two-sample tests for means and proportions to the concepts of significance level ($\alpha$), Type I/II errors, and test power. The discussion extends to chi-squared tests for categorical data, showing how to test goodness-of-fit to hypothesized distributions or independence in contingency tables.
-
+        These notes provide a concise overview of foundational topics in inferential statistics, focusing on how to use sample data to estimate unknown population parameters and assess the strength of evidence against hypothesized values. Beginning with key distinctions between probability (forward calculations from models) and statistics (inference from observed data), the document introduces core definitions—population vs. sample, sampling distributions, and the Central Limit Theorem—to justify the use of normal approximations in many practical settings. \\[2ex]
+        Subsequent sections cover confidence intervals, highlighting both $z$-based and $t$-based methods for estimating a population mean (depending on sample size and variance knowledge), and analogous approaches for proportions and counts (including Poisson-based reasoning). The role of transformations and bootstrap procedures is emphasized when normal assumptions are questionable or for robust nonparametric estimation. \\[2ex]
+        Readers are then guided through hypothesis testing, from one-sample and two-sample tests for means and proportions to the concepts of significance level ($\alpha$), Type I/II errors, and test power. The discussion extends to chi-squared tests for categorical data, showing how to test goodness-of-fit to hypothesized distributions or independence in contingency tables. \\[2ex]
         Finally, the notes explore methods for quantifying linear relationships between variables, including correlation (Pearson's $r$, Spearman's $\rho$, Kendall's $\tau$) and simple linear regression. Key assumptions, diagnostic checks, and interpretation of regression coefficients, $R^2$, and residual analyses are explained. Throughout, the document underscores the difference between statistical and practical significance, cautioning against over-interpretation of p-values and correlation as evidence of causation.
     \end{adjustwidth}
 \end{abstract}
 
 \pagebreak
 
-\tableofcontents
+\scriptsize\tableofcontents\normalsize
+
 \pagebreak
 
 \section{Inferential Statistics - Interval Estimation}
@@ -220,7 +218,7 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     \item This results in a wider confidence interval, which means we are more certain that the true population parameter lies within that interval.
     \item Conversely a \textbf{lower confidence level} results in a smaller critical value, leading to a narrower confidence interval.
 \end{itemize}
-\pagebreak
+
 \subsection{t-Distribution}
 \begin{conceptbox}{Why the $t-$distribution}{}
     When the sample size is small ($n < 30$) and the population standard deviation $\sigma$ is unknown, simply substituting the sample standard deviation $s$ no longer suffices because the standard error is itself estimated with more uncertainty.\\[2ex]
@@ -259,28 +257,28 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
         \end{tikzpicture}
     \end{center}
 \end{conceptbox}
-\vfill
+
 \begin{conceptbox}{Degrees of Freedom (df)}{}
     A t-distribution is characterized by its degrees of freedom, where
     $$df = n - 1 \quad \text{for a sample mean}$$
     As the sample size $n$ increases, the t-distribution approaches the standard normal distribution.\\
     For example, for $n = 30$, $df = 29$ and the t-distribution is very close to the normal distribution.\\
 \end{conceptbox}
-\vfill
+
 \begin{definitionbox}{Confidece Intervals (t-based)}{}
     $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
     where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df = n - 1$ degrees of freedom - or from a function like \texttt{qt()} in R.\\
 
     \textbf{Assumption}: The population itself should be approximately normally distributed when using t-based methods for small sample sizes.
 \end{definitionbox}
-\vfill
+
 \begin{examplebox}{Finding t-critical values}{}
     Find the critical value for a 95\% confidence interval with $n = 12$ (so $df = 11$).\\
     We look for the row associated with $df = 11$ and the column associated with $\alpha/2 = 0.025$.\\
     The critical value is:
     $$t_{0.025, 11} \approx 2.201$$
 \end{examplebox}
-\pagebreak
+
 \subsection{CI with large $n$, and $sigma$ unknown}
 The $z$-based critical interval is given as:
 $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
@@ -370,7 +368,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 \end{itemize}
 \section{Confidence Intervals for Population Proportions and Counts}
 \subsection*{Recap: Confidence Intervals for a Population Mean}
-\vfill
+
 \begin{itemize}
     \item A \textbf{Confidence interval (CI)} provides a range of plausible values for a population parameter
     \item For a large sample ($n \geq 30$) or a known $\sigma$, we often use a z-based interval:
@@ -381,15 +379,15 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
           where $df = n - 1$. Provided the population is approximately normal.
     \item If normality is questionable, we may use transformations or bootstrapping.
 \end{itemize}
-\vfill
+
 \subsection{Proportions}
-\vfill
+
 \begin{definitionbox}{Proportion}{}
     The \textbf{proportion} is a way to express the frequency of a specific outcome (labeled as “success”) relative to the total number of trials or observations.
     $$p = \frac{X}{n}$$
     where $p$ is the proportion, $X$ is the number of successes, and $n$ is the total number of trials.
 \end{definitionbox}
-\vfill
+
 \begin{conceptbox}{Why proportions?}{}
     Many outcomes are binary or categorical with two possible outcomes (e.g. success/failure, yes/no). Examples:
     \begin{itemize}
@@ -398,18 +396,18 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
     \end{itemize}
     In such cases, we often estimate a population proportion $\pi$ of successes rather than a mean $\mu$.
 \end{conceptbox}
-\vfill
+
 \subsubsection{Binomial Distribution}
 \begin{conceptbox}{Bernoulli Trials}{}
     When we repeat an experiment or observation, each trial is assumed to be independent and has two possible outcomes. If each trial has a probability of $\pi$ success, these trials are called \textbf{Bernoulli trials}.
 \end{conceptbox}
-\vfill
+
 \noindent If we perform $n$ independent Bernoulli trials, the number of successes $X$ follows a \textbf{binomial distribution} with $n$, the number of trials and $\pi$,the probability of success on each trial.
 $$X \sim B(n, \pi)$$
 This tells us how likely we are to observe a certain number of successes in $n$ trials.\\[2ex]
 \textbf{Link to Proportion}: \\
 The sample proportion $p$ is just the normalized version of $X$, calculated by $p = \frac{X}{n}$. It provides a direct, interpretable measure of success rate in the sample.
-\pagebreak
+
 \subsubsection{Normal Approximation of the Sample Proportion}
 \textbf{When is the normal approximation valid?}\\
 The approximation of the distribution of $p$ by a normal distribution is valid when both of the following conditions are met:
@@ -452,7 +450,7 @@ where:
 \begin{conceptbox}{Proportion CI Test IN R}{}
     The function \texttt{prop.test(x, n, conf.level, correct=False)}  gives a confidence interval for a proportion.
 \end{conceptbox}
-\pagebreak
+
 \subsubsection{Maximizing the Standard Error}
 The standard error for a proportion $p$ is given by:
 $$SE = \sqrt{\frac{p(1 - p)}{n}}$$
@@ -482,7 +480,7 @@ If we have $n$ observations of some Poisson process, the overall mean $\bar{\lam
 
 \end{examplebox}
 
-\pagebreak
+
 \section{Hypothesis Tests}
 A \textbf{hypothesis test} is a statistical framework used to evaluate claims (hypotheses) about population parameters (e.g. means, proportions). \\[2ex]
 \textbf{Example scenario}: A claim is made that college students have been in, on average, at least 4 exclusive relationships. Observing a random sample mean of 3.2 (with 95\% CI [2.7, 3.7]) suggests that 4 is not within the plausible range, thus casting doubt on the claim.
@@ -910,7 +908,7 @@ When conducting a hypothesis test, there are two possible decisions:
     \item \textbf{Connection to Confidence Intervals}: If $\pi_0$ lies outside the confidence interval for $\pi$, this typically corresponds to rejecting $H_0$. Conversely, if $\pi_0$ lies inside, we fail to reject $H_0$.
 \end{enumerate}
 \end{takeaway-box}
-\pagebreak
+
 \section{Two Sample Comparisons}
 \begin{conceptbox}{Recap: One-Sample Inference}{}
     \begin{itemize}
@@ -1233,7 +1231,7 @@ By pairing, individual-to-individual variability is controlled for: each subject
     \item Analyzing them as if they were from independent samples ignores this correlation and may obscure actual effects or inflate variability.
     \item A \textbf{paired} approach (i.e., a one-sample t-test on the differences) accounts for individual-level variability, thus improving statistical precision.
 \end{itemize}
-\pagebreak
+
 \subsection{Key Idea: Reduce Paired Data to One-Sample of Differences}
 
 Let:
@@ -1501,7 +1499,7 @@ So far, we've considered two-sample comparisons of \textbf{binary} proportions. 
     \item \textbf{Test of association} (or independence) between two categorical variables: checking whether the distribution across categories of one variable is related to the categories of another variable.
 \end{enumerate}
 
-\pagebreak
+
 
 \subsection{Multinomial (Multi-Category) Goodness-of-Fit Test}
 
@@ -1768,7 +1766,7 @@ $$
     \textbf{Conclusion}: The data strongly suggest that the category of driver's license is \textbf{not} independent of whether a student owns a car.
 \end{examplebox}
 
-\pagebreak
+
 \section{Correlation}
 \subsection{Motivation: Exploring Relationships Between Variables}
 
