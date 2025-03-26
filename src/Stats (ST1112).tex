@@ -714,7 +714,8 @@ When conducting a hypothesis test, there are two possible decisions:
         $$Z_0 = \frac{\bar{X} - 750}{50/\sqrt{100}}$$
         \item The rejection region for a two-sided test at $\alpha = 0.05$ is:
         $$|Z_0| > 1.96 \Longleftrightarrow \bar{X} < 750 - 196\times 5 = 740.2 \; \text{or} \; \bar{X} > 750 + 1.96 \times 5 = 759.8$$
-    \end{itemize} 
+    \end{itemize}
+    \noindent\rule{\textwidth}{1pt} \\ [2ex]
     \textbf{Type I Error $\boldsymbol{\alpha}$} \\
     By design:
     $$P(\text{Type I Error}) = P(\text{reject} H_0 | H_0 \text{true}) = \alpha = 0.05$$
@@ -723,5 +724,30 @@ When conducting a hypothesis test, there are two possible decisions:
     $$\bar{X} \sim N\left(740, \frac{50^2}{100}\right) = N(740, 5^2)$$
     The decision rule says "do not reject $H_0$" if $740.2 < \bar{X} < 759.8$. The probability of making a Type II error is:
     $$\beta = P(\text{Type II Error} | \mu = 740) = P(740.2 < \bar{X} < 759.8 | X \sim N(750, 5^2))$$
+    Converting to standard normal:
+    $$\beta = P\left(\frac{740.2 - 740}{5} \leq Z \leq \frac{759.8 - 740}{5}\right) = P(0.04 < Z < 3.96) = 0.484$$
+    \textbf{Power of the test $\boldsymbol{1-\beta}$}
+    The power is the probability of correctly rejecting $H_0$ when in fact $\mu = 740$ So, 
+    $$\text{Power} = 1 - \beta = 1 - 0.484 = 0.516$$
+    \noindent\rule{\textwidth}{1pt} \\ [2ex]
+    \textbf{Interpretation}\\
+    If the true mean is $740$ there is $51.6\%$ chance this test (with $\alpha = 0.05$ and $n=100$) will detect that the process has changed from the target of $750$.
+\end{examplebox}
+\begin{examplebox}{Coffee Machine (One-sided)}{}
+    \begin{itemize}
+        \item $\sigma = 25$ml and $n = 45$
+        \item Test:
+        $$H_0 : \mu = 200 \; \text{vs} \; H_1 : mu > 200$$
+        \item Significance level $\alpha = 0.05$
+        \item The test statistic is z-based because $n$ is large and $\sigma$ is known.
+        $$Z_0 = \frac{\bar{X} - 200}{25/\sqrt{45}}$$
+        \item The rejection region for a one-sided test at $\alpha = 0.05$ is:
+        $$Z_0 > Z_0.05 \approx 1.645$$
+        \noindent\rule{\textwidth}{1pt} \\ [2ex]
+        \textbf{Type I Error $\boldsymbol{\alpha}$} \\
+        By definition, for a test with significance level $\alpha = 0.05$:
+        $$P(\text{Type I error}) = \alpha = 0.05$$
+        \textbf{Type II Error $\boldsymbol{\beta}$} \\
+    \end{itemize}
 \end{examplebox}
 \end{document}
