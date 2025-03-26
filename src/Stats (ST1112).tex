@@ -602,8 +602,24 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
             $$|T_0| \approx 0.41 \not>  1.984$$ 
             The test statistic is not in the rejection region. \\[1.5ex]
             \textbf{p-value Approach}:\\
-            
-
+            Since $T_0 \approx 0.41$, we need the probability of obtaining a value as extreme as $0.41$ or more, given $H_0$ is true. That is: $P(T > 0.41)$.
+            \begin{itemize}
+                \item Find the one-tailed probability. Look up the value for $Z = 0.41$ This value is approximately $P(z > 0.41) = 1- 0.6591 \approx 0.3409$.
+                \item Compute two-tailed p-value: $p = 2 \times P(z > 0.41) \approx 2 \times 0.3409 \approx 0.6818$.
+            \end{itemize}
+            The $p$ corresponding to $T_0 \approx 0.41$ is approximately $0.6818$, which is much larger than the significance level $\alpha = 0.05$. 
+            \item \textbf{Make a Decision}
+            \begin{itemize}
+                \item If p-value $< \alpha$, reject $H_0$.
+                \item Since p-value $\approx(0.68)$ is greater than $\alpha = 0.05$ and $T_0$ does not lie in the rejection region, we do not reject $H_0$.
+            \end{itemize}
+            \item \textbf{Conclusion}
+            \begin{itemize}
+                \item The data does not provide sufficient evidence to reject the claim the the true mean study time is 6.5 hours per week.
+                \item The sample results are consistent with a true mean study time of $6.5$ hours per week. Additionally, the 95\% confidence interval is:
+                $$6.77 \pm 1.98 \times 0.65 \approx (5.5, 8.0)$$
+                which includes $6.5$, reinforcing our conclusion.
+            \end{itemize}
         \end{enumerate}
 
 \end{examplebox}
