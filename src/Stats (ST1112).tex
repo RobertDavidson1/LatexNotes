@@ -472,7 +472,7 @@ If we have $n$ observations of some Poisson process, the overall mean $\bar{\lam
 \end{examplebox}
 
 \pagebreak
-\section{Hypothesis Testing}
+\section{Hypothesis Tests}
 A \textbf{hypothesis test} is a statistical framework used to evaluate claims (hypotheses) about population parameters (e.g. means, proportions). \\[2ex]
 \textbf{Example scenario}: A claim is made that college students have been in, on average, at least 4 exclusive relationships. Observing a random sample mean of 3.2 (with 95\% CI [2.7, 3.7]) suggests that 4 is not within the plausible range, thus casting doubt on the claim.
 \subsection{The purposes of Hypothesis Testing}
@@ -674,4 +674,39 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
     \end{itemize}
 \end{takeaway-box}
 \section{Decision Outcomes in Hypothesis Testing}
+When conducting a hypothesis test, there are two possible decisions:
+\begin{itemize}
+    \item \textbf{Reject $\boldsymbol{H_0}$}: conclude evidence contradicts $H_0$.
+    \item \textbf{Fail to reject $\boldsymbol{H_0}$}: The sample does not provide sufficient evidence to reject $H_0$.
+\end{itemize}
+\noindent Because the true status of $H_0$ (true or false) is unknown in practice, then the table below shows the four outcomes.
+\begin{center}
+    \begin{tabularx}{\textwidth}{@{} X X X @{}}
+        \toprule
+        \textbf{Decision} & \textbf{$\boldsymbol{H_0}$ true} & \textbf{$\boldsymbol{H_0}$ false} \\
+        \midrule
+        Reject $H_0$ & \textbf{Type I Error} (False Positive) & \textbf{Correct Decision} \\
+        \addlinespace[2ex]
+        Fail to reject $H_0$ & \textbf{Correct Decision} & \textbf{Type II Error} (False Negative) \\
+        \bottomrule
+    \end{tabularx}
+\end{center}
+\begin{definitionbox}{Type I Error ($\boldsymbol{\alpha}$)}{}
+    Rejecting $H_0$ when its actually true
+\end{definitionbox}
+\begin{definitionbox}{Type II Error ($\boldsymbol{\beta}$)}{}
+    Failing to reject $H_0$ when its actually false
+\end{definitionbox}
+\begin{definitionbox}{Significance Level ($\boldsymbol{\alpha}$)}{}
+    The probability of making a Type I error. It is the threshold for rejecting $H_0$. Commonly set at 0.05 or 0.01.
+\end{definitionbox}
+\begin{definitionbox}{Power of the test ($\boldsymbol{1 - \beta}$)}{}
+    The probability of correctly rejecting $H_0$ when it is false.
+\end{definitionbox}
+\begin{examplebox}{Wine Taster (two-sided)}{}
+    \begin{itemize}
+        \item The population standard deviation of the fill volume is known to be $\sigma = 50ml$
+        \item The sample size is $n = 100$
+    \end{itemize}
+\end{examplebox}
 \end{document}
