@@ -4,20 +4,33 @@
 
 \usepackage[svgnames]{xcolor}
 \usepackage{listings}
+\usepackage{changepage}
 
-
-\title{
-Robert Davidson \\
-\textbf{ST1112: Statistics}
-}
-\author{
-70\% Exam\\
-30\% Continuous Assessment (3 parts)
-}
-\date{}       % Optional: Add date if desired
 
 \begin{document}
-\maketitle
+
+\begin{center}
+    Robert Davidson\\
+    BSc Mathematics and Computer Science\\[24pt]
+
+    \large
+    \textbf{Statistics (ST1112) notes}\\[6pt]
+    \small
+    Date: \today\\[12pt]
+    \small
+\end{center}
+\begin{abstract}
+    \begin{adjustwidth}{1cm}{1cm}
+        These notes provide a concise overview of foundational topics in inferential statistics, focusing on how to use sample data to estimate unknown population parameters and assess the strength of evidence against hypothesized values. Beginning with key distinctions between probability (forward calculations from models) and statistics (inference from observed data), the document introduces core definitions—population vs. sample, sampling distributions, and the Central Limit Theorem—to justify the use of normal approximations in many practical settings.
+
+        Subsequent sections cover confidence intervals, highlighting both $z$-based and $t$-based methods for estimating a population mean (depending on sample size and variance knowledge), and analogous approaches for proportions and counts (including Poisson-based reasoning). The role of transformations and bootstrap procedures is emphasized when normal assumptions are questionable or for robust nonparametric estimation.
+
+        Readers are then guided through hypothesis testing, from one-sample and two-sample tests for means and proportions to the concepts of significance level ($\alpha$), Type I/II errors, and test power. The discussion extends to chi-squared tests for categorical data, showing how to test goodness-of-fit to hypothesized distributions or independence in contingency tables.
+
+        Finally, the notes explore methods for quantifying linear relationships between variables, including correlation (Pearson's $r$, Spearman's $\rho$, Kendall's $\tau$) and simple linear regression. Key assumptions, diagnostic checks, and interpretation of regression coefficients, $R^2$, and residual analyses are explained. Throughout, the document underscores the difference between statistical and practical significance, cautioning against over-interpretation of p-values and correlation as evidence of causation.
+    \end{adjustwidth}
+\end{abstract}
+
 \pagebreak
 
 \tableofcontents
