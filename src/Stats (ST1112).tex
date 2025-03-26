@@ -270,7 +270,7 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     $$t_{0.025, 11} \approx 2.201$$
 \end{examplebox}
 \pagebreak
-\subsection{CI with large $\boldsymbol{n}$, and $\boldsymbol{\sigma}$ unknown}
+\subsection{CI with large $n$, and $sigma$ unknown}
 The $z$-based critical interval is given as:
 $$\bar{X} \pm z_{\alpha/2} \times \frac{\sigma}{\sqrt{n}}$$
 where $z_{\alpha/2}$ is the critical value from the standard normal distribution.
@@ -294,7 +294,7 @@ where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df 
     $$\bar{X} \pm t_{\alpha/2, df} \times SE = 1261 \pm 2.201 \times 17.67$$
     The resulting confidence interval is:
     $$(1222, 1300)$$
-    \textbf{Interpretation}: The cloth’s true average carbon-dated age is plausibly within about 1222–1300 AD. This range casts doubt on claims that the cloth dates from centuries earlier.
+    \textbf{Interpretation}: The cloth's true average carbon-dated age is plausibly within about 1222-1300 AD. This range casts doubt on claims that the cloth dates from centuries earlier.
 \end{examplebox}
 \begin{examplebox}{Unathorized Computer Acess}{}
     Find 95\% CI given:
@@ -921,9 +921,6 @@ The function returns:
 In such scenarios, each group represents a distinct population, and we want to compare (for means) the difference $\mu_2 - \mu_1$.
 \end{conceptbox}
 
-
-\bigskip
-
 \subsection{Comparing Two Independent Population Means}
 
 \begin{definitionbox}{The Parameter of Interest}{}
@@ -958,7 +955,6 @@ $$
 \end{enumerate}
 While these summaries are informative, a \textbf{formal two-sample inference} is needed to confirm whether the observed difference is statistically significant in the underlying populations.
 \end{examplebox}
-\bigskip
 
 \subsection{Four Main Cases for Two-Sample Inference on Means}
 
@@ -1004,7 +1000,7 @@ If at least one sample is small and we do \textbf{not} assume equality of varian
 $$
 \text{Standard Error} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
 $$
-with a \textbf{t-distribution} whose degrees of freedom are approximated by the \textbf{Welch–Satterthwaite} formula:
+with a \textbf{t-distribution} whose degrees of freedom are approximated by the \textbf{Welch-Satterthwaite} formula:
 $$
 \mathrm{df}^* = \frac{\Bigl(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\Bigr)^2}{\frac{(s_1^2/n_1)^2}{n_1 - 1} + \frac{(s_2^2/n_2)^2}{n_2 - 1}}.
 $$
@@ -1042,14 +1038,14 @@ $$
 $$
 Z_0 = \frac{6.47 - 0}{1.38} \approx 4.69.
 $$
-Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-value} is effectively zero (less than $10^{-5}$), indicating strong evidence that Treatment B’s mean AOFAS score is higher than Treatment A’s.
+Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-value} is effectively zero (less than $10^{-5}$), indicating strong evidence that Treatment B's mean AOFAS score is higher than Treatment A's.
 \end{examplebox}
 \begin{conceptbox}{Using \texttt{t.test()} in R:}{}
-    For two independent samples (Welch’s method by default), use:
+    For two independent samples (Welch's method by default), use:
     \begin{lstlisting}[language=r]
     t.test(AOFAS ~ Treatment, data = ankle24.df)
     \end{lstlisting}
-    The output gives a t-statistic, approximate degrees of freedom, p-value, and a confidence interval. For large samples, the difference between the z-approximation and Welch’s t-approximation is negligible.
+    The output gives a t-statistic, approximate degrees of freedom, p-value, and a confidence interval. For large samples, the difference between the z-approximation and Welch's t-approximation is negligible.
 \end{conceptbox}
 
 
@@ -1057,7 +1053,7 @@ Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-valu
 Sometimes we want to test if $\sigma_1^2 = \sigma_2^2$ for two populations.
 \begin{itemize}
     \item \textbf{F-test} (requires approximate normality).
-    \item \textbf{Levene’s test} (less sensitive to non-normality).
+    \item \textbf{Levene's test} (less sensitive to non-normality).
 \end{itemize}
 \textbf{F-test:}
 $$
@@ -1116,7 +1112,7 @@ The \textbf{bootstrap} is a resampling method that constructs an empirical distr
 \begin{conceptbox}{Steps for Two-Sample Mean Difference}{}
     \begin{enumerate}
         \item \textbf{Separate the data} by group A and group B.
-        \item \textbf{Resample with replacement} from group A’s data and from group B’s data to create “bootstrap samples” of the same sizes as the originals.
+        \item \textbf{Resample with replacement} from group A's data and from group B's data to create “bootstrap samples” of the same sizes as the originals.
         \item \textbf{Compute the mean difference} of these two bootstrap samples.
         \item \textbf{Repeat} the above many times (e.g., 1000 or 10,000 times).
         \item \textbf{Use percentiles} of the resulting bootstrap distribution (e.g., the 2.5th and 97.5th percentiles for a 95\% CI) to form the confidence interval for $\mu_B - \mu_A$.
@@ -1124,7 +1120,7 @@ The \textbf{bootstrap} is a resampling method that constructs an empirical distr
 \end{conceptbox}
 
 \begin{examplebox}{Ankle Fractures}{}
-    Using R’s \texttt{infer} package, one can execute:
+    Using R's \texttt{infer} package, one can execute:
 \begin{lstlisting}[language=r]
 specify(AOFAS ~ Treatment) %>%
   generate(reps = 1000, type = "bootstrap") %>%
@@ -1145,7 +1141,6 @@ specify(AOFAS ~ Treatment) %>%
     \end{itemize}
 \end{conceptbox}
 
-\bigskip
 
 \subsection{Permutation Test for Two-Sample Comparison}
 
@@ -1216,8 +1211,8 @@ If the empirical p-value is below the significance threshold ($\alpha$), we conc
 When comparing two sets of measurements, \textbf{paired data} arises if each observation in one group has a unique counterpart in the other group. In other words, measurements are taken on the \textbf{same individual} (or matched individuals) under two different conditions.\\[2ex]
 \textbf{Examples}:
 \begin{enumerate}
-    \item The same person’s reading score measured using the \textbf{left eye} vs. the \textbf{right eye}.
-    \item The same patient’s blood pressure \textbf{before} and \textbf{after} treatment.
+    \item The same person's reading score measured using the \textbf{left eye} vs. the \textbf{right eye}.
+    \item The same patient's blood pressure \textbf{before} and \textbf{after} treatment.
     \item Taste ratings from a single consumer for \textbf{two different soft drinks}.
 \end{enumerate}
 By pairing, individual-to-individual variability is controlled for: each subject essentially acts as their own control.
@@ -1285,13 +1280,13 @@ For large $n$, the Central Limit Theorem justifies the approximate normality of 
     $$\bar{D} = 10.73 \quad \text{and} \quad s_D = 5.87.$$
     Then, with $n = 20$, the test statistic is:
     $$T_0 = \frac{10.73}{5.87/\sqrt{20}} \approx \frac{10.73}{1.31} \approx 8.19.$$
-    If the critical t-value for 19 degrees of freedom at $\alpha = 0.05$ is about 2.09, then since $8.19 > 2.09$, we reject $H_0$. The p-value would be extremely small, indicating a strong difference favoring one eye’s reading score. In another scenario, if $\bar{D}$ were smaller (e.g., t-stat 1.26), we fail to reject $H_0$.
+    If the critical t-value for 19 degrees of freedom at $\alpha = 0.05$ is about 2.09, then since $8.19 > 2.09$, we reject $H_0$. The p-value would be extremely small, indicating a strong difference favoring one eye's reading score. In another scenario, if $\bar{D}$ were smaller (e.g., t-stat 1.26), we fail to reject $H_0$.
 \end{examplebox}
 
 \subsection{Interpretation \& Conclusion}
 
 \begin{itemize}
-    \item $\bar{D}$ indicates the direction and magnitude of the difference. For instance, if $\bar{D} = +5$, it means that condition 1’s scores exceed condition 2’s by an average of 5 points.
+    \item $\bar{D}$ indicates the direction and magnitude of the difference. For instance, if $\bar{D} = +5$, it means that condition 1's scores exceed condition 2's by an average of 5 points.
     \item A confidence interval for $\mu_D$ can be constructed similarly to a one-sample CI:
     \[
     \bar{D} \pm t_{n-1,\;\alpha/2} \frac{s_D}{\sqrt{n}}.
@@ -1329,7 +1324,7 @@ For large $n$, the Central Limit Theorem justifies the approximate normality of 
 \begin{takeaway-box}{}{}
     \begin{itemize}
         \item \textbf{Paired vs. Independent} use a paired approach when the same individual is measured under both conditions or when subjects are closely matched.
-        \item \textbf{Reduced Variability} Comparing within-subject differences typically reduces variability, thereby enhancing the test’s sensitivity.
+        \item \textbf{Reduced Variability} Comparing within-subject differences typically reduces variability, thereby enhancing the test's sensitivity.
         \item \textbf{One-Sample t-Test:} The paired-sample t-test is mathematically equivalent to performing a one-sample t-test on the difference scores.
     \end{itemize}
 \end{takeaway-box}
@@ -1361,14 +1356,13 @@ $$
 The best estimate of the difference in population proportions ($\pi_2 - \pi_1$) is the difference in sample proportions:
 $$(p_2 - p_1)$$
 
-\subsubsection{2.2 Standard Error}
+\subsubsection{Standard Error}
 
 Under the \textbf{large-sample} assumption (i.e., each sample individually satisfies $n_i p_i \ge 15$ and $n_i(1 - p_i) \ge 15$), the Central Limit Theorem implies $p_1$ and $p_2$ are each approximately normally distributed around $\pi_1$ and $\pi_2$. Hence,
-\[
+$$
 \text{SE} = \sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}}.
-\]
+$$
 
-\bigskip
 
 \subsection{Confidence Interval for $\pi_2 - \pi_1$}
 
@@ -1389,7 +1383,6 @@ where $z_{\alpha/2}$ is the critical value from the standard Normal distribution
     \item If it \textbf{straddles zero}, we do not see strong evidence that the two proportions differ.
 \end{itemize}
 
-\bigskip
 
 \subsection{Hypothesis Testing for Two Proportions}
 
@@ -1446,7 +1439,7 @@ $$
 = (\,0.11,\;0.23).
 $$
 
-\textbf{Interpretation}: We are 95\% confident that women’s Instagram usage proportion exceeds men’s by between 11\% and 23\%.
+\textbf{Interpretation}: We are 95\% confident that women's Instagram usage proportion exceeds men's by between 11\% and 23\%.
 
 \textbf{5.2 Hypothesis Test}
 
@@ -1491,9 +1484,9 @@ Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p
 \section{Chi Squared Test of Association}
 \subsection{Background and Motivation}
 
-So far, we’ve considered two-sample comparisons of \textbf{binary} proportions. But many real-world categorical variables have more than two categories, and often we want to examine the relationship between \textbf{two different categorical variables} (e.g., type of driver’s license vs. owning a car). The chi-squared ($\chi^2$) framework offers standard methods for:
+So far, we've considered two-sample comparisons of \textbf{binary} proportions. But many real-world categorical variables have more than two categories, and often we want to examine the relationship between \textbf{two different categorical variables} (e.g., type of driver's license vs. owning a car). The chi-squared ($\chi^2$) framework offers standard methods for:
 \begin{enumerate}
-    \item \textbf{Multinomial goodness-of-fit}: checking whether one categorical variable’s distribution matches a hypothesized distribution over multiple categories.
+    \item \textbf{Multinomial goodness-of-fit}: checking whether one categorical variable's distribution matches a hypothesized distribution over multiple categories.
     \item \textbf{Test of association} (or independence) between two categorical variables: checking whether the distribution across categories of one variable is related to the categories of another variable.
 \end{enumerate}
 
@@ -1550,7 +1543,7 @@ If certain conditions hold (large enough sample so that every $E_i \ge 5$), the 
 
 \begin{examplebox}{Dishonest Casino?}{}
 
-\textbf{Scenario}: A gambler suspects a casino’s six-sided die is not fair. He records the outcomes of $n=41$ throws:
+\textbf{Scenario}: A gambler suspects a casino's six-sided die is not fair. He records the outcomes of $n=41$ throws:
 
 \begin{center}
 \begin{tabular}{lr}
@@ -1665,13 +1658,13 @@ $$
     \item \textbf{Reject $H_0$} (no association) if $\chi^2_0$ is large (p-value < $\alpha$).
     \item Conclude the data show evidence that the two variables are associated.
 \end{itemize}
-\begin{examplebox}{Driving License vs. Owning a Car}
+\begin{examplebox}{Driving License vs. Owning a Car}{}
 \textbf{Observed data} from 142 first-year students:
 
 \begin{center}
 \begin{tabular}{lccr}
 \toprule
- & Don’t Own Car & Own Car & Row Tot. \\
+ & Don't Own Car & Own Car & Row Tot. \\
 \midrule
 \textbf{Do not drive} & 54 & 0 & 54 \\
 \textbf{Full driving license} & 21 & 20 & 41 \\
@@ -1685,7 +1678,7 @@ $$
 \textbf{Hypothesis}:
 \[
 H_0: 
-\text{Driver’s-license category is independent of owning a car.}
+\text{Drive's-license category is independent of owning a car.}
 \quad
 H_1: 
 \text{There is an association (dependence).}
@@ -1727,13 +1720,13 @@ Then:
 = 38.52.
 \]
 
-\textbf{3.7.2 Degrees of Freedom}
+\textbf{Degrees of Freedom}
 
 \[
 (r - 1)(c - 1) = (3 - 1)(2 - 1) = 2.
 \]
 
-\textbf{3.7.3 Decision}
+\textbf{Decision}
 
 \begin{itemize}
     \item $\chi^2_{2,0.05}\approx 5.99$.
@@ -1741,11 +1734,11 @@ Then:
     \item p-value is extremely small, confirming the variables are associated.
 \end{itemize}
 
-\textbf{Conclusion}: The data strongly suggest that the category of driver’s license is \textbf{not} independent of whether a student owns a car.
+\textbf{Conclusion}: The data strongly suggest that the category of driver's license is \textbf{not} independent of whether a student owns a car.
 \end{examplebox}
 
 
-\section*{4. Requirements and Tips}
+\subsection{Requirements and Tips}
 
 \begin{enumerate}
     \item \textbf{Expected counts $\ge 5$}: Each cell in the contingency table should have an expected value of at least 5 for the chi-squared approximation to be valid.
@@ -1753,20 +1746,16 @@ Then:
     \item \textbf{Interpretation}: If we find an association, we know that the distribution across categories of one variable depends on the category of the other.
 \end{enumerate}
 
-\bigskip
-
-\section*{5. Wrap-up and Key Takeaways}
-
-\begin{enumerate}
-    \item \textbf{Chi-squared Goodness-of-Fit}: Tests whether a single categorical variable with $k$ categories matches a specific distribution.
-    \item \textbf{Chi-squared Test of Association}: Tests whether two categorical variables are independent.
-    \item \textbf{Test Statistic}: Summation of $\frac{(O-E)^2}{E}$ over categories/cells.
-    \item \textbf{Degrees of Freedom}: For goodness-of-fit with $k$ categories, $\nu = k-1$. For an $r \times c$ contingency table, $\nu = (r-1)(c-1)$.
-    \item \textbf{Interpretation}: A large $\chi^2$ or small p-value implies the data deviate substantially from what we’d expect under independence (for two variables) or from hypothesized category proportions (for one variable).
-    \item \textbf{Check}: All expected counts should be $\ge5$. If not, consider combining categories or using an alternative method (e.g., exact tests).
-\end{enumerate}
-
-Overall, chi-squared tests form a cornerstone of analyzing categorical data to see if observed frequencies match expected frequencies under certain assumptions (fairness, independence, etc.).
+\begin{takeaway-box}{}{}
+    \begin{enumerate}
+        \item \textbf{Chi-squared Goodness-of-Fit}: Tests whether a single categorical variable with $k$ categories matches a specific distribution.
+        \item \textbf{Chi-squared Test of Association}: Tests whether two categorical variables are independent.
+        \item \textbf{Test Statistic}: Summation of $\frac{(O-E)^2}{E}$ over categories/cells.
+        \item \textbf{Degrees of Freedom}: For goodness-of-fit with $k$ categories, $\nu = k-1$. For an $r \times c$ contingency table, $\nu = (r-1)(c-1)$.
+        \item \textbf{Interpretation}: A large $\chi^2$ or small p-value implies the data deviate substantially from what we'd expect under independence (for two variables) or from hypothesized category proportions (for one variable).
+        \item \textbf{Check}: All expected counts should be $\ge5$. If not, consider combining categories or using an alternative method (e.g., exact tests).
+    \end{enumerate}
+\end{takeaway-box}
 
 \end{document}
 
