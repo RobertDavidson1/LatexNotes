@@ -707,6 +707,21 @@ When conducting a hypothesis test, there are two possible decisions:
     \begin{itemize}
         \item The population standard deviation of the fill volume is known to be $\sigma = 50ml$
         \item The sample size is $n = 100$
-    \end{itemize}
+        \item Test:
+        $$H_0: \mu = 750ml \; \text{vs} \; H_1: \mu \neq 750ml$$
+        \item Significance level $\alpha = 0.05$
+        \item The test statistic is z-based because $n$ is large and $\sigma$ is known.
+        $$Z_0 = \frac{\bar{X} - 750}{50/\sqrt{100}}$$
+        \item The rejection region for a two-sided test at $\alpha = 0.05$ is:
+        $$|Z_0| > 1.96 \Longleftrightarrow \bar{X} < 750 - 196\times 5 = 740.2 \; \text{or} \; \bar{X} > 750 + 1.96 \times 5 = 759.8$$
+    \end{itemize} 
+    \textbf{Type I Error $\boldsymbol{\alpha}$} \\
+    By design:
+    $$P(\text{Type I Error}) = P(\text{reject} H_0 | H_0 \text{true}) = \alpha = 0.05$$
+    \textbf{Type II Error $\boldsymbol{\beta}$} \\
+    The Type II error would be failing to reject $H_0$, when $\mu \neq 750$. Suppose the true mean is $\mu = 740$. Then under repeated sampling $\bar{X}$ is distributed approximately:
+    $$\bar{X} \sim N\left(740, \frac{50^2}{100}\right) = N(740, 5^2)$$
+    The decision rule says "do not reject $H_0$" if $740.2 < \bar{X} < 759.8$. The probability of making a Type II error is:
+    $$\beta = P(\text{Type II Error} | \mu = 740) = P(740.2 < \bar{X} < 759.8 | X \sim N(750, 5^2))$$
 \end{examplebox}
 \end{document}
