@@ -806,6 +806,106 @@ When conducting a hypothesis test, there are two possible decisions:
 \begin{definitionbox}{Test Statistic for Proportions}{}
     Provided $n\hat{\pi} \geq 5$ and $n(1-\hat{\pi}) \geq 5$, we can use a normal approximation to the distribution of the sample proportion. The \textbf{z-test statistic} is
     $$T_0 = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}$$
-
+    Where:
+    \begin{itemize}
+        \item $\hat{p} = \frac{x}{n}$ is the observed sample proportion of successes
+        \item $\pi_0$ is the hypothesized population proportion in $H_0$
+        \item The denominator is the standard error of the sample proportion under $H_0$.
+    \end{itemize}
+    Under $H_0$, $T_0$ approximately follows a standard normal distribution $N(0, 1)$.
 \end{definitionbox}
+
+\subsection{Decision Criteria and p-value}
+\begin{itemize}
+    \item \textbf{One-sided test}: Depending on $H_1$, we look for large positive values of $T_0$ (if $\pi > \pi_0$) or large negative values (if $\pi < \pi_0$).
+    \item \textbf{Two-sided test}: $\lvert T_0 \rvert$ is compared to the critical value $z_{\alpha/2}$ (often 1.96 for $\alpha=0.05$).
+\end{itemize}
+The \textbf{p-value} is the probability (under $H_0$) of observing a test statistic as extreme or more extreme than the actual $T_0$.
+\begin{itemize}
+    \item For a two-sided test:
+    \[
+    \text{p-value} = P\bigl(Z \le -|T_0|\bigr) + P\bigl(Z \ge |T_0|\bigr)
+    \]
+    \item For a right-tailed test ($\pi > \pi_0$):
+    \[
+    \text{p-value} = P\bigl(Z \ge T_0\bigr)
+    \]
+    \item For a left-tailed test ($\pi < \pi_0$):
+    \[
+    \text{p-value} = P\bigl(Z \le T_0\bigr)
+    \]
+\end{itemize}
+If the p-value $\le \alpha$, we reject $H_0$. Otherwise, we fail to reject $H_0$.
+
+\bigskip
+
+\section{Example: Online Communication}
+
+\subsection{Setup}
+\begin{itemize}
+    \item \textbf{Claim}: A study suggests $\pi = 0.63$ (63\% of college students spend 10+ hours/week communicating online).
+    \item \textbf{Sample}: $n=150$ students, among whom $x=99$ do so, so $\hat{p} = \frac{99}{150} \approx 0.66$.
+    \item \textbf{Hypotheses} (two-sided test):
+    \[
+    H_0:\,\pi=0.63 \quad\text{vs.}\quad H_1:\,\pi\neq0.63.
+    \]
+\end{itemize}
+
+\subsection{Test Statistic}
+\[
+T_0 = \frac{0.66 - 0.63}{\sqrt{\frac{0.63\,(1-0.63)}{150}}} \;\approx\; 0.76.
+\]
+
+\subsection{Decision}
+At $\alpha=0.05$, a two-sided rejection region is given by $\lvert T_0 \rvert > 1.96$. Since $\lvert0.76\rvert < 1.96$, we do not reject $H_0$.
+
+\subsection{p-value}
+\[
+\text{p-value} = P(Z \ge 0.76) + P(Z \le -0.76) \approx 0.4466.
+\]
+Since $0.4466 > 0.05$, we again fail to reject $H_0$.
+
+\subsection{Conclusion}
+There is \textbf{insufficient evidence} (p-value $\approx 0.45$) to conclude that the true proportion differs from 0.63.
+
+\bigskip
+
+\section{Using \texttt{prop.test()} in R}
+You can conduct a one-sample proportion test by specifying:
+\begin{lstlisting}[language=r]
+prop.test(x, n, p, alternative = "two.sided", conf.level = 0.95, correct = FALSE)
+\end{lstlisting}
+where:
+\begin{itemize}
+    \item \texttt{x} is the number of successes.
+    \item \texttt{n} is the sample size.
+    \item \texttt{p} is the hypothesized proportion under $H_0$.
+    \item \texttt{alternative} can be \texttt{"less"}, \texttt{"greater"}, or \texttt{"two.sided"}.
+    \item \texttt{correct = FALSE} disables the Yates continuity correction (commonly used for small sample sizes).
+\end{itemize}
+The function returns:
+\begin{itemize}
+    \item A test statistic (given as \texttt{X-squared}, whose square root is the z-value).
+    \item The p-value.
+    \item A confidence interval for the true proportion.
+\end{itemize}
+
+\bigskip
+
+\section{Key Takeaways}
+\begin{enumerate}
+    \item \textbf{Hypothesis Test Setup}: For proportions, we specify $H_0: \pi=\pi_0$ and check if the data strongly contradict $\pi_0$.
+    \item \textbf{z-Test Statistic}:
+    \[
+    T_0 = \frac{\hat{p}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}.
+    \]
+    This requires $n\hat{p}\ge5$ and $n(1-\hat{p})\ge5$ to ensure that the normal approximation is valid.
+    \item \textbf{Decision Rule or p-value}: Compare $\lvert T_0\rvert$ to $z_{\alpha/2}$ for two-sided tests (or use the appropriate one-sided cutoff), or compute the p-value.
+    \item \textbf{Interpretation}: A \textbf{small p-value} ($\le \alpha$) means the data provide strong evidence that $\pi$ differs from $\pi_0$, whereas a \textbf{large p-value} indicates insufficient evidence against $H_0$.
+    \item \textbf{Connection to Confidence Intervals}: If $\pi_0$ lies outside the confidence interval for $\pi$, this typically corresponds to rejecting $H_0$. Conversely, if $\pi_0$ lies inside, we fail to reject $H_0$.
+\end{enumerate}
+
+
+
+
 \end{document}
