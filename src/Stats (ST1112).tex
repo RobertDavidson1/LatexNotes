@@ -994,16 +994,15 @@ And a \textbf{z-interval} or \textbf{z-test} is used similarly, substituting $s_
 
 \subsubsection{Case 3: Small Samples, Unknown Variances, Assumed Equal}
 When at least one sample is small ($n < 30$) and we assume $\sigma_1^2 = \sigma_2^2 = \sigma^2$:
+\begin{align*}
+    \text{Compute the} \ \textbf{pooled variance}: &s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}. \\
+    \text{The} \ \textbf{Standard Error} \ is: &s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\
+    \text{The test statistic follows a} \ \textbf{t-distribution} \ \text{with} \ n_1 + n_2 - 2 \ \text{degrees of freedom:}
+\end{align*}
+
 \begin{enumerate}
-    \item Compute the \textbf{pooled variance}:
-    $$
-    s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}.
-    $$
-    \item The \textbf{Standard Error} is:
-    \[
-    s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}.
-    \]
-    \item The test statistic follows a \textbf{t-distribution} with $n_1 + n_2 - 2$ degrees of freedom:
+ 
+    \item 
     \[
     \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t_{n_1 + n_2 - 2}.
     \]
