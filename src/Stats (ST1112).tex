@@ -483,6 +483,8 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
 \noindent The test uses sample data to decided whether the evidence strongly contradict $H_0$. If so, we reject $H_0$ in favor of $H_1$. If not, we do not reject $H_0$ - but we conclude that  the data does not provide enough evidence to reject $H_0$
 
 
+
+
 \subsection{Stages in Hypothesis Testing}
 \begin{conceptbox}{Stages in Hypothesis Testing}{}
     A typical hypothesis test follows these steps:
@@ -519,22 +521,20 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
 \end{conceptbox}
 
 
-\subsection{Hypothesis Testing for a Population Mean}
-\begin{definitionbox}{One-sided tests vs Two-sided tests}{}
+\subsection{The Test Statistic for a Mean}
+\begin{conceptbox}{Formulating the Hypothesis}{}
+    For example, suppose someone claims $\mu = 6.5$ hours of weekly study time for students. We can test:
     \begin{itemize}
-        \item \textbf{One-sided test}: focus on "less than" or "greater than" a hypothesized value. 
-        \item \textbf{Two-sided test}: focus on "not equal to" a hypothesized value.
+        \item \textbf{One-sided}: $H_0: \mu = 6.5$ \textbf{vs} $H_1: \mu > 6.5$ (or $H_1: \mu < 6.5$)
+        \item \textbf{Two-sided}: $H_0: \mu = 6.5$ \textbf{vs} $H_1: \mu \neq 6.5$
     \end{itemize}
-\end{definitionbox}
+\end{conceptbox}
+
+
+
 \begin{definitionbox}{Test Statistic}{}
-    For a population mean with unknown variance, the test statistic is given by:
+    If the sample mean is $\bar{X}$ (with sample standard deviation $s$ and sample size $n$), and the hypothesized mean ius $\mu_0$, the test statistic is given by:
     $$T_0 = \frac{\bar{X} - \mu_0}{s/\sqrt{n}}$$
-    \begin{itemize}
-        \item $\bar{X}$ is the sample mean
-        \item $s$ is the sample standard deviation
-        \item $\mu_0$ is the hypothesized population mean
-        \item $n$ is the sample size
-    \end{itemize}
     \begin{itemize}
         \item If $n \geq 30$,  $T_0$ is compared to a normal distribution - $N(0, 1)$.
         \item If $n < 30$, $T_0$ is compared to a t-distribution with $n-1$ degrees of freedom, assuming the population is approximately normal.
@@ -552,13 +552,26 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
             \addlinespace[2ex]
             $u > \mu _0$ & $T_0 > Z_{\alpha}$ & $T_0 > t_{\alpha, df}$ \\
             \addlinespace[2ex]
-            $u \neq \mu _0$ & $T_0 < -Z_{\alpha/2}$ or $T_0 > Z_{\alpha/2}$ & $T_0 < -t_{\alpha/2, df}$ or $T_0 > t_{\alpha/2, df}$ \\
+            $u \neq \mu _0$ & $|T_0| > Z_{\alpha / 2}$ & $|T_0| > t_{\alpha / 2, df}$ \\
             \bottomrule
         \end{tabularx}
 \end{definitionbox}  
+\subsection{Test using p-values}
+Instead of a formal "rejection region" many prefer the p-value approach.\\
 
-
-% Contd from 5
+\begin{conceptbox}{Steps when testing using p-values}{}
+    \begin{enumerate}
+        \item \textbf{Compute} $T_0$ from the data
+        \item \textbf{Compute p-value} ~ probability under $H_0$ of of observing a test statistic as or more extreme than $T_0$.
+        \item \textbf{Compare p-value to $\boldsymbol{\alpha}$}:
+        \begin{itemize}
+            \item p-value $< \alpha$: reject $H_0$ in favor of $H_1$
+            \item p-value $> \alpha$: fail to reject $H_0$
+        \end{itemize}
+    \end{enumerate}
+\end{conceptbox}
+\subsubsection{Statistical Significance}
+We say \emph{"the result is statistically significant at the $\alpha$ level"} when $p \leq \alpha$
 
 
 \end{document}
