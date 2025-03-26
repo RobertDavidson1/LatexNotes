@@ -581,6 +581,24 @@ A small p-value means: \emph{"Given $H_0$, it would be unlikely to observe data 
 \end{itemize}
 Hence, hypothesis testing and confidence examples are closely linked. For example, if the 95\% CI for a mean $[2.7, 3.7]$ and $\mu_0 = $, we see that $4$ is not in the interval $\Rightarrow$ strongly consider rejecting $H_0$. 
 \begin{examplebox}{Study time in NUI Galway}{}
+    \textbf{Problem:}
+    \begin{itemize}
+        \item \textbf{Claim}: The average study time for students is $\mu = 6.5$ hours per week.
+        \item \textbf{Sample}: 102 students, with sample mean $\bar{X} = 6.77$
+    \end{itemize}
+    \textbf{Solution:}
+        We're conducting a two-sided test with $H_0: \mu = 6.5$ and $H_1: \mu \neq 6.5$.
+        \begin{enumerate}
+            \item \textbf{Hypotheses}
+            $$H_0 = \mu = 6.5 \quad \text{vs} \quad H_1: \mu \neq 6.5$$
+            \item \textbf{Compute the test statistic}\\
+            $$SE = \frac{s}{\sqrt{n}} \approx 0.65$$
+            $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{6.77 - 6.5}{0.65} \approx 0.41$$
+            \item \textbf{Identify the sampling distribution}\\
+            We can use a normal approximation since $n \geq 30$, or more precisely, a t-distribution with $df = n - 1 = 101$ degrees of freedom.
+            \item \textbf{Decide whether test statistic is rare or common}\\
+        \end{enumerate}
+
 \end{examplebox}
 
 \end{document}
