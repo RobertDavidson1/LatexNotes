@@ -1424,6 +1424,7 @@ $$
 \end{itemize}
 
 \begin{examplebox}{}{}
+    \small
     A survey of 1069 young people: 
 \begin{itemize}
     \item 537 women: 328 use Instagram $\rightarrow p_{\text{women}} = 328/537 \approx 0.6108$.
@@ -1472,12 +1473,7 @@ Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p
     \item \texttt{correct = FALSE} disables the Yates continuity correction (often used for smaller samples).
 \end{itemize}
 
-The output includes:
-\begin{itemize}
-    \item A test statistic (labelled \texttt{X-squared} whose square root is effectively $\lvert Z_0\rvert$).
-    \item The p-value.
-    \item A confidence interval for $\pi_2 - \pi_1$.
-\end{itemize}
+\textbf{Output} A test statistic (labelled \texttt{X-squared} whose square root is effectively $\lvert Z_0\rvert$), The p-value and A confidence interval for $\pi_2 - \pi_1$.
 
 \begin{takeaway-box}{}{}
     \small
@@ -1492,7 +1488,299 @@ The output includes:
     This approach allows us to make inferences about whether one group (e.g. women) has a higher or lower proportion of a characteristic than the other group (e.g. men).
 \end{takeaway-box}
 
+\section{Chi Squared Test of Association}
+\subsection{Background and Motivation}
 
+So far, we’ve considered two-sample comparisons of \textbf{binary} proportions. But many real-world categorical variables have more than two categories, and often we want to examine the relationship between \textbf{two different categorical variables} (e.g., type of driver’s license vs. owning a car). The chi-squared ($\chi^2$) framework offers standard methods for:
+\begin{enumerate}
+    \item \textbf{Multinomial goodness-of-fit}: checking whether one categorical variable’s distribution matches a hypothesized distribution over multiple categories.
+    \item \textbf{Test of association} (or independence) between two categorical variables: checking whether the distribution across categories of one variable is related to the categories of another variable.
+\end{enumerate}
+
+\bigskip
+
+\subsection{Multinomial (Multi-Category) Goodness-of-Fit Test}
+
+\subsubsection{Setup}
+
+We have a \textbf{single} categorical variable $X$ that can fall into $k > 2$ categories. We want to see if the \textbf{population distribution} of these $k$ categories matches some hypothesized proportions:
+$$
+H_0: 
+\pi_1 = p_1^*, \;\pi_2 = p_2^*, \;\dots,\;\pi_k = p_k^*
+\quad
+\text{vs.}
+\quad
+H_1: 
+\text{at least one } \pi_i \neq p_i^*.
+$$
+\begin{itemize}
+    \item Here, $\pi_i$ is the true proportion of the population belonging to category $i$, and $p_i^*$ is the hypothesized proportion for that category.
+    \item Under $H_0$, we assume each category $i$ has probability $p_i^*$.
+\end{itemize}
+
+\subsubsection{Collecting Data}
+
+From a sample of $n$ individuals, we observe \textbf{counts} $O_1, O_2, \dots, O_k$, where $O_i$ is the number of observations falling in category $i$. The sample proportions are $O_i / n$.
+
+\subsubsection{Expected Counts Under $H_0$}
+
+If the null hypothesis is true (i.e. category $i$ truly has probability $p_i^*$), then the \textbf{expected} number of observations in category $i$ is:
+\[
+E_i = n \times p_i^*.
+\]
+
+\subsubsection{Chi-squared Goodness-of-Fit Test}
+
+\textbf{Test Statistic} \\
+
+We compare the observed counts $O_i$ to the expected counts $E_i$. The chi-squared test statistic:
+\[
+\chi^2_0 \;=\; \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
+\]
+\begin{itemize}
+    \item If the data match the hypothesized proportions well, the observed $O_i$ will be close to $E_i$, making each term small and $\chi^2_0$ near 0.
+    \item If they differ a lot, $\chi^2_0$ will be large, suggesting evidence against $H_0$.
+\end{itemize}
+
+\subsubsection*{2.4.2 Distribution Under $H_0$}
+
+If certain conditions hold (large enough sample so that every $E_i \ge 5$), the test statistic follows approximately a chi-squared distribution with \textbf{degrees of freedom} $\nu = k - 1$.
+
+\subsubsection*{2.4.3 Decision}
+
+\begin{itemize}
+    \item \textbf{Reject $H_0$} if $\chi^2_0$ exceeds the critical value $\chi^2_{\nu,\,\alpha}$ for a one-sided test, or equivalently if the p-value (the probability that $\chi^2_{\nu}$ is at least as large as $\chi^2_0$) is below $\alpha$.
+    \item If $\chi^2_0$ is moderate or small, do not reject $H_0$.
+\end{itemize}
+
+\bigskip
+
+\subsection*{2.5 Example: Dishonest Casino?}
+
+\textbf{Scenario}: A gambler suspects a casino’s six-sided die is not fair. He records the outcomes of $n=41$ throws:
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Face & Observed Count $O_i$ \\
+\midrule
+1 & 6 \\
+2 & 3 \\
+3 & 6 \\
+4 & 15 \\
+5 & 4 \\
+6 & 7 \\
+\midrule
+\textbf{Total} & 41 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Hypothesis}:
+\[
+H_0: 
+\pi_1 = \pi_2 = \dots = \pi_6 = \tfrac{1}{6}
+\quad
+\text{vs.}
+\quad
+H_1: 
+\text{at least one face has }\pi_i \neq \tfrac{1}{6}.
+\]
+
+\textbf{Expected Counts} (under fairness, each face has probability $1/6$):
+\[
+E_i = \frac{1}{6} \times 41 \approx 6.8333 \text{ (for each }i).
+\]
+
+\textbf{Test Statistic}:
+\[
+\chi^2_0 
+= \sum_{i=1}^{6} \frac{(O_i - E_i)^2}{E_i}
+= 13.293.
+\]
+
+\textbf{Degrees of Freedom}: $\nu = k-1 = 6 - 1 = 5$.
+
+\textbf{Compare}: Using a $\chi^2_5$ distribution:
+\begin{itemize}
+    \item $\chi^2_{5,\,0.05} \approx 11.07$.
+    \item Since $13.293 > 11.07$, we reject $H_0$.
+\end{itemize}
+
+\textbf{Conclusion}: The test suggests the die is not fair (p-value $\approx 0.021$).
+
+\bigskip
+
+\section*{3. Test of Association (Two-Way Contingency Tables)}
+
+\subsection*{3.1 Purpose}
+
+We have \textbf{two categorical variables} (each with multiple categories). We record frequencies in every combination of categories (forming a contingency table). We want to test:
+\[
+H_0 : \text{There is no association (independence) between the two variables.}
+\quad
+H_1 : \text{There is some association (dependence).}
+\]
+
+\subsection*{3.2 Observed Counts}
+
+Arrange the data in a $r \times c$ table (with $r$ rows, $c$ columns):
+\[
+\begin{array}{lcccc}
+ & \text{Cat. B1} & \text{Cat. B2} & \dots & \text{Cat. B}c \\
+\hline
+\textbf{Cat. A1} & O_{1,1} & O_{1,2} & \dots & O_{1,c} \\
+\textbf{Cat. A2} & O_{2,1} & O_{2,2} & \dots & O_{2,c} \\
+\textbf{\dots} & \dots & \dots & \dots & \dots \\
+\textbf{Cat. A}r & O_{r,1} & O_{r,2} & \dots & O_{r,c} \\
+\hline
+\textbf{Column Tot.} & C_1 & C_2 & \dots & n \\
+\end{array}
+\]
+
+Each cell in row $i$ and column $j$ has the observed frequency $O_{i,j}$. The total number of observations is $n$. Row $i$ sum is $R_i$, column $j$ sum is $C_j$.
+
+\subsection*{3.3 Expected Counts (Under Independence)}
+
+If the two variables are independent, the probability of being in row $i$ and column $j$ equals the product of the marginal probabilities for row $i$ and column $j$:
+\[
+P(\text{A}=i \cap \text{B}=j) 
+= P(\text{A}=i)\times P(\text{B}=j).
+\]
+Within the sample, those probabilities are approximated by $\frac{R_i}{n}$ and $\frac{C_j}{n}$, respectively. So the \textbf{expected} frequency if the variables are independent:
+\[
+E_{i,j}
+= n\,P(\text{A}=i \cap \text{B}=j)
+= \frac{R_i}{n}\,\times \frac{C_j}{n}\,\times n
+= \frac{R_i \, C_j}{n}.
+\]
+
+\subsection*{3.4 Chi-squared Test Statistic}
+
+Compare each observed $O_{i,j}$ with the expected $E_{i,j}$. Then:
+\[
+\chi^2_0 
+= \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}.
+\]
+
+\subsection*{3.5 Degrees of Freedom}
+
+\[
+\nu = (r - 1)\times(c - 1).
+\]
+
+\subsection*{3.6 Decision and p-value}
+
+\begin{itemize}
+    \item \textbf{Reject $H_0$} (no association) if $\chi^2_0$ is large (p-value < $\alpha$).
+    \item Conclude the data show evidence that the two variables are associated.
+\end{itemize}
+
+\bigskip
+
+\subsection*{3.7 Example: Driving License vs. Owning a Car}
+
+\textbf{Observed data} from 142 first-year students:
+
+\begin{center}
+\begin{tabular}{lccr}
+\toprule
+ & Don’t Own Car & Own Car & Row Tot. \\
+\midrule
+\textbf{Do not drive} & 54 & 0 & 54 \\
+\textbf{Full driving license} & 21 & 20 & 41 \\
+\textbf{Provisional license} & 41 & 6 & 47 \\
+\midrule
+\textbf{Column Tot.} & 116 & 26 & 142 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Hypothesis}:
+\[
+H_0: 
+\text{Driver’s-license category is independent of owning a car.}
+\quad
+H_1: 
+\text{There is an association (dependence).}
+\]
+
+\subsubsection*{3.7.1 Expected Counts}
+
+For each cell (i, j):
+\[
+E_{i,j} 
+= \frac{R_i \, C_j}{n}.
+\]
+E.g., for “Full license \& Own car”:
+\begin{itemize}
+    \item $R_{\text{Full}} = 41$, $C_{\text{OwnCar}} = 26$, $n=142$.
+    \item $E_{\text{Full, OwnCar}} = \frac{41\times 26}{142}\approx 7.51.$
+\end{itemize}
+
+Compute all cells similarly:
+
+\begin{center}
+\begin{tabular}{lccr}
+\toprule
+ & Don’t Own Car (116) & Own Car (26) & Row Tot. \\
+\midrule
+\textbf{Do not drive} & 54.0? (calc) & ? & 54 \\
+\textbf{Full driving license} & 33.49 & 7.51 & 41 \\
+\textbf{Provisional license} & 38.39 & 8.61 & 47 \\
+\midrule
+\textbf{Column Tot.} & 116 & 26 & 142 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Then:
+\[
+\chi^2_0 
+= \sum \frac{(O_{i,j} - E_{i,j})^2}{E_{i,j}}
+= 38.52.
+\]
+
+\subsubsection*{3.7.2 Degrees of Freedom}
+
+\[
+(r - 1)(c - 1) = (3 - 1)(2 - 1) = 2.
+\]
+
+\subsubsection*{3.7.3 Decision}
+
+\begin{itemize}
+    \item $\chi^2_{2,0.05}\approx 5.99$.
+    \item Since $38.52 > 5.99$, we reject $H_0$.
+    \item p-value is extremely small, confirming the variables are associated.
+\end{itemize}
+
+\textbf{Conclusion}: The data strongly suggest that the category of driver’s license is \textbf{not} independent of whether a student owns a car.
+
+\bigskip
+
+\section*{4. Requirements and Tips}
+
+\begin{enumerate}
+    \item \textbf{Expected counts $\ge 5$}: Each cell in the contingency table should have an expected value of at least 5 for the chi-squared approximation to be valid.
+    \item \textbf{Large enough sample}: The total $n$ must be large enough to ensure these expected-cell-count conditions are met.
+    \item \textbf{Interpretation}: If we find an association, we know that the distribution across categories of one variable depends on the category of the other.
+\end{enumerate}
+
+\bigskip
+
+\section*{5. Wrap-up and Key Takeaways}
+
+\begin{enumerate}
+    \item \textbf{Chi-squared Goodness-of-Fit}: Tests whether a single categorical variable with $k$ categories matches a specific distribution.
+    \item \textbf{Chi-squared Test of Association}: Tests whether two categorical variables are independent.
+    \item \textbf{Test Statistic}: Summation of $\frac{(O-E)^2}{E}$ over categories/cells.
+    \item \textbf{Degrees of Freedom}: For goodness-of-fit with $k$ categories, $\nu = k-1$. For an $r \times c$ contingency table, $\nu = (r-1)(c-1)$.
+    \item \textbf{Interpretation}: A large $\chi^2$ or small p-value implies the data deviate substantially from what we’d expect under independence (for two variables) or from hypothesized category proportions (for one variable).
+    \item \textbf{Check}: All expected counts should be $\ge5$. If not, consider combining categories or using an alternative method (e.g., exact tests).
+\end{enumerate}
+
+Overall, chi-squared tests form a cornerstone of analyzing categorical data to see if observed frequencies match expected frequencies under certain assumptions (fairness, independence, etc.).
 
 \end{document}
 
