@@ -37,12 +37,13 @@
 \patchcmd{\pgfplots@applistXXpushback@smallbuf}{\pgfplots@error}{\pgfplots@warning}{}{}
 \makeatother
 
+\definecolor{custom_red}{HTML}{D63A34}
+\definecolor{custom_green}{HTML}{29AF41}
+\definecolor{custom_blue}{HTML}{0A6DDA}
+\definecolor{custom_purple}{HTML}{964DC0}
 
 
-\definecolor{custom_green}{HTML}{a3be8c}
-\definecolor{custom_red}{HTML}{dc322f}
-\definecolor{custom_blue}{HTML}{268bd2}
-\definecolor{custom_purple}{HTML}{b48ead}
+
 
 \definecolor{base}{HTML}{eceff4}
 \definecolor{gray1}{HTML}{f8f9fa}
@@ -207,6 +208,22 @@
     description delimiters none,
     }{cncpt}
 
+
+\newtcbtheorem[number within=section]{takeaway-box}{Key Takeaways}{
+    enhanced,
+    sharp corners,
+    attach boxed title to top left={yshift=-0.1mm},
+    colback=custom_purple!10,
+    colframe=custom_purple,
+    fonttitle=\bfseries,
+    boxed title style={
+            sharp corners,
+            size=small,
+            colback=custom_purple,
+            colframe=custom_purple,
+        },
+    description delimiters none,
+}{tkws}
 
 
 % (7) Hyperlinks
