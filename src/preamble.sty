@@ -31,11 +31,12 @@
 \tcbuselibrary{theorems}
 \tcbuselibrary{listingsutf8, skins}
 \usepackage{microtype}
-
+\usetikzlibrary{arrows.meta, calc, decorations.pathreplacing, patterns}
 % Patching pgfplots warning
 \makeatletter
 \patchcmd{\pgfplots@applistXXpushback@smallbuf}{\pgfplots@error}{\pgfplots@warning}{}{}
 \makeatother
+
 
 
 \definecolor{custom_green}{HTML}{a3be8c}
@@ -49,8 +50,19 @@
 \definecolor{gray3}{HTML}{2e3440}
 \definecolor{off-white}{HTML}{f4f4f6}
 
+\setlist[itemize]{
+    leftmargin=2em,   % Indent from left
+    itemsep=-0.2em,    % Vertical spacing between bullets
+    topsep=0.5em      % Vertical space at the start of the list
+}
 
-% (5) Custom tcolorbox Environments
+\setlist[enumerate]{
+    leftmargin=2em,   % Indent from left
+    itemsep=-0.2em,    % Vertical spacing between bullets
+    topsep=0.5em      % Vertical space at the start of the list
+}
+
+
 \newtcbtheorem[number within=section]{definitionbox}{Definition}{%
     enhanced,
     sharp corners,
@@ -64,38 +76,8 @@
             colback=custom_red,
             colframe=custom_red,
         },
-    % Put (#1) after the definition number if a name is given
     description delimiters none,
-    % Add a line to the ToC whenever the environment begins
-    before upper={%
-            \addcontentsline{toc}{subsection}{%
-                Definition \thetcbcounter\ifstrempty{#1}{}{#1}%
-            }%
-        }%
 }{def}
-
-
-
-
-
-\newtcolorbox{conceptbox}[1][]{
-    title={#1},
-    fonttitle=\bfseries\color{white},
-    attach boxed title to top left={yshift=-2mm},
-    colbacktitle=custom_blue,
-    coltitle=white,
-    colframe=custom_blue,
-    colback=custom_blue!10,
-    boxrule=1mm,
-    arc=0mm,
-    bottomtitle=0.5mm,
-    left=2.5mm,
-    leftrule=1mm,
-    right=3.5mm,
-    rightrule=1mm,
-    toptitle=1mm,
-    enhanced
-}
 
 \lstdefinestyle{cStyle}{
     language=C,
@@ -191,24 +173,6 @@
     coltext=gray3
 }
 
-% \newtcolorbox{examplebox}[1][]{
-%     title=\textbf{Example} {#1},
-%     fonttitle=\bfseries\boldmath,
-%     arc=0mm,
-%     bottomtitle=0.5mm,
-%     boxrule=0mm,
-%     colbacktitle=gray2,
-%     colback=gray1,
-%     coltitle=gray3,
-%     left=2.5mm,
-%     leftrule=1mm,
-%     rightrule=1mm,
-%     right=3.5mm,
-%     toptitle=0.75mm,
-%     colframe=gray3,
-%     fontupper=\footnotesize,
-%     coltext=gray3
-% }
 
 \newtcbtheorem[number within=section]{examplebox}{Example}{
     enhanced,
@@ -224,23 +188,26 @@
             colback=gray3,
             colframe=gray3,
         },
-    % Put (#1) after the definition number if a name is given
     description delimiters none,
-    % Add a line to the ToC whenever the environment begins
-    before upper={%
-            \addcontentsline{toc}{subsection}{%
-                Example \thetcbcounter\ifstrempty{#1}{}{#1}%
-            }%
-        }%
 }{ex}
 
+\newtcbtheorem[number within=section]{conceptbox}{Concept}{
+    enhanced,
+    sharp corners,
+    attach boxed title to top left={yshift=-0.1mm},
+    colback=custom_blue!10,
+    colframe=custom_blue,
+    fonttitle=\bfseries,
+    boxed title style={
+            sharp corners,
+            size=small,
+            colback=custom_blue,
+            colframe=custom_blue,
+        },
+    description delimiters none,
+    }{cncpt}
 
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}[definition]{Example}
 
-\theoremstyle{plain}
-\newtheorem{theorem}[definition]{Theorem}
 
 % (7) Hyperlinks
 \usepackage{hyperref}
