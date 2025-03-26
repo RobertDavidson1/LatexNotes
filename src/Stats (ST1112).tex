@@ -748,6 +748,24 @@ When conducting a hypothesis test, there are two possible decisions:
         By definition, for a test with significance level $\alpha = 0.05$:
         $$P(\text{Type I error}) = \alpha = 0.05$$
         \textbf{Type II Error $\boldsymbol{\beta}$} \\
+        Suppose the true mean is 210, then under repeated sampling $\bar{X}$ is distributed approximately:
+        $$\bar{X} \sim N\left(210, \frac{25^2}{45}\right) = N(210, 3.727)$$
+        Reject $H_0$ if $\bar{X} > 206.11$. ($206.11 \approx 200 + 1.64 \times 3.727)$\\
+        Therefore, \textbf{Type II Error} $(\beta)$ we do no reject $H_0$ when $\mu = 210$, i.e $\bar{X} \leq 206.11$:
+        $$\beta = P(\bar{X} \leq 206.11 | \mu = 210)$$
+        Converting to z scores:
+        $$B = P(Z < \frac{206.11 - 210}{3.727}) = P(Z < -1.04) = 0.1492$$
+        \textbf{Power of the test $\boldsymbol{1-\beta}$}
+        $$1 - \beta = 0.8505$$
+        \noindent\rule{\textwidth}{1pt} \\ [2ex]
+        \textbf{Interpretation}\\
+        If $\mu = 210$, the probability of rejecting $H_0$ (detecting the mean is $> 200$) is $85.05\%$. 
     \end{itemize}
 \end{examplebox}
+\begin{definitionbox}{The Power Function}{}
+    The power of a test depends on the actual true value of $\mu$.
+    \begin{itemize}
+        \item \textbf{For one sided-test} $H: \mu = mu_0 \; \text{vs} \; H_1 : \mu > mu_0$:
+    \end{itemize}
+\end{definitionbox}
 \end{document}
