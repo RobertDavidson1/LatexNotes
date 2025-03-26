@@ -594,9 +594,16 @@ Hence, hypothesis testing and confidence examples are closely linked. For exampl
             \item \textbf{Compute the test statistic}\\
             $$SE = \frac{s}{\sqrt{n}} \approx 0.65$$
             $$T_0 = \frac{\bar{X} - \mu_0}{SE} = \frac{6.77 - 6.5}{0.65} \approx 0.41$$
-            \item \textbf{Identify the sampling distribution}\\
-            We can use a normal approximation since $n \geq 30$, or more precisely, a t-distribution with $df = n - 1 = 101$ degrees of freedom.
-            \item \textbf{Decide whether test statistic is rare or common}\\
+            \item \textbf{Identify the sampling distribution}\\[1.5ex]
+            We can use a normal approximation since $n \geq 30$, or more precisely, a t-distribution with $df = n - 1 = 101$ degrees of freedom.\\[-1.5ex]
+            \item \textbf{Decide whether test statistic is rare or common}\\[1.5ex]
+            \textbf{Rejection Region Approach}: \\
+            For a two-tailed test at the 5\% significant level, the critical values are approximately $\pm 1.984$. Since:
+            $$|T_0| \approx 0.41 \not>  1.984$$ 
+            The test statistic is not in the rejection region. \\[1.5ex]
+            \textbf{p-value Approach}:\\
+            
+
         \end{enumerate}
 
 \end{examplebox}
