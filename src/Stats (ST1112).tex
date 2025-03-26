@@ -816,65 +816,61 @@ When conducting a hypothesis test, there are two possible decisions:
 \end{definitionbox}
 
 \subsection{Decision Criteria and p-value}
-\begin{itemize}
-    \item \textbf{One-sided test}: Depending on $H_1$, we look for large positive values of $T_0$ (if $\pi > \pi_0$) or large negative values (if $\pi < \pi_0$).
-    \item \textbf{Two-sided test}: $\lvert T_0 \rvert$ is compared to the critical value $z_{\alpha/2}$ (often 1.96 for $\alpha=0.05$).
-\end{itemize}
+\begin{definitionbox}{Decision Criteria}{}
+    \begin{itemize}
+        \item \textbf{One-sided test}: Depending on $H_1$, we look for large positive values of $T_0$ (if $\pi > \pi_0$) or large negative values (if $\pi < \pi_0$).
+        \item \textbf{Two-sided test}: $\lvert T_0 \rvert$ is compared to the critical value $z_{\alpha/2}$ (often 1.96 for $\alpha=0.05$).
+    \end{itemize}
+\end{definitionbox}
+\begin{definitionbox}{p-value}{}
 The \textbf{p-value} is the probability (under $H_0$) of observing a test statistic as extreme or more extreme than the actual $T_0$.
 \begin{itemize}
     \item For a two-sided test:
-    \[
-    \text{p-value} = P\bigl(Z \le -|T_0|\bigr) + P\bigl(Z \ge |T_0|\bigr)
-    \]
+    $$\text{p-value} = P\bigl(Z \le -|T_0|\bigr) + P\bigl(Z \ge |T_0|\bigr)$$
     \item For a right-tailed test ($\pi > \pi_0$):
-    \[
+    $$
     \text{p-value} = P\bigl(Z \ge T_0\bigr)
-    \]
+    $$
     \item For a left-tailed test ($\pi < \pi_0$):
-    \[
+    $$
     \text{p-value} = P\bigl(Z \le T_0\bigr)
-    \]
+    $$
 \end{itemize}
 If the p-value $\le \alpha$, we reject $H_0$. Otherwise, we fail to reject $H_0$.
-
-\bigskip
+\end{definitionbox}
 
 \section{Example: Online Communication}
-
-\subsection{Setup}
+\begin{examplebox}{Online Communication}{}
+    \textbf{Setup}
 \begin{itemize}
     \item \textbf{Claim}: A study suggests $\pi = 0.63$ (63\% of college students spend 10+ hours/week communicating online).
     \item \textbf{Sample}: $n=150$ students, among whom $x=99$ do so, so $\hat{p} = \frac{99}{150} \approx 0.66$.
     \item \textbf{Hypotheses} (two-sided test):
-    \[
+    $$
     H_0:\,\pi=0.63 \quad\text{vs.}\quad H_1:\,\pi\neq0.63.
-    \]
-\end{itemize}
+    $$
+    \end{itemize}
+    \textbf{Solution}:\\
+    \textbf{Test Statistic}:
+    $$
+    T_0 = \frac{0.66 - 0.63}{\sqrt{\frac{0.63\,(1-0.63)}{150}}} \;\approx\; 0.76.
+    $$
 
-\subsection{Test Statistic}
-\[
-T_0 = \frac{0.66 - 0.63}{\sqrt{\frac{0.63\,(1-0.63)}{150}}} \;\approx\; 0.76.
-\]
+    \textbf{Decision} \\
+    At $\alpha=0.05$, a two-sided rejection region is given by $\lvert T_0 \rvert > 1.96$. Since $\lvert0.76\rvert < 1.96$, we do not reject $H_0$. \\[1.5ex]
 
-\subsection{Decision}
-At $\alpha=0.05$, a two-sided rejection region is given by $\lvert T_0 \rvert > 1.96$. Since $\lvert0.76\rvert < 1.96$, we do not reject $H_0$.
+    \textbf{p-value}
+    $$
+    \text{p-value} = P(Z \ge 0.76) + P(Z \le -0.76) \approx 0.4466.
+    $$
+    Since $0.4466 > 0.05$, we again fail to reject $H_0$.\\[1.5ex]
 
-\subsection{p-value}
-\[
-\text{p-value} = P(Z \ge 0.76) + P(Z \le -0.76) \approx 0.4466.
-\]
-Since $0.4466 > 0.05$, we again fail to reject $H_0$.
+    \textbf{Conclusion} \\
+    There is \textbf{insufficient evidence} (p-value $\approx 0.45$) to conclude that the true proportion differs from 0.63.
+\end{examplebox}
 
-\subsection{Conclusion}
-There is \textbf{insufficient evidence} (p-value $\approx 0.45$) to conclude that the true proportion differs from 0.63.
-
-\bigskip
-
-\section{Using \texttt{prop.test()} in R}
-You can conduct a one-sample proportion test by specifying:
-\begin{lstlisting}[language=r]
-prop.test(x, n, p, alternative = "two.sided", conf.level = 0.95, correct = FALSE)
-\end{lstlisting}
+\begin{conceptbox}{Using \texttt{prop.test()} in R}{}
+$$\texttt{prop.test(x, n, p, alternative = "two.sided", conf.level = 0.95, correct = FALSE)}$$
 where:
 \begin{itemize}
     \item \texttt{x} is the number of successes.
@@ -889,22 +885,231 @@ The function returns:
     \item The p-value.
     \item A confidence interval for the true proportion.
 \end{itemize}
+\end{conceptbox}
+
+\begin{takeaway-box}{}{}    
+    \begin{enumerate}
+        \item \textbf{Hypothesis Test Setup}: For proportions, we specify $H_0: \pi=\pi_0$ and check if the data strongly contradict $\pi_0$.
+        \item \textbf{z-Test Statistic}:
+        \[
+        T_0 = \frac{\hat{p}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}.
+        \]
+        This requires $n\hat{p}\ge5$ and $n(1-\hat{p})\ge5$ to ensure that the normal approximation is valid.
+        \item \textbf{Decision Rule or p-value}: Compare $\lvert T_0\rvert$ to $z_{\alpha/2}$ for two-sided tests (or use the appropriate one-sided cutoff), or compute the p-value.
+        \item \textbf{Interpretation}: A \textbf{small p-value} ($\le \alpha$) means the data provide strong evidence that $\pi$ differs from $\pi_0$, whereas a \textbf{large p-value} indicates insufficient evidence against $H_0$.
+        \item \textbf{Connection to Confidence Intervals}: If $\pi_0$ lies outside the confidence interval for $\pi$, this typically corresponds to rejecting $H_0$. Conversely, if $\pi_0$ lies inside, we fail to reject $H_0$.
+    \end{enumerate}
+\end{takeaway-box}
+\section{Two Sample Comparisons}
+
+\subsection{Recap: One-Sample Inference}
+\begin{itemize}
+    \item We learned how to make inferences about a single population parameter (mean $\mu$ or proportion $\pi$) using:
+    \begin{enumerate}
+        \item \textbf{Confidence Intervals (CIs)} for providing a plausible range of values.
+        \item \textbf{Hypothesis Tests} for deciding whether the parameter equals a specific value.
+    \end{enumerate}
+    \item While hypothesis tests yield a yes/no conclusion about a particular value, CIs reveal the magnitude and practical significance of differences.
+\end{itemize}
+\pagebreak
+\subsection{Why Compare Two Samples?}
+In practice, we often want to compare parameters from \textbf{two} different populations or groups. Examples:
+\begin{itemize}
+    \item Do female vs. male students differ in average study time?
+    \item Does a new treatment for ankle fractures produce a higher average recovery score than the standard treatment?
+    \item Does one manufacturing process have a higher mean output than another?
+\end{itemize}
+In such scenarios, each group represents a distinct population, and we want to compare (for means) the difference $\mu_2 - \mu_1$.
 
 \bigskip
 
-\section{Key Takeaways}
-\begin{enumerate}
-    \item \textbf{Hypothesis Test Setup}: For proportions, we specify $H_0: \pi=\pi_0$ and check if the data strongly contradict $\pi_0$.
-    \item \textbf{z-Test Statistic}:
-    \[
-    T_0 = \frac{\hat{p}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}.
-    \]
-    This requires $n\hat{p}\ge5$ and $n(1-\hat{p})\ge5$ to ensure that the normal approximation is valid.
-    \item \textbf{Decision Rule or p-value}: Compare $\lvert T_0\rvert$ to $z_{\alpha/2}$ for two-sided tests (or use the appropriate one-sided cutoff), or compute the p-value.
-    \item \textbf{Interpretation}: A \textbf{small p-value} ($\le \alpha$) means the data provide strong evidence that $\pi$ differs from $\pi_0$, whereas a \textbf{large p-value} indicates insufficient evidence against $H_0$.
-    \item \textbf{Connection to Confidence Intervals}: If $\pi_0$ lies outside the confidence interval for $\pi$, this typically corresponds to rejecting $H_0$. Conversely, if $\pi_0$ lies inside, we fail to reject $H_0$.
-\end{enumerate}
+\subsection{Comparing Two Independent Population Means}
 
+\subsection{The Parameter of Interest}
+We want to estimate or test hypotheses about:
+\[
+\mu_2 - \mu_1.
+\]
+\begin{itemize}
+    \item A \textbf{point estimate} of this difference is $\bar{X}_2 - \bar{X}_1$.
+    \item If $\mu_2 = \mu_1$, then their difference is zero (i.e., no difference in means).
+\end{itemize}
+
+\subsection{Example: Ankle Fractures}
+\textbf{Context}: 60 patients split into two treatment groups (30 each).  
+\begin{itemize}
+    \item \textbf{Treatment A}: Cast immobilization.
+    \item \textbf{Treatment B}: Early mobilization.
+\end{itemize}
+\textbf{Outcome}: AOFAS scores (a measure of ankle function/pain) at 24 weeks; range 0--100 (higher is better).  
+\textbf{Question}: Does Treatment B lead to a higher mean AOFAS score than Treatment A?
+
+\textbf{Exploratory Analysis:}
+\begin{enumerate}
+    \item Summary statistics show:
+    \begin{itemize}
+        \item Treatment A: $\bar{X} \approx 79.3$, $s \approx 7.0$.
+        \item Treatment B: $\bar{X} \approx 85.8$, $s \approx 2.8$.
+    \end{itemize}
+    \item Boxplots or violin plots indicate that Treatment B appears to have higher scores on average, with less variation, and the data distribution appears reasonably symmetric.
+\end{enumerate}
+While these summaries are informative, a \textbf{formal two-sample inference} is needed to confirm whether the observed difference is statistically significant in the underlying populations.
+
+\bigskip
+
+\section{Four Main Cases for Two-Sample Inference on Means}
+
+When comparing two means $\mu_1$ versus $\mu_2$, we choose the appropriate approach based on:
+\begin{itemize}
+    \item Sample sizes (large vs. small).
+    \item Population variances (known or unknown).
+    \item Equality of population variances (if unknown, are they assumed equal?).
+\end{itemize}
+
+\subsection{Case 1: Large Samples, Known Variances}
+If both population variances $\sigma_1^2$ and $\sigma_2^2$ are known and each sample is large ($n_1, n_2 \ge 30$), then by the Central Limit Theorem:
+\[
+\bar{X}_2 - \bar{X}_1 \sim N\!\left(\mu_2 - \mu_1, \; \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\right).
+\]
+\textbf{Standard Error (SE)} for $\bar{X}_2 - \bar{X}_1$:
+\[
+\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.
+\]
+
+\textbf{Confidence Interval:}
+\[
+(\bar{X}_2 - \bar{X}_1) \pm z_{\alpha/2} \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}.
+\]
+
+\textbf{Hypothesis Test:} Commonly test 
+\[
+H_0 : \mu_2 - \mu_1 = 0 \quad \text{vs.} \quad H_1 : \mu_2 - \mu_1 \neq 0.
+\]
+\textbf{z-test statistic}:
+\[
+Z_0 = \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
+\]
+
+\subsection{Case 2: Large Samples, Unknown Variances}
+If both samples are large but $\sigma_1^2$ and $\sigma_2^2$ are unknown, we estimate them with $s_1^2$ and $s_2^2$. Then:
+\[
+\bar{X}_2 - \bar{X}_1 \approx N\!\left(\mu_2 - \mu_1, \; \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right),
+\]
+with \textbf{Standard Error}:
+\[
+\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.
+\]
+A \textbf{z-interval} or \textbf{z-test} is used similarly, substituting $s_i^2$ for $\sigma_i^2$.
+
+\subsection{Case 3: Small Samples, Unknown Variances, Assumed Equal}
+When at least one sample is small ($n < 30$) and we assume $\sigma_1^2 = \sigma_2^2 = \sigma^2$:
+\begin{enumerate}
+    \item Compute the \textbf{pooled variance}:
+    \[
+    s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}.
+    \]
+    \item The \textbf{Standard Error} is:
+    \[
+    s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}.
+    \]
+    \item The test statistic follows a \textbf{t-distribution} with $n_1 + n_2 - 2$ degrees of freedom:
+    \[
+    \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t_{n_1 + n_2 - 2}.
+    \]
+\end{enumerate}
+\textbf{Conditions}: Each population is (approximately) normally distributed and the two population variances are equal.
+
+\subsection{Case 4: Small Samples, Unknown Variances, Not Assumed Equal}
+If at least one sample is small and we do \textbf{not} assume equality of variances:
+\[
+\text{Standard Error} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
+\]
+with a \textbf{t-distribution} whose degrees of freedom are approximated by the \textbf{Welch–Satterthwaite} formula:
+\[
+\mathrm{df}^* = \frac{\Bigl(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\Bigr)^2}{\frac{(s_1^2/n_1)^2}{n_1 - 1} + \frac{(s_2^2/n_2)^2}{n_2 - 1}}.
+\]
+\textbf{Conditions}: Each population is approximately normal and the variances $\sigma_1^2$ and $\sigma_2^2$ may differ.
+
+\bigskip
+
+\section{Back to the Ankle Fracture Example}
+\begin{itemize}
+    \item $n_1 = n_2 = 30$ (both large enough), $\sigma_1^2$, $\sigma_2^2$ unknown $\Rightarrow$ \textbf{Case 2} applies.
+    \item Sample means:
+    \[
+    \bar{X}_A = 79.30,\quad \bar{X}_B = 85.77.
+    \]
+    \item Sample variances:
+    \[
+    s_A^2 \approx 49.39,\quad s_B^2 \approx 7.84.
+    \]
+    \item \textbf{Estimated difference}: $\bar{X}_B - \bar{X}_A = 6.47$.
+\end{itemize}
+
+\subsection{Confidence Interval for $\mu_B - \mu_A$}
+\[
+\text{SE} = \sqrt{\frac{49.39}{30} + \frac{7.84}{30}} \approx 1.38.
+\]
+At 95\% confidence ($z_{0.025}=1.96$):
+\[
+6.47 \pm 1.96 \times 1.38 = (3.77,\; 9.17).
+\]
+\textbf{Interpretation}: We are 95\% confident that, on average, Treatment B yields between about 3.8 and 9.2 points higher AOFAS score than Treatment A.
+
+\subsection{Hypothesis Test}
+\textbf{Null Hypothesis}: $H_0 : \mu_B - \mu_A = 0$.  
+\textbf{Alternative Hypothesis}: $H_1 : \mu_B - \mu_A \neq 0$.
+\[
+Z_0 = \frac{6.47 - 0}{1.38} \approx 4.69.
+\]
+Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-value} is effectively zero (less than $10^{-5}$), indicating strong evidence that Treatment B’s mean AOFAS score is higher than Treatment A’s.
+
+\bigskip
+
+\noindent\textbf{Using \texttt{t.test()} in R:}  
+For two independent samples (Welch’s method by default), use:
+\begin{lstlisting}[language=r]
+t.test(AOFAS ~ Treatment, data = ankle24.df)
+\end{lstlisting}
+The output gives a t-statistic, approximate degrees of freedom, p-value, and a confidence interval. For large samples, the difference between the z-approximation and Welch’s t-approximation is negligible.
+
+\bigskip
+
+\section{Comparing Variances}
+Sometimes we want to test if $\sigma_1^2 = \sigma_2^2$ for two populations.
+\begin{itemize}
+    \item \textbf{F-test} (requires approximate normality).
+    \item \textbf{Levene’s test} (less sensitive to non-normality).
+\end{itemize}
+\textbf{F-test:}
+\[
+H_0: \sigma_1^2 = \sigma_2^2 \quad \text{vs.} \quad H_1: \sigma_1^2 \neq \sigma_2^2.
+\]
+\textbf{Test Statistic:}
+\[
+F_0 = \frac{s_1^2}{s_2^2}.
+\]
+Under $H_0$, $F_0 \sim F_{n_1-1,\;n_2-1}$. If $F_0$ is too large or too small (i.e., falls outside the critical interval), we reject $H_0$.
+
+\subsection*{Example: Paper Mills}
+\begin{itemize}
+    \item Mill 1: $n_1=13$, $\bar{X}_1=26.31$, $s_1=8.36$.
+    \item Mill 2: $n_2=18$, $\bar{X}_2=19.89$, $s_2=4.85$.
+\end{itemize}
+\[
+F_0 = \frac{8.36^2}{4.85^2} \approx 2.97.
+\]
+If $F_0$ is outside the interval $(F_{0.025}, F_{0.975})$, we reject $H_0$. Here, with a p-value $\approx 0.04$, we reject the null hypothesis that $\sigma_1^2=\sigma_2^2$.
+
+
+\section{Conclusion \& Further Steps}
+\begin{itemize}
+    \item \textbf{Two-sample methods} extend the one-sample inference concepts to compare means from two groups.
+    \item Depending on sample size, variance knowledge, and normality assumptions, we choose the appropriate formula (z-approximation or t-approximation).
+    \item \textbf{Confidence intervals} remain crucial for assessing the practical importance of observed differences.
+    \item If normality or these assumptions are questionable, consider \textbf{transformations} or \textbf{bootstrap}/\textbf{non-parametric} approaches.
+\end{itemize}
+In summary, these two-sample comparisons allow us to determine whether the difference in sample means plausibly reflects a genuine difference in population means and, if so, to estimate how large that difference might be.
 
 
 
