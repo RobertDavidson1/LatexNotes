@@ -1335,47 +1335,42 @@ For large $n$, the Central Limit Theorem justifies the approximate normality of 
 \end{takeaway-box}
 
 \section{ Two Sample Proportion Comparisons}
-\section*{1. Background}
+\subsection{Background}
 
 In many settings, we want to compare the \textbf{proportions} of “successes” in two different populations (e.g. the proportion of Instagram users among women vs. among men). Each population produces a binary response (“success” or “failure”), and we want to see whether the underlying population proportions differ.
 
-\subsection*{Notation}
+\subsubsection{Notation}
 
 \begin{itemize}
-    \item \(\pi_1\): the true proportion of “successes” in population 1.
-    \item \(\pi_2\): the true proportion of “successes” in population 2.
+    \item $\pi_1$: the true proportion of “successes” in population 1.
+    \item $\pi_2$: the true proportion of “successes” in population 2.
 \end{itemize}
-
-We take \textbf{independent samples} of sizes \(n_1\) and \(n_2\) from the two populations, observing \(x_1\) successes in sample 1 and \(x_2\) successes in sample 2.
-
+We take \textbf{independent samples} of sizes $n_1$ and $n_2$ from the two populations, observing $x_1$ successes in sample 1 and $x_2$ successes in sample 2.
 \textbf{Sample proportions}:  
-\[
+$$
 p_1 = \frac{x_1}{n_1}, 
 \quad
 p_2 = \frac{x_2}{n_2}.
-\]
+$$
 
-\bigskip
 
-\section*{2. Point Estimate and Standard Error}
+\subsection{Point Estimate and Standard Error}
 
-\subsection*{2.1 Point Estimate}
+\subsubsection{Point Estimate}
 
-The best estimate of the difference in population proportions (\(\pi_2 - \pi_1\)) is the difference in sample proportions:
-\[
-(p_2 - p_1).
-\]
+The best estimate of the difference in population proportions ($\pi_2 - \pi_1$) is the difference in sample proportions:
+$$(p_2 - p_1)$$
 
-\subsection*{2.2 Standard Error}
+\subsubsection{2.2 Standard Error}
 
-Under the \textbf{large-sample} assumption (i.e., each sample individually satisfies \(n_i p_i \ge 15\) and \(n_i(1 - p_i) \ge 15\)), the Central Limit Theorem implies \(p_1\) and \(p_2\) are each approximately normally distributed around \(\pi_1\) and \(\pi_2\). Hence,
+Under the \textbf{large-sample} assumption (i.e., each sample individually satisfies $n_i p_i \ge 15$ and $n_i(1 - p_i) \ge 15$), the Central Limit Theorem implies $p_1$ and $p_2$ are each approximately normally distributed around $\pi_1$ and $\pi_2$. Hence,
 \[
 \text{SE} = \sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}}.
 \]
 
 \bigskip
 
-\section*{3. Confidence Interval for \(\pi_2 - \pi_1\)}
+\subsection{Confidence Interval for $\pi_2 - \pi_1$}
 
 A \textbf{$(1-\alpha)$\%} confidence interval is given by
 \[
@@ -1384,99 +1379,91 @@ A \textbf{$(1-\alpha)$\%} confidence interval is given by
 z_{\alpha/2}
 \sqrt{\frac{p_1 (1 - p_1)}{n_1} \;+\; \frac{p_2 (1 - p_2)}{n_2}},
 \]
-where \(z_{\alpha/2}\) is the critical value from the standard Normal distribution (e.g. 1.96 for 95\% confidence). This provides a plausible range for the difference in proportions in the underlying populations.
+where $z_{\alpha/2}$ is the critical value from the standard Normal distribution (e.g. 1.96 for 95\% confidence). This provides a plausible range for the difference in proportions in the underlying populations.
 
-\subsection*{Interpretation}
+\subsubsection{Interpretation}
 
 \begin{itemize}
-    \item If the entire interval is \textbf{above zero}, we infer \(\pi_2 > \pi_1\).
-    \item If the entire interval is \textbf{below zero}, we infer \(\pi_2 < \pi_1\).
+    \item If the entire interval is \textbf{above zero}, we infer $\pi_2 > \pi_1$.
+    \item If the entire interval is \textbf{below zero}, we infer $\pi_2 < \pi_1$.
     \item If it \textbf{straddles zero}, we do not see strong evidence that the two proportions differ.
 \end{itemize}
 
 \bigskip
 
-\section*{4. Hypothesis Testing for Two Proportions}
+\subsection{Hypothesis Testing for Two Proportions}
 
-Often, we test whether \(\pi_1\) and \(\pi_2\) are equal (\(\pi_2 - \pi_1 = 0\)):
-\[
+Often, we test whether $\pi_1$ and $\pi_2$ are equal ($\pi_2 - \pi_1 = 0$):
+$$
 H_0 : (\pi_2 - \pi_1) = 0
 \quad
 \text{vs.}
 \quad
 H_1 : (\pi_2 - \pi_1) \neq 0,
-\]
-or a one-sided version such as \(H_1: \pi_2 - \pi_1 > 0\).
+$$
+or a one-sided version such as $H_1: \pi_2 - \pi_1 > 0$.
 
-\subsection*{4.1 Test Statistic}
+\subsubsection{Test Statistic}
 
 A \textbf{z-test} statistic:
-\[
+$$
 Z_0 = \frac{(p_2 - p_1) - 0}{\sqrt{\frac{p_1(1 - p_1)}{n_1} \;+\; \frac{p_2(1 - p_2)}{n_2}}}.
-\]
+$$
 \begin{itemize}
-    \item Under \(H_0\), \(Z_0\) approximately follows a standard Normal distribution (by the Central Limit Theorem), assuming large enough sample sizes and independence.
+    \item Under $H_0$, $Z_0$ approximately follows a standard Normal distribution (by the Central Limit Theorem), assuming large enough sample sizes and independence.
 \end{itemize}
 
-\subsection*{4.2 Decision \& p-value}
+\subsubsection{4.2 Decision \& p-value}
 
 \begin{itemize}
     \item \textbf{Decision rule}:  
     \begin{itemize}
-        \item Two-sided test at \(\alpha\): reject \(H_0\) if \(\lvert Z_0\rvert > z_{\alpha/2}\).
+        \item Two-sided test at $\alpha$: reject $H_0$ if $\lvert Z_0\rvert > z_{\alpha/2}$.
     \end{itemize}
-    \item \textbf{p-value}: Probability (under \(H_0\)) of obtaining a test statistic at least as extreme as the observed \(Z_0\).
+    \item \textbf{p-value}: Probability (under $H_0$) of obtaining a test statistic at least as extreme as the observed $Z_0$.
 \end{itemize}
 
-\bigskip
-
-\section*{5. Example: Instagram Usage (Women vs. Men)}
-
-A survey of 1069 young people: 
+\begin{examplebox}{}{}
+    A survey of 1069 young people: 
 \begin{itemize}
-    \item 537 women: 328 use Instagram \(\rightarrow p_{\text{women}} = 328/537 \approx 0.6108\).
-    \item 532 men: 234 use Instagram \(\rightarrow p_{\text{men}} = 234/532 \approx 0.439\).
+    \item 537 women: 328 use Instagram $\rightarrow p_{\text{women}} = 328/537 \approx 0.6108$.
+    \item 532 men: 234 use Instagram $\rightarrow p_{\text{men}} = 234/532 \approx 0.439$.
 \end{itemize}
 
-\textbf{Difference}: \(0.6108 - 0.439 = 0.1710\).
+\textbf{Difference}: $0.6108 - 0.439 = 0.1710$.
 
 \textbf{Standard error}:
-\[
+$$
 \text{SE} = \sqrt{\frac{0.439 \,(1-0.439)}{532} + \frac{0.6108 \,(1-0.6108)}{537}}
 \;\approx\;
 0.0301.
-\]
+$$
 
-\subsection*{5.1 95\% Confidence Interval}
-
-\[
+\textbf{95\% Confidence Interval}
+$$
 0.1710 \;\pm\; 1.96 \times 0.0301 
 = (\,0.11,\;0.23).
-\]
+$$
 
 \textbf{Interpretation}: We are 95\% confident that women’s Instagram usage proportion exceeds men’s by between 11\% and 23\%.
 
-\subsection*{5.2 Hypothesis Test}
+\textbf{5.2 Hypothesis Test}
 
 \begin{itemize}
-    \item \textbf{\(H_0\)}: \(\pi_{\text{women}} - \pi_{\text{men}} = 0\).
-    \item \textbf{\(H_1\)}: \(\pi_{\text{women}} - \pi_{\text{men}} \neq 0\).
+    \item \textbf{$H_0$}: $\pi_{\text{women}} - \pi_{\text{men}} = 0$.
+    \item \textbf{$H_1$}: $\pi_{\text{women}} - \pi_{\text{men}} \neq 0$.
 \end{itemize}
 
-\[
-Z_0 = \frac{0.1710 - 0}{0.0301} \;\approx\; 5.68.
-\]
+$$Z_0 = \frac{0.1710 - 0}{0.0301} \;\approx\; 5.68.$$
 
-Because 5.68 is much larger than the critical value 1.96, we reject \(H_0\). The p-value \(\approx 0\). This strongly indicates a difference (women \(>\) men in Instagram usage proportion).
+Because 5.68 is much larger than the critical value 1.96, we reject $H_0$. The p-value $\approx 0$. This strongly indicates a difference (women $>$ men in Instagram usage proportion).
+    
+\end{examplebox}
 
-\bigskip
 
-\section*{6. Using \texttt{prop.test()} in R}
+\subsection{Using \texttt{prop.test()} in R}
+    $$\small\texttt{prop.test(x = c(x1, x2), n = c(n1, n2), alternative = "two.sided", conf.level = 0.95, correct = FALSE)}$$
 
-R’s \texttt{prop.test()} can do both a CI and hypothesis test for two proportions:
-\begin{lstlisting}[language=r]
-prop.test(x = c(x1, x2), n = c(n1, n2), alternative = "two.sided", conf.level = 0.95, correct = FALSE)
-\end{lstlisting}
 \begin{itemize}
     \item \texttt{x} is a vector of counts of successes in each sample.
     \item \texttt{n} is a vector of sample sizes.
@@ -1487,25 +1474,23 @@ prop.test(x = c(x1, x2), n = c(n1, n2), alternative = "two.sided", conf.level = 
 
 The output includes:
 \begin{itemize}
-    \item A test statistic (labelled \texttt{X-squared} whose square root is effectively \(\lvert Z_0\rvert\)).
+    \item A test statistic (labelled \texttt{X-squared} whose square root is effectively $\lvert Z_0\rvert$).
     \item The p-value.
-    \item A confidence interval for \(\pi_2 - \pi_1\).
+    \item A confidence interval for $\pi_2 - \pi_1$.
 \end{itemize}
 
-\bigskip
-
-\section*{7. Conclusion}
-
-\textbf{Two-sample proportion comparisons} extend the same logic as for a single proportion or two-sample means, using the difference in sample proportions and its standard error. As always:
+\begin{takeaway-box}{}{}
+    \small
+    \textbf{Two-sample proportion comparisons} extend the same logic as for a single proportion or two-sample means, using the difference in sample proportions and its standard error. As always:
 \begin{itemize}
-    \item \textbf{Check sample size criteria} (\(n p_i \ge 15\) and \(n (1-p_i) \ge 15\)) to justify the normal approximation.
+    \item \textbf{Check sample size criteria} ($n p_i \ge 15$ and $n (1-p_i) \ge 15$) to justify the normal approximation.
     \item \textbf{Compute the difference} of sample proportions.
     \item \textbf{Form a confidence interval} or perform a \textbf{hypothesis test}---or both.
-    \item If the CI for \(\pi_2 - \pi_1\) excludes 0 or the test statistic is extreme (p-value \(\le \alpha\)), we infer that the two population proportions differ significantly.
+    \item If the CI for $\pi_2 - \pi_1$ excludes 0 or the test statistic is extreme (p-value $\le \alpha$), we infer that the two population proportions differ significantly.
     \item If the CI straddles 0 or the p-value is large, we do not have strong evidence of a difference.
 \end{itemize}
-
-This approach allows us to make inferences about whether one group (e.g. women) has a higher or lower proportion of a characteristic than the other group (e.g. men).
+    This approach allows us to make inferences about whether one group (e.g. women) has a higher or lower proportion of a characteristic than the other group (e.g. men).
+\end{takeaway-box}
 
 
 
