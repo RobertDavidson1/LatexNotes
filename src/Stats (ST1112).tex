@@ -982,9 +982,6 @@ $$
    \textbf{z-test statistic} \quad\quad & Z_0 = \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)_0}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1).
 \end{align*}
 
-
-
-
 \subsubsection{Case 2: Large Samples, Unknown Variances}
 If both samples are large but $\sigma_1^2$ and $\sigma_2^2$ are unknown, we estimate them with $s_1^2$ and $s_2^2$. Then:
 $$
@@ -995,74 +992,67 @@ And a \textbf{z-interval} or \textbf{z-test} is used similarly, substituting $s_
 \subsubsection{Case 3: Small Samples, Unknown Variances, Assumed Equal}
 When at least one sample is small ($n < 30$) and we assume $\sigma_1^2 = \sigma_2^2 = \sigma^2$:
 \begin{align*}
-    \text{Compute the} \ \textbf{pooled variance}: &s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}. \\
-    \text{The} \ \textbf{Standard Error} \ is: &s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\
-    \text{The test statistic follows a} \ \textbf{t-distribution} \ \text{with} \ n_1 + n_2 - 2 \ \text{degrees of freedom:}
+    \text{Compute the} \ \textbf{pooled variance}: &\quad\quad s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}. \\
+    \text{The} \ \textbf{Standard Error} \ is: &\quad\quad s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \\
 \end{align*}
-
-\begin{enumerate}
- 
-    \item 
-    \[
-    \frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t_{n_1 + n_2 - 2}.
-    \]
-\end{enumerate}
+The test statistic follows a \textbf{t-distribution} with $n_1 + n_2 - 2$ degrees of freedom:
+$$\frac{(\bar{X}_2 - \bar{X}_1) - (\mu_2 - \mu_1)}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t_{n_1 + n_2 - 2}.
+$$
 \textbf{Conditions}: Each population is (approximately) normally distributed and the two population variances are equal.
 
 \subsubsection{Case 4: Small Samples, Unknown Variances, Not Assumed Equal}
 If at least one sample is small and we do \textbf{not} assume equality of variances:
-\[
+$$
 \text{Standard Error} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
-\]
+$$
 with a \textbf{t-distribution} whose degrees of freedom are approximated by the \textbf{Welch–Satterthwaite} formula:
-\[
+$$
 \mathrm{df}^* = \frac{\Bigl(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\Bigr)^2}{\frac{(s_1^2/n_1)^2}{n_1 - 1} + \frac{(s_2^2/n_2)^2}{n_2 - 1}}.
-\]
+$$
 \textbf{Conditions}: Each population is approximately normal and the variances $\sigma_1^2$ and $\sigma_2^2$ may differ.
 
 
 \subsection{Back to the Ankle Fracture Example}
-\begin{itemize}
-    \item $n_1 = n_2 = 30$ (both large enough), $\sigma_1^2$, $\sigma_2^2$ unknown $\Rightarrow$ \textbf{Case 2} applies.
-    \item Sample means:
-    \[
-    \bar{X}_A = 79.30,\quad \bar{X}_B = 85.77.
-    \]
-    \item Sample variances:
-    \[
-    s_A^2 \approx 49.39,\quad s_B^2 \approx 7.84.
-    \]
-    \item \textbf{Estimated difference}: $\bar{X}_B - \bar{X}_A = 6.47$.
-\end{itemize}
-
-\subsubsection{Confidence Interval for $\mu_B - \mu_A$}
-\[
-\text{SE} = \sqrt{\frac{49.39}{30} + \frac{7.84}{30}} \approx 1.38.
-\]
-At 95\% confidence ($z_{0.025}=1.96$):
-\[
-6.47 \pm 1.96 \times 1.38 = (3.77,\; 9.17).
-\]
+\begin{examplebox}{Ankle Fractures}{}
+    \begin{itemize}
+        \item $n_1 = n_2 = 30$ (both large enough), $\sigma_1^2$, $\sigma_2^2$ unknown $\Rightarrow$ \textbf{Case 2} applies.
+        \item Sample means:
+        $$
+        \bar{X}_A = 79.30,\quad \bar{X}_B = 85.77.
+        $$
+        \item Sample variances:
+        $$
+        s_A^2 \approx 49.39,\quad s_B^2 \approx 7.84.
+        $$
+        \item \textbf{Estimated difference}: $\bar{X}_B - \bar{X}_A = 6.47$.
+    \end{itemize}
+    \textbf{Confidence Interval for $\mu_B - \mu_A$}
+    $$
+    \text{SE} = \sqrt{\frac{49.39}{30} + \frac{7.84}{30}} \approx 1.38.
+    $$
+    At 95\% confidence ($z_{0.025}=1.96$):
+    $$
+    6.47 \pm 1.96 \times 1.38 = (3.77,\; 9.17).
+    $$
 \textbf{Interpretation}: We are 95\% confident that, on average, Treatment B yields between about 3.8 and 9.2 points higher AOFAS score than Treatment A.
 
-\subsubsection{Hypothesis Test}
+\noindent\rule{\textwidth}{1pt} \\ [2ex]
+\textbf{Hypothesis Test}
 \textbf{Null Hypothesis}: $H_0 : \mu_B - \mu_A = 0$.  
 \textbf{Alternative Hypothesis}: $H_1 : \mu_B - \mu_A \neq 0$.
-\[
+$$
 Z_0 = \frac{6.47 - 0}{1.38} \approx 4.69.
-\]
+$$
 Since $4.69$ is well above $z_{0.025}=1.96$, we reject $H_0$. The \textbf{p-value} is effectively zero (less than $10^{-5}$), indicating strong evidence that Treatment B’s mean AOFAS score is higher than Treatment A’s.
+\end{examplebox}
+\begin{conceptbox}{Using \texttt{t.test()} in R:}{}
+    For two independent samples (Welch’s method by default), use:
+    \begin{lstlisting}[language=r]
+    t.test(AOFAS ~ Treatment, data = ankle24.df)
+    \end{lstlisting}
+    The output gives a t-statistic, approximate degrees of freedom, p-value, and a confidence interval. For large samples, the difference between the z-approximation and Welch’s t-approximation is negligible.
+\end{conceptbox}
 
-\bigskip
-
-\noindent\textbf{Using \texttt{t.test()} in R:}  
-For two independent samples (Welch’s method by default), use:
-\begin{lstlisting}[language=r]
-t.test(AOFAS ~ Treatment, data = ankle24.df)
-\end{lstlisting}
-The output gives a t-statistic, approximate degrees of freedom, p-value, and a confidence interval. For large samples, the difference between the z-approximation and Welch’s t-approximation is negligible.
-
-\bigskip
 
 \subsection{Comparing Variances}
 Sometimes we want to test if $\sigma_1^2 = \sigma_2^2$ for two populations.
@@ -1071,26 +1061,24 @@ Sometimes we want to test if $\sigma_1^2 = \sigma_2^2$ for two populations.
     \item \textbf{Levene’s test} (less sensitive to non-normality).
 \end{itemize}
 \textbf{F-test:}
-\[
+$$
 H_0: \sigma_1^2 = \sigma_2^2 \quad \text{vs.} \quad H_1: \sigma_1^2 \neq \sigma_2^2.
-\]
+$$
 \textbf{Test Statistic:}
-\[
+$$
 F_0 = \frac{s_1^2}{s_2^2}.
-\]
+$$
 Under $H_0$, $F_0 \sim F_{n_1-1,\;n_2-1}$. If $F_0$ is too large or too small (i.e., falls outside the critical interval), we reject $H_0$.
-
-\subsection*{Example: Paper Mills}
-\begin{itemize}
-    \item Mill 1: $n_1=13$, $\bar{X}_1=26.31$, $s_1=8.36$.
-    \item Mill 2: $n_2=18$, $\bar{X}_2=19.89$, $s_2=4.85$.
-\end{itemize}
-\[
-F_0 = \frac{8.36^2}{4.85^2} \approx 2.97.
-\]
-If $F_0$ is outside the interval $(F_{0.025}, F_{0.975})$, we reject $H_0$. Here, with a p-value $\approx 0.04$, we reject the null hypothesis that $\sigma_1^2=\sigma_2^2$.
-
-
+\begin{examplebox}{Paper Mills}{}
+    \begin{itemize}
+        \item Mill 1: $n_1=13$, $\bar{X}_1=26.31$, $s_1=8.36$.
+        \item Mill 2: $n_2=18$, $\bar{X}_2=19.89$, $s_2=4.85$.
+    \end{itemize}
+    $$
+    F_0 = \frac{8.36^2}{4.85^2} \approx 2.97.
+    $$
+    If $F_0$ is outside the interval $(F_{0.025}, F_{0.975})$, we reject $H_0$. Here, with a p-value $\approx 0.04$, we reject the null hypothesis that $\sigma_1^2=\sigma_2^2$.
+\end{examplebox}
 \begin{takeaway-box}{}{}
 \begin{itemize}
     \item \textbf{Two-sample methods} extend the one-sample inference concepts to compare means from two groups.
