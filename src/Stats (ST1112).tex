@@ -199,7 +199,7 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
 
 \begin{examplebox}{Find crtitical value for the 95\% CI}{}
     For a confidence interval of 95\%, we want to find the z-score that leaves 2.5\% in each tail of the normal distribution.\\
-    We want to find the $z$-value where the cumulative area )from the left up to that $z-score$) is $1 - 0.025 = 0.975$.\\
+    We want to find the $z$-value where the cumulative area (from the left up to that $z-score$) is $1 - 0.025 = 0.975$.\\
     We look in the $z$-tables for the value closest to $0.975$ and read the row and column headers to find the $z$-value.\\
     The $z$-value is $1.96$.\\
 \end{examplebox}
@@ -270,7 +270,7 @@ In other words, you do not say \emph{"there is a 95\% chance that $\mu$ lies in 
     For example, for $n = 30$, $df = 29$ and the t-distribution is very close to the normal distribution.\\
 \end{conceptbox}
 
-\begin{definitionbox}{Confidece Intervals (t-based)}{}
+\begin{definitionbox}{Confidence Intervals (t-based)}{}
     $$\bar{X} \pm t_{\alpha/2, df} \times \frac{s}{\sqrt{n}}$$
     where $t_{\alpha/2, df}$ is the critical value from the t-distribution with $df = n - 1$ degrees of freedom - or from a function like \texttt{qt()} in R.\\
 
@@ -340,7 +340,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 \end{itemize}
 \textbf{Cautions}:
 \begin{itemize}
-    \item Finding the write transformation can be tricky; sometimes no simple transformation works well.
+    \item Finding the right transformation can be tricky; sometimes no simple transformation works well.
     \item Interpretation of results becomes more complex; if you compute a CI for the transformed mean, you must convert (e.g. exponentiate) the results back to the original scale.
     \item Despite these challenges, transformation often prove very useful in practice.
 \end{itemize}
@@ -348,7 +348,7 @@ Recall that for small $n$, the t-distribution-based confidence interval requires
 \subsection{The Bootstrap}
 \textbf{Motivation}:
 \begin{itemize}
-    \item Bootstrap methods do not require normality assumptions or a large $n$. They rely on the principle that the observed sample can server a reasonable proxy for the populations shape.
+    \item Bootstrap methods do not require normality assumptions or a large $n$. They rely on the principle that the observed sample can serve as a reasonable proxy for the populations shape.
     \item By resampling with replacement from the original sample (many times), one creates a "bootstrap distribution" that mimics the statistic (e.g. mean, median) of interest.
     \item This bootstrap distribution is then used to estimate hpw the statistic varies, allowing for confidence interval construction and hypothesis testing without explicit formulas.
 \end{itemize}
@@ -427,16 +427,20 @@ Since $X$ is binomially distributed, its mean is $n\pi$ and its variance is $n\p
 For large $n$ (above conditions), the distribution of $p$ can be approximated by a normal distribution:
 $$p \sim N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$\\
 \textbf{Interpretation}: \\
-This approximation means if we were to make many samples of size $n$, the distribution of the same proportions would cluster around the true proportion, $pi$, with variability decreasing as the sample size $n$ increases. This normality is what allows statisticians to construct confidence intervals and perform hypothesis tests on population proportions.
+This approximation means if we were to make many samples of size $n$, the distribution of the same proportions would cluster around the true proportion, $\pi$, with variability decreasing as the sample size $n$ increases. This normality is what allows statisticians to construct confidence intervals and perform hypothesis tests on population proportions.
 \subsubsection{Confidence Intervals for Proportion $\pi$}
-For a large sample size where $np$ and $n(1-p)$ are both greater or equal to 5, a 95\% C.I for the population proportion $\pi$ is given by:
-$$p \pm z_{\alpha/2} \times \sqrt{\frac{p(1 - p)}{n}}$$
-where:
-\begin{itemize}
-    \item $p$ is the sample proportion (e.g. $\frac{X}{n}$)
-    \item $z_{\alpha/2}$ is the critical value from the standard normal distribution (e.g. $1.96$ for 95\% confidence)
-    \item The quantity under the square root is the standard error of the sample proportion.
-\end{itemize}
+\begin{definitionbox}{Confidence Interval for Proportion}{}
+    For a large sample size where $np$ and $n(1-p)$ are both greater or equal to 5, a 95\% C.I for the population proportion $\pi$ is given by:
+    $$p \pm z_{\alpha/2} \times \sqrt{\frac{p(1 - p)}{n}}$$
+    where:
+    \begin{itemize}
+        \item $p$ is the sample proportion (e.g. $\frac{X}{n}$)
+        \item $z_{\alpha/2}$ is the critical value from the standard normal distribution (e.g. $1.96$ for 95\% confidence)
+        \item The quantity under the square root is the standard error of the sample proportion.
+    \end{itemize}
+\end{definitionbox}
+
+
 
 \begin{examplebox}{Financial Scams}{}
     A survey of $n=80$ small businesses found that $X = 16$ had fallen victim to a financial scam. Find the 95\% confidence that all small businesses have fallen victim to this scam. \\[2ex]
