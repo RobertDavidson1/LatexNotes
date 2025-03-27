@@ -430,7 +430,9 @@ $$p \sim N\left(\pi, \frac{\pi(1 - \pi)}{n}\right)$$\\
 This approximation means if we were to make many samples of size $n$, the distribution of the same proportions would cluster around the true proportion, $\pi$, with variability decreasing as the sample size $n$ increases. This normality is what allows statisticians to construct confidence intervals and perform hypothesis tests on population proportions.
 \subsubsection{Confidence Intervals for Proportion $\pi$}
 \begin{definitionbox}{Confidence Interval for Proportion}{}
-    For a large sample size where $np$ and $n(1-p)$ are both greater or equal to 5, a 95\% C.I for the population proportion $\pi$ is given by:
+    For a large sample size, i.e.:
+    $$np \geq 5 \quad\text{and} \quad n(1-p) \geq 5$$
+    a 95\% C.I for the population proportion $\pi$ is given by:
     $$p \pm z_{\alpha/2} \times \sqrt{\frac{p(1 - p)}{n}}$$
     where:
     \begin{itemize}
@@ -471,10 +473,13 @@ $$\approx \pm 2 \times \sqrt{\frac{0.5\times0.5}{n}} = \pm \frac{1}{\sqrt{n}}$$
 A count variable $X$, over a fixed interval (e.g. "number of emails per day") often follows a \textbf{Poisson} distribution. with parameter $\lambda$.  \\
 Recall $X \sim Poisson(\lambda)$ implies $E(X) = \lambda$ and $Var(X) = \lambda$.
 \subsubsection{Central Limit Theorem Approximation}
-For large enough $\lambda$, the Central Limit Theorem, implies the sample mean of a Possion variable is approximately normally distributed:
-$$X \sim N(\lambda, \frac{\lambda}{n})$$
-If we have $n$ observations of some Poisson process, the overall mean $\bar{\lambda}$ is used to estimate the population mean $\lambda$. \\[2ex]
-\textbf{Criteria}: The product $n\lambda$ should be sufficiently large (e.g. $\geq 50$) for the approximation to hold well.
+\begin{definitionbox}{CLT for Poisson}{}
+    For large enough $\lambda$, the Central Limit Theorem, implies the sample mean of a Poisson variable is approximately normally distributed:
+    $$X \sim N\left(\lambda, \frac{\lambda}{n}\right)$$
+    If we have $n$ observations of some Poisson process, the overall mean $\bar{\lambda}$ is used to estimate the population mean $\lambda$. \\[2ex]
+    $$\textbf{Criteria}: \quad n\lambda \geq 50$$
+\end{definitionbox}
+
 \begin{examplebox}{Emails per Day}{}
     Given a sample of $n=64$ students with a mean of $\bar{\lambda} = 53$ emails per day, find the 95\% confidence interval for the population mean $\lambda$.\\[2ex]
 
@@ -495,7 +500,7 @@ A \textbf{hypothesis test} is a statistical framework used to evaluate claims (h
 \textbf{Example scenario}: A claim is made that college students have been in, on average, at least 4 exclusive relationships. Observing a random sample mean of 3.2 (with 95\% CI [2.7, 3.7]) suggests that 4 is not within the plausible range, thus casting doubt on the claim.
 \subsection{The purposes of Hypothesis Testing}
 \begin{definitionbox}{Null hypotheses ($H_0$)}{}
-    A baseline or status-quo assumption about the population parameter (often an equality claim such as $\mu = 4$")
+    A baseline or status-quo assumption about the population parameter (often an equality claim such as $\mu = 4$)
 \end{definitionbox}
 \begin{definitionbox}{Alternative (or Research) Hypothesis ($H_1$)}{}
     A competing claim that contradicts $H_0$. It can be \textbf{one sided} (e.g. $\mu > 4$ or $\mu < 4$) or \textbf{two sided} (e.g. $\mu \neq 4$).
