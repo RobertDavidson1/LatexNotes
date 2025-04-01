@@ -387,17 +387,45 @@ $$ I_3 + 3E_{2,1} = \begin{bmatrix}
   Since each $E_i$ is an elementary matrix, its inverse is also an elementary matrix. Therefore, $A$ can be expressed as a product of elementary matrices.
 \end{examplebox}
 \pagebreak
-\subsection{idk}
-Elementary Row Operations can be used to find the inverse of a square matrix. Suppose $\mathcal{A} \in M_n{\mathbb{F}}$, for some field $\mathbb{F}$. If $\mathcal{A}$, let $v_1, v_2, \ldots, v_n$ be the columns of $\mathcal{A}$. Then:
-$$\left.\mathcal{AA}^{-1}=\mathcal{A}\left[
-    \begin{array}
-      {cccc}| & |   & \ldots & |   \\
-      v_1     & v_2 & \ldots & v_n \\
-      |       & |   & \ldots & |
-    \end{array}\right.\right]=\mathrm{A}
+\subsection{EROs and Inverses}
+Elementary Row Operations can be used to find the inverse of a square matrix.  Consider a square matrix $A \in M_n(\mathbb{F})$ (that is, an $n \times n$ matrix over a field $\mathbb{F}$). If $A$ is invertible, let
+$$
+  A^{-1}
+  =
   \begin{bmatrix}
-    |    & |    & \ldots & |    \\
-    Av_1 & Av_2 & \ldots & Av_n \\
-    |    & |    & \ldots & |
-  \end{bmatrix}=\mathrm{I_n}.$$
+    |            & |            &        & |            \\
+    \mathbf{v}_1 & \mathbf{v}_2 & \cdots & \mathbf{v}_n \\
+    |            & |            &        & |
+  \end{bmatrix}
+$$
+be its inverse, where each $\mathbf{v}_i$ is the $i$th column of $A^{-1}$. By definition of the matrix inverse, we have
+$$
+  A \, A^{-1}
+  =
+  A \begin{bmatrix}
+    \mathbf{v}_1 & \mathbf{v}_2 & \cdots & \mathbf{v}_n
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    A \mathbf{v}_1 & A \mathbf{v}_2 & \cdots & A \mathbf{v}_n
+  \end{bmatrix}
+  =
+  I_n,
+$$
+the $n \times n$ identity matrix. This implies that
+$$
+  A \mathbf{v}_i = \mathbf{e}_i, \quad \text{for each } i=1, 2, \ldots, n,
+$$
+where $\mathbf{e}_i$ is the $i$th column of $I_n$ (which has a 1 in the $i$th row and 0 everywhere else). In other words, each column $\mathbf{v}_i$ of $A^{-1}$ is the unique solution to the linear system
+$$
+  A \mathbf{v}_i = \mathbf{e}_i.
+$$
+
+To find all $\mathbf{v}_i$ simultaneously, we form the $n \times 2n$ augmented matrix $[A \;|\; I_n]$. We then apply row operations until the left portion of the augmented matrix is reduced to the identity matrix ($A$'s RREF). If $A$ is invertible, after applying these row operations, the matrix on the left becomes $I_n$, and the matrix on the right becomes $A^{-1}$. Symbolically,
+\[
+  \text{RREF}\bigl([\,A \mid I_n\,]\bigr)
+  =
+  \bigl[\, I_n \mid A^{-1} \bigr].
+\]
+
 \end{document}
