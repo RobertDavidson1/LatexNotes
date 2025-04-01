@@ -470,6 +470,35 @@ $$
 \end{examplebox}
 \pagebreak
 \subsection{Review of Matrix Algebra}
-
+A $m \times n$ matrix over a field $\mathbb{F}$ is an array of $m$ rows, and $n$ columns with elements $\in \mathbb{F}$. Two matrices can be added if they have the same size; in this case their sum is obtained by adding the corresponding entries. \\[2ex]
+The \textbf{zero matrix} is a matrix with all entries equal to 0. It is the \textbf{identity element} for addition of matrices - adding it to any matrix $A$ gives $A$ back. \\[2ex]
+A matrix can be multiplied by a scalar by multiplying each entry of the matrix by the scalar. \\[2ex]
+With these operations of addition and scalar multiplication, the set of $m \times n$ matrices of a field $\mathbb{F}$ is a \textbf{vector space} over $\mathbb{F}$.
+\begin{definitionbox}{}{}
+  We use the notation:
+  $$M_{m \times n}(\mathbb{F})$$
+  for the vector space of all $m \times n$ matrices over $\mathbb{F}$. When $m = n$, we abbreviate this to:
+  $$M_n(\mathbb{F})$$
+\end{definitionbox}
+\noindent \textbf{Example:}  $M_{2 \times 3}(\mathbb{R})$:
+$$
+  2
+  \begin{pmatrix}
+    1 & 0  & -1 \\
+    2 & -5 & 1
+  \end{pmatrix}-3
+  \begin{pmatrix}
+    2 & 4 & -1 \\
+    0 & 1 & -3
+  \end{pmatrix}=
+  \begin{pmatrix}
+    2(1)-3(2) & 2(0)-3(4)  & 2(-1)-3(-1) \\
+    2(2)-3(0) & 2(-5)-3(1) & 2(-3)-3(-3)
+  \end{pmatrix}=
+  \begin{pmatrix}
+    -4 & -12 & 1 \\
+    4  & -13 & 3
+  \end{pmatrix}.
+$$
 
 \end{document}
