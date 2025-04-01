@@ -216,4 +216,28 @@ This equation clearly has no solution, and hence the system has no solutions. We
         \end{itemize}
 \end{itemize}
 \subsection{Gaussian Elimination and Matrix Algebra}
+Elementary row operations may be interpreted as \textbf{matrix multiplication}. To see this, first we introduce the \textbf{Identity matrix:}
+$$I_3 = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}$$
+The $I_m$ Identity matrix is an $m \times m$ matrix with 1s on the diagonal and 0s elsewhere. We also introduce the $E_{i,j}$ matrix which has $1$ in the $(i,j)$ position and $0$s elsewhere. For example:
+$$
+  E_{1,2} = \begin{bmatrix}
+    0 & 1 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+  \end{bmatrix}
+$$
+We can now express a REF matrix as:
+$$
+  I_3 + 4E_{1,2} = \begin{bmatrix}
+    1 & 4 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+$$
+\begin{theorembox}{Hello}{}
+\end{theorembox}
 \end{document}
