@@ -73,14 +73,18 @@ The goal of these operations is to transform the augmented matrix into \textbf{r
   \end{itemize}
 \end{minipage}
 \begin{minipage}{0.2\textwidth}
-  $$
-    \begin{bmatrix}
-      1 & 2 & -1 & | & 3  \\
-      0 & 1 & 2  & | & -1 \\
-      0 & 0 & 1  & | & -1
-    \end{bmatrix} \\
-    \text{Example of REF}
-  $$
+  \begin{center}
+    $$
+      \begin{bmatrix}
+        1 & 2 & -1 & | & 3  \\
+        0 & 1 & 2  & | & -1 \\
+        0 & 0 & 1  & | & -1
+      \end{bmatrix}
+    $$
+    \footnotesize \emph{Example of REF}
+  \end{center}
+
+
 \end{minipage} \\[2ex]
 We have produced a new system of equations. This is easily solved by back substitution.
 
@@ -94,19 +98,52 @@ We have produced a new system of equations. This is easily solved by back substi
   \end{itemize}
 \end{conceptbox}
 \subsubsection{Row Reduced Echelon Form}
-A matrix is in \textbf{reduced row echelon form} (RREF) if:
-\begin{itemize}
-  \item It is in REF
-  \item The leading 1 in each row is the only non-zero entry in its column.
-\end{itemize}
-Example:
+\begin{minipage}{0.8\textwidth}
+  A matrix is in \textbf{reduced row echelon form} (RREF) if:
+  \begin{itemize}
+    \item It is in REF
+    \item The leading 1 in each row is the only non-zero entry in its column.
+  \end{itemize}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+  \begin{center}
+    $$
+      \begin{bmatrix}
+        1 & 0 & 0 & | & 2  \\
+        0 & 1 & 0 & | & -1 \\
+        0 & 0 & 1 & | & -1
+      \end{bmatrix}
+    $$
+    \footnotesize \emph{Example of RREF}
+  \end{center}
+\end{minipage}
+
+\section{Leading variables and free variables}
+We'll start by an example:
 $$
+  \begin{array}{ccccccccc}
+    x_1  & - & x_2  & - & x_3  & + & 2x_4 & = & 0 \\
+    2x_1 & + & x_2  & - & x_3  & + & 2x_4 & = & 8 \\
+    x_1  & - & 3x_2 & + & 2x_3 & + & 7x_4 & = & 2
+  \end{array}
+  \quad \Rightarrow \quad
   \begin{bmatrix}
-    1 & 0 & 0 & | & 2  \\
-    0 & 1 & 0 & | & -1 \\
-    0 & 0 & 1 & | & -1
+    1 & -1 & -1 & 2 & | & 0 \\
+    2 & 1  & -1 & 2 & | & 8 \\
+    1 & -3 & 2  & 7 & | & 2
   \end{bmatrix}
 $$
+Solving this system of equations, we get:
+$$
+  \text{RREF:}\quad
+  \begin{bmatrix}
+    1 & 0 & 0 & 2  & | & 4 \\
+    0 & 1 & 0 & -1 & | & 2 \\
+    0 & 0 & 0 & 1  & | & 2
+  \end{bmatrix}
+$$
+
+
 
 
 \end{document}
