@@ -178,6 +178,28 @@ $$
     1 & 1 & -2 & | & 1 \\
     5 & 3 & -8 & | & 6
   \end{bmatrix}
+  \quad \Rightarrow \quad
+  \begin{bmatrix}
+    1 & 1 & -2 & | & 1 \\
+    0 & 1 & -1 & | & 1 \\
+    0 & 0 & 0  & | & 1
+  \end{bmatrix} \quad \text{(REF)}
 $$
+We can see the last row of the REF is:
+$$
+  0x + 0y + 0z = 1
+$$
+This equation clearly has no solution, and hence the system has no solutions. We say the system is \textbf{inconsistent}. Alternatively, we say the system is \textbf{consistent} if it has at least one solution.
+\section{Possible Outcomes when solving a system of equations}
+\begin{itemize}
+  \item The system may be \textbf{inconsistent} (no solutions) - i.e:
+        $$ [0 \; 0 \; \dots \; 0 \; | \; a] \quad a \neq 0$$
+  \item The system may be \textbf{consistent} which occurs if:
+        \begin{itemize}
+          \item \textbf{Unique Solutions} All variables all leading variables (i.e. every column except the rightmost one in REF has a leading 1)
 
+          \item \textbf{Infinitely many solutions} At least one variable is free - in this case the number of leading 1's in the REF is less than the number of variables in the system.
+
+        \end{itemize}
+\end{itemize}
 \end{document}
