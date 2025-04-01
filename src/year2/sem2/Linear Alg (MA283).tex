@@ -420,12 +420,56 @@ where $\mathbf{e}_i$ is the $i$th column of $I_n$ (which has a 1 in the $i$th ro
 $$
   A \mathbf{v}_i = \mathbf{e}_i.
 $$
-
-To find all $\mathbf{v}_i$ simultaneously, we form the $n \times 2n$ augmented matrix $[A \;|\; I_n]$. We then apply row operations until the left portion of the augmented matrix is reduced to the identity matrix ($A$'s RREF). If $A$ is invertible, after applying these row operations, the matrix on the left becomes $I_n$, and the matrix on the right becomes $A^{-1}$. Symbolically,
-\[
+To find $A^{-1}$ effectively, we form the augmented matrix $[A \mid I_n]$ and apply EROs to trasnform $A$ into $I_n$. When this is achieved, the augmented portion becomes $A^{-1}$. Thus, we have
+$$
   \text{RREF}\bigl([\,A \mid I_n\,]\bigr)
   =
   \bigl[\, I_n \mid A^{-1} \bigr].
-\]
+$$
+\begin{examplebox}{}{}
+  Find $A^{-1}$ if $A = \begin{bmatrix}
+      3 & 4 & -1 \\
+      1 & 0 & 3  \\
+      2 & 5 & -4
+    \end{bmatrix}$.
+  \\[2ex] \rule{\textwidth}{1px} \\
+  We form a $3 \times 6$ matrix $A' = [A \mid I_3]$:
+  $$
+    A' = \begin{bmatrix}
+      3 & 4 & -1 & | & 1 & 0 & 0 \\
+      1 & 0 & 3  & | & 0 & 1 & 0 \\
+      2 & 5 & -4 & | & 0 & 0 & 1
+    \end{bmatrix}
+  $$
+  We apply the following EROs to $A'$:
+  \begin{itemize}
+    \item $R_1 \leftrightarrow R_2$
+    \item $R_2 \rightarrow R_2 - 3R_1$
+    \item $R_3 \rightarrow R_3 - 2R_1$
+    \item $R_3 \rightarrow R_3 + R-2$
+    \item $R_3 \leftrightarrow R_2$
+    \item $R_3 \rightarrow R_3 - 4R_2$
+    \item $R_3 \times (-\frac{1}{10})$
+    \item $R_1 \rightarrow R_1 - 3R_3$
+  \end{itemize}
+  To obtain:
+  $$
+    \begin{bmatrix}
+      1 & 0 & 0 & | & \frac{3}{2}  & -\frac{11}{10} & -\frac{6}{5} \\
+      0 & 1 & 0 & | & -1           & 1              & 1            \\
+      0 & 0 & 1 & | & -\frac{1}{2} & \frac{7}{10}   & \frac{2}{5}
+    \end{bmatrix}
+  $$
+  That is:
+  $$A^{-1} = \begin{bmatrix}
+      \frac{3}{2}  & -\frac{11}{10} & -\frac{6}{5} \\
+      -1           & 1              & 1            \\
+      -\frac{1}{2} & \frac{7}{10}   & \frac{2}{5}
+    \end{bmatrix}$$
+  It is easily checked that $AA^{-1} = I_3$.
+\end{examplebox}
+\pagebreak
+\subsection{Review of Matrix Algebra}
+
 
 \end{document}
