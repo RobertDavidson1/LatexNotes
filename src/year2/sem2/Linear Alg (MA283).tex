@@ -118,7 +118,7 @@ We have produced a new system of equations. This is easily solved by back substi
   \end{center}
 \end{minipage}
 
-\section{Leading variables and free variables}
+\subsection{Leading variables and free variables}
 We'll start by an example:
 $$
   \begin{array}{ccccccccc}
@@ -141,9 +141,43 @@ $$
     0 & 1 & 0 & -1 & | & 2 \\
     0 & 0 & 0 & 1  & | & 2
   \end{bmatrix}
+  \quad \Rightarrow \quad
+  \begin{array}{ccccc}
+    x_1 & + & 2x_4 & = & 4 \quad \\
+    x_2 & - & x_4  & = & 2 \quad \\
+    x_3 & + & x_4  & = & 2 \quad
+  \end{array}
+  \quad \Rightarrow \quad
+  \begin{array}{ccc}
+    x_1 & = & 4 - 2x_4 \\
+    x_2 & = & 2 + x_4  \\
+    x_3 & = & 2 - x_4
+  \end{array}
 $$
+This RREF tells us how the \textbf{leading variables} ($x_1, x_2, x_3$) depend on the \textbf{free variable} ($x_4$). The free variable can take any value in $\mathbb{R}$. We write the solution set as:
+$$x_1 = 4 - 2t, \quad x_2 = 2 + t, \quad x_3 = 2 - t, \quad x_4 = t \quad \text{where} \; t \in \mathbb{R}$$
+$$(x_1, x_2, x_3, x_4) = (4-2t, 2+t, 2-t, t); \quad t \in \mathbb{R}$$
+\begin{definitionbox}{Leading and Free Variables}{}
+  \begin{itemize}
+    \item  \textbf{Leading variable} : A variable whose columns in the RREF contain a leading 1
+    \item \textbf{Free variable} : A variable whose columns in the RREF do not contain a leading 1
+  \end{itemize}
+\end{definitionbox}
 
-
-
+\subsection{Consistent and Inconsistent Systems}
+Consider the following system of equations:
+$$
+  \begin{array}{ccccccc}
+    3x & + & 2y & - & 5z & = & 4 \\
+    x  & + & y  & - & 2z & = & 1 \\
+    5x & + & 3y & - & 8z & = & 6
+  \end{array}
+  \quad \Rightarrow \quad
+  \begin{bmatrix}
+    3 & 2 & -5 & | & 4 \\
+    1 & 1 & -2 & | & 1 \\
+    5 & 3 & -8 & | & 6
+  \end{bmatrix}
+$$
 
 \end{document}
