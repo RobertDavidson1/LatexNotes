@@ -236,13 +236,27 @@ $$I_3 + 4E_{1,2} = \begin{bmatrix}
     0 & 1 & 0 \\
     0 & 0 & 1
   \end{bmatrix}$$
-
-
-\begin{theorembox}{}{}
-  Performing a row operation on $A$ is the same as multiplying $A$ by an appropriate matrix $E$ on the left: \\[2ex]
-  \textbf{Multiplying a row by a non zero scalar}
-  \begin{itemize}
-    \item
-  \end{itemize}
-\end{theorembox}
+Performing a row operation on $A$ is the same as multiplying $A$ by an appropriate matrix $E$ on the left \\[2ex]
+\textbf{Multiplying a row by a non zero scalar}
+\begin{itemize}
+  \item When you multiply row $i$ of $A$, by some scalar $\alpha \neq 0$, all other rows remain unchanged, and the $i$th row is scaled by $\alpha$.
+  \item The Identity matrix $I_m$ leaved $A$ unchanged if we multiply $I_mA$
+  \item To scale row $i$ by $\alpha$,you want the $(i,i)$-entry of this matrix to be $\alpha$, so the $i$th row of $A$ is scaled by $\alpha$.
+  \item Hence $I_m + (\alpha - 1)E_{i,i}$ causes the $i$th row of $A$ to be scaled by $\alpha$.
+\end{itemize}
+That is what the matrix
+$$I_m + (\alpha - 1)E_{i,i}$$
+does to $A$:
+Observe that $I_m$ has all diagonal entries $= 1$. Adding $(\alpha-1)E_{i,i}$  makes that diagonal entry become $\alpha$ and all other diagonal entries remain $1$. Example:
+$$I_3 + 4E{2,2} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & 5 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+  \quad A =
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+  \end{bmatrix}$$
 \end{document}
