@@ -1,0 +1,602 @@
+\documentclass[a4paper, 8pt]{extarticle}
+\input{preamble.sty}
+\input{macros.sty}
+
+\title{
+\textbf{MA2287: Complex Analysis Exam Notes} \\ 
+}
+
+
+\author{
+  Robert Davidson
+}   
+
+ 
+
+\date{} % Empty date
+
+\begin{document}
+
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+
+\section{Question 1: }
+\subsection{Sketch the region in the complex plane determined by the inequality}
+\begin{itemize}
+	\item $|z - 4| > 3|z+4|$ \hfill \hyperref[sol:2023Q1a]{\uline{2023 Q1(a)}}
+	\item $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|\}$ \hfill  \hyperref[sol:2022Q1a]{\uline{2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)}}
+\end{itemize}
+\subsection{Determine all solutions to roots of unity}
+\begin{itemize}
+	\item $z^6 -1 = 0$ and factorize $x^6 -1$ as a product of linear and quadratic factors \hfill \hyperref[sol:2023Q1b]{\uline{2023 Q1(b),2021 Q1(c)}}
+	\item $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$ \hfill \hyperref[sol:20188Q1b]{\uline{2022 Q1(b),2018 Q1(b)}}
+
+\end{itemize}
+\subsection{Determine and sketch the image under the mapping}
+\begin{itemize}
+	\item $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$ \hfill \hyperref[sol:2023Q1c]{\uline{2023 Q1(c), 2021 Q1(a), 2017 Q1(d)}}
+	\item $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$  \hfill \hyperref[sol:2022Q1d]{\uline{2022 Q1(d), 2018 Q1(d), 2016 Q1(d)}}
+\end{itemize}
+\subsection{Find z where the function is 0}
+\begin{itemize}
+	\item $\cos(z) = \frac{e^{iz} + e^{-iz}}{2}$ \hfill \hyperref[sol:2023Q1d]{\uline{2022 Q1(d)}}
+\end{itemize}
+\subsection{Calculate principal value Log(z)}
+\begin{itemize}
+	\item z = $-\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}} i$ and prove $e^z$ is the inverse function of Log(z) \hfill \hyperref[sol:2022Q1c]{\uline{2022 Q1(c), 2018 Q1(c), 2017 Q1(c)}}
+\end{itemize}
+\subsection{Prove the following}
+\begin{itemize}
+	\item Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$ \hfill \hyperref[sol:2021Q1b]{\uline{2021 Q1(b), 2018 Q1(a), 2016 Q1(b)}}
+	\item Define the complex exponential function $e^z$ and prove Eulers Formula $e^{i \theta} = \cos(\theta) + i \sin(\theta)$ \hfill \hyperref[sol:2017Q1b]{\uline{2017 Q1(b)}}
+\end{itemize}
+
+
+
+
+
+\pagebreak
+
+
+\section{Question 2: }
+\subsection{Determine image of the line}
+\begin{itemize}
+	\item $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 2\}$ \hfill 2023 Q2(a), 2021 Q2(b)
+	\item $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 1\}$ \hfill 2022 Q2(a), 2018 Q2(a), 2017 Q2(a)
+\end{itemize}
+\subsection{State and Use Cauchy-Riemann Equations}
+\begin{itemize}
+	\item State CRE, and use to prove $f(z) = \frac{1}{z}$ is holomoprhic on $\mathbb{C} \backslash \{0\}$ \hfill 2023 Q2(a)
+	\item State CRE, and use to prove $f(z) = z^2$ is holomoprhic on $\mathbb{C}$ \hfill 2022 Q2(b)
+	\item State CRE. Let $f = u+iv$ be holomoprhic on $\Omega \subset \mathbb{C}$. Prove $\nabla u$ and $\nabla v$ are perpendicular of equal length \hfill 2016 Q2(b)
+\end{itemize}
+\subsection{Show that}
+\begin{itemize}
+	\item If $\overline{f(z)} = f(\overline{z})$ for all $z \in \mathbb{C}$ then $f(x)$ is real for all $x \in \mathbb{R}$. And if in addition $f$ is holomoprhic at $x \in \mathbb{R}$ then $f'(x)$ is real. \hfill 2023 Q2(c)
+	\item Define that is meant for a function $g$ to be harmonic. If $f = u +iv$ is holomoprhic on $\Omega \subset \mathbb{C}$, prove that $v(x,y)$ is a harmonic function, and that $\nabla u$ and $\nabla v$ are perpendicular of equal length. \hfill 2022 Q2(c), 2018 Q2(b)
+	\item If $\overline{f(z)} = f(\overline{z})$ for all $z \in \mathbb{C}$ then $f(x)$ is real for all $x \in \mathbb{R}$. And if in addition $f$ is holomoprhic at $0$ then the function $f'(0)$ is real.\hfill 2021 Q2(a), 2017 Q2(c)
+	\item Let $f(z) = u +iv$ be holomoprhic on an open subset $\Omega$ of the complex plane and let $h(u,v)$ be a harmonic function of $u$ and $v$ on $f(\Omega)$. Prove that $g(x,y) = h(u(x,y), v(x,y))$ is harmonic on $\Omega$ (You may assume $\nabla u, \nabla v$ are equal length and perpendicular)\hfill 2021 Q2(c)
+	\item Define what is meant for a function $f(z)$ to be holomoprhic at a point $z_0 \in \mathbb{C}$ and prove that $f(z) = z^2$ is holomoprhic and find its derivative there. Hence prove that the product $uv$ is harmonic where $f=u +iv$ \hfill 2018 Q2(c)
+	\item Define what is meant for a function $f(z)$ to be holomoprhic at a point $z_0 \in \mathbb{C}$ and prove that $f(z) = \frac{1}{z}$ is holomoprhic on $\mathbb{C} \backslash 0$ and find its derivative there (State any theorems used) \hfill 2017 Q2(b)
+	\item Let $h(u,v)$ be a harmonic function of $u, v$ on $f(\Omega)$ (See 2016 Q2(b)). Prove that $g(x,y) = h(u(x,y), v(x,y))$ is harmonic on $\Omega$ \hfill 2016 Q2(c)
+\end{itemize}
+\subsection{Find Mobius Transformation}
+\begin{itemize}
+	\item $T(z) : (-1, 1, \infty) \mapsto (-1, -i, 1)$ \hfill 2023 Q2(d)
+	\item $T(z) : (2, 1, -1) \mapsto (1, 0, \infty)$    \hfill 2022 Q2(d)
+	\item $T(z) : (-i, -1, 1) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2021 Q2(d)
+	\item $T(z) : (-i, -1, i) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2018 Q2(d), 2017 Q2(d)
+	\item $T(z) : (-1, \frac{1}{2}, 2) \mapsto (1, 0, \infty)$ and find the inverse Mobius Transformation \hfill 2016 Q2(d)
+\end{itemize}
+
+\pagebreak
+
+\section{Worked Examples - Q1}
+
+\begin{examplebox}{2023 Q1(a)}{}
+	\phantomsection
+	\label{sol:2023Q1a}
+
+	\textbf{Given} $|z - 4| > 3|z+4|$ \\
+	\textbf{Write} $\boldsymbol{z = x + iy}$
+	\begin{align*}
+		| x + iy -4|         & > 3 |x + iy + 4|         \\
+		| (x - 4) + iy|      & > 3 |(x + 4) + iy|       \\
+		\sqrt{(x-4)^2 + y^2} & > 3 \sqrt{(x+4)^2 + y^2} \\
+	\end{align*}
+	\textbf{Square both sides}
+	\begin{align*}
+		(x-4)^2 + y^2                                 & > 9((x+4)^2 + y^2)                                                         \\
+		(x^2 - 8x + 16 + y^2)                         & > 9x^2 + 72x + 144 + 9y^2                                                  \\
+		x^2 - 8x + 16 + y^2 - 9x^2 - 72x - 144 - 9y^2 & > 0                       & \emph{Moving all terms to one side}            \\
+		-8x^2 - 80x - 8y^2 - 128                      & > 0                       & \emph{Simplify }                               \\
+		x^2 + 10x + y^2 - 16                          & < 0                       & \emph{Dividing by -8 and reversing inequality} \\
+	\end{align*}
+
+	\textbf{Focus on x and complete the square}
+	\begin{align*}
+		x + bx                   = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 & \Rightarrow  x^2 + 10x = (x + 5)^2 - 25 & \emph{Complete the square}             \\
+		(x+5)^2 - 25 + y^2 + 16                                                                & < 0                                     & \emph{Substitute back into inequality} \\
+		(x+5)^2 + y^2 + 9                                                                      & < 0                                     & \emph{Simplify}                        \\
+		(x+5)^2 + y^2                                                                          & < -9                                    & \emph{Subtract 9}                      \\
+	\end{align*}
+
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Recall the eqation of a circle}
+		$$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  (x+5)^2 + y^2 < -9  $$
+		\textbf{Therefore the region is all the points inside circle with radius 3 and center at (-5, 0)}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.15]
+				\fill[custom_blue!20, even odd rule] (-5,0) circle [radius=3];
+				\draw[<->] (-10, 0) -- (5, 0) node[right] {$\text{Re}$};
+				\draw[<->] (0, -5) -- (0, 5) node[right] {$\text{Im}$};
+				\draw (-5,-0.5) -- (-5,0.5) node[below=0.2cm] {-5};
+				\draw (-0.5,3) -- (0.5,3) node[right=0.2cm] {3};
+				\draw[custom_blue, thick]{(-5, 0) circle [radius=3]};
+
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+\end{examplebox}
+\begin{examplebox}{2022 Q1(a), 2021 Q1(d), 2017 Q1(a), 2016 Q1(a)}{}
+	\phantomsection
+	\label{sol:2022Q1a}
+	\textbf{Given} $\{ z \in \mathbb{C} : |2z - 1| < 2|2z-i|\}$ \\
+	\textbf{Write} $z = x + iy$
+	\begin{align*}
+		|2x + i2y -1 |                                        & < 2 |2x + i2y - i|                                                        \\
+		|(2x -1) + i2y|                                       & < 2 |2x + i(2y -1)|                                                       \\
+		\sqrt{(2x-1)^2 + 4y^2}                                & < 2 \sqrt{4x^2 + (2y-1)^2}                                                \\
+		(2x-1)^2 + 4y^2                                       & < 4[4x^2 + (2y-1)^2]       & \emph{Square both sides}                     \\
+		4x^2 - 4x + 1 + 4y^2                                  & < 16x^2 + 16y^2 -16y +4    & \emph{Expand}                                \\
+		-12x^2 - 4x - 12y^2 + 16y -3                          & < 0                        & \emph{Move all terms to one side}            \\
+		12x^2 + 4x + 12y^2 - 16y + 3                          & > 0                        & \emph{Multiply by -1 and reverse inequality} \\
+		x^2 + \frac{1}{3}x + y^2 - \frac{4}{3}y + \frac{1}{4} & > 0                        & \emph{Divide by 12}                          \\
+	\end{align*}
+	\textbf{Complete square for x}
+	$$x^2 + bx = \left(x + \frac{b}{2}\right)^2 - \left(\frac{b}{2}\right)^2 \Rightarrow x^2 + \frac{1}{3}x = \left(x + \frac{1}{6}\right)^2 - \left(\frac{1}{36}\right)$$
+	\textbf{Complete square for y}
+	$$y^2 + by = \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)$$
+	\textbf{Substitute back into inequality}
+	\begin{align*}
+		\left(x + \frac{1}{6}\right)^2 - \left(\frac{1}{36}\right) + \left(y - \frac{2}{3}\right)^2 - \left(\frac{4}{9}\right)  + \frac{1}{4} & > 0            & \emph{Substitute back into inequality}   \\
+		\left(x + \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2                                                                       & >  \frac{2}{9} & \emph{Simplify and move constant across} \\
+	\end{align*}
+
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Recall the eqation of a circle}
+		$$(x - a)^2 + (y - b)^2 = r^2 \Rightarrow  \left(x+ \frac{1}{6}\right)^2 + \left(y - \frac{2}{3}\right)^2 < \frac{2}{9}  $$
+		\textbf{Therefore the region is all the points OUTSIDE the circle with radius $\frac{\sqrt{2}}{3}$ and center at $(-\frac{1}{6}, \frac{2}{3})$}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.75]
+				\fill[custom_blue!20, even odd rule]
+				(-1,-1) rectangle (3,2)
+				(-0.167,0.666) circle [radius=0.471];
+				\draw[<->] (-1, 0) -- (2, 0) node[right] {$\text{Re}$};
+				\draw[<->] (0, -1) -- (0, 2) node[right] {$\text{Im}$};
+				\draw (-0.167,-0.1) -- (-0.167,0.1) node[below=0.4cm, left=-0.2cm] {$-\frac{1}{6}$};
+				\draw (-0.1,0.66) -- (0.1,0.66) node[right=0.1cm] {$\frac{2}{3}$};
+				\draw[custom_blue, thick]{(-0.167, 0.666) circle [radius=0.471]};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+\end{examplebox}
+\begin{examplebox}{Determine all solutions to $z^6 -1 = 0$ and factor $x^6-1$ as a product of linear and quadratic factors}{}
+	\phantomsection
+	\label{sol:2023Q1b}
+	\textbf{Given} $z^6 -1 = 0$ \\
+	\textbf{Write} $z = e^{i \theta}$ and $1 = e^{i 2 \pi k}$ for $k \in \mathbb{Z}$
+
+	\begin{align*}
+		z^6 -1                         & = 0               \\
+		e^{i 6 \theta} - e^{i 2 \pi k} & = 0               \\
+		e^{i 6 \theta}                 & = e^{i 2 \pi k}   \\
+		6 \theta                       & = 2 \pi k         \\
+		\theta                         & = \frac{\pi k}{3} \\
+	\end{align*}
+	\textbf{Therefore the solutions are}
+	$$z = e^{i \theta} = e^{i \frac{\pi k}{3}} = \cos\left(\frac{\pi k}{3}\right) + i\sin\left(\frac{\pi k}{3}\right) \quad \text{for} \quad k = 0, 1, 2, 3, 4, 5$$
+
+	\begin{minipage}{0.49\textwidth}
+		\begin{align*}
+			k = 0 : w_0 =  & \cos\left(0\right) + i\sin\left(0\right) = 1 + i0                                                       \\
+			k = 1 : w_1 =  & \cos\left(\frac{\pi}{3}\right) + i\sin\left(\frac{\pi}{3}\right)    = \frac{1}{2} + i\frac{\sqrt{3}}{2} \\
+			k = 2 : w_2  = & \cos\left(\frac{2\pi}{3}\right) + i\sin\left(\frac{2\pi}{3}\right) = -\frac{1}{2} + i\frac{\sqrt{3}}{2} \\
+			k = 3 : w_3 =  & \cos\left(\pi\right) + i\sin\left(\pi\right)                        = -1                                \\
+			k = 4 : w_4 =  & \cos\left(\frac{4\pi}{3}\right) + i\sin\left(\frac{4\pi}{3}\right) = -\frac{1}{2} - i\frac{\sqrt{3}}{2} \\
+			k = 5 : w_5 =  & \cos\left(\frac{5\pi}{3}\right) + i\sin\left(\frac{5\pi}{3}\right) = \frac{1}{2} - i\frac{\sqrt{3}}{2}  \\
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[custom_blue!40] (-1, 0) -- (-0.5, 0.866) -- (0.5, 0.866) -- (1, 0) -- (0.5, -0.866) -- (-0.5, -0.866) -- (-1, 0);
+				\draw[custom_blue!40] (0, 0) -- (1, 0);
+				\draw[custom_blue!40] (0, 0) -- (0.5, 0.866);
+				\draw[custom_blue!40] (0, 0) -- (-0.5, 0.866);
+				\draw[custom_blue!40] (0, 0) -- (-1, 0);
+				\draw[custom_blue!40] (0, 0) -- (-0.5, -0.866);
+				\draw[custom_blue!40] (0, 0) -- (0.5, -0.866);
+
+				\draw[<->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
+				\draw[<->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
+
+				\draw[custom_red!60, thick] (0,0) circle [radius=1];
+
+				\draw[->, red, >=stealth] (1,0) arc (0:60:1);
+				\node[red, right=0.3cm, above=0.1cm] at (0.85,0.35) {$60^\circ$};
+
+				\draw (1,-0.1) -- (1,0.1) node[below=0.4cm, left=-0.2cm] {1};
+				\draw (-0.1,1) -- (0.1,1) node[right=0.1cm] {i};
+				\draw (-1,-0.1) -- (-1,0.1) node[below=0.4cm, left=-0.2cm] {-1};
+
+				\node at (1, 0) [custom_blue, circle, fill, inner sep=1.5pt]{};
+				\node at (-1,0) [custom_blue, circle, fill, inner sep=1.5pt]{};
+				\node at (0.5,0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+				\node at (-0.5,0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+				\node at (-0.5,-0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+				\node at (0.5,-0.866) [custom_blue, circle, fill, inner sep=1.5pt]{};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+
+	\textbf{We can write:}
+	$$x^6 -1 = (x - w_0)(x - w_1)(x - w_2)(x - w_3)(x - w_4)(x - w_5)$$
+	\textbf{Rewriting to group complex conjugates}
+	$$x^6 -1 = (z-w_0)(z-w_3) \cdot (z-w_1)(z-w_5) \cdot (z-w_2)(z-w_4)$$
+	\textbf{Note that}
+	\begin{align*}
+		(w-z)(w-\overline{z}) & = w^2 - w\overline{z} - zw + z\overline{z} \\
+		                      & = w^2 - 2(\overline{z} + z) + 1
+	\end{align*}
+	\textbf{We recall that}
+	\begin{align*}
+		z = x + iy = e^{i\theta} = \cos(\theta) + i\sin(\theta)             \\
+		\overline{z} = x - iy = e^{-i\theta} = \cos(\theta) - i\sin(\theta) \\
+	\end{align*}
+	\textbf{Then}
+	\begin{align*}
+		\overline{z} + z & = cos(\theta) + i\sin(\theta) + cos(\theta) - i\sin(\theta) \\
+		                 & = 2\cos(\theta)                                             \\
+	\end{align*}
+	\textbf{Thus}
+	$$(w-z)(w-\overline{z})  = w^2 - 2\cos(\theta) + 1$$
+	\begin{minipage}{0.49\textwidth}
+		We see that $-\frac{5\pi}{3} = \frac{\pi}{3} - 2\pi$, thus:
+		\begin{align*}
+			(z-w_1)(z-w_5) & = (z - e^{i\frac{\pi}{3}})(z - e^{i\frac{5\pi}{3}}) \\
+			(z-w_1)(z-w_5) & = z^2 - 2\cos\left(\frac{\pi}{3}\right) + 1         \\
+			(z-w_1)(z-w_5) & = z^2 + z + 1
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		We see that $-\frac{4\pi}{3} = \frac{\pi}{3} - \pi$, thus:
+		\begin{align*}
+			(z-w_2)(z-w_4) & = (z - e^{i\frac{2\pi}{3}})(z - e^{i\frac{4\pi}{3}}) \\
+			(z-w_2)(z-w_4) & = z^2 - 2\cos\left(\frac{2\pi}{3}\right) + 1         \\
+			(z-w_2)(z-w_4) & = z^2 - z + 1
+		\end{align*}
+	\end{minipage}
+	\textbf{Therefore}
+	$$x^6 -1 = (x+1)(x-1)(x^2 + x + 1)(x^2 - x + 1)$$
+\end{examplebox}
+
+\begin{examplebox}{Determine all solutions to $z^4 = -81i$ and find a polynomial $p(z)$ with complex coefficients with root $w$ and $p(\overline{w}) \neq 0$}{}
+	\phantomsection
+	\label{sol:20188Q1b}
+	\textbf{Given} $z^4 = -81i$, we want to find $z^{4\left(\frac{1}{4}\right)} = w $ \\
+	\textbf{Recall:}
+	$$z^{1/n} = R^{1/n}[\cos\phi + i\sin \phi] \quad \text{with} \; \phi = \frac{\theta + 2k\pi}{n}, \; k \in (0,1,2,\dots, n-1) \quad \text{and} \; R = |z|$$
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Thus}
+		\begin{align*}
+			R      & = |81i| = \sqrt{0^2 + 81^2} = 81                                                                \\
+			\theta & = -\frac{\pi}{2}                                                                                \\
+			\phi   & = \frac{\theta + 2k\pi}{n} = \frac{-\frac{\pi}{2} + 2k\pi}{4} = \frac{-\pi}{8} + \frac{k\pi}{2}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[->] (-1, 0) -- (1, 0) node[right] {$\text{Re}$};
+				\draw[->] (0, -1) -- (0, 1) node[right] {$\text{Im}$};
+				\draw[->, custom_blue, thick] (0,0) -- (0, -0.707) node[right] {$81i$};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+
+	\textbf{Therefore}
+	\begin{align*}
+		w_k & = 81^{1/4}\left[\cos\left(\frac{-\pi}{8} + \frac{k\pi}{2}\right) + i\sin\left(\frac{-\pi}{8} + \frac{k\pi}{2}\right)\right] \quad k \in (0,1,2,3) \\
+		w_0 & = 3\left[\cos\left(\frac{-\pi}{8}\right) + i\sin\left(\frac{-\pi}{8}\right)\right] \approx 2.77 - 1.155i                                          \\
+		w_1 & = 3\left[\cos\left(-\frac{\pi}{8} + \frac{\pi}{2}\right) + i\sin\left(-\frac{\pi}{8} + \frac{\pi}{2}\right)\right] \approx 1.155 + 2.77i          \\
+		w_2 & = 3\left[\cos\left(-\frac{\pi}{8} + \pi\right) + i\sin\left(-\frac{\pi}{8} + \pi\right)\right] \approx -1.55 + 2.77i                              \\
+		w_3 & = 3\left[\cos\left(-\frac{\pi}{8} + \frac{3\pi}{2}\right) + i\sin\left(-\frac{\pi}{8} + \frac{3\pi}{2}\right)\right] \approx -2.77 - 1.55i
+	\end{align*}
+
+
+	\textbf{Part 2:} \\
+	\textbf{Given} $p(z)$ with complex coefficients has root $w$ and $p(\overline{w}) \neq 0$ \\
+	In other words, we want $p(w) = 0$ and $p(\overline{w}) \neq 0$ \\
+	Using the most simple polynomial, $p(z) = z - w$ and letting $w = 3e^{i\frac{-\pi}{8}}$ we have
+	$$p(z) = z - 3e^{i\frac{-\pi}{8}}$$
+	\begin{align*}
+		p(w) & = w - w                                       \\
+		     & = 3e^{i\frac{-\pi}{8}} - 3e^{i\frac{-\pi}{8}} \\
+		     & = 0
+	\end{align*}
+	\begin{align*}
+		p(\overline{w}) & = \overline{w} - 3e^{i\frac{-\pi}{8}}                                                                                                                            \\
+		                & = 3e^{-i\frac{\pi}{8}} - 3e^{i\frac{-\pi}{8}}                                                                                                                    \\
+		                & = 3\left[\cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right) - \left(\cos\left(\frac{\pi}{8}\right) + i\sin\left(\frac{\pi}{8}\right)\right)\right] \\
+		                & = 3\left[\cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right) - cos\left(\frac{\pi}{8}\right) - i\sin\left(\frac{\pi}{8}\right)\right]               \\
+		                & = 3\left[-2i\sin\left(\frac{\pi}{8}\right)\right]                                                                                                                \\
+		                & = -6i\sin\left(\frac{\pi}{8}\right)                                                                                                                              \\
+		                & \approx -2.3i \neq 0
+	\end{align*}
+\end{examplebox}
+\begin{examplebox}{Determine and sketch the image under the map $w = e^z$, $\{z \in \mathbb{C} : \pi / 4 \leq \text{Im}(z) \leq \pi /2\}$}{}
+	\phantomsection
+	\label{sol:2023Q1c}
+	\begin{align*}
+		w & = e^z = e^{x + iy}        \\
+		  & = e^x e^{iy}              \\
+		  & = e^x[\cos(y) + i\sin(y)] \\
+	\end{align*}
+	\textbf{Recall} the polar form of a complex number $z = |z|[\cos(\theta) + i\sin(\theta)]$ \\
+	We see, $e^x$ acts as the radius, and is always positive, and $[\cos(y) + i\sin(y)]$ acts draws out a section of the unit circle, thus the mapping $w=e^z$ sends the set to: \\
+	\begin{minipage}{0.49\textwidth}
+		$$\left\{w \in \mathbb{C} : |w| > 0, \frac{\pi}{4} \leq \text{arg}(w) \leq \frac{\pi}{2}\right\}$$
+	\end{minipage}
+	\begin{minipage}{0.49\textwidth}
+
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[->] (-0.1,0) -- (2,0) node[right] {$\text{Re}$};
+				\draw[->] (0,-0.1) -- (0,2) node[above] {$\text{Im}$};
+
+				\def\radius{1.5}
+
+				\fill[custom_blue!20] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)})
+				arc (45:90:\radius) -- cycle;
+
+				\draw[custom_blue, thick] (0,0) -- ({\radius*cos(45)},{\radius*sin(45)}) node[midway, below right] {$\pi/4$};
+				\draw[custom_blue, thick] (0,0) -- ({\radius*cos(90)},{\radius*sin(90)}) node[midway, left] {$\pi/2$};
+
+
+
+				\draw[custom_blue, thick] ({0.25*cos(45)},{0.25*sin(45)}) arc (45:90:0.25);
+				\draw[custom_blue, thick] ({0.5*cos(45)},{0.5*sin(45)}) arc (45:90:0.5);
+				\draw[custom_blue, thick] ({0.75*cos(45)},{0.75*sin(45)}) arc (45:90:0.75);
+				\draw[custom_blue, thick] ({1*cos(45)},{1*sin(45)}) arc (45:90:1);
+				\draw[custom_blue, thick] ({1.25*cos(45)},{1.25*sin(45)}) arc (45:90:1.25);
+				\draw[custom_blue, thick] ({\radius*cos(45)},{\radius*sin(45)}) arc (45:90:\radius);
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+\end{examplebox}
+\begin{examplebox}{Determine and sketch the region $w = \text{Log}(z)$, $\{z: |z| > 1, 0 \leq \text{Arg}(z) \leq \pi / 2\}$}{}
+	\phantomsection
+	\label{sol:2022Q1d}
+	$$w = \text{Log}(z) = \ln|z| + i\text{Arg}(z) = u + iv$$
+	Note that $|z| > 1$ implies $\ln|z| > 0$
+	Thus:\\
+	\begin{minipage}{0.5\textwidth}
+		$$\left\{w = u+iv \in \mathbb{C} : u > 0, 0 \leq v \leq \frac{\pi}{2}\right\}$$
+	\end{minipage}
+	\begin{minipage}{0.49\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.5]
+				\fill[custom_blue!20] (0,0) rectangle (1.8,1.57);
+				\draw[->] (-0.1,0) -- (2,0) node[right] {$\text{Re}$};
+				\draw[->] (0,-0.1) -- (0,2) node[above] {$\text{Im}$};
+				\draw[custom_blue, thick] (0,1.57) -- (1.8,1.57);
+
+				\draw (-0.05, 1.57) -- (0.05, 1.57) node[left] {$\frac{\pi}{2}$};
+
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+\end{examplebox}
+
+\begin{examplebox}{Find where the function is 0 : $\cos(z) = \frac{e^{iz} + e^{-iz}}{2}$}{}
+	\phantomsection
+	\label{sol:2023Q1d}
+	We want $cos(z) = \frac{e^{iz} + e^{-iz}}{2} = 0$, some basic algebra gives us:
+	\begin{align*}
+		\cos(z)          = \frac{e^{iz} + e^{-iz}}{2} & = 0                                                              \\
+		e^{iz} + e^{-iz}                              & = 0                                                              \\
+		e^{iz}                                        & = -e^{-iz}                                                       \\
+		e^{iz} \cdot e^{iz}                           & = -e^{-iz} \cdot e^{iz} & \emph{Multiply both sides by $e^{iz}$} \\
+		e^{2iz}                                       & = -e^{0}                & e^{a}          \cdot e^{b} = e^{a+b}   \\
+		e^{2iz}                                       & = -1                                                             \\
+	\end{align*}
+	\textbf{Recall:}
+	$$-1 = cos(\pi + 2\pi k) + i\sin(\pi + 2\pi k) = e^{i(\pi + 2\pi k)}$$
+	\textbf{Thus}
+	\begin{align*}
+		e^{2iz} & = e^{i(\pi + 2\pi k)}                                                 \\
+		2iz     & = i(\pi + 2\pi k)       & \emph{Taking the natrual log of both sides} \\
+		2z      & = \pi + 2\pi k          & \emph{Divide by 2}                          \\
+		z       & = \frac{\pi}{2} + \pi k & \emph{Divide by i}                          \\
+	\end{align*}
+	Therefore, the zeros of $\cos(z)$ are:
+	$$z = \frac{\pi}{2} + \pi k,  \quad k \in \mathbb{Z}$$
+\end{examplebox}
+
+\begin{examplebox}{Calculate the principal value Log($z$) of $z = -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$ and prove $e^z$ is the inverse function of Log($z$)}{}
+	\phantomsection
+	\label{sol:2022Q1c}
+	\textbf{Part 1.} \\
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Given} $z = -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$:
+		$$\ln|z| = \sqrt{\left(1/\sqrt{2}\right)^2 + \left(1/ \sqrt{2}\right)^2} = 1$$
+		and
+		\begin{align*}
+			\text{Arg}(z) & = \tan^{-1}(-1)                            \\
+			              & = -\tan^{-1}(1)                            \\
+			              & =-\frac{\pi}{4} \Rightarrow \frac{3\pi}{4}
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=1]
+				\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$\text{Re}$};
+				\draw[->] (0, -1.5) -- (0, 1.5) node[right] {$\text{Im}$};
+
+				\draw (-0.707, 0.05) -- (-0.707, -0.05) node[below] {$-\frac{1}{\sqrt{2}}$};
+				\draw (0.05, 0.707) -- (-0.05, 0.707) node[right] {$\frac{1}{\sqrt{2}}$};
+				\draw[->, thick, custom_blue] (0,0) -- (-0.707, 0.707) node[midway, above=0.1cm] {$z$};
+
+				\draw[custom_red, thick] (-0.807,0) arc (180:135:0.807);
+				\node at (-0.5, 0.2) [custom_red] {$-\frac{\pi}{4}$};
+
+				\draw[custom_blue, thick] (0.5,0) arc (0:135:0.5);
+				\node at (0.2, 0.2) [custom_blue] {$\frac{3\pi}{4}$};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+	\textbf{Therefore}
+	$$
+		\text{Log}(z) = \ln|z| + i\text{Arg}(z) = i\frac{3\pi}{4}
+	$$
+	\textbf{Part 2: We need to show that (a) $e^{\text{Log(z)}} = z$ and (b) $\text{Log}(e^z) = z$} \\
+	\textbf{(a)} Let $z = |z| e^{i \theta}, |z| > 0$ and $\theta = \text{Arg}(z)$
+	\begin{align*}
+		\text{Log}(z)     & = \ln|z| + i \theta                                             \\
+		e^{\text{Log}(z)} & = e^{\ln|z| + i\theta}         & \emph{Exponentiate both sides} \\
+		                  & = e^{\ln|z|} \cdot e^{i\theta} & \emph{Exponentiation rules}    \\
+		                  & = |z| \cdot e^{i\theta}                                         \\
+		e^{\text{Log}(z)} & = z
+	\end{align*}
+	\textbf{(b)} Let $z = x+iy, y \in [-\pi, \pi]$
+	\begin{align*}
+		e^z             & = e^{x+iy}                                                     \\
+		                & = e^x \cdot e^{iy}                                             \\
+		\text{Log}(e^z) & = \ln|e^x \cdot e^{iy}|  & \emph{Take log of both sides}       \\
+		                & = \ln|e^x| + \ln|e^{iy}| & \log(a \cdot b) = \log(a) + \log(b) \\
+		                & = x + iy                                                       \\
+		\text{Log}(e^z) & = z
+	\end{align*}
+\end{examplebox}
+\begin{examplebox}{Define the complex conjugate ($\overline{w}$) and prove if $w$ is a zero of a polynomial $p(z)$ = $a_0 + a_1 z + \ldots + a_n z^n$ then $\overline{w}$ is also a zero of $p(z)$}{}
+	\phantomsection
+	\label{sol:2021Q1b}
+	\textbf{Definition:} For a complex number $w = a+bi$ the complex conjugate of $w$ is defined as $\overline{w} = a - bi$ (with $a,b \in \mathbb{R}$ and $i = \sqrt{-1}$)\\
+	This has several properties:
+	\begin{align*}
+		\overline{z+w} = \overline{z} + \overline{w}    \\
+		\overline{zw} = \overline{z} \cdot \overline{w} \\
+		\overline{(w^n)} = \left(\overline{w}\right)^n
+	\end{align*}
+	\textbf{Proof:} If $w$ is zero of a polynomial $p(z) = a_0 + a_1 z + \ldots + a_n z^n$ then $p(\overline{w}) = 0$
+	\begin{align*}
+		\text{Assume} \quad                           & p(w) = a_0 + a_1 w + \ldots + a_n w^n = 0                                    \\
+		\text{Take the conjugate of both sides} \quad & \overline{p(w)} = \overline{0} = 0                                           \\
+		\text{Evalute} \quad                          & p(\overline{w}) = a_0 + a_1 \overline{w} + \ldots + a_n \overline{w}^n       \\
+		                                              & = a_0 + a_1 \overline{w} + \ldots + a_n \overline{w^n}                       \\
+		                                              & = \overline{a_0} + \overline{a_1} \overline{w} + \ldots + \overline{a_n w^n} \\
+		                                              & = \overline{a_0 + a_1 w + \ldots + a_n w^n}                                  \\
+		                                              & = \overline{p(w)} = 0
+	\end{align*}
+	Thus, since we assumed $p(w) = 0$:
+	$$p(\overline{w}) = \overline{p(w)} = 0$$
+\end{examplebox}
+\begin{examplebox}{Define the complex exponential function $e^z$ and prove Eulers Foruma $e^{i \theta} = \cos(\theta) + i\sin\theta$}{}
+	\phantomsection
+	\label{sol:2017Q1b}
+	\textbf{Defition :} For any $z \in mathbb{C}$, $e^z$ is defined by its power series:
+	$$e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!}$$
+	The series converges for all $z \in \mathbb{C}$ and has the following properties:
+	\begin{align*}
+		e^{z_1 + z_2}      & = e^{z_1} \cdot e^{z_2} \\
+		e^{z} \cdot e^{-z} & = 1
+	\end{align*}
+	\textbf{Proof of Eulers Formula}
+
+	$$\text{Eulers Formula} \quad e^{i \theta} = \cos(\theta) + i\sin(\theta)$$
+	\begin{align*}
+		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty}  \frac{(i\theta)^n}{n!}                                                                             & \textit{Substitute}\; z=i\theta         \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i\theta)^{2n+1}}{(2n+1)!}                  & \textit{Split into even and odd powers} \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(i)^{2n}(\theta)^{2n}}{(2n)!} + \sum_{n=0}^{\infty} \frac{(i)^{2n+1} (\theta)^{2n+1}}{(2n+1)!} & \textit{Seperate powers}                \\
+	\end{align*}
+	\quad We note that:
+	$$i^{2n} = (i^{2})^n = (-1)^n$$
+	$$i^{2n+1} = i \cdot i^{2n} = i(-1)^n$$
+	Thus:
+	\begin{align*}
+		e^{i \theta} & =  \textstyle\sum_{n=0}^{\infty} \frac{(-1)^n(\theta)^{2n}}{(2n)!}
+		+ \sum_{n=0}^{\infty} \frac{i(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\
+		             & = \textstyle\sum_{n=0}^{\infty} \frac{(-1)^n(\theta)^{2n}}{(2n)!}
+		+ i\sum_{n=0}^{\infty} \frac{(-1)^n (\theta)^{2n+1}}{(2n+1)!}                     \\:
+		             & = \cos(\theta) + i\sin(\theta)
+	\end{align*}
+\end{examplebox}
+\section{Worked Examples - Q2}
+\begin{examplebox}{Determine the image of the line $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 2\}$}{}
+	\textbf{Let:}
+	$$w = f(z) = \frac{1}{z}$$
+	Then we have:
+	$$w = \frac{1}{z}, \quad \text{so that } zw = 1 \quad \Rightarrow \quad z = \frac{1}{w},                               $$
+	$$z = \frac{1}{u+iv} = \frac{u-iv}{(u+iv)(u-iv)} = \frac{u-iv}{u^2 + v^2} = \frac{u}{u^2 + v^2} - i\frac{v}{u^2 + v^2}$$
+	\textbf{We note that:} $\text{Re}(z) = \frac{u}{u^2 + v^2} = a$
+	$$u = a(u^2 + v^2) \quad \Rightarrow \quad \frac{1}{a}u = u^2 + v^2 \quad  \Rightarrow u^2 - \frac{1}{a}u + v^2 = 0 $$
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Completing the square in $u$:}
+		$$\left(u^2 - \frac{1}{2a}\right)^2 - \frac{1}{4a^2} + av^2 = 0 \Rightarrow \left(u^2 - \frac{1}{2a}\right)^2 + av^2 = \frac{1}{4a^2}$$
+		\textbf{Letting $a = 2$:}
+		$$\left(u^2 - \frac{1}{4}\right)^2  + 4v^2 = \frac{1}{16}$$
+		\textbf{Thus the image is sphere with radius $\frac{1}{4}$ and centre $(\frac{1}{4}, 0)$}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[->] (-0.6, 0) -- (0.6, 0) node[right] {$\text{Re}$};
+				\draw[->] (0, -0.6) -- (0, 0.5) node[right] {$\text{Im}$};
+				\draw[custom_blue, thick] (0.25, 0) circle [radius=0.25];
+
+				\draw (0.25, -0.05) -- (0.25, 0.05) node[below=0.1cm] {$^1 /_4 \pi$};
+			\end{tikzpicture}
+		\end{center}
+
+	\end{minipage}
+
+\end{examplebox}
+
+\begin{examplebox}{Determine the image of the line $f(z) = \frac{1}{z} \quad \{z \in \mathbb{C}: \text{Re}(z) = 1\}$}{}
+	\textbf{Let:}
+	$$w = f(z) = \frac{1}{z}$$
+	Then we have:
+	$$w = \frac{1}{z}, \quad \text{so that } zw = 1 \quad \Rightarrow \quad z = \frac{1}{w},                               $$
+	$$z = \frac{1}{u+iv} = \frac{u-iv}{(u+iv)(u-iv)} = \frac{u-iv}{u^2 + v^2} = \frac{u}{u^2 + v^2} - i\frac{v}{u^2 + v^2}$$
+	\textbf{We note that:} $\text{Re}(z) = \frac{u}{u^2 + v^2} = a$
+	$$u = a(u^2 + v^2) \quad \Rightarrow \quad \frac{1}{a}u = u^2 + v^2 \quad  \Rightarrow u^2 - \frac{1}{a}u + v^2 = 0 $$
+	\begin{minipage}{0.49\textwidth}
+		\textbf{Completing the square in $u$:}
+		$$\left(u^2 - \frac{1}{2a}\right)^2 - \frac{1}{4a^2} + av^2 = 0 \Rightarrow \left(u^2 - \frac{1}{2a}\right)^2 + av^2 = \frac{1}{4a^2}$$
+		\textbf{Letting $a = 1$:}
+		$$\left(u^2 - \frac{1}{2}\right)^2  + v^2 = \frac{1}{4}$$
+		\textbf{Thus the image is sphere with radius $\frac{1}{2}$ and centre $(\frac{1}{2}, 0)$}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\begin{center}
+			\begin{tikzpicture}[scale=2]
+				\draw[->] (-0.6, 0) -- (0.6, 0) node[right] {$\text{Re}$};
+				\draw[->] (0, -0.6) -- (0, 0.5) node[right] {$\text{Im}$};
+				\draw[custom_blue, thick] (0.5, 0) circle [radius=0.5];
+
+				\draw (0.5, -0.05) -- (0.5, 0.05) node[below=0.1cm] {$^1 /_2 \pi$};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+
+\end{examplebox}
+\end{document}
+
