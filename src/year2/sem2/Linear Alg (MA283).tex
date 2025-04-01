@@ -190,16 +190,30 @@ $$
   0x + 0y + 0z = 1
 $$
 This equation clearly has no solution, and hence the system has no solutions. We say the system is \textbf{inconsistent}. Alternatively, we say the system is \textbf{consistent} if it has at least one solution.
-\section{Possible Outcomes when solving a system of equations}
+\subsection{Possible Outcomes when solving a system of equations}
 \begin{itemize}
   \item The system may be \textbf{inconsistent} (no solutions) - i.e:
         $$ [0 \; 0 \; \dots \; 0 \; | \; a] \quad a \neq 0$$
   \item The system may be \textbf{consistent} which occurs if:
         \begin{itemize}
-          \item \textbf{Unique Solutions} All variables all leading variables (i.e. every column except the rightmost one in REF has a leading 1)
+          \item \textbf{Unique Solutions} each column (aside from the rightmost) contains a single leading 1. - i.e:
+                $$
+                  \begin{bmatrix}
+                    1 & 0 & 0 & | & 4  \\
+                    0 & 1 & 0 & | & 3  \\
+                    0 & 0 & 1 & | & -2
+                  \end{bmatrix}
+                $$
 
-          \item \textbf{Infinitely many solutions} At least one variable is free - in this case the number of leading 1's in the REF is less than the number of variables in the system.
-
+          \item \textbf{Infinitely many solutions} at least one variable does not appear as a leading 1 in any row, making it a free variable - i.e:
+                $$
+                  \begin{bmatrix}
+                    1 & 2 & -1 & | & 3  \\
+                    0 & 0 & 1  & | & -2 \\
+                    0 & 0 & 0  & | & 0
+                  \end{bmatrix}
+                $$
         \end{itemize}
 \end{itemize}
+\subsection{Gaussian Elimination and Matrix Algebra}
 \end{document}
