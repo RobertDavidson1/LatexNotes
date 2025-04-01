@@ -500,5 +500,40 @@ $$
     4  & -13 & 3
   \end{pmatrix}.
 $$
-
+\begin{definitionbox}{}{}
+  Suppose that $\mathbf{v_1}, \mathbf{v_2}, \ldots, \mathbf{v_k}$ are elements of a vector space $\mathcal{V}$ over a field $\mathbb{F}$. A $\mathcal{F}$-linear combination of these vectors is an element of $\mathcal{V}$ of the form:
+  $$\alpha_1 \mathbf{v_1} + \alpha_2 \mathbf{v_2} + \ldots + \alpha_k \mathbf{v_k}$$
+  where $\alpha_i \in \mathbb{F}$ for $i = 1, 2, \ldots, k$ are the \textbf{coefficients} of the linear combination.
+\end{definitionbox}
+\begin{definitionbox}{}{}
+  Let $A$ be a $m \times n$ matrix, and let $v$ be a column vector with $n$ entries. Then the matrix vector product $Av$ is obtained by taking the linear combination of the columns of $A$ whose \textbf{coefficients are the entries of $v$}. The result is a column vector with $m$ entries.
+  $$\begin{bmatrix}
+      2 & 4 & -1 \\
+      0 & 1 & -3
+    \end{bmatrix}
+    \begin{bmatrix}
+      3  \\
+      -2 \\
+      1
+    \end{bmatrix}
+    =
+    3\begin{bmatrix}
+      2 \\
+      0
+    \end{bmatrix} +
+    (-2)\begin{bmatrix}
+      4 \\
+      1
+    \end{bmatrix} +
+    1\begin{bmatrix}
+      -1 \\
+      -3
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      -3 \\
+      -5
+    \end{bmatrix}
+  $$
+\end{definitionbox}
 \end{document}
