@@ -221,8 +221,10 @@ This equation clearly has no solution, and hence the system has no solutions. We
                 $$
         \end{itemize}
 \end{itemize}
+
 \subsection{Elementary Row Operations as Matrix Transformations}
 Elementary row operations may be interpreted as \textbf{matrix multiplication}. To see this, first we introduce the \textbf{Identity matrix:}
+\vspace{-2ex}
 $$I_3 = \begin{bmatrix}
     1 & 0 & 0 \\
     0 & 1 & 0 \\
@@ -237,6 +239,7 @@ $$
   \end{bmatrix}
 $$
 Then:
+\vspace{-2ex}
 $$I_3 + 4E_{1,2} = \begin{bmatrix}
     1 & 4 & 0 \\
     0 & 1 & 0 \\
@@ -251,13 +254,14 @@ is equivalent to saying that
   "\emph{for every matrix $A$ with $m$ rows, there exists a $m \times m$ matrix $B$} \\
   \emph{which is a product of elementary matrices such that $BA$ is in RREF.}"
 \end{align*}
-
+\vspace{-8ex}
 \subsubsection{Multiplying a Row by a Non-Zero Scalar}
 When multiplying row $i$ of matrix $A$ by a scalar $\alpha \neq 0$, we can use the matrix:
 $$I_m + (\alpha - 1)E_{i,i}$$
 This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.\\
-\footnotesize \textbf{Example:} If $\alpha = 5$ and $i = 2$, then: \normalsize
-$$\scriptsize
+\textbf{Example:} If $\alpha = 5$ and $i = 2$, then:
+\vspace{-2ex}
+$$
   I_3 + 4E_{2,2} = \begin{bmatrix}
     1 & 0 & 0 \\
     0 & 5 & 0 \\
@@ -275,7 +279,7 @@ $$\scriptsize
     20 & 25 & 30 \\
     7  & 8  & 9
   \end{bmatrix}$$
-\normalsize
+\vspace{-4ex}
 \subsubsection{Switching Two Rows}
 To swap rows $i$ and $k$, we use:
 $$S = I_m + E_{i,k} + E_{k,i} - E_{i,i} - E_{k,k}$$
@@ -284,8 +288,10 @@ This works by:
   \item Removing the 1's at positions $(i,i)$ and $(k,k)$ from the identity matrix
   \item Adding 1's at positions $(i,k)$ and $(k,i)$
 \end{itemize}
-\footnotesize \textbf{Example:} Swapping rows 1 and 3: \normalsize
-$$\footnotesize \scriptsize S = \begin{bmatrix}
+\vspace{-1ex}
+\textbf{Example:} Swapping rows 1 and 3:
+\vspace{-2ex}
+$$  S = \begin{bmatrix}
     0 & 0 & 1 \\
     0 & 1 & 0 \\
     1 & 0 & 0
@@ -302,18 +308,18 @@ $$\footnotesize \scriptsize S = \begin{bmatrix}
     4 & 5 & 6 \\
     1 & 2 & 3
   \end{bmatrix}$$
-
+\vspace{-5ex}
 \subsubsection{Adding a Multiple of One Row to Another}
 To replace row $k$ with row $k + \alpha \times$ row $i$, use:
 $$I_m + \alpha E_{k,i}$$
-
 This adds $\alpha$ times row $i$ to row $k$ while leaving all other rows unchanged because:
 \begin{itemize}
   \item For any row $j \neq k$, the corresponding row in this matrix is just the standard basis row
   \item Row $k$ becomes the sum of the standard basis row $k$ plus $\alpha$ times the standard basis row $i$
 \end{itemize}
-\footnotesize\textbf{Example:} Adding 3 times row 1 to row 2: \normalsize
-$$\footnotesize I_3 + 3E_{2,1} = \begin{bmatrix}
+\textbf{Example:} Adding 3 times row 1 to row 2:
+\vspace{-2ex}
+$$ I_3 + 3E_{2,1} = \begin{bmatrix}
     1 & 0 & 0 \\
     3 & 1 & 0 \\
     0 & 0 & 1
@@ -363,7 +369,7 @@ $$\footnotesize I_3 + 3E_{2,1} = \begin{bmatrix}
 \begin{examplebox}{}{}
   Prove that every invertible matrix in $M_n(\mathbb{R})$ is a product of elementary matrices.
   \\ \rule{\textwidth}{1px} \\
-  Let $A$  be an invertible matrix in $M_n(\mathbb{R})$. Since $A$ is invertible, it can be reduced to the indetiy
+  Let $A$  be an invertible matrix in $M_n(\mathbb{R})$. Since $A$ is invertible, we can use Gaussian elimination to transform $A$ into the identity matrix $I_n$.
 
 \end{examplebox}
 \end{document}
