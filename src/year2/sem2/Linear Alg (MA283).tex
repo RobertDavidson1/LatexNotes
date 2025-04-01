@@ -6,6 +6,12 @@
 \textbf{MA283: Linear Algebra} \\ 
 }
 
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ bottom=22mm,
+ }
+
 \author{
   70\% Exam\\
 30\% Continuous Assessment (Homework) \\
@@ -81,7 +87,7 @@ The goal of these operations is to transform the augmented matrix into \textbf{r
         0 & 0 & 1  & | & -1
       \end{bmatrix}
     $$
-    \footnotesize \emph{Example of REF}
+    \emph{Example of REF}
   \end{center}
 
 
@@ -114,7 +120,7 @@ We have produced a new system of equations. This is easily solved by back substi
         0 & 0 & 1 & | & -1
       \end{bmatrix}
     $$
-    \footnotesize \emph{Example of RREF}
+    \emph{Example of RREF}
   \end{center}
 \end{minipage}
 
@@ -249,8 +255,8 @@ is equivalent to saying that
 \subsubsection{Multiplying a Row by a Non-Zero Scalar}
 When multiplying row $i$ of matrix $A$ by a scalar $\alpha \neq 0$, we can use the matrix:
 $$I_m + (\alpha - 1)E_{i,i}$$
-This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.\\[2ex]
-\small\textbf{Example:} If $\alpha = 5$ and $i = 2$, then:
+This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.\\
+\footnotesize \textbf{Example:} If $\alpha = 5$ and $i = 2$, then: \normalsize
 $$\scriptsize
   I_3 + 4E_{2,2} = \begin{bmatrix}
     1 & 0 & 0 \\
@@ -278,9 +284,8 @@ This works by:
   \item Removing the 1's at positions $(i,i)$ and $(k,k)$ from the identity matrix
   \item Adding 1's at positions $(i,k)$ and $(k,i)$
 \end{itemize}
-\small
-\textbf{Example:} Swapping rows 1 and 3:
-$$\scriptsize S = \begin{bmatrix}
+\footnotesize \textbf{Example:} Swapping rows 1 and 3: \normalsize
+$$\footnotesize \scriptsize S = \begin{bmatrix}
     0 & 0 & 1 \\
     0 & 1 & 0 \\
     1 & 0 & 0
@@ -307,10 +312,8 @@ This adds $\alpha$ times row $i$ to row $k$ while leaving all other rows unchang
   \item For any row $j \neq k$, the corresponding row in this matrix is just the standard basis row
   \item Row $k$ becomes the sum of the standard basis row $k$ plus $\alpha$ times the standard basis row $i$
 \end{itemize}
-
-\small
-\textbf{Example:} Adding 3 times row 1 to row 2:
-$$I_3 + 3E_{2,1} = \begin{bmatrix}
+\footnotesize\textbf{Example:} Adding 3 times row 1 to row 2: \normalsize
+$$\footnotesize I_3 + 3E_{2,1} = \begin{bmatrix}
     1 & 0 & 0 \\
     3 & 1 & 0 \\
     0 & 0 & 1
