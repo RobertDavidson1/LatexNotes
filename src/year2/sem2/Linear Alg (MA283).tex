@@ -215,7 +215,7 @@ This equation clearly has no solution, and hence the system has no solutions. We
                 $$
         \end{itemize}
 \end{itemize}
-\subsection{Gaussian Elimination and Matrix Algebra}
+\subsection{Elementary Row Operations as Matrix Transformations}
 Elementary row operations may be interpreted as \textbf{matrix multiplication}. To see this, first we introduce the \textbf{Identity matrix:}
 $$I_3 = \begin{bmatrix}
     1 & 0 & 0 \\
@@ -236,89 +236,87 @@ $$I_3 + 4E_{1,2} = \begin{bmatrix}
     0 & 1 & 0 \\
     0 & 0 & 1
   \end{bmatrix}$$
-Performing a row operation on $A$ is the same as multiplying $A$ by an appropriate matrix $E$ on the left \\[2ex]
-\textbf{Multiplying a row by a non zero scalar}
-\begin{itemize}
-  \item When you multiply row $i$ of $A$, by some scalar $\alpha \neq 0$, all other rows remain unchanged, and the $i$th row is scaled by $\alpha$.
-  \item The Identity matrix $I_m$ leaved $A$ unchanged if we multiply $I_mA$
-  \item To scale row $i$ by $\alpha$,you want the $(i,i)$-entry of this matrix to be $\alpha$, so the $i$th row of $A$ is scaled by $\alpha$.
-  \item Hence $I_m + (\alpha - 1)E_{i,i}$ causes the $i$th row of $A$ to be scaled by $\alpha$.
-\end{itemize}
-That is what the matrix
+Performing a row operation on $A$ is the same as multiplying $A$ by an appropriate matrix $E$ on the left.
+
+
+\subsection{Multiplying a Row by a Non-Zero Scalar}
+When multiplying row $i$ of matrix $A$ by a scalar $\alpha \neq 0$, we can use the matrix:
 $$I_m + (\alpha - 1)E_{i,i}$$
-does to $A$:
-Observe that $I_m$ has all diagonal entries $= 1$. Adding $(\alpha-1)E_{i,i}$  makes that diagonal entry become $\alpha$ and all other diagonal entries remain $1$. Example:
-$$I_3 + 4_E{2,2} = \begin{bmatrix}
+
+This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.
+
+\textbf{Example:} If $\alpha = 5$ and $i = 2$, then:
+$$I_3 + 4E_{2,2} = \begin{bmatrix}
     1 & 0 & 0 \\
     0 & 5 & 0 \\
     0 & 0 & 1
-  \end{bmatrix}
-  \quad A =
-  \begin{bmatrix}
+  \end{bmatrix}$$
+
+When multiplied with $A = \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-  \end{bmatrix} \quad \text{then} \quad (I_3 + 4E_{2,2})A =
-  \begin{bmatrix}
+  \end{bmatrix}$, we get:
+$$(I_3 + 4E_{2,2})A = \begin{bmatrix}
     1  & 2  & 3  \\
     20 & 25 & 30 \\
     7  & 8  & 9
   \end{bmatrix}$$
-\textbf{Switching two rows}
+
+\subsection{Switching Two Rows}
+To swap rows $i$ and $k$, we use:
+$$S = I_m + E_{i,k} + E_{k,i} - E_{i,i} - E_{k,k}$$
+
+This works by:
 \begin{itemize}
-  \item Consider the effect of switching two ros in a matrix. The swapping matrix $S$ must do the following:
-        \begin{itemize}
-          \item Take row $i$ of $A$ and put it in row $k$ of $SA$
-          \item Take row $k$ of $A$ and put it in row $i$ of $SA$
-          \item Leave all other rows unchanged
-        \end{itemize}
-  \item One way to build this swapping matrix is to start with $I_m$ and then tinker with the rows/columns so that the $i$th rwo picks out the old $k$th row and the $k$th row picks out the old $i$th row.
+  \item Removing the 1's at positions $(i,i)$ and $(k,k)$ from the identity matrix
+  \item Adding 1's at positions $(i,k)$ and $(k,i)$
 \end{itemize}
-The matrix:
-$$
-  S = I_m + E_{i,k} + E_{k,i} - E_{i,i} - E_{k,k}
-$$ does this. Observe that:
-\begin{itemize}
-  \item Normally $I_m$ has 1's on the diagonal $(j,j)$
-  \item We subtract the 1's positions $(i,i)$ and $(k,k)$, so those spots become 0.
-  \item We add 1's in the positions $(i,k)$ and $(k,i)$, so those spots become 1.
-\end{itemize}
-$$
-  S = I_3 + E_{1,3} + E_{3,1} - E_{1,1} - E_{3,3}
-  = \begin{bmatrix}
+
+\textbf{Example:} Swapping rows 1 and 3:
+$$S = \begin{bmatrix}
     0 & 0 & 1 \\
     0 & 1 & 0 \\
     1 & 0 & 0
-  \end{bmatrix}
-  \quad A =
-  \begin{bmatrix}
+  \end{bmatrix}$$
+
+When multiplied with matrix $A = \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-  \end{bmatrix}
-  \quad \text{then} \quad SA =
-  \begin{bmatrix}
+  \end{bmatrix}$, this yields:
+$$SA = \begin{bmatrix}
     7 & 8 & 9 \\
     4 & 5 & 6 \\
     1 & 2 & 3
-  \end{bmatrix}
-$$
-\textbf{Adding a multiple of one row to another}
-\begin{itemize}
-  \item Suppose you want to replace row $k$ by with row $k + \alpha \times $ row $i$.
-  \item Starting with the identity matrix $I_m$, multiplying on the left by $I_m$ would leave $A$ unchanged.
-  \item To add $\alpha \times$ row $i$ to row $k$, we want the multiplication to say:
-        \begin{itemize}
-          \item Keep $j$ unchanged, for all $j \neq k$
-          \item Replace row $k$ with itself plus $\alpha$ times row $i$
-        \end{itemize}
-\end{itemize}
-The matrix:
+  \end{bmatrix}$$
+
+\subsection{Adding a Multiple of One Row to Another}
+To replace row $k$ with row $k + \alpha \times$ row $i$, use:
 $$I_m + \alpha E_{k,i}$$
-does this. Observe that:
+
+This adds $\alpha$ times row $i$ to row $k$ while leaving all other rows unchanged because:
 \begin{itemize}
-  \item Row $j$ of $I_m + \alpha E_{k,i}$ is just the standard basis row whenever $j \neq k$. So row $j$ of $A$ is unchanged.
-  \item Row $k$ of $I_m + \alpha E_{k,i}$ is
-        $$\text{Row } k \text{ of } I_m + \alpha \text{Row } i \text{ of } I_m$$
+  \item For any row $j \neq k$, the corresponding row in this matrix is just the standard basis row
+  \item Row $k$ becomes the sum of the standard basis row $k$ plus $\alpha$ times the standard basis row $i$
 \end{itemize}
+
+\textbf{Example:} Adding 3 times row 1 to row 2:
+$$I_3 + 3E_{2,1} = \begin{bmatrix}
+    1 & 0 & 0 \\
+    3 & 1 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}$$
+
+When multiplied with $A = \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+  \end{bmatrix}$, we get:
+$$(I_3 + 3E_{2,1})A = \begin{bmatrix}
+    1 & 2  & 3  \\
+    7 & 11 & 15 \\
+    7 & 8  & 9
+  \end{bmatrix}$$
+
 \end{document}
