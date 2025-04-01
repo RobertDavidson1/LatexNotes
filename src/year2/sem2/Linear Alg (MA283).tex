@@ -473,13 +473,11 @@ $$
 A $m \times n$ matrix over a field $\mathbb{F}$ is an array of $m$ rows, and $n$ columns with elements $\in \mathbb{F}$. Two matrices can be added if they have the same size; in this case their sum is obtained by adding the corresponding entries. \\[2ex]
 The \textbf{zero matrix} is a matrix with all entries equal to 0. It is the \textbf{identity element} for addition of matrices - adding it to any matrix $A$ gives $A$ back. \\[2ex]
 A matrix can be multiplied by a scalar by multiplying each entry of the matrix by the scalar. \\[2ex]
-With these operations of addition and scalar multiplication, the set of $m \times n$ matrices of a field $\mathbb{F}$ is a \textbf{vector space} over $\mathbb{F}$.
-\begin{definitionbox}{}{}
-  We use the notation:
-  $$M_{m \times n}(\mathbb{F})$$
-  for the vector space of all $m \times n$ matrices over $\mathbb{F}$. When $m = n$, we abbreviate this to:
-  $$M_n(\mathbb{F})$$
-\end{definitionbox}
+With these operations of addition and scalar multiplication, the set of $m \times n$ matrices of a field $\mathbb{F}$ is a \textbf{vector space} over $\mathbb{F}$. We use the notation:
+$$M_{m \times n}(\mathbb{F})$$
+for the vector space of all $m \times n$ matrices over $\mathbb{F}$. When $m = n$, we abbreviate this to:
+$$M_n(\mathbb{F})$$
+
 \noindent \textbf{Example:}  $M_{2 \times 3}(\mathbb{R})$:
 $$
   2
@@ -535,5 +533,9 @@ $$
       -5
     \end{bmatrix}
   $$
+  Note, the product $Av$ is only defined when the number of columns of $A$ is equal to the number of entries in $v$.
+\end{definitionbox}
+\begin{definitionbox}{}{}
+  Let $A$ and be $B$ be matrices of size $m \times p$ and $p \times n$ repeatively. Write $v_1, v_2, \ldots, v_p$ for the columns of $B$. Then the matrix product $AB$  is the $m \times n$ matrix whose columns are $Av_1, Av_2, \ldots, Av_n$.
 \end{definitionbox}
 \end{document}
