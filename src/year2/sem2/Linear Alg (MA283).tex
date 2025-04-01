@@ -315,61 +315,39 @@ $$I_3 + 3E_{2,1} = \begin{bmatrix}
     7 & 8  & 9
   \end{bmatrix}$$
 
+\begin{examplebox}{}{}
+  Write the inverse of an elementary matrix and show it is an elementary matrix.
+  \\ \rule{\textwidth}{1px} \\
+  \textbf{Multiplying a row by a nonzero scalar:}
+  \begin{itemize}
+    \item \textbf{Operation:} Multiply row $i$ by $\alpha \neq 0$.
+    \item \textbf{Elementary Matrix:} $E = I_m + (\alpha - 1)E_{i,i}$
+    \item \textbf{Inverse:} To reverse the operation, multiply row $i$ by $1\backslash\alpha$. Hence, the inverse is
+          $$
+            E^{-1} = I_m + \left(\frac{1}{\alpha} - 1\right)E_{i,i}  =\; I_m + \frac{1-\alpha}{\alpha}\,E_{i,i}.
+          $$
+  \end{itemize}
+  \textbf{Swapping two rows:}
+  \begin{itemize}
+    \item \textbf{Operation:} Swap rows $i$ and $k$.
+    \item \textbf{Elementary Matrix:} $S = I_m - E_{i,i} - E_{k,k} + E_{i,k} + E_{k,i}$
+    \item \textbf{Inverse:} Since swapping the same two rows twice returns them to their original positions,
+          $$
+            S^{-1} = S.
+          $$
+  \end{itemize}
+  \textbf{Adding a multiple of one row to another:}
+  \begin{itemize}
+    \item \textbf{Operation:} Add $\alpha$ times row $i$ to row $k$.
+    \item \textbf{Elementary Matrix:} $E = I_m + \alpha\,E_{k,i}$
+    \item \textbf{Inverse:} To undo the operation, subtract $\alpha$ times row $i$ from row $k$. Therefore,
+          $$
+            E^{-1} = I_m - \alpha\,E_{k,i}.
+          $$
+  \end{itemize}
+\end{examplebox}
+\begin{examplebox}{}{}
+  Prove that every invertible matrix in $M_n(\mathbb{R})$ is a product of elementary matrices.
 
-Below we describe the three types of elementary matrices and derive their inverses. In each case, the inverse is obtained by performing the \textit{reverse} row operation, and it is itself an elementary matrix.
-
-\subsection*{1. Multiplying a Row by a Nonzero Scalar}
-
-\textbf{Operation:} Multiply row \(i\) by \(\alpha \neq 0\).
-
-\textbf{Elementary Matrix:}
-\[
-  E = I_m + (\alpha - 1)E_{i,i},
-\]
-where \(E_{i,i}\) is the matrix with a \(1\) in the \((i,i)\) entry and \(0\) elsewhere.
-
-\textbf{Inverse:} To reverse the operation, multiply row \(i\) by \(1/\alpha\). Hence, the inverse is
-\[
-  E^{-1} = I_m + \left(\frac{1}{\alpha} - 1\right)E_{i,i}
-  =\; I_m + \frac{1-\alpha}{\alpha}\,E_{i,i}.
-\]
-This matrix is of the same elementary form.
-
-\subsection*{2. Swapping Two Rows}
-
-\textbf{Operation:} Swap rows \(i\) and \(k\).
-
-\textbf{Elementary Matrix:}
-\[
-  S = I_m - E_{i,i} - E_{k,k} + E_{i,k} + E_{k,i}.
-\]
-This matrix interchanges row \(i\) with row \(k\).
-
-\textbf{Inverse:} Since swapping the same two rows twice returns them to their original positions,
-\[
-  S^{-1} = S.
-\]
-Thus, the inverse is also an elementary matrix.
-
-\subsection*{3. Adding a Multiple of One Row to Another}
-
-\textbf{Operation:} Add \(\alpha\) times row \(i\) to row \(k\).
-
-\textbf{Elementary Matrix:}
-\[
-  E = I_m + \alpha\,E_{k,i}.
-\]
-
-\textbf{Inverse:} To undo the operation, subtract \(\alpha\) times row \(i\) from row \(k\). Therefore,
-\[
-  E^{-1} = I_m - \alpha\,E_{k,i}.
-\]
-This is again an elementary matrix.
-
-\section*{Conclusion}
-
-Each elementary matrix is invertible by performing the reverse row operation. Hence, every elementary matrix \(E\) has an inverse \(E^{-1}\) that is itself an elementary matrix.
-
-\begin{examplebox}{Write the inverse of an elementary matrix and show it is an elementary matrix}{}
 \end{examplebox}
 \end{document}
