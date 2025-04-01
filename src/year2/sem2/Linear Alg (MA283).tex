@@ -237,14 +237,22 @@ $$I_3 + 4E_{1,2} = \begin{bmatrix}
     0 & 0 & 1
   \end{bmatrix}$$
 Performing a row operation on $A$ is the same as multiplying $A$ by an appropriate matrix $E$ on the left.
-
+These matrices are called \textbf{elementary matrices}. They are \textbf{always invertible,} and \textbf{their inverses are also elementary matrices}. The statement:
+$$
+  "\emph{every matrix can be reduced to RREF through EROs}"$$
+is equivalent to saying that
+\begin{align*}
+  "\emph{for every matrix $A$ with $m$ rows, there exists a $m \times m$ matrix $B$} \\
+  \emph{which is a product of elementary matrices such that $BA$ is in RREF.}"
+\end{align*}
 
 \subsubsection{Multiplying a Row by a Non-Zero Scalar}
 When multiplying row $i$ of matrix $A$ by a scalar $\alpha \neq 0$, we can use the matrix:
 $$I_m + (\alpha - 1)E_{i,i}$$
 This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.\\[2ex]
-\textbf{Example:} If $\alpha = 5$ and $i = 2$, then:
-$$I_3 + 4E_{2,2} = \begin{bmatrix}
+\small\textbf{Example:} If $\alpha = 5$ and $i = 2$, then:
+$$\scriptsize
+  I_3 + 4E_{2,2} = \begin{bmatrix}
     1 & 0 & 0 \\
     0 & 5 & 0 \\
     0 & 0 & 1
@@ -261,6 +269,7 @@ $$I_3 + 4E_{2,2} = \begin{bmatrix}
     20 & 25 & 30 \\
     7  & 8  & 9
   \end{bmatrix}$$
+\normalsize
 \subsubsection{Switching Two Rows}
 To swap rows $i$ and $k$, we use:
 $$S = I_m + E_{i,k} + E_{k,i} - E_{i,i} - E_{k,k}$$
@@ -269,8 +278,9 @@ This works by:
   \item Removing the 1's at positions $(i,i)$ and $(k,k)$ from the identity matrix
   \item Adding 1's at positions $(i,k)$ and $(k,i)$
 \end{itemize}
+\small
 \textbf{Example:} Swapping rows 1 and 3:
-$$S = \begin{bmatrix}
+$$\scriptsize S = \begin{bmatrix}
     0 & 0 & 1 \\
     0 & 1 & 0 \\
     1 & 0 & 0
@@ -298,6 +308,7 @@ This adds $\alpha$ times row $i$ to row $k$ while leaving all other rows unchang
   \item Row $k$ becomes the sum of the standard basis row $k$ plus $\alpha$ times the standard basis row $i$
 \end{itemize}
 
+\small
 \textbf{Example:} Adding 3 times row 1 to row 2:
 $$I_3 + 3E_{2,1} = \begin{bmatrix}
     1 & 0 & 0 \\
@@ -348,6 +359,8 @@ $$I_3 + 3E_{2,1} = \begin{bmatrix}
 \end{examplebox}
 \begin{examplebox}{}{}
   Prove that every invertible matrix in $M_n(\mathbb{R})$ is a product of elementary matrices.
+  \\ \rule{\textwidth}{1px} \\
+  Let $A$  be an invertible matrix in $M_n(\mathbb{R})$. Since $A$ is invertible, it can be reduced to the indetiy
 
 \end{examplebox}
 \end{document}
