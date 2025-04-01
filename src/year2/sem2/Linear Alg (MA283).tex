@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt]{article}
+\documentclass[a4paper, 9pt]{extarticle}
 \input{../../preamble.sty}
 \input{../../macros.sty}
 
@@ -39,4 +39,49 @@ The \textbf{solution set} is the set of all solutions to a linear equation.
   $$a_1X_1 + a_2X_2 + \ldots + a_nX_n = b \quad \text{where} \; a_i, b \in \mathbb{R}$$
   is an \textbf{affine hyperplane} in $\mathbb{R}^n$; geometrically resembles a copy of $\mathbb{R}^{n-1}$ inside $\mathbb{R}^n$.
 \end{definitionbox}
+\subsection{Elementary Row Operations}
+To solve a system of linear equations we associate an \textbf{augmented matrix} to the system of equations. For example:
+$$
+  \begin{array}
+    {ccccccc}x & + & 2y & - & z  & = & 5 \\
+    3x         & + & y  & - & 2z & = & 9 \\
+    -x         & + & 4y & + & 2z & = & 0
+  \end{array}
+  \quad \Rightarrow \quad
+  \begin{bmatrix}
+    1  & 2 & -1 & | & 5 \\
+    3  & 1 & -2 & | & 9 \\
+    -1 & 4 & 2  & | & 0
+  \end{bmatrix}
+$$
+To solve, we can perform the following \textbf{Elementary Row Operations (EROs)}:
+\begin{definitionbox}{Elementary Row Operations}{}
+  \begin{enumerate}
+    \item Multiply a row by a non-zero constant.
+    \item Add a multiple of one row to another row.
+    \item Swap two rows.
+  \end{enumerate}
+\end{definitionbox}
+The goal of these operations is to transform the augmented matrix into \textbf{row echelon form} (REF) or \textbf{reduced row echelon form} (RREF).
+
+\subsubsection{REF and Strategy}
+\begin{definitionbox}{Row Echelon Form}{}
+  \begin{itemize}
+    \item The first non zero entry in each row is a 1 (called the \textbf{leading 1}).
+    \item If a column has a leading 1, then all entries below it are 0.
+    \item The leading 1 in each row is to the right of the leading 1 in the previous row.
+    \item All rows of 0s are at the bottom of the matrix.
+  \end{itemize}
+  Example:
+  $$
+    \begin{bmatrix}
+      1 & 2 & -1 & | & 3  \\
+      0 & 1 & 2  & | & -1 \\
+      0 & 0 & 1  & | & -1
+    \end{bmatrix}
+  $$
+  We have produced a new system of equations. This is easily solved by back substitution.
+\end{definitionbox}
+
+
 \end{document}
