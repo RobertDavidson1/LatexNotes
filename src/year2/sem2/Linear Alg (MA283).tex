@@ -239,59 +239,56 @@ $$I_3 + 4E_{1,2} = \begin{bmatrix}
 Performing a row operation on $A$ is the same as multiplying $A$ by an appropriate matrix $E$ on the left.
 
 
-\subsection{Multiplying a Row by a Non-Zero Scalar}
+\subsubsection{Multiplying a Row by a Non-Zero Scalar}
 When multiplying row $i$ of matrix $A$ by a scalar $\alpha \neq 0$, we can use the matrix:
 $$I_m + (\alpha - 1)E_{i,i}$$
-
-This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.
-
+This works because it modifies only the $(i,i)$ entry of the identity matrix to be $\alpha$ while keeping all other entries unchanged. When multiplied with $A$, it scales row $i$ by $\alpha$ and leaves all other rows intact.\\[2ex]
 \textbf{Example:} If $\alpha = 5$ and $i = 2$, then:
 $$I_3 + 4E_{2,2} = \begin{bmatrix}
     1 & 0 & 0 \\
     0 & 5 & 0 \\
     0 & 0 & 1
-  \end{bmatrix}$$
-
-When multiplied with $A = \begin{bmatrix}
+  \end{bmatrix}\
+  \quad
+  A = \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-  \end{bmatrix}$, we get:
-$$(I_3 + 4E_{2,2})A = \begin{bmatrix}
+  \end{bmatrix}
+  \quad \quad\quad
+  (I_3 + 4E_{2,2})A = \begin{bmatrix}
     1  & 2  & 3  \\
     20 & 25 & 30 \\
     7  & 8  & 9
   \end{bmatrix}$$
-
-\subsection{Switching Two Rows}
+\subsubsection{Switching Two Rows}
 To swap rows $i$ and $k$, we use:
 $$S = I_m + E_{i,k} + E_{k,i} - E_{i,i} - E_{k,k}$$
-
 This works by:
 \begin{itemize}
   \item Removing the 1's at positions $(i,i)$ and $(k,k)$ from the identity matrix
   \item Adding 1's at positions $(i,k)$ and $(k,i)$
 \end{itemize}
-
 \textbf{Example:} Swapping rows 1 and 3:
 $$S = \begin{bmatrix}
     0 & 0 & 1 \\
     0 & 1 & 0 \\
     1 & 0 & 0
-  \end{bmatrix}$$
-
-When multiplied with matrix $A = \begin{bmatrix}
+  \end{bmatrix}
+  \quad
+  A = \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-  \end{bmatrix}$, this yields:
-$$SA = \begin{bmatrix}
+  \end{bmatrix}
+  \quad \quad\quad
+  SA = \begin{bmatrix}
     7 & 8 & 9 \\
     4 & 5 & 6 \\
     1 & 2 & 3
   \end{bmatrix}$$
 
-\subsection{Adding a Multiple of One Row to Another}
+\subsubsection{Adding a Multiple of One Row to Another}
 To replace row $k$ with row $k + \alpha \times$ row $i$, use:
 $$I_m + \alpha E_{k,i}$$
 
@@ -306,17 +303,73 @@ $$I_3 + 3E_{2,1} = \begin{bmatrix}
     1 & 0 & 0 \\
     3 & 1 & 0 \\
     0 & 0 & 1
-  \end{bmatrix}$$
-
-When multiplied with $A = \begin{bmatrix}
+  \end{bmatrix} \quad A = \begin{bmatrix}
     1 & 2 & 3 \\
     4 & 5 & 6 \\
     7 & 8 & 9
-  \end{bmatrix}$, we get:
-$$(I_3 + 3E_{2,1})A = \begin{bmatrix}
+  \end{bmatrix}
+  \quad\quad\quad
+  (I_3 + 3E_{2,1})A = \begin{bmatrix}
     1 & 2  & 3  \\
     7 & 11 & 15 \\
     7 & 8  & 9
   \end{bmatrix}$$
 
+
+Below we describe the three types of elementary matrices and derive their inverses. In each case, the inverse is obtained by performing the \textit{reverse} row operation, and it is itself an elementary matrix.
+
+\subsection*{1. Multiplying a Row by a Nonzero Scalar}
+
+\textbf{Operation:} Multiply row \(i\) by \(\alpha \neq 0\).
+
+\textbf{Elementary Matrix:}
+\[
+  E = I_m + (\alpha - 1)E_{i,i},
+\]
+where \(E_{i,i}\) is the matrix with a \(1\) in the \((i,i)\) entry and \(0\) elsewhere.
+
+\textbf{Inverse:} To reverse the operation, multiply row \(i\) by \(1/\alpha\). Hence, the inverse is
+\[
+  E^{-1} = I_m + \left(\frac{1}{\alpha} - 1\right)E_{i,i}
+  =\; I_m + \frac{1-\alpha}{\alpha}\,E_{i,i}.
+\]
+This matrix is of the same elementary form.
+
+\subsection*{2. Swapping Two Rows}
+
+\textbf{Operation:} Swap rows \(i\) and \(k\).
+
+\textbf{Elementary Matrix:}
+\[
+  S = I_m - E_{i,i} - E_{k,k} + E_{i,k} + E_{k,i}.
+\]
+This matrix interchanges row \(i\) with row \(k\).
+
+\textbf{Inverse:} Since swapping the same two rows twice returns them to their original positions,
+\[
+  S^{-1} = S.
+\]
+Thus, the inverse is also an elementary matrix.
+
+\subsection*{3. Adding a Multiple of One Row to Another}
+
+\textbf{Operation:} Add \(\alpha\) times row \(i\) to row \(k\).
+
+\textbf{Elementary Matrix:}
+\[
+  E = I_m + \alpha\,E_{k,i}.
+\]
+
+\textbf{Inverse:} To undo the operation, subtract \(\alpha\) times row \(i\) from row \(k\). Therefore,
+\[
+  E^{-1} = I_m - \alpha\,E_{k,i}.
+\]
+This is again an elementary matrix.
+
+\section*{Conclusion}
+
+Each elementary matrix is invertible by performing the reverse row operation. Hence, every elementary matrix \(E\) has an inverse \(E^{-1}\) that is itself an elementary matrix.
+
+\begin{examplebox}{Write the inverse of an elementary matrix and show it is an elementary matrix}{}
+\end{examplebox}
 \end{document}
