@@ -649,5 +649,32 @@ $$e_1 = \begin{bmatrix}
   \end{bmatrix}$$
 we can form a $2 \times 3$ matrix $A$ whose columns are exactly these image,then $T(v) = Av$ for any column vector $v \in \mathbb{R}^3$.
 \subsubsection{Composition of Linear Transformations}
-If $T: \mathbb{R}^n \to \mathbb{R}^p$ and $S: \mathbb{R}^p \to \mathbb{R}^m$, then the composition $(S \circ T)(v) = S(T(v))$
+\begin{itemize}
+  \item If $T: \mathbb{R}^n \to \mathbb{R}^p$ and $S: \mathbb{R}^p \to \mathbb{R}^m$, then the composition $(S \circ T)(v) = S(T(v))$
+  \item If $T$ is represented by a $p \times n$ matrix $A$ and $S$ by an $m \times p$ matrix $B$ then the composition $S \circ T$ is represented by the matrix product $BA$.
+  \item Also $(AB)C = A(BC)$
+  \item Composing transformations is only possible if the codomain of the first transformation matches the domain of the second transformation, that is:
+        $$A \in M_{m \times n} \quad B \in M_{p \times m} \quad \Rightarrow \quad AB \in M_{m \times n}$$
+\end{itemize}
+\subsubsection*{The $n \times n$ Identity Matrix}
+$I_n$ has 1s on the main diagonal:
+$$I_2 =
+  \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}, \quad
+  I_4 =
+  \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix}
+$$
+The identity matrix is the \textbf{neutral element} for multiplication:
+$$
+  A \cdot I_n = A \quad \text{and} \quad I_n \cdot B = B \quad \text{(where $A$ has $n$ columns and $B$ has $n$ rows)}
+$$
+The is interpreted as the \textbf{identity transformation} on $\mathbb{R}^n$, so composing with it has no effect on any linear map.
+
 \end{document}
