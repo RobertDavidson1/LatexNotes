@@ -526,7 +526,7 @@ $$
   \item If $\mathbb{F} = \mathbb{R}$, this means the vector are perpendicular.
   \item In matrix multiplication, the entry $(AB)_{ij}$ can be viewed as the dot product of Row $i$ with Column $j$ of $B$.
 \end{itemize}
-\subsubsection{Ways to think about matrices}
+\subsubsection{Matrices and Tables}
 Lets consider the table that gives the numbers of Maths $M$, Physics $P$ and Chemistry $C$ students in each of the 3 years of a course: \\[2ex]
 \begin{minipage}{0.5\textwidth}
   \begin{center}
@@ -624,5 +624,30 @@ We can represent the result as a table: \\[2ex]
   \end{center}
 \end{minipage}
 
-
+\subsubsection{Linear Transformations}
+Let $m$ and $n$ be positive integers, A linear transformation $T$ from $\mathbb{R}^n$ to $\mathbb{R}^m$, denoted $T: \mathbb{R}^n \to \mathbb{R}^m$, is a function that satisfies the following properties:
+\begin{itemize}
+  \item $T(u+v) = T(u) + T(v)$
+  \item $T(\lambda u) = \lambda T(u)$
+\end{itemize}
+$\forall u, v \in \mathbb{R}^n$ and scalars $\lambda \in \mathbb{R}$ \\[2ex]
+When $T : \mathbb{R}^3 \to \mathbb{R}^2$, if we know $T$ applied to the three standard basis vectors of $\mathbb{R}^3$:
+$$e_1 = \begin{bmatrix}
+    1 \\
+    0 \\
+    0
+  \end{bmatrix}, \quad
+  e_2 = \begin{bmatrix}
+    0 \\
+    1 \\
+    0
+  \end{bmatrix}, \quad
+  e_3 = \begin{bmatrix}
+    0 \\
+    0 \\
+    1
+  \end{bmatrix}$$
+we can form a $2 \times 3$ matrix $A$ whose columns are exactly these image,then $T(v) = Av$ for any column vector $v \in \mathbb{R}^3$.
+\subsubsection{Composition of Linear Transformations}
+If $T: \mathbb{R}^n \to \mathbb{R}^p$ and $S: \mathbb{R}^p \to \mathbb{R}^m$, then the composition $(S \circ T)(v) = S(T(v))$
 \end{document}
