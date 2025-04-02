@@ -470,6 +470,15 @@ $$
 \end{examplebox}
 \pagebreak
 \subsection{Review of Matrix Algebra}
+\subsubsection{Fields}
+\begin{itemize}
+  \item A field $F$ is a set where addition, subtraction, multiplication and division (by nonzero elements)  satisfy the usual algebraic properties. Common fields include $\mathbb{R}$ and $\mathbb{C}$
+  \item We write $\mathbb{F}^p$ for the vector space of all $p$ vectors with entries in $\mathbb{F}$.
+  \item We'll cheat and treat any ordered list of $p$ elements of $\mathbb{F}$ as an element of $\mathbb{F}^p$.
+  \item For example, in $\mathbb{R}^3$, we might consider $(1,2,3)$ as coordinates, a row vector, or a column vector with 3 real entries.
+\end{itemize}
+
+
 \subsubsection{Matrices Over a Field}
 \begin{itemize}
   \item An $m \times n$ matrix over a field $\mathbb{F}$ is an array of $m$ rows and $n$ columns of elements from $\mathbb{F}$.
@@ -505,7 +514,16 @@ $$
   \item To find each column of $AB$, multiply $A$ with the corresponding column vector of $B$.
   \item In entrywise form:
         $$
-          (AB)_{ij} = A_{i,1}B_{1,j} + A_{i,2}B_{2,j} + \ldots + A_{i,p}B_{p,j}
+          (AB)_{ij} = A_{i,1}B_{1,j} + A_{i,2}B_{2,j} + \ldots + A_{i,p}B_{p,j} = \sum_{k=1}^p A_{i,k}B_{k,j}
         $$
+\end{itemize}
+
+\subsubsection{Dot Product and Orthogonality}
+\begin{itemize}
+  \item For two $p$-entry vectors, $u, v \in \mathbb{F}^p$, their dot product is:
+        $$u \cdot v = \sum_{k=1}^p u_k v_k$$
+  \item Vectors are \textbf{orthogonal} if their dot product is zero.
+  \item If $\mathbb{F} = \mathbb{R}$, this means the vector are perpendicular.
+  \item In matrix multiplication, the entry $(AB)_{ij}$ can be viewed as the dot product of Row $i$ with Column $j$ of $B$.
 \end{itemize}
 \end{document}
