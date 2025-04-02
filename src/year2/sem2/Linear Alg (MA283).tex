@@ -488,4 +488,24 @@ $$
         $$ a_1v_1 + a_2v_2 + \ldots + a_kv_k$$
   \item In particular, matrices themselves can be combined linearly, (e.g. $2A - 3B$)
 \end{itemize}
+\subsubsection{Row and Column Vectors}
+\begin{itemize}
+  \item A column vector is a matrix with one column
+  \item A row vector is a matrix with one row
+\end{itemize}
+\subsubsection{Matrix-Vector Multiplication}
+\begin{itemize}
+  \item If $A$ is $m \times n$ matrix and $v$ is an $n$-entry column vector, the product $Av$ is defined by taking a linear combination of the columns of $A$ with the entries of $v$ as coefficients.
+  \item The result $Av$ is an $m$-entry column vector.
+  \item For a row vector $u$ with $m$ entries, and an $m \times n$ matrix $A$m the product $uA$ a row vector in $\mathbb{F}^n$ formed by the linear combination of the rows of $A$ with the entries of $u$ as coefficients.
+\end{itemize}
+\subsubsection{Matrix-Matrix Multiplication}
+\begin{itemize}
+  \item If $A$ is a $m \times p$ and $B$ is a $p \times n$ matrix, the product $AB$ is defined only when the inner dimensions match $(p)$
+  \item To find each column of $AB$, multiply $A$ with the corresponding column vector of $B$.
+  \item In entrywise form:
+        $$
+          (AB)_{ij} = A_{i,1}B_{1,j} + A_{i,2}B_{2,j} + \ldots + A_{i,p}B_{p,j}
+        $$
+\end{itemize}
 \end{document}
