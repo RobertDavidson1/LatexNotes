@@ -27,6 +27,234 @@ Robert Davidson
 
 \tableofcontents
 \pagebreak
+\section{Review of Matrix Algebra}
+\subsubsection*{Fields}
+\begin{itemize}
+  \item A field $F$ is a set where addition, subtraction, multiplication and division (by nonzero elements)  satisfy the usual algebraic properties. Common fields include $\mathbb{R}$ and $\mathbb{C}$
+  \item We write $\mathbb{F}^p$ for the vector space of all $p$ vectors with entries in $\mathbb{F}$.
+  \item We'll cheat and treat any ordered list of $p$ elements of $\mathbb{F}$ as an element of $\mathbb{F}^p$.
+  \item For example, in $\mathbb{R}^3$, we might consider $(1,2,3)$ as coordinates, a row vector, or a column vector with 3 real entries.
+\end{itemize}
+
+
+\subsubsection*{Matrices Over a Field}
+\begin{itemize}
+  \item An $m \times n$ matrix over a field $\mathbb{F}$ is an array of $m$ rows and $n$ columns of elements from $\mathbb{F}$.
+  \item When $m = n$, we write $M_n(\mathbb{F})$, otherwise we write $M_{m \times n}(\mathbb{F})$.
+\end{itemize}
+\subsubsection*{Addition and Scalar Multiplication}
+\begin{itemize}
+  \item Two matrices of the same size $m \times n$ can be added entrywise
+  \item The $m \times n$ matrix has all entries equal to zero and acts as the additive identity (adding it to any matrix does not change the matrix)
+  \item Multiplying a matrix by a scalar means multiplying each entry by that scalar
+  \item The set of all $m \times n$ matrices over $\mathbb{F}$ is a vector space over $\mathbb{F}$
+\end{itemize}
+\subsubsection*{Linear Combinations}
+\begin{itemize}
+  \item A linear combination of vectors $v_1, v_2, \ldots, v_k$ in a vector space $V$ with coefficients $a_1, a_2, \ldots, a_k \in \mathbb{F}$ is defined as:
+        $$ a_1v_1 + a_2v_2 + \ldots + a_kv_k$$
+  \item In particular, matrices themselves can be combined linearly, (e.g. $2A - 3B$)
+\end{itemize}
+\subsubsection*{Row and Column Vectors}
+\begin{itemize}
+  \item A column vector is a matrix with one column
+  \item A row vector is a matrix with one row
+\end{itemize}
+\subsubsection*{Matrix-Vector Multiplication}
+\begin{itemize}
+  \item If $A$ is $m \times n$ matrix and $v$ is an $n$-entry column vector, the product $Av$ is defined by taking a linear combination of the columns of $A$ with the entries of $v$ as coefficients.
+  \item The result $Av$ is an $m$-entry column vector.
+  \item For a row vector $u$ with $m$ entries, and an $m \times n$ matrix $A$m the product $uA$ a row vector in $\mathbb{F}^n$ formed by the linear combination of the rows of $A$ with the entries of $u$ as coefficients.
+\end{itemize}
+\subsubsection*{Matrix-Matrix Multiplication}
+\begin{itemize}
+  \item If $A$ is a $m \times p$ and $B$ is a $p \times n$ matrix, the product $AB$ is defined only when the inner dimensions match $(p)$
+  \item To find each column of $AB$, multiply $A$ with the corresponding column vector of $B$.
+  \item In entrywise form:
+        $$
+          (AB)_{ij} = A_{i,1}B_{1,j} + A_{i,2}B_{2,j} + \ldots + A_{i,p}B_{p,j} = \sum_{k=1}^p A_{i,k}B_{k,j}
+        $$
+\end{itemize}
+
+\subsubsection*{Dot Product and Orthogonality}
+\begin{itemize}
+  \item For two $p$-entry vectors, $u, v \in \mathbb{F}^p$, their dot product is:
+        $$u \cdot v = \sum_{k=1}^p u_k v_k$$
+  \item Vectors are \textbf{orthogonal} if their dot product is zero.
+  \item If $\mathbb{F} = \mathbb{R}$, this means the vector are perpendicular.
+  \item In matrix multiplication, the entry $(AB)_{ij}$ can be viewed as the dot product of Row $i$ with Column $j$ of $B$.
+\end{itemize}
+\subsubsection*{Matrices and Tables}
+Lets consider the table that gives the numbers of Maths $M$, Physics $P$ and Chemistry $C$ students in each of the 3 years of a course: \\[2ex]
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    \begin{tabularx}{0.6\textwidth}{c | c c c}
+      \toprule
+      Year & M  & P   & C  \\
+      \midrule
+      2015 & 50 & 100 & 70 \\
+      2016 & 60 & 80  & 80 \\
+      2017 & 70 & 90  & 90 \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    $$\mathrm{A}=
+      \begin{bmatrix}
+        50 & 100 & 70 \\
+        60 & 80  & 80 \\
+        80 & 70  & 70
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage} \\[2ex]
+Each student of $M, P, C$ must also take a course in $X$ and $Y$. We can represent the credits they earn as a matrix: \\[2ex]
+\begin{minipage}
+  {0.5\textwidth}
+  \begin{center}
+    \begin{tabularx}{0.6\textwidth}{c | c c}
+      \toprule
+      Subject & X  & Y  \\
+      \midrule
+      M       & 10 & 0  \\
+      P       & 15 & 15 \\
+      C       & 20 & 10 \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    $$\mathrm{B}=
+      \begin{bmatrix}
+        10 & 0  \\
+        15 & 15 \\
+        20 & 10
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage} \\[2ex]
+The total number of credits earned each year can be found by the matrix product $AB$:
+$$
+  AB =
+  \begin{bmatrix}
+    50 & 100 & 70 \\
+    60 & 80  & 80 \\
+    80 & 70  & 70
+  \end{bmatrix}
+  \begin{bmatrix}
+    10 & 0  \\
+    15 & 15 \\
+    20 & 10
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    50 \cdot 10 + 100 \cdot 15 + 70 \cdot 20 & 50 \cdot 0 + 100 \cdot 15 + 70 \cdot 10 \\
+    60 \cdot 10 + 80 \cdot 15 + 80 \cdot 20  & 60 \cdot 0 + 80 \cdot 15 + 80 \cdot 10  \\
+    80 \cdot 10 + 70 \cdot 15 + 70 \cdot 20  & 80 \cdot 0 + 70 \cdot 15 + 70 \cdot 10
+  \end{bmatrix}
+$$
+We can represent the result as a table: \\[2ex]
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    \begin{tabularx}{0.6\textwidth}{c | c c}
+      \toprule
+      Year & X credits & Y credits \\
+      \midrule
+      2015 & 3400      & 2200      \\
+      2016 & 3400      & 2000      \\
+      2017 & 3250      & 1750      \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    $$\mathrm{A}=
+      \begin{bmatrix}
+        3400 & 2200 \\
+        3400 & 2000 \\
+        3250 & 1750 \\
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage}
+
+\subsubsection*{Linear Transformations}
+Let $m$ and $n$ be positive integers, A linear transformation $T$ from $\mathbb{R}^n$ to $\mathbb{R}^m$, denoted $T: \mathbb{R}^n \to \mathbb{R}^m$, is a function that satisfies the following properties:
+\begin{itemize}
+  \item $T(u+v) = T(u) + T(v)$
+  \item $T(\lambda u) = \lambda T(u)$
+\end{itemize}
+$\forall u, v \in \mathbb{R}^n$ and scalars $\lambda \in \mathbb{R}$ \\[2ex]
+When $T : \mathbb{R}^3 \to \mathbb{R}^2$, if we know $T$ applied to the three standard basis vectors of $\mathbb{R}^3$:
+$$e_1 = \begin{bmatrix}
+    1 \\
+    0 \\
+    0
+  \end{bmatrix}, \quad
+  e_2 = \begin{bmatrix}
+    0 \\
+    1 \\
+    0
+  \end{bmatrix}, \quad
+  e_3 = \begin{bmatrix}
+    0 \\
+    0 \\
+    1
+  \end{bmatrix}$$
+we can form a $2 \times 3$ matrix $A$ whose columns are exactly these image,then $T(v) = Av$ for any column vector $v \in \mathbb{R}^3$.
+\subsubsection*{Composition of Linear Transformations}
+\begin{itemize}
+  \item If $T: \mathbb{R}^n \to \mathbb{R}^p$ and $S: \mathbb{R}^p \to \mathbb{R}^m$, then the composition $(S \circ T)(v) = S(T(v))$
+  \item If $T$ is represented by a $p \times n$ matrix $A$ and $S$ by an $m \times p$ matrix $B$ then the composition $S \circ T$ is represented by the matrix product $BA$.
+  \item Also $(AB)C = A(BC)$
+  \item Composing transformations is only possible if the codomain of the first transformation matches the domain of the second transformation, that is:
+        $$A \in M_{m \times n} \quad B \in M_{p \times m} \quad \Rightarrow \quad AB \in M_{m \times n}$$
+\end{itemize}
+\subsubsection*{The $n \times n$ Identity Matrix}
+$I_n$ has 1s on the main diagonal:
+$$I_2 =
+  \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}, \quad
+  I_4 =
+  \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{bmatrix}
+$$
+The identity matrix is the \textbf{neutral element} for multiplication:
+$$
+  A \cdot I_n = A \quad \text{and} \quad I_n \cdot B = B \quad \text{(where $A$ has $n$ columns and $B$ has $n$ rows)}
+$$
+The is interpreted as the \textbf{identity transformation} on $\mathbb{R}^n$, so composing with it has no effect on any linear map.
+\subsubsection*{Invertible (Non-Singular) Matrices}
+A square $n \times n$ matrix $A$ has an inverse $A^{-1}$ if there exists another $n \times n$ matrix such that:
+$$AB = I_n \quad \text{and} \quad BA = I_n$$
+If $A$ has an inverse, we say it is \textbf{unique}; there cannot be two different inverses for the same matrix. \\[2ex]
+Not all matrices are invertible. A key fact (explained later) is that:
+$$A \text{ is invertible} \quad \Leftrightarrow \quad \text{the determinant $\neq 0$}$$
+\subsubsection*{Transpose of a Matrix}
+FGor a $m \times n$ matrix $A$, the transpose $A^T$ is the $n \times m$ matrix obtained by turning the rows of $A$ into the columns of $A^T$:
+$$
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+  \end{bmatrix}^T =
+  \begin{bmatrix}
+    1 & 4 \\
+    2 & 5 \\
+    3 & 6 \\
+  \end{bmatrix}
+$$
+
+
 \section{Systems of linear equations}
 \subsection{Linear equations and Solution Sets}
 A linear equation in the variables $x$ and
@@ -469,212 +697,5 @@ $$
   It is easily checked that $AA^{-1} = I_3$.
 \end{examplebox}
 \pagebreak
-\subsection{Review of Matrix Algebra}
-\subsubsection{Fields}
-\begin{itemize}
-  \item A field $F$ is a set where addition, subtraction, multiplication and division (by nonzero elements)  satisfy the usual algebraic properties. Common fields include $\mathbb{R}$ and $\mathbb{C}$
-  \item We write $\mathbb{F}^p$ for the vector space of all $p$ vectors with entries in $\mathbb{F}$.
-  \item We'll cheat and treat any ordered list of $p$ elements of $\mathbb{F}$ as an element of $\mathbb{F}^p$.
-  \item For example, in $\mathbb{R}^3$, we might consider $(1,2,3)$ as coordinates, a row vector, or a column vector with 3 real entries.
-\end{itemize}
-
-
-\subsubsection{Matrices Over a Field}
-\begin{itemize}
-  \item An $m \times n$ matrix over a field $\mathbb{F}$ is an array of $m$ rows and $n$ columns of elements from $\mathbb{F}$.
-  \item When $m = n$, we write $M_n(\mathbb{F})$, otherwise we write $M_{m \times n}(\mathbb{F})$.
-\end{itemize}
-\subsubsection{Addidion and Scalar Multiplication}
-\begin{itemize}
-  \item Two matrices of the same size $m \times n$ can be added entrywise
-  \item The $m \times n$ matrix has all entries equal to zero and acts as the additive identity (adding it to any matrix does not change the matrix)
-  \item Multiplying a matrix by a scalar means multiplying each entry by that scalar
-  \item The set of all $m \times n$ matrices over $\mathbb{F}$ is a vector space over $\mathbb{F}$
-\end{itemize}
-\subsubsection{Linear Combinations}
-\begin{itemize}
-  \item A linear combination of vectors $v_1, v_2, \ldots, v_k$ in a vector space $V$ with coefficients $a_1, a_2, \ldots, a_k \in \mathbb{F}$ is defined as:
-        $$ a_1v_1 + a_2v_2 + \ldots + a_kv_k$$
-  \item In particular, matrices themselves can be combined linearly, (e.g. $2A - 3B$)
-\end{itemize}
-\subsubsection{Row and Column Vectors}
-\begin{itemize}
-  \item A column vector is a matrix with one column
-  \item A row vector is a matrix with one row
-\end{itemize}
-\subsubsection{Matrix-Vector Multiplication}
-\begin{itemize}
-  \item If $A$ is $m \times n$ matrix and $v$ is an $n$-entry column vector, the product $Av$ is defined by taking a linear combination of the columns of $A$ with the entries of $v$ as coefficients.
-  \item The result $Av$ is an $m$-entry column vector.
-  \item For a row vector $u$ with $m$ entries, and an $m \times n$ matrix $A$m the product $uA$ a row vector in $\mathbb{F}^n$ formed by the linear combination of the rows of $A$ with the entries of $u$ as coefficients.
-\end{itemize}
-\subsubsection{Matrix-Matrix Multiplication}
-\begin{itemize}
-  \item If $A$ is a $m \times p$ and $B$ is a $p \times n$ matrix, the product $AB$ is defined only when the inner dimensions match $(p)$
-  \item To find each column of $AB$, multiply $A$ with the corresponding column vector of $B$.
-  \item In entrywise form:
-        $$
-          (AB)_{ij} = A_{i,1}B_{1,j} + A_{i,2}B_{2,j} + \ldots + A_{i,p}B_{p,j} = \sum_{k=1}^p A_{i,k}B_{k,j}
-        $$
-\end{itemize}
-
-\subsubsection{Dot Product and Orthogonality}
-\begin{itemize}
-  \item For two $p$-entry vectors, $u, v \in \mathbb{F}^p$, their dot product is:
-        $$u \cdot v = \sum_{k=1}^p u_k v_k$$
-  \item Vectors are \textbf{orthogonal} if their dot product is zero.
-  \item If $\mathbb{F} = \mathbb{R}$, this means the vector are perpendicular.
-  \item In matrix multiplication, the entry $(AB)_{ij}$ can be viewed as the dot product of Row $i$ with Column $j$ of $B$.
-\end{itemize}
-\subsubsection{Matrices and Tables}
-Lets consider the table that gives the numbers of Maths $M$, Physics $P$ and Chemistry $C$ students in each of the 3 years of a course: \\[2ex]
-\begin{minipage}{0.5\textwidth}
-  \begin{center}
-    \begin{tabularx}{0.6\textwidth}{c | c c c}
-      \toprule
-      Year & M  & P   & C  \\
-      \midrule
-      2015 & 50 & 100 & 70 \\
-      2016 & 60 & 80  & 80 \\
-      2017 & 70 & 90  & 90 \\
-      \bottomrule
-    \end{tabularx}
-  \end{center}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-  \begin{center}
-    $$\mathrm{A}=
-      \begin{bmatrix}
-        50 & 100 & 70 \\
-        60 & 80  & 80 \\
-        80 & 70  & 70
-      \end{bmatrix}
-    $$
-  \end{center}
-\end{minipage} \\[2ex]
-Each student of $M, P, C$ must also take a course in $X$ and $Y$. We can represent the credits they earn as a matrix: \\[2ex]
-\begin{minipage}
-  {0.5\textwidth}
-  \begin{center}
-    \begin{tabularx}{0.6\textwidth}{c | c c}
-      \toprule
-      Subject & X  & Y  \\
-      \midrule
-      M       & 10 & 0  \\
-      P       & 15 & 15 \\
-      C       & 20 & 10 \\
-      \bottomrule
-    \end{tabularx}
-  \end{center}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-  \begin{center}
-    $$\mathrm{B}=
-      \begin{bmatrix}
-        10 & 0  \\
-        15 & 15 \\
-        20 & 10
-      \end{bmatrix}
-    $$
-  \end{center}
-\end{minipage} \\[2ex]
-The total number of credits earned each year can be found by the matrix product $AB$:
-$$
-  AB =
-  \begin{bmatrix}
-    50 & 100 & 70 \\
-    60 & 80  & 80 \\
-    80 & 70  & 70
-  \end{bmatrix}
-  \begin{bmatrix}
-    10 & 0  \\
-    15 & 15 \\
-    20 & 10
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    50 \cdot 10 + 100 \cdot 15 + 70 \cdot 20 & 50 \cdot 0 + 100 \cdot 15 + 70 \cdot 10 \\
-    60 \cdot 10 + 80 \cdot 15 + 80 \cdot 20  & 60 \cdot 0 + 80 \cdot 15 + 80 \cdot 10  \\
-    80 \cdot 10 + 70 \cdot 15 + 70 \cdot 20  & 80 \cdot 0 + 70 \cdot 15 + 70 \cdot 10
-  \end{bmatrix}
-$$
-We can represent the result as a table: \\[2ex]
-\begin{minipage}{0.5\textwidth}
-  \begin{center}
-    \begin{tabularx}{0.6\textwidth}{c | c c}
-      \toprule
-      Year & X credits & Y credits \\
-      \midrule
-      2015 & 3400      & 2200      \\
-      2016 & 3400      & 2000      \\
-      2017 & 3250      & 1750      \\
-      \bottomrule
-    \end{tabularx}
-  \end{center}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-  \begin{center}
-    $$\mathrm{A}=
-      \begin{bmatrix}
-        3400 & 2200 \\
-        3400 & 2000 \\
-        3250 & 1750 \\
-      \end{bmatrix}
-    $$
-  \end{center}
-\end{minipage}
-
-\subsubsection{Linear Transformations}
-Let $m$ and $n$ be positive integers, A linear transformation $T$ from $\mathbb{R}^n$ to $\mathbb{R}^m$, denoted $T: \mathbb{R}^n \to \mathbb{R}^m$, is a function that satisfies the following properties:
-\begin{itemize}
-  \item $T(u+v) = T(u) + T(v)$
-  \item $T(\lambda u) = \lambda T(u)$
-\end{itemize}
-$\forall u, v \in \mathbb{R}^n$ and scalars $\lambda \in \mathbb{R}$ \\[2ex]
-When $T : \mathbb{R}^3 \to \mathbb{R}^2$, if we know $T$ applied to the three standard basis vectors of $\mathbb{R}^3$:
-$$e_1 = \begin{bmatrix}
-    1 \\
-    0 \\
-    0
-  \end{bmatrix}, \quad
-  e_2 = \begin{bmatrix}
-    0 \\
-    1 \\
-    0
-  \end{bmatrix}, \quad
-  e_3 = \begin{bmatrix}
-    0 \\
-    0 \\
-    1
-  \end{bmatrix}$$
-we can form a $2 \times 3$ matrix $A$ whose columns are exactly these image,then $T(v) = Av$ for any column vector $v \in \mathbb{R}^3$.
-\subsubsection{Composition of Linear Transformations}
-\begin{itemize}
-  \item If $T: \mathbb{R}^n \to \mathbb{R}^p$ and $S: \mathbb{R}^p \to \mathbb{R}^m$, then the composition $(S \circ T)(v) = S(T(v))$
-  \item If $T$ is represented by a $p \times n$ matrix $A$ and $S$ by an $m \times p$ matrix $B$ then the composition $S \circ T$ is represented by the matrix product $BA$.
-  \item Also $(AB)C = A(BC)$
-  \item Composing transformations is only possible if the codomain of the first transformation matches the domain of the second transformation, that is:
-        $$A \in M_{m \times n} \quad B \in M_{p \times m} \quad \Rightarrow \quad AB \in M_{m \times n}$$
-\end{itemize}
-\subsubsection*{The $n \times n$ Identity Matrix}
-$I_n$ has 1s on the main diagonal:
-$$I_2 =
-  \begin{bmatrix}
-    1 & 0 \\
-    0 & 1
-  \end{bmatrix}, \quad
-  I_4 =
-  \begin{bmatrix}
-    1 & 0 & 0 & 0 \\
-    0 & 1 & 0 & 0 \\
-    0 & 0 & 1 & 0 \\
-    0 & 0 & 0 & 1
-  \end{bmatrix}
-$$
-The identity matrix is the \textbf{neutral element} for multiplication:
-$$
-  A \cdot I_n = A \quad \text{and} \quad I_n \cdot B = B \quad \text{(where $A$ has $n$ columns and $B$ has $n$ rows)}
-$$
-The is interpreted as the \textbf{identity transformation} on $\mathbb{R}^n$, so composing with it has no effect on any linear map.
 
 \end{document}
