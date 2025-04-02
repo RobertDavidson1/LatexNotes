@@ -529,15 +529,100 @@ $$
 \subsubsection{Ways to think about matrices}
 Lets consider the table that gives the numbers of Maths $M$, Physics $P$ and Chemistry $C$ students in each of the 3 years of a course: \\[2ex]
 \begin{minipage}{0.5\textwidth}
-  \begin{tabularx}{0.5\textwidth}{c | c c c}
-    \toprule
-    Year & M  & P   & C  \\
-    \midrule
-    2015 & 50 & 100 & 70 \\
-    2016 & 60 & 80  & 80 \\
-    2017 & 70 & 90  & 90 \\
-    \bottomrule
-  \end{tabularx}
+  \begin{center}
+    \begin{tabularx}{0.6\textwidth}{c | c c c}
+      \toprule
+      Year & M  & P   & C  \\
+      \midrule
+      2015 & 50 & 100 & 70 \\
+      2016 & 60 & 80  & 80 \\
+      2017 & 70 & 90  & 90 \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
 \end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    $$\mathrm{A}=
+      \begin{bmatrix}
+        50 & 100 & 70 \\
+        60 & 80  & 80 \\
+        80 & 70  & 70
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage} \\[2ex]
+Each student of $M, P, C$ must also take a course in $X$ and $Y$. We can represent the credits they earn as a matrix: \\[2ex]
+\begin{minipage}
+  {0.5\textwidth}
+  \begin{center}
+    \begin{tabularx}{0.6\textwidth}{c | c c}
+      \toprule
+      Subject & X  & Y  \\
+      \midrule
+      M       & 10 & 0  \\
+      P       & 15 & 15 \\
+      C       & 20 & 10 \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    $$\mathrm{B}=
+      \begin{bmatrix}
+        10 & 0  \\
+        15 & 15 \\
+        20 & 10
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage} \\[2ex]
+The total number of credits earned each year can be found by the matrix product $AB$:
+$$
+  AB =
+  \begin{bmatrix}
+    50 & 100 & 70 \\
+    60 & 80  & 80 \\
+    80 & 70  & 70
+  \end{bmatrix}
+  \begin{bmatrix}
+    10 & 0  \\
+    15 & 15 \\
+    20 & 10
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    50 \cdot 10 + 100 \cdot 15 + 70 \cdot 20 & 50 \cdot 0 + 100 \cdot 15 + 70 \cdot 10 \\
+    60 \cdot 10 + 80 \cdot 15 + 80 \cdot 20  & 60 \cdot 0 + 80 \cdot 15 + 80 \cdot 10  \\
+    80 \cdot 10 + 70 \cdot 15 + 70 \cdot 20  & 80 \cdot 0 + 70 \cdot 15 + 70 \cdot 10
+  \end{bmatrix}
+$$
+We can represent the result as a table: \\[2ex]
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    \begin{tabularx}{0.6\textwidth}{c | c c}
+      \toprule
+      Year & X credits & Y credits \\
+      \midrule
+      2015 & 3400      & 2200      \\
+      2016 & 3400      & 2000      \\
+      2017 & 3250      & 1750      \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+  \begin{center}
+    $$\mathrm{A}=
+      \begin{bmatrix}
+        3400 & 2200 \\
+        3400 & 2000 \\
+        3250 & 1750 \\
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage}
+
 
 \end{document}
