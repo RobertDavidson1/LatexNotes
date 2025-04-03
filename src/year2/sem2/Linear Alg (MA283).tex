@@ -747,4 +747,22 @@ Since it takes two real number to specify an element of $\mathbb{V}$, this is an
   \item The Cartesian plane ($\mathbb{R}^2$) is a real vector space. Within $\mathbb{R}^2$, let $U=\{(a,b):a > 0,b >0\}$. Then $\mathbf{U}$ is closed under addition and under multiplication by positive scalars. It is not a vector subspace of $\mathbb{R}^2$,because it is not closed under multiplication by negative scalars
   \item Let $v$ be a fixed non-zero vector $\in \mathbb{R}^3$ and let $v^{\perp} = \{u \in \mathbb{R}^3: u^Tv = 0\}$. Then $v^{\perp}$ is not empty since $0 \in v^{\perp}$.Suppose $u_1, u_2 \in v^{\perp}$. If $u \in v^{\perp}$ and $\alpha \in \mathbb{R}$, then $(\alpha u)^T v = \alpha u^T v = 0 = \alpha 0 = 0$. Hence $v^{\perp}$ is closed under scalar multiplication. Thus $v^{\perp}$ is a vector subspace of $\mathbb{R}^3$. Note that $v^{\perp}$ is not all $\mathbb{R}^3$, since $v \notin v^{\perp}$.
 \end{enumerate}
+\subsection{Span of a set of vectors}
+\begin{definitionbox}{Span}{}
+  Let $\mathbf{V}$ be a vector space over a field $\mathbb{F}$, and let $S$ be a non empty subset of $\mathbf{V}$. \\[2ex]
+  The $\mathbb{F}$-linear span, commonly called the \textbf{span} of $S$, denoted $\langle S \rangle$, is the set of all $\mathbb{F}$-linear combinations of the elements of $S \in \mathbf{V}$. \\[2ex]
+  If $S=V$, then $S$ is called a spanning set of $V$; meaning that every element of $\mathbf{V}$ is a linear combination of the elements of $S$.
+\end{definitionbox}
+For a subset $S$ of a $\mathbb{F}$-vector space $\mathbf{V}$, the sum of any two linear combinations of $S$ is an element of $S$, and any scalar multiple of a linear combination of $S$ is also an element of $S$; hence the following lemma:
+\begin{lemmabox}{}{}
+  For any subset, $S$, of a vector space, $\mathbf{V}$, the span, $\langle S \rangle$, is a subspace of $\mathbf{V}$.
+\end{lemmabox}
+\subsubsection*{Examples}
+\begin{itemize}
+  \item (Column vectors in $R^{2}\text{):$ \;
+        S=\{(3,1),\;(2,1),\;(1,-1)\}
+        \text{ is a spanning set of }R^{2}\text{. Any }(a,b)\in R^{2}\text{ can be expressed as a linear combination of these vectors in multiple ways. However, }
+        (1,-1)\text{ is itself a linear combination of }(3,1)\text{ and }(2,1)\text{, so it is not needed to span }R^{2}.
+        \text{Thus, }S\text{ contains redundant elements and is not minimal.}
+\end{itemize}
 \end{document}
