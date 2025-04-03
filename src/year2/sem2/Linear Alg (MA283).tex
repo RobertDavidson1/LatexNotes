@@ -698,6 +698,7 @@ $$
 \end{examplebox}
 \pagebreak
 \section{Spanning sets, bases and dimensions}
+\subsection{Vector Spaces}
 A \textbf{vector space} $\mathbf{V}$ over $\mathbb{F}$ is a non empty set of objects equipped with an addition operation and whose elements can be multiplied by scalars in $\mathbb{F}$, subject to the following axioms:
 \begin{enumerate}
   \item $u+v = v+u, \quad \forall \; u,v \in \mathbf{V} $
@@ -715,9 +716,9 @@ In the definitions axioms above, the field $\mathbb{F}$ can be replaced with any
   \item The space of all polynomials with real coefficients
   \item The set of complex numbers is a vector space over $\mathbb{R}$.
 \end{itemize}
-Another example of a 2-dimensional vector space is the space $\mathbf{V}$ consisting of all \textbf{symmetric} $2 \times 2$ matrices in $M_2(\mathbb{R})$ with \textbf{trace zero}.
+Consider the space $\mathbf{V}$ consisting of all \textbf{symmetric} $2 \times 2$ matrices in $M_2(\mathbb{R})$ with \textbf{trace zero}.
 \begin{itemize}
-  \item \textbf{Trace 0} means that the sum of the diagonal elements is zero.
+  \item \textbf{Trace zero} means that the sum of the diagonal elements is zero.
   \item \textbf{Symmetric} means that the matrix is equal to its transpose.
 \end{itemize}
 So a matrix of trace zero has the form:
@@ -728,4 +729,19 @@ $$
   \end{bmatrix}
   \quad \text{where} \; a,b \in \mathbb{R}
 $$
+Since it takes two real number to specify an element of $\mathbb{V}$, this is another example of a 2-dimensional vector.
+\subsection{Subspaces}
+\begin{definitionbox}{Vector Subspaces}{}
+  Let $\mathbf{V}$ be a vector space over a field $\mathbb{F}$. A subset $\mathbf{U}$ is a \textbf{subspace} of $\mathbf{V}$ if $\mathbf{U}$ is itself a a vector space over $\mathbb{F}$, under  the addition and scalar multiplication operations defined on $\mathbf{V}$.\\[2ex]
+
+  Two things need to be checked to confirm that $U \subseteq V$ is a subspace:
+  \begin{enumerate}
+    \item $\mathbb{U}$ is \textbf{closed} under the addition in $\mathbf{V}$, i.e. $u_1 + u_2 \in \mathbf{U}$ for all $u_1,u_2 \in \mathbf{U}$.
+    \item $\mathbb{U}$ is \textbf{closed} under scalar multiplication, i.e. $\alpha u \in \mathbb{U}$, whenever $u \in \mathbb{U}$ and $\alpha \in \mathbb{F}$.
+  \end{enumerate}
+\end{definitionbox}
+\subsubsection*{Examples of subspaces}
+\begin{enumerate}
+  \item Let $\mathbf{Q}[x]$ be the set of all polynomials with rational coefficients. Let $P_2 \subseteq \mathbf{Q}[x]$ be the set of all polynomials of degree at most 2. Then $P_2$ is a vector subspace of $\mathbf{Q}[x]$. If $f(x)$ and $g(x)$ are rational polynomials of degree at most 2, then also is $f(x) + g(x)$ and $\alpha f(x)$, where $\alpha \in \mathbb{Q}$.
+\end{enumerate}
 \end{document}
