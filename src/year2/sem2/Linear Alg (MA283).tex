@@ -936,11 +936,37 @@ $$
   =
   2e_1 -3_2 + 4e_3
 $$
-\textbf{Remark} A set $S$ of three column vectors in $\mathbb{R}^3$ is a spanning set of $\mathbb{R}^3$ if and only if the three vectors are linearly independent.This occurs only if the $3 \times 3$ matrix whose columns are the three vectors has \textbf{$S$ as an inverse}.
-\subsection{Linear independence}
-\subsection{Linear independent and the replacement theorem}
-
-\section{Bases, Dimensions and Coordinate Systems}
+\textbf{Remark} A set $S$ of three column vectors in $\mathbb{R}^3$ is a spanning set of $\mathbb{R}^3$ if and only if the three vectors are linearly independent.This occurs only if the $3 \times 3$ matrix whose columns are the three vectors has \textbf{$S$ as an inverse}.\\[2ex]
+\textbf{Questions about spanning sets}
+\begin{itemize}
+  \small
+  \item Does $\mathbb{R}^3$ have a spanning set fewer than three vectors?
+        \begin{itemize}
+          \item \textbf{No.} A spanning set for $\mathbb{R}^3$ must contain at least three linearly independent vectors, since the dimension of $\mathbb{R}^3$ is 3. Fewer than three vectors cannot span all of $\mathbb{R}^3$.
+        \end{itemize}
+  \item Does every spanning set of $\mathbb{R}^3$ have three vectors?
+        \begin{itemize}
+          \item \textbf{No.} A spanning set can have more than three vectors, but not necessarily exactly three. Redundant vectors (linearly dependent ones) can be included, so a spanning set might have more than three vectors.
+        \end{itemize}
+  \item Does every spanning set of $\mathbb{R^3}$ contain one with exactly three elements?
+        \begin{itemize}
+          \item \textbf{Yes.} Every spanning set of $\mathbb{R}^3$ contains a basis, and since the dimension is 3, there exists a subset of exactly three linearly independent vectors that still span $\mathbb{R}^3$.
+        \end{itemize}
+  \item If $V$ is a subspace of $\mathbb{R}^3$ does $V$ have a spanning set with at most three elements?
+        \begin{itemize}
+          \item \textbf{Yes.} Any subspace of $\mathbb{R}^3$ has a basis, and since $\mathbb{R}^3$ has dimension 3, the basis of any of its subspaces can have at most 3 elements. Hence, every subspace can be spanned by at most three vectors.
+        \end{itemize}
+  \item If $V$ is a proper subspace of $\mathbb{R}^3$, does $V$ have a spanning set with fewer than three elements?
+        \begin{itemize}
+          \item \textbf{Yes.} A proper subspace of $\mathbb{R}^3$ has dimension less than 3, so it can be spanned by fewer than three vectors.
+        \end{itemize}
+\end{itemize}
+\subsection{Linear Dependence and Linear Independence}
+\begin{definitionbox}{}{}
+  A set of at least two vectors in $\mathbb{R}^n$ is \textbf{linearly dependent} if one of its elements is a linear combination of the others. \\[2ex]
+  A set of vectors in $\mathbb{R}^n$ is \textbf{linearly independent} if it is not linearly
+  dependent.
+\end{definitionbox}
 
 
 % \section{Spanning sets, bases and dimensions}
