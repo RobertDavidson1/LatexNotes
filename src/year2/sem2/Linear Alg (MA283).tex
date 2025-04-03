@@ -698,12 +698,34 @@ $$
 \end{examplebox}
 \pagebreak
 \section{Spanning sets, bases and dimensions}
-A \textbf{vector space} $\mathbf{V}$ over $\mathbb{R}$ is a non empty set of objects equipped with an addition operation and whose elements can be multiplied by scalars in $\mathbb{R}$, subject to the following axioms:
+A \textbf{vector space} $\mathbf{V}$ over $\mathbb{F}$ is a non empty set of objects equipped with an addition operation and whose elements can be multiplied by scalars in $\mathbb{F}$, subject to the following axioms:
 \begin{enumerate}
   \item $u+v = v+u, \quad \forall \; u,v \in \mathbf{V} $
   \item $(u+v) +w = u+(v+w), \quad \forall \; u,v,w \in \mathbf{V} $
   \item $\exists \; 0_\mathbf{V}$ , so that $0_v + v = v, \quad \forall \; v \in \mathbf{V} $
   \item $\exists \; -v \in \mathbf{V}$, so that $v + (-v) = 0_\mathbf{V}, \quad \forall \; v \in \mathbf{V} $
+  \item $\alpha(\beta v) = \alpha\beta(v), \quad \forall \; \alpha,\beta \in \mathbb{F}, v \in \mathbf{V}$
+  \item $(\alpha + \beta)v = \alpha v + \beta v, \quad \forall \; \alpha,\beta \in \mathbb{F}, v \in \mathbf{V}$
+  \item $1v = v, \quad \forall \; v \in \mathbf{V}$
 \end{enumerate}
-
+In the definitions axioms above, the field $\mathbb{F}$ can be replaced with any other field, such as $\mathbb{R}$ or $\mathbb{C}$.
+\subsubsection*{Examples of vector spaces over $\mathbb{R}$}
+\begin{itemize}
+  \item The space $M_{m \times n}(\mathbb{R})$ of $m \times n$ with real entries.
+  \item The space of all polynomials with real coefficients
+  \item The set of complex numbers is a vector space over $\mathbb{R}$.
+\end{itemize}
+Another example of a 2-dimensional vector space is the space $\mathbf{V}$ consisting of all \textbf{symmetric} $2 \times 2$ matrices in $M_2(\mathbb{R})$ with \textbf{trace zero}.
+\begin{itemize}
+  \item \textbf{Trace 0} means that the sum of the diagonal elements is zero.
+  \item \textbf{Symmetric} means that the matrix is equal to its transpose.
+\end{itemize}
+So a matrix of trace zero has the form:
+$$
+  \begin{bmatrix}
+    a & b  \\
+    b & -a
+  \end{bmatrix}
+  \quad \text{where} \; a,b \in \mathbb{R}
+$$
 \end{document}
