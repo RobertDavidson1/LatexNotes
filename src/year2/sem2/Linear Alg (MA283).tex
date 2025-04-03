@@ -894,8 +894,7 @@ $$
   $$
   Hence, each of the three elements of $S$ is a linear combination of the other two. So $S$ is not linearly independent (we say it is linearly dependent).
 \end{examplebox}
-\subsubsection{Equivalent Definitions of Linear Independence}
-\section{Characterizations of Linear Independence}
+\subsection{Characterizations of Linear Independence}
 
 \begin{theorembox}
   Let $S$ be a subset of a vector space $V$. The following are equivalent:
@@ -916,34 +915,92 @@ $$
   If $S$ is a finite spanning set of a vector space $V$, then $S$ contains a basis of $V$.
 \end{lemmabox}
 
-\begin{proof}
-  If $S$ is not linearly independent, then some element $v_1 \in S$ is in the span of $S \setminus \{v_1\}$. Let $S_1 = S \setminus \{v_1\}$, which still spans $V$. Continue this process, removing elements that are linearly dependent on the remaining ones. Since $S$ is finite, this process terminates with a linearly independent spanning set of $V$.
-\end{proof}
+\noindent \textbf{Proof:} If $S$ is not linearly independent, then some element $v_1 \in S$ is in the span of $S \setminus \{v_1\}$. Let $S_1 = S \setminus \{v_1\}$, which still spans $V$. Continue this process, removing elements that are linearly dependent on the remaining ones. Since $S$ is finite, this process terminates with a linearly independent spanning set of $V$.
 
 \begin{theorembox}[Steinitz Exchange Lemma]{}
   Let $V$ be a vector space with a spanning set $S = \{v_1, \ldots, v_n\}$. Then any linearly independent subset $L$ of $V$ contains at most $n$ elements.
 \end{theorembox}
-
-\begin{proof}
-  Let $L = \{y_1, \ldots, y_k\}$ be linearly independent. The key idea is to replace elements of $S$ with elements of $L$ one by one, maintaining a spanning set:
-  \begin{itemize}
-    \item Express $y_1$ as a linear combination of elements in $S$. At least one element, say $v_1$, must have a non-zero coefficient.
-    \item Replace $v_1$ with $y_1$ to get $S_1 = \{y_1, v_2, \ldots, v_n\}$, which still spans $V$.
-    \item Continue this process, replacing $v_i$ with $y_i$ at each step.
-    \item This can continue for at most $n$ steps, so $k \leq n$.
-  \end{itemize}
-\end{proof}
+\noindent \textbf{Proof:} Let $L = \{y_1, \ldots, y_k\}$ be linearly independent. The key idea is to replace elements of $S$ with elements of $L$ one by one, maintaining a spanning set:
+\begin{itemize}
+  \item Express $y_1$ as a linear combination of elements in $S$. At least one element, say $v_1$, must have a non-zero coefficient.
+  \item Replace $v_1$ with $y_1$ to get $S_1 = \{y_1, v_2, \ldots, v_n\}$, which still spans $V$.
+  \item Continue this process, replacing $v_i$ with $y_i$ at each step.
+  \item This can continue for at most $n$ steps, so $k \leq n$.
+\end{itemize}
 
 \begin{theorembox}
   If $V$ is a finite-dimensional vector space, then every basis of $V$ has the same number of elements.
 \end{theorembox}
 
-\begin{proof}
-  Let $B_1$ and $B_2$ be bases of $V$. Since $B_1$ is linearly independent and $B_2$ spans $V$, we have $|B_1| \leq |B_2|$ by the Steinitz Exchange Lemma. Similarly, $|B_2| \leq |B_1|$. Therefore, $|B_1| = |B_2|$.
-\end{proof}
+\noindent \textbf{Proof:} Let $B_1$ and $B_2$ be bases of $V$. Since $B_1$ is linearly independent and $B_2$ spans $V$, we have $|B_1| \leq |B_2|$ by the Steinitz Exchange Lemma. Similarly, $|B_2| \leq |B_1|$. Therefore, $|B_1| = |B_2|$.
 
 \begin{definitionbox}{Dimension}{}
   The dimension of a finite-dimensional vector space $V$, denoted $\dim V$, is the number of elements in any basis of $V$.
 \end{definitionbox}
+\subsection{Properties of Bases in Finite Dimensional Vector Spaces}
+Let $V$ be a vector space of dimension $n$ over a field $F$. Recall that a basis of $V$ has two key properties:
+\begin{itemize}
+  \item It is a linearly independent set in $V$
+  \item It spans $V$
+\end{itemize}
 
+A basis is therefore both a minimal spanning set and a maximal linearly independent set.
+
+\begin{theorembox}[Characterization of Bases by Cardinality]
+  For a finite-dimensional vector space $V$ with $\dim V = n$:
+  \begin{enumerate}
+    \item Every linearly independent subset with exactly $n$ elements is a basis.
+    \item Every spanning set with exactly $n$ elements is a basis.
+  \end{enumerate}
+\end{theorembox}
+
+\begin{proof}[Proof of (1)]
+  Let $L = \{v_1, \ldots, v_n\}$ be a linearly independent subset of $V$.
+
+  Suppose $L$ is not a spanning set. Then there exists some $v \in V$ with $v \notin \langle L \rangle$.
+
+  This means the set $L' = \{v_1, \ldots, v_n, v\}$ would be linearly independent in $V$, contradicting Theorem 2.2.6 (which states that no linearly independent set can have more than $n$ elements).
+
+  Therefore, $L$ must be a spanning set and thus a basis.
+\end{proof}
+
+\begin{proof}[Proof of (2)]
+  Let $S$ be a spanning set of $V$ with $n$ elements.
+
+  If $S$ is not linearly independent, then $S$ contains a proper subset that spans $V$ but has fewer than $n$ elements, contradicting Theorem 2.2.6 (which implies all bases have exactly $n$ elements).
+
+  Therefore, $S$ must be linearly independent and thus a basis.
+\end{proof}
+
+\begin{theorembox}[Basis Extension Theorem]
+  Any linearly independent subset $L$ of $V$ can be extended to a basis of $V$.
+\end{theorembox}
+
+\begin{proof}
+  Let $L = \{v_1, \ldots, v_k\}$. Since $L$ is linearly independent, $k \leq n$ by Theorem 2.2.6.
+
+  If $k = n$, then $L$ is already a basis by part (1) above.
+
+  If $k < n$, then $L$ does not span $V$, so there exists $v_{k+1} \in V$ with $v_{k+1} \notin \langle L \rangle$. Then $\{v_1, \ldots, v_k, v_{k+1}\}$ is linearly independent.
+
+  We can continue this process, adding elements outside the existing span until we reach $n$ elements, which will form a basis of $V$.
+\end{proof}
+
+\begin{theorembox}[Isomorphism with $F^n$]
+  Every $n$-dimensional vector space $V$ over $F$ is isomorphic to the standard vector space $F^n$.
+\end{theorembox}
+
+\begin{proof}[Sketch]
+  Let $B = \{v_1, \ldots, v_n\}$ be a basis of $V$ over $F$.
+
+  For any $v \in V$, there exists a unique expression $v = a_1v_1 + \cdots + a_nv_n$.
+
+  The mapping $v \mapsto \begin{bmatrix} a_1 \\ \vdots \\ a_n \end{bmatrix}$ defines a bijective correspondence between $V$ and $F^n$ that preserves vector space operations.
+
+  Different bases of $V$ correspond to different isomorphisms with $F^n$.
+\end{proof}
+
+\begin{definitionbox}{Standard Basis}{}
+  The standard basis of $F^n$ is $\{e_1, \ldots, e_n\}$, where $e_i$ has 1 in position $i$ and 0 in all other positions.
+\end{definitionbox}
 \end{document}
