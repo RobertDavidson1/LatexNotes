@@ -719,6 +719,108 @@ $$
   It is easily checked that $AA^{-1} = I_3$.
 \end{examplebox}
 \pagebreak
+\section{Vector Spaces and Subspace Structure}
+\subsection{The Image and Kernel of a Linear Transformation}
+$T:\mathbb{R}^3 \to \mathbb{R}^3$ is the linear transformation defined with:
+$$
+  M_T = \begin{bmatrix}
+    1 & 2  & 0 \\
+    2 & -1 & 5 \\
+    1 & 1  & 1
+  \end{bmatrix}
+$$
+The \textbf{image} of $T$ is the subset of $\mathbb{R}^3$ consisting of all elements $T(\mathbf{v}), \mathbf{v} \in \mathbb{R}^3$. This is the set of all vectors of the form:
+$$
+  a \begin{bmatrix}
+    1 \\
+    2 \\
+    1
+  \end{bmatrix}
+  +
+  b \begin{bmatrix}
+    2  \\
+    -1 \\
+    1
+  \end{bmatrix}
+  +
+  c \begin{bmatrix}
+    0 \\
+    5 \\
+    1
+  \end{bmatrix}
+$$
+In matrix terms, this is the $\textbf{column space}$ of $M_T$. \\
+The \textbf{kernel} of $T$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$. This is the set of all column vectors, whose entries, $a,b,c$ satisfies:
+$$
+  \begin{bmatrix}
+    1 & 2  & 0 \\
+    2 & -1 & 5 \\
+    1 & 1  & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+    a \\
+    b \\
+    c
+  \end{bmatrix}
+  =
+  a \begin{bmatrix}
+    1 \\
+    2 \\
+    1
+  \end{bmatrix}
+  +
+  b \begin{bmatrix}
+    2  \\
+    -1 \\
+    1
+  \end{bmatrix}
+  +
+  c \begin{bmatrix}
+    0 \\
+    5 \\
+    1
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    0 \\
+    0 \\
+    0
+  \end{bmatrix}
+$$
+\subsubsection*{The kernel is a line and the image is a plane}
+$$
+  \begin{bmatrix}
+    1 & 2  & 0 \\
+    2 & -1 & 5 \\
+    1 & 1  & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+    a \\
+    b \\
+    c
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    0 \\
+    0 \\
+    0
+  \end{bmatrix}
+  \quad \Rightarrow \quad
+  \begin{bmatrix}
+    1 & 2  & 0 & | & 0 \\
+    0 & -5 & 5 & | & 0 \\
+    1 & 1  & 1 & | & 0
+  \end{bmatrix}
+  \quad \Rightarrow \quad
+  \begin{bmatrix}
+    1 & 0 & 2  & | & 0 \\
+    0 & 1 & -1 & | & 0 \\
+    0 & 0 & 0  & | & 0
+  \end{bmatrix}
+$$
+The kernel (or nullspace) is $(2, 1, 1)t, t \in \mathbb{R}$, which is a line in $\mathbb{R}^3$. Tjay $)
+
+
 % \section{Spanning sets, bases and dimensions}
 % \subsection{Vector Spaces}
 % A \textbf{vector space} $\mathbf{V}$ over $\mathbb{F}$ is a non empty set of objects equipped with an addition operation and whose elements can be multiplied by scalars in $\mathbb{F}$, subject to the following axioms:
