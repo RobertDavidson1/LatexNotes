@@ -28,10 +28,10 @@ Robert Davidson
 \tableofcontents
 \pagebreak
 \section{Review of Matrix Algebra}
-\subsubsection*{Matrix Addition}
+\subsection*{Matrix Addition}
 If a matrix has $m$ rows and $n$ columns, we say it is $m \times n$.\textbf{Two matrices can only be added if they have the same size.}. In this case, we just add the entries in each position. \\[2ex]
 The $m \times n$ \textbf{zero} matrix is a matrix with all entries equal to $0$. It is the \textbf{Identity element} for matrix addition (adding it to any matrix does not change the matrix)
-\subsubsection*{Matrix Multiplication by a Scalar}
+\subsection*{Matrix Multiplication by a Scalar}
 This simply means multiplying each entry of the matrix by the scalar. For example:
 $$
   \alpha \begin{bmatrix}
@@ -47,11 +47,11 @@ $$
 
 \textbf{Remark}: Now that we have addition and scalar multiplication, we can subtract matrices ($A - B = A + (-1)B$), provided they are the same size.
 
-\subsubsection*{Vector Space}
+\subsection*{Vector Space}
 With these operations of addition and scalar multiplication, the set of
 $m \times n$ matrices is a vector space. A \textbf{vector space} algebraic structure whose elements can be added, subtracted and multiplied by scalars.
 
-\subsubsection*{Linear Combinations}
+\subsection*{Linear Combinations}
 \begin{definitionbox}{Linear Combinations}{}
   Suppose $v_1, v_2, \dots, v_k$ are elements that can be added together and multiplied by scalars. \\[2ex]
   A Linear Combination of $v_1, v_2, \dots, v_k$ is an expression of the form:
@@ -60,7 +60,7 @@ $m \times n$ matrices is a vector space. A \textbf{vector space} algebraic struc
   $$
   where $a_i \in \mathbb{R}$ are scalars, called \textbf{coefficients}.
 \end{definitionbox}
-\subsubsection*{Matrix-Vector Multiplication}
+\subsection*{Matrix-Vector Multiplication}
 \begin{definitionbox}{}{}
   Let $A$ be a $m \times n$ matrix, and $\textbf{v}$ be a column vector with $n$ entries ($n \times 1$ matrix). \\[2ex]
   Then the matrix vector product $Av$ is the column vector, with $m$ entries, obtained by taking the linear combination of the columns of $A$ with the entries of $\textbf{v}$ as coefficients.
@@ -97,13 +97,60 @@ $m \times n$ matrices is a vector space. A \textbf{vector space} algebraic struc
   \rule{\textwidth}{1px} \\[2ex]
   \textbf{Remark:} $Av$, if defined, has the same number of rows as $A$ and the same number of columns as $\textbf{v}$.
 \end{definitionbox}
-\subsubsection*{Matrix-Matrix Multiplication}
+\pagebreak
+\subsection*{Matrix-Matrix Multiplication}
 \begin{definitionbox}{}{}
   Let $A$ and $B$ be matrices of size $m \times p$ and $p \times n$, respectively.Write $v_1, \ldots v_n$ for the columns of $B$. Then the product $AB$ is the $m \times n$ matrices whose columns are $Av_1 , \ldots, Av_n$.
+  \\ \rule{\textwidth}{1px} \\
+  The entry at row $i$ and column $j$ of the matrix $A$ is given by $A_{ij}$. The entry in the $i,j$ position of the product $AB$ is the $i$th entry of the vector $Av_j$, where the vector $v_j$ is the $j$th column of $B$. In other words, the entry in the $i,j$ position of the product $AB$ is given by:
+  $$
+    (AB)_{ij} = A_{i1}B_{1j} + A_{i2}B_{2j} + \ldots + A_{ip}B_{pj} = \sum_{k=1}^p A_{ik}B_{kj}
+  $$
 \end{definitionbox}
+\begin{definitionbox}{}{}
+  If $A$ is $m \times p$ with rows $u_1, \ldots, u_m$ and $B$ is $p \times n$ with columns $v_1, \ldots, v_n$, then the product $AB$ is:
+  $$AB =
+    \begin{bmatrix}
+      u_1 \cdot v_1 & u_1 \cdot v_2 & \ldots & u_1 \cdot v_n \\
+      u_2 \cdot v_1 & u_2 \cdot v_2 & \ldots & u_2 \cdot v_n \\
+      \vdots        & \vdots        & \ddots & \vdots        \\
+      u_m \cdot v_1 & u_m \cdot v_2 & \ldots & u_m \cdot v_n
+    \end{bmatrix}
+  $$
+  \rule {\textwidth}{1px} \\[2ex]
+  \textbf{Example}:
+  $$
+    A =
+    \begin{bmatrix}
+      1 & 2 & 3 \\
+      4 & 5 & 6
+    \end{bmatrix}
+    \quad
+    B =
+    \begin{bmatrix}
+      7  & 8  \\
+      9  & 10 \\
+      11 & 12
+    \end{bmatrix}
+    \quad
+    AB =
+    \begin{bmatrix}
+      1 \cdot 7 + 2 \cdot 9 + 3 \cdot 11 & 1 \cdot 8 + 2 \cdot 10 + 3 \cdot 12 \\
+      4 \cdot 7 + 5 \cdot 9 + 6 \cdot 11 & 4 \cdot 8 + 5 \cdot 10 + 6 \cdot 12
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      58  & 64  \\
+      139 & 154
+    \end{bmatrix}
+  $$
+\end{definitionbox}
+For matrices $A$ and $B$, the products $AB$ and $BA$ are generally not
+equal, even if they are both defined and even if both have the same
+size.
+\subsection*{Linear Transformations}
 
 \pagebreak
-
 \section{Systems of linear equations}
 \subsection{Linear equations and Solution Sets}
 A linear equation in the variables $x$ and
