@@ -939,7 +939,7 @@ $$
 \textbf{Remark} A set $S$ of three column vectors in $\mathbb{R}^3$ is a spanning set of $\mathbb{R}^3$ if and only if the three vectors are linearly independent.This occurs only if the $3 \times 3$ matrix whose columns are the three vectors has \textbf{$S$ as an inverse}.\\[2ex]
 \textbf{Questions about spanning sets}
 \begin{itemize}
-  \small
+
   \item Does $\mathbb{R}^3$ have a spanning set fewer than three vectors?
         \begin{itemize}
           \item \textbf{No.} A spanning set for $\mathbb{R}^3$ must contain at least three linearly independent vectors, since the dimension of $\mathbb{R}^3$ is 3. Fewer than three vectors cannot span all of $\mathbb{R}^3$.
@@ -967,6 +967,10 @@ $$
   A set of vectors in $\mathbb{R}^n$ is \textbf{linearly independent} if it is not linearly
   dependent.
 \end{definitionbox}
+\noindent For a subset $\{v_1, \dots, v_k\}$ of $\mathbb{R}^n$, suppose that $v_k$ is a linear combination of $\{v_1, \dots, v_{k-1}\}$. Then every linear combination of $\{v_1, \dots, v_k\}$ \textbf{is already a linear combination} of $v_1, \dots, v_{k-1}$:
+$$\langle v_1, \dots, v_k \rangle = \langle v_1, \dots, v_{k-1} \rangle$$
+If we are interested in the span of $\{v_1, \dots, v_k\}$, we can throw away $v_k$ and this wouldn't change the span. \\[2ex]
+\textbf{Linear independence} means that throwing away any element of the set \textbf{shrinks the span}
 
 
 % \section{Spanning sets, bases and dimensions}
