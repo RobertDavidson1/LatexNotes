@@ -803,7 +803,7 @@ The second example above motivates the following lemma:
 It follows, a subset consisting of a single element is linearly independent if and only if that element is non-zero. The definition above takes a lot of work to check for large sets, the following definition is often more useful:
 \begin{definitionbox}{}{}
   Let $S$ be a non-empty subset of $\mathbf{V}$.\\[2ex]
-  Then $S$ is \textbf{linearly independent} if the only linear combination of the elements of $S$ that equals zero is tp tale all the coefficients to be zero.
+  Then $S$ is \textbf{linearly independent} if the only linear combination of the elements of $S$ that equals zero is to take all the coefficients to be zero.
 \end{definitionbox}
 \subsubsection*{Equivalence of the two definitions}
 Let $S = \{v_1, \dots, v_k\}$ and suppose $v_1 \in \langle v_2, \dots v_k \rangle$. Then:
@@ -811,13 +811,86 @@ $$
   v_1 = \alpha_2 v_2 + \cdots + \alpha_k v_k \quad \Rightarrow \quad
   0 = - v_1 + \alpha_2 v_2 + \cdots + \alpha_k v_k
 $$
-is a expression for the zero vector as a linear combination of elements of $S$, whose coefficients are not all zero. On the other hand suppose:
+is an expression for the zero vector as a linear combination of elements of $S$, whose coefficients are not all zero. On the other hand suppose:
 $$
   0 = c_1v_1 + c_2v_2 + \cdots + c_kv_k
 $$
-where $c_i \neq 0, \; \forall \; i \leq k$ Then:
+where not all $c_i = 0$ Then:
 $$
   v_1 = -\frac{c_2}{c_1}v_2 - \cdots - \frac{c_k}{c_1}v_k \quad \Rightarrow \quad
-  v_1 \in \langle v_2, \dots, v_k \rangle$$
-
+  v_1 \in \langle v_2, \dots, v_k \rangle
+$$
+\begin{examplebox}{}{}
+  In $\mathbb{R}^3$, let $S = \{[1,2,-1], [-2, 3, 2], [-3,8,3]\}$. Show that $S$ is linearly independent.
+  \\[2ex] \rule{\textwidth}{1px} \\
+  To determine if $S$ is linearly independent, we need to investigate whether the system of equations has solutions other than $(x,y,z) = (0,0,0)$:
+  $$ x \begin{bmatrix}
+      1 \\
+      2 \\
+      -1
+    \end{bmatrix}
+    + y \begin{bmatrix}
+      -2 \\
+      3  \\
+      2
+    \end{bmatrix}
+    + z \begin{bmatrix}
+      -3 \\
+      8  \\
+      3
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      0 \\
+      0
+    \end{bmatrix}
+    \quad\Longrightarrow \quad
+    \begin{bmatrix}
+      1  & -2 & -3 & | & 0 \\
+      2  & 3  & 8  & | & 0 \\
+      -1 & 2  & 3  & | & 0
+    \end{bmatrix}
+  $$
+  Reducing it to its RREF we get:
+  $$
+    \begin{bmatrix}
+      1 & 0 & 1 & | & 0 \\
+      0 & 1 & 2 & | & 0 \\
+      0 & 0 & 0 & | & 0
+    \end{bmatrix}
+    \quad\Longrightarrow\quad
+    \begin{array}{l}
+      x  + t = 0 \\
+      y + 2t = 0 \\
+      z + t = 0
+    \end{array}
+    \quad\Longrightarrow\quad
+    (x,y,z) = (-t, -2t, t)
+  $$
+  Setting $t = 1$ gives:
+  $$
+    -1 \begin{bmatrix}
+      1 \\
+      2 \\
+      -1
+    \end{bmatrix}
+    -2 \begin{bmatrix}
+      -2 \\
+      3  \\
+      2
+    \end{bmatrix}
+    +1 \begin{bmatrix}
+      -3 \\
+      8  \\
+      3
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      0 \\
+      0
+    \end{bmatrix}
+  $$
+\end{examplebox}
 \end{document}
