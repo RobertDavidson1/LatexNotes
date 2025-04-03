@@ -759,10 +759,39 @@ For a subset $S$ of a $\mathbb{F}$-vector space $\mathbf{V}$, the sum of any two
 \end{lemmabox}
 \subsubsection*{Examples}
 \begin{itemize}
-  \item (Column vectors in $R^{2}\text{):$ \;
-        S=\{(3,1),\;(2,1),\;(1,-1)\}
-        \text{ is a spanning set of }R^{2}\text{. Any }(a,b)\in R^{2}\text{ can be expressed as a linear combination of these vectors in multiple ways. However, }
-        (1,-1)\text{ is itself a linear combination of }(3,1)\text{ and }(2,1)\text{, so it is not needed to span }R^{2}.
-        \text{Thus, }S\text{ contains redundant elements and is not minimal.}
+  \item \textbf{Polynomials over} $\mathbb{Q}$ \\
+        $Q[x]$ is the set of all polynomials with rational coefficients, and $P_{2}\subset Q[x]$ consists of polynomials of degree at most 2.
+        If $S=\{x^{2}+1,\, x+1\}$, then
+        $$
+          \langle S\rangle \;=\;\{\,a(x^2 + 1) \;+\; b(x+1)\;:\;a,b \in \mathbb{Q}\}.
+        $$
+        All members of $\langle S\rangle$ are degree-$\le 2$ polynomials with constant term equal to the sum of the $x$- and $x^2$-coefficients.
+        For instance, $x^2+2x+3 \in \langle S\rangle$ but $x^2+2x+4 \notin \langle S\rangle$.
+        Since $\langle S\rangle$ does not include all degree-$\le 2$ polynomials in $P_{2}$, $S$ is not a spanning set for $P_{2}$ over $\mathbb{Q}$.
+  \item \textbf{Column vectors in} $\mathbb{R}^2$ \\
+        Let
+        $$
+          S=\{(3,1),\,(2,1),\,(1,-1)\}.
+        $$
+        Any vector $(a,b)\in \mathbb{R}^2$ can be written as a linear combination of these three vectors in more than one way.
+        However, $(1,-1)$ itself is a linear combination of $(3,1)$ and $(2,1)$, so it is not necessary to span $\mathbb{R}^2$.
+        Hence $S$ has redundant elements and is not a minimal spanning set of $\mathbb{R}^2$.
+\end{itemize}
+The second example above motivates the following lemma:
+\begin{lemmabox}{}{}
+  Suppose that $S_1 \subset S$, where $S \subseteq \mathbf{V}$, then
+  $$\langle S_1 \rangle \subseteq \langle S \rangle$$
+  if and only if every element of $S \backslash S_1$ is a linear combination of the elements of $S_1$.
+\end{lemmabox}
+\begin{definitionbox}{}{}
+  \begin{itemize}
+    \item \textbf{Finite dimensional}: A vector space that has a finite spanning set
+    \item \textbf{Infinite dimensional}: A vector space that has an infinite spanning set
+  \end{itemize}
+\end{definitionbox}
+\subsubsection*{Example of infinite dimensional vector space}
+\begin{itemize}
+  \item The vector space $\mathbb{R}[x]$ of all polynomials with real coefficients is infinite dimensional. To see this let $S$ be a finite subset of $\mathbb{R}[x]$ and let $x^k$ be the highest power of $x $ in $S$. Then $x^{k+1} \notin \langle S \rangle$ since $x^{k+1}$ cannot be expressed as a linear combination of the elements of $S$.
+  \item The set of $\mathbb{R}$ is infinite dimensional as a vector space over the field, $\mathbb{Q}$, of rational numbers.
 \end{itemize}
 \end{document}
