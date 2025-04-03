@@ -996,6 +996,40 @@ If we are interested in the span of $\{v_1, \dots, v_k\}$, we can throw away $v_
   The three equations of the system form a linearly dependent set. One row was eliminated by adding a linear combination of the other two rows. Thus, all the information in the system  was contained in the first two equations. \\[2ex]
   The non-zero rows of the RREF are linearly independent, they span the rowspace of the matrix. The rowspace is the subspace of $\mathbb{R}^5$ spanned by the rows of the matrix.
 \end{examplebox}
+\subsubsection{Test for linear independence}
+A set is linearly independent if none of its elements is a linear combination of the others.  While this makes sense, to use it as a test would mean checking every element. We have an alternative formulation, which is easier to check: \\[2ex]
+"\textbf{A set of vectors is linearly independent if the only way to write the zero vector as a linear combination of the vectors in the set is to use all zero coefficients.}" \\[2ex]
+To decide if the set $\{v_1, \dots, v_k\}$ is linearly independent, try to write the zero vector as a linear combination of the vectors in the set:
+$$
+  \sum_{i=1}^k \alpha_i v_i = \alpha_1 v_1 + \cdots + \alpha_k v_k = 0 \quad \text{for} \; \alpha_i \in \mathbb{R}
+$$
+If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not, the set is linearly dependent.
+\begin{examplebox}{}{}
+  Decide whether the set $\{[1,0,1], [1,0,-1], [1,1,1]\}$ is linearly independent or dependent. \\
+  \rule{\textwidth}{1px} \\
+  To solve, we use ERO and find:
+  $$
+    \begin{bmatrix}
+      1 & 1  & 1 \\
+      0 & 0  & 1 \\
+      1 & -1 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      a \\
+      b \\
+      c
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      0 \\
+      0
+    \end{bmatrix}
+    \quad \Rightarrow \quad
+    a = b = c = 0
+  $$
+  \textbf{The set is linearly independent}
+\end{examplebox}
 
 % \section{Spanning sets, bases and dimensions}
 % \subsection{Vector Spaces}
