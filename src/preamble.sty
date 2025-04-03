@@ -2,7 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
-
+\usepackage{changepage}
 
 % (2) Common Packages
 \usepackage{amsmath, amssymb, amsthm}
@@ -17,7 +17,7 @@
 \usepackage[inline]{enumitem}
 \usepackage{bookmark}
 \usepackage{mathtools}
-\usepackage{subcaption} 
+\usepackage{subcaption}
 \usepackage[normalem]{ulem}
 \usepackage{booktabs,tabularx}
 \usepackage{cleveref}
@@ -38,7 +38,8 @@
 \makeatother
 
 \definecolor{custom_red}{HTML}{D63A34}
-\definecolor{custom_green}{HTML}{29AF41}
+\definecolor{custom_teal}{HTML}{319EB3}
+\definecolor{custom_mint}{HTML}{0BABA7}
 \definecolor{custom_blue}{HTML}{0A6DDA}
 \definecolor{custom_purple}{HTML}{964DC0}
 
@@ -70,7 +71,7 @@
     attach boxed title to top left={yshift=-0.1mm},
     colback=custom_red!10,
     colframe=custom_red,
-    fonttitle=\bfseries,
+    fonttitle=\footnotesize\bfseries,
     boxed title style={
             sharp corners,
             size=small,
@@ -79,6 +80,39 @@
         },
     description delimiters none,
 }{def}
+
+\newtcbtheorem[number within=section]{lemmabox}{Lemma}{%
+    enhanced,
+    sharp corners,
+    attach boxed title to top left={yshift=-0.1mm},
+    colback=custom_mint!10,
+    colframe=custom_mint,
+    fonttitle=\footnotesize\bfseries,
+    boxed title style={
+            sharp corners,
+            size=small,
+            colback=custom_mint,
+            colframe=custom_mint,
+        },
+    description delimiters none,
+}{lma}
+
+\newtcbtheorem[number within=section]{theorembox}{Theorem}{%
+    enhanced,
+    sharp corners,
+    attach boxed title to top left={yshift=-0.1mm},
+    colback=custom_teal!10,
+    colframe=custom_teal,
+    fonttitle=\footnotesize\bfseries,
+    boxed title style={
+            sharp corners,
+            size=small,
+            colback=custom_teal,
+            colframe=custom_teal,
+        },
+    description delimiters none,
+}{lma}
+
 
 \lstdefinestyle{cStyle}{
     language=C,
@@ -99,11 +133,11 @@
 }
 
 \newtcblisting{codeexample}[2][]{
-    listing only,                        
-    title=\emph{Example Code:}\quad  \textbf{#2},         
+    listing only,
+    title=\emph{Example Code:}\quad  \textbf{#2},
     fonttitle=\bfseries\scriptsize\color{white},
     attach boxed title to top center={yshift=-1.5mm},
-    colbacktitle=custom_green,
+    colbacktitle=custom_teal,
     coltitle=white,
     colframe=custom_red,
     colback=custom_red!10,
@@ -116,7 +150,7 @@
     rightrule=0.5mm,
     toptitle=1mm,
     enhanced,
-    listing options={style=cStyle} 
+    listing options={style=cStyle}
 }
 
 
@@ -139,23 +173,7 @@
     coltext=gray3,
 }
 
-\newtcolorbox{theorembox}[1][]{
-    title=\textbf{Theorem} {#1},
-    fonttitle=\bfseries\boldmath,
-    arc=0mm,
-    bottomtitle=0.5mm,
-    boxrule=0mm,
-    colbacktitle=gray2,
-    colback=gray1,
-    coltitle=gray3,
-    left=2.5mm,
-    leftrule=1mm,
-    rightrule=1mm,
-    right=3.5mm,
-    toptitle=0.75mm,
-    colframe=custom_green,
-    coltext=gray3
-}
+
 
 \newtcolorbox{notebox}{
     title=\textbf{Note},
@@ -206,7 +224,7 @@
             colframe=custom_blue,
         },
     description delimiters none,
-    }{cncpt}
+}{cncpt}
 
 
 \newtcbtheorem[number within=section]{takeaway-box}{Key Takeaways}{
@@ -229,8 +247,8 @@
 % (7) Hyperlinks
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,    
-    linkcolor=black,      
-    pdfborder={0 0 0}   
+    colorlinks=true,
+    linkcolor=black,
+    pdfborder={0 0 0}
 }
 
