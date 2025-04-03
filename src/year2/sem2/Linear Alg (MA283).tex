@@ -1030,6 +1030,65 @@ If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not
   $$
   \textbf{The set is linearly independent}
 \end{examplebox}
+\subsection{Finite Dimensional Spaces}
+\begin{definitionbox}{}{}
+  A vector space $V$ is finite dimensional if it contain a finite spanning set. \\[2ex]
+  This means a set $\{v_1, \dots, v_k\}$ of elements, with the property that every element of $V$ is a linear combination of $v_1, \dots, v_k$.
+\end{definitionbox}
+\noindent \textbf{Examples} \\
+\begin{itemize}
+  \item $\mathbb{R}^n$ is finite dimensional with $\{e_1, \dots, e_n\}$ as a spanning set. The dimension of $\mathbb{R}^n$ is $n$.
+  \item $M_{m \times n}(\mathbb{R})$ is finite dimensional,with $\{E_{ij}\}_{1 \leq i \leq m, 1 \leq j \leq n}$ as a spanning set with $mn$ elements.
+  \item An example of an infinite dimensional space is the set, $\mathbb{R}[x]$, of all polynomials with real coefficients. This set is infinite dimensional because it contains an infinite number of linearly independent vectors, such as $\{1, x, x^2, \ldots\}$.
+\end{itemize}
+\subsection{Basis}
+\begin{definitionbox}{}{}
+  A \textbf{basis} for a vector space is a \textbf{linearly independent spanning set}.
+\end{definitionbox}
+\begin{itemize}
+  \item A basis is a minimal spanning set, one in which every element is needed and does not contain a smaller spanning set.
+  \item Example: $\{e_1, \dots , e_n\}$ is a basis for $\mathbb{R}^n$.
+  \item $\{(1,3), (1,4)\}$ is a basis for $\mathbb{R}^2$.
+  \item If $S$ is a finite spanning set of a vector space $V$, then $S$ contains a basis of $V$. If $S$ is not linearly independent, then some $v \in S$ is a linear combination of the other elements of $S$. Throwing away $v$ leaves a smaller set that still spans $V$. This process can be repeated until a basis is obtained.
+\end{itemize}
+\subsection{Steinitz Replacement Lemma}
+\begin{lemmabox}{}{}
+  Let $V$ be a vector space that has a basis with $n$ elements. \\[2ex]
+
+  Then every linearly independent set with $n$ elements in $V$ is a basis for $V$.
+\end{lemmabox}
+\noindent \textbf{Proof (for $n = 3)$} \\
+Suppose $B = \{b_1, b_2, b_3\}$ is a basis of $V$ and let $\{y_1, y_2, y_3\}$ be a linearly independent subset of $V$.
+\textbf{Step 1.} \\
+$y_1 = a_1 b_1 + a_2 b_2 + a_3 b_3$ for scalars $a_1, a_2, a_3$, not all zero.
+
+We can assume (after maybe relabelling the $b_i$), that $a_1 \ne 0$.
+
+Then
+$$
+  b_1 = a_1^{-1} y_1 - a_1^{-1} a_2 b_2 - a_1^{-1} a_3 b_3.
+$$
+
+So $b_1 \in \langle y_1, b_2, b_3 \rangle$ and $\{y_1, b_2, b_3\}$ spans $V$.
+
+(Note that we have to use the fact that we can divide by non-zero scalars to write $b_1$ as a linear combination of $y_1, b_2, b_3$.)
+
+
+\begin{tcolorbox}[colback=blue!10, colframe=blue!40!black, title=Step 2]
+  Now $y_2 \in \langle y_1, b_2, b_3 \rangle$ and $y_2$ is not a scalar multiple of $y_1$ (because $\{y_1, y_2, y_3\}$ is linearly independent).
+
+  So $b_2$ (or $b_3$) has non-zero coefficient in any description of $y_2$ as a linear combination of $y_1, b_2, b_3$.
+
+  Replace again: $\{y_1, y_2, b_2\}$ spans $V$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!10, colframe=blue!40!black, title=Step 3]
+  Same reasoning: we can replace $b_2$ with $y_3$ to conclude $\{y_1, y_2, y_3\}$ spans $V$.
+\end{tcolorbox}
+
+\textbf{Conclusion:} $\{y_1, y_2, y_3\}$ is a basis of $V$.
+
+
 
 % \section{Spanning sets, bases and dimensions}
 % \subsection{Vector Spaces}
