@@ -697,310 +697,306 @@ $$
   It is easily checked that $AA^{-1} = I_3$.
 \end{examplebox}
 \pagebreak
-\section{Spanning sets, bases and dimensions}
-\subsection{Vector Spaces}
-A \textbf{vector space} $\mathbf{V}$ over $\mathbb{F}$ is a non empty set of objects equipped with an addition operation and whose elements can be multiplied by scalars in $\mathbb{F}$, subject to the following axioms:
-\begin{enumerate}
-  \item $u+v = v+u, \quad \forall \; u,v \in \mathbf{V} $
-  \item $(u+v) +w = u+(v+w), \quad \forall \; u,v,w \in \mathbf{V} $
-  \item $\exists \; 0_\mathbf{V}$ , so that $0_v + v = v, \quad \forall \; v \in \mathbf{V} $
-  \item $\exists \; -v \in \mathbf{V}$, so that $v + (-v) = 0_\mathbf{V}, \quad \forall \; v \in \mathbf{V} $
-  \item $\alpha(\beta v) = \alpha\beta(v), \quad \forall \; \alpha,\beta \in \mathbb{F}, v \in \mathbf{V}$
-  \item $(\alpha + \beta)v = \alpha v + \beta v, \quad \forall \; \alpha,\beta \in \mathbb{F}, v \in \mathbf{V}$
-  \item $1v = v, \quad \forall \; v \in \mathbf{V}$
-\end{enumerate}
-In the definitions axioms above, the field $\mathbb{F}$ can be replaced with any other field, such as $\mathbb{R}$ or $\mathbb{C}$.
-\subsubsection*{Examples of vector spaces over $\mathbb{R}$}
-\begin{itemize}
-  \item The space $M_{m \times n}(\mathbb{R})$ of $m \times n$ with real entries.
-  \item The space of all polynomials with real coefficients
-  \item The set of complex numbers is a vector space over $\mathbb{R}$.
-\end{itemize}
-Consider the space $\mathbf{V}$ consisting of all \textbf{symmetric} $2 \times 2$ matrices in $M_2(\mathbb{R})$ with \textbf{trace zero}.
-\begin{itemize}
-  \item \textbf{Trace zero} means that the sum of the diagonal elements is zero.
-  \item \textbf{Symmetric} means that the matrix is equal to its transpose.
-\end{itemize}
-So a matrix of trace zero has the form:
-$$
-  \begin{bmatrix}
-    a & b  \\
-    b & -a
-  \end{bmatrix}
-  \quad \text{where} \; a,b \in \mathbb{R}
-$$
-Since it takes two real number to specify an element of $\mathbb{V}$, this is another example of a 2-dimensional vector.
-\subsection{Subspaces}
-\begin{definitionbox}{Vector Subspaces}{}
-  Let $\mathbf{V}$ be a vector space over a field $\mathbb{F}$. A subset $\mathbf{U}$ is a \textbf{subspace} of $\mathbf{V}$ if $\mathbf{U}$ is itself a a vector space over $\mathbb{F}$, under  the addition and scalar multiplication operations defined on $\mathbf{V}$.\\[2ex]
+% \section{Spanning sets, bases and dimensions}
+% \subsection{Vector Spaces}
+% A \textbf{vector space} $\mathbf{V}$ over $\mathbb{F}$ is a non empty set of objects equipped with an addition operation and whose elements can be multiplied by scalars in $\mathbb{F}$, subject to the following axioms:
+% \begin{enumerate}
+%   \item $u+v = v+u, \quad \forall \; u,v \in \mathbf{V} $
+%   \item $(u+v) +w = u+(v+w), \quad \forall \; u,v,w \in \mathbf{V} $
+%   \item $\exists \; 0_\mathbf{V}$ , so that $0_v + v = v, \quad \forall \; v \in \mathbf{V} $
+%   \item $\exists \; -v \in \mathbf{V}$, so that $v + (-v) = 0_\mathbf{V}, \quad \forall \; v \in \mathbf{V} $
+%   \item $\alpha(\beta v) = \alpha\beta(v), \quad \forall \; \alpha,\beta \in \mathbb{F}, v \in \mathbf{V}$
+%   \item $(\alpha + \beta)v = \alpha v + \beta v, \quad \forall \; \alpha,\beta \in \mathbb{F}, v \in \mathbf{V}$
+%   \item $1v = v, \quad \forall \; v \in \mathbf{V}$
+% \end{enumerate}
+% In the definitions axioms above, the field $\mathbb{F}$ can be replaced with any other field, such as $\mathbb{R}$ or $\mathbb{C}$.
+% \subsubsection*{Examples of vector spaces over $\mathbb{R}$}
+% \begin{itemize}
+%   \item The space $M_{m \times n}(\mathbb{R})$ of $m \times n$ with real entries.
+%   \item The space of all polynomials with real coefficients
+%   \item The set of complex numbers is a vector space over $\mathbb{R}$.
+% \end{itemize}
+% Consider the space $\mathbf{V}$ consisting of all \textbf{symmetric} $2 \times 2$ matrices in $M_2(\mathbb{R})$ with \textbf{trace zero}.
+% \begin{itemize}
+%   \item \textbf{Trace zero} means that the sum of the diagonal elements is zero.
+%   \item \textbf{Symmetric} means that the matrix is equal to its transpose.
+% \end{itemize}
+% So a matrix of trace zero has the form:
+% $$
+%   \begin{bmatrix}
+%     a & b  \\
+%     b & -a
+%   \end{bmatrix}
+%   \quad \text{where} \; a,b \in \mathbb{R}
+% $$
+% Since it takes two real number to specify an element of $\mathbb{V}$, this is another example of a 2-dimensional vector.
+% \subsection{Subspaces}
+% \begin{definitionbox}{Vector Subspaces}{}
+%   Let $\mathbf{V}$ be a vector space over a field $\mathbb{F}$. A subset $\mathbf{U}$ is a \textbf{subspace} of $\mathbf{V}$ if $\mathbf{U}$ is itself a a vector space over $\mathbb{F}$, under  the addition and scalar multiplication operations defined on $\mathbf{V}$.\\[2ex]
 
-  Two things need to be checked to confirm that $U \subseteq V$ is a subspace:
-  \begin{enumerate}
-    \item $\mathbb{U}$ is \textbf{closed} under the addition in $\mathbf{V}$, i.e. $u_1 + u_2 \in \mathbf{U}$ for all $u_1,u_2 \in \mathbf{U}$.
-    \item $\mathbb{U}$ is \textbf{closed} under scalar multiplication, i.e. $\alpha u \in \mathbb{U}$, whenever $u \in \mathbb{U}$ and $\alpha \in \mathbb{F}$.
-  \end{enumerate}
-\end{definitionbox}
-\subsubsection*{Examples of subspaces}
-\begin{enumerate}
-  \item Let $\mathbb{Q}[x]$ be the set of all polynomials with rational coefficients. Let $P_2 \subseteq \mathbb{Q}[x]$ be the set of all polynomials of degree at most 2. This means $P_2 = \{a_2x^2 + a_1x + a_0: a_0, a_1, a_2 \in \mathbf{Q}\}$ Then $P_2$ is a vector subspace of $\mathbb{Q}[x]$. If $f(x)$ and $g(x)$ are rational polynomials of degree at most 2, then also is $f(x) + g(x)$ and $\alpha f(x)$, where $\alpha \in \mathbb{Q}$.
-  \item The set $\mathbb{C}$ is a vector space over the set of real numbers. Within $\mathbb{C}$, the subset $\mathbb{R}$ is an example of a vector subspace over $\mathbb{R}.$ An example of a subset of $\mathbb{C}$ that is not a real vector subset is the unit circle S in the complex plane- this is the set of complex numbers of modulus 1, it consists of all complex numbers of the form a+bi, where $a^2+b^2=1.$ This is closed neither under addition nor multiplication by real scalars.
-  \item The Cartesian plane ($\mathbb{R}^2$) is a real vector space. Within $\mathbb{R}^2$, let $U=\{(a,b):a > 0,b >0\}$. Then $\mathbf{U}$ is closed under addition and under multiplication by positive scalars. It is not a vector subspace of $\mathbb{R}^2$,because it is not closed under multiplication by negative scalars
-  \item Let $v$ be a fixed non-zero vector $\in \mathbb{R}^3$ and let $v^{\perp} = \{u \in \mathbb{R}^3: u^Tv = 0\}$. Then $v^{\perp}$ is not empty since $0 \in v^{\perp}$.Suppose $u_1, u_2 \in v^{\perp}$. If $u \in v^{\perp}$ and $\alpha \in \mathbb{R}$, then $(\alpha u)^T v = \alpha u^T v = 0 = \alpha 0 = 0$. Hence $v^{\perp}$ is closed under scalar multiplication. Thus $v^{\perp}$ is a vector subspace of $\mathbb{R}^3$. Note that $v^{\perp}$ is not all $\mathbb{R}^3$, since $v \notin v^{\perp}$.
-\end{enumerate}
-\subsection{Span of a set of vectors}
-\begin{definitionbox}{Span}{}
-  Let $\mathbf{V}$ be a vector space over a field $\mathbb{F}$, and let $S$ be a non empty subset of $\mathbf{V}$. \\[2ex]
-  The $\mathbb{F}$-linear span, commonly called the \textbf{span} of $S$, denoted $\langle S \rangle$, is the set of all $\mathbb{F}$-linear combinations of the elements of $S \in \mathbf{V}$. \\[2ex]
-  If $S=V$, then $S$ is called a spanning set of $V$; meaning that every element of $\mathbf{V}$ is a linear combination of the elements of $S$.
-\end{definitionbox}
-For a subset $S$ of a $\mathbb{F}$-vector space $\mathbf{V}$, the sum of any two linear combinations of $S$ is an element of $S$, and any scalar multiple of a linear combination of $S$ is also an element of $S$; hence the following lemma:
-\begin{lemmabox}{}{}
-  For any subset, $S$, of a vector space, $\mathbf{V}$, the span, $\langle S \rangle$, is a subspace of $\mathbf{V}$.
-\end{lemmabox}
-\subsubsection*{Examples}
-\begin{itemize}
-  \item \textbf{Polynomials over} $\mathbb{Q}$ \\
-        $Q[x]$ is the set of all polynomials with rational coefficients, and $P_{2}\subset Q[x]$ consists of polynomials of degree at most 2.
-        If $S=\{x^{2}+1,\, x+1\}$, then
-        $$
-          \langle S\rangle \;=\;\{\,a(x^2 + 1) \;+\; b(x+1)\;:\;a,b \in \mathbb{Q}\}.
-        $$
-        All members of $\langle S\rangle$ are degree-$\le 2$ polynomials with constant term equal to the sum of the $x$- and $x^2$-coefficients.
-        For instance, $x^2+2x+3 \in \langle S\rangle$ but $x^2+2x+4 \notin \langle S\rangle$.
-        Since $\langle S\rangle$ does not include all degree-$\le 2$ polynomials in $P_{2}$, $S$ is not a spanning set for $P_{2}$ over $\mathbb{Q}$.
-  \item \textbf{Column vectors in} $\mathbb{R}^2$ \\
-        Let
-        $$
-          S=\{(3,1),\,(2,1),\,(1,-1)\}.
-        $$
-        Any vector $(a,b)\in \mathbb{R}^2$ can be written as a linear combination of these three vectors in more than one way.
-        However, $(1,-1)$ itself is a linear combination of $(3,1)$ and $(2,1)$, so it is not necessary to span $\mathbb{R}^2$.
-        Hence $S$ has redundant elements and is not a minimal spanning set of $\mathbb{R}^2$.
-\end{itemize}
-The second example above motivates the following lemma:
-\begin{lemmabox}{}{}
-  Suppose that $S_1 \subset S$, where $S \subseteq \mathbf{V}$, then
-  $$\langle S_1 \rangle \subseteq \langle S \rangle$$
-  if and only if every element of $S \backslash S_1$ is a linear combination of the elements of $S_1$.
-\end{lemmabox}
-\begin{definitionbox}{}{}
-  \begin{itemize}
-    \item \textbf{Finite dimensional}: A vector space that has a finite spanning set
-    \item \textbf{Infinite dimensional}: A vector space that has an infinite spanning set
-  \end{itemize}
-\end{definitionbox}
-\subsubsection*{Example of infinite dimensional vector space}
-\begin{itemize}
-  \item The vector space $\mathbb{R}[x]$ of all polynomials with real coefficients is infinite dimensional. To see this let $S$ be a finite subset of $\mathbb{R}[x]$ and let $x^k$ be the highest power of $x $ in $S$. Then $x^{k+1} \notin \langle S \rangle$ since $x^{k+1}$ cannot be expressed as a linear combination of the elements of $S$.
-  \item The set of $\mathbb{R}$ is infinite dimensional as a vector space over the field, $\mathbb{Q}$, of rational numbers.
-\end{itemize}
-\subsection{Linear independence}
-\begin{definitionbox}{}{}
-  Let $S \subseteq \mathbf{V}$ with at least two elements. \\[2ex]
-  Then $S$ is linearly independent if \textbf{no element of $S$ can be expressed as a linear combination of the other elements of $S$}. \\[2ex]
-  Equivalently, if no element of $S$ belongs to the span of the other elements of $S$.
-\end{definitionbox}
-It follows, a subset consisting of a single element is linearly independent if and only if that element is non-zero. The definition above takes a lot of work to check for large sets, the following definition is often more useful:
-\begin{definitionbox}{}{}
-  Let $S$ be a non-empty subset of $\mathbf{V}$.\\[2ex]
-  Then $S$ is \textbf{linearly independent} if the only linear combination of the elements of $S$ that equals zero is to take all the coefficients to be zero.
-\end{definitionbox}
-\subsubsection*{Equivalence of the two definitions}
-Let $S = \{v_1, \dots, v_k\}$ and suppose $v_1 \in \langle v_2, \dots v_k \rangle$. Then:
-$$
-  v_1 = \alpha_2 v_2 + \cdots + \alpha_k v_k \quad \Rightarrow \quad
-  0 = - v_1 + \alpha_2 v_2 + \cdots + \alpha_k v_k
-$$
-is an expression for the zero vector as a linear combination of elements of $S$, whose coefficients are not all zero. On the other hand suppose:
-$$
-  0 = c_1v_1 + c_2v_2 + \cdots + c_kv_k
-$$
-where not all $c_i = 0$ Then:
-$$
-  v_1 = -\frac{c_2}{c_1}v_2 - \cdots - \frac{c_k}{c_1}v_k \quad \Rightarrow \quad
-  v_1 \in \langle v_2, \dots, v_k \rangle
-$$
-\begin{examplebox}{}{}
-  In $\mathbb{R}^3$, let $S = \{[1,2,-1], [-2, 3, 2], [-3,8,3]\}$. Show that $S$ is linearly independent.
-  \\[2ex] \rule{\textwidth}{1px} \\
-  To determine if $S$ is linearly independent, we need to investigate whether the system of equations has solutions other than $(x,y,z) = (0,0,0)$:
-  $$ x \begin{bmatrix}
-      1 \\
-      2 \\
-      -1
-    \end{bmatrix}
-    + y \begin{bmatrix}
-      -2 \\
-      3  \\
-      2
-    \end{bmatrix}
-    + z \begin{bmatrix}
-      -3 \\
-      8  \\
-      3
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      0 \\
-      0 \\
-      0
-    \end{bmatrix}
-    \quad\Longrightarrow \quad
-    \begin{bmatrix}
-      1  & -2 & -3 & | & 0 \\
-      2  & 3  & 8  & | & 0 \\
-      -1 & 2  & 3  & | & 0
-    \end{bmatrix}
-  $$
-  Reducing it to its RREF we get:
-  $$
-    \begin{bmatrix}
-      1 & 0 & 1 & | & 0 \\
-      0 & 1 & 2 & | & 0 \\
-      0 & 0 & 0 & | & 0
-    \end{bmatrix}
-    \quad\Longrightarrow\quad
-    \begin{array}{l}
-      x  + t = 0 \\
-      y + 2t = 0 \\
-      z + t = 0
-    \end{array}
-    \quad\Longrightarrow\quad
-    (x,y,z) = (-t, -2t, t)
-  $$
-  Setting $t = 1$ gives:
-  $$
-    -1 \begin{bmatrix}
-      1 \\
-      2 \\
-      -1
-    \end{bmatrix}
-    -2 \begin{bmatrix}
-      -2 \\
-      3  \\
-      2
-    \end{bmatrix}
-    +1 \begin{bmatrix}
-      -3 \\
-      8  \\
-      3
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      0 \\
-      0 \\
-      0
-    \end{bmatrix}
-  $$
-  Hence, each of the three elements of $S$ is a linear combination of the other two. So $S$ is not linearly independent (we say it is linearly dependent).
-\end{examplebox}
-\subsection{Characterizations of Linear Independence}
+%   Two things need to be checked to confirm that $U \subseteq V$ is a subspace:
+%   \begin{enumerate}
+%     \item $\mathbb{U}$ is \textbf{closed} under the addition in $\mathbf{V}$, i.e. $u_1 + u_2 \in \mathbf{U}$ for all $u_1,u_2 \in \mathbf{U}$.
+%     \item $\mathbb{U}$ is \textbf{closed} under scalar multiplication, i.e. $\alpha u \in \mathbb{U}$, whenever $u \in \mathbb{U}$ and $\alpha \in \mathbb{F}$.
+%   \end{enumerate}
+% \end{definitionbox}
+% \subsubsection*{Examples of subspaces}
+% \begin{enumerate}
+%   \item Let $\mathbb{Q}[x]$ be the set of all polynomials with rational coefficients. Let $P_2 \subseteq \mathbb{Q}[x]$ be the set of all polynomials of degree at most 2. This means $P_2 = \{a_2x^2 + a_1x + a_0: a_0, a_1, a_2 \in \mathbf{Q}\}$ Then $P_2$ is a vector subspace of $\mathbb{Q}[x]$. If $f(x)$ and $g(x)$ are rational polynomials of degree at most 2, then also is $f(x) + g(x)$ and $\alpha f(x)$, where $\alpha \in \mathbb{Q}$.
+%   \item The set $\mathbb{C}$ is a vector space over the set of real numbers. Within $\mathbb{C}$, the subset $\mathbb{R}$ is an example of a vector subspace over $\mathbb{R}.$ An example of a subset of $\mathbb{C}$ that is not a real vector subset is the unit circle S in the complex plane- this is the set of complex numbers of modulus 1, it consists of all complex numbers of the form a+bi, where $a^2+b^2=1.$ This is closed neither under addition nor multiplication by real scalars.
+%   \item The Cartesian plane ($\mathbb{R}^2$) is a real vector space. Within $\mathbb{R}^2$, let $U=\{(a,b):a > 0,b >0\}$. Then $\mathbf{U}$ is closed under addition and under multiplication by positive scalars. It is not a vector subspace of $\mathbb{R}^2$,because it is not closed under multiplication by negative scalars
+%   \item Let $v$ be a fixed non-zero vector $\in \mathbb{R}^3$ and let $v^{\perp} = \{u \in \mathbb{R}^3: u^Tv = 0\}$. Then $v^{\perp}$ is not empty since $0 \in v^{\perp}$.Suppose $u_1, u_2 \in v^{\perp}$. If $u \in v^{\perp}$ and $\alpha \in \mathbb{R}$, then $(\alpha u)^T v = \alpha u^T v = 0 = \alpha 0 = 0$. Hence $v^{\perp}$ is closed under scalar multiplication. Thus $v^{\perp}$ is a vector subspace of $\mathbb{R}^3$. Note that $v^{\perp}$ is not all $\mathbb{R}^3$, since $v \notin v^{\perp}$.
+% \end{enumerate}
+% \subsection{Span of a set of vectors}
+% \begin{definitionbox}{Span}{}
+%   Let $\mathbf{V}$ be a vector space over a field $\mathbb{F}$, and let $S$ be a non empty subset of $\mathbf{V}$. \\[2ex]
+%   The $\mathbb{F}$-linear span, commonly called the \textbf{span} of $S$, denoted $\langle S \rangle$, is the set of all $\mathbb{F}$-linear combinations of the elements of $S \in \mathbf{V}$. \\[2ex]
+%   If $S=V$, then $S$ is called a spanning set of $V$; meaning that every element of $\mathbf{V}$ is a linear combination of the elements of $S$.
+% \end{definitionbox}
+% For a subset $S$ of a $\mathbb{F}$-vector space $\mathbf{V}$, the sum of any two linear combinations of $S$ is an element of $S$, and any scalar multiple of a linear combination of $S$ is also an element of $S$; hence the following lemma:
+% \begin{lemmabox}{}{}
+%   For any subset, $S$, of a vector space, $\mathbf{V}$, the span, $\langle S \rangle$, is a subspace of $\mathbf{V}$.
+% \end{lemmabox}
+% \subsubsection*{Examples}
+% \begin{itemize}
+%   \item \textbf{Polynomials over} $\mathbb{Q}$ \\
+%         $Q[x]$ is the set of all polynomials with rational coefficients, and $P_{2}\subset Q[x]$ consists of polynomials of degree at most 2.
+%         If $S=\{x^{2}+1,\, x+1\}$, then
+%         $$
+%           \langle S\rangle \;=\;\{\,a(x^2 + 1) \;+\; b(x+1)\;:\;a,b \in \mathbb{Q}\}.
+%         $$
+%         All members of $\langle S\rangle$ are degree-$\le 2$ polynomials with constant term equal to the sum of the $x$- and $x^2$-coefficients.
+%         For instance, $x^2+2x+3 \in \langle S\rangle$ but $x^2+2x+4 \notin \langle S\rangle$.
+%         Since $\langle S\rangle$ does not include all degree-$\le 2$ polynomials in $P_{2}$, $S$ is not a spanning set for $P_{2}$ over $\mathbb{Q}$.
+%   \item \textbf{Column vectors in} $\mathbb{R}^2$ \\
+%         Let
+%         $$
+%           S=\{(3,1),\,(2,1),\,(1,-1)\}.
+%         $$
+%         Any vector $(a,b)\in \mathbb{R}^2$ can be written as a linear combination of these three vectors in more than one way.
+%         However, $(1,-1)$ itself is a linear combination of $(3,1)$ and $(2,1)$, so it is not necessary to span $\mathbb{R}^2$.
+%         Hence $S$ has redundant elements and is not a minimal spanning set of $\mathbb{R}^2$.
+% \end{itemize}
+% The second example above motivates the following lemma:
+% \begin{lemmabox}{}{}
+%   Suppose that $S_1 \subset S$, where $S \subseteq \mathbf{V}$, then
+%   $$\langle S_1 \rangle \subseteq \langle S \rangle$$
+%   if and only if every element of $S \backslash S_1$ is a linear combination of the elements of $S_1$.
+% \end{lemmabox}
+% \begin{definitionbox}{}{}
+%   \begin{itemize}
+%     \item \textbf{Finite dimensional}: A vector space that has a finite spanning set
+%     \item \textbf{Infinite dimensional}: A vector space that has an infinite spanning set
+%   \end{itemize}
+% \end{definitionbox}
+% \subsubsection*{Example of infinite dimensional vector space}
+% \begin{itemize}
+%   \item The vector space $\mathbb{R}[x]$ of all polynomials with real coefficients is infinite dimensional. To see this let $S$ be a finite subset of $\mathbb{R}[x]$ and let $x^k$ be the highest power of $x $ in $S$. Then $x^{k+1} \notin \langle S \rangle$ since $x^{k+1}$ cannot be expressed as a linear combination of the elements of $S$.
+%   \item The set of $\mathbb{R}$ is infinite dimensional as a vector space over the field, $\mathbb{Q}$, of rational numbers.
+% \end{itemize}
+% \subsection{Linear independence}
+% \begin{definitionbox}{}{}
+%   Let $S \subseteq \mathbf{V}$ with at least two elements. \\[2ex]
+%   Then $S$ is linearly independent if \textbf{no element of $S$ can be expressed as a linear combination of the other elements of $S$}. \\[2ex]
+%   Equivalently, if no element of $S$ belongs to the span of the other elements of $S$.
+% \end{definitionbox}
+% It follows, a subset consisting of a single element is linearly independent if and only if that element is non-zero. The definition above takes a lot of work to check for large sets, the following definition is often more useful:
+% \begin{definitionbox}{}{}
+%   Let $S$ be a non-empty subset of $\mathbf{V}$.\\[2ex]
+%   Then $S$ is \textbf{linearly independent} if the only linear combination of the elements of $S$ that equals zero is to take all the coefficients to be zero.
+% \end{definitionbox}
+% \subsubsection*{Equivalence of the two definitions}
+% Let $S = \{v_1, \dots, v_k\}$ and suppose $v_1 \in \langle v_2, \dots v_k \rangle$. Then:
+% $$
+%   v_1 = \alpha_2 v_2 + \cdots + \alpha_k v_k \quad \Rightarrow \quad
+%   0 = - v_1 + \alpha_2 v_2 + \cdots + \alpha_k v_k
+% $$
+% is an expression for the zero vector as a linear combination of elements of $S$, whose coefficients are not all zero. On the other hand suppose:
+% $$
+%   0 = c_1v_1 + c_2v_2 + \cdots + c_kv_k
+% $$
+% where not all $c_i = 0$ Then:
+% $$
+%   v_1 = -\frac{c_2}{c_1}v_2 - \cdots - \frac{c_k}{c_1}v_k \quad \Rightarrow \quad
+%   v_1 \in \langle v_2, \dots, v_k \rangle
+% $$
+% \begin{examplebox}{}{}
+%   In $\mathbb{R}^3$, let $S = \{[1,2,-1], [-2, 3, 2], [-3,8,3]\}$. Show that $S$ is linearly independent.
+%   \\[2ex] \rule{\textwidth}{1px} \\
+%   To determine if $S$ is linearly independent, we need to investigate whether the system of equations has solutions other than $(x,y,z) = (0,0,0)$:
+%   $$ x \begin{bmatrix}
+%       1 \\
+%       2 \\
+%       -1
+%     \end{bmatrix}
+%     + y \begin{bmatrix}
+%       -2 \\
+%       3  \\
+%       2
+%     \end{bmatrix}
+%     + z \begin{bmatrix}
+%       -3 \\
+%       8  \\
+%       3
+%     \end{bmatrix}
+%     =
+%     \begin{bmatrix}
+%       0 \\
+%       0 \\
+%       0
+%     \end{bmatrix}
+%     \quad\Longrightarrow \quad
+%     \begin{bmatrix}
+%       1  & -2 & -3 & | & 0 \\
+%       2  & 3  & 8  & | & 0 \\
+%       -1 & 2  & 3  & | & 0
+%     \end{bmatrix}
+%   $$
+%   Reducing it to its RREF we get:
+%   $$
+%     \begin{bmatrix}
+%       1 & 0 & 1 & | & 0 \\
+%       0 & 1 & 2 & | & 0 \\
+%       0 & 0 & 0 & | & 0
+%     \end{bmatrix}
+%     \quad\Longrightarrow\quad
+%     \begin{array}{l}
+%       x  + t = 0 \\
+%       y + 2t = 0 \\
+%       z + t = 0
+%     \end{array}
+%     \quad\Longrightarrow\quad
+%     (x,y,z) = (-t, -2t, t)
+%   $$
+%   Setting $t = 1$ gives:
+%   $$
+%     -1 \begin{bmatrix}
+%       1 \\
+%       2 \\
+%       -1
+%     \end{bmatrix}
+%     -2 \begin{bmatrix}
+%       -2 \\
+%       3  \\
+%       2
+%     \end{bmatrix}
+%     +1 \begin{bmatrix}
+%       -3 \\
+%       8  \\
+%       3
+%     \end{bmatrix}
+%     =
+%     \begin{bmatrix}
+%       0 \\
+%       0 \\
+%       0
+%     \end{bmatrix}
+%   $$
+%   Hence, each of the three elements of $S$ is a linear combination of the other two. So $S$ is not linearly independent (we say it is linearly dependent).
+% \end{examplebox}
+% \subsection{Characterizations of Linear Independence}
 
-\begin{theorembox}
-  Let $S$ be a subset of a vector space $V$. The following are equivalent:
-  \begin{enumerate}
-    \item $S$ is linearly independent if and only if $S$ is a minimal spanning set of $\langle S \rangle$ -- no proper subset of $S$ spans $\langle S \rangle$.
+% \begin{theorembox}
+%   Let $S$ be a subset of a vector space $V$. The following are equivalent:
+%   \begin{enumerate}
+%     \item $S$ is linearly independent if and only if $S$ is a minimal spanning set of $\langle S \rangle$ -- no proper subset of $S$ spans $\langle S \rangle$.
 
-    \item $S$ is linearly independent if and only if every element of $\langle S \rangle$ has a unique expression as a linear combination of elements of $S$.
+%     \item $S$ is linearly independent if and only if every element of $\langle S \rangle$ has a unique expression as a linear combination of elements of $S$.
 
-    \item $S$ is linearly independent if and only if every element of $\langle S \rangle$ has unique coordinates with respect to the elements of $S$.
-  \end{enumerate}
-\end{theorembox}
+%     \item $S$ is linearly independent if and only if every element of $\langle S \rangle$ has unique coordinates with respect to the elements of $S$.
+%   \end{enumerate}
+% \end{theorembox}
 
-\begin{definitionbox}{Basis}{}
-  A \textbf{basis} of a vector space $V$ is a spanning set of $V$ that is linearly independent.
-\end{definitionbox}
+% \begin{definitionbox}{Basis}{}
+%   A \textbf{basis} of a vector space $V$ is a spanning set of $V$ that is linearly independent.
+% \end{definitionbox}
 
-\begin{lemmabox}{}{}
-  If $S$ is a finite spanning set of a vector space $V$, then $S$ contains a basis of $V$.
-\end{lemmabox}
+% \begin{lemmabox}{}{}
+%   If $S$ is a finite spanning set of a vector space $V$, then $S$ contains a basis of $V$.
+% \end{lemmabox}
 
-\noindent \textbf{Proof:} If $S$ is not linearly independent, then some element $v_1 \in S$ is in the span of $S \setminus \{v_1\}$. Let $S_1 = S \setminus \{v_1\}$, which still spans $V$. Continue this process, removing elements that are linearly dependent on the remaining ones. Since $S$ is finite, this process terminates with a linearly independent spanning set of $V$.
+% \noindent \textbf{Proof:} If $S$ is not linearly independent, then some element $v_1 \in S$ is in the span of $S \setminus \{v_1\}$. Let $S_1 = S \setminus \{v_1\}$, which still spans $V$. Continue this process, removing elements that are linearly dependent on the remaining ones. Since $S$ is finite, this process terminates with a linearly independent spanning set of $V$.
 
-\begin{theorembox}[Steinitz Exchange Lemma]{}
-  Let $V$ be a vector space with a spanning set $S = \{v_1, \ldots, v_n\}$. Then any linearly independent subset $L$ of $V$ contains at most $n$ elements.
-\end{theorembox}
-\noindent \textbf{Proof:} Let $L = \{y_1, \ldots, y_k\}$ be linearly independent. The key idea is to replace elements of $S$ with elements of $L$ one by one, maintaining a spanning set:
-\begin{itemize}
-  \item Express $y_1$ as a linear combination of elements in $S$. At least one element, say $v_1$, must have a non-zero coefficient.
-  \item Replace $v_1$ with $y_1$ to get $S_1 = \{y_1, v_2, \ldots, v_n\}$, which still spans $V$.
-  \item Continue this process, replacing $v_i$ with $y_i$ at each step.
-  \item This can continue for at most $n$ steps, so $k \leq n$.
-\end{itemize}
+% \begin{theorembox}{Steinitz Exchange Lemma}{}
+%   Let $V$ be a vector space with a spanning set $S = \{v_1, \ldots, v_n\}$. Then any linearly independent subset $L$ of $V$ contains at most $n$ elements.
+% \end{theorembox}
+% \noindent \textbf{Proof:} Let $L = \{y_1, \ldots, y_k\}$ be linearly independent. The key idea is to replace elements of $S$ with elements of $L$ one by one, maintaining a spanning set:
+% \begin{itemize}
+%   \item Express $y_1$ as a linear combination of elements in $S$. At least one element, say $v_1$, must have a non-zero coefficient.
+%   \item Replace $v_1$ with $y_1$ to get $S_1 = \{y_1, v_2, \ldots, v_n\}$, which still spans $V$.
+%   \item Continue this process, replacing $v_i$ with $y_i$ at each step.
+%   \item This can continue for at most $n$ steps, so $k \leq n$.
+% \end{itemize}
 
-\begin{theorembox}
-  If $V$ is a finite-dimensional vector space, then every basis of $V$ has the same number of elements.
-\end{theorembox}
+% \begin{theorembox}
+%   If $V$ is a finite-dimensional vector space, then every basis of $V$ has the same number of elements.
+% \end{theorembox}
 
-\noindent \textbf{Proof:} Let $B_1$ and $B_2$ be bases of $V$. Since $B_1$ is linearly independent and $B_2$ spans $V$, we have $|B_1| \leq |B_2|$ by the Steinitz Exchange Lemma. Similarly, $|B_2| \leq |B_1|$. Therefore, $|B_1| = |B_2|$.
+% \noindent \textbf{Proof:} Let $B_1$ and $B_2$ be bases of $V$. Since $B_1$ is linearly independent and $B_2$ spans $V$, we have $|B_1| \leq |B_2|$ by the Steinitz Exchange Lemma. Similarly, $|B_2| \leq |B_1|$. Therefore, $|B_1| = |B_2|$.
 
-\begin{definitionbox}{Dimension}{}
-  The dimension of a finite-dimensional vector space $V$, denoted $\dim V$, is the number of elements in any basis of $V$.
-\end{definitionbox}
-\subsection{Properties of Bases in Finite Dimensional Vector Spaces}
-Let $V$ be a vector space of dimension $n$ over a field $F$. Recall that a basis of $V$ has two key properties:
-\begin{itemize}
-  \item It is a linearly independent set in $V$
-  \item It spans $V$
-\end{itemize}
+% \begin{definitionbox}{Dimension}{}
+%   The dimension of a finite-dimensional vector space $V$, denoted $\dim V$, is the number of elements in any basis of $V$.
+% \end{definitionbox}
+% \pagebreak
+% \subsection{Properties of Bases in Finite Dimensional Vector Spaces}
+% Let $V$ be a vector space of dimension $n$ over a field $F$. Recall that a basis of $V$ has two key properties:
+% \begin{itemize}
+%   \item It is a linearly independent set in $V$
+%   \item It spans $V$
+% \end{itemize}
 
-A basis is therefore both a minimal spanning set and a maximal linearly independent set.
+% A basis is therefore both a minimal spanning set and a maximal linearly independent set.
 
-\begin{theorembox}[Characterization of Bases by Cardinality]
-  For a finite-dimensional vector space $V$ with $\dim V = n$:
-  \begin{enumerate}
-    \item Every linearly independent subset with exactly $n$ elements is a basis.
-    \item Every spanning set with exactly $n$ elements is a basis.
-  \end{enumerate}
-\end{theorembox}
+% \begin{theorembox}{Characterization of Bases by Cardinality}{}
+%   For a finite-dimensional vector space $V$ with $\dim V = n$:
+%   \begin{enumerate}
+%     \item Every linearly independent subset with exactly $n$ elements is a basis.
+%     \item Every spanning set with exactly $n$ elements is a basis.
+%   \end{enumerate}
+% \end{theorembox}
 
-\begin{proof}[Proof of (1)]
-  Let $L = \{v_1, \ldots, v_n\}$ be a linearly independent subset of $V$.
+% \noindent \textbf{Proof of (1.):} Let $L = \{v_1, \ldots, v_n\}$ be a linearly independent subset of $V$.
 
-  Suppose $L$ is not a spanning set. Then there exists some $v \in V$ with $v \notin \langle L \rangle$.
+% Suppose $L$ is not a spanning set. Then there exists some $v \in V$ with $v \notin \langle L \rangle$.
 
-  This means the set $L' = \{v_1, \ldots, v_n, v\}$ would be linearly independent in $V$, contradicting Theorem 2.2.6 (which states that no linearly independent set can have more than $n$ elements).
+% This means the set $L' = \{v_1, \ldots, v_n, v\}$ would be linearly independent in $V$, contradicting Theorem 2.2.6 (which states that no linearly independent set can have more than $n$ elements).
 
-  Therefore, $L$ must be a spanning set and thus a basis.
-\end{proof}
+% Therefore, $L$ must be a spanning set and thus a basis.\\[2ex]
+% \noindent \textbf{Proof of (2.):}
+% Let $S$ be a spanning set of $V$ with $n$ elements.
 
-\begin{proof}[Proof of (2)]
-  Let $S$ be a spanning set of $V$ with $n$ elements.
+% If $S$ is not linearly independent, then $S$ contains a proper subset that spans $V$ but has fewer than $n$ elements, contradicting Theorem 2.2.6 (which implies all bases have exactly $n$ elements).
 
-  If $S$ is not linearly independent, then $S$ contains a proper subset that spans $V$ but has fewer than $n$ elements, contradicting Theorem 2.2.6 (which implies all bases have exactly $n$ elements).
+% Therefore, $S$ must be linearly independent and thus a basis.
 
-  Therefore, $S$ must be linearly independent and thus a basis.
-\end{proof}
+% \begin{theorembox}{Basis Extension Theorem}{}
+%   Any linearly independent subset $L$ of $V$ can be extended to a basis of $V$.
+% \end{theorembox}
 
-\begin{theorembox}[Basis Extension Theorem]
-  Any linearly independent subset $L$ of $V$ can be extended to a basis of $V$.
-\end{theorembox}
+% \begin{proof}
+%   Let $L = \{v_1, \ldots, v_k\}$. Since $L$ is linearly independent, $k \leq n$ by Theorem 2.2.6.
 
-\begin{proof}
-  Let $L = \{v_1, \ldots, v_k\}$. Since $L$ is linearly independent, $k \leq n$ by Theorem 2.2.6.
+%   If $k = n$, then $L$ is already a basis by part (1) above.
 
-  If $k = n$, then $L$ is already a basis by part (1) above.
+%   If $k < n$, then $L$ does not span $V$, so there exists $v_{k+1} \in V$ with $v_{k+1} \notin \langle L \rangle$. Then $\{v_1, \ldots, v_k, v_{k+1}\}$ is linearly independent.
 
-  If $k < n$, then $L$ does not span $V$, so there exists $v_{k+1} \in V$ with $v_{k+1} \notin \langle L \rangle$. Then $\{v_1, \ldots, v_k, v_{k+1}\}$ is linearly independent.
+%   We can continue this process, adding elements outside the existing span until we reach $n$ elements, which will form a basis of $V$.
+% \end{proof}
 
-  We can continue this process, adding elements outside the existing span until we reach $n$ elements, which will form a basis of $V$.
-\end{proof}
+% \begin{theorembox}{Isomorphism with $F^n$}{}
+%   Every $n$-dimensional vector space $V$ over $F$ is isomorphic to the standard vector space $F^n$.
+% \end{theorembox}
 
-\begin{theorembox}[Isomorphism with $F^n$]
-  Every $n$-dimensional vector space $V$ over $F$ is isomorphic to the standard vector space $F^n$.
-\end{theorembox}
+% \noindent\textbf{Proof:} Let $B = \{v_1, \ldots, v_n\}$ be a basis of $V$ over $F$.
 
-\begin{proof}[Sketch]
-  Let $B = \{v_1, \ldots, v_n\}$ be a basis of $V$ over $F$.
+% For any $v \in V$, there exists a unique expression $v = a_1v_1 + \cdots + a_nv_n$.
 
-  For any $v \in V$, there exists a unique expression $v = a_1v_1 + \cdots + a_nv_n$.
+% The mapping $v \mapsto \begin{bmatrix} a_1 \\ \vdots \\ a_n \end{bmatrix}$ defines a bijective correspondence between $V$ and $F^n$ that preserves vector space operations.
 
-  The mapping $v \mapsto \begin{bmatrix} a_1 \\ \vdots \\ a_n \end{bmatrix}$ defines a bijective correspondence between $V$ and $F^n$ that preserves vector space operations.
+% Different bases of $V$ correspond to different isomorphisms with $F^n$.
 
-  Different bases of $V$ correspond to different isomorphisms with $F^n$.
-\end{proof}
 
-\begin{definitionbox}{Standard Basis}{}
-  The standard basis of $F^n$ is $\{e_1, \ldots, e_n\}$, where $e_i$ has 1 in position $i$ and 0 in all other positions.
-\end{definitionbox}
+% \begin{definitionbox}{Standard Basis}{}
+%   The standard basis of $F^n$ is $\{e_1, \ldots, e_n\}$, where $e_i$ has 1 in position $i$ and 0 in all other positions.
+% \end{definitionbox}
 \end{document}
