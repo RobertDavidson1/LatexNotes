@@ -97,7 +97,7 @@ $m \times n$ matrices is a vector space. A \textbf{vector space} algebraic struc
   \rule{\textwidth}{1px} \\[2ex]
   \textbf{Remark:} $Av$, if defined, has the same number of rows as $A$ and the same number of columns as $\textbf{v}$.
 \end{definitionbox}
-\pagebreak
+
 \subsection*{Matrix-Matrix Multiplication}
 \begin{definitionbox}{}{}
   Let $A$ and $B$ be matrices of size $m \times p$ and $p \times n$, respectively.Write $v_1, \ldots v_n$ for the columns of $B$. Then the product $AB$ is the $m \times n$ matrices whose columns are $Av_1 , \ldots, Av_n$.
@@ -149,6 +149,106 @@ For matrices $A$ and $B$, the products $AB$ and $BA$ are generally not
 equal, even if they are both defined and even if both have the same
 size.
 \subsection*{Linear Transformations}
+\begin{definitionbox}{}{}
+  Let $m$ and $n$ be positive integers. \\[2ex]
+  A \textbf{linear transformation} $T$ from $\mathbb{R}^n$ to $\mathbb{R}^m$ is a function $T:\mathbb{R}^n \to \mathbb{R}^m$ that satisfies:
+  \begin{itemize}
+    \item $T(\textbf{u} + \textbf{v}) = T(\textbf{u}) + T(\textbf{v})$ for all $\textbf{u}, \textbf{v} \in \mathbb{R}^n$
+    \item $T(\lambda\textbf{u}) = \lambda T(\textbf{u})$ for all $\textbf{u} \in \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
+  \end{itemize}
+\end{definitionbox}
+\subsubsection*{Matrix of a Linear Transformation}
+Suppose $T:\mathbb{R}^3 \to \mathbb{R}^2$ is the linear transformation:
+$$
+  T\begin{bmatrix}
+    1 \\
+    0 \\
+    0 \\
+  \end{bmatrix}
+  = \begin{bmatrix}
+    2 \\
+    3 \\
+  \end{bmatrix}
+  \quad
+  T\begin{bmatrix}
+    0 \\
+    1 \\
+    0 \\
+  \end{bmatrix}
+  = \begin{bmatrix}
+    1 \\
+    4 \\
+  \end{bmatrix}
+  \quad
+  T\begin{bmatrix}
+    0 \\
+    0 \\
+    1 \\
+  \end{bmatrix}
+  = \begin{bmatrix}
+    -6 \\
+    7  \\
+  \end{bmatrix}
+$$
+Then for the vector in $\mathbb{R}^3$ with entries $a,b,c$:
+$$
+  T\begin{bmatrix}
+    a \\
+    b \\
+    c \\
+  \end{bmatrix}
+  = aT\begin{bmatrix}
+    1 \\
+    0 \\
+    0 \\
+  \end{bmatrix}
+  + bT\begin{bmatrix}
+    0 \\
+    1 \\
+    0 \\
+  \end{bmatrix}
+  + cT\begin{bmatrix}
+    0 \\
+    0 \\
+    1 \\
+  \end{bmatrix}
+  = \begin{bmatrix}
+    2  & 1 & -6 \\
+    -3 & 4 & 7
+  \end{bmatrix}
+  \begin{bmatrix}
+    a \\
+    b \\
+    c
+  \end{bmatrix}
+$$
+Where the $2\times 3$ matrix $M_T$ is called the \textbf{standard matrix} of A.
+A linear transformation $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$ can be completely represented by an $m \times n$ matrix $M_T$. \\[2ex]
+\textbf{Understanding the Matrix Representation}
+\begin{itemize}
+  \item The columns of matrix $M_T$ are the images of the standard basis vectors $e_1, e_2, \ldots, e_n$ under $T$.
+  \item For any vector $v \in \mathbb{R}^n$, we calculate $T(v)$ by multiplying: $M_T \cdot v$.
+  \item Therefore, matrix-vector multiplication is simply evaluating a linear transformation.
+\end{itemize}
+\textbf{Correspondence} \\
+Any $m \times n$ matrix $A$ defines a linear transformation $T_A: \mathbb{R}^n \rightarrow \mathbb{R}^m$ by: $T_A(v) = Av$.
+
+\subsection*{Examples}
+Linear transformations include:
+\begin{itemize}
+  \item Rotations
+  \item Reflections
+  \item Scaling
+\end{itemize}
+But not translations (which are affine transformations).
+
+\subsection*{Efficiency of Representation}
+A remarkable property of linear transformations is their information efficiency:
+\begin{itemize}
+  \item To completely define $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$, we need only $mn$ values.
+  \item These values are the coordinates of the $n$ transformed basis vectors in $\mathbb{R}^m$.
+  \item This differs fundamentally from general continuous functions $f: \mathbb{R} \rightarrow \mathbb{R}$, which cannot be fully determined by their values at finitely many points.
+\end{itemize}
 
 \pagebreak
 \section{Systems of linear equations}
