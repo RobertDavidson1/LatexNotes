@@ -892,5 +892,18 @@ $$
       0
     \end{bmatrix}
   $$
+  Hence, each of the three elements of $S$ is a linear combination of the other two. So $S$ is not linearly independent (we say it is linearly dependent).
 \end{examplebox}
+\subsubsection{Equivalent Definitions of Linear Independence}
+\begin{theorembox}
+  Let $S$ be a subset of a vector space $\mathbf{V}$. The following are equivalent:
+
+  \begin{enumerate}
+    \item $S$ is linearly independent \textbf{if $S$ is a minimal spanning set of its linear span} - no proper subset of $S$ spans the same subspace of  $\mathbf{V}$ that $S$ does.
+
+    \item $S$ is linearly independent if every element of $\langle S \rangle$ has a \textbf{unique expression as a linear combination of elements of $S$}.
+
+    \item $S$ is linearly independent if every element of $\langle S \rangle$ has unique coordinates in terms of the elements of $S$.
+  \end{enumerate}
+\end{theorembox}
 \end{document}
