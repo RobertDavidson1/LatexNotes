@@ -1106,7 +1106,78 @@ If $V$ has a linearly independent set with $n$ elements, a spanning set in $V$ m
 \begin{conceptbox}{}{}
   The number of elements of a linearly independent set cannot exceed the number in a spanning set. Every spanning set has at least as many elements as the biggest independent set.
 \end{conceptbox}
+\subsection{Every basis has the same number of elements}
+Let $V$ be a finite dimensional vector space and let $B$ and $B'$ be the bases of $V$. Then:
+\begin{itemize}
+  \item $B$ is linearly independent and $B'$ is a spanning set, so $B$ has \textbf{at most} as many elements as $B'$.
+  \item $B$ is a spanning set and $B'$ is linearly independent, so $B$ has \textbf{at least} as many elements as $B'$.
+\end{itemize}
+It follows that $B$ and $B'$ have the same number of elements.
+\begin{definitionbox}{}{}
+  The dimension of $V$ is the number of elements in a basis of $V$.
+\end{definitionbox}
+\noindent \textbf{Note:} Every vector space that has a finite spanning set has a finite basis
+(since we can discard elements from a finite spanning set until a basis
+remains).\\[2ex]
+\textbf{Examples:}
+\begin{itemize}
+  \item The set $\{1, x, x^2, x^3\}$ is a basis for the vector space $P_3$ of all polynomials of degree at most 3 with real coefficients.\\
 
+        It is linearly independent because the only way to write the zero polynomial as
+        $$
+          a_3 x^3 + a_2 x^2 + a_1 x + a_0 = 0
+        $$
+        is by taking $a_0 = a_1 = a_2 = a_3 = 0$.
+
+        Another basis of $P_3$, preferable for some applications, consists of the first four Legendre polynomials:
+        $$
+          \{1,\ x,\ \tfrac{1}{2}(3x^2 - 1),\ \tfrac{1}{2}(5x^3 - 3x)\}.
+        $$
+  \item The \textbf{row space} of an $m \times n$ matrix is the subspace of $\mathbb{R}^n$ spanned by its rows. When we reduce a matrix to row-reduced echelon form (RREF), we are computing a basis of its row space.
+  \item In $\mathbb{R}^2$, the reflection in the line $y = 2x$ sends:
+        \[
+          (1,0) \mapsto \left(-\tfrac{3}{5}, \tfrac{4}{5}\right), \quad
+          (0,1) \mapsto \left(\tfrac{4}{5}, \tfrac{3}{5}\right).
+        \]
+
+        Its standard matrix is:
+        \[
+          \begin{bmatrix}
+            - \tfrac{3}{5} & \tfrac{4}{5} \\
+            \tfrac{4}{5}   & \tfrac{3}{5}
+          \end{bmatrix}.
+        \]
+
+        The same reflection sends:
+        \[
+          (1,2) \mapsto (1,2), \quad
+          (2, -1) \mapsto (-2,1).
+        \]
+
+        It is easier to describe this transformation in terms of the basis:
+        \[
+          \left\{
+          \begin{bmatrix}
+            1 \\ 2
+          \end{bmatrix},
+          \begin{bmatrix}
+            1 \\ -1
+          \end{bmatrix}
+          \right\}.
+        \]
+\end{itemize}
+
+\subsection{Row rank and column rank}
+Let $A$ be a $m \times n$ matrix. \\[2ex]
+The \textbf{row rank}, $r$ of $A$, is the dimension of the row space of $A$ - which is the subspace of $\mathbb{R}^n$ spanned by the rows of $A$. \\[2ex]
+The \textbf{column rank}, $c$ of $A$, is the dimension of the column space of $A$ - which is the subspace of $\mathbb{R}^m$ spanned by the columns of $A$. The column rank is the dimension of the image of the linear transformation whose matrix is $A$. \\[2ex]
+The row rank is at most $m$ and the column rank at most $n$, but both can be less.
+
+\subsection{Row rank = column rank}
+\begin{theorembox}{}{}
+  The row rank and column rank are the same for every matrix
+\end{theorembox}
+So we can just refer to the $\textbf{rank}.
 
 % \section{Spanning sets, bases and dimensions}
 % \subsection{Vector Spaces}
