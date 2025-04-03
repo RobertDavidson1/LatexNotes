@@ -1,0 +1,64 @@
+{
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk with move",
+      "tools": ["latexmk", "move-pdf"]
+    }
+  ],
+
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "move-pdf",
+      "command": "bash",
+      "args": [
+        "-c",
+        "SOURCE=\"%DOC%\"; FILENAME=$(basename \"$SOURCE\" .tex); SOURCEDIR=$(dirname \"$SOURCE\"); PDFDIR=\"${SOURCEDIR/src/pdf}\"; mkdir -p \"$PDFDIR\"; mv \"${SOURCEDIR}/${FILENAME}.pdf\" \"${PDFDIR}/${FILENAME}.pdf\" && echo \"Copied to ${PDFDIR}/${FILENAME}.pdf\""
+      ]
+    }
+  ],
+  "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.recipe.default": "lastUsed",
+
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.vrb",
+    "*.run.xml",
+    "*.synctex(busy)",
+    "*.synctex",
+    "*.synctex.gz",
+    "**/*.synctex.gz"
+  ],
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.formatting.latex": "latexindent",
+}
