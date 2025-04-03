@@ -794,4 +794,30 @@ The second example above motivates the following lemma:
   \item The vector space $\mathbb{R}[x]$ of all polynomials with real coefficients is infinite dimensional. To see this let $S$ be a finite subset of $\mathbb{R}[x]$ and let $x^k$ be the highest power of $x $ in $S$. Then $x^{k+1} \notin \langle S \rangle$ since $x^{k+1}$ cannot be expressed as a linear combination of the elements of $S$.
   \item The set of $\mathbb{R}$ is infinite dimensional as a vector space over the field, $\mathbb{Q}$, of rational numbers.
 \end{itemize}
+\subsection{Linear independence}
+\begin{definitionbox}{}{}
+  Let $S \subseteq \mathbf{V}$ with at least two elements. \\[2ex]
+  Then $S$ is linearly independent if \textbf{no element of $S$ can be expressed as a linear combination of the other elements of $S$}. \\[2ex]
+  Equivalently, if no element of $S$ belongs to the span of the other elements of $S$.
+\end{definitionbox}
+It follows, a subset consisting of a single element is linearly independent if and only if that element is non-zero. The definition above takes a lot of work to check for large sets, the following definition is often more useful:
+\begin{definitionbox}{}{}
+  Let $S$ be a non-empty subset of $\mathbf{V}$.\\[2ex]
+  Then $S$ is \textbf{linearly independent} if the only linear combination of the elements of $S$ that equals zero is tp tale all the coefficients to be zero.
+\end{definitionbox}
+\subsubsection*{Equivalence of the two definitions}
+Let $S = \{v_1, \dots, v_k\}$ and suppose $v_1 \in \langle v_2, \dots v_k \rangle$. Then:
+$$
+  v_1 = \alpha_2 v_2 + \cdots + \alpha_k v_k \quad \Rightarrow \quad
+  0 = - v_1 + \alpha_2 v_2 + \cdots + \alpha_k v_k
+$$
+is a expression for the zero vector as a linear combination of elements of $S$, whose coefficients are not all zero. On the other hand suppose:
+$$
+  0 = c_1v_1 + c_2v_2 + \cdots + c_kv_k
+$$
+where $c_i \neq 0, \; \forall \; i \leq k$ Then:
+$$
+  v_1 = -\frac{c_2}{c_1}v_2 - \cdots - \frac{c_k}{c_1}v_k \quad \Rightarrow \quad
+  v_1 \in \langle v_2, \dots, v_k \rangle$$
+
 \end{document}
