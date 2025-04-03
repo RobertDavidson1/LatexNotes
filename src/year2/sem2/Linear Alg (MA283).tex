@@ -895,15 +895,55 @@ $$
   Hence, each of the three elements of $S$ is a linear combination of the other two. So $S$ is not linearly independent (we say it is linearly dependent).
 \end{examplebox}
 \subsubsection{Equivalent Definitions of Linear Independence}
+\section{Characterizations of Linear Independence}
+
 \begin{theorembox}
-  Let $S$ be a subset of a vector space $\mathbf{V}$. The following are equivalent:
-
+  Let $S$ be a subset of a vector space $V$. The following are equivalent:
   \begin{enumerate}
-    \item $S$ is linearly independent \textbf{if $S$ is a minimal spanning set of its linear span} - no proper subset of $S$ spans the same subspace of  $\mathbf{V}$ that $S$ does.
+    \item $S$ is linearly independent if and only if $S$ is a minimal spanning set of $\langle S \rangle$ -- no proper subset of $S$ spans $\langle S \rangle$.
 
-    \item $S$ is linearly independent if every element of $\langle S \rangle$ has a \textbf{unique expression as a linear combination of elements of $S$}.
+    \item $S$ is linearly independent if and only if every element of $\langle S \rangle$ has a unique expression as a linear combination of elements of $S$.
 
-    \item $S$ is linearly independent if every element of $\langle S \rangle$ has unique coordinates in terms of the elements of $S$.
+    \item $S$ is linearly independent if and only if every element of $\langle S \rangle$ has unique coordinates with respect to the elements of $S$.
   \end{enumerate}
 \end{theorembox}
+
+\begin{definitionbox}{Basis}{}
+  A \textbf{basis} of a vector space $V$ is a spanning set of $V$ that is linearly independent.
+\end{definitionbox}
+
+\begin{lemmabox}{}{}
+  If $S$ is a finite spanning set of a vector space $V$, then $S$ contains a basis of $V$.
+\end{lemmabox}
+
+\begin{proof}
+  If $S$ is not linearly independent, then some element $v_1 \in S$ is in the span of $S \setminus \{v_1\}$. Let $S_1 = S \setminus \{v_1\}$, which still spans $V$. Continue this process, removing elements that are linearly dependent on the remaining ones. Since $S$ is finite, this process terminates with a linearly independent spanning set of $V$.
+\end{proof}
+
+\begin{theorembox}[Steinitz Exchange Lemma]{}
+  Let $V$ be a vector space with a spanning set $S = \{v_1, \ldots, v_n\}$. Then any linearly independent subset $L$ of $V$ contains at most $n$ elements.
+\end{theorembox}
+
+\begin{proof}
+  Let $L = \{y_1, \ldots, y_k\}$ be linearly independent. The key idea is to replace elements of $S$ with elements of $L$ one by one, maintaining a spanning set:
+  \begin{itemize}
+    \item Express $y_1$ as a linear combination of elements in $S$. At least one element, say $v_1$, must have a non-zero coefficient.
+    \item Replace $v_1$ with $y_1$ to get $S_1 = \{y_1, v_2, \ldots, v_n\}$, which still spans $V$.
+    \item Continue this process, replacing $v_i$ with $y_i$ at each step.
+    \item This can continue for at most $n$ steps, so $k \leq n$.
+  \end{itemize}
+\end{proof}
+
+\begin{theorembox}
+  If $V$ is a finite-dimensional vector space, then every basis of $V$ has the same number of elements.
+\end{theorembox}
+
+\begin{proof}
+  Let $B_1$ and $B_2$ be bases of $V$. Since $B_1$ is linearly independent and $B_2$ spans $V$, we have $|B_1| \leq |B_2|$ by the Steinitz Exchange Lemma. Similarly, $|B_2| \leq |B_1|$. Therefore, $|B_1| = |B_2|$.
+\end{proof}
+
+\begin{definitionbox}{Dimension}{}
+  The dimension of a finite-dimensional vector space $V$, denoted $\dim V$, is the number of elements in any basis of $V$.
+\end{definitionbox}
+
 \end{document}
