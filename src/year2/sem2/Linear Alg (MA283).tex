@@ -157,7 +157,7 @@ size.
     \item $T(\lambda\textbf{u}) = \lambda T(\textbf{u})$ for all $\textbf{u} \in \mathbb{R}^n$ and $\lambda \in \mathbb{R}$
   \end{itemize}
 \end{definitionbox}
-\subsubsection*{Matrix of a Linear Transformation}
+\subsection*{Matrix of a Linear Transformation}
 Suppose $T:\mathbb{R}^3 \to \mathbb{R}^2$ is the linear transformation:
 $$
   T\begin{bmatrix}
@@ -230,26 +230,27 @@ A linear transformation $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$ can be comple
   \item For any vector $v \in \mathbb{R}^n$, we calculate $T(v)$ by multiplying: $M_T \cdot v$.
   \item Therefore, matrix-vector multiplication is simply evaluating a linear transformation.
 \end{itemize}
-\textbf{Correspondence} \\
-Any $m \times n$ matrix $A$ defines a linear transformation $T_A: \mathbb{R}^n \rightarrow \mathbb{R}^m$ by: $T_A(v) = Av$.
-
-\subsection*{Examples}
-Linear transformations include:
-\begin{itemize}
-  \item Rotations
-  \item Reflections
-  \item Scaling
-\end{itemize}
-But not translations (which are affine transformations).
-
-\subsection*{Efficiency of Representation}
-A remarkable property of linear transformations is their information efficiency:
+\textbf{Correspondence:} Any $m \times n$ matrix $A$ defines a linear transformation $T_A: \mathbb{R}^n \rightarrow \mathbb{R}^m$ by: $T_A(v) = Av$. Linear transformations include rotations, reflections and scaling \\[2ex]
+\textbf{Efficiency of Representation:} A remarkable property of linear transformations is their information efficiency:
 \begin{itemize}
   \item To completely define $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$, we need only $mn$ values.
   \item These values are the coordinates of the $n$ transformed basis vectors in $\mathbb{R}^m$.
   \item This differs fundamentally from general continuous functions $f: \mathbb{R} \rightarrow \mathbb{R}$, which cannot be fully determined by their values at finitely many points.
 \end{itemize}
-
+\pagebreak
+\subsection*{Matrix multiplication is composition}
+Suppose that $T:\mathbb{R}^n \to \mathbb{R}^p$ and $S:\mathbb{R}^p \to \mathbb{R}^m$ are linear transformations. Then the composition $S \circ T: \mathbb{R}^n \to \mathbb{R}^m$ is also a linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$ defined for $\mathbf{v} \in \mathbb{R}^n$ by:
+$$
+  S \circ T(\mathbf{v}) = S(T(\mathbf{v}))
+$$
+To see how that the $m \times n$ matrix $M_{S\circ T}$ depends on the matrix $M_S (m \times p)$ and $M_T (p \times n)$ we look at the definition of $M_{S\circ T}$:
+\begin{itemize}
+  \item The first column has coordinates $S\circ T(e_1) = S(T(e_1))$
+  \item $T(e_1)$ is first column of $M_T$
+  \item Then $S(T(e_1))$ is the matrix-vector product $M_S \cdot M_T(e_1)$
+  \item Same for all other columns $\Longrightarrow$ $M_{S\circ T} = M_S \cdot M_T$
+\end{itemize}
+Thus, we conclude $\textbf{matrix multiplication is composition of linear transformations}$.
 \pagebreak
 \section{Systems of linear equations}
 \subsection{Linear equations and Solution Sets}
