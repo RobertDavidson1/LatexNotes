@@ -1337,12 +1337,17 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
           \item A basis is a minimal spanning set - meaning that every element is needed and does not contain a smaller spanning set.
           \item A basis is a maximal linearly independent set - meaning that no element of $S$ is a linear combination of the other elements of $S$.
         \end{itemize}
-  \item \textbf{Steinitz Replace Lemma} Every linearly independent set with $n$ elements in $V$ is a basis for $V$. From the lemma, we conclude
+  \item \textbf{Steinitz Replace Lemma:} "\textit{Every linearly independent set with $n$ elements in $V$ is a basis for $V$.}" From the lemma, we conclude
         \begin{itemize}
           \item A linearly independent in $V$ cannot have more than $n$ elements, if $V$ has a spanning set with $n$ elements.
           \item A spanning set in $V$ must have at least $n$ elements, if $V$ has a linearly independent set with $n$ elements.
         \end{itemize}
-  \item
+  \item \textbf{Dimension} of $V$ is the number of elements in a basis of $V$. The dimension of $\mathbb{R}^n$ is $n$.
+  \item \textbf{Row rank of $\boldmath{A}$} is the maximum number of linearly independent rows $A$.
+  \item \textbf{Column rank of $\boldmath{A}$} is the maximum number of linearly independent columns $A$.
+  \item \textbf{Row rank = column rank} for every matrix.
+  \item \textbf{Rank} of a matrix is the dimension of its row space or column space (since they are equal).
+
 \end{itemize}
 \end{takeaway-box}
 \section{Coordinates, Rank-Nullity, and Change of Basis}
@@ -1625,6 +1630,17 @@ $$
   v = P[v]_B
 $$
 So $P$ itself, is the change of basis matrix from the basis $B$ to the standard basis.
+\subsection{Key Takeaways}
+\begin{takeaway-box}{}{}
+\begin{itemize}
+  \item \textbf{Coordinates} of a vector $v$ with respect to a basis $B$ are the coefficients of the linear combination of the basis vectors that yield $v$.
+  \item \textbf{Lemma 5.1}: \textit{If $\{b_1, \dots, b_n\}$ is a basis of a vector space $V$, then every element of $V$ has a unique expression of a linear combination of $b_1, \dots, b_n$.}
+  \item \textbf{Change of basis matrix} a matrix that allows you to express the coordinates of a vector with respect to a new basis, given its coordinates in the original basis
+  \item \textbf{Rank-Nullity Theorem}: \textit{Let $T: \mathbb{R}^n \to \mathbb{R}^m$ be a linear transformation. Then $\dim(\text{ker}(T)) + \text{rank}(T) = n$.}
+\end{itemize}
+\end{takeaway-box}
+
+
 \section{Similarity, Eigenvalues, and Diagonalizability}
 \subsection*{Introduction}
 \noindent In this section, we address one of linear algebra’s central questions: how to simplify a matrix so its action becomes more transparent. Often, the simplest form is a \textbf{diagonal} matrix—one whose nonzero entries appear only on its main diagonal. A matrix $A$ that can be converted into this form via an invertible matrix $P$ (so that $P^{-1}AP$ is diagonal) is called \textbf{diagonalizable}. \\[2ex]
@@ -1893,8 +1909,7 @@ It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\la
   A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity
 \end{theorembox}
 \section{Inner Products, Orthogonality, and Projections}
-\section*{Introduction to Inner Products, Orthogonality, and Projections}
-
+\section*{Introduction}
 \noindent In this section, we introduce the notion of an \textbf{inner product}, a tool that lets us measure angles, lengths, and distances within a vector space—much like the dot product does in $\mathbb{R}^n$. Once we have an inner product, we can talk about \textbf{orthogonality}, or perpendicular vectors, which lays the groundwork for a host of geometric insights and computational techniques. \\[2ex]
 
 \noindent First, we generalize the usual dot product to an arbitrary vector space by defining a function $\langle x, y \rangle$ that must satisfy certain symmetry, linearity, and positivity conditions. This innately geometric perspective extends to the concepts of \textbf{length} (or norm), \textbf{distance}, and \textbf{angle} in any such space. Orthogonality—where two vectors satisfy $\langle x, y \rangle = 0$—then becomes the keystone for analyzing how vectors project and decompose relative to each other. \\[2ex]
