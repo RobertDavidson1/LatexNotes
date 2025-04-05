@@ -1529,6 +1529,44 @@ $$
 $$
 So $P$ itself, is the change of basis matrix from the basis $B$ to the standard basis.
 \subsection{Similarity (The relation of $A$ and $A'$)}
-
-
+Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$m we:
+\begin{itemize}
+  \item \textbf{Take a vector $v \in \mathbb{R}^3$ written in $B$-coordinates as the column $[v]_B$}.
+  \item \textbf{Convert to standard coordinates:} take the product $P[v]_B$.
+  \item \textbf{Apply $T$:} Left multiply by $A$, to get $AP[v]_B$. This column is the standard coordinates of $T(v)$.
+  \item \textbf{Convert to $B$-coordinates:} left multiply by $P^{-1}$ (change of basis matrix from standard to B) to get $P^{-1}AP[v]_B$. This column has the $B$-coordinates of $T(v)$.
+  \item \textbf{Conclusion:}  For any element $v \in \mathbb{R}^3$, the $B$-coordinates of $T(v)$ are given by:
+        $$
+          [T(v)]_B = P^{-1}AP[v]_B
+        $$
+\end{itemize}
+$$\textbf{The $B$ matrix of $T$ is: $P^{-1}AP$, where $P$ has the elements of $B$ as columns.}$$
+\subsection{Similar Matrices}
+\begin{definitionbox}{}{}
+  Two matrices $A$ and $B$ are \textbf{similar} if there exists an invertible matrix $P$ such that:
+  $$
+    B = P^{-1}AP
+  $$
+\end{definitionbox}
+\noindent \textbf{Notes:}
+\begin{itemize}
+  \item Two distinct matrices are similar only if they \textbf{represent the same linear transformation} with respect to different bases.
+  \item We can't tell if two square matrices are similar just by looking. Instead, we look at the \textbf{trace} of the matrix, the sum of the diagonal elements, if two matrices have the same trace, they are similar.
+  \item Similar matrices have some features in common, such as the same determinant, the same eigenvalues, etc (more on this later).
+  \item Our example showed that the matrix:
+        $$ A =
+          \begin{bmatrix}
+            -2 & 2  & 1  \\
+            4  & 5  & -1 \\
+            -4 & -8 & 3
+          \end{bmatrix}$$
+        is similar to the diagonal matrix:
+        $$ \text{diag}(2,-3,7) = A' =
+          \begin{bmatrix}
+            2 & 0  & 0 \\
+            0 & -3 & 0 \\
+            0 & 0  & 7
+          \end{bmatrix}$$
+        In this situation, we say that $A$ is \textbf{diagonalizable}.
+\end{itemize}
 \end{document}
