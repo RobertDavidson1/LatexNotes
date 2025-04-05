@@ -256,6 +256,11 @@ To see how that the $m \times n$ matrix $M_{S\circ T}$ depends on the matrix $M_
 Thus, we conclude $\textbf{matrix multiplication is composition of linear transformations}$.
 
 \section{Systems of linear equations}
+
+This section introduces the fundamental notion of a \textbf{linear equation} in several variables, examines how to combine multiple linear equations into a \textbf{system}, and discusses systematic methods for finding all solutions. We begin by defining a linear equation and its \textbf{solution set}, and then show how to represent an entire system of equations in a concise \textbf{matrix form}. From there, we take a closer look at how to solve such systems using \textbf{elementary row operations} (EROs), the building blocks of a powerful technique known as Gaussian elimination. \\[2ex]
+A central theme here is how EROs transform a matrix into forms (REF and RREF) that make solutions transparent. This leads to an understanding of \textbf{leading variables} versus \textbf{free variables}, which determines whether a system has a unique solution, infinitely many solutions, or no solution at all (i.e., whether the system is \textbf{consistent} or \textbf{inconsistent}). We then see that the same row operations can be captured by multiplying on the left by specially designed \textbf{elementary matrices}, each of which is invertible. This viewpoint not only deepens our understanding of how systems are solved but also shows that any invertible matrix can be decomposed into a product of elementary matrices. \\[2ex]
+As a culminating example, we use these methods to \textbf{find the inverse of a matrix} by performing row operations on an augmented matrix $[A \mid I]$ until $A$ becomes the identity. All these ideas form the core machinery for handling systems of linear equations throughout linear algebra.
+
 \subsection{Linear equations and Solution Sets}
 A linear equation in the variables $x$ and
 $y$ is an equation of the form
@@ -1458,77 +1463,79 @@ The Rank-Nullity Theorem \textbf{relates the dimensions of the kernel, image and
   $$
 \end{definitionbox}
 \begin{examplebox}{}{}
-Let $T: \mathbb{R}^3 \to \mathbb{R}^3$ be the linear transformation defined by $v \to Av$ and $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
-$$
-  A =
-  \begin{bmatrix}
-    -2 & 2  & 1  \\
-    4  & 5  & -1 \\
-    -4 & -8 & 3
-  \end{bmatrix}
-  \quad \Bigg| \Bigg| \Bigg|\quad
-  b_1 = \begin{bmatrix}
-    1 \\
-    0 \\
-    4
-  \end{bmatrix}, \quad
-  b_2 = \begin{bmatrix}
-    2  \\
-    -1 \\
-    0
-  \end{bmatrix}, \quad
-  b_3 = \begin{bmatrix}
-    4 \\
-    0 \\
-    2
-  \end{bmatrix}
-  \quad\Longrightarrow\quad
-  B = \begin{bmatrix}
-    1 & 2  & 4 \\
-    0 & -1 & 0 \\
-    4 & 0  & 2
-  \end{bmatrix}
-$$
-\textbf{A diagonal representation of the matrix $A'$ of $T$ with respect to the basis $B$}
-$$
-  \begin{aligned}
-  T(b_{1})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrixInner Products, Orthogonality, and Projections                     & = \begin{bmatrix} 2 \\ 0 \\ 8 \end{bmatrix}                             & = 2b_{1}
-  \Longrightarrow [T(b_{1})]_B & = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix}                                         \\[1em]
-  T(b_{2})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
-  \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
-  & = \begin{bmatrix} -6 \\ 3 \\ 0 \end{bmatrix}                            & = -3b_{2}
-  \Longrightarrow [T(b_{2})]_B & = \begin{bmatrix} 0 \\ -3 \\ 0 \end{bmatrix}                                        \\[1em]
-  T(b_{3})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
-  \begin{bmatrix} 0 \\ -1 \\ 2 \end{bmatrix}
-  & = \begin{bmatrix} 0 \\ -7 \\ 14 \end{bmatrix}                           & = 7b_{3}
-  \Longrightarrow [T(b_{3})]_B & = \begin{bmatrix} 0 \\ 0 \\ 7 \end{bmatrix}
-  \end{aligned}
-$$
-The matrix of $A'$ of $T$ with respect to $B$ is \textbf{diagonal}. For describing this transformation, $T$, the basis $B$ is preferable to the standard basis.
-$$
-  A ' =
-  \begin{bmatrix}
-    2 & 0  & 0 \\
-    0 & -3 & 0 \\
-    0 & 0  & 7
-  \end{bmatrix}
-$$
-This means for any $v \in \mathbb{R}^3$:
-$$
-  \underbrace{[T(v)]_B}_{\text{B-coordinates of } T(v)} = \underbrace{A'[v]_B}_{\text{matrix-vector product}}
-$$
+  Let $T: \mathbb{R}^3 \to \mathbb{R}^3$ be the linear transformation defined by $v \to Av$ and $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
+  $$
+    A =
+    \begin{bmatrix}
+      -2 & 2  & 1  \\
+      4  & 5  & -1 \\
+      -4 & -8 & 3
+    \end{bmatrix}
+    \quad \Bigg| \Bigg| \Bigg|\quad
+    b_1 = \begin{bmatrix}
+      1 \\
+      0 \\
+      4
+    \end{bmatrix}, \quad
+    b_2 = \begin{bmatrix}
+      2  \\
+      -1 \\
+      0
+    \end{bmatrix}, \quad
+    b_3 = \begin{bmatrix}
+      4 \\
+      0 \\
+      2
+    \end{bmatrix}
+    \quad\Longrightarrow\quad
+    B = \begin{bmatrix}
+      1 & 2  & 4 \\
+      0 & -1 & 0 \\
+      4 & 0  & 2
+    \end{bmatrix}
+  $$
+  \textbf{A diagonal representation of the matrix $A'$ of $T$ with respect to the basis $B$}
+  $$
+    \begin{aligned}
+      T(b_{1})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
+      \begin{bmatrix} 1 \\ 0 \\ 4 \end{bmatrix}
+                                   & = \begin{bmatrix} 2 \\ 0 \\ 8 \end{bmatrix}                             & = 2b_{1}
+      \Longrightarrow [T(b_{1})]_B & = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix}                                         \\[1em]
+      T(b_{2})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
+      \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
+                                   & = \begin{bmatrix} -6 \\ 3 \\ 0 \end{bmatrix}                            & = -3b_{2}
+      \Longrightarrow [T(b_{2})]_B & = \begin{bmatrix} 0 \\ -3 \\ 0 \end{bmatrix}                                        \\[1em]
+      T(b_{3})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
+      \begin{bmatrix} 0 \\ -1 \\ 2 \end{bmatrix}
+                                   & = \begin{bmatrix} 0 \\ -7 \\ 14 \end{bmatrix}                           & = 7b_{3}
+      \Longrightarrow [T(b_{3})]_B & = \begin{bmatrix} 0 \\ 0 \\ 7 \end{bmatrix}
+    \end{aligned}
+  $$
+  The matrix of $A'$ of $T$ with respect to $B$ is \textbf{diagonal}. For describing this transformation, $T$, the basis $B$ is preferable to the standard basis.
+  $$
+    A ' =
+    \begin{bmatrix}
+      2 & 0  & 0 \\
+      0 & -3 & 0 \\
+      0 & 0  & 7
+    \end{bmatrix}
+  $$
+  This means for any $v \in \mathbb{R}^3$:
+  $$
+    \underbrace{[T(v)]_B}_{\text{B-coordinates of } T(v)} = \underbrace{A'[v]_B}_{\text{matrix-vector product}}
+  $$
 \end{examplebox}
 \subsection{More on Change of Basis}
 Let $P$ be the matrix with the basis vectors from $B$ as columns. As we've seen, $P^{-1}$ is the change of basis matrix from  the standard basis to the basis $B$. \\[2ex]
 For any element, $v \in \mathbb{R}^n$, its $B$-coordinates are given by:
-$$Inner Products, Orthogonality, and Projections
+$$
+  [v]_B = P^{-1}v
 $$
 Equivalently, if we start with the $B$-coordinates, then the standard coordinates of $v$ are given by:
 $$
   v = P[v]_B
 $$
 So $P$ itself, is the change of basis matrix from the basis $B$ to the standard basis.
-
 \section{Similarity, Eigenvalues, and Diagonalizability}
 \subsection{Similarity (The relation of $A$ and $A'$)}
 Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$m we:
@@ -1826,7 +1833,7 @@ The ordinary scalar product on $\mathbb{R}^n$ is the best known example of an in
           \langle f, g \rangle = \int_0^1 f(x)g(x)\, dx, \quad \text{for } f, g \in C.
         $$
 
-  \item On the space $M_{m \times n}(\mathbb{R})$, the \textit{Frobenius inner product} or \textit{trace inner product} is defined by
+  \item On the space $M_{m \times n}(\mathbb{R})$, the \textbf{Frobenius inner product} or \textbf{trace inner product} is defined by
         $$
           \langle A, B \rangle = \text{trace}(A^T B).
         $$
