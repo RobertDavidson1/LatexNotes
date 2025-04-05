@@ -1323,7 +1323,14 @@ $$b_1 = \begin{bmatrix}
     4 \\
     0 \\
     2
-  \end{bmatrix}$$
+  \end{bmatrix}
+  \quad\Longrightarrow\quad
+  B = \begin{bmatrix}
+    1 & 2  & 4 \\
+    0 & -1 & 0 \\
+    4 & 0  & 2
+  \end{bmatrix}
+$$
 Given an element of $\mathbb{R}^3$, say $v$, how do we find the B-coordinates of $v$?
 $$
   v = \begin{bmatrix}
@@ -1375,5 +1382,56 @@ $$e_1 = xb_1 + yb_2 + zb_3 =
     0
   \end{bmatrix}
 $$
-This is saying that $[e_1]_B$ is the first column of the inverse of the matrix $B$.
+This is saying that $[e_1]_B$ is the first column of the inverse of the matrix $B$. Write a matrix $P$ which has $b_1, b_2, b_3$ as columns:
+$$
+  P = \begin{bmatrix}
+    1 & 2  & 4 \\
+    0 & -1 & 0 \\
+    4 & 0  & 2
+  \end{bmatrix}
+  \quad\Longrightarrow\quad
+  P^{-1} =
+  \begin{bmatrix}
+    -\tfrac{1}{7} & -\tfrac{2}{7} & \tfrac{2}{7}   \\
+    0             & -1            & 0              \\
+    \tfrac{2}{7}  & \tfrac{4}{7}  & -\tfrac{1}{14}
+  \end{bmatrix}
+$$
+To find the $B$-coordinates of any $v \in \mathbb{R}^3$, we can multiply $v$ on the left by $P^{-1}$:
+$$
+  \begin{bmatrix}
+    2  \\
+    -3 \\
+    4
+  \end{bmatrix}_B
+  =
+  P^{-1}v =
+  \begin{bmatrix}
+    -\tfrac{1}{7} & -\tfrac{2}{7} & \tfrac{2}{7}   \\
+    0             & -1            & 0              \\
+    \tfrac{2}{7}  & \tfrac{4}{7}  & -\tfrac{1}{14}
+  \end{bmatrix}
+  \begin{bmatrix}
+    2  \\
+    -3 \\
+    4
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \tfrac{12}{7} \\
+    3             \\
+    -\tfrac{10}{7}
+  \end{bmatrix}
+$$
+This is saying that $v = \tfrac{12}{7}b_1 + 3b_2 - \tfrac{10}{7}b_3$. $P^{-1}$ is called the \textbf{change of basis matrix} from the standard basis to the basis $B$.
+\subsection{The Rank Nullity Theorem}
+The Rank-Nullity Theorem \textbf{relates the dimensions of the kernel, image and domain} of a linear transformation. The dimension of the image of a linear transformation is called the \textbf{rank} and the dimension of the the kernel is called the \textbf{nullity.} The rank of $T$ is equal to the rank of matrix $X$, since the image of $T$ is the column space of this matrix.
+
+\begin{theorembox}{}{}
+  Let $T: \mathbb{R}^n \to \mathbb{R}^m$ be a linear transformation. Where $V$ and $W$ are finite-dimensional vector spaces, over some field $\mathbb{F}$. Then:
+  $$
+    \dim(\text{ker}(T)) + \text{rank}(T) = n
+  $$
+\end{theorembox}
+\noindent\textbf{Informally:}  The rank-nullity theorem says the full dimension of the domain must be accounted for in the combination of the kernel and image.
 \end{document}
