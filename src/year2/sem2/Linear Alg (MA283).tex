@@ -1725,7 +1725,64 @@ Since $v_2$ and $v_3$ are linearly independent, and $lambda_1 - \lambda_2 \neq 0
 \subsection{At most $n$ distinct eigenvalues}
 The following consequence of the previous theorem shows that  a matrix can have at most $n$ distinct eigenvalues. We already knew this, since the eigenvalues are roots of a polynomial of degree $n$.
 \begin{theorembox}{Corollary}{}
-  A matrix in $M_n(\mathbb{R})$ can have at most $n$ linearly independent eigenvectors.
+  Let $A \in M_N(\mathbb{R})$. Then $A$ has at most $n$ distinct eigenvalues in $\mathbb{R}$.
+\end{theorembox}
+\noindent\textbf{Proof:} \\
+If $A$ has $k$ distinct eigenvalues, with corresponding eigenvectors $v_1, \ldots, v_k \in \mathbb{R}^n$, then $k$ cannot exceed the dimension of $\mathbb{R}^n$, since $\{v_1, \dots, v_k\}$ is a linearly independent set in $\mathbb{R}^n$.
+\begin{theorembox}{Corollary}{}
+  If $A \in M_n(\mathbb{R})$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.
+\end{theorembox}
+\noindent\textbf{Proof:} \\
+A set consisting of one eigenvector for each of the $n$ eigenvalues is linearly independent, so hence is a basis.
+
+\subsection{Notes about determinants and characteristic polynomials}
+\begin{enumerate}
+  \item The \textbf{characteristic polynomial} of the square matrix $A \in M_n(\mathbb{R})$ is the determinant of $\lambda I_n - A$.
+  \item If $t$ is a root of this polynomial, the $t$-eigenspace of $A$ is the nullspace of the matrix $tI_n - A$.
+  \item The determinant of a diagonal or upper triangular matrix is the product of the entries on its main diagonal.
+  \item A square matrix is \textbf{block diagonal} if its non-zero entries are all contained in square blocks along its diagonal. The determinant of a block diagonal matrix is the product of the determinants of its diagonal blocks.
+  \item Similar matrices have the same characteristic polynomial and the same eigenvalues and eigenspace dimensions, since they represent the same linear transformation.
+\end{enumerate}
+
+\subsection{Multiplicity of Eigenvalues}
+Suppose that $A$ and $B$ are similar square matrices, so that $B = P^{-1}AP$ for some invertible matrix $P$. Then
+\begin{align*}
+  \det(xI - B) & = \det(xI - P^{-1}AP)              \\
+               & = \det(P^{-1}(xI)P - P^{-1}AP)     \\
+               & = \det\left(P^{-1}(xI - A)P\right) \\
+               & = \det P^{-1} \det(xI - A) \det P  \\
+               & = \det(xI - A).
+\end{align*}
+
+If two matrices have the same characteristic polynomial, they are not necessarily similar. For example $\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ and $\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$ have the same characteristic polynomial but are not similar.
+
+\subsection{Multiplicity of Eigenvalues}
+Let $\lambda$ be an eigenvalue of a matrix $A \in M_n(\mathbb{R})$. The \textbf{algebraic multiplicity} of $\lambda$ is the number of times that $\lambda$ occurs as a root of the characteristic polynomial. The \textbf{geometric multiplicity} is the dimension of the $t$-eigenspace of $A$.
+\begin{examplebox}{}{}
+  $$A = \begin{bmatrix}
+      3 & 0 & 0 & 0 \\
+      0 & 3 & 0 & 0 \\
+      0 & 0 & 4 & 1 \\
+      0 & 0 & 0 & 4
+    \end{bmatrix}$$
+
+  The matrix has two distinct eigenvalues, $3$ and $4$. Both have algebraic multiplicity $2$; the characteristic polynomial is $(\lambda - 3)^2(\lambda - 4)^2$.
+  The 3-eigenspace has dimension 2, its elements are $\begin{bmatrix} a \\ b \\ 0 \\ 0 \end{bmatrix}$, for $a, b \in \mathbb{R}$.
+
+  The 4-eigenspace only has dimension 1, its elements are $\begin{bmatrix} 0 \\ 0 \\ c \\ 0 \end{bmatrix}$, for $c \in \mathbb{R}$.
+
+  This $A$ is not diagonalizable since it does not have four independent eigenvectors.
+\end{examplebox}
+\subsection{Geometric multiplicity $\leq$ Algebraic multiplicity}
+\begin{theorembox}{}{}
+  The geometric multiplicity of an eigenvalue is at most equal to its algebraic multiplicity.
+\end{theorembox}
+\noindent\textbf{Proof:} \\
+Suppose that $t$ has geometric multiplicity $k$ as an eigenvalue of the square matrix $A \in M_n(\mathbb{R})$, and let $\{v_1, \dots, v_k\}$ be a basis for the $t$-eigenspace of $A$. \\[2ex]
+Extend this to a basis $\mathcal{B}$ of $\mathbb{R}^n$, and let $P$ be the matrix whose columns are the elements of $\mathcal{B}$. Then the first $k$ columns of $P^{-1}AP$ have $t$ in the diagonal position and zeros elsewhere. \\[2ex]
+It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\lambda I_n - P^{-1}AP)$, so the algebraic multiplicity of $t$ is at least $k$.
+\begin{theorembox}{Corollary}{}
+  A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity
 \end{theorembox}
 
 \end{document}
