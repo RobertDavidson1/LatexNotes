@@ -1184,15 +1184,89 @@ Since the row rank is at most $m$ and the column rank at most $n$, both values c
 \begin{theorembox}{}{}
   The row rank and column rank are the same for every matrix
 \end{theorembox}
-\noindent So we can just refer to the \textbf{rank}. \\[2ex]
-For a $m \times n$ matrix, $A$, its row rank $r$ is the number of non-zero rows in its RREF and its column rank $c$ is the number of non-zero columns in its RREF. \\[2ex]
-Choose a basis for the row space of $A$, and write its elements as the rows of a $r \times n $ matrix $P$. Since every row of $A$ is a linear combination of rows $P$, there is a matrix $Q$ such that $A = QP$ (think about this)
-But now every column of $A$ is a linear combination of the $r$ columns of $Q$, so the dimension of the column space of $A$ is at most $r : c \leq r$. \\[2ex]
+\noindent
+Therefore, we refer to this common value simply as the \textbf{rank} of the matrix. \\[2ex]
+Let $A$ be an $m \times n$ matrix. The row rank $r$ is the number of non-zero rows in the RREF of $A$, and the column rank $c$ is the number of linearly independent columns of $A$. \\[2ex]
+To show that $c \leq r$, consider a basis for the row space of $A$ and arrange its vectors as the rows of an $r \times n$ matrix $P$. Since every row of $A$ is a linear combination of the rows of $P$, there exists an $m \times r$ matrix $Q$ such that
+$$
+  A = QP.
+$$
+It follows that each column of $A$ is a linear combination of the $r$ columns of $Q$, implying that $\dim(\text{col}(A)) \leq r$. Hence, $c \leq r$. \\[2ex]
+Conversely, to show that $r \leq c$, take a basis for the column space of $A$ and arrange its vectors as the columns of an $m \times c$ matrix $P'$. Since every column of $A$ is a linear combination of the columns of $P'$, there exists a $c \times n$ matrix $Q'$ such that
+$$
+  A = P'Q'.
+$$
+Therefore, each row of $A$ is a linear combination of the $c$ rows of $Q'$, and $\dim(\text{row}(A)) \leq c$. Hence, $r \leq c$. \\[2ex]
+Combining both inequalities, we conclude that $r = c$, i.e., the row rank and column rank are equal.
 
-To see that $r \leq c$, start with a basis for the column space of $A$, and write its $c$ elements as the columns of a $m \times c$ matrix $P'$. Then $A = P'Q'$, for some matrix $c \times n$ matrix $Q'$ and every row of $A$ is a linear combination of the $c$ rows $Q'$. Hence $r \leq c$.
+\subsubsection*{Example: Demonstrating that Row Rank Equals Column Rank}
+$$
+  A = \begin{bmatrix}
+    1 & 2 & 3 \\
+    2 & 4 & 6 \\
+    1 & 1 & 1
+  \end{bmatrix}.
+$$
+\noindent\textbf{Step 1: Determine the Rank}: Perform row reduction on $A$ to get its RREF:
+$$
+  \text{RREF}(A) = \begin{bmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & 2  \\
+    0 & 0 & 0
+  \end{bmatrix}.
+$$
+There are 2 non-zero rows, so the row rank is $r = 2$. We can also check that the first two columns of $A$ are linearly independent, while the third is a linear combination of the first two. Thus, the column rank $c = 2$ as well.
 
-Since $c \leq r$ and $r \leq c$, we have $c = r$. \\[2ex]
+\vspace{2ex}
+\noindent\textbf{Step 2: Show that $c \leq r$ via $A = QP$}
 
+Choose a basis for the row space from the non-zero rows of the RREF. Let
+\[
+  P = \begin{bmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & 2
+  \end{bmatrix}.
+\]
+Then find a matrix $Q$ such that $A = QP$. Solving yields:
+\[
+  Q = \begin{bmatrix}
+    1 & 2 \\
+    2 & 4 \\
+    1 & 1
+  \end{bmatrix}, \quad \text{so} \quad QP = \begin{bmatrix}
+    1 & 2 \\
+    2 & 4 \\
+    1 & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & 2
+  \end{bmatrix} = A.
+\]
+Thus, every column of $A$ is a linear combination of the $r = 2$ columns of $Q$, so $\dim(\text{col}(A)) \leq r$.
+
+\vspace{2ex}
+\noindent\textbf{Step 3: Show that $r \leq c$ via $A = P'Q'$}
+
+Now take a basis for the column space of $A$. Since columns 1 and 2 are independent, let
+\[
+  P' = \begin{bmatrix}
+    1 & 2 \\
+    2 & 4 \\
+    1 & 1
+  \end{bmatrix}.
+\]
+Let $Q'$ contain the coordinates of each column of $A$ in terms of the basis columns of $P'$:
+\[
+  Q' = \begin{bmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & 2
+  \end{bmatrix}, \quad \text{so} \quad P'Q' = A.
+\]
+Therefore, every row of $A$ is a linear combination of the $c = 2$ rows of $Q'$, and $\dim(\text{row}(A)) \leq c$.
+
+\vspace{2ex}
+\noindent\textbf{Conclusion:} Since both $c \leq r$ and $r \leq c$, we conclude that $r = c = 2$.
 
 
 \end{document}
