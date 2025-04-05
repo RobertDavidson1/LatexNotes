@@ -252,7 +252,41 @@ To see how that the $m \times n$ matrix $M_{S\circ T}$ depends on the matrix $M_
   \item Same for all other columns $\Longrightarrow$ $M_{S\circ T} = M_S \cdot M_T$
 \end{itemize}
 Thus, we conclude $\textbf{matrix multiplication is composition of linear transformations}$.
-\pagebreak
+
+
+\subsection*{Key Takeaways: Review of Matrix Algebra (Compact Form)}
+
+\begin{itemize}
+  \item \textbf{Matrix Addition:} Only defined for matrices of the same size. Entrywise: $(A + B)_{ij} = A_{ij} + B_{ij}$. The zero matrix is the additive identity.
+
+  \item \textbf{Scalar Multiplication:} Multiply each entry by the scalar $\alpha$:
+        $ \tiny
+          \alpha \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} =
+          \begin{bmatrix} \alpha & 2\alpha \\ 3\alpha & 4\alpha \end{bmatrix}
+        $
+  \item \textbf{Linear Combinations:} $\alpha_1 v_1 + \cdots + \alpha_k v_k $ with $ \alpha_i \in \mathbb{R} $ defines a linear combination.
+
+  \item \textbf{Matrix-Vector Multiplication:} For $ A \in \mathbb{R}^{m \times n} $ and $ v \in \mathbb{R}^n $, the product $ Av \in \mathbb{R}^m $ is:
+        $$
+          Av = v_1 A_1 + v_2 A_2 + \cdots + v_n A_n
+        $$
+  \item \textbf{Matrix-Matrix Multiplication:} If $ A \in \mathbb{R}^{m \times p} $, $ B \in \mathbb{R}^{p \times n} $, then:
+        $$
+          (AB)_{ij} = \sum_{k=1}^p A_{ik} B_{kj}
+        $$
+  \item  \textbf{Not commutative} The matrix product $AB \neq BA$ in general.
+  \item \textbf{Linear Transformations:} $ T : \mathbb{R}^n \to \mathbb{R}^m $ is linear if:
+        $$
+          T(u + v) = T(u) + T(v), \quad T(\lambda u) = \lambda T(u)
+        $$
+        Represented by matrix $ M_T $ such that $ T(v) = M_T v $. The columns of $ M_T $ are the images of the standard basis vectors.
+
+  \item \textbf{Composition = Multiplication:} For $ S : \mathbb{R}^p \to \mathbb{R}^m $, $ T : \mathbb{R}^n \to \mathbb{R}^p $,
+        \[
+          (S \circ T)(v) = S(T(v)) \quad \Rightarrow \quad M_{S \circ T} = M_S M_T
+        \]
+\end{itemize}
+
 \section{Systems of linear equations}
 
 This section introduces the fundamental notion of a \textbf{linear equation} in several variables, examines how to combine multiple linear equations into a \textbf{system}, and discusses systematic methods for finding all solutions. We begin by defining a linear equation and its \textbf{solution set}, and then show how to represent an entire system of equations in a concise \textbf{matrix form}. From there, we take a closer look at how to solve such systems using \textbf{elementary row operations} (EROs), the building blocks of a powerful technique known as Gaussian elimination. \\[2ex]
@@ -728,9 +762,9 @@ $$
 \subsection*{Introduction}
 
 \noindent In this section, we explore a series of interconnected ideas that shape our understanding of how sets of vectors can form specialized structures called \textbf{subspaces}, how certain subsets of vectors can generate entire spaces (\textbf{spanning}), and how to determine whether one vector is dependent on others (\textbf{linear dependence} versus \textbf{linear independence}). These notions not only formalize what it means for a collection of vectors to fill a space (or a portion of it) but also lay the groundwork for designing and working with efficient representations of those spaces.\\[2ex]
-We begin with the concepts of \textbf{image} and \textbf{kernel} in a linear transformation \(T:\mathbb{R}^n \to \mathbb{R}^m\). The image (also called the column space) comprises all possible outputs of the transformation, while the kernel (or nullspace) is the set of all inputs that map to the zero vector. Both are prime examples of subspaces of \(\mathbb{R}^m\) and \(\mathbb{R}^n\), respectively.
+We begin with the concepts of \textbf{image} and \textbf{kernel} in a linear transformation $T:\mathbb{R}^n \to \mathbb{R}^m$. The image (also called the column space) comprises all possible outputs of the transformation, while the kernel (or nullspace) is the set of all inputs that map to the zero vector. Both are prime examples of subspaces of $\mathbb{R}^m$ and $\mathbb{R}^n$, respectively.
 \\[2ex]
-From there, we introduce the formal definition of a \textbf{subspace} of \(\mathbb{R}^n\). A subspace is any set of vectors in \(\mathbb{R}^n\) that is closed under addition and scalar multiplication, meaning sums and scalar multiples of vectors in the set remain in the set. Identifying these subspaces is crucial, for instance, in analyzing solution sets of linear systems and transformations. \\[2ex]
+From there, we introduce the formal definition of a \textbf{subspace} of $\mathbb{R}^n$. A subspace is any set of vectors in $\mathbb{R}^n$ that is closed under addition and scalar multiplication, meaning sums and scalar multiples of vectors in the set remain in the set. Identifying these subspaces is crucial, for instance, in analyzing solution sets of linear systems and transformations. \\[2ex]
 Next, we discuss the idea of the \textbf{span} of a set of vectors, demonstrating how taking linear combinations of a few vectors can give rise to entire subspaces. This leads to the concept of a \textbf{spanning set}, a collection of vectors whose linear combinations recreate the entire subspace in question. Understanding which (and how many) vectors actually suffice to generate a subspace is a step toward more advanced ideas like dimension. \\[2ex]
 Finally, we turn to the topics of \textbf{linear dependence} and \textbf{linear independence}. These properties reveal whether one vector in a set can be written as a linear combination of the others. A set is linearly dependent if at least one vector is redundant, while a linearly independent set has no such redundancy. Checking for linear independence typically involves setting up a linear combination that yields the zero vector; if the only solution is all zero coefficients, the set is independent. This distinction shapes the way we reduce or optimize spanning sets and reveals the essence of a vector space’s most efficient basis. \\[2ex]
 Overall, these ideas—image, kernel, subspaces, span, and linear independence—are at the heart of linear algebra. They clarify how different vector sets form coherent structures and pave the way for higher-level topics such as rank, dimension, and bases, all of which are built upon the foundation laid out here.
@@ -1280,7 +1314,7 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
 \subsection*{Introduction}
 \noindent In this section, we extend our understanding of vector spaces by examining how to describe vectors with respect to an arbitrary basis (rather than always defaulting to the standard basis). This leads to the powerful notion of \textbf{coordinates}, which capture exactly how each vector in a space is formed as a linear combination of basis elements. Understanding coordinates is crucial for efficiently switching between different viewpoints on the same vector space—especially when one basis simplifies certain linear transformations more than another. \\[2ex]
 \noindent We begin by highlighting the uniqueness of coordinates in a given basis: any vector in a finite-dimensional space can be written in one and only one way as a linear combination of the basis vectors. From there, we see how to translate coordinates between different bases by way of a \textbf{change of basis} matrix. This concept underlies many practical calculations in linear algebra, including representing vectors or transformations in forms that reveal specific properties, such as diagonalization. \\[2ex]
-\noindent We also introduce the \textbf{Rank-Nullity Theorem}, one of the cornerstones of linear algebra, which states that for any linear map $T:\mathbb{R}^n \to \mathbb{R}^m$, the dimension of the domain ($n$) is the sum of the dimension of the kernel and the rank of \(T\). In other words, every vector in $\mathbb{R}^n$ is either mapped to zero or contributes to the image; no other outcomes are possible. \\[2ex]
+\noindent We also introduce the \textbf{Rank-Nullity Theorem}, one of the cornerstones of linear algebra, which states that for any linear map $T:\mathbb{R}^n \to \mathbb{R}^m$, the dimension of the domain ($n$) is the sum of the dimension of the kernel and the rank of $T$. In other words, every vector in $\mathbb{R}^n$ is either mapped to zero or contributes to the image; no other outcomes are possible. \\[2ex]
 \noindent Finally, we close by looking more deeply into how a linear map appears when expressed in different bases. A single transformation can have dramatically simpler matrices in certain bases—sometimes even diagonal. Understanding why and how to choose a basis that simplifies a map is a fundamental skill. Taken together, these ideas on coordinates, rank-nullity, and change of basis help us confidently move between abstract concepts (subspaces, images, kernels) and concrete matrix manipulations, ensuring we never lose sight of the geometry and structure behind the algebra.
 
 
@@ -1558,10 +1592,10 @@ $$
 So $P$ itself, is the change of basis matrix from the basis $B$ to the standard basis.
 \section{Similarity, Eigenvalues, and Diagonalizability}
 \subsection*{Introduction}
-\noindent In this section, we address one of linear algebra’s central questions: how to simplify a matrix so its action becomes more transparent. Often, the simplest form is a \textbf{diagonal} matrix—one whose nonzero entries appear only on its main diagonal. A matrix \(A\) that can be converted into this form via an invertible matrix \(P\) (so that \(P^{-1}AP\) is diagonal) is called \textbf{diagonalizable}. \\[2ex]
+\noindent In this section, we address one of linear algebra’s central questions: how to simplify a matrix so its action becomes more transparent. Often, the simplest form is a \textbf{diagonal} matrix—one whose nonzero entries appear only on its main diagonal. A matrix $A$ that can be converted into this form via an invertible matrix $P$ (so that $P^{-1}AP$ is diagonal) is called \textbf{diagonalizable}. \\[2ex]
 
 \noindent The key to diagonalizability lies in finding a basis of eigenvectors, where each vector in the basis is merely scaled by a constant (an \textbf{eigenvalue}) under the transformation. This gives us a geometric viewpoint: a diagonalizable matrix has enough independent directions in which it acts by simple stretching. However, not every matrix has a full set of eigenvectors; some transformations, like shear mappings or rotations in complex planes, cannot be captured by diagonal forms in the real numbers. \\[2ex]
-\noindent More generally, two matrices are said to be \textbf{similar} if one can be expressed as \(P^{-1}AP\) for an invertible \(P\). Similar matrices represent the \textbf{same} linear transformation but in different bases. They share core invariants such as determinant, trace, rank, and eigenvalues. Thus, similarity provides a unifying perspective: it reveals when two seemingly different matrices are actually just different coordinate pictures of the same underlying operator. \\[2ex]
+\noindent More generally, two matrices are said to be \textbf{similar} if one can be expressed as $P^{-1}AP$ for an invertible $P$. Similar matrices represent the \textbf{same} linear transformation but in different bases. They share core invariants such as determinant, trace, rank, and eigenvalues. Thus, similarity provides a unifying perspective: it reveals when two seemingly different matrices are actually just different coordinate pictures of the same underlying operator. \\[2ex]
 
 \noindent We will see how to recognize when diagonalization is possible by examining the characteristic polynomial and the geometric and algebraic multiplicities of eigenvalues. If a matrix has enough independent eigenvectors—equivalently, if each eigenvalue has as many eigenvectors as its multiplicity—then it can be diagonalized. This framework illuminates why certain real transformations require complex eigenvalues or why some can only be partially simplified (leading to the so-called Jordan normal form). \\[2ex]
 
@@ -1826,9 +1860,9 @@ It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\la
 \section{Inner Products, Orthogonality, and Projections}
 \section*{Introduction to Inner Products, Orthogonality, and Projections}
 
-\noindent In this section, we introduce the notion of an \textbf{inner product}, a tool that lets us measure angles, lengths, and distances within a vector space—much like the dot product does in \(\mathbb{R}^n\). Once we have an inner product, we can talk about \textbf{orthogonality}, or perpendicular vectors, which lays the groundwork for a host of geometric insights and computational techniques. \\[2ex]
+\noindent In this section, we introduce the notion of an \textbf{inner product}, a tool that lets us measure angles, lengths, and distances within a vector space—much like the dot product does in $\mathbb{R}^n$. Once we have an inner product, we can talk about \textbf{orthogonality}, or perpendicular vectors, which lays the groundwork for a host of geometric insights and computational techniques. \\[2ex]
 
-\noindent First, we generalize the usual dot product to an arbitrary vector space by defining a function \(\langle x, y \rangle\) that must satisfy certain symmetry, linearity, and positivity conditions. This innately geometric perspective extends to the concepts of \textbf{length} (or norm), \textbf{distance}, and \textbf{angle} in any such space. Orthogonality—where two vectors satisfy \(\langle x, y \rangle = 0\)—then becomes the keystone for analyzing how vectors project and decompose relative to each other. \\[2ex]
+\noindent First, we generalize the usual dot product to an arbitrary vector space by defining a function $\langle x, y \rangle$ that must satisfy certain symmetry, linearity, and positivity conditions. This innately geometric perspective extends to the concepts of \textbf{length} (or norm), \textbf{distance}, and \textbf{angle} in any such space. Orthogonality—where two vectors satisfy $\langle x, y \rangle = 0$—then becomes the keystone for analyzing how vectors project and decompose relative to each other. \\[2ex]
 
 \noindent We examine how to build an \textbf{orthogonal basis}, a set of mutually perpendicular vectors that simplifies calculations significantly. The \textbf{Gram–Schmidt process} provides a systematic way to convert any basis into one that is orthogonal. Orthogonal bases enable us to define the \textbf{orthogonal projection} of a vector onto a subspace, i.e., the nearest point in the subspace to a given vector. This projection is at the heart of geometric approximations—particularly the solution of certain systems that may not have exact solutions. \\[2ex]
 
