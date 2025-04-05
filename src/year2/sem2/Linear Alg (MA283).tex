@@ -256,6 +256,7 @@ Thus, we conclude $\textbf{matrix multiplication is composition of linear transf
 \subsection*{Key Takeaways}
 \begin{takeaway-box}{Review of Matrix Algebra}{}
 \begin{itemize}
+  \item \textbf{Vector Space:} A set of objects (vectors) that can be added and multiplied by scalars.
   \item \textbf{Matrix Addition:} Only defined for matrices of the same size. Entrywise: $(A + B)_{ij} = A_{ij} + B_{ij}$. The zero matrix is the additive identity.
 
   \item \textbf{Scalar Multiplication:} Multiply each entry by the scalar $\alpha$:
@@ -278,7 +279,7 @@ Thus, we conclude $\textbf{matrix multiplication is composition of linear transf
         $$
           T(u + v) = T(u) + T(v), \quad T(\lambda u) = \lambda T(u)
         $$
-  \item \textbf{Standard Matrix of $A$} A matrix $ M_T $ such that $ T(v) = M_T v $. The columns of $ M_T $ are the images of the standard basis vectors.
+  \item \textbf{Standard Matrix of $\boldmath{A}$:} A matrix $ M_T $ such that $ T(v) = M_T v $. The columns of $ M_T $ are the images of the standard basis vectors.
 
   \item \textbf{Composition = Multiplication:} For $ S : \mathbb{R}^p \to \mathbb{R}^m $, $ T : \mathbb{R}^n \to \mathbb{R}^p $,
         $$
@@ -818,7 +819,7 @@ $$
   \end{bmatrix}
 $$
 . \\
-The \textbf{kernel} of $T$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$. This is the set of all column vectors, whose entries, $a,b,c$ satisfies:
+The \textbf{kernel} of $T$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$ (in matrix terms, this is the $\textbf{nullspace}$)/ This is the set of all column vectors, whose entries, $a,b,c$ satisfies:
 $$
   \begin{bmatrix}
     1 & 2  & 0 \\
@@ -886,7 +887,7 @@ $$
     0 & 0 & 0  & | & 0
   \end{bmatrix}
 $$
-The kernel (or nullspace) is $(2, 1, 1)t, t \in \mathbb{R}$, which is a line in $\mathbb{R}^3$. The fact that $(-2, 1, 1)$ is in the kernel of $T$, means that column 3 of $M_T$ is a linear combination of columns $1$ and $2$.
+The kernel is $(2, 1, 1)t, t \in \mathbb{R}$, which is a line in $\mathbb{R}^3$. The fact that $(-2, 1, 1)$ is in the kernel of $T$, means that column 3 of $M_T$ is a linear combination of columns $1$ and $2$.
 $$
   -2
   \begin{bmatrix}
@@ -956,7 +957,7 @@ $
 \begin{definitionbox}{}{}
   A non empty subset $\textbf{V}$ of $\mathbb{R}^n$ is a \textbf{subspace} if:
   \begin{itemize}
-    \item \textbf{Closed under addition}: $u +v \in \mathbb{V}$, $u, v \in \textbf{V}$
+    \item \textbf{Closed under addition}: $u +v \in \mathbf{V}$, $u, v \in \textbf{V}$
     \item \textbf{Closed under scalar multiplication}: $\alpha u \in \textbf{V}$, $u \in \textbf{V}$, $\alpha \in \mathbb{R}$
   \end{itemize}
 \end{definitionbox}
@@ -971,7 +972,6 @@ $
 \subsection{The span : how to make subspaces}
 \begin{definitionbox}{}{}
   Let $S = \{v_1, \dots, v_k\}$ be any finite subset of $\mathbb{R}^n$ \\[2ex]
-
   The subset of $\mathbb{R}^n$ consisting of all linear combinations of the elements of $S$ is a subspace of $\mathbb{R}^n$ and is called the \textbf{span} of $S$ and is denoted by $\langle (S) \rangle$.
 \end{definitionbox}
 \noindent \textbf{Proof that $\langle S \rangle$ is a subspace of $\mathbb{R}^n$}
@@ -989,7 +989,6 @@ $
 \subsection{Spanning sets}
 \begin{definitionbox}{}{}
   Let $V$ be a subspace of $\mathbb{R}^n$. \\[2ex]
-
   A subset $S$ of $V$ is a \textbf{spanning set} for $V$ if $\langle S \rangle = V$. \\[2ex]
   This means that every element of $V$ can be expressed as a linear combination of the elements of $S$.
 \end{definitionbox}
@@ -1007,7 +1006,7 @@ $$
   2e_1 -3_2 + 4e_3
 $$
 \textbf{Remark} A set $S$ of three column vectors in $\mathbb{R}^3$ is a spanning set of $\mathbb{R}^3$ if and only if the three vectors are linearly independent.This occurs only if the $3 \times 3$ matrix whose columns are the three vectors has \textbf{$S$ as an inverse}.\\[2ex]
-\textbf{Questions about spanning sets}
+\subsubsection{Questions about spanning sets}
 \begin{itemize}
 
   \item Does $\mathbb{R}^3$ have a spanning set fewer than three vectors?
@@ -1105,7 +1104,11 @@ If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not
 \begin{itemize}
   \item \textbf{Image of a linear transformation $T$} is the set of all vectors in the co-domain ($W$ that can be obtained by applying $T$ to vectors in the domain ($V$), we also call this the \textbf{column space} of $T$.
   \item \textbf{Kernel of a linear transformation $T$} is the set of all vectors in the domain ($V$) that are mapped to the zero vector in the co-domain ($W$), we also call this the \textbf{null space} of $T$.
-  \item \textbf{}
+  \item \textbf{Subspace:} A non-empty subset of $\mathbb{R}^n$ that is closed under addition and scalar multiplication.
+        $$u +v \in \mathbb{V}, \quad \alpha u \in \mathbb{V} \quad u, v \in \textbf{V}, \alpha \in \mathbb{R} $$
+  \item \textbf{Span:} The set of all possible linear combinations of a finite subset of $\mathbb{R}^n$.
+  \item \textbf{Span is a subspace of $\mathbb{R}^n$}: by the criteria of a subspace (closed under addition and scalar multiplication)
+  \item
 \end{itemize}
 \end{takeaway-box}
 \section{Basis, Dimension, and Rank}
