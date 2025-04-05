@@ -278,12 +278,12 @@ Thus, we conclude $\textbf{matrix multiplication is composition of linear transf
         $$
           T(u + v) = T(u) + T(v), \quad T(\lambda u) = \lambda T(u)
         $$
-        Represented by matrix $ M_T $ such that $ T(v) = M_T v $. The columns of $ M_T $ are the images of the standard basis vectors.
+  \item \textbf{Standard Matrix of $A$} A matrix $ M_T $ such that $ T(v) = M_T v $. The columns of $ M_T $ are the images of the standard basis vectors.
 
   \item \textbf{Composition = Multiplication:} For $ S : \mathbb{R}^p \to \mathbb{R}^m $, $ T : \mathbb{R}^n \to \mathbb{R}^p $,
-        \[
+        $$
           (S \circ T)(v) = S(T(v)) \quad \Rightarrow \quad M_{S \circ T} = M_S M_T
-        \]
+        $$
 \end{itemize}
 \end{takeaway-box}
 
@@ -300,11 +300,9 @@ $y$ is an equation of the form
 \begin{equation*}
   2x + y = 3
 \end{equation*}
-If we replace $x$ and $y$ with some numbers, the statement \textbf{becomes true or false}.
+If we replace $x$ and $y$ with some numbers, the statement \textbf{becomes true or false}. \\
+A pair, $(x_0, y_0) \in \mathbb{R}$, is a solution to an linear equation if setting $x = x_0$ and $y = y_0$ \textbf{makes the equation true.}
 
-\begin{definitionbox}{Solution to a linear equation}{}
-  A pair, $(x_0, y_0) \in \mathbb{R}$, is a solution to an linear equation if setting $x = x_0$ and $y = y_0$ \textbf{makes the equation true.}
-\end{definitionbox}
 
 \begin{definitionbox}{Solution set}{}
   The \textbf{solution set} is the set of all solutions to a linear equation.
@@ -758,7 +756,27 @@ $$
     \end{bmatrix}$$
   It is easily checked that $AA^{-1} = I_3$.
 \end{examplebox}
-
+\subsection{Key Takeaways}
+\begin{takeaway-box}{}{}
+\begin{itemize}
+  \item A \textbf{solution set} is the set of all equations that satisfy $a_1X_1 + a_2X_2 + \ldots + a_nX_n = b$, where $a_i, b \in \mathbb{R}$.
+  \item The \textbf{solution set} is a copy of $\mathbb{R}^{n-1}$ inside $\mathbb{R}^n$
+  \item \textbf{REF} is a matrix form where the first non-zero entry in each row is a 1, and all entries below it are 0.
+  \item \textbf{RREF} is a matrix form where the leading 1 in each row is the only non-zero entry in its column.
+  \item \textbf{Leading variables} are variables whose columns in the RREF contain a leading 1, while \textbf{free variables} do not.
+  \item \textbf{Inconsistent systems} have no solutions, while \textbf{consistent systems} have at least one solution.
+  \item \textbf{Identity Matrix ($I_m$)} is an $m \times m$ matrix with 1s on the diagonal and 0s elsewhere.
+  \item \textbf{$\boldsymbol{E}_{i,j}$} matrix has 1 in the $(i,j)$ position and 0s elsewhere.
+  \item \textbf{ERO's as matrix multiplication}:
+        \begin{itemize}
+          \item Multiply a row by a non-zero scalar: $I_m + (\alpha - 1)E_{i,i}$
+          \item Switch two rows: $S = I_m + E_{i,k} + E_{k,i} - E_{i,i} - E_{k,k}$
+          \item Add a multiple of one row to another: $I_m + \alpha E_{k,i}$
+        \end{itemize}
+  \item \textbf{ERO to find inverse:} To find the inverse of a square matrix $A$, form the augmented matrix $[A \mid I_n]$ and apply EROs to transform $A$ into $I_n$. The augmented portion becomes $A^{-1}$. that is $$RREF([A \mid I_n]) = [I_n \mid A^{-1}]$$
+\end{itemize}
+\end{takeaway-box}
+\pagebreak
 \section{Subspaces, Span, and Linear Independence}
 \subsection*{Introduction}
 
