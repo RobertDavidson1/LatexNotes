@@ -1433,5 +1433,17 @@ The Rank-Nullity Theorem \textbf{relates the dimensions of the kernel, image and
     \dim(\text{ker}(T)) + \text{rank}(T) = n
   $$
 \end{theorembox}
-\noindent\textbf{Informally:}  The rank-nullity theorem says the full dimension of the domain must be accounted for in the combination of the kernel and image.
+\noindent\textbf{Informally:}  The rank-nullity theorem says the full dimension of the domain must be accounted for in the combination of the kernel and image.\\[2ex]
+\noindent\textbf{Proof:}
+\begin{enumerate}
+  \item Write $k$ for $\dim(\text{ker}(T))$ and let $\{b_1, \dots, b_k\}$ be a basis of $\text{ker}(T)$.
+  \item Extend this to a basis: $\{b_1, \dots, b_k, b_{k+1}, \dots, b_n\}$ of $\mathbb{R}^n$.
+  \item Since $T$ sends each $b_i$ to $0$, the image under $T$ of every element of $\mathbb{R}^n$ is a linear combination of $T(c_{k+1}), \dots, T(c_n)$.
+  \item Also, $\{T(c_{k+1}), \dots T(c_n) \}$ is a linearly independent subset of $\mathbb{R}^m$. To see this suppose for some scalar $a_{k+1}, \dots, a_n$ that $a_{k+1}T(c_{k+1}) + \cdots + a_nT(c_n) = 0$. Then:
+        $$
+          a_{k+1}c_{k+1}+\cdots+a_nc_n\in\ker T\Longrightarrow a_{k+1}c_{k+1}+\cdots+a_nc_n\in\langle b_1,\ldots,b_k\rangle.
+        $$
+        Since $\{b_1, \dots, b_k, c_{k+1}, \dots, c_n\}$ is linearly independent in $\mathbb{R}^n$, this means that $a_{k+1}c_{k+1} + a_{k+2}c_{k+2} + \cdots + a_nc_n = 0$ for each $a_j = 0$.
+  \item It follows that $\{T(c_{k+1}), \dots, T(c_n)\}$ is a basis for the image of $T$, so this image has dimensions $n-k$ as required.
+\end{enumerate}
 \end{document}
