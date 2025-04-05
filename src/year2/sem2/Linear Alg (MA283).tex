@@ -1784,5 +1784,54 @@ It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\la
 \begin{theorembox}{Corollary}{}
   A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity
 \end{theorembox}
+\subsection{Inner Products}
+In $\mathbb{R}^n$, the dot product of the vectors $x = \begin{bmatrix}x_1 \\ x_2 \end{bmatrix}$ and $y = \begin{bmatrix}y_1 \\ y_2 \end{bmatrix}$ is defined as:
+$$
+  x \cdot y = x_1y_1 + x_2y_2 = x^T = y^T = y\cdot x
+$$
+When can interpret the length ($||x||$) of $x$ as the length of the line segment from origin to $(x_1, x_2)$, which by the Pythagorean theorem is:
+$$
+  \sqrt{x_1^2 + x_2^2} = \sqrt{x \cdot x}
+$$
+Once we have a concept of length, we can define distance ($d(x,y)$) between two vectors $x,y$ as the length of the line segment from $x$ to $y$, which is:
+$$
+  d(x,y) = ||x - y||
+$$
+Similarly, from the Cosine Rule:
+$$x\cdot y = ||x|| \cdot ||y|| \cdot \cos(\theta)$$
+where $\theta$ is the angle between $x$ and $y$. \\
+We say that $x$ and $y$ are \textbf{orthogonal} (or $x \perp y$) if $x \cdot y = 0$. \\[2ex]
+So the scalar product encodes geometric information in $\mathbb{R}^2$, and also provides a way to define length, distance and orthogonality. The scalar product is an example of an \textbf{inner product}.
+\subsection{Real Inner Products}
+A \textbf{{Inner Product}} on a vector space $V$ is a function from $V \times V$ to $\mathbb{R}$ that assigns an element of $\mathbb{R}$ to every ordered pair of elements of $V$, and has the following properties.
+
+\begin{enumerate}
+  \item \textbf{Symmetry}: $\langle x, y \rangle = \langle y, x \rangle$ for all $x, y \in V$
+  \item \textbf{Linearity in both slots (bilinearity)}: For all $x, y, z \in V$ and all $a, b \in \mathbb{R}$, we have
+        $\langle ax + by, z \rangle = a\langle x, z \rangle + b\langle y, z \rangle$ and
+        $\langle x, ay + bz \rangle = a\langle x, y \rangle + b\langle x, z \rangle$.
+  \item \textbf{Non-negativity}: $\langle x, x \rangle \geq 0$ for all $x \in V$, and $\langle x, x \rangle = 0$ only if $x = 0_V$.
+\end{enumerate}
+
+The ordinary scalar product on $\mathbb{R}^n$ is the best known example of an inner product.
+\subsubsection{Examples of Inner Products}
+\begin{enumerate}
+  \item The ordinary scalar product on $\mathbb{R}^n$.
+
+  \item Let $C$ be the vector space of all continuous real-valued functions on the interval $[0, 1]$. The analogue of the ordinary scalar product on $C$ is the inner product given by
+        $$
+          \langle f, g \rangle = \int_0^1 f(x)g(x)\, dx, \quad \text{for } f, g \in C.
+        $$
+
+  \item On the space $M_{m \times n}(\mathbb{R})$, the \textit{Frobenius inner product} or \textit{trace inner product} is defined by
+        $$
+          \langle A, B \rangle = \text{trace}(A^T B).
+        $$
+        Note that $\text{trace}(A^T B)$ is the sum over all positions $(i,j)$ of the products $A_{ij}B_{ij}$. So this is closely related to the ordinary scalar product, if the matrices $A$ and $B$ were regarded as vectors with $mn$ entries over $\mathbb{R}$.
+\end{enumerate}
+
+It is possible for a single vector space to have many different inner products defined on it, and if there is any risk of ambiguity we need to specify which one we are considering.
+
+
 
 \end{document}
