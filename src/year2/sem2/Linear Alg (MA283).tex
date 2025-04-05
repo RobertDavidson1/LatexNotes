@@ -1205,7 +1205,7 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
       2 & 4 & 6 \\
       1 & 1 & 1
     \end{bmatrix}
-    \quad
+    \quad\Longrightarrow\quad
     \text{RREF}(A) = \begin{bmatrix}
       1 & 0 & -1 \\
       0 & 1 & 2  \\
@@ -1256,5 +1256,74 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
   \vspace{2ex}
   \noindent\textbf{Conclusion.} Since $c \leq r$ and $r \leq c$, it follows that $r = c = 2$. This example confirms that the row rank equals the column rank.
 \end{examplebox}
-
+\subsection{Coordinates}
+\begin{lemmabox}{}{}
+  If $\{b_1, \dots, b_n\}$ is a basis of a vector space $V$, then every element of $V$ has a unique expression of a linear combination of $b_1, \dots, b_n$:
+\end{lemmabox}
+\subsection{Coordinates with respect to different bases}
+Let $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
+$$b_1 = \begin{bmatrix}
+    1 \\
+    0 \\
+    4
+  \end{bmatrix}, \quad
+  b_2 = \begin{bmatrix}
+    2  \\
+    -1 \\
+    0
+  \end{bmatrix}, \quad
+  b_3 = \begin{bmatrix}
+    4 \\
+    0 \\
+    2
+  \end{bmatrix}$$
+Given an element of $\mathbb{R}^3$, say $v$, how do we find the B-coordinates of $v$?
+$$
+  v = \begin{bmatrix}
+    2  \\
+    -3 \\
+    4
+  \end{bmatrix}
+$$
+We know $v = 2e_1 - 3e_2 + 4e_3 = [v]_B = 2[e_1]_B - 3[e_2]_B + 4[e_3]_B$. To find $[e_1]_B$:
+$$e_1 = xb_1 + yb_2 + zb_3 =
+  \begin{bmatrix}
+    1 \\
+    0 \\
+    4
+  \end{bmatrix}x +
+  \begin{bmatrix}
+    2  \\
+    -1 \\
+    0
+  \end{bmatrix}y +
+  \begin{bmatrix}
+    4 \\
+    0 \\
+    2
+  \end{bmatrix}z
+  =
+  \begin{bmatrix}
+    1 \\
+    0 \\
+    0
+  \end{bmatrix}
+  \Longrightarrow
+  \begin{bmatrix}
+    1 & 2  & 4 \\
+    0 & -1 & 0 \\
+    4 & 0  & 2
+  \end{bmatrix}
+  \begin{bmatrix}
+    x \\
+    y \\
+    z
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    1 \\
+    0 \\
+    0
+  \end{bmatrix}
+$$
 \end{document}
