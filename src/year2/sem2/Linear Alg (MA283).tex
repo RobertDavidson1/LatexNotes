@@ -1653,7 +1653,7 @@ So $P$ itself, is the change of basis matrix from the basis $B$ to the standard 
 \noindent By the end of this section, you will understand not only how to test for diagonalizability and construct the matrix that does it, but also how these ideas generalize to broader simplifications of linear maps. In practice, diagonalization proves invaluable across mathematics, physics, and engineering for tasks like powering matrices, solving linear systems efficiently, or analyzing coupled dynamical systems.\\[2ex]
 
 \subsection{Similarity (The relation of $A$ and $A'$)}
-Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$m we:
+Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$ we:
 \begin{itemize}
   \item \textbf{Take a vector $v \in \mathbb{R}^3$ written in $B$-coordinates as the column $[v]_B$}.
   \item \textbf{Convert to standard coordinates:} take the product $P[v]_B$.
@@ -1908,6 +1908,28 @@ It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\la
 \begin{theorembox}{Corollary}{}
   A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity
 \end{theorembox}
+\subsection{Key Takeaways}
+\begin{takeaway-box}{}{}
+\begin{itemize}
+  \item The $B$ coordinates of a vector a linear transformation $T$ is given by:
+        $$[T(v)]_B = P^{-1}AP[v]_B$$
+  \item Two matrices are \textbf{similar} there exists an invertible matrix $P$ such that $B = P^{-1}AP$.
+  \item \textbf{Eigenvector} a vector which when operated on by a given operator gives a scalar multiple of itself.
+  \item \textbf{Eigenvalue} the scalar multiple of an eigenvector.
+  \item \textbf{Characteristic polynomial} $\text{det}(\lambda I_n - A)$ is a polynomial in $\lambda$ whose roots are the eigenvalues of $A$.
+  \item \textbf{Eigenspace} the set of all vectors $v$ such that $Av = \lambda v$ for a given eigenvalue $\lambda$.
+  \item \textbf{Diagonalizability} a matrix is diagonalizable if it has a basis of eigenvectors.
+  \item \textbf{Horizontal Shear} a shear mapping that shifts every point horizontally by its $y$-coordinate.
+  \item \textbf{Algebraic multiplicity} the number of times an eigenvalue appears as a root of the characteristic polynomial.
+  \item \textbf{Geometric multiplicity} the dimension of the eigenspace corresponding to an eigenvalue.
+  \item The set of eigenvectors corresponding to distinct eigenvalues is linearly independent.
+  \item Given a $n \times n$ matrix $A$, $A$ has at most $n$ distinct eigenvalues.
+  \item If $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.
+  \item The geometric multiplicity of an eigenvalue is $\leq$ to its algebraic multiplicity.
+  \item A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity.
+\end{itemize}
+\end{takeaway-box}
+
 \section{Inner Products, Orthogonality, and Projections}
 \section*{Introduction}
 \noindent In this section, we introduce the notion of an \textbf{inner product}, a tool that lets us measure angles, lengths, and distances within a vector space—much like the dot product does in $\mathbb{R}^n$. Once we have an inner product, we can talk about \textbf{orthogonality}, or perpendicular vectors, which lays the groundwork for a host of geometric insights and computational techniques. \\[2ex]
