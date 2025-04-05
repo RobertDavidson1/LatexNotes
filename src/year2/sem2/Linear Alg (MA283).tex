@@ -1569,4 +1569,72 @@ $$\textbf{The $B$ matrix of $T$ is: $P^{-1}AP$, where $P$ has the elements of $B
           \end{bmatrix}$$
         In this situation, we say that $A$ is \textbf{diagonalizable}.
 \end{itemize}
+\subsection{Two interpretations of diagonalizability}
+\textbf{Interpretation 1:} \\
+From the diagonal form of $A'$ we have:
+$$T(b_1) = 2b_1, \quad T(b_2) = -3b_2, \quad T(b_3) = 7b_3$$
+This means that each of the basis elements $b_1, b_2, b_3$ is mapped by $T$ to a scalar multiple of itself. - each of them is an eigenvector of $T$ \\[2ex]
+\textbf{Interpretation 2:} \\
+We can rearrange the version of $P^{-1}AP = A'$ to get:
+$$
+  AP = P'A
+$$
+Bearing in mind that that:
+$$
+  P=
+  \begin{bmatrix}
+    |   & |   & |   \\
+    b_1 & b_2 & b_3 \\
+    |   & |   & |
+  \end{bmatrix}
+  \quad\text{and}\quad
+  A'  = \text{diag}(2,-3,7)
+$$
+this is saying that:
+$$
+  A\begin{bmatrix}
+    |   & |   & |   \\
+    b_1 & b_2 & b_3 \\
+    |   & |   & |
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    |   & |   & |   \\
+    b_1 & b_2 & b_3 \\
+    |   & |   & |
+  \end{bmatrix}
+  \begin{bmatrix}
+    2 & 0  & 0 \\
+    0 & -3 & 0 \\
+    0 & 0  & 7
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    |    & |    & |    \\
+    Ab_1 & Ab_2 & Ab_3 \\
+    |    & |    & |
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    |    & |     & |    \\
+    2b_1 & -3b_2 & 7b_3 \\
+    |    & |     & |
+  \end{bmatrix}
+$$
+This means that $Ab_1 = 2b_1$, $A_b2 = -3b_2$, $Ab_3 = 7b_3$, so that $B = \{b_1, b_2, b_3\}$ is a basis of $\mathbb{R}^3$ consisting of eigenvectors of $A$.
+
+\subsection{Eigenvalues and diagonalizability}
+\begin{definitionbox}{}{}
+  An \textbf{eigenvector} of a square matrix $A$ is a non zero column vector $v$, for which there exists a scalar $\lambda$ such that:
+  $$
+    Av = \lambda v
+  $$
+  The scalar $\lambda$ is called the \textbf{eigenvalue} of $A$ corresponding to the eigenvector $v$.
+\end{definitionbox}
+The eigenvalues of $A$ are the roots of its \textbf{characteristic polynomial}:
+$$
+  \det(xI_n - A) = 0
+$$
+The $\textbf{eigenspace}$ corresponding to a particular eigenvalue, $\lambda$, is the set of all vector, $v$, satisfying: $Av = \lambda v$. It is a subspace of the relevant $\mathbb{R}^n$ of dimension at least $1$.
+
 \end{document}
