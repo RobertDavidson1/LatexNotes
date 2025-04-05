@@ -1901,26 +1901,105 @@ $$\text{Write } u = \begin{bmatrix} 2 \\ 1 \end{bmatrix},\quad v = \begin{bmatri
 
 \subsection{Orthogonal projection of one vector on another}
 \begin{definitionbox}{}{}
-  \textit{For non-zero vectors $u$ and $v$ in an inner product space $V$, the vector}
+  For non-zero vectors $u$ and $v$ in an inner product space $V$, the vector
   $$
     \frac{\langle u, v \rangle}{\|u\|^2} u
   $$
-  \textit{is called the projection of $v$ on the 1-dimensional space spanned by $u$. It is denoted by $\text{proj}_u(v)$ and it has the property that $v - \text{proj}_u(v)$ is orthogonal to $u$.}
+  is called the projection of $v$ on the 1-dimensional space spanned by $u$. \\
+  It is denoted by $\text{proj}_u(v)$ and it has the property that $v - \text{proj}_u(v)$ is orthogonal to $u$
 \end{definitionbox}
-
-
-\textbf{Lemma}
-\textit{$\text{proj}_u(v)$ is the unique element of $\langle u \rangle$ whose distance from $v$ is minimal.}
-
-\textbf{Proof} Let $au$ be a scalar multiple of $u$. Then
-\[
+\begin{lemmabox}{}{}
+  $\text{proj}_u(v)$ is the unique element of $\langle u \rangle$ whose distance from $v$ is minimal.
+\end{lemmabox}
+\noindent \textbf{Proof:} Let $au$ be a scalar multiple of $u$. Then
+$$
   d(au, v)^2 = \langle au - v, au - v \rangle = a^2 \langle u, u \rangle - 2a \langle u, v \rangle + \langle v, v \rangle
-\]
+$$
 Regarded as a quadratic function of $a$, this has a minimum when its derivative is 0, i.e. when
-\[
+$$
   2a \langle u, u \rangle - 2 \langle u, v \rangle = 0, \quad \text{when } a = \frac{\langle u, v \rangle}{\|u\|^2}.
-\]
+$$
+\subsection{Orthogonal Bases (the Gram-Schmidt process)}
+\begin{conceptbox}{}{}
+  Every finite-dimensional inner product space has an \textbf{orthogonal basis}
+\end{conceptbox}
+\noindent We can start with any basis $\{b_1, \dots, b_n\}$, and adjust the elements one by one (by subtracting off orthogonal projections of later vectors on earlier ones). The process ends with an orthogonal basis $\{v_1, \dots, v_n\}$.
 
+\begin{enumerate}
+  \item Set $v_1 = b_1$, and
+        \[
+          v_2 = b_2 - \text{proj}_{v_1}(b_2) = b_2 - \frac{\langle v_1, b_2 \rangle}{\langle v_1, v_1 \rangle} v_1.
+        \]
+        Then the pairs $b_1, b_2$ and $v_1, v_2$ span the same space, and $v_1 \perp v_2$.
 
+  \item Write $v_3 = b_3 - \text{proj}_{v_1}(b_3) - \text{proj}_{v_2}(b_3)$.
+        Then $\{v_1, v_2, v_3\}$ and $\{b_1, b_2, b_3\}$ span the same space, and $v_3 \perp v_1$, $v_3 \perp v_2$. To see this look at $\langle v_3, v_1 \rangle$ and $\langle v_3, v_2 \rangle$, noting that
+        \[
+          v_3 = b_3 - \frac{\langle b_3, v_1 \rangle}{\langle v_1, v_1 \rangle} v_1 - \frac{\langle b_3, v_2 \rangle}{\langle v_2, v_2 \rangle} v_2.
+        \]
+
+  \item Continue: at the $k$th step, form $v_k$ by subtracting from $b_k$ its projections on $v_1, \dots, v_{k-1}$.
+\end{enumerate}
+\subsection{Orthogonal projection on a subspace}
+The result of this process is a basis $\{v_1, \dots, v_n\}$ whose elements satisfy
+$$
+  \langle v_i, v_j \rangle = 0 \text{ for } i \ne j
+$$
+We can adjust this basis to a \textbf{orthonormal basis} (consisting of orthogonal unit vectors) by replacing each $v_i$ with its normalization $\hat{v}_i$.
+From the Gram–Schmidt process, we have
+
+\begin{theorembox}{}{}
+  If $V$ is a finite-dimensional inner product space, then $V$ has an orthogonal (or orthonormal) basis.
+\end{theorembox}
+Now let $W$ be a subspace of $V$, and let $v \in V$. The \textbf{orthogonal projection} of $v$ on $W$, denoted $\text{proj}_W(v)$, is defined to be the unique element $u$ of $W$ for which
+$$
+  v = u + v',
+$$
+and $v' \perp w$ for all $w \in W$.
+\subsection{Calculating the projection on a subspace}
+\begin{examplebox}
+  In $\mathbb{R}^3$, find the unique point of the plane $W : x + 2y - z = 0$
+  that is nearest to the point $v : (1, 2, 2)$.
+  \\ \rule{\textwidth}{1pt}\\
+  First find an orthogonal basis for $W$: for example $\{b_1, b_2\}$, where
+  $$
+    b_1 = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}, \quad
+    b_2 = \begin{bmatrix} 1 \\ -1 \\ -1 \end{bmatrix}
+  $$
+
+  Then
+  \begin{align*}
+    \text{proj}_W(v) & = \text{proj}_{b_1}(v) + \text{proj}_{b_2}(v)                                                                               \\
+                     & = \frac{\langle b_1, v \rangle}{\langle b_1, b_1 \rangle} b_1 + \frac{\langle b_2, v \rangle}{\langle b_2, b_2 \rangle} b_2 \\
+                     & = \frac{3}{2} b_1 - \frac{3}{3} b_2                                                                                         \\
+                     & = \left( \frac{3}{2}, 0, \frac{3}{2} \right) - (1, -1, -1) = \left( \frac{1}{2}, 1, \frac{5}{2} \right)
+  \end{align*}
+\end{examplebox}
+\subsection{$\text{proj}_{(v)}$ is the nearest point of W to v}
+Let $u = \text{proj}_W(v)$ and let $w$ be any element of $W$.
+Note that $v - u$ is orthogonal to both $w$ and $u$, hence to $w - u$. Then
+\begin{align*}
+  d(v, w)^2 & = \langle v - w, v - w \rangle                                                                 \\
+            & = \langle (v - u) + (u - w), (v - u) + (u - w) \rangle                                         \\
+            & = \langle v - u, v - u \rangle + 2 \langle v - u, u - w \rangle + \langle u - w, u - w \rangle \\
+            & = \langle v - u, v - u \rangle + \langle u - w, u - w \rangle                                  \\
+            & \geq d(v, u)^2,
+\end{align*}
+with equality only if $w = u = \text{proj}_W(v)$.
+\subsection{Recall}
+Let $u$ and $v$ be elements in an inner product space $V$. The \textbf{projection of $v$ on $u$} is
+$$
+  \boxed{\text{proj}_u\,v = \frac{\langle u, v \rangle}{\langle u, u \rangle} u}
+$$
+
+Then $\text{proj}_u\,v$ is the unique nearest element to $v$ of the 1-dimensional subspace spanned by $u$ (in the distance determined by the inner product), and
+$$
+  \boxed{\langle v', u \rangle = 0,\quad v' \perp u,\quad \text{where } v' = v - \text{proj}_u\,v.}
+$$
+
+So $v$ is the sum of its projection on $u$ and a component orthogonal to $u$.
+
+In general, if $W$ is any subspace of $V$ and $v \in V$, then there is a unique nearest element in $W$ to $v$, called $\text{proj}_W\,v$ or the \textbf{projection of $v$ on $W$},
+and $v - \text{proj}_W\,v$ is orthogonal to \textbf{every element of $W$}.
 
 \end{document}
