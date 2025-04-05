@@ -1065,9 +1065,9 @@ If we are interested in the span of $\{v_1, \dots, v_k\}$, we can throw away $v_
   The three equations of the system form a linearly dependent set. One row was eliminated by adding a linear combination of the other two rows. Thus, all the information in the system  was contained in the first two equations. \\[2ex]
   The non-zero rows of the RREF are linearly independent, they span the rowspace of the matrix. The rowspace is the subspace of $\mathbb{R}^5$ spanned by the rows of the matrix.
 \end{examplebox}
-\subsubsection{Test for linear independence}
-A set is linearly independent if none of its elements is a linear combination of the others.  While this makes sense, to use it as a test would mean checking every element. We have an alternative formulation, which is easier to check: \\[2ex]
-"\textbf{A set of vectors is linearly independent if the only way to write the zero vector as a linear combination of the vectors in the set is to use all zero coefficients.}" \\[2ex]
+\subsection{Test for linear independence}
+A set is linearly independent if none of its elements is a linear combination of the others. We have an alternative formulation, which is easier to check: \\
+"\textbf{A set of vectors is linearly independent if the only way to write the zero vector as a linear combination of the vectors in the set is to use all zero coefficients.}" \\
 To decide if the set $\{v_1, \dots, v_k\}$ is linearly independent, try to write the zero vector as a linear combination of the vectors in the set:
 $$
   \sum_{i=1}^k \alpha_i v_i = \alpha_1 v_1 + \cdots + \alpha_k v_k = 0 \quad \text{for} \; \alpha_i \in \mathbb{R}
@@ -1108,7 +1108,9 @@ If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not
         $$u +v \in \mathbb{V}, \quad \alpha u \in \mathbb{V} \quad u, v \in \textbf{V}, \alpha \in \mathbb{R} $$
   \item \textbf{Span:} The set of all possible linear combinations of a finite subset of $\mathbb{R}^n$.
   \item \textbf{Span is a subspace of $\mathbb{R}^n$}: by the criteria of a subspace (closed under addition and scalar multiplication)
-  \item
+  \item \textbf{Spanning sets:} $S$ is a spanning set of $V$  (or $S$ spans $V$) if every element of $V$ is a linear combination of the elements of $S$ - where $V$ is a subspace of $\mathbb{R}^n$ and $S$ is a subset of $V$.
+  \item $\textbf{Linear dependence}$: A set of at least two vectors in $\mathbb{R}^n$ is linearly dependent if one of its elements is a linear combination of the others.
+  \item $\textbf{Linear independence}$: A set of vectors in $\mathbb{R}^n$ is linearly independent if it is not linearly dependent, throwing away any element of the set shrinks the span.
 \end{itemize}
 \end{takeaway-box}
 \section{Basis, Dimension, and Rank}
@@ -1141,7 +1143,6 @@ This section deepens our investigation of vector spaces by addressing how to des
 \subsection{Steinitz Replacement Lemma}
 \begin{lemmabox}{}{}
   Let $V$ be a vector space that has a basis with $n$ elements. \\[2ex]
-
   Then every linearly independent set with $n$ elements in $V$ is a basis for $V$.
 \end{lemmabox}
 \noindent \textbf{Proof (for $n = 3)$} \\
@@ -1341,6 +1342,19 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
   \vspace{2ex}
   \noindent\textbf{Conclusion.} Since $c \leq r$ and $r \leq c$, it follows that $r = c = 2$. This example confirms that the row rank equals the column rank.
 \end{examplebox}
+\subsection{Key Takeaways}
+\begin{takeaway-box}{}{}
+\begin{itemize}
+  \item \textbf{Finite dimensional space} is one that can be spanned by a finite set of vectors ( akk uts vectors can be expresses as linear combinations of vectors)
+  \item \textbf{Basis} a linearly independent spanning set. A basis is a minimal spanning set, one in which every element is needed and does not contain a smaller spanning set.
+        \begin{itemize}
+          \item $S$ is a basis f $V$ if $S$ is \textbf{linearly independent}  \textbf{$\boldmath{S}$ spans $\boldmath{V}$}
+          \item Every finite spanning set of $V$ contains a basis for $V$.
+        \end{itemize}
+  \item \textbf{Steinitz Replace Lemma} Every linearly independent set with $n$ elements in $V$ is a basis for $V$.
+  \item
+\end{itemize}
+\end{takeaway-box}
 \section{Coordinates, Rank-Nullity, and Change of Basis}
 \subsection*{Introduction}
 \noindent In this section, we extend our understanding of vector spaces by examining how to describe vectors with respect to an arbitrary basis (rather than always defaulting to the standard basis). This leads to the powerful notion of \textbf{coordinates}, which capture exactly how each vector in a space is formed as a linear combination of basis elements. Understanding coordinates is crucial for efficiently switching between different viewpoints on the same vector space—especially when one basis simplifies certain linear transformations more than another. \\[2ex]
