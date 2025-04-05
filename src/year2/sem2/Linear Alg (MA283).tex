@@ -1,6 +1,8 @@
 \documentclass[a4paper, 9pt]{extarticle}
 \input{../../preamble.sty}
 \input{../../macros.sty}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
 
 \title{
 \textbf{MA283: Linear Algebra} \\ 
@@ -1187,7 +1189,7 @@ To see that $r \leq c$, start with a basis for the column space of $A$, and writ
 Since $c \leq r$ and $r \leq c$, we have $c = r$. \\[2ex]
 
 \subsection{Row rank and column rank - Intuitive Explanation}
-
+\textbf{Recall: } Linear independence means that no vector can be expressed as a linear combination of the others. \\[2ex]
 Let $A$ be an $m \times n$ matrix. We can understand row rank and column rank more intuitively:
 
 \begin{itemize}
@@ -1195,10 +1197,10 @@ Let $A$ be an $m \times n$ matrix. We can understand row rank and column rank mo
   \item The \textbf{column rank} counts the number of linearly independent columns in the matrix.
 \end{itemize}
 
-Linear independence means that no vector can be expressed as a linear combination of the others. In geometric terms:
+
 
 \begin{center}
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale = 0.5]
     % Coordinate axes for row space
     \draw[->,thick] (0,0) -- (4,0) node[right]{$x$};
     \draw[->,thick] (0,0) -- (0,3) node[above]{$y$};
@@ -1213,7 +1215,7 @@ Linear independence means that no vector can be expressed as a linear combinatio
     \node at (2,-1.2) {Row Rank = 2};
   \end{tikzpicture}
   \hspace{1cm}
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale = 0.5]
     % Coordinate axes for column space
     \draw[->,thick] (0,0) -- (4,0) node[right]{$x$};
     \draw[->,thick] (0,0) -- (0,3) node[above]{$y$};
@@ -1229,10 +1231,12 @@ Linear independence means that no vector can be expressed as a linear combinatio
   \end{tikzpicture}
 \end{center}
 
-Consider a matrix $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$:
-
+$$\text{Consider a matrix } A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$$
+\begin{minipage}{0.5\textwidth}
+  Rows: $r_1 = [1, 2, 3] \quad r_2 = [4, 5, 6] \quad r_3 = [7, 8, 9]$
+\end{minipage}
 \begin{itemize}
-  \item Rows: $r_1 = [1, 2, 3]$, $r_2 = [4, 5, 6]$, $r_3 = [7, 8, 9]$
+  \item
   \item Columns: $c_1 = [1, 4, 7]^T$, $c_2 = [2, 5, 8]^T$, $c_3 = [3, 6, 9]^T$
 \end{itemize}
 
@@ -1274,55 +1278,4 @@ We can verify that $r_3 = r_1 + r_2$ and $c_3 = c_1 + c_2$, so both row rank and
 
 In the RREF, we see exactly 2 non-zero rows and 2 non-zero columns, confirming rank = 2.
 
-\subsection{Row rank = column rank - Intuitive Explanation}
-
-The key insight is that row operations don't change the relationships between rows or columns, just how they're expressed. Let's visualize why row rank equals column rank:
-
-\begin{center}
-  \begin{tikzpicture}
-    % Matrix A factorization
-    \node at (0,3) {$A = QP$ where $P$ contains a basis for the row space};
-
-    % Matrix A
-    \node[draw, minimum width=2cm, minimum height=2.5cm] (A) at (0,0) {$A_{m \times n}$};
-
-    % Matrix Q
-    \node[draw, minimum width=1.5cm, minimum height=2.5cm] (Q) at (-3,0) {$Q_{m \times r}$};
-
-    % Matrix P
-    \node[draw, minimum width=2cm, minimum height=1.5cm] (P) at (-3,-3) {$P_{r \times n}$};
-
-    % Arrows
-    \draw[->] (Q) -- (A) node[midway, above] {$\times P$};
-    \draw[->] (P) -- ++(2.5,0) node[right] {Row basis};
-    \draw[->] (Q) -- ++(-1.5,0) node[left] {Column combinations};
-
-    \node at (0,-5) {Matrix columns are combinations of $r$ columns from $Q$\\so column rank $c \leq r$};
-  \end{tikzpicture}
-  \hspace{1cm}
-  \begin{tikzpicture}
-    % Matrix A factorization
-    \node at (0,3) {$A = P'Q'$ where $P'$ contains a basis for the column space};
-
-    % Matrix A
-    \node[draw, minimum width=2cm, minimum height=2.5cm] (A) at (0,0) {$A_{m \times n}$};
-
-    % Matrix Q prime
-    \node[draw, minimum width=2cm, minimum height=1.5cm] (Qp) at (3,-3) {$Q'_{c \times n}$};
-
-    % Matrix P prime
-    \node[draw, minimum width=1.5cm, minimum height=2.5cm] (Pp) at (3,0) {$P'_{m \times c}$};
-
-    % Arrows
-    \draw[->] (Pp) -- (A) node[midway, above] {$\times Q'$};
-    \draw[->] (Qp) -- ++(-2.5,0) node[left] {Row combinations};
-    \draw[->] (Pp) -- ++(1.5,0) node[right] {Column basis};
-
-    \node at (0,-5) {Matrix rows are combinations of $c$ rows from $Q'$\\so row rank $r \leq c$};
-  \end{tikzpicture}
-\end{center}
-
-Since we've shown that $c \leq r$ and $r \leq c$, we must have $c = r$. This allows us to simply talk about the \textbf{rank} of a matrix without specifying row or column.
-
-An intuitive way to understand this equality: imagine the matrix $A$ as a linear transformation. The row rank tells us how much information is contained in the input constraints, while the column rank tells us how many dimensions the output can span. These must be equal because the transformation can't create or destroy dimensions of information.
 \end{document}
