@@ -1177,5 +1177,152 @@ The row rank is at most $m$ and the column rank at most $n$, but both can be les
 \begin{theorembox}{}{}
   The row rank and column rank are the same for every matrix
 \end{theorembox}
-\noindent So we can just refer to the \textbf{rank}.
+\noindent So we can just refer to the \textbf{rank}. \\[2ex]
+For a $m \times n$ matrix, $A$, its row rank $r$ is the number of non-zero rows in its RREF and its column rank $c$ is the number of non-zero columns in its RREF. \\[2ex]
+Choose a basis for the row space of $A$, and write its elements as the rows of a $r \times n $ matrix $P$. Since every row of $A$ is a linear combination of rows $P$, there is a matrix $Q$ such that $A = QP$ (think about this)
+But now every column of $A$ is a linear combination of the $r$ columns of $Q$, so the dimension of the column space of $A$ is at most $r : c \leq r$. \\[2ex]
+
+To see that $r \leq c$, start with a basis for the column space of $A$, and write its $c$ elements as the columns of a $m \times c$ matrix $P'$. Then $A = P'Q'$, for some matrix $c \times n$ matrix $Q'$ and every row of $A$ is a linear combination of the $c$ rows $Q'$. Hence $r \leq c$.
+
+Since $c \leq r$ and $r \leq c$, we have $c = r$. \\[2ex]
+
+\subsection{Row rank and column rank - Intuitive Explanation}
+
+Let $A$ be an $m \times n$ matrix. We can understand row rank and column rank more intuitively:
+
+\begin{itemize}
+  \item The \textbf{row rank} counts the number of linearly independent rows in the matrix.
+  \item The \textbf{column rank} counts the number of linearly independent columns in the matrix.
+\end{itemize}
+
+Linear independence means that no vector can be expressed as a linear combination of the others. In geometric terms:
+
+\begin{center}
+  \begin{tikzpicture}
+    % Coordinate axes for row space
+    \draw[->,thick] (0,0) -- (4,0) node[right]{$x$};
+    \draw[->,thick] (0,0) -- (0,3) node[above]{$y$};
+
+    % Row vectors
+    \draw[->,very thick,blue] (0,0) -- (2,1) node[right]{$r_1$};
+    \draw[->,very thick,blue] (0,0) -- (1,2) node[above]{$r_2$};
+    \draw[->,thick,red,dashed] (0,0) -- (3,3) node[right]{$r_3 = r_1 + r_2$};
+
+    % Label for row space
+    \node at (2,-0.7) {Row Space in $\mathbb{R}^n$};
+    \node at (2,-1.2) {Row Rank = 2};
+  \end{tikzpicture}
+  \hspace{1cm}
+  \begin{tikzpicture}
+    % Coordinate axes for column space
+    \draw[->,thick] (0,0) -- (4,0) node[right]{$x$};
+    \draw[->,thick] (0,0) -- (0,3) node[above]{$y$};
+
+    % Column vectors
+    \draw[->,very thick,orange] (0,0) -- (2,1) node[right]{$c_1$};
+    \draw[->,very thick,orange] (0,0) -- (1,2) node[above]{$c_2$};
+    \draw[->,thick,purple,dashed] (0,0) -- (3,3) node[right]{$c_3 = c_1 + c_2$};
+
+    % Label for column space
+    \node at (2,-0.7) {Column Space in $\mathbb{R}^m$};
+    \node at (2,-1.2) {Column Rank = 2};
+  \end{tikzpicture}
+\end{center}
+
+Consider a matrix $A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$:
+
+\begin{itemize}
+  \item Rows: $r_1 = [1, 2, 3]$, $r_2 = [4, 5, 6]$, $r_3 = [7, 8, 9]$
+  \item Columns: $c_1 = [1, 4, 7]^T$, $c_2 = [2, 5, 8]^T$, $c_3 = [3, 6, 9]^T$
+\end{itemize}
+
+We can verify that $r_3 = r_1 + r_2$ and $c_3 = c_1 + c_2$, so both row rank and column rank equal 2.
+
+\begin{center}
+  \begin{tikzpicture}
+    % Original matrix
+    \node[draw, minimum width=3cm, minimum height=3cm] (A) at (0,0) {$A = \begin{bmatrix}
+          \textcolor{blue}{1} & \textcolor{blue}{2} & \textcolor{blue}{3} \\
+          \textcolor{blue}{4} & \textcolor{blue}{5} & \textcolor{blue}{6} \\
+          \textcolor{red}{7}  & \textcolor{red}{8}  & \textcolor{red}{9}
+        \end{bmatrix}$};
+
+    % Row and column annotations
+    \node[blue] at (-2.5,1) {$r_1$};
+    \node[blue] at (-2.5,0) {$r_2$};
+    \node[red] at (-2.5,-1) {$r_3 = r_1 + r_2$};
+
+    \node[blue] at (-1,-2.5) {$c_1$};
+    \node[blue] at (0,-2.5) {$c_2$};
+    \node[red] at (1,-2.5) {$c_3 = c_1 + c_2$};
+
+    % Arrow to RREF
+    \draw[->] (2,0) -- (3,0);
+
+    % RREF
+    \node[draw, minimum width=3cm, minimum height=3cm] (RREF) at (5,0) {$\text{RREF}(A) = \begin{bmatrix}
+          1 & 0 & -1 \\
+          0 & 1 & 2  \\
+          0 & 0 & 0
+        \end{bmatrix}$};
+
+    % Non-zero rows and columns in RREF
+    \draw [decorate, decoration={brace, amplitude=5pt}] (6.5,1.2) -- (6.5,-0.2) node[midway, right=10pt] {2 non-zero rows};
+    \draw [decorate, decoration={brace, amplitude=5pt, mirror}] (3.75,-1.7) -- (5.25,-1.7) node[midway, below=10pt] {2 non-zero columns};
+  \end{tikzpicture}
+\end{center}
+
+In the RREF, we see exactly 2 non-zero rows and 2 non-zero columns, confirming rank = 2.
+
+\subsection{Row rank = column rank - Intuitive Explanation}
+
+The key insight is that row operations don't change the relationships between rows or columns, just how they're expressed. Let's visualize why row rank equals column rank:
+
+\begin{center}
+  \begin{tikzpicture}
+    % Matrix A factorization
+    \node at (0,3) {$A = QP$ where $P$ contains a basis for the row space};
+
+    % Matrix A
+    \node[draw, minimum width=2cm, minimum height=2.5cm] (A) at (0,0) {$A_{m \times n}$};
+
+    % Matrix Q
+    \node[draw, minimum width=1.5cm, minimum height=2.5cm] (Q) at (-3,0) {$Q_{m \times r}$};
+
+    % Matrix P
+    \node[draw, minimum width=2cm, minimum height=1.5cm] (P) at (-3,-3) {$P_{r \times n}$};
+
+    % Arrows
+    \draw[->] (Q) -- (A) node[midway, above] {$\times P$};
+    \draw[->] (P) -- ++(2.5,0) node[right] {Row basis};
+    \draw[->] (Q) -- ++(-1.5,0) node[left] {Column combinations};
+
+    \node at (0,-5) {Matrix columns are combinations of $r$ columns from $Q$\\so column rank $c \leq r$};
+  \end{tikzpicture}
+  \hspace{1cm}
+  \begin{tikzpicture}
+    % Matrix A factorization
+    \node at (0,3) {$A = P'Q'$ where $P'$ contains a basis for the column space};
+
+    % Matrix A
+    \node[draw, minimum width=2cm, minimum height=2.5cm] (A) at (0,0) {$A_{m \times n}$};
+
+    % Matrix Q prime
+    \node[draw, minimum width=2cm, minimum height=1.5cm] (Qp) at (3,-3) {$Q'_{c \times n}$};
+
+    % Matrix P prime
+    \node[draw, minimum width=1.5cm, minimum height=2.5cm] (Pp) at (3,0) {$P'_{m \times c}$};
+
+    % Arrows
+    \draw[->] (Pp) -- (A) node[midway, above] {$\times Q'$};
+    \draw[->] (Qp) -- ++(-2.5,0) node[left] {Row combinations};
+    \draw[->] (Pp) -- ++(1.5,0) node[right] {Column basis};
+
+    \node at (0,-5) {Matrix rows are combinations of $c$ rows from $Q'$\\so row rank $r \leq c$};
+  \end{tikzpicture}
+\end{center}
+
+Since we've shown that $c \leq r$ and $r \leq c$, we must have $c = r$. This allows us to simply talk about the \textbf{rank} of a matrix without specifying row or column.
+
+An intuitive way to understand this equality: imagine the matrix $A$ as a linear transformation. The row rank tells us how much information is contained in the input constraints, while the column rank tells us how many dimensions the output can span. These must be equal because the transformation can't create or destroy dimensions of information.
 \end{document}
