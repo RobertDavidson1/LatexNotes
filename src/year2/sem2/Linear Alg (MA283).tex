@@ -26,9 +26,10 @@ Robert Davidson
 
 \maketitle
 \pagebreak
-
+\small
 \tableofcontents
 \pagebreak
+\normalsize
 \section{Review of Matrix Algebra}
 \subsection*{Matrix Addition}
 If a matrix has $m$ rows and $n$ columns, we say it is $m \times n$.\textbf{Two matrices can only be added if they have the same size.}. In this case, we just add the entries in each position. \\[2ex]
@@ -704,7 +705,6 @@ $$
     \item $R_3 \times (-\frac{1}{10})$
     \item $R_1 \rightarrow R_1 - 3R_3$
   \end{itemize}
-  To obtain:
   $$
     \begin{bmatrix}
       1 & 0 & 0 & | & \frac{3}{2}  & -\frac{11}{10} & -\frac{6}{5} \\
@@ -721,7 +721,7 @@ $$
   It is easily checked that $AA^{-1} = I_3$.
 \end{examplebox}
 
-\section{Vector Spaces and Subspace Structure}
+\section{Subspaces, Span, and Linear Independence}
 \subsection{The Image and Kernel of a Linear Transformation}
 $T:\mathbb{R}^3 \to \mathbb{R}^3$ is the linear transformation defined with:
 $$
@@ -1032,6 +1032,8 @@ If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not
   $$
   \textbf{The set is linearly independent}
 \end{examplebox}
+
+\section{Basis, Dimension, and Rank}
 \subsection{Finite Dimensional Spaces}
 \begin{definitionbox}{}{}
   A vector space $V$ is finite dimensional if it contain a finite spanning set. \\[2ex]
@@ -1256,6 +1258,7 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
   \vspace{2ex}
   \noindent\textbf{Conclusion.} Since $c \leq r$ and $r \leq c$, it follows that $r = c = 2$. This example confirms that the row rank equals the column rank.
 \end{examplebox}
+\section{Coordinates, Rank-Nullity, and Change of Basis}
 \subsection{Coordinates}
 \begin{lemmabox}{}{}
   If $\{b_1, \dots, b_n\}$ is a basis of a vector space $V$, then every element of $V$ has a unique expression of a linear combination of $b_1, \dots, b_n$:
@@ -1455,79 +1458,78 @@ The Rank-Nullity Theorem \textbf{relates the dimensions of the kernel, image and
   $$
 \end{definitionbox}
 \begin{examplebox}{}{}
-  Let $T: \mathbb{R}^3 \to \mathbb{R}^3$ be the linear transformation defined by $v \to Av$ and $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
-  $$
-    A =
-    \begin{bmatrix}
-      -2 & 2  & 1  \\
-      4  & 5  & -1 \\
-      -4 & -8 & 3
-    \end{bmatrix}
-    \quad \Bigg| \Bigg| \Bigg|\quad
-    b_1 = \begin{bmatrix}
-      1 \\
-      0 \\
-      4
-    \end{bmatrix}, \quad
-    b_2 = \begin{bmatrix}
-      2  \\
-      -1 \\
-      0
-    \end{bmatrix}, \quad
-    b_3 = \begin{bmatrix}
-      4 \\
-      0 \\
-      2
-    \end{bmatrix}
-    \quad\Longrightarrow\quad
-    B = \begin{bmatrix}
-      1 & 2  & 4 \\
-      0 & -1 & 0 \\
-      4 & 0  & 2
-    \end{bmatrix}
-  $$
-  \textbf{A diagonal representation of the matrix $A'$ of $T$ with respect to the basis $B$}
-  $$
-    \begin{aligned}
-      T(b_{1})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
-      \begin{bmatrix} 1 \\ 0 \\ 4 \end{bmatrix}
-                                   & = \begin{bmatrix} 2 \\ 0 \\ 8 \end{bmatrix}                             & = 2b_{1}
-      \Longrightarrow [T(b_{1})]_B & = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix}                                         \\[1em]
-      T(b_{2})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
-      \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
-                                   & = \begin{bmatrix} -6 \\ 3 \\ 0 \end{bmatrix}                            & = -3b_{2}
-      \Longrightarrow [T(b_{2})]_B & = \begin{bmatrix} 0 \\ -3 \\ 0 \end{bmatrix}                                        \\[1em]
-      T(b_{3})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
-      \begin{bmatrix} 0 \\ -1 \\ 2 \end{bmatrix}
-                                   & = \begin{bmatrix} 0 \\ -7 \\ 14 \end{bmatrix}                           & = 7b_{3}
-      \Longrightarrow [T(b_{3})]_B & = \begin{bmatrix} 0 \\ 0 \\ 7 \end{bmatrix}
-    \end{aligned}
-  $$
-  The matrix of $A'$ of $T$ with respect to $B$ is \textbf{diagonal}. For describing this transformation, $T$, the basis $B$ is preferable to the standard basis.
-  $$
-    A ' =
-    \begin{bmatrix}
-      2 & 0  & 0 \\
-      0 & -3 & 0 \\
-      0 & 0  & 7
-    \end{bmatrix}
-  $$
-  This means for any $v \in \mathbb{R}^3$:
-  $$
-    \underbrace{[T(v)]_B}_{\text{B-coordinates of } T(v)} = \underbrace{A'[v]_B}_{\text{matrix-vector product}}
-  $$
+Let $T: \mathbb{R}^3 \to \mathbb{R}^3$ be the linear transformation defined by $v \to Av$ and $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
+$$
+  A =
+  \begin{bmatrix}
+    -2 & 2  & 1  \\
+    4  & 5  & -1 \\
+    -4 & -8 & 3
+  \end{bmatrix}
+  \quad \Bigg| \Bigg| \Bigg|\quad
+  b_1 = \begin{bmatrix}
+    1 \\
+    0 \\
+    4
+  \end{bmatrix}, \quad
+  b_2 = \begin{bmatrix}
+    2  \\
+    -1 \\
+    0
+  \end{bmatrix}, \quad
+  b_3 = \begin{bmatrix}
+    4 \\
+    0 \\
+    2
+  \end{bmatrix}
+  \quad\Longrightarrow\quad
+  B = \begin{bmatrix}
+    1 & 2  & 4 \\
+    0 & -1 & 0 \\
+    4 & 0  & 2
+  \end{bmatrix}
+$$
+\textbf{A diagonal representation of the matrix $A'$ of $T$ with respect to the basis $B$}
+$$
+  \begin{aligned}
+  T(b_{1})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrixInner Products, Orthogonality, and Projections                     & = \begin{bmatrix} 2 \\ 0 \\ 8 \end{bmatrix}                             & = 2b_{1}
+  \Longrightarrow [T(b_{1})]_B & = \begin{bmatrix} 2 \\ 0 \\ 0 \end{bmatrix}                                         \\[1em]
+  T(b_{2})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
+  \begin{bmatrix} 2 \\ -1 \\ 0 \end{bmatrix}
+  & = \begin{bmatrix} -6 \\ 3 \\ 0 \end{bmatrix}                            & = -3b_{2}
+  \Longrightarrow [T(b_{2})]_B & = \begin{bmatrix} 0 \\ -3 \\ 0 \end{bmatrix}                                        \\[1em]
+  T(b_{3})                     & = \begin{bmatrix} -2 & 2 & 1 \\ 4 & 5 & -1 \\ -4 & -8 & 3 \end{bmatrix}
+  \begin{bmatrix} 0 \\ -1 \\ 2 \end{bmatrix}
+  & = \begin{bmatrix} 0 \\ -7 \\ 14 \end{bmatrix}                           & = 7b_{3}
+  \Longrightarrow [T(b_{3})]_B & = \begin{bmatrix} 0 \\ 0 \\ 7 \end{bmatrix}
+  \end{aligned}
+$$
+The matrix of $A'$ of $T$ with respect to $B$ is \textbf{diagonal}. For describing this transformation, $T$, the basis $B$ is preferable to the standard basis.
+$$
+  A ' =
+  \begin{bmatrix}
+    2 & 0  & 0 \\
+    0 & -3 & 0 \\
+    0 & 0  & 7
+  \end{bmatrix}
+$$
+This means for any $v \in \mathbb{R}^3$:
+$$
+  \underbrace{[T(v)]_B}_{\text{B-coordinates of } T(v)} = \underbrace{A'[v]_B}_{\text{matrix-vector product}}
+$$
 \end{examplebox}
 \subsection{More on Change of Basis}
 Let $P$ be the matrix with the basis vectors from $B$ as columns. As we've seen, $P^{-1}$ is the change of basis matrix from  the standard basis to the basis $B$. \\[2ex]
 For any element, $v \in \mathbb{R}^n$, its $B$-coordinates are given by:
-$$
-  [v]_B = P^{-1}v
+$$Inner Products, Orthogonality, and Projections
 $$
 Equivalently, if we start with the $B$-coordinates, then the standard coordinates of $v$ are given by:
 $$
   v = P[v]_B
 $$
 So $P$ itself, is the change of basis matrix from the basis $B$ to the standard basis.
+
+\section{Similarity, Eigenvalues, and Diagonalizability}
 \subsection{Similarity (The relation of $A$ and $A'$)}
 Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$m we:
 \begin{itemize}
@@ -1784,6 +1786,7 @@ It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\la
 \begin{theorembox}{Corollary}{}
   A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity
 \end{theorembox}
+\section{Inner Products, Orthogonality, and Projections}
 \subsection{Inner Products}
 In $\mathbb{R}^n$, the dot product of the vectors $x = \begin{bmatrix}x_1 \\ x_2 \end{bmatrix}$ and $y = \begin{bmatrix}y_1 \\ y_2 \end{bmatrix}$ is defined as:
 $$
@@ -2131,6 +2134,54 @@ $$
   \end{bmatrix}
   \Longrightarrow A^T b' = A^T A c = A^T b \Longrightarrow
   c = (A^T A)^{-1} A^T b
+$$
+In our example,
+$$
+  \begin{bmatrix}
+    2 & 1  \\
+    1 & -1 \\
+    1 & -3
+  \end{bmatrix}
+  \begin{bmatrix}
+    x \\
+    y
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    3 \\
+    0 \\
+    -4
+  \end{bmatrix}
+$$
+
+$$
+  A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \\ 1 & -3 \end{bmatrix}, \quad
+  A^T = \begin{bmatrix} 2 & 1 & 1 \\ 1 & -1 & -3 \end{bmatrix}, \quad
+  A^T A = \begin{bmatrix} 6 & -2 \\ -2 & 11 \end{bmatrix}, \quad
+  A^T b = \begin{bmatrix} 2 \\ 15 \end{bmatrix}
+$$
+The least squares solution is given by
+$$
+  \begin{bmatrix}
+    x \\
+    y
+  \end{bmatrix}
+  = c = (A^T A)^{-1} A^T b =
+  \frac{1}{62}
+  \begin{bmatrix}
+    11 & 2 \\
+    2  & 6
+  \end{bmatrix}
+  \begin{bmatrix}
+    2 \\
+    15
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \frac{26}{31} \\
+    \frac{47}{31}
+  \end{bmatrix}
+  .
 $$
 
 \end{document}
