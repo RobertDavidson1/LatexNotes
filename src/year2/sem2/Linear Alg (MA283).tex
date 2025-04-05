@@ -1170,10 +1170,15 @@ remains).\\[2ex]
 \end{itemize}
 
 \subsection{Row rank and column rank}
-Let $A$ be a $m \times n$ matrix. \\[2ex]
-The \textbf{row rank}, $r$ of $A$, is the dimension of the row space of $A$ - which is the subspace of $\mathbb{R}^n$ spanned by the rows of $A$. \\[2ex]
-The \textbf{column rank}, $c$ of $A$, is the dimension of the column space of $A$ - which is the subspace of $\mathbb{R}^m$ spanned by the columns of $A$. The column rank is the dimension of the image of the linear transformation whose matrix is $A$. \\[2ex]
-The row rank is at most $m$ and the column rank at most $n$, but both can be less.
+Let $A$ be an $m \times n$ matrix. \\[2ex]
+The \textbf{row rank} of $A$, denoted $r$, is the dimension of the row space of $A$—the subspace of $\mathbb{R}^n$ spanned by the rows of $A$. \\[2ex]
+The \textbf{column rank} of $A$, denoted $c$, is the dimension of the column space of $A$—the subspace of $\mathbb{R}^m$ spanned by the columns of $A$. Equivalently, it is the dimension of the image of the linear transformation represented by $A$. \\[2ex]
+Note that:
+\begin{itemize}
+  \item The row rank is the number of linearly independent rows in $A$.
+  \item The column rank is the number of linearly independent columns in $A$.
+\end{itemize}
+Since the row rank is at most $m$ and the column rank at most $n$, both values can be strictly less than $m$ or $n$, respectively.
 
 \subsection{Row rank = column rank}
 \begin{theorembox}{}{}
@@ -1188,94 +1193,6 @@ To see that $r \leq c$, start with a basis for the column space of $A$, and writ
 
 Since $c \leq r$ and $r \leq c$, we have $c = r$. \\[2ex]
 
-\subsection{Row rank and column rank - Intuitive Explanation}
-\textbf{Recall: } Linear independence means that no vector can be expressed as a linear combination of the others. \\[2ex]
-Let $A$ be an $m \times n$ matrix. We can understand row rank and column rank more intuitively:
 
-\begin{itemize}
-  \item The \textbf{row rank} counts the number of linearly independent rows in the matrix.
-  \item The \textbf{column rank} counts the number of linearly independent columns in the matrix.
-\end{itemize}
-
-
-
-\begin{center}
-  \begin{tikzpicture}[scale = 0.5]
-    % Coordinate axes for row space
-    \draw[->,thick] (0,0) -- (4,0) node[right]{$x$};
-    \draw[->,thick] (0,0) -- (0,3) node[above]{$y$};
-
-    % Row vectors
-    \draw[->,very thick,blue] (0,0) -- (2,1) node[right]{$r_1$};
-    \draw[->,very thick,blue] (0,0) -- (1,2) node[above]{$r_2$};
-    \draw[->,thick,red,dashed] (0,0) -- (3,3) node[right]{$r_3 = r_1 + r_2$};
-
-    % Label for row space
-    \node at (2,-0.7) {Row Space in $\mathbb{R}^n$};
-    \node at (2,-1.2) {Row Rank = 2};
-  \end{tikzpicture}
-  \hspace{1cm}
-  \begin{tikzpicture}[scale = 0.5]
-    % Coordinate axes for column space
-    \draw[->,thick] (0,0) -- (4,0) node[right]{$x$};
-    \draw[->,thick] (0,0) -- (0,3) node[above]{$y$};
-
-    % Column vectors
-    \draw[->,very thick,orange] (0,0) -- (2,1) node[right]{$c_1$};
-    \draw[->,very thick,orange] (0,0) -- (1,2) node[above]{$c_2$};
-    \draw[->,thick,purple,dashed] (0,0) -- (3,3) node[right]{$c_3 = c_1 + c_2$};
-
-    % Label for column space
-    \node at (2,-0.7) {Column Space in $\mathbb{R}^m$};
-    \node at (2,-1.2) {Column Rank = 2};
-  \end{tikzpicture}
-\end{center}
-
-$$\text{Consider a matrix } A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}$$
-\begin{minipage}{0.5\textwidth}
-  Rows: $r_1 = [1, 2, 3] \quad r_2 = [4, 5, 6] \quad r_3 = [7, 8, 9]$
-\end{minipage}
-\begin{itemize}
-  \item
-  \item Columns: $c_1 = [1, 4, 7]^T$, $c_2 = [2, 5, 8]^T$, $c_3 = [3, 6, 9]^T$
-\end{itemize}
-
-We can verify that $r_3 = r_1 + r_2$ and $c_3 = c_1 + c_2$, so both row rank and column rank equal 2.
-
-\begin{center}
-  \begin{tikzpicture}
-    % Original matrix
-    \node[draw, minimum width=3cm, minimum height=3cm] (A) at (0,0) {$A = \begin{bmatrix}
-          \textcolor{blue}{1} & \textcolor{blue}{2} & \textcolor{blue}{3} \\
-          \textcolor{blue}{4} & \textcolor{blue}{5} & \textcolor{blue}{6} \\
-          \textcolor{red}{7}  & \textcolor{red}{8}  & \textcolor{red}{9}
-        \end{bmatrix}$};
-
-    % Row and column annotations
-    \node[blue] at (-2.5,1) {$r_1$};
-    \node[blue] at (-2.5,0) {$r_2$};
-    \node[red] at (-2.5,-1) {$r_3 = r_1 + r_2$};
-
-    \node[blue] at (-1,-2.5) {$c_1$};
-    \node[blue] at (0,-2.5) {$c_2$};
-    \node[red] at (1,-2.5) {$c_3 = c_1 + c_2$};
-
-    % Arrow to RREF
-    \draw[->] (2,0) -- (3,0);
-
-    % RREF
-    \node[draw, minimum width=3cm, minimum height=3cm] (RREF) at (5,0) {$\text{RREF}(A) = \begin{bmatrix}
-          1 & 0 & -1 \\
-          0 & 1 & 2  \\
-          0 & 0 & 0
-        \end{bmatrix}$};
-
-    % Non-zero rows and columns in RREF
-    \draw [decorate, decoration={brace, amplitude=5pt}] (6.5,1.2) -- (6.5,-0.2) node[midway, right=10pt] {2 non-zero rows};
-    \draw [decorate, decoration={brace, amplitude=5pt, mirror}] (3.75,-1.7) -- (5.25,-1.7) node[midway, below=10pt] {2 non-zero columns};
-  \end{tikzpicture}
-\end{center}
-
-In the RREF, we see exactly 2 non-zero rows and 2 non-zero columns, confirming rank = 2.
 
 \end{document}
