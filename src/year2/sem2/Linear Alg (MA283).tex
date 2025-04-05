@@ -1664,4 +1664,43 @@ $$
   \end{bmatrix} = (x-1)^2 = 0
 $$
 but its 1-dimensional eigenspace only consists of the $X$-axis. It does not have two linearly independent eigenvectors.
+\subsection{A Shear in $\mathbb{R}^2$}
+\begin{minipage}{0.3\textwidth}
+  \begin{center}
+    $$
+      B = \begin{bmatrix}
+        1 & 1 \\
+        0 & 1
+      \end{bmatrix}
+    $$
+  \end{center}
+\end{minipage}
+\begin{minipage}{0.7\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale = 0.5]
+      \draw[->] (-2,0) -- (2,0);
+      \draw[->] (0,-2) -- (0,2);
+
+      \draw[->, custom_blue, thick] (0,0.5) -- (1,0.5);
+      \draw[->, custom_blue, thick] (0,1) -- (1.5,1);
+      \draw[->, custom_blue, thick] (0,1.5) -- (2,1.5);
+
+      \draw[->, custom_blue, thick] (0,-0.5) -- (-1,-0.5);
+      \draw[->, custom_blue, thick] (0,-1) -- (-1.5,-1);
+      \draw[->, custom_blue, thick] (0,-1.5) -- (-2,-1.5);
+    \end{tikzpicture}
+  \end{center}
+\end{minipage} \\[2ex]
+The linear transformation $T$ described by $B$ send $(x,y) \in \mathbb{R}^2$ to $(x+y, y)$. This is a \textbf{horizontal shear}: it shifts every point horizontally by its $y$-coordinate. \\[2ex]
+For every point $v \in \mathbb{R}^2$, $T(v)$ is on the same horizontal line as $v$. It follows that $T(v)$ is a scalar multiply of $v$, only if $v$ lies on the $X$-axis; in this case, $T(v) = v$. \\[2ex]
+The characteristic polynomial of $B$ (and $T$) is:
+$$
+  \det(xI_2 - B) = \det\begin{bmatrix}
+    x-1 & -1  \\
+    0   & x-1
+  \end{bmatrix} = (x-1)^2 = (\lambda - 1)^2 = 0
+$$
+The only eigen value is $\lambda = 1$, and it has \textbf{algebraic multiplicity} $2$, meaning it appears twice as a root of the characteristic polynomial. \\[2ex]
+
+Its \textbf{geometric multiplicity} is only $1$, meaning its corresponding eigenspace is only 1-dimensional - just the line $y = 1$.
 \end{document}
