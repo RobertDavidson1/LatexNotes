@@ -1111,6 +1111,9 @@ If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not
   \item \textbf{Spanning sets:} $S$ is a spanning set of $V$  (or $S$ spans $V$) if every element of $V$ is a linear combination of the elements of $S$ - where $V$ is a subspace of $\mathbb{R}^n$ and $S$ is a subset of $V$.
   \item $\textbf{Linear dependence}$: A set of at least two vectors in $\mathbb{R}^n$ is linearly dependent if one of its elements is a linear combination of the others.
   \item $\textbf{Linear independence}$: A set of vectors in $\mathbb{R}^n$ is linearly independent if it is not linearly dependent, throwing away any element of the set shrinks the span.
+        \begin{itemize}
+          \item $S$ is linearly independent only if no element of $S$ is a linear combination of the other elements of $S$ - equivalently if no proper subset of $S$ spans the same space as $S$.
+        \end{itemize}
 \end{itemize}
 \end{takeaway-box}
 \section{Basis, Dimension, and Rank}
@@ -1163,34 +1166,16 @@ Replace again: $\{y_1, y_2, b_2\}$ spans $V$. \\[2ex]
 \textbf{Step 3.} \rule[.25\baselineskip]{\textwidth}{0.5px}\\
 Same reasoning: we can replace $b_2$ with $y_3$ to conclude $\{y_1, y_2, y_3\}$ spans $V$. \\[2ex]
 \textbf{Conclusion:} $\{y_1, y_2, y_3\}$ is a basis of $V$.
-\subsection{Recap of span, linear independence and basis}
-Let $V$ be a vector space, e.g. $V = \mathbb{R}^n$ and $S$ be a finite subset of $V$.
-Let $V$ be a vector space (e.g.\ $V = \mathbb{R}^n$). Let $S$ be a (finite) subset of $V$.
-
-\begin{enumerate}
-  \item $S$ is a spanning set of $V$ (or $S$ spans $V$) if every element of $V$ is a linear combination of the elements of $S$.
-
-  \item The span of $S$, denoted $\langle S \rangle$, is the set of all linear combinations of elements of $S$, a subspace of $V$.
-
-  \item $S$ is linearly independent if no element of $S$ is a linear combination of the other elements of $S$.\\
-        Equivalently, if no proper subset of $S$ spans $\langle S \rangle$.
-
-  \item $S$ is a basis of $V$ if $S$ is linearly independent \textbf{AND} $S$ spans $V$.\\
-        A basis is a minimal spanning set.\\
-        A basis is a maximal linearly independent set.
-
-  \item Every finite spanning set of $V$ contains a basis of $V$.
-
-  \item Every linearly independent subset of $V$ can be extended to a basis of $V$ (we have not proved this yet!).
-\end{enumerate}
-
+\pagebreak
 \subsection{Consequences of the replacement theorem}
 \begin{theorembox}{}{}
   Let $V$ be a vector space that has a basis with $n$ elements. \\[2ex]
   Then ever linearly independent set with $n$ elements in $V$ is a basis for $V$.
 \end{theorembox}
-If $V$ has a spanning set with $n$ elements, a linearly independent set in $V$ cannot have more than $n$ elements. \\[2ex]
-If $V$ has a linearly independent set with $n$ elements, a spanning set in $V$ must have at least $n$ elements. More concisely:
+\begin{itemize}
+  \item A linearly independent in $V$ cannot have more than $n$ elements, if $V$ has a spanning set with $n$ elements.
+  \item A spanning set in $V$ must have at least $n$ elements, if $V$ has a linearly independent set with $n$ elements.
+\end{itemize}
 \begin{conceptbox}{}{}
   The number of elements of a linearly independent set cannot exceed the number in a spanning set. Every spanning set has at least as many elements as the biggest independent set.
 \end{conceptbox}
@@ -1346,12 +1331,17 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
 \begin{takeaway-box}{}{}
 \begin{itemize}
   \item \textbf{Finite dimensional space} is one that can be spanned by a finite set of vectors ( akk uts vectors can be expresses as linear combinations of vectors)
-  \item \textbf{Basis} a linearly independent spanning set. A basis is a minimal spanning set, one in which every element is needed and does not contain a smaller spanning set.
+  \item \textbf{Basis}
         \begin{itemize}
           \item $S$ is a basis f $V$ if $S$ is \textbf{linearly independent}  \textbf{$\boldmath{S}$ spans $\boldmath{V}$}
-          \item Every finite spanning set of $V$ contains a basis for $V$.
+          \item A basis is a minimal spanning set - meaning that every element is needed and does not contain a smaller spanning set.
+          \item A basis is a maximal linearly independent set - meaning that no element of $S$ is a linear combination of the other elements of $S$.
         \end{itemize}
-  \item \textbf{Steinitz Replace Lemma} Every linearly independent set with $n$ elements in $V$ is a basis for $V$.
+  \item \textbf{Steinitz Replace Lemma} Every linearly independent set with $n$ elements in $V$ is a basis for $V$. From the lemma, we conclude
+        \begin{itemize}
+          \item A linearly independent in $V$ cannot have more than $n$ elements, if $V$ has a spanning set with $n$ elements.
+          \item A spanning set in $V$ must have at least $n$ elements, if $V$ has a linearly independent set with $n$ elements.
+        \end{itemize}
   \item
 \end{itemize}
 \end{takeaway-box}
