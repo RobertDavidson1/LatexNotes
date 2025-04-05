@@ -1260,6 +1260,53 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
 \begin{lemmabox}{}{}
   If $\{b_1, \dots, b_n\}$ is a basis of a vector space $V$, then every element of $V$ has a unique expression of a linear combination of $b_1, \dots, b_n$:
 \end{lemmabox}
+\noindent\textbf{Proof:} Suppose, for some $v \in V$, that:
+\begin{align*}
+  v & = a_1 b_1 + a_2 b_2 + \cdots + a_n b_n,    \quad a_i \in \mathbb{R}     \\
+  v & = a'_1 b_1 + a'_2 b_2 + \cdots + a'_n b_n,    \quad a'_i \in \mathbb{R}
+\end{align*}
+Then:
+$$
+  0_v = (a_1 - a'_1) b_1 + (a_2 - a'_2) b_2 + \cdots + (a_n - a'_n) b_n
+$$
+Since $B$ is linearly independent, we have:
+$$a_i - a'_i = 0 \Longrightarrow a_i = a'_i ,\quad \forall \; i$$
+\begin{examplebox}{}{}
+  In $\mathbb{R}^2$, the standard coordinates of $\begin{bmatrix}4 \\3\end{bmatrix}$ are $(4,3)$. \\[2ex]
+  With respect to the basis,
+  $\left\{
+    \begin{bmatrix}
+      1 \\
+      2
+    \end{bmatrix},
+    \begin{bmatrix}
+      2 \\
+      1
+    \end{bmatrix}\right\}
+  $ the coordinates of $\begin{bmatrix}4 \\3\end{bmatrix}$ are $(2, -1)$. Which is saying:
+  $$
+    \begin{bmatrix}
+      4 \\
+      3
+    \end{bmatrix}
+    =
+    2
+    \begin{bmatrix}
+      1 \\
+      2
+    \end{bmatrix}
+    +
+    1
+    \begin{bmatrix}
+      2 \\
+      -1
+    \end{bmatrix}.
+  $$
+
+
+\end{examplebox}
+
+
 \subsection{Coordinates with respect to different bases}
 Let $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
 $$b_1 = \begin{bmatrix}
@@ -1285,7 +1332,9 @@ $$
     4
   \end{bmatrix}
 $$
-We know $v = 2e_1 - 3e_2 + 4e_3 = [v]_B = 2[e_1]_B - 3[e_2]_B + 4[e_3]_B$. To find $[e_1]_B$:
+We know
+$$v = 2e_1 - 3e_2 + 4e_3 = [v]_B = 2[e_1]_B - 3[e_2]_B + 4[e_3]_B.$$
+To find $[e_1]_B$:
 $$e_1 = xb_1 + yb_2 + zb_3 =
   \begin{bmatrix}
     1 \\
@@ -1326,4 +1375,5 @@ $$e_1 = xb_1 + yb_2 + zb_3 =
     0
   \end{bmatrix}
 $$
+This is saying that $[e_1]_B$ is the first column of the inverse of the matrix $B$.
 \end{document}
