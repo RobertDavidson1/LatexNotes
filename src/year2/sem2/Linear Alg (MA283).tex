@@ -1700,7 +1700,32 @@ $$
     0   & x-1
   \end{bmatrix} = (x-1)^2 = (\lambda - 1)^2 = 0
 $$
-The only eigen value is $\lambda = 1$, and it has \textbf{algebraic multiplicity} $2$, meaning it appears twice as a root of the characteristic polynomial. \\[2ex]
-
+The only eigenvalue is $\lambda = 1$, and it has \textbf{algebraic multiplicity} $2$, meaning it appears twice as a root of the characteristic polynomial. \\[2ex]
 Its \textbf{geometric multiplicity} is only $1$, meaning its corresponding eigenspace is only 1-dimensional - just the line $y = 1$.
+
+\subsection{Eigenvector for distinct eigenvalues are independent}
+\begin{theorembox}{}{}
+  Let $A \in M_n{\mathbb{R}}$ and $v_1, \ldots, v_k$ be eigenvector of $A$ in $\mathbb{R}^n$ corresponding to distinct eigenvalues $\lambda_1, \ldots, \lambda_k$ of $A$. \\[2ex]
+  Then $\{v_1, \ldots, v_k\}$ is a linearly independent subset of $\mathbb{R}^n$.
+\end{theorembox}
+\noindent\textbf{Proof (for $k = 3$):}
+Note that no two $v_1, v_2, v_3$ are multiples of each other, since they correspond to distinct eigenvalues. \\[2ex]
+Suppose: $a_1v_1 + a_2v_2 + a_3v_3 = 0$ for some $a_i \in \mathbb{R}$. We want to show that $a_1 = a_2 = a_3 = 0$. \\
+Multiplying on the left by $A$ gives:
+$$
+  a_1Av_1 + a_2Av_2 + a_3Av_3 = 0 \Longrightarrow a_1\lambda_1v_1 + a_2\lambda_2v_2 + a_3\lambda_3v_3 = 0
+$$
+and multiplying the same equation by $\lambda_1$ gives:
+$$
+  a_1 \lambda_1 v_1 + a_2 \lambda_1 v_2 + a_3 \lambda_1 v_3 = 0
+$$
+Subtract to get:
+$$a_2(\lambda_1 - \lambda_2)v_2 + a_3(\lambda_1 - \lambda_3)v_3 = 0$$
+Since $v_2$ and $v_3$ are linearly independent, and $lambda_1 - \lambda_2 \neq 0$ and $\lambda_1 - \lambda_3 \neq 0$, it follows that $a_2 = a_3 = 0$ and hence $a_1 = 0$.
+\subsection{At most $n$ distinct eigenvalues}
+The following consequence of the previous theorem shows that  a matrix can have at most $n$ distinct eigenvalues. We already knew this, since the eigenvalues are roots of a polynomial of degree $n$.
+\begin{theorembox}{Corollary}{}
+  A matrix in $M_n(\mathbb{R})$ can have at most $n$ linearly independent eigenvectors.
+\end{theorembox}
+
 \end{document}
