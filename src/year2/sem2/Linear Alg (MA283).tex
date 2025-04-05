@@ -239,7 +239,7 @@ A linear transformation $T: \mathbb{R}^n \rightarrow \mathbb{R}^m$ can be comple
   \item These values are the coordinates of the $n$ transformed basis vectors in $\mathbb{R}^m$.
   \item This differs fundamentally from general continuous functions $f: \mathbb{R} \rightarrow \mathbb{R}$, which cannot be fully determined by their values at finitely many points.
 \end{itemize}
-\pagebreak
+
 \subsection*{Matrix multiplication is composition}
 Suppose that $T:\mathbb{R}^n \to \mathbb{R}^p$ and $S:\mathbb{R}^p \to \mathbb{R}^m$ are linear transformations. Then the composition $S \circ T: \mathbb{R}^n \to \mathbb{R}^m$ is also a linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$ defined for $\mathbf{v} \in \mathbb{R}^n$ by:
 $$
@@ -253,7 +253,7 @@ To see how that the $m \times n$ matrix $M_{S\circ T}$ depends on the matrix $M_
   \item Same for all other columns $\Longrightarrow$ $M_{S\circ T} = M_S \cdot M_T$
 \end{itemize}
 Thus, we conclude $\textbf{matrix multiplication is composition of linear transformations}$.
-\pagebreak
+
 \section{Systems of linear equations}
 \subsection{Linear equations and Solution Sets}
 A linear equation in the variables $x$ and
@@ -638,7 +638,7 @@ $$ I_3 + 3E_{2,1} = \begin{bmatrix}
   $$A = E_1^{-1} E_2^{-1} \cdots E_k^{-1}$$
   Since each $E_i$ is an elementary matrix, its inverse is also an elementary matrix. Therefore, $A$ can be expressed as a product of elementary matrices.
 \end{examplebox}
-\pagebreak
+
 \subsection{EROs and Inverses}
 Elementary Row Operations can be used to find the inverse of a square matrix.  Consider a square matrix $A \in M_n(\mathbb{F})$ (that is, an $n \times n$ matrix over a field $\mathbb{F}$). If $A$ is invertible, let
 $$
@@ -720,7 +720,7 @@ $$
     \end{bmatrix}$$
   It is easily checked that $AA^{-1} = I_3$.
 \end{examplebox}
-\pagebreak
+
 \section{Vector Spaces and Subspace Structure}
 \subsection{The Image and Kernel of a Linear Transformation}
 $T:\mathbb{R}^3 \to \mathbb{R}^3$ is the linear transformation defined with:
@@ -1631,10 +1631,37 @@ This means that $Ab_1 = 2b_1$, $A_b2 = -3b_2$, $Ab_3 = 7b_3$, so that $B = \{b_1
   $$
   The scalar $\lambda$ is called the \textbf{eigenvalue} of $A$ corresponding to the eigenvector $v$.
 \end{definitionbox}
-The eigenvalues of $A$ are the roots of its \textbf{characteristic polynomial}:
+\noindent The eigenvalues of $A$ are the roots of its \textbf{characteristic polynomial}:
 $$
   \det(xI_n - A) = 0
 $$
-The $\textbf{eigenspace}$ corresponding to a particular eigenvalue, $\lambda$, is the set of all vector, $v$, satisfying: $Av = \lambda v$. It is a subspace of the relevant $\mathbb{R}^n$ of dimension at least $1$.
-
+The $\textbf{eigenspace}$ corresponding to a particular eigenvalue, $\lambda$, is the set of all vector, $v$, satisfying: $Av = \lambda v$. It is a subspace of the relevant $\mathbb{R}^n$ of dimension at least $1$. \\[2ex]
+The matrix $A \in M_n(\mathbb{R})$ is \textbf{diagonalizable} only if $\mathbb{R}^n$ has a basis consisting of eigenvectors of $A$. In this case $P^{-1}AP$ is diagonal, where $P$ is a matrix whose $n$ columns are linearly independent eigenvectors of $A$. The diagonal entries of $P^{-1}AP$ are the corresponding eigenvalues.
+\subsection{Two examples of non-diagonalizabilty}
+For $A \in M_n(\mathbb{R})$, it does not always happen that $\mathbb{R}^n$ has a basis consisting of eigenvectors of $A$.\\[2ex]
+\noindent \textbf{Example 1:}
+$$A = \begin{bmatrix}
+    0 & -1 \\
+    1 & 0
+  \end{bmatrix}$$
+The matrix $A$ is diagonalizable in $M_2(\mathbb{C})$, but not in $M_2(\mathbb{R})$. The matrix represents an anti-clockwise rotation of $90^{\circ}$ in $\mathbb{R}^2$. It does not fix any line in $\mathbb{R}^2$. Its characteristic polynomial is:
+$$
+  \det(xI_2 - A) = \det\begin{bmatrix}
+    x  & 1 \\
+    -1 & x
+  \end{bmatrix} = x^2 + 1 = 0
+$$
+\noindent\textbf{Example 2:}
+$$B = \begin{bmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{bmatrix}$$
+The matrix $B$ is not diagonalizable in $M_2(\mathbb{C})$. The matrix represents \textbf{horizontal shear}. Its characteristic polynomial is:
+$$
+  \det(xI_2 - B) = \det\begin{bmatrix}
+    x-1 & -1  \\
+    0   & x-1
+  \end{bmatrix} = (x-1)^2 = 0
+$$
+but its 1-dimensional eigenspace only consists of the $X$-axis. It does not have two linearly independent eigenvectors.
 \end{document}
