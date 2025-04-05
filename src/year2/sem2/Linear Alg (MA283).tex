@@ -1559,6 +1559,16 @@ $$
 $$
 So $P$ itself, is the change of basis matrix from the basis $B$ to the standard basis.
 \section{Similarity, Eigenvalues, and Diagonalizability}
+\subsection*{Introduction}
+\noindent In this section, we address one of linear algebra’s central questions: how to simplify a matrix so its action becomes more transparent. Often, the simplest form is a \textbf{diagonal} matrix—one whose nonzero entries appear only on its main diagonal. A matrix \(A\) that can be converted into this form via an invertible matrix \(P\) (so that \(P^{-1}AP\) is diagonal) is called \textbf{diagonalizable}. \\[2ex]
+
+\par\noindent The key to diagonalizability lies in finding a basis of eigenvectors, where each vector in the basis is merely scaled by a constant (an \textbf{eigenvalue}) under the transformation. This gives us a geometric viewpoint: a diagonalizable matrix has enough independent directions in which it acts by simple stretching. However, not every matrix has a full set of eigenvectors; some transformations, like shear mappings or rotations in complex planes, cannot be captured by diagonal forms in the real numbers. \\[2ex]
+\par\noindent More generally, two matrices are said to be \textbf{similar} if one can be expressed as \(P^{-1}AP\) for an invertible \(P\). Similar matrices represent the \textbf{same} linear transformation but in different bases. They share core invariants such as determinant, trace, rank, and eigenvalues. Thus, similarity provides a unifying perspective: it reveals when two seemingly different matrices are actually just different coordinate pictures of the same underlying operator. \\[2ex]
+
+\par\noindent We will see how to recognize when diagonalization is possible by examining the characteristic polynomial and the geometric and algebraic multiplicities of eigenvalues. If a matrix has enough independent eigenvectors—equivalently, if each eigenvalue has as many eigenvectors as its multiplicity—then it can be diagonalized. This framework illuminates why certain real transformations require complex eigenvalues or why some can only be partially simplified (leading to the so-called Jordan normal form). \\[2ex]
+
+\par\noindent By the end of this section, you will understand not only how to test for diagonalizability and construct the matrix that does it, but also how these ideas generalize to broader simplifications of linear maps. In practice, diagonalization proves invaluable across mathematics, physics, and engineering for tasks like powering matrices, solving linear systems efficiently, or analyzing coupled dynamical systems.\\[2ex]
+
 \subsection{Similarity (The relation of $A$ and $A'$)}
 Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$m we:
 \begin{itemize}
@@ -1816,6 +1826,16 @@ It follows that $\lambda - t$ occurs at least $k$ times as a factor of $\det(\la
   A matrix is diagonalizable if and only if the geometric multiplicity of each of its eigenvalues is equal to the algebraic multiplicity
 \end{theorembox}
 \section{Inner Products, Orthogonality, and Projections}
+\section*{Introduction to Inner Products, Orthogonality, and Projections}
+
+\noindent In this section, we introduce the notion of an \textbf{inner product}, a tool that lets us measure angles, lengths, and distances within a vector space—much like the dot product does in \(\mathbb{R}^n\). Once we have an inner product, we can talk about \textbf{orthogonality}, or perpendicular vectors, which lays the groundwork for a host of geometric insights and computational techniques. \\[2ex]
+
+\par\noindent First, we generalize the usual dot product to an arbitrary vector space by defining a function \(\langle x, y \rangle\) that must satisfy certain symmetry, linearity, and positivity conditions. This innately geometric perspective extends to the concepts of \textbf{length} (or norm), \textbf{distance}, and \textbf{angle} in any such space. Orthogonality—where two vectors satisfy \(\langle x, y \rangle = 0\)—then becomes the keystone for analyzing how vectors project and decompose relative to each other. \\[2ex]
+
+\par\noindent We examine how to build an \textbf{orthogonal basis}, a set of mutually perpendicular vectors that simplifies calculations significantly. The \textbf{Gram–Schmidt process} provides a systematic way to convert any basis into one that is orthogonal. Orthogonal bases enable us to define the \textbf{orthogonal projection} of a vector onto a subspace, i.e., the nearest point in the subspace to a given vector. This projection is at the heart of geometric approximations—particularly the solution of certain systems that may not have exact solutions. \\[2ex]
+
+\par\noindent Finally, we apply these ideas to the method of \textbf{least squares} for \textbf{overdetermined systems}, where there are more equations than unknowns. By projecting the system’s right-hand side vector onto the column space of the coefficient matrix, we find an approximate solution that minimizes the total error. This illustrates just how powerful inner-product-based tools can be in both pure geometry and practical problem-solving contexts in data analysis, engineering, and beyond.
+
 \subsection{Inner Products}
 In $\mathbb{R}^n$, the dot product of the vectors $x = \begin{bmatrix}x_1 \\ x_2 \end{bmatrix}$ and $y = \begin{bmatrix}y_1 \\ y_2 \end{bmatrix}$ is defined as:
 $$
