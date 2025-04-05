@@ -1831,6 +1831,95 @@ The ordinary scalar product on $\mathbb{R}^n$ is the best known example of an in
 \end{enumerate}
 
 It is possible for a single vector space to have many different inner products defined on it, and if there is any risk of ambiguity we need to specify which one we are considering.
+\subsection{Length, Distance and Scaling in an Inner Product Space}
+\begin{definitionbox}{}{}
+  We define the \textbf{length} or \textbf{norm} of any vector $v$ by:
+  $$
+    ||v|| = \sqrt{\langle v, v \rangle}
+  $$
+\end{definitionbox}
+\begin{definitionbox}{}{}
+  We define the distance between two vectors, $u$ and $v$, by:
+  $$
+    d(u, v) = ||u - v||
+  $$
+\end{definitionbox}
+\begin{conceptbox}{Scaling}{}
+  Every vector, $v$, and scalar, $c$, satisfy:
+  $$
+    ||cv|| = |c| \cdot ||v||
+  $$
+  Since:
+  $$
+    ||cv|| = \sqrt{\langle cv, cv \rangle} = \sqrt{c^2\langle v, v \rangle} = |c| \cdot ||v||
+  $$
+  So we can adjust the norm of any element of $V$ while preserving its direction, by multiplying by a scalar.
+\end{conceptbox}
+\begin{definitionbox}{}{}
+  If $v$ is a non-zero vector in an inner product space $V$, then
+  $$
+    \hat{v} := \frac{1}{\|v\|}v
+  $$
+  is a unit vector in the direction of $v$, called the \textbf{normalization} of $v$.
+\end{definitionbox}
+\subsection{Orthogonality in an inner product space}
+Let $V$ be a vector space with an inner product $\langle \cdot, \cdot \rangle$ (such as the ordinary scalar product).
+\begin{definitionbox}{}{}
+  We say that the vectors $u$ and $v$ are \textbf{orthogonal} (with respect to $\langle \cdot, \cdot \rangle$) if $\langle u, v \rangle = 0$.
+\end{definitionbox}
+
+All these definitions are consistent with “typical” geometrically motivated concepts of distance and orthogonality.
+\textbf{Examples}
+\begin{enumerate}
+  \item $(2, 5)$ and $(5, -2)$ are orthogonal with respect to the ordinary scalar product in $\mathbb{R}^2$.
+
+  \item $\sin \pi x$ and $\cos \pi x$ are orthogonal with respect to the scalar product on the space of continuous functions on $[0, 1]$ defined in Lecture 18; this is saying that
+        $$
+          \int_0^1 \sin(\pi x) \cos(\pi x) \, dx = 0 \quad \left(= \left. \frac{1}{2\pi} \sin^2(\pi x) \right|_0^1 \right).
+        $$
+\end{enumerate}
+\subsection{Orthogonal Projection}
+\begin{lemmabox}{}{}
+  Let $u$ and $v$ be non-zero vectors in an inner product space $V$.
+  Then it is possible to write (in a unique way) $v = au + v'$, where $a$ is a scalar and $v'$ is orthogonal to $u$.
+\end{lemmabox}
+
+\begin{itemize}
+  \item If $v$ is orthogonal to $u$, take $a = 0$ and $v' = v$.
+
+  \item If $v$ is a scalar multiple of $u$, take $au = v$ and $v' = 0$.
+
+  \item Otherwise, to solve for $a$ and $v'$ in the equation $v = au + v'$ (with $u \perp v'$), take the inner product with $u$ on both sides. Then
+        $$
+          \langle u, v \rangle = a \langle u, u \rangle + 0 \Longrightarrow a = \frac{\langle u, v \rangle}{\|u\|^2}, \quad
+          v' = v - \frac{\langle u, v \rangle}{\|u\|^2} u.
+        $$
+\end{itemize}
+We can verify directly that the two components in this expression are orthogonal to each other. \\[2ex]
+\noindent \textbf{Example}
+$$\text{Write } u = \begin{bmatrix} 2 \\ 1 \end{bmatrix},\quad v = \begin{bmatrix} 6 \\ -2 \end{bmatrix} \quad \text{Then } u = \begin{bmatrix} \frac{3}{2} \\ \frac{3}{4} \end{bmatrix} + \begin{bmatrix} \frac{3}{2} \\ -\frac{11}{4} \end{bmatrix}$$
+
+\subsection{Orthogonal projection of one vector on another}
+\begin{definitionbox}{}{}
+  \textit{For non-zero vectors $u$ and $v$ in an inner product space $V$, the vector}
+  $$
+    \frac{\langle u, v \rangle}{\|u\|^2} u
+  $$
+  \textit{is called the projection of $v$ on the 1-dimensional space spanned by $u$. It is denoted by $\text{proj}_u(v)$ and it has the property that $v - \text{proj}_u(v)$ is orthogonal to $u$.}
+\end{definitionbox}
+
+
+\textbf{Lemma}
+\textit{$\text{proj}_u(v)$ is the unique element of $\langle u \rangle$ whose distance from $v$ is minimal.}
+
+\textbf{Proof} Let $au$ be a scalar multiple of $u$. Then
+\[
+  d(au, v)^2 = \langle au - v, au - v \rangle = a^2 \langle u, u \rangle - 2a \langle u, v \rangle + \langle v, v \rangle
+\]
+Regarded as a quadratic function of $a$, this has a minimum when its derivative is 0, i.e. when
+\[
+  2a \langle u, u \rangle - 2 \langle u, v \rangle = 0, \quad \text{when } a = \frac{\langle u, v \rangle}{\|u\|^2}.
+\]
 
 
 
