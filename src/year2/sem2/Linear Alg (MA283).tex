@@ -1989,17 +1989,148 @@ with equality only if $w = u = \text{proj}_W(v)$.
 \subsection{Recall}
 Let $u$ and $v$ be elements in an inner product space $V$. The \textbf{projection of $v$ on $u$} is
 $$
-  \boxed{\text{proj}_u\,v = \frac{\langle u, v \rangle}{\langle u, u \rangle} u}
+  \text{proj}_u\,v = \frac{\langle u, v \rangle}{\langle u, u \rangle} u
 $$
-
 Then $\text{proj}_u\,v$ is the unique nearest element to $v$ of the 1-dimensional subspace spanned by $u$ (in the distance determined by the inner product), and
 $$
-  \boxed{\langle v', u \rangle = 0,\quad v' \perp u,\quad \text{where } v' = v - \text{proj}_u\,v.}
+  \langle v', u \rangle = 0,\quad v' \perp u,\quad \text{where } v' = v - \text{proj}_u\,v.
 $$
-
-So $v$ is the sum of its projection on $u$ and a component orthogonal to $u$.
-
+So $v$ is the sum of its projection on $u$ and a component orthogonal to $u$. \\[2ex]
 In general, if $W$ is any subspace of $V$ and $v \in V$, then there is a unique nearest element in $W$ to $v$, called $\text{proj}_W\,v$ or the \textbf{projection of $v$ on $W$},
 and $v - \text{proj}_W\,v$ is orthogonal to \textbf{every element of $W$}.
+\subsection{Orthogonal Basis}
+An \textbf{orthogonal basis} of an inner product space $V$ is a basis whose elements are all orthogonal to each other.
+\begin{theorembox}{}{}
+  If $V$ is a finite-dimensional inner product space, then $V$ has an orthogonal (or orthonormal) basis.
+\end{theorembox}
+\noindent Let $\{v_1, \dots, v_n\}$ be any basis. We convert it to an orthogonal basis $\{b_1, \dots, b_n\}$ as follows.
+
+\begin{enumerate}
+  \item Set $b_1 = v_1$.
+  \item Set $b_2 = v_2 - \text{proj}_{b_1} v_2$. Then $b_2 \perp b_1$ and
+        $\text{span}(b_1, b_2) = \text{span}(v_1, v_2)$.
+  \item Set $b_3 = v_3 - \text{proj}_{b_1} v_3 - \text{proj}_{b_2} v_3$.
+        Then $b_3 \perp b_1$ and $b_3 \perp b_2$ and
+        $\text{span}(b_1, b_2, b_3) = \text{span}(b_1, b_2, v_3) = \text{span}(v_1, v_2, v_3)$.
+  \item Continue in this way: Set $b_k = v_k -$ (the sum of its projections on $b_1, \dots, b_{k-1}$).
+\end{enumerate}
+
+The result is an orthogonal basis of $V$.
+\subsection{Projection on a subspace}
+Let $W$ be a subspace of an inner product space $V$ and let $v$ be any element of $V$.\\
+Then there is a unique element $w$ of $W$ for which
+$v = w + v'$, and $v' \perp w$ for all $w \in W$. \\[2ex]
+Then $w$ is called the \textbf{orthogonal projection of $v$ on $W$}, denoted $\text{proj}_W\,v$.
+$$
+  \text{proj}_W\,v = \text{proj}_{b_1}\,v + \cdots + \text{proj}_{b_k}\,v \quad \text{for an orthogonal basis } \{b_1, \dots, b_k\} \text{ of } W.
+$$
+\textbf{Example} \\
+In $\mathbb{R}^3$, let $W$ be the subspace $x + y + 3z = 0$, and let $v = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}$.
+Then
+$$
+  v = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+  = \underbrace{\begin{bmatrix} 6/11 \\ 6/11 \\ -4/11 \end{bmatrix}}_{\text{proj}_W(v)}
+  + \underbrace{\begin{bmatrix} 5/11 \\ 5/11 \\ 15/11 \end{bmatrix}}_{\perp W}
+$$
+\subsection{How to calculate $\text{proj}_W(v)$}
+\begin{examplebox}{}{}
+  In $\mathbb{R}^3$, let $W$ be the subspace $x + y + 3z = 0$, and let $v = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}$. Find an orthogonal basis of $W$
+  \\ \rule{\textwidth}{1pt}\\
+  For example $\{b_1, b_2\}$ with
+  $$
+    b_1 = \begin{bmatrix} -1 \\ 1 \\ 0 \end{bmatrix}, \quad
+    b_2 = \begin{bmatrix} 3 \\ 3 \\ -2 \end{bmatrix}.
+  $$
+
+  Then
+  \begin{align*}
+    \text{proj}_W\,v & = \text{proj}_{b_1}\,v + \text{proj}_{b_2}\,v
+    = \frac{\langle v, b_1 \rangle}{\langle b_1, b_1 \rangle} b_1 + \frac{\langle v, b_2 \rangle}{\langle b_2, b_2 \rangle} b_2 \\
+                     & = \frac{0}{2} b_1 + \frac{4}{22} b_2 = \frac{4}{22} b_2
+    = \begin{bmatrix} 6/11 \\ 6/11 \\ -4/11 \end{bmatrix}.
+  \end{align*}
+
+  $$
+    v = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+    = \underbrace{\begin{bmatrix} 6/11 \\ 6/11 \\ -4/11 \end{bmatrix}}_{\text{proj}_W(v)}
+    + \underbrace{\begin{bmatrix} 5/11 \\ 5/11 \\ 15/11 \end{bmatrix}}_{\perp W}
+  $$
+\end{examplebox}
+\begin{examplebox}
+  In $\mathbb{R}^3$, find the unique point of the plane $W : x + 2y - z = 0$
+  that is nearest to the point $v : (1, 2, 2)$.
+  \\ \rule{\textwidth}{1pt}\\
+  First find an orthogonal basis for $W$: for example $\{b_1, b_2\}$, where
+  $$
+    b_1 = (1, 0, 1), \quad b_2 = (1, -1, -1).
+  $$
+  Then
+  \begin{align*}
+    \text{proj}_W(v) & = \text{proj}_{b_1}(v) + \text{proj}_{b_2}(v)                                                                               \\
+                     & = \frac{\langle b_1, v \rangle}{\langle b_1, b_1 \rangle} b_1 + \frac{\langle b_2, v \rangle}{\langle b_2, b_2 \rangle} b_2 \\
+                     & = \frac{3}{2} b_1 - \frac{3}{3} b_2                                                                                         \\
+                     & = \left( \frac{3}{2}, 0, \frac{3}{2} \right) - (1, -1, -1) = \left( \frac{1}{2}, 1, \frac{5}{2} \right).
+  \end{align*}
+\end{examplebox}
+\subsection{Application: least squares for overdetermined systems}
+\textbf{Example} Consider the following \textbf{overdetermined} linear system.
+$$
+  \begin{aligned}
+    2x + y & = 3  \\
+    x - y  & = 0  \\
+    x - 3y & = -4
+  \end{aligned}
+  \quad \Longleftrightarrow \quad
+  \begin{bmatrix}
+    2 & 1  \\
+    1 & -1 \\
+    1 & -3
+  \end{bmatrix}
+  \begin{bmatrix}
+    x \\
+    y
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    3 \\
+    0 \\
+    -4
+  \end{bmatrix}
+$$
+
+This system has three equations and only two variables. It is inconsistent and \textbf{overdetermined} — each pair of equations has a simultaneous solution, but all three do not.
+
+Overdetermined systems arise quite often in applications, from observed data.
+Even if they do not have exact solutions, approximate solutions are of interest. \\[2ex]
+For a vector $b \in \mathbb{R}^3$, the system
+$$
+  \underbrace{
+    \begin{bmatrix}
+      2 & 1  \\
+      1 & -1 \\
+      1 & -3
+    \end{bmatrix}
+  }_{A}
+  \begin{bmatrix}
+    x \\
+    y
+  \end{bmatrix}
+  = b
+$$
+has a solution if and only if $b$ belongs to the 2-dimensional linear span $W$
+of the columns of the coefficient matrix $A$:
+$v_1 = \begin{bmatrix} 2 \\ 1 \\ 1 \end{bmatrix}$ and $v_2 = \begin{bmatrix} 1 \\ -1 \\ -3 \end{bmatrix}$.
+
+If not, then the nearest element of $W$ to $b$ is $b' = \text{proj}_W(b)$, and our approximate solutions for $x$ and $y$ are the entries of the vector $c$ in $\mathbb{R}^2$
+for which $Ac = b'$. We know that $b' - b$ is orthogonal to $v_1$ and $v_2$, which are the rows of $A^T$. Hence
+$$
+  A^T(b' - b) =
+  \begin{bmatrix}
+    0 \\
+    0
+  \end{bmatrix}
+  \Longrightarrow A^T b' = A^T A c = A^T b \Longrightarrow
+  c = (A^T A)^{-1} A^T b
+$$
 
 \end{document}
