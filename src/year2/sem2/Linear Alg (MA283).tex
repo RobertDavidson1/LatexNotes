@@ -727,6 +727,16 @@ $$
 \end{examplebox}
 
 \section{Subspaces, Span, and Linear Independence}
+\subsection*{Introduction}
+
+\noindent In this section, we explore a series of interconnected ideas that shape our understanding of how sets of vectors can form specialized structures called \textbf{subspaces}, how certain subsets of vectors can generate entire spaces (\textbf{spanning}), and how to determine whether one vector is dependent on others (\textbf{linear dependence} versus \textbf{linear independence}). These notions not only formalize what it means for a collection of vectors to fill a space (or a portion of it) but also lay the groundwork for designing and working with efficient representations of those spaces.\\[2ex]
+We begin with the concepts of \textbf{image} and \textbf{kernel} in a linear transformation \(T:\mathbb{R}^n \to \mathbb{R}^m\). The image (also called the column space) comprises all possible outputs of the transformation, while the kernel (or nullspace) is the set of all inputs that map to the zero vector. Both are prime examples of subspaces of \(\mathbb{R}^m\) and \(\mathbb{R}^n\), respectively.
+\\[2ex]
+From there, we introduce the formal definition of a \textbf{subspace} of \(\mathbb{R}^n\). A subspace is any set of vectors in \(\mathbb{R}^n\) that is closed under addition and scalar multiplication, meaning sums and scalar multiples of vectors in the set remain in the set. Identifying these subspaces is crucial, for instance, in analyzing solution sets of linear systems and transformations. \\[2ex]
+Next, we discuss the idea of the \textbf{span} of a set of vectors, demonstrating how taking linear combinations of a few vectors can give rise to entire subspaces. This leads to the concept of a \textbf{spanning set}, a collection of vectors whose linear combinations recreate the entire subspace in question. Understanding which (and how many) vectors actually suffice to generate a subspace is a step toward more advanced ideas like dimension. \\[2ex]
+Finally, we turn to the topics of \textbf{linear dependence} and \textbf{linear independence}. These properties reveal whether one vector in a set can be written as a linear combination of the others. A set is linearly dependent if at least one vector is redundant, while a linearly independent set has no such redundancy. Checking for linear independence typically involves setting up a linear combination that yields the zero vector; if the only solution is all zero coefficients, the set is independent. This distinction shapes the way we reduce or optimize spanning sets and reveals the essence of a vector space’s most efficient basis. \\[2ex]
+Overall, these ideas—image, kernel, subspaces, span, and linear independence—are at the heart of linear algebra. They clarify how different vector sets form coherent structures and pave the way for higher-level topics such as rank, dimension, and bases, all of which are built upon the foundation laid out here.
+
 \subsection{The Image and Kernel of a Linear Transformation}
 $T:\mathbb{R}^3 \to \mathbb{R}^3$ is the linear transformation defined with:
 $$
@@ -1264,6 +1274,17 @@ Combining both inequalities, we conclude that $r = c$, i.e., the row rank and co
   \noindent\textbf{Conclusion.} Since $c \leq r$ and $r \leq c$, it follows that $r = c = 2$. This example confirms that the row rank equals the column rank.
 \end{examplebox}
 \section{Coordinates, Rank-Nullity, and Change of Basis}
+
+\noindent In this section, we build on the concepts of span and linear independence to explore how certain collections of vectors can be both minimal and complete generators for a vector space. These collections are called \emph{bases}, and their size (the number of vectors in a basis) defines the crucial notion of \emph{dimension}. We also study how dimension extends to the concept of \emph{rank} for matrices, giving us a measure of how many independent rows or columns a matrix has.
+
+\par\noindent We begin by considering what it means for a vector space to be \emph{finite dimensional}: it must admit a finite spanning set. By isolating a minimal subset of those spanning vectors that still generate the whole space, we arrive at a basis. A basis thus represents a succinct yet powerful way of describing a vector space—if you know the basis vectors, you can build any vector in the space through linear combinations.
+
+\par\noindent We then introduce the famous Steinitz Replacement Lemma, which shows that if you have a linearly independent set with the same number of elements as a known basis, that set must also be a basis. This lemma underpins key facts about dimension, such as why every basis for a given finite-dimensional space has the same cardinality.
+
+\par\noindent We conclude by discussing how these ideas apply to matrices. The \emph{row rank} of a matrix is the dimension of the subspace spanned by its rows, while the \emph{column rank} is the dimension of the subspace spanned by its columns. A celebrated theorem in linear algebra states that these two numbers are always equal—a single integer called the \emph{rank} of the matrix.
+
+\par\noindent Overall, these concepts of basis, dimension, and rank are vital. They enable us to compress an entire vector space into a finite set of generators, quantify its “size,” and understand the fundamental degrees of freedom in any linear system. Mastering these ideas provides a solid foundation for all subsequent studies of linear transformations, eigenvalues, diagonalization, and beyond.
+
 \subsection{Coordinates}
 \begin{lemmabox}{}{}
   If $\{b_1, \dots, b_n\}$ is a basis of a vector space $V$, then every element of $V$ has a unique expression of a linear combination of $b_1, \dots, b_n$:
