@@ -1446,4 +1446,115 @@ The Rank-Nullity Theorem \textbf{relates the dimensions of the kernel, image and
         Since $\{b_1, \dots, b_k, c_{k+1}, \dots, c_n\}$ is linearly independent in $\mathbb{R}^n$, this means that $a_{k+1}c_{k+1} + a_{k+2}c_{k+2} + \cdots + a_nc_n = 0$ for each $a_j = 0$.
   \item It follows that $\{T(c_{k+1}), \dots, T(c_n)\}$ is a basis for the image of $T$, so this image has dimensions $n-k$ as required.
 \end{enumerate}
+\subsection{Linear transformations and change of basis}
+\begin{definitionbox}{}{}
+  Let $T : \mathbb{R}^n \to \mathbb{R}^n$ be a linear transformation and let $B = \{b_1, \ldots, b_n\}$ be a basis of $\mathbb{R}^n$. \\[2ex]
+  The \textbf{matrix of $T$ with respect to the basis $B$} is the $n \times n$ matrix that has the $B$-coordinates of $T(b_1), \ldots, T(b_n)$ as its $n$ columns. This matrix $M$ satisfies
+  $$
+    [T(v)]_b = M[v]_B, \quad \forall v \in \mathbb{R}^n.
+  $$
+\end{definitionbox}
+\begin{examplebox}{}{}
+  Let $T: \mathbb{R}^3 \to \mathbb{R}^3$ be the linear transformation defined by $v \to Av$ and $B$ be the ordered basis of $\mathbb{R}^3$ with elements:
+  $$
+    A =
+    \begin{bmatrix}
+      -2 & 2  & 1  \\
+      4  & 5  & -1 \\
+      -4 & -8 & 3
+    \end{bmatrix}
+    \quad \Bigg| \Bigg| \Bigg|\quad
+    b_1 = \begin{bmatrix}
+      1 \\
+      0 \\
+      4
+    \end{bmatrix}, \quad
+    b_2 = \begin{bmatrix}
+      2  \\
+      -1 \\
+      0
+    \end{bmatrix}, \quad
+    b_3 = \begin{bmatrix}
+      4 \\
+      0 \\
+      2
+    \end{bmatrix}
+    \quad\Longrightarrow\quad
+    B = \begin{bmatrix}
+      1 & 2  & 4 \\
+      0 & -1 & 0 \\
+      4 & 0  & 2
+    \end{bmatrix}
+  $$
+  \textbf{A diagonal representation of the matrix $A'$ of $T$ with respect to the basis $B$}
+  $$
+    \begin{aligned}
+       & T(b_{1})=
+      \begin{bmatrix}
+        -2 & 2  & 1  \\
+        4  & 5  & -1 \\
+        -4 & -8 & 3
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 \\
+        0 \\
+        4
+      \end{bmatrix}\quad=\quad
+       & \begin{bmatrix}
+           2 \\
+           0 \\
+           8
+         \end{bmatrix}=2b_{1}\Longrightarrow[T(b_{1})]_{B}=
+      \begin{bmatrix}
+        2 \\
+        0 \\
+        0
+      \end{bmatrix}                                         \\
+      \\
+       & T(b_{2})=
+      \begin{bmatrix}
+        -2 & 2  & 1  \\
+        4  & 5  & -1 \\
+        -4 & -8 & 3
+      \end{bmatrix}
+      \begin{bmatrix}
+        2  \\
+        -1 \\
+        0
+      \end{bmatrix}\quad=\quad
+       & \begin{bmatrix}
+           -6 \\
+           3  \\
+           0
+         \end{bmatrix}=-3b_{2}\Longrightarrow[T(b_{2})]_{B}=
+      \begin{bmatrix}
+        0  \\
+        -3 \\
+        0
+      \end{bmatrix}                                         \\
+      \\
+       & T(b_{3})=
+      \begin{bmatrix}
+        -2 & 2  & 1  \\
+        4  & 5  & -1 \\
+        -4 & -8 & 3
+      \end{bmatrix}
+      \begin{bmatrix}
+        0  \\
+        -1 \\
+        2
+      \end{bmatrix}\quad=\quad
+       & \begin{bmatrix}
+           0  \\
+           -7 \\
+           14
+         \end{bmatrix}=7b_{3}\Longrightarrow[T(b_{3})]_{B}=
+      \begin{bmatrix}
+        0 \\
+        0 \\
+        7
+      \end{bmatrix}
+    \end{aligned}
+  $$
+\end{examplebox}
 \end{document}
