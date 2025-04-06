@@ -424,7 +424,7 @@ This is the standard way to access a two-dimensional array element. It directly 
 \begin{itemize}
     \item \texttt{a+1} moves the pointer from the first row to the second row.
     \item \texttt{*(a+1)} dereferences that pointer to yield the address of the first element of the second row (again, equivalent to \texttt{a[1]}).
-    \item Adding \texttt{2} moves to the third element in that row, and the outer \texttt{*} fetches its value---again, \texttt{a[1][2]}.
+    \item Adding \texttt{2} moves to the third element in that row, and the outer \texttt{*} fetches its value \rule{\textwidth}{0.5pt}again, \texttt{a[1][2]}.
 \end{itemize}
 
 \subsubsection*{\texttt{*(\&a[0][0]+4+2)}}
@@ -755,7 +755,7 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
                                  & Has a long average weight time, and suffers from the \textbf{convoy effect} (short jobs wait for long jobs)
         \\
         \addlinespace[2ex]
-        SJF (Shortest Job First) & optimal – minimum average waiting time for a given set of processes.
+        SJF (Shortest Job First) & optimal - minimum average waiting time for a given set of processes.
         Is non pre-eemptive.
                                  & Cannot be emplyed in a realisting setting because we would be required to know the length of next CPU Burst before it happens
         \\
@@ -775,18 +775,169 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
         $P_2$ & 0            & 15         \\
         $P_3$ & 4            & 10         \\
         $P_4$ & 6            & 5          \\
-    \end{tabularx}
-    \textbf{Calculate}
+    \end{tabularx}\\[2ex]
+    \rule{\textwidth}{0.5pt}
+    \textbf{1. First-Come, First-Served (FCFS)}
+
+    Order: $P_1 \rightarrow P_2 \rightarrow P_3 \rightarrow P_4$
+
     \begin{itemize}
-        \item Average Turnaround Time
-        \item Average Waiting Time
-        \item Average Response Time
+        \item $P_1$: starts at 0, ends at 20
+        \item $P_2$: starts at 20, ends at 35
+        \item $P_3$: starts at 35, ends at 45
+        \item $P_4$: starts at 45, ends at 50
     \end{itemize}
-    for
-    \begin{enumerate}
-        \item FCFS
-        \item SJF
-        \item RR, $q = 10$
-    \end{enumerate}
+
+
+    \begin{align*}
+        \text{TAT} & = \text{Completion Time} - \text{Arrival Time} \\
+        \text{WT}  & = \text{TAT} - \text{Burst Time}               \\
+        \text{RT}  & = \text{Start Time} - \text{Arrival Time}
+    \end{align*}
+
+
+    \begin{center}
+        \begin{tabular}{@{} l c c c c @{}}
+            \toprule
+            Process & CT & TAT & WT & RT \\
+            \midrule
+            $P_1$   & 20 & 20  & 0  & 0  \\
+            $P_2$   & 35 & 35  & 20 & 20 \\
+            $P_3$   & 45 & 41  & 31 & 31 \\
+            $P_4$   & 50 & 44  & 39 & 39 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+
+    \begin{align*}
+        \text{Average TAT} & = \frac{20 + 35 + 41 + 44}{4} = 35  \\
+        \text{Average WT}  & = \frac{0 + 20 + 31 + 39}{4} = 22.5 \\
+        \text{Average RT}  & = \frac{0 + 20 + 31 + 39}{4} = 22.5
+    \end{align*}
+
+    \rule{\textwidth}{0.5pt}
+
+    \textbf{2. Shortest Job First (SJF, Non-preemptive)}
+
+    \begin{itemize}
+        \item At time 0: $P_1$, $P_2$ ready → pick $P_2$
+        \item At time 15: $P_1$, $P_3$ ready → pick $P_3$
+        \item At time 25: $P_1$, $P_4$ ready → pick $P_4$
+        \item At time 30: $P_1$ runs
+    \end{itemize}
+
+    \begin{itemize}
+        \item $P_2$: start 0, end 15
+        \item $P_3$: start 15, end 25
+        \item $P_4$: start 25, end 30
+        \item $P_1$: start 30, end 50
+    \end{itemize}
+
+    \begin{center}
+        \begin{tabular}{@{} l c c c c @{}}
+            \toprule
+            Process & CT & TAT & WT & RT \\
+            \midrule
+            $P_2$   & 15 & 15  & 0  & 0  \\
+            $P_3$   & 25 & 21  & 11 & 11 \\
+            $P_4$   & 30 & 24  & 19 & 19 \\
+            $P_1$   & 50 & 50  & 30 & 30 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    \begin{align*}
+        \text{Average TAT} & = \frac{15 + 21 + 24 + 50}{4} = 27.5 \\
+        \text{Average WT}  & = \frac{0 + 11 + 19 + 30}{4} = 15    \\
+        \text{Average RT}  & = \frac{0 + 11 + 19 + 30}{4} = 15
+    \end{align*}
+
+
+    \rule{\textwidth}{0.5pt}
+
+    \textbf{3. Round Robin (RR), Time Quantum = 10}
+
+    Execution sequence:
+    \begin{itemize}
+        \item 0-10: $P_1$ (rem 10)
+        \item 10-20: $P_2$ (rem 5)
+        \item 20-30: $P_3$ (done)
+        \item 30-35: $P_4$ (done)
+        \item 35-45: $P_1$ (done)
+        \item 45-50: $P_2$ (done)
+    \end{itemize}
+
+    Response times:
+    \begin{itemize}
+        \item $P_1$: 0
+        \item $P_2$: 10
+        \item $P_3$: 20
+        \item $P_4$: 30
+    \end{itemize}
+
+    \begin{center}
+        \begin{tabular}{@{} l c c c c @{}}
+            \toprule
+            Process & CT & TAT & WT & RT \\
+            \midrule
+            $P_1$   & 45 & 45  & 25 & 0  \\
+            $P_2$   & 50 & 50  & 35 & 10 \\
+            $P_3$   & 30 & 26  & 16 & 20 \\
+            $P_4$   & 35 & 29  & 24 & 30 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+
+    \begin{align*}
+        \text{Average TAT} & = \frac{45 + 50 + 26 + 29}{4} = 37.5 \\
+        \text{Average WT}  & = \frac{25 + 35 + 16 + 24}{4} = 25   \\
+        \text{Average RT}  & = \frac{0 + 10 + 20 + 30}{4} = 15
+    \end{align*}
+
+
+    \rule{\textwidth}{0.5pt}
+
+    \textbf{4. Shortest Time to Completion First (STCF)}
+
+    Execution order:
+    \begin{itemize}
+        \item 0-4: $P_2$ runs (rem 11)
+        \item 4-6: $P_3$ runs (rem 8)
+        \item 6-11: $P_4$ runs (done)
+        \item 11-21: $P_3$ runs (done)
+        \item 21-35: $P_2$ resumes (done)
+        \item 35-55: $P_1$ runs (done)
+    \end{itemize}
+
+    Response times:
+    \begin{itemize}
+        \item $P_1$: 21
+        \item $P_2$: 0
+        \item $P_3$: 4
+        \item $P_4$: 6
+    \end{itemize}
+
+    \begin{center}
+        \begin{tabular}{@{} l c c c c @{}}
+            \toprule
+            Process & CT & TAT & WT & RT \\
+            \midrule
+            $P_1$   & 55 & 55  & 35 & 21 \\
+            $P_2$   & 35 & 35  & 20 & 0  \\
+            $P_3$   & 21 & 17  & 7  & 4  \\
+            $P_4$   & 11 & 5   & 0  & 6  \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+
+    \begin{align*}
+        \text{Average TAT} & = \frac{55 + 35 + 17 + 5}{4} = 28  \\
+        \text{Average WT}  & = \frac{35 + 20 + 7 + 0}{4} = 15.5 \\
+        \text{Average RT}  & = \frac{21 + 0 + 4 + 6}{4} = 7.75
+    \end{align*}
+
 \end{examplebox}
 \end{document}
