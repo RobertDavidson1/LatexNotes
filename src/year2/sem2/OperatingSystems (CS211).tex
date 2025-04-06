@@ -1031,19 +1031,34 @@ Suppose a process is in its critical section. If it cannot be preempted then dat
 \textbf{Automatic Instructions}
 The processor has facilities to swap the contents of two words (in memory), or test and change the contents of a word automatically – i.e., as a single instruction. There are other hardware and software solutions to synchronization problems. The most important, perhaps, is a tool known as a semaphore
 \subsection{Semaphores}
-A Semaphore $S$ is an integer variable that can only be accessed via one of two operations:
-\begin{lstlisting}[language=C]
-    wait(S) {
+a Semaphore $S$ is an integer variable that can only be accessed via one of two operations: Test/sem wait P(S), and Increment/sem post V (S). \\
+\begin{minipage}{0.48\textwidth}
+    \begin{lstlisting}[style=CStyle, caption={Test or Sem\_wait}]
+        P(S)
         while (S <= 0) {
-            // busy wait
+            wait();
         }
-        S = S - 1;
-    }
-
-    signal(S) {
-        S = S + 1;
-    }
-\end{lstlisting}
-
-
+        S--; 
+    \end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+    \begin{lstlisting}[style=CStyle, caption={Test/Sem\_wait}]
+        V(S)
+        S++; 
+    \end{lstlisting}
+\end{minipage}
+These operations must be indivisible (or “atomic”). This is, when one process (or thread) modifies a semaphore value, no other process can modify it at the same time.\\[2ex]
+There are two types of semaphore: \\
+\textbf{1. Binary semaphores (locks):} These are used to control access to a single resource, such as a memory location. If the resources is available then $S = 1$. Otherwise $S = 0$. When a process wants to access it,
+\begin{itemize}
+    \item It calls the function $P(S)$
+    \item Enters the critical section
+    \item Calls $V(S)$ to release the resource when it exists the critical section
+\end{itemize}
+\textbf{2. General (or counting) semaphores}
+These are used to control access to a pool consisting of a finite number of identical resources. Say there are 5 units available. The S is initialised to 5. Whenever a process requests the resource, it calls $P(S)$ and decrements the value of $S$. If $S$ reaches $0$ then the next process that requests that resource must wait until another frees it by running $V(S)$.
+\subsection{Review of Concurrency}
+\begin{itemize}
+    \item Cooperating processes are ones that can affect each other's execution, usually because they access the same resources.
+\end{itemize}
 \end{document}
