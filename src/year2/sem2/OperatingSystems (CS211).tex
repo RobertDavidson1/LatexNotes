@@ -1008,5 +1008,28 @@ But for multi-threaded processes, we do not have control over the order in which
 \begin{definitionbox}
     A critical section is a piece of code that accesses a shared variable (or more generally, a shared resource) and must not be concurrently executed by more than one thread.
 \end{definitionbox}
-The example given above  shows that multiple threads executing the same code can result in a race condition, that is an example of a critical section.
+The example given above  shows that multiple threads executing the same code can result in a race condition, that is an example of a critical section. \\
+To resolve this, we would like to enforce mutual exclusion: This property
+guarantees that if one thread is executing within the critical section, the others will be prevented from doing so. \\
+
+One possible solution is to make the operation “atomic” (or indivisible). This is, the critical section is executed as though it were a single operation, and so impossible to interrupt. \\[2ex]
+In a realistic setting, that is not possible for all race conditions. But, as we will see, the use of some atomic operations can help us solve the larger problem, by creating locks. \\[2ex]
+So now we know we would like to execute a series of instructions atomically. But, in general, on a multiprocessor system, we can't. But what we can do is create a lock which we put around critical sections, and thus ensure that any such critical section executes as if it were a single atomic instruction.
+For the lock approach to work, the following 3 conditions must be
+satisfied:
+\begin{itemize}
+    \item \textbf{Mutual Exclusion}: If process $T_i$ is executing in its critical section, then no other processes can be executing in their critical sections.
+    \item \textbf{Fairness/Progress:} If there are some processes that wish to enter the critical section, then the selection of the process that will enter the critical section next cannot be postponed indefinitely.
+    \item \textbf{Performance/Bounded Waiting: }after a process has made a request
+          to enter its critical section and before that request is granted, then
+          must be a bound (i.e., a limit) on the number of times other
+          processes are allowed to enter their critical sections.
+\end{itemize}
+\textbf{Approaches to this:}
+\textbf{Intterupt Suspension}
+
+
+
+
+
 \end{document}
