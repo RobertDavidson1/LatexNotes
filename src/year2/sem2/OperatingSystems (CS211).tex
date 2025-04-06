@@ -1085,4 +1085,68 @@ And Edges:
 \begin{center}
     \includegraphics[scale = 0.5]{images/resourceAllocationGraph.png}
 \end{center}
+\begin{examplebox}{}{}
+    A system has m = 2 resources, R1 and R2, and n = 2 processes, P1 and P2.
+    \begin{itemize}
+        \item P1 has been allocated R1, and is requesting R2.
+        \item P2 has been allocated R2, and is requesting R1.
+    \end{itemize}
+    Draw the resource allocation graph for the scenario. Does the system reach deadlock?
+\end{examplebox}
+\begin{examplebox}{}{}A system has m = 2 resources, R1 and R2, and n = 2 processes, P1 and P2.
+    \begin{itemize}
+        \item P1 is requesting R1.
+        \item P2 has been allocated R2, and is requesting R1.
+    \end{itemize}
+
+    Draw the resource allocation graph for the scenario. Does the system reach deadlock?
+\end{examplebox}
+\begin{examplebox}{}{}
+    Consider the Resource Allocation Graph below. Does it represents a deadlocked state?
+    \begin{center}
+        \begin{tikzpicture}[node distance=2cm, every node/.style={scale=0.7}, scale= 0.8]
+            % Styles
+            \tikzstyle{process} = [circle, draw=black, fill=custom_red!30, minimum size=1cm]
+            \tikzstyle{resource} = [rectangle, draw=black, fill=custom_blue!30, minimum width=1cm, minimum height=1cm]
+
+            % Nodes: Processes
+            \node[process] (P1) at (0,2) {$P_1$};
+            \node[process] (P2) at (2.5,2) {$P_2$};
+            \node[process] (P3) at (5,2) {$P_3$};
+            \node[process] (P4) at (7.5,2) {$P_4$};
+
+            % Nodes: Resources
+            \node[resource] (R1) at (0,0) {$R_1$};
+            \node[resource] (R2) at (2.5,0) {$R_2$};
+            \node[resource] (R3) at (5,0) {$R_3$};
+
+            % Request edges: Pi → Ri
+            \draw[->, thick] (P1) -- (R1);
+            \draw[->, thick] (P2) -- (R2);
+            \draw[->, thick] (P3) -- (R3);
+            \draw[->, thick] (P4) -- (R1);
+
+            % Allocation edges: Ri → Pj
+            \draw[->, thick] (R1) -- (P2);
+            \draw[->, thick] (R2) -- (P3);
+            \draw[->, thick] (R3) -- (P1);
+        \end{tikzpicture}
+    \end{center}
+
+\end{examplebox}
+\begin{itemize}
+    \item If there are no cycles, there is no deadlock
+    \item If there is deadlock, there must be a cycle
+    \item If there is a cycle, there may be deadlock
+    \item If each resource has only one instance, and there is a cycle, then
+\end{itemize}
+\subsection{The Dining Philosophers}
+Starvation occurs when a particular process is always waiting for a particular semaphore to become available. \\
+The ideas of Deadlock and Starvation are exhibited in the classic synchronization problem: The Dining Philosophers Problem.
+\begin{itemize}
+    \item There are five philosophers seated at a round table.
+    \item Each has a bowl of rice in front of them and a chopstick to their left and right.
+    \item They spend their day alternating between eating and thinking.
+    \item However there are only five chopsticks...
+\end{itemize}
 \end{document}
