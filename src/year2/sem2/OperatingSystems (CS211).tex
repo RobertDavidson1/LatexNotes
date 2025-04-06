@@ -456,7 +456,7 @@ The \texttt{fopen()} is a function that is use for file opening. It takes two ar
 \subsection{Closing a File}
 $$\texttt{fclose(fileptr);}$$
 Once a file is “closed” we can no longer read from it or write to it, unless
-we open it again. If we don’t do this, the file will still be closed when the
+we open it again. If we don't do this, the file will still be closed when the
 program terminates. But until then, no other program on the same node
 (computer) can work with the file, and it might but be fully written to
 storage
@@ -464,7 +464,7 @@ storage
 $$\texttt{fgets(char *str, int n, FILE *fileptr);}$$
 reads in a line of text from the fileptr stream and stores at most n
 characters in array sting. The mew line character is stored.
-If the string can’t be read, because we have reached the end of the file,
+If the string can't be read, because we have reached the end of the file,
 then NULL is returned.
 $$\texttt{fgetc(FILE *fileptr);}$$
 reads the next character in the file and stores it in the char variable c. If
@@ -565,7 +565,7 @@ In order to use \texttt{fork()} , we must include the \texttt{unistd.h} library,
 $$\boxed{\texttt{pid\_t fork(void);}}$$
 \begin{itemize}
     \item It takes no arguments
-    \item It really returns an \texttt{int}
+    \item It returns an \texttt{int}
     \item It returns -1 if the fork failed
     \item Otherwise, it returns the PID of the newly created child process to the parent process
     \item It returns 0 to the child process
@@ -1193,4 +1193,50 @@ In Lab 6, we will implement a solution to a Race Condition when we have multiple
     \item sem\_wait(\&S) checks if it is available and, if it is, grabs it.
     \item sem\_post(\&S) releases it, causing awaiting thread to wake up and try taking it.
 \end{itemize}
+\subsection{Deadlock Detection}
+Detection of deadlock is an important, but difficult problem. Using ideas like the Resource Allocation Graph, the system's needs can be represented mathematically, and then a deadlock state checked for\\[2ex]
+\textbf{Idea}
+Suppose that a system has n processes, and a total of m resources that it can allocate. Resources can only be requested or released one at a time. Then the system is Deadlock free if the following conditions hold:
+\begin{itemize}
+    \item each process requires at least 1 resource and at most m.
+    \item the sum of all their requirements is less than m + n.
+\end{itemize}
+\subsection{Deadlock Avoidance}
+\textbf{Banker's Algorithm} \\
+Only allocate resources to a process if you can allocate all the resources it requests. In particular we need to know:
+\begin{itemize}
+    \item The number of resources the system has.
+    \item The number currently allocated to each process;
+    \item The maximum that any process might request.
+\end{itemize}
+With this information, it should be possible to ensure that a circular wait condition does not hold. To understand this, we need to concepts of safe states and safe sequences.
+\begin{itemize}
+    \item A resources-allocation state is the number of available and allocated resources, and the maximum demands of processes.
+    \item A state is safe if the system can allocate resources to each process (eventually), and still avoid deadlock.
+    \item A safe sequence is a sequence of processes such that their resource requests can be granted, in order, with no process having to wait indefinitely.
+\end{itemize}
+\textbf{Example} \\
+Suppose we have a system with
+\begin{itemize}
+    \item three resource types, A, B and C. There are in total 10 instances of
+    \item  5 processes, P0 , P1, . . . , P4.
+\end{itemize}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c|ccc|ccc}
+        \hline
+        \multicolumn{1}{c}{} & \multicolumn{3}{c|}{\textbf{Total Reqs}} & \multicolumn{3}{c}{\textbf{Current Alloc}}                 \\
+        \hline
+                             & A                                        & B                                          & C & A & B & C \\
+        \hline
+        $P_0$                & 7                                        & 5                                          & 3 & 0 & 1 & 0 \\
+        $P_1$                & 3                                        & 2                                          & 2 & 2 & 0 & 0 \\
+        $P_2$                & 9                                        & 0                                          & 2 & 3 & 0 & 2 \\
+        $P_3$                & 2                                        & 2                                          & 2 & 2 & 1 & 1 \\
+        $P_4$                & 4                                        & 3                                          & 3 & 0 & 0 & 2 \\
+        \hline
+    \end{tabular}
+    \caption{Resource Allocation Table}
+    \label{tab:resource_allocation}
+\end{table}
 \end{document}
