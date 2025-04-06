@@ -1026,10 +1026,24 @@ satisfied:
           processes are allowed to enter their critical sections.
 \end{itemize}
 \textbf{Approaches to this:}
-\textbf{Intterupt Suspension}
+\textbf{Interupt Suspension}
+Suppose a process is in its critical section. If it cannot be preempted then data consistency should be maintained. On a single processor system, the problem could be solved by disabling interrupts while a shared variable is begin modified. However, such a method is not feasible on a multiproc system: large over-heads would be incurred informing all processes that interrupts are dis-allowed.
+\textbf{Automatic Instructions}
+The processor has facilities to swap the contents of two words (in memory), or test and change the contents of a word automatically – i.e., as a single instruction. There are other hardware and software solutions to synchronization problems. The most important, perhaps, is a tool known as a semaphore
+\subsection{Semaphores}
+A Semaphore $S$ is an integer variable that can only be accessed via one of two operations:
+\begin{lstlisting}[language=C]
+    wait(S) {
+        while (S <= 0) {
+            // busy wait
+        }
+        S = S - 1;
+    }
 
-
-
+    signal(S) {
+        S = S + 1;
+    }
+\end{lstlisting}
 
 
 \end{document}
