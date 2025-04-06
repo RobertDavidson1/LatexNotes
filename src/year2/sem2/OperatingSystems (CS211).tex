@@ -39,7 +39,7 @@ Robert Davidson
 
 
 \pagebreak
-\section{Intro to C}
+\subsection{Intro to C}
 
 It is a very small language and relies heavily on libraries
 The compiler must be told in advance how these functions should be used. So before the compilation process, the \textbf{preprocessor} is run to include the function prototypes The compiler then compiles the code into an object file.
@@ -385,8 +385,8 @@ The second example, the field width specifier is given. This causes the string t
     \item \texttt{gets(string);} reads a line input and stores it all except the newline character. The string is terminated with a null character. \texttt{gets()} is not safe to use because it does not check the length of the input string. If the input string is longer than the array, it will cause a buffer overflow and overwrite other data in memory.
     \item \texttt{fgets(string, n, stdin);} reads in a line of text from the keyboard (standard input stream) and stores at most \texttt{n} characters in the array \texttt{string}. The string is terminated with a null character. If the input string is longer than \texttt{n}, it will be truncated and the rest will be discarded. \texttt{fgets()} is safer to use than \texttt{gets()} because it checks the length of the input string.
 \end{itemize}
-\section{Arrays}
-\section{Arrays}
+\subsection{Arrays}
+\subsection{Arrays}
 To declare a $3 \times 4$ matrix of floats, we write \texttt{float a[3][4];}. So:
 $$\begin{bmatrix}
         a[0][0] & a[0][1] & a[0][2] & a[0][3] \\
@@ -434,7 +434,7 @@ This is the standard way to access a two-dimensional array element. It directly 
     \item If the layout of the array is such that the element \texttt{a[1][2]} is the 7th element (this is true, for example, if the row length is at least 3), then dereferencing this pointer retrieves \texttt{a[1][2]}.
 \end{itemize}
 
-\section{Files}
+\subsection{Files}
 Taking an input from a file is not much different than taking input from a keyboard. All we do is:
 \begin{itemize}
     \item Declare an identifier of type \texttt{FILE} to hold the file pointer.
@@ -509,7 +509,7 @@ to write to the file, we use one of:
     \item \texttt{int feof(FILE *fileptr);} returns a non-zero value if the end of the file has been reached. It is used to check if we have reached the end of the file while reading it.
 \end{itemize}
 
-\section{The Process}
+\subsection{The Process}
 $$\textbf{"A process is a running program."}$$
 The operating system gives the impression many programs are running at the same time, but in reality, only one program is running at a time. This is made possible by abstracting the the concept of a running program as a process.
 \begin{conceptbox}{Every process has}{}
@@ -672,7 +672,7 @@ For procs to communicae they must know the name of the mailbox. More than two pr
 \subsection{\texttt{pipe()}}
 A means of communication, based around the \texttt{pipe(), write(), read()} functions that allows one process to send data to another. The data can be anything, but we will use examples of sending integers. This is an example of \textbf{Symmetric direct communication}.
 
-\section{Theads}
+\subsection{Theads}
 So far, we've assumed that every process has its own program counter (PC), which tells the OS where it is in its instruction set (think line of program currently executing). So even when we duplicate using \texttt{fork()} the new subproc has its own PC, even though they have the same value as the parents PC. \\[2ex]
 However, modern OS's allow for threads: single process that can have mulitple PC's.
 
@@ -734,7 +734,7 @@ On Linux, Mac and related systems, in C we can create threads called \texttt{pth
     \end{tabularx}
 \end{table}
 
-\section{Sheduling Algorithms}
+\subsection{Sheduling Algorithms}
 $$\textbf{"Several process/jobs are available to be run. In what order should they be executed?}$$
 \subsection{Metrics to Compare Algoritms}
 \begin{conceptbox}{Metrics to Compare Algorithms}{}
@@ -755,18 +755,27 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
                                  & Has a long average weight time, and suffers from the \textbf{convoy effect} (short jobs wait for long jobs)
         \\
         \addlinespace[2ex]
-        SJF (Shortest Job First) & optimal - minimum average waiting time for a given set of processes.
+        SJF (Shortest Job First) & Optimal - minimum average waiting time for a given set of processes.
         Is non pre-eemptive.
                                  & Cannot be emplyed in a realisting setting because we would be required to know the length of next CPU Burst before it happens
         \\
         \addlinespace[2ex]
         STCF (Shortest Time to Completion First)
-                                 & more optimal” than SJF when processes arrive at
+                                 & "More optimal” than SJF when processes arrive at
         different times
                                  & Needs preempting
+        \\
+        \addlinespace[2ex]
+        RR (Round Robin)         & Fair, each process gets a fair share of the CPU. It is preemptive and simple to implement
+                                 & Average waiting time is high, and it is not optimal for short jobs
     \end{tabularx}
 \end{table}
+\subsection{RR - Round Robin}
+\begin{definitionbox}{Round Robin}{}
+    A preemptive version of FIFO. Each process is assigned a time slice (quantum) and is executed for that time. If it does not finish, it is put back in the queue and the next process is executed.
+\end{definitionbox}
 \begin{examplebox}{}{}
+    \scriptsize
     \begin{tabularx}{\textwidth}{@{} l X X @{}}
         \toprule
         Proc  & Arrival Time & Burst Time \\
@@ -779,165 +788,184 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
     \rule{\textwidth}{0.5pt}
     \textbf{1. First-Come, First-Served (FCFS)}
 
-    Order: $P_1 \rightarrow P_2 \rightarrow P_3 \rightarrow P_4$
+    \begin{minipage}[t]{0.48\textwidth}
+        Order: $P_1 \rightarrow P_2 \rightarrow P_3 \rightarrow P_4$
 
-    \begin{itemize}
-        \item $P_1$: starts at 0, ends at 20
-        \item $P_2$: starts at 20, ends at 35
-        \item $P_3$: starts at 35, ends at 45
-        \item $P_4$: starts at 45, ends at 50
-    \end{itemize}
+        \begin{itemize}
+            \item $P_1$: starts at 0, ends at 20
+            \item $P_2$: starts at 20, ends at 35
+            \item $P_3$: starts at 35, ends at 45
+            \item $P_4$: starts at 45, ends at 50
+        \end{itemize}
 
+        \begin{align*}
+            \text{TAT} & = \text{Completion Time} - \text{Arrival Time} \\
+            \text{WT}  & = \text{TAT} - \text{Burst Time}               \\
+            \text{RT}  & = \text{Start Time} - \text{Arrival Time}
+        \end{align*}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{center}
+            \begin{tabular}{@{} l c c c c @{}}
+                \toprule
+                Process & CT & TAT & WT & RT \\
+                \midrule
+                $P_1$   & 20 & 20  & 0  & 0  \\
+                $P_2$   & 35 & 35  & 20 & 20 \\
+                $P_3$   & 45 & 41  & 31 & 31 \\
+                $P_4$   & 50 & 44  & 39 & 39 \\
+                \bottomrule
+            \end{tabular}
+        \end{center}
 
-    \begin{align*}
-        \text{TAT} & = \text{Completion Time} - \text{Arrival Time} \\
-        \text{WT}  & = \text{TAT} - \text{Burst Time}               \\
-        \text{RT}  & = \text{Start Time} - \text{Arrival Time}
-    \end{align*}
-
-
-    \begin{center}
-        \begin{tabular}{@{} l c c c c @{}}
-            \toprule
-            Process & CT & TAT & WT & RT \\
-            \midrule
-            $P_1$   & 20 & 20  & 0  & 0  \\
-            $P_2$   & 35 & 35  & 20 & 20 \\
-            $P_3$   & 45 & 41  & 31 & 31 \\
-            $P_4$   & 50 & 44  & 39 & 39 \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
-
-
-    \begin{align*}
-        \text{Average TAT} & = \frac{20 + 35 + 41 + 44}{4} = 35  \\
-        \text{Average WT}  & = \frac{0 + 20 + 31 + 39}{4} = 22.5 \\
-        \text{Average RT}  & = \frac{0 + 20 + 31 + 39}{4} = 22.5
-    \end{align*}
+        \begin{align*}
+            \text{Average TAT} & = \frac{20 + 35 + 41 + 44}{4} = 35  \\
+            \text{Average WT}  & = \frac{0 + 20 + 31 + 39}{4} = 22.5 \\
+            \text{Average RT}  & = \frac{0 + 20 + 31 + 39}{4} = 22.5
+        \end{align*}
+    \end{minipage}
 
     \rule{\textwidth}{0.5pt}
 
     \textbf{2. Shortest Job First (SJF, Non-preemptive)}
 
-    \begin{itemize}
-        \item At time 0: $P_1$, $P_2$ ready → pick $P_2$
-        \item At time 15: $P_1$, $P_3$ ready → pick $P_3$
-        \item At time 25: $P_1$, $P_4$ ready → pick $P_4$
-        \item At time 30: $P_1$ runs
-    \end{itemize}
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{itemize}
+            \item At time 0: $P_1$, $P_2$ ready → pick $P_2$
+            \item At time 15: $P_1$, $P_3$ ready → pick $P_3$
+            \item At time 25: $P_1$, $P_4$ ready → pick $P_4$
+            \item At time 30: $P_1$ runs
+        \end{itemize}
 
-    \begin{itemize}
-        \item $P_2$: start 0, end 15
-        \item $P_3$: start 15, end 25
-        \item $P_4$: start 25, end 30
-        \item $P_1$: start 30, end 50
-    \end{itemize}
+        \begin{itemize}
+            \item $P_2$: start 0, end 15
+            \item $P_3$: start 15, end 25
+            \item $P_4$: start 25, end 30
+            \item $P_1$: start 30, end 50
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{center}
+            \begin{tabular}{@{} l c c c c @{}}
+                \toprule
+                Process & CT & TAT & WT & RT \\
+                \midrule
+                $P_2$   & 15 & 15  & 0  & 0  \\
+                $P_3$   & 25 & 21  & 11 & 11 \\
+                $P_4$   & 30 & 24  & 19 & 19 \\
+                $P_1$   & 50 & 50  & 30 & 30 \\
+                \bottomrule
+            \end{tabular}
+        \end{center}
 
-    \begin{center}
-        \begin{tabular}{@{} l c c c c @{}}
-            \toprule
-            Process & CT & TAT & WT & RT \\
-            \midrule
-            $P_2$   & 15 & 15  & 0  & 0  \\
-            $P_3$   & 25 & 21  & 11 & 11 \\
-            $P_4$   & 30 & 24  & 19 & 19 \\
-            $P_1$   & 50 & 50  & 30 & 30 \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
-
-    \begin{align*}
-        \text{Average TAT} & = \frac{15 + 21 + 24 + 50}{4} = 27.5 \\
-        \text{Average WT}  & = \frac{0 + 11 + 19 + 30}{4} = 15    \\
-        \text{Average RT}  & = \frac{0 + 11 + 19 + 30}{4} = 15
-    \end{align*}
-
+        \begin{align*}
+            \text{Average TAT} & = \frac{15 + 21 + 24 + 50}{4} = 27.5 \\
+            \text{Average WT}  & = \frac{0 + 11 + 19 + 30}{4} = 15    \\
+            \text{Average RT}  & = \frac{0 + 11 + 19 + 30}{4} = 15
+        \end{align*}
+    \end{minipage}
 
     \rule{\textwidth}{0.5pt}
 
     \textbf{3. Round Robin (RR), Time Quantum = 10}
 
-    Execution sequence:
-    \begin{itemize}
-        \item 0-10: $P_1$ (rem 10)
-        \item 10-20: $P_2$ (rem 5)
-        \item 20-30: $P_3$ (done)
-        \item 30-35: $P_4$ (done)
-        \item 35-45: $P_1$ (done)
-        \item 45-50: $P_2$ (done)
-    \end{itemize}
+    \begin{minipage}[t]{0.48\textwidth}
+        Execution sequence:
+        \begin{itemize}
+            \item 0-10: $P_1$ (rem 10)
+            \item 10-20: $P_2$ (rem 5)
+            \item 20-30: $P_3$ (done)
+            \item 30-35: $P_4$ (done)
+            \item 35-45: $P_1$ (done)
+            \item 45-50: $P_2$ (done)
+        \end{itemize}
 
-    Response times:
-    \begin{itemize}
-        \item $P_1$: 0
-        \item $P_2$: 10
-        \item $P_3$: 20
-        \item $P_4$: 30
-    \end{itemize}
+        Response times:
+        \begin{itemize}
+            \item $P_1$: 0
+            \item $P_2$: 10
+            \item $P_3$: 20
+            \item $P_4$: 30
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{center}
+            \begin{tabular}{@{} l c c c c @{}}
+                \toprule
+                Process & CT & TAT & WT & RT \\
+                \midrule
+                $P_1$   & 45 & 45  & 25 & 0  \\
+                $P_2$   & 50 & 50  & 35 & 10 \\
+                $P_3$   & 30 & 26  & 16 & 20 \\
+                $P_4$   & 35 & 29  & 24 & 30 \\
+                \bottomrule
+            \end{tabular}
+        \end{center}
 
-    \begin{center}
-        \begin{tabular}{@{} l c c c c @{}}
-            \toprule
-            Process & CT & TAT & WT & RT \\
-            \midrule
-            $P_1$   & 45 & 45  & 25 & 0  \\
-            $P_2$   & 50 & 50  & 35 & 10 \\
-            $P_3$   & 30 & 26  & 16 & 20 \\
-            $P_4$   & 35 & 29  & 24 & 30 \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
-
-
-    \begin{align*}
-        \text{Average TAT} & = \frac{45 + 50 + 26 + 29}{4} = 37.5 \\
-        \text{Average WT}  & = \frac{25 + 35 + 16 + 24}{4} = 25   \\
-        \text{Average RT}  & = \frac{0 + 10 + 20 + 30}{4} = 15
-    \end{align*}
-
+        \begin{align*}
+            \text{Average TAT} & = \frac{45 + 50 + 26 + 29}{4} = 37.5 \\
+            \text{Average WT}  & = \frac{25 + 35 + 16 + 24}{4} = 25   \\
+            \text{Average RT}  & = \frac{0 + 10 + 20 + 30}{4} = 15
+        \end{align*}
+    \end{minipage}
 
     \rule{\textwidth}{0.5pt}
 
     \textbf{4. Shortest Time to Completion First (STCF)}
 
-    Execution order:
-    \begin{itemize}
-        \item 0-4: $P_2$ runs (rem 11)
-        \item 4-6: $P_3$ runs (rem 8)
-        \item 6-11: $P_4$ runs (done)
-        \item 11-21: $P_3$ runs (done)
-        \item 21-35: $P_2$ resumes (done)
-        \item 35-55: $P_1$ runs (done)
-    \end{itemize}
+    \begin{minipage}[t]{0.48\textwidth}
+        Execution order:
+        \begin{itemize}
+            \item 0-4: $P_2$ runs (rem 11)
+            \item 4-6: $P_3$ runs (rem 8)
+            \item 6-11: $P_4$ runs (done)
+            \item 11-21: $P_3$ runs (done)
+            \item 21-35: $P_2$ resumes (done)
+            \item 35-55: $P_1$ runs (done)
+        \end{itemize}
 
-    Response times:
-    \begin{itemize}
-        \item $P_1$: 21
-        \item $P_2$: 0
-        \item $P_3$: 4
-        \item $P_4$: 6
-    \end{itemize}
+        Response times:
+        \begin{itemize}
+            \item $P_1$: 21
+            \item $P_2$: 0
+            \item $P_3$: 4
+            \item $P_4$: 6
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \begin{center}
+            \begin{tabular}{@{} l c c c c @{}}
+                \toprule
+                Process & CT & TAT & WT & RT \\
+                \midrule
+                $P_1$   & 55 & 55  & 35 & 21 \\
+                $P_2$   & 35 & 35  & 20 & 0  \\
+                $P_3$   & 21 & 17  & 7  & 4  \\
+                $P_4$   & 11 & 5   & 0  & 6  \\
+                \bottomrule
+            \end{tabular}
+        \end{center}
 
-    \begin{center}
-        \begin{tabular}{@{} l c c c c @{}}
-            \toprule
-            Process & CT & TAT & WT & RT \\
-            \midrule
-            $P_1$   & 55 & 55  & 35 & 21 \\
-            $P_2$   & 35 & 35  & 20 & 0  \\
-            $P_3$   & 21 & 17  & 7  & 4  \\
-            $P_4$   & 11 & 5   & 0  & 6  \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
-
-
-    \begin{align*}
-        \text{Average TAT} & = \frac{55 + 35 + 17 + 5}{4} = 28  \\
-        \text{Average WT}  & = \frac{35 + 20 + 7 + 0}{4} = 15.5 \\
-        \text{Average RT}  & = \frac{21 + 0 + 4 + 6}{4} = 7.75
-    \end{align*}
+        \begin{align*}
+            \text{Average TAT} & = \frac{55 + 35 + 17 + 5}{4} = 28  \\
+            \text{Average WT}  & = \frac{35 + 20 + 7 + 0}{4} = 15.5 \\
+            \text{Average RT}  & = \frac{21 + 0 + 4 + 6}{4} = 7.75
+        \end{align*}
+    \end{minipage}
 
 \end{examplebox}
+
+\pagebreak
+\section{Concurrency}
+\begin{definitionbox}{}{}
+    \textbf{A cooperating process} is one that can affect or be affected by another process that is exeucting on the system.
+\end{definitionbox}
+\noindent \textbf{Threads} are prime examples of this: we can think of them as a single
+process with multiple points of execution. They share program code and,
+crucially, data. \\
+
 \end{document}
