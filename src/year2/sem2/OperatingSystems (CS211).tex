@@ -1149,4 +1149,48 @@ The ideas of Deadlock and Starvation are exhibited in the classic synchronizatio
     \item They spend their day alternating between eating and thinking.
     \item However there are only five chopsticks...
 \end{itemize}
+
+\begin{minipage}{0.48\textwidth}
+    If a philosopher is hungry, they will try to pick up the chopstick to the left and then the chopstick to the right. If they manages to do this they will eat for a while before putting down both and thinking for a while. However, if they pick up one, they will not let go of it until they can pick up the second and eat.
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/diningPhilosophers.png}
+    \end{center}
+\end{minipage}
+Suppose each of the picks up the chopstick to their left. No chopsticks remain on the table so we reach a state of deadlock. The challenge is to find a solution so that.
+\begin{itemize}
+    \item Deadlock does not occur
+    \item Neither does starvation - where one philosopher doesn't eat
+\end{itemize}
+Recall the “Dining Philosophers Problem” as a model for process synchronisation. For each of the following statements, state if it is true or false, and explain your answer.
+\begin{itemize}
+    \item If there are five diners, and five chopsticks, and all diners pick up a chopstick at the same time, the system will be in deadlock.
+    \item If there are only four diners, and five chopsticks, the system cannot reach a deadlocked state.
+    \item If there are six diners, and five chopsticks, the system cannot reach a deadlocked state.
+\end{itemize}
+In general operating systems take one of three approaches to deal with deadlock:
+\begin{itemize}
+    \item Ensure that the system will never enter a deadlock state.
+    \item Allow the system to enter a deadlock state and then recover.
+\end{itemize}
+In Case 1, there are two possibilities:
+\begin{itemize}
+    \item Prevention: we ensure at least one of the four necessary conditions
+    \item Deadlock avoidance: where the OS uses a priori information about
+\end{itemize}
+In Case 2, the OS must have mechanisms for first detecting deadlock and then dealing with it.
+Recall that a Semaphore, S, is an integer variable that can only be accessed via one of two operations:
+\begin{itemize}
+    \item Test/sem\_wait P(S), and
+    \item Increment/sem\_post, V(S)
+\end{itemize}
+It is “special” in the sense that the two operations on it can't be interrupted.
+In Lab 6, we will implement a solution to a Race Condition when we have multiple fork'ed subprocesses, problem by implementing a semaphore via a pipe. However, POSIX systems already come with a semaphore solution when working with pthreads. To use it:
+\begin{itemize}
+    \item sem\_t S; declares S to be a semaphore.
+    \item sem\_init(\&S, 0, 1);
+    \item sem\_wait(\&S) checks if it is available and, if it is, grabs it.
+    \item sem\_post(\&S) releases it, causing awaiting thread to wake up and try taking it.
+\end{itemize}
 \end{document}
