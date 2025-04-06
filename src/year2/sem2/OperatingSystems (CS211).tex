@@ -744,21 +744,6 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
         \item \textbf{Response time} - the time taken from when a request was submitted until the first response is produced.
     \end{itemize}
 \end{conceptbox}
-
-\begin{figure}[h!]
-    \centering
-    \begin{tabularx}{\textwidth}{@{} l X X @{}}
-        \toprule
-        Proc  & Arrival Time & Burst Time \\
-        \midrule
-        $P_1$ & 0            & 20         \\
-        $P_2$ & 0            & 15         \\
-        $P_3$ & 4            & 10         \\
-        $P_4$ & 6            & 5          \\
-    \end{tabularx}
-\end{figure}
-
-
 \begin{table}[h!]
     \centering
     \begin{tabularx}{\textwidth}{@{} X X X @{}}
@@ -781,5 +766,27 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
                                  & Needs preempting
     \end{tabularx}
 \end{table}
-
+\begin{examplebox}{}{}
+    \begin{tabularx}{\textwidth}{@{} l X X @{}}
+        \toprule
+        Proc  & Arrival Time & Burst Time \\
+        \midrule
+        $P_1$ & 0            & 20         \\
+        $P_2$ & 0            & 15         \\
+        $P_3$ & 4            & 10         \\
+        $P_4$ & 6            & 5          \\
+    \end{tabularx}
+    \textbf{Calculate}
+    \begin{itemize}
+        \item Average Turnaround Time
+        \item Average Waiting Time
+        \item Average Response Time
+    \end{itemize}
+    for
+    \begin{enumerate}
+        \item FCFS
+        \item SJF
+        \item RR, $q = 10$
+    \end{enumerate}
+\end{examplebox}
 \end{document}
