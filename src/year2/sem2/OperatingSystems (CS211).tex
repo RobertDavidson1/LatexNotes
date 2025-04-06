@@ -1057,8 +1057,32 @@ There are two types of semaphore: \\
 \end{itemize}
 \textbf{2. General (or counting) semaphores}
 These are used to control access to a pool consisting of a finite number of identical resources. Say there are 5 units available. The S is initialised to 5. Whenever a process requests the resource, it calls $P(S)$ and decrements the value of $S$. If $S$ reaches $0$ then the next process that requests that resource must wait until another frees it by running $V(S)$.
-\subsection{Review of Concurrency}
+\subsection{Deadlock and Starvation}
+Deadlock is when two or more procs are waiting indefinitely for an event that can only be caused by one of the waiting processes. E.g., all are stuck in the wait() loop of the P() function.\\[2ex]
+Deadlock can arise if four conditions hold simultaneously 1
 \begin{itemize}
-    \item Cooperating processes are ones that can affect each other's execution, usually because they access the same resources.
+    \item Mutual exclusion: only one process can have access to a particular resource at any given time.
+    \item Hold and wait: a process holding at least one resource is waiting to acquire additional resources held by other processes.
+    \item  No preemption: a resource can only be released voluntarily by the process holding it, after that process has completed its task.
+    \item Circular wait: there exists a set {P1, P2, . . . , Pn} of waiting processes such that
+          \begin{itemize}
+              \item P1 is waiting for a resource that is held by P2,
+              \item P2 is waiting for a resource that is held by P3, ..., ◦
+              \item Pn-1, is waiting for a resource that is held by Pn which in turn is waiting for $P_1$
+          \end{itemize}
 \end{itemize}
+\subsection{Resource Allocation Graphs}
+Deadlocks may be described in using a directed graph called a resource allocation graph. This graph has two sets of vertices:
+\begin{itemize}
+    \item \textbf{Processes} - $P_1, P_2, \dots, P_n$
+    \item \textbf{Resources} - $R_1, R_2, \dots, R_m$
+\end{itemize}
+And Edges:
+\begin{itemize}
+    \item from $P_j \to R_k$ if process j as requested resource k but not yet been allocated to it
+    \item from $R_k \to P_j$ if a resource k has been allocated to process j and not yet released
+\end{itemize}
+\begin{center}
+    \includegraphics[scale = 0.5]{images/resourceAllocationGraph.png}
+\end{center}
 \end{document}
