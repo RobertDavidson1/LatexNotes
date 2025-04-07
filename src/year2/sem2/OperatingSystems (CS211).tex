@@ -28,11 +28,11 @@ Robert Davidson
     frame=lines,              % Frame style
     tabsize=2,                % Tab size
     framesep=2mm,             % Frame separation
-    bgcolor=darker-bg,        % Background color
+    bgcolor=white,        % Background color
     numberblanklines=true,    % Number blank lines
     highlightlines={},        % No highlight by default
     breaklines=true,          % Enable line breaking
-    style=nord-darker,        % Syntax highlighting style
+    style=stata-light,        % Syntax highlighting style
     stepnumber=1,             % Increment between two numbered lines
 }
 \maketitle
@@ -1265,79 +1265,66 @@ We will explore three mechanisms for creating custom types:
     \item \texttt{enum}: Defines an enumerated type, typically backed by an integer, though the specific underlying representation is abstracted from the programmer.
     \item \texttt{struct}: Constructs a heterogeneous data type, allowing elements of differing types and dimensions to be grouped into a single composite structure.
 \end{itemize}
-\subsubsection*{\texttt{typedef} -- Type Alias}
+\subsubsection*{1. \texttt{typedef} -- Type Alias}
 \textbf{Purpose:} Increases code readability, hides implementation details, and makes complex types more manageable.
-
 \begin{minted}[fontsize=\small]{c}
 typedef unsigned int uint;
 typedef int Coordinates[2];
 uint a = 5;
 Coordinates point = {3, 4};
 \end{minted}
+\textbf{Use Case:} Abstracting low-level details, improving maintainability in large codebases.
+\subsubsection*{2. \texttt{enum} -- Enumerated Type}
+\textbf{Purpose:} Replaces magic numbers with named constants. Improves semantic clarity and prevents invalid values.
+
+\begin{minted}[fontsize=\small]{c}
+enum Color { RED, GREEN, BLUE };
+enum Color c = GREEN;
+\end{minted}
+\textbf{Note:} By default, \texttt{RED = 0}, \texttt{GREEN = 1}, etc., but values can be explicitly assigned.
+\textbf{Use Case:} Representing discrete states, flags, or modes with compile-time checks.
+\subsubsection*{3. \texttt{struct} -- Structured Type}
+\textbf{Purpose:} Aggregates variables of various types into a single logical unit.
+\begin{minted}[fontsize=\small]{c}
+struct Point {
+    int x;
+    int y;
+};
+
+struct Point p1 = {10, 20};
+\end{minted}
+\textbf{Use Case:} Building composite data types like coordinates, records, trees, or linked lists.
+\subsubsection*{Conclusion}
+Using these mechanisms properly helps create modular, maintainable, and semantically meaningful code. Each enables abstraction:
+\begin{itemize}
+    \item \texttt{typedef} simplifies naming.
+    \item \texttt{enum} constrains inputs to valid symbolic values.
+    \item \texttt{struct} models real-world entities in code.
+\end{itemize}
 
 \subsection{Memory Management}
-
-\subsubsection{Summary of main ideas}
-\begin{itemize}
-    \item "Storage" is how/where long-term data is maintained, particularly while a program is not running.
-    \item During execution, a program (now, a process) has data stored in main memory, also known as "primary storage".
-    \item Data belonging to a process is stored in "actual" memory: integrated circuits physically located on the device.
-    \item The OS presents this location to the device as a logical address.
-    \item The OS can use (backing) storage as temporary main memory, using "swapping".
-\end{itemize}
-
-\subsection{Memory and Storage Management}
-\begin{definitionbox}{}
-    Roughly, "storage" refers to how long-term data is maintained, particularly while a program is not running. Traditionally, this was on disks (drives), more recently it is on networked (cloud) devices.
+\begin{definitionbox}{}{}
+    Roughly, storage refers to how long-term data is maintained,
+    particularlly while a program is not running. Traditionally, this was on
+    disks (drives), more recently it is on networked (cloud) devices.
 \end{definitionbox}
-\noindent During execution, a program (now, a process) has data stored in main memory. Management of both main memory and long-term storage require a high degree of sophistication on the part of the operating system. \\[2ex]
-A program must be brought into (main) memory and placed within a process for it to be executed. An Input queue is maintained, i.e., a collection of jobs on the disk that are waiting to be brought into memory for execution. User programs go through several steps before being executed, in particular they must be allocated space in memory.\\[2ex]
-Furthermore, recalling CPU Scheduling: the OS attempts to maximise CPU usage and responsiveness by switching between processes. This means that memory must be allocated to a (possibly large) number of processes at any given time. \\[2ex]
-\textbf{This leads to several complications:}
-\begin{enumerate}
-    \item Since there are many processes running, the OS must have a fair way of allocating memory to all running processes.
-    \item As we've seen with fork()'ed processes, two processes can think they have access to the same memory address. So some virtualization is needed.
-    \item Most computers have different types of "memory", such as cache, RAM, and backing storage. The OS presents a single coherent view of all this to processes.
-    \item Physical memory is not necessarily large enough to accommodate all the processes, and so secondary storage must be used as "over-flow" memory.
-\end{enumerate}
-A logical address is generated by the CPU; The OS uses this address. It is also referred to as a virtual address. A physical address is that what is used by the memory unit, i.e., the one loaded into the memory address register. \\[2ex]
-The OS takes care of mapping between the logical addresses and the physical addresses. \\[2ex]
-The virtual address is unique within a process. That is, no two variables belonging to a process can be stored at the same virtual address.But two different processes could use the same virtual address. You can check the virtual address used by a C program as follows:
-
-\begin{lstlisting}[language=C]
-int x;
-fork(); // Now there are 2 processes.
-x = getppid();
-printf("[%d] x stores the value %d at %p\n",
-    getpid(), x, &x);
-\end{lstlisting}
-
-The output I get is:
-\begin{verbatim}
-x is stores 21106 at 0x7fff1650fdc4
-x is stores 21107 at 0x7fff1650fdc4
-\end{verbatim}
-
-\subsection{Contiguous Memory Allocation}
-In a multiprogramming environment, memory space is occupied by the operating system and a collection of user processes. \\[2ex]
-In order to maximise the degree of multiprogramming on the system, the OS will load as many processes into memory as there is space for. When new processes arrive in the input queue, it picks the first one and loads it into memory unless there is not enough room to accommodate it ("Banker's Algorithm").In this case, it may search through to processes in the Input queue and load the first one for which there is a large enough space to accommodate. \\[2ex]
-When user processes terminate, memory "holes" are created. The operating system must allocate one of these holes to a new process that is starting. If the hole is too large, only part of it is allocated and a new smaller hole is created. Also, when a process terminates, if its space is adjacent to a free hole, they are amalgamated to create a larger one. \\[2ex]
-The scheduler then checks if the new hole is large enough to accommodate the next job in the Input queue. \\[2ex]
-Analogy: books in a book-case (where we can't change the position of any book on the case) \\[2ex]
-If this procedure of splitting and amalgamating of holes continues for a while, we end up with blocks of available memory of various sizes scattered throughout memory. This is called Fragmentation and is to be avoided.  \\[2ex]
-Strategies/Algorithms for allocating memory to processes is a crucial part of memory management.\\[2ex]
-\textbf{Three different strategies}
-\begin{enumerate}
-    \item First Fit (FF): allocate the first hole that is large enough to accommodate the new process. This is the fastest method, but may cause the most fragmentation-i.e., the most small "pockets" of unused non-contiguous memory.
-    \item Best Fit (BF): search all available holes and allocate the smallest hole that is big enough to accommodate the new process. This is slower than best-fit, but leads to the smallest "pocket" sizes.
-    \item Worst Fit (WF): search all available holes and assign part of the largest available hole. This is the slowest method but may leave a smaller number of larger holes than either first or best fit.
-\end{enumerate}
-Memory is partitioned into contiguous segments and allocated to different processes. The methods for contiguous memory allocation described above can lead to:
+During execution, a process has data stored in main memory. Management of both main and long-term storage is the responsibility of the operating system. \\[2ex]
+A program must be brought into (main) memory and placed within a
+process for it to be executed. An Input queue is maintained, i.e., a
+collection of jobs on the disk that are waiting to be brought into memory
+for execution. User programs go through several steps before being
+executed, in particular they must be allocated space in memory.
+Furthermore, recalling CPU Scheduling: the OS attempts to maximise
+CPU usage and responsiveness by switching between processes. This
+means that memory must be allocated to a (possibly large) number of
+processes at any given time
+\textbf{Logical vs Physical:}
 \begin{itemize}
-    \item External fragmentation: total memory space exists to satisfy a request, but it is not contiguous. That is, memory is available but is broken up into "pockets" between partitions that are too small to be used.
-    \item Internal fragmentation: Suppose there is a free hole of size 12,100 bytes and we require a partition of size 12,080 bytes. The OS may require more than 20 bytes to keep track of the unused portion, so it can be more economical to allocate all 12,100 bytes even though this is slightly larger than requested memory; this is called "internal fragmentation".
+    \item \textbf{Logical address} is generated by the CPU; The OS uses this address. It is also referred to as a virtual address.
+    \item \textbf{Physical address} is that what is used by the memory unit, i.e., the one loaded into the memory address register
 \end{itemize}
-
+The OS takes care of mapping between the logical addresses and the
+physical addresses. The virtual address is unique within a process. That is, no two variables belonging to a process can be stored at the same virtual address. But two different processes could use the same virtual address.
 \subsection{Exam Questions}
 \subsubsection*{Q2 (i)}
 Which of the following CPU scheduling algorithms are \textbf{preemptive?} Select all that apply.
