@@ -1005,16 +1005,14 @@ But for multi-threaded processes, we do not have control over the order in which
     We arrive at the wrong state because we allowed both threads to manipulate the variable count at the same time. Since the outcome depends on the order in which each operation takes place, we have a race condition.
 \end{examplebox}
 \subsection{Critical Sections}
-\begin{definitionbox}
+\begin{definitionbox}{}{}
     A critical section is a piece of code that accesses a shared variable (or more generally, a shared resource) and must not be concurrently executed by more than one thread.
 \end{definitionbox}
-The example given above  shows that multiple threads executing the same code can result in a race condition, that is an example of a critical section. \\
-To resolve this, we would like to enforce mutual exclusion: This property
-guarantees that if one thread is executing within the critical section, the others will be prevented from doing so. \\
-
-One possible solution is to make the operation “atomic” (or indivisible). This is, the critical section is executed as though it were a single operation, and so impossible to interrupt. \\[2ex]
-In a realistic setting, that is not possible for all race conditions. But, as we will see, the use of some atomic operations can help us solve the larger problem, by creating locks. \\[2ex]
-So now we know we would like to execute a series of instructions atomically. But, in general, on a multiprocessor system, we can't. But what we can do is create a lock which we put around critical sections, and thus ensure that any such critical section executes as if it were a single atomic instruction.
+\noindent The example given above  shows that multiple threads executing the same code can result in a race condition, that is an example of a critical section. \\
+To resolve this, we would like to \textbf{enforce} mutual exclusion: This property
+guarantees that if one thread is executing within the critical section, the others will be prevented from doing so. \\[2ex]
+One possible solution is to make the operation “atomic” (or indivisible). This is, the critical section is executed as though it were a single operation, and so impossible to interrupt. In a realistic setting, that is not possible for all race conditions. But, as we will see, the use of some atomic operations can help us solve the larger problem, by creating locks. \\[2ex]
+So now we know we would like to execute a series of instructions atomically. But, in general, on a multiprocessor system, we can't. But what we can do is create a lock which we put around critical sections, and thus ensure that any such critical section executes as if it were a single atomic instruction.\\[2ex]
 For the lock approach to work, the following 3 conditions must be
 satisfied:
 \begin{itemize}
@@ -1026,40 +1024,52 @@ satisfied:
           processes are allowed to enter their critical sections.
 \end{itemize}
 \textbf{Approaches to this:}
-\textbf{Interupt Suspension}
-Suppose a process is in its critical section. If it cannot be preempted then data consistency should be maintained. On a single processor system, the problem could be solved by disabling interrupts while a shared variable is begin modified. However, such a method is not feasible on a multiproc system: large over-heads would be incurred informing all processes that interrupts are dis-allowed.
-\textbf{Automatic Instructions}
-The processor has facilities to swap the contents of two words (in memory), or test and change the contents of a word automatically – i.e., as a single instruction. There are other hardware and software solutions to synchronization problems. The most important, perhaps, is a tool known as a semaphore
+\begin{itemize}
+    \item \textbf{Interupt Suspension:} Suppose a process is in its critical section. If it cannot be preempted then data consistency should be maintained. On a single processor system, the problem could be solved by disabling interrupts while a shared variable is begin modified. However, such a method is not feasible on a multiproc system: large over-heads would be incurred informing all processes that interrupts are dis-allowed.
+    \item \textbf{Automatic Instructions} The processor has facilities to swap the contents of two words (in memory), or test and change the contents of a word automatically -  i.e., as a single instruction. There are other hardware and software solutions to synchronization problems. The most important, perhaps, is a tool known as a semaphore
+\end{itemize}
+
+
 \subsection{Semaphores}
-a Semaphore $S$ is an integer variable that can only be accessed via one of two operations: Test/sem wait P(S), and Increment/sem post V (S). \\
-\begin{minipage}{0.48\textwidth}
-    \begin{lstlisting}[style=CStyle, caption={Test or Sem\_wait}]
+\begin{definitionbox}{}{}
+    A Semaphore $S$ is an integer variable that can only be accessed via one of two operations: Test/sem wait P(S), and Increment/sem post V (S). \\
+    \begin{minipage}{0.48\textwidth}
+        \begin{lstlisting}[style=CStyle, caption={Test or Sem\_wait}]
         P(S)
         while (S <= 0) {
             wait();
         }
         S--; 
     \end{lstlisting}
-\end{minipage}
-\begin{minipage}{0.48\textwidth}
-    \begin{lstlisting}[style=CStyle, caption={Test/Sem\_wait}]
+    \end{minipage}
+    \begin{minipage}{0.48\textwidth}
+        \begin{lstlisting}[style=CStyle, caption={Test/Sem\_wait}]
         V(S)
         S++; 
     \end{lstlisting}
-\end{minipage}
+    \end{minipage}
+\end{definitionbox}
 These operations must be indivisible (or “atomic”). This is, when one process (or thread) modifies a semaphore value, no other process can modify it at the same time.\\[2ex]
-There are two types of semaphore: \\
-\textbf{1. Binary semaphores (locks):} These are used to control access to a single resource, such as a memory location. If the resources is available then $S = 1$. Otherwise $S = 0$. When a process wants to access it,
+\textbf{Two types of semaphore:}
 \begin{itemize}
-    \item It calls the function $P(S)$
-    \item Enters the critical section
-    \item Calls $V(S)$ to release the resource when it exists the critical section
+    \item \textbf{1. Binary semaphores (locks):} These are used to control access to a single resource, such as a memory location. If the resources is available then $S = 1$. Otherwise $S = 0$. When a process wants to access it,
+          \begin{itemize}
+              \item It calls the function $P(S)$
+              \item Enters the critical section
+              \item Calls $V(S)$ to release the resource when it exists the critical section
+          \end{itemize}
+    \item \textbf{2. General (or counting) semaphores}
+          These are used to control access to a pool consisting of a finite number of identical resources. Say there are 5 units available. The S is initialised to 5. Whenever a process requests the resource, it calls $P(S)$ and decrements the value of $S$. If $S$ reaches $0$ then the next process that requests that resource must wait until another frees it by running $V(S)$.
 \end{itemize}
-\textbf{2. General (or counting) semaphores}
-These are used to control access to a pool consisting of a finite number of identical resources. Say there are 5 units available. The S is initialised to 5. Whenever a process requests the resource, it calls $P(S)$ and decrements the value of $S$. If $S$ reaches $0$ then the next process that requests that resource must wait until another frees it by running $V(S)$.
+
+
 \subsection{Deadlock and Starvation}
-Deadlock is when two or more procs are waiting indefinitely for an event that can only be caused by one of the waiting processes. E.g., all are stuck in the wait() loop of the P() function.\\[2ex]
-Deadlock can arise if four conditions hold simultaneously 1
+\begin{definitionbox}{}{}
+    Deadlock is when two or more procs are waiting indefinitely for an event that can only be caused by one of the waiting processes. \\[2ex]
+
+    E.g., all are stuck in the wait() loop of the P() function.
+\end{definitionbox}
+\textbf{Deadlock can arise if four conditions hold simultaneously}
 \begin{itemize}
     \item Mutual exclusion: only one process can have access to a particular resource at any given time.
     \item Hold and wait: a process holding at least one resource is waiting to acquire additional resources held by other processes.
@@ -1072,7 +1082,8 @@ Deadlock can arise if four conditions hold simultaneously 1
           \end{itemize}
 \end{itemize}
 \subsection{Resource Allocation Graphs}
-Deadlocks may be described in using a directed graph called a resource allocation graph. This graph has two sets of vertices:
+Deadlocks may be described in using a directed graph called a resource allocation graph. \\[2ex]
+This graph has two sets of vertices:
 \begin{itemize}
     \item \textbf{Processes} - $P_1, P_2, \dots, P_n$
     \item \textbf{Resources} - $R_1, R_2, \dots, R_m$
