@@ -21,7 +21,20 @@ Robert Davidson
 \date{}       
 
 \begin{document}
-
+\setminted{
+    fontsize=\scriptsize,  % Font size
+    linenos=true,             % Enable line numbers
+    numbersep=2pt,            % Distance between line numbers and code
+    frame=lines,              % Frame style
+    tabsize=2,                % Tab size
+    framesep=2mm,             % Frame separation
+    bgcolor=darker-bg,        % Background color
+    numberblanklines=true,    % Number blank lines
+    highlightlines={},        % No highlight by default
+    breaklines=true,          % Enable line breaking
+    style=nord-darker,        % Syntax highlighting style
+    stepnumber=1,             % Increment between two numbered lines
+}
 \maketitle
 \pagebreak
 
@@ -1193,14 +1206,16 @@ In Lab 6, we will implement a solution to a Race Condition when we have multiple
     \item sem\_post(\&S) releases it, causing awaiting thread to wake up and try taking it.
 \end{itemize}
 \subsection{Deadlock Detection}
-Detection of deadlock is an important, but difficult problem. Using ideas like the Resource Allocation Graph, the system's needs can be represented mathematically, and then a deadlock state checked for\\[2ex]
-\textbf{Idea}
+Detection of deadlock is an important, but difficult problem. Using ideas like the \textbf{Resource Allocation Graph}, the system's needs can be represented mathematically, and then a deadlock state checked for\\[2ex]
+\textbf{Idea:}\\
 Suppose that a system has n processes, and a total of m resources that it can allocate. Resources can only be requested or released one at a time. Then the system is Deadlock free if the following conditions hold:
 \begin{itemize}
     \item each process requires at least 1 resource and at most m.
     \item the sum of all their requirements is less than m + n.
 \end{itemize}
 \subsection{Deadlock Avoidance}
+One possible solution to the deadlock problem, but which requires extra
+information is represented as the Banker's Algorithm. Simply put \\[2ex]
 \textbf{Banker's Algorithm} \\
 Only allocate resources to a process if you can allocate all the resources it requests. In particular we need to know:
 \begin{itemize}
@@ -1238,8 +1253,27 @@ Suppose we have a system with
     \caption{Resource Allocation Table}
     \label{tab:resource_allocation}
 \end{table}
+\subsection{User Defined Types}
+In C (and similar languages), it is possible to define custom data types. This serves two main purposes:
+\begin{itemize}
+    \item Enhancing code readability, which in turn promotes correctness;
+    \item Enabling the construction of more complex data structures.
+\end{itemize}
+We will explore three mechanisms for creating custom types:
+\begin{itemize}
+    \item \texttt{typedef}: Provides a meaningful alias for an existing data type, improving code clarity.
+    \item \texttt{enum}: Defines an enumerated type, typically backed by an integer, though the specific underlying representation is abstracted from the programmer.
+    \item \texttt{struct}: Constructs a heterogeneous data type, allowing elements of differing types and dimensions to be grouped into a single composite structure.
+\end{itemize}
+\subsubsection*{\texttt{typedef} -- Type Alias}
+\textbf{Purpose:} Increases code readability, hides implementation details, and makes complex types more manageable.
 
-
+\begin{minted}[fontsize=\small]{c}
+typedef unsigned int uint;
+typedef int Coordinates[2];
+uint a = 5;
+Coordinates point = {3, 4};
+\end{minted}
 
 \subsection{Memory Management}
 
