@@ -1083,12 +1083,19 @@ These operations must be indivisible (or “atomic”). This is, when one proces
 \end{itemize}
 \subsection{Resource Allocation Graphs}
 Deadlocks may be described in using a directed graph called a resource allocation graph. \\[2ex]
-This graph has two sets of vertices:
+\textbf{Conditions for Deadlock:}
+\begin{itemize}
+    \item If there are no cycles, there is no deadlock
+    \item If there is deadlock, there must be a cycle
+    \item If there is a cycle, there may be deadlock
+    \item If each resource has only one instance, and there is a cycle, then there is a  deadlock
+\end{itemize}
+The resource allocation graph has two sets of vertices:
 \begin{itemize}
     \item \textbf{Processes} - $P_1, P_2, \dots, P_n$
     \item \textbf{Resources} - $R_1, R_2, \dots, R_m$
 \end{itemize}
-And Edges:
+And two sets of edges:
 \begin{itemize}
     \item from $P_j \to R_k$ if process j as requested resource k but not yet been allocated to it
     \item from $R_k \to P_j$ if a resource k has been allocated to process j and not yet released
@@ -1145,15 +1152,13 @@ And Edges:
     \end{center}
 
 \end{examplebox}
-\begin{itemize}
-    \item If there are no cycles, there is no deadlock
-    \item If there is deadlock, there must be a cycle
-    \item If there is a cycle, there may be deadlock
-    \item If each resource has only one instance, and there is a cycle, then
-\end{itemize}
+
 \subsection{The Dining Philosophers}
-Starvation occurs when a particular process is always waiting for a particular semaphore to become available. \\
-The ideas of Deadlock and Starvation are exhibited in the classic synchronization problem: The Dining Philosophers Problem.
+\begin{definitionbox}{}{}
+    Starvation occurs when a particular process is always waiting for a particular semaphore to become available.
+\end{definitionbox}
+\noindent The ideas of Deadlock and Starvation are exhibited in the classic synchronization problem: \\
+\textbf{The Dining Philosophers Problem.}
 \begin{itemize}
     \item There are five philosophers seated at a round table.
     \item Each has a bowl of rice in front of them and a chopstick to their left and right.
@@ -1265,56 +1270,22 @@ Suppose we have a system with
 \end{itemize}
 
 \subsection{Memory and Storage Management}
-So far, in the "OS" component of CS211 we have focused on:
-\begin{itemize}
-    \item OS Structure
-    \item Processes - what are they?
-    \item Process scheduling (w.r.t. CPU time)
-    \item Process resource allocation.
-\end{itemize}
-
-We didn't really discuss what these "resources" are. In this final section of CS211 we will look at the management of the most important resources (other than CPU time): memory and storage.
-
-In the textbook (OSTEP),
-\begin{itemize}
-    \item Memory is covered Chapters 13-23 (which shows that we don't do it in full detail here), as part of Virtualisation.
-    \item Storage is covered in Chapters 36-50, under the heading of Persistence. Unfortunately, along with security, it is largely omitted from CS211.
-\end{itemize}
-
-Roughly, "storage" refers to how long-term data is maintained, particularly while a program is not running. Traditionally, this was on disks (drives), more recently it is on networked (cloud) devices.
-
-But during execution, a program (now, a process) has data stored in main memory.
-
-Management of both main memory and long-term storage require a high degree of sophistication on the part of the operating system.
-
-This section consists of:
-\begin{itemize}
-    \item Memory Management
-    \item Virtual Memory
-    \item Programming with memory addresses (pointers).
-\end{itemize}
-
-A program must be brought into (main) memory and placed within a process for it to be executed. An Input queue is maintained, i.e., a collection of jobs on the disk that are waiting to be brought into memory for execution. User programs go through several steps before being executed, in particular they must be allocated space in memory.
-
-Furthermore, recalling CPU Scheduling: the OS attempts to maximise CPU usage and responsiveness by switching between processes. This means that memory must be allocated to a (possibly large) number of processes at any given time.
-
-This leads to several complications:
+\begin{definitionbox}{}
+    Roughly, "storage" refers to how long-term data is maintained, particularly while a program is not running. Traditionally, this was on disks (drives), more recently it is on networked (cloud) devices.
+\end{definitionbox}
+\noindent During execution, a program (now, a process) has data stored in main memory. Management of both main memory and long-term storage require a high degree of sophistication on the part of the operating system. \\[2ex]
+A program must be brought into (main) memory and placed within a process for it to be executed. An Input queue is maintained, i.e., a collection of jobs on the disk that are waiting to be brought into memory for execution. User programs go through several steps before being executed, in particular they must be allocated space in memory.\\[2ex]
+Furthermore, recalling CPU Scheduling: the OS attempts to maximise CPU usage and responsiveness by switching between processes. This means that memory must be allocated to a (possibly large) number of processes at any given time. \\[2ex]
+\textbf{This leads to several complications:}
 \begin{enumerate}
     \item Since there are many processes running, the OS must have a fair way of allocating memory to all running processes.
     \item As we've seen with fork()'ed processes, two processes can think they have access to the same memory address. So some virtualization is needed.
     \item Most computers have different types of "memory", such as cache, RAM, and backing storage. The OS presents a single coherent view of all this to processes.
     \item Physical memory is not necessarily large enough to accommodate all the processes, and so secondary storage must be used as "over-flow" memory.
 \end{enumerate}
-
-A logical address is generated by the CPU; The OS uses this address. It is also referred to as a virtual address. A physical address is that what is used by the memory unit, i.e., the one loaded into the memory address register.
-
-The OS takes care of mapping between the logical addresses and the physical addresses.
-
-The virtual address is unique within a process. That is, no two variables belonging to a process can be stored at the same virtual address.
-
-But two different processes could use the same virtual address.
-
-You can check the virtual address used by a C program as follows:
+A logical address is generated by the CPU; The OS uses this address. It is also referred to as a virtual address. A physical address is that what is used by the memory unit, i.e., the one loaded into the memory address register. \\[2ex]
+The OS takes care of mapping between the logical addresses and the physical addresses. \\[2ex]
+The virtual address is unique within a process. That is, no two variables belonging to a process can be stored at the same virtual address.But two different processes could use the same virtual address. You can check the virtual address used by a C program as follows:
 
 \begin{lstlisting}[language=C]
 int x;
@@ -1331,98 +1302,19 @@ x is stores 21107 at 0x7fff1650fdc4
 \end{verbatim}
 
 \subsection{Contiguous Memory Allocation}
-In a multiprogramming environment, memory space is occupied by the operating system and a collection of user processes.
-
-In order to maximise the degree of multiprogramming on the system, the OS will load as many processes into memory as there is space for.
-
-When new processes arrive in the input queue, it picks the first one and loads it into memory unless there is not enough room to accommodate it ("Banker's Algorithm").
-
-In this case, it may search through to processes in the Input queue and load the first one for which there is a large enough space to accommodate.
-
-When user processes terminate, memory "holes" are created. The operating system must allocate one of these holes to a new process that is starting.
-
-If the hole is too large, only part of it is allocated and a new smaller hole is created. Also, when a process terminates, if its space is adjacent to a free hole, they are amalgamated to create a larger one.
-
-The scheduler then checks if the new hole is large enough to accommodate the next job in the Input queue.
-
-Analogy: books in a book-case (where we can't change the position of any book on the case)
-
-If this procedure of splitting and amalgamating of holes continues for a while, we end up with blocks of available memory of various sizes scattered throughout memory. This is called Fragmentation and is to be avoided.
-
-Strategies/Algorithms for allocating memory to processes is a crucial part of memory management.
-
-Three different strategies (see Section 17.3) are:
+In a multiprogramming environment, memory space is occupied by the operating system and a collection of user processes. \\[2ex]
+In order to maximise the degree of multiprogramming on the system, the OS will load as many processes into memory as there is space for. When new processes arrive in the input queue, it picks the first one and loads it into memory unless there is not enough room to accommodate it ("Banker's Algorithm").In this case, it may search through to processes in the Input queue and load the first one for which there is a large enough space to accommodate. \\[2ex]
+When user processes terminate, memory "holes" are created. The operating system must allocate one of these holes to a new process that is starting. If the hole is too large, only part of it is allocated and a new smaller hole is created. Also, when a process terminates, if its space is adjacent to a free hole, they are amalgamated to create a larger one. \\[2ex]
+The scheduler then checks if the new hole is large enough to accommodate the next job in the Input queue. \\[2ex]
+Analogy: books in a book-case (where we can't change the position of any book on the case) \\[2ex]
+If this procedure of splitting and amalgamating of holes continues for a while, we end up with blocks of available memory of various sizes scattered throughout memory. This is called Fragmentation and is to be avoided.  \\[2ex]
+Strategies/Algorithms for allocating memory to processes is a crucial part of memory management.\\[2ex]
+\textbf{Three different strategies}
 \begin{enumerate}
     \item First Fit (FF): allocate the first hole that is large enough to accommodate the new process. This is the fastest method, but may cause the most fragmentation-i.e., the most small "pockets" of unused non-contiguous memory.
     \item Best Fit (BF): search all available holes and allocate the smallest hole that is big enough to accommodate the new process. This is slower than best-fit, but leads to the smallest "pocket" sizes.
     \item Worst Fit (WF): search all available holes and assign part of the largest available hole. This is the slowest method but may leave a smaller number of larger holes than either first or best fit.
 \end{enumerate}
-
-\subsection{Example}
-Suppose that a system has four free memory holes ordered as follows:
-
-\[
-    H_{1}=100 \mathrm{k}, H_{2}=500 \mathrm{k}, H_{3}=200 \mathrm{k}, H_{4}=300 \mathrm{k}
-\]
-
-Four jobs (i.e., processes) requiring (contiguous) memory space of various sizes are submitted at the same time in the order given below.
-
-\begin{tabular}{|c|c|c|c|c|}
-    \hline
-    Process & $P_{1}$ & $P_{2}$ & $P_{3}$ & $P_{4}$ \\
-    \hline
-    Size    & 140 k   & 450 k   & 200 k   & 300 k   \\
-    \hline
-\end{tabular}
-
-Show how these would be allocated by the FF and BF strategies.
-
-\begin{tabular}{|c|c|c|c|c|}
-    \hline
-    Process & $P_{1}$ & $P_{2}$ & $P_{3}$ & $P_{4}$ \\
-    \hline
-    Size    & 140 k   & 450 k   & 200 k   & 300 k   \\
-    \hline
-\end{tabular}
-
-\subsubsection{First Fit}
-
-\begin{tabular}{|c|c|c|c|}
-    \hline
-    $H_{1}(100)$ & $H_{2}(500)$ & $H_{3}(200)$ & $H_{4}(300)$ \\
-    \hline
-                 &              &              &              \\
-    \hline
-\end{tabular}
-
-\subsubsection{Best Fit}
-
-\begin{tabular}{|c|c|c|c|}
-    \hline
-    $H_{1}(100)$ & $H_{2}(500)$ & $H_{3}(200)$ & $H_{4}(300)$ \\
-    \hline
-                 &              &              &              \\
-    \hline
-\end{tabular}
-
-\begin{tabular}{|c|c|c|c|c|}
-    \hline
-    Process & $P_{1}$ & $P_{2}$ & $P_{3}$ & $P_{4}$ \\
-    \hline
-    Size    & 140 k   & 450 k   & 200 k   & 300 k   \\
-    \hline
-\end{tabular}
-
-\subsubsection{Worst Fit}
-
-\begin{tabular}{|c|c|c|c|}
-    \hline
-    $H_{1}(100)$ & $H_{2}(500)$ & $H_{3}(200)$ & $H_{4}(300)$ \\
-    \hline
-                 &              &              &              \\
-    \hline
-\end{tabular}
-
 Memory is partitioned into contiguous segments and allocated to different processes. The methods for contiguous memory allocation described above can lead to:
 \begin{itemize}
     \item External fragmentation: total memory space exists to satisfy a request, but it is not contiguous. That is, memory is available but is broken up into "pockets" between partitions that are too small to be used.
@@ -1437,38 +1329,6 @@ Memory is partitioned into contiguous segments and allocated to different proces
     \item Logical address space of a process can be non-contiguous; process is allocated physical memory whenever the latter is available ("chop up the processes").
     \item Divide physical memory into fixed-sized blocks called frames. All frames on the system are of the same size, usually some power of 2, determined by the hardware ("chop up the space").
 \end{itemize}
-
-To find out the page size on a Linux system, run this program:
-
-\begin{lstlisting}[language=C]
-#include <stdio.h>
-#include <unistd.h> /* sysconf(3) */
-int main(void) {
-    printf("The page size for this system is %ld bytes.\n",
-        sysconf(_SC_PAGESIZE)); /* _SC_PAGE_SIZE is OK too. */
-    return 0;
-}
-\end{lstlisting}
-
-The output I get when running this is:
-\begin{verbatim}
-The page size for this system is 4096 bytes.
-\end{verbatim}
-
-\subsection{Try this on a Windows system}
-
-\begin{lstlisting}[language=C]
-#include <stdio.h>
-#include <windows.h>
-int main(void) {
-    SYSTEM_INFO si;
-    GetSystemInfo(&si);
-    printf("The page size for this system is %u bytes.\n", si.dwPageSize);
-    return 0;
-}
-\end{lstlisting}
-
-What output do you get?
 
 \begin{itemize}
     \item Logical memory into blocks called pages.
