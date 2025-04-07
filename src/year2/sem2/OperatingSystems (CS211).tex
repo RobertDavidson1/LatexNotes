@@ -34,10 +34,6 @@ Robert Davidson
     \item  \texttt{string.h} : String manipulation functions (\texttt{strncpy, strcat, strcmp, strstr, strlen})
     \item \texttt{unistd.h} : Standard library for system calls (\texttt{fork, getpid, getppid})
 \end{itemize}
-
-
-
-
 \pagebreak
 \subsection{Intro to C}
 
@@ -200,7 +196,7 @@ for(int i = 0; i < 10; i++){
     printf("i is %d\n", i);
 }
 \end{lstlisting}
-\pagebreak
+
 \subsubsection{While loop}
 \texttt{while(expression)\{...\}}
 \begin{lstlisting}[style=cStyle, caption={Print numbers from 0 to 9}]
@@ -276,7 +272,7 @@ A conversion character is a letter that follows a \texttt{\%} and tells \texttt{
         \hline
     \end{tabular}
 \end{center}
-\pagebreak
+
 \subsection{Input}
 \texttt{scanf()} reads input from standat input, format it, as directed by a conversion character and store the address of a specified variable.
 \begin{lstlisting}[style=cStyle, caption={Reading an integer}]
@@ -323,7 +319,7 @@ tells the system to allocate a location in memory to store the value 10. The var
         \item If a memory address is stored in the variable \texttt{p}, then \texttt{*p} is the value stored at that address.
     \end{itemize}
 \end{conceptbox}
-\pagebreak
+
 \subsection{Characters}
 \begin{conceptbox}{Character representation}{}
     In C, a character is just an unsigned integer. Each character is represented by an integer between 0 and 127.
@@ -368,7 +364,7 @@ Searches for the first occurrence of the string \texttt{needle} in the string \t
 $$\texttt{int strlen(char *str)}$$
 Returns the length of the string \texttt{str} (not including the null character).
 
-\pagebreak
+
 \subsection*{1.11 Strings (Continued)}
 \subsubsection{String Output}
 We know how to use \texttt{printf()} to print strings:
@@ -407,7 +403,6 @@ This mean is if \texttt{a[][]} is declared as a two-dimensional $3 \times 4$ arr
     \item \texttt{*(*(a+1)+2)}
     \item \texttt{*(\&a[0][0]+4+2)}
 \end{itemize}
-\pagebreak
 \subsection{Explanation of Array Element Access in C}
 
 \subsubsection*{\texttt{a[1][2]}}
@@ -496,7 +491,7 @@ to write to the file, we use one of:
     \item \texttt{fputs(char *str, FILE *fileptr);} : writes the string str to the file pointed to by fileptr, without its trailing '\texttt{\textbackslash 0}' character. The string is not formatted.
     \item \texttt{fputc(int c, FILE *fileptr);} : writes the character c to the file pointed to by fileptr. The character is not formatted.
 \end{itemize}
-\pagebreak
+
 \subsection{Issues concerining the use of files in C, we should be aware of:}
 \begin{itemize}
     \item There are 6 modes a file can have: \texttt{r, w, a, r+, w+, a+}
@@ -539,8 +534,6 @@ A process is not just a program - if two users run the same program at the same 
         \item \textbf{Terminated} : the process has finished executing
     \end{itemize}
 \end{conceptbox}
-
-\pagebreak
 \subsection{Process Creation}
 A parent creates a child process. The child process can create its own child, forming a tree of processes. After a parent creates a child process it may:
 \begin{itemize}
@@ -578,7 +571,7 @@ Returns the value of the processes own PID
 $$\boxed{\texttt{pid\_t getppid(void);}}$$
 Returns the value of the parent process' PID
 Since the parent and subproc (child) have copies of the same memory space and instruction set, \texttt{getpid()}  and \texttt{getppid()} are useful for working out which is which.
-\pagebreak
+
 \subsection{Process Programming}
 Often we don't want the parent to continue running while the child is running, the results may be non-deterministic. Recall a sub-proc will share the parents memory only in a sense that it recieves a copy. The  child process can mimic the parents execution  or its memory space may be overlaid with a new program/set of instructions. \\[2ex]
 
@@ -615,8 +608,6 @@ $$\texttt{kill(pid\_t pid, int sig);}$$
 the PID of the process to send the signal to and the signal to send. The function returns 0 on success and -1 on failure. The \texttt{kill()} function can be used to send any signal to any process, including itself. \\
 With the \texttt{signal()} function, we can send a signal that tells the process to preform a specific asction, when it recieves a \texttt{SIGUSR1} or \texttt{SIGUSR2} signal.
 
-\pagebreak
-
 \subsection{Inter Process Communication}
 Inter process communication (IPC) is a mechanism that allows processes to communicate with each other. This is important because processes may need to share data or synchronize their actions
 
@@ -650,8 +641,6 @@ Inter process communication (IPC) is a mechanism that allows processes to commun
         \item \textbf{Logically} by message passing using an Inter Process Communication. Such system is inplemented by the OS.. The IPC prodives a logical communcation link via a message passing facilitiy with two funadmental operations : \textbf{send message} and \textbf{recieve message}.
     \end{itemize}
 \end{conceptbox}
-
-\pagebreak
 \subsubsection{Direct Communication}
 Each process must nomiate the process they want to communicate it. Pairs of cumminicting processes must know each others ID's in order to etablish a link. With this system a link is established by the two processes automatically, there are exactly two processes in the link and there can be at most one link between two procss\\[2ex]
 This is an example of \textbf{Symmetric addressing}. In the \textbf{Asymmetric addressing} model, the recipient listens out for any messages addressed to it (like making a phone call).\\[2ex]
@@ -683,7 +672,7 @@ However, modern OS's allow for threads: single process that can have mulitple PC
     \end{itemize}
 \end{conceptbox}
 But, with subprocs made with \texttt{fork()} memory is not really shared, so the advantage of being able to do things at once is lost by the need to communicate.
-\pagebreak
+
 \subsection{Single Point of Exuction vs Multiple Points of Execution}
 Instead of our classic view of a single point of execution withing a program, a multi-threaded program has more than one point of execution. Each thread is very much like a seperate process, except for \textbf{one difference:} they share the same address and space and thus can acess the same data.
 \begin{definitionbox}{Thread}{}
@@ -958,23 +947,20 @@ $$\textbf{"Several process/jobs are available to be run. In what order should th
     \end{minipage}
 
 \end{examplebox}
-
-\pagebreak
 \subsection{Concurrency}
-A cooperating process is one that can affect or be affected by another process that is executing on the system.
-
-Threads are prime examples of this: we can think of them as a single process with multiple points of execution. They share program code and, crucially, data.
-
-In this section, we consider the problems that occur then one or more threads try to access the same data, and we look at potential solutions.
-
-A classic data inconsistency problem is the so-called “Race Condition”,
-
-
-A Race Condition (also called a data race) is one where the result depends on the order in which instructions are executed.
-
-For a single-thread process, this is predetermined.
-
-But for multi-threaded processes, we do not have control over the order in which individual threads execute their instructions.
+\begin{definitionbox}{}{}
+    A cooperating process is one that can affect or be affected by another process that is executing on the system.
+\end{definitionbox}
+\noindent \textbf{Threads are prime examples of this:} we can think of them as a single process with multiple points of execution. They share program code and, crucially, data. \\[2ex]
+In this section, we consider the problems that occur when one or more threads try to access the same data, and we look at potential solutions. A classic data inconsistency problem is the so-called \textbf{“Race Condition”},
+\begin{definitionbox}{}{}
+    A Race Condition (also called a data race) is one where the result depends on the order in which instructions are executed.
+\end{definitionbox}
+\noindent For a single-thread process, this is \textbf{predetermined}.
+\begin{definitionbox}{}{}
+    Predetermined means that the order of execution of the instructions is determined by the program code. The compiler and the CPU will execute the instructions in a specific order, and this order will not change.
+\end{definitionbox}
+\noindent But for multi-threaded processes, we do not have control over the order in which individual threads execute their instructions.
 
 \begin{examplebox}{}{}
     Two cooperating process called $P_1$ and $P_2$ share the variable count. At various times during execution either may increment or decrement count. \\[2ex]
@@ -1008,10 +994,8 @@ But for multi-threaded processes, we do not have control over the order in which
 \begin{definitionbox}{}{}
     A critical section is a piece of code that accesses a shared variable (or more generally, a shared resource) and must not be concurrently executed by more than one thread.
 \end{definitionbox}
-\noindent The example given above  shows that multiple threads executing the same code can result in a race condition, that is an example of a critical section. \\
-To resolve this, we would like to \textbf{enforce} mutual exclusion: This property
-guarantees that if one thread is executing within the critical section, the others will be prevented from doing so. \\[2ex]
-One possible solution is to make the operation “atomic” (or indivisible). This is, the critical section is executed as though it were a single operation, and so impossible to interrupt. In a realistic setting, that is not possible for all race conditions. But, as we will see, the use of some atomic operations can help us solve the larger problem, by creating locks. \\[2ex]
+\noindent The example given above  shows that multiple threads executing the same code can result in a race condition, that is an example of a critical section. To resolve this, we would like to \textbf{enforce mutual exclusion}: This property guarantees that if one thread is executing within the critical section, the others will be prevented from doing so. \\[2ex]
+One possible solution is to make the operation \textbf{“atomic” (or indivisible)}. This is, the critical section is executed as though it were a single operation, and so impossible to interrupt. In a realistic setting, that is not possible for all race conditions. But, as we will see, the use of some atomic operations can help us solve the larger problem, by creating \textbf{locks.} \\[2ex]
 So now we know we would like to execute a series of instructions atomically. But, in general, on a multiprocessor system, we can't. But what we can do is create a lock which we put around critical sections, and thus ensure that any such critical section executes as if it were a single atomic instruction.\\[2ex]
 For the lock approach to work, the following 3 conditions must be
 satisfied:
@@ -1049,7 +1033,7 @@ satisfied:
     \end{lstlisting}
     \end{minipage}
 \end{definitionbox}
-These operations must be indivisible (or “atomic”). This is, when one process (or thread) modifies a semaphore value, no other process can modify it at the same time.\\[2ex]
+\noindent These operations must be indivisible (or “atomic”). This is, when one process (or thread) modifies a semaphore value, no other process can modify it at the same time.\\[2ex]
 \textbf{Two types of semaphore:}
 \begin{itemize}
     \item \textbf{1. Binary semaphores (locks):} These are used to control access to a single resource, such as a memory location. If the resources is available then $S = 1$. Otherwise $S = 0$. When a process wants to access it,
@@ -1069,12 +1053,12 @@ These operations must be indivisible (or “atomic”). This is, when one proces
 
     E.g., all are stuck in the wait() loop of the P() function.
 \end{definitionbox}
-\textbf{Deadlock can arise if four conditions hold simultaneously}
+\noindent \textbf{Deadlock can arise if four conditions hold simultaneously}
 \begin{itemize}
-    \item Mutual exclusion: only one process can have access to a particular resource at any given time.
-    \item Hold and wait: a process holding at least one resource is waiting to acquire additional resources held by other processes.
-    \item  No preemption: a resource can only be released voluntarily by the process holding it, after that process has completed its task.
-    \item Circular wait: there exists a set {P1, P2, . . . , Pn} of waiting processes such that
+    \item \textbf{Mutual exclusion:} only one process can have access to a particular resource at any given time.
+    \item \textbf{Hold and wait:} a process holding at least one resource is waiting to acquire additional resources held by other processes.
+    \item  \textbf{No preemption:} a resource can only be released voluntarily by the process holding it, after that process has completed its task.
+    \item \textbf{Circular wait:} there exists a set {P1, P2, . . . , Pn} of waiting processes such that
           \begin{itemize}
               \item P1 is waiting for a resource that is held by P2,
               \item P2 is waiting for a resource that is held by P3, ..., ◦
@@ -1092,8 +1076,8 @@ Deadlocks may be described in using a directed graph called a resource allocatio
 \end{itemize}
 The resource allocation graph has two sets of vertices:
 \begin{itemize}
-    \item \textbf{Processes} - $P_1, P_2, \dots, P_n$
-    \item \textbf{Resources} - $R_1, R_2, \dots, R_m$
+    \item \textbf{Processes:} $P_1, P_2, \dots, P_n$
+    \item \textbf{Resources:} $R_1, R_2, \dots, R_m$
 \end{itemize}
 And two sets of edges:
 \begin{itemize}
@@ -1157,7 +1141,7 @@ And two sets of edges:
 \begin{definitionbox}{}{}
     Starvation occurs when a particular process is always waiting for a particular semaphore to become available.
 \end{definitionbox}
-\noindent The ideas of Deadlock and Starvation are exhibited in the classic synchronization problem: \\
+\noindent The ideas of Deadlock and Starvation are exhibited in the classic synchronization problem: \\[2ex]
 \textbf{The Dining Philosophers Problem.}
 \begin{itemize}
     \item There are five philosophers seated at a round table.
@@ -1165,15 +1149,14 @@ And two sets of edges:
     \item They spend their day alternating between eating and thinking.
     \item However there are only five chopsticks...
 \end{itemize}
-
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.6\textwidth}
     If a philosopher is hungry, they will try to pick up the chopstick to the left and then the chopstick to the right. If they manages to do this they will eat for a while before putting down both and thinking for a while. However, if they pick up one, they will not let go of it until they can pick up the second and eat.
 \end{minipage}
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.39\textwidth}
     \begin{center}
         \includegraphics[scale=0.3]{images/diningPhilosophers.png}
     \end{center}
-\end{minipage}
+\end{minipage} \\[2ex]
 Suppose each of the picks up the chopstick to their left. No chopsticks remain on the table so we reach a state of deadlock. The challenge is to find a solution so that.
 \begin{itemize}
     \item Deadlock does not occur
