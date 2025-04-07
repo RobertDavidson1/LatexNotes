@@ -37,19 +37,12 @@ Robert Davidson
 }
 \maketitle
 \pagebreak
-
+\footnotesize
 \tableofcontents
+\normalsize
 \pagebreak
-\subsection*{Useful headers}
-\begin{itemize}
-    \item \texttt{stdio.h} : Standard input/output library
-    \item \texttt{stdlib.h} : Standard library
-    \item  \texttt{string.h} : String manipulation functions (\texttt{strncpy, strcat, strcmp, strstr, strlen})
-    \item \texttt{unistd.h} : Standard library for system calls (\texttt{fork, getpid, getppid})
-\end{itemize}
-\pagebreak
+\section{Introduction to C Programming}
 \subsection{Intro to C}
-
 It is a very small language and relies heavily on libraries
 The compiler must be told in advance how these functions should be used. So before the compilation process, the \textbf{preprocessor} is run to include the function prototypes The compiler then compiles the code into an object file.
 
@@ -179,11 +172,7 @@ To access the first element of arr we can do \texttt{arr[0]}
     \end{tabular}
     \captionof{table}{Logical Operators}
 \end{minipage}
-
-
-
-
-
+\section{Control Flow \& Functions}
 \subsection{Control Structure}
 \begin{lstlisting}[style=cStyle, caption={If-Else}]
     int a = 10;
@@ -332,7 +321,7 @@ tells the system to allocate a location in memory to store the value 10. The var
         \item If a memory address is stored in the variable \texttt{p}, then \texttt{*p} is the value stored at that address.
     \end{itemize}
 \end{conceptbox}
-
+\section{Strings \& Data Structures}
 \subsection{Characters}
 \begin{conceptbox}{Character representation}{}
     In C, a character is just an unsigned integer. Each character is represented by an integer between 0 and 127.
@@ -441,7 +430,7 @@ This is the standard way to access a two-dimensional array element. It directly 
     \item Since the array is stored in contiguous memory, pointer arithmetic treats it as a flat sequence. Adding \texttt{4+2} (i.e., 6) moves the pointer to the 7th element in that sequence.
     \item If the layout of the array is such that the element \texttt{a[1][2]} is the 7th element (this is true, for example, if the row length is at least 3), then dereferencing this pointer retrieves \texttt{a[1][2]}.
 \end{itemize}
-
+\section{File Handling in C}
 \subsection{Files}
 Taking an input from a file is not much different than taking input from a keyboard. All we do is:
 \begin{itemize}
@@ -516,7 +505,7 @@ to write to the file, we use one of:
     \item \texttt{rename("myList.txt", "myList2.txt");} renames the file \texttt{myList.txt} to \texttt{myList2.txt}. If the new name already exists, it will be overwritten.
     \item \texttt{int feof(FILE *fileptr);} returns a non-zero value if the end of the file has been reached. It is used to check if we have reached the end of the file while reading it.
 \end{itemize}
-
+\section{Processes and Inter-Process Communication (IPC)}
 \subsection{The Process}
 $$\textbf{"A process is a running program."}$$
 The operating system gives the impression many programs are running at the same time, but in reality, only one program is running at a time. This is made possible by abstracting the the concept of a running program as a process.
@@ -673,7 +662,7 @@ For procs to communicae they must know the name of the mailbox. More than two pr
 \end{itemize}
 \subsection{\texttt{pipe()}}
 A means of communication, based around the \texttt{pipe(), write(), read()} functions that allows one process to send data to another. The data can be anything, but we will use examples of sending integers. This is an example of \textbf{Symmetric direct communication}.
-
+\section{Threads, Scheduling & Concurrency}
 \subsection{Theads}
 So far, we've assumed that every process has its own program counter (PC), which tells the OS where it is in its instruction set (think line of program currently executing). So even when we duplicate using \texttt{fork()} the new subproc has its own PC, even though they have the same value as the parents PC. \\[2ex]
 However, modern OS's allow for threads: single process that can have mulitple PC's.
@@ -1451,6 +1440,21 @@ storage is required by integers, floats, characters, and even pointers. This is 
     \item There are more complex structures which have variable memory
           requirements
 \end{itemize}
+So we use the sizeof() operator, which returns the number of bytes for a particular data type. It can take data types (e.g, float, char) or variable names as its argument. It returns an unsigned integer. \\[2ex]
+\subsection{Dynamic Memory Allocation}
+Having to declare the size of an array in a function header is a huge restriction. Either we have to modify the program every time we change the size of the array, or we have to define the array to be as big as possible. This is wasteful of time and resources. To minimise the amount of coding we have to do, and to use resources well, we simply declare an appropriate variable with type:
+$$\texttt{pointer to int for an integer vector: int *v;}$$
+Next we must ask the system to reserve some memory. There are four
+important commands:
+\begin{itemize}
+    \item \texttt{sizeof()} (see above)
+    \item \texttt{calloc(n, sizeof(x))}: Continuous Memory Allocation. It will reserve enough space to n variables each with same size as x. It sets than all to zero.
+    \item \texttt{malloc(n*sizeof(int))}: Memory Allocation. As above, but it
+          doesn't do any initialization.
+    \item \texttt{free(ptr)}: deallocate the space the begins at the address stored in
+          ptr
+\end{itemize}
+The important thing is that we can call calloc(), malloc() and free() any time we like. This is what is dynamic about it. Both malloc() and calloc() return pointers to the base of the memory they allocated. However, because they are not for specific pointer types (e.g., pointer to int or pointer to char) they return “void pointers”. These ‘void pointers’ are then automatically promoted to the relevant pointer type.
 \subsection{Exam Questions}
 \subsubsection*{Q2 (i)}
 Which of the following CPU scheduling algorithms are \textbf{preemptive?} Select all that apply.
