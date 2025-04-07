@@ -1350,7 +1350,7 @@ You may assume that context switching is instantaneous. Calculate the average tu
 \subsubsection*{Q3 (i)}
 What is a Resource Allocation Graph? Explain the relation between cycles in the graph and system deadlock in the case where there is a single instance of each resource.
 \subsubsection*{Q4 (ii)}
-Consider the two Resource Allocation Graphs in Figure 1. In both scenarios presented there are four processes, $P_1$, $P_2$, $P_3$ and $P_4$, and three resources, $R_1$, $R_2$, and $R_3$, of which there is one instance each.
+Consider the two Resource Allocation Graphs. In both scenarios presented there are four processes, $P_1$, $P_2$, $P_3$ and $P_4$, and three resources, $R_1$, $R_2$, and $R_3$, of which there is one instance each.
 \begin{itemize}
     \item Determine if it represents a deadlocked state.
     \item If it is deadlocked, explain why.
@@ -1359,5 +1359,105 @@ Consider the two Resource Allocation Graphs in Figure 1. In both scenarios prese
           resource allocation. (You may assume that if a process has its
           desired resource allocation it will eventually terminate and release
           that allocation)
+\end{itemize}
+\vskip0.5cm
+\begin{minipage}{0.5\textwidth}
+    \begin{center}
+        \begin{tikzpicture}[node distance=2cm, every node/.style={scale=0.7}, scale= 0.8]
+            % Styles
+            \tikzstyle{process} = [circle, draw=black, fill=custom_red!30, minimum size=1cm]
+            \tikzstyle{resource} = [rectangle, draw=black, fill=custom_blue!30, minimum width=1cm, minimum height=1cm]
+
+            % Nodes: Processes
+            \node[process] (P1) at (0,2) {$P_1$};
+            \node[process] (P2) at (2.5,2) {$P_2$};
+            \node[process] (P3) at (5,2) {$P_3$};
+            \node[process] (P4) at (7.5,2) {$P_4$};
+
+            % Nodes: Resources
+            \node[resource] (R1) at (0,0) {$R_1$};
+            \node[resource] (R2) at (2.5,0) {$R_2$};
+            \node[resource] (R3) at (5,0) {$R_3$};
+
+            % Request edges: Pi → Ri
+            \draw[->, thick] (P1) -- (R1);
+            \draw[->, thick] (P2) -- (R2);
+            \draw[->, thick] (P3) -- (R3);
+
+
+            % Allocation edges: Ri → Pj
+            \draw[->, thick] (R1) -- (P2);
+            \draw[->, thick] (R2) -- (P3);
+            \draw[->, thick] (R3) -- (P4);
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    \begin{center}
+        \begin{tikzpicture}[node distance=2cm, every node/.style={scale=0.7}, scale= 0.8]
+            % Styles
+            \tikzstyle{process} = [circle, draw=black, fill=custom_red!30, minimum size=1cm]
+            \tikzstyle{resource} = [rectangle, draw=black, fill=custom_blue!30, minimum width=1cm, minimum height=1cm]
+
+            % Nodes: Processes
+            \node[process] (P1) at (0,2) {$P_1$};
+            \node[process] (P2) at (2.5,2) {$P_2$};
+            \node[process] (P3) at (5,2) {$P_3$};
+            \node[process] (P4) at (7.5,2) {$P_4$};
+
+            % Nodes: Resources
+            \node[resource] (R1) at (0,0) {$R_1$};
+            \node[resource] (R2) at (2.5,0) {$R_2$};
+            \node[resource] (R3) at (5,0) {$R_3$};
+
+            % Request edges: Pi → Ri
+            \draw[->, thick] (P1) -- (R1);
+            \draw[->, thick] (P2) -- (R2);
+            \draw[->, thick] (P3) -- (R3);
+            \draw[->, thick] (P4) -- (R1);
+
+
+            % Allocation edges: Ri → Pj
+            \draw[->, thick] (R1) -- (P2);
+            \draw[->, thick] (R2) -- (P3);
+            \draw[->, thick] (R3) -- (P1);
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+\subsubsection*{Q3 (iii)}
+Suppose a system has three running processes, each of which requires
+three resources of a particular type. Furthermore the system has five
+instances of that resource. Explain, with the aid of a resource allocation
+graph, how the system could reach deadlock.
+\subsubsection*{Q4 (i)}
+Suppose a system has two free memory partitions, of size 400k and
+600k, in that order. \\[2ex]
+Four jobs requiring (contiguous) memory space of various sizes are
+submitted at the same time, and in the following order:
+\begin{center}
+    \begin{tabular}{c|c|c}
+        Process & Order submitted & Size \\
+        \hline
+        $P_1$   & 1st             & 320k \\
+        $P_2$   & 2nd             & 200k \\
+        $P_3$   & 3rd             & 280k \\
+        $P_4$   & 4th             & 200k \\
+    \end{tabular}
+\end{center}
+\begin{itemize}
+    \item Would all these processes be allocated memory if the First-Fit (FF)
+          scheme is employed? If not, which one(s) would be omitted
+    \item Would all these processes be allocated memory if the Worst-Fit
+          (WF) scheme is employed? If not, which one(s) would be omitted?
+\end{itemize}
+\subsubsection*{Q4 (ii)}
+Suppose a system has F = 4 available frames, and executes a process that has the following “page reference string”.
+$$\{1, 2, 3, 1, 4, 5, 1, 4, 2, 4, 3, 4\}$$
+\begin{itemize}
+    \item Calculate the Frame Hit rate using the First-In-First-Out algorithm.
+    \item Calculate the Frame Hit rate using the Least Recently Used
+          algorithm.
+    \item What would be Frame Hit rate be for both these algorithms if we
+          increase the number of frames (i.e., $F \geq 5$)?
 \end{itemize}
 \end{document}
