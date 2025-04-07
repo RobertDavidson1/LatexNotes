@@ -1394,7 +1394,63 @@ If there is a reference to an invalid page, reference will trap to OS
 \end{enumerate}
 \subsection{Page Replacement}
 What happens if there is no free frame? Page replacement. \\[2ex]
-Find some page in memory that is not in use, and swap it out. We need an algorithm for selecting such a page. The algorithm will be evaluated on the basis of the generation of a minimum number of page faults. Page fault handling is slow, so the performance of the whole system depends heavily on having an efficient Page Replacement algorithm - one with the lowest possible page fault rate.
+Find some page in memory that is not in use, and swap it out. We need an algorithm for selecting such a page. The algorithm will be evaluated on the basis of the generation of a minimum number of page faults. Page fault handling is slow, so the performance of the whole system depends heavily on having an efficient Page Replacement algorithm - one with the lowest possible page fault rate. \\[2ex]
+\textbf{To evaluate a page replacement algorithm, we will consider}
+\begin{itemize}
+    \item An example where a program has the following stream of virtual pages:
+          $$ \{1,2,3,4,1,2,5,1,2,3,4,5\}$$
+          meaning, it first references page 1, then page 2, and finally page 5.
+    \item F, the number of frames on the system
+    \item The algorithm
+\end{itemize}
+For these, we shall compute the \textbf{Frame Hit Rate}:
+$$\frac{\text{Number of Hits}}{\text{Length of page of reference string}}$$
+The greater the hit rate the better.
+% Explain Belady Anomly.
+\textbf{Optimal Algorithm} requires the least number of page faults and does not suffer for Belady's Anomaly: Replace page that will not be used for longest period of time. However, one needs to know what pages will be referenced in the future. So this is difficult to implement. \\[2ex]
+\textbf{LRU (Least Recently Used)}: algorithm is similar to FIFO but, rather than removing the frame that has been in memory the longest, we remove the one that has not been referenced for the longest time
+\subsection{Memory Management in C}
+We'll finish with a short note about how a process can request memory from the OS. Recall that:
+\begin{itemize}
+    \item A Pointer is special variable that has as its value a memory location.
+    \item Declaring a pointer to an integer is done by:
+          $$\texttt{~~ int *p;}$$
+    \item The variable p can contains an address.
+    \item Access the contents of that address with *p.
+          In this context, the * symbol is called a dereferencer
+\end{itemize}
+It is reasonable to think of \& as the inverse of the operator *. This is because \&i means “the address of the variable stored in i”, while *p means “the value stored at the address p \\[2ex]
+If $i$ is an integer with value $23$, then:
+\begin{itemize}
+    \item \texttt{~~ *(\& i) ~~} will give the value of $i$ (23)
+    \item \texttt{~~ \&(* i) ~~} is illegal because $i$ is not a pointer
+\end{itemize}
+If we declare p as a pointer to an integer and set
+\begin{itemize}
+    \item \texttt{~~ p=\&i} then p contains the address of i
+    \item \texttt{~~ \&(*p) ~~} will evaluate as the adress of $i$
+\end{itemize}
+\textbf{Question:} Is  \texttt{*(\&p)} legal? If so, what will it evaluate as? \\
+\textbf{Answer:} Yes, it is legal. It will evaluate as the address of p. \\[2ex]
+When an array of integers is declared what actually happenns is:
+\begin{itemize}
+    \item The system declares a pointer to an integer, called $a$,
+    \item The pointer is to $a[0]$ he “base address” of the array
+    \item Space is allocated to the addresses pointed to by $a[0]$, $a[1]$, $a[2]$ etc.
+\end{itemize}
+It is not true that arrays and pointers are exactly the same. If we declare:
+$$\texttt{int *p, a[10];}$$
+the value of the pointer p can be the value of the pointer p can be reassigned anytime we like, but the value of a is fixed. However, because of this, we use pointers when we wish to pass arrays as functions. \\[2ex]
+Before studying dynamic memory allocation, we will work out how much
+storage is required by integers, floats, characters, and even pointers. This is because we need to tell the system how many bytes are required to store an array. Although we can hard-code this into our program, we prefer not to since
+\begin{itemize}
+    \item we might make a mistake;
+    \item some systems store data types differently from others (standards for
+          the C language specify the minimum number of bytes used, but this
+          can be exceeded);
+    \item There are more complex structures which have variable memory
+          requirements
+\end{itemize}
 \subsection{Exam Questions}
 \subsubsection*{Q2 (i)}
 Which of the following CPU scheduling algorithms are \textbf{preemptive?} Select all that apply.
