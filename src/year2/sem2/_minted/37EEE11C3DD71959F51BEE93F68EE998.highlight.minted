@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{enum}\PYG{+w}{ }\PYG{n}{Color}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{RED}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{GREEN}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{BLUE}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{k}{enum}\PYG{+w}{ }\PYG{n}{Color}\PYG{+w}{ }\PYG{n}{c}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{GREEN}\PYG{p}{;}
+\end{MintedVerbatim}
