@@ -798,28 +798,27 @@ $$
     1 & 1  & 1
   \end{bmatrix}
 $$
-The \textbf{image} of $T$ is the subset of $\mathbb{R}^3$ consisting of all elements $T(\mathbf{v}), \mathbf{v} \in \mathbb{R}^3$ (in matrix terms, this is the $\textbf{column space}$ of $M_T$) This is the set of all vectors of the form:
-$$
-  a \begin{bmatrix}
+\subsubsection{Image of $T$}
+The \textbf{image} of $T$, denoted $\text{im}(T)$ is the set of all vector that can be written as $T(\textbf{v})$, for some $\mathbf{v} \in \mathbb{R}^3$. Algebraically, this is the column space of the matrix $M_T$. \textbf{Explicitly:}
+$$\text{im}(T) = \text{span}\left\{
+  \begin{bmatrix}
     1 \\
     2 \\
     1
-  \end{bmatrix}
-  +
-  b \begin{bmatrix}
+  \end{bmatrix},
+  \begin{bmatrix}
     2  \\
     -1 \\
     1
-  \end{bmatrix}
-  +
-  c \begin{bmatrix}
+  \end{bmatrix},
+  \begin{bmatrix}
     0 \\
     5 \\
     1
   \end{bmatrix}
-$$
-. \\
-The \textbf{kernel} of $T$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$ (in matrix terms, this is the $\textbf{nullspace}$) \\ This is the set of all column vectors, whose entries, $a,b,c$ satisfies:
+  \right\}$$
+\subsubsection{Kernel of $T$}
+The \textbf{kernel} of $T$, denoted $\text{ker}(T)$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$. Algebraically, this is the \textbf{null space} of the matrix $M_T$. To find the kernel solve:
 $$
   \begin{bmatrix}
     1 & 2  & 0 \\
@@ -832,29 +831,39 @@ $$
     c
   \end{bmatrix}
   =
-  a \begin{bmatrix}
-    1 \\
-    2 \\
-    1
-  \end{bmatrix}
-  +
-  b \begin{bmatrix}
-    2  \\
-    -1 \\
-    1
-  \end{bmatrix}
-  +
-  c \begin{bmatrix}
-    0 \\
-    5 \\
-    1
-  \end{bmatrix}
-  =
   \begin{bmatrix}
     0 \\
     0 \\
     0
   \end{bmatrix}
+  \xRightarrow[]{\text{Row reducing}}
+  \begin{bmatrix}
+    1 & 2  & 0 & | & 0 \\
+    0 & -5 & 5 & | & 0 \\
+    1 & 1  & 1 & | & 0
+  \end{bmatrix}
+  \Rightarrow
+  \begin{bmatrix}
+    1 & 0 & 2  & | & 0 \\
+    0 & 1 & -1 & | & 0 \\
+    0 & 0 & 0  & | & 0
+  \end{bmatrix}
+$$
+$$
+  \text{General Solution:} \quad
+  \begin{bmatrix}
+    a \\
+    b \\
+    c
+  \end{bmatrix}
+  =
+  t \cdot
+  \begin{bmatrix}
+    -2 \\
+    1  \\
+    1
+  \end{bmatrix}
+  \quad \text{where} \; t \in \mathbb{R}
 $$
 \subsubsection{The kernel is a line and the image is a plane}
 $$
@@ -873,18 +882,6 @@ $$
     0 \\
     0 \\
     0
-  \end{bmatrix}
-  \quad \Rightarrow \quad
-  \begin{bmatrix}
-    1 & 2  & 0 & | & 0 \\
-    0 & -5 & 5 & | & 0 \\
-    1 & 1  & 1 & | & 0
-  \end{bmatrix}
-  \quad \Rightarrow \quad
-  \begin{bmatrix}
-    1 & 0 & 2  & | & 0 \\
-    0 & 1 & -1 & | & 0 \\
-    0 & 0 & 0  & | & 0
   \end{bmatrix}
 $$
 The kernel is $(2, 1, 1)t, t \in \mathbb{R}$, which is a line in $\mathbb{R}^3$. The fact that $(-2, 1, 1)$ is in the kernel of $T$, means that column 3 of $M_T$ is a linear combination of columns $1$ and $2$.
