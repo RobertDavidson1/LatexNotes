@@ -791,7 +791,7 @@ Overall, these ideas—image, kernel, subspaces, span, and linear independence�
 
 \subsection{The Image and Kernel of a Linear Transformation}
 $$
-  \text{$T:\mathbb{R}^3 \to \mathbb{R}^3$ is the linear transformation defined with:} \quad
+  \text{Let: $T:\mathbb{R}^3 \to \mathbb{R}^3$, defined by matrix} \quad
   M_T = \begin{bmatrix}
     1 & 2  & 0 \\
     2 & -1 & 5 \\
@@ -1136,7 +1136,7 @@ This section deepens our investigation of vector spaces by addressing how to des
   \item The space of $m \times n$ real matrices, denoted $M_{m \times n}(\mathbb{R})$ is finite dimensional. A spanning set is the collection collection of matrices with a single $1$ in each position and $0$s elsewhere (denoted $E_{i.j}$).
   \item An example of an infinite dimensional space is the set, $\mathbb{R}[x]$, of all polynomials with real coefficients. This set is infinite dimensional because it contains an infinite number of linearly independent vectors, such as $\{1, x, x^2, \ldots\}$.
 \end{itemize}
-\subsection{Basis}
+\subsection{Basis: The Structural Backbone}
 \begin{definitionbox}{}{}
   A basis of a vector space is a set of vectors that satisfies two conditions:
   \begin{itemize}
@@ -1144,17 +1144,18 @@ This section deepens our investigation of vector spaces by addressing how to des
     \item Spanning: The set of vectors can be combined to form any vector in the space.
   \end{itemize}
 \end{definitionbox}
-\noindent A basis is both the minimal spanning set (remove any vector, and it no longer spans) and the maximal linearly independent set (add any vector, and it becomes linearly dependent).
+$$\textbf{""I can represent everything, using only these, and no fewer."}$$
+\noindent A basis is both the minimal spanning set (remove any vector, and it no longer spans) and the maximal linearly independent set (add any vector, and it becomes linearly dependent) \\[2ex]
+\textbf{Examples:}
 \begin{itemize}
-  \item Example: $\{e_1, \dots , e_n\}$ is a basis for $\mathbb{R}^n$.
+  \item  $\{e_1, \dots , e_n\}$ is a basis for $\mathbb{R}^n$.
   \item $\{(1,3), (1,4)\}$ is a basis for $\mathbb{R}^2$.
   \item If $S$ is a finite spanning set of a vector space $V$, then $S$ contains a basis of $V$. If $S$ is not linearly independent, then some $v \in S$ is a linear combination of the other elements of $S$. Throwing away $v$ leaves a smaller set that still spans $V$. This process can be repeated until a basis is obtained.
 \end{itemize}
 \subsection{Steinitz Replacement Lemma}
-This result guarantees that all bases of a finite-dimensional vector space have the same number of elements, and it gives a method for replacing elements in a spanning set with elements from a linearly independent set
+This is the core result guaranteeing that any two bases of a finite-dimensional space have the same number of elements. You can always replace vectors from a spanning set with vectors from an independent set, one at a time, while preserving the ability to span the space
 \begin{lemmabox}{}{}
-  Let $V$ be a vector space that has a basis with $n$ elements. \\[2ex]
-  Then every linearly independent set with $n$ elements in $V$ is a basis for $V$.
+  Let $V$ be a vector space that has a basis with $n$ elements. Then every linearly independent set with $n$ elements in $V$ is a basis for $V$.
 \end{lemmabox}
 \noindent \textbf{Proof (for $n = 3)$} \\
 Suppose $B = \{b_1, b_2, b_3\}$ is a basis of $V$ and let $\{y_1, y_2, y_3\}$ be a linearly independent subset of $V$. \\[2ex]
@@ -1249,14 +1250,14 @@ remains).\\[2ex]
 \end{itemize}
 
 \subsection{Row rank and column rank}
-Let $A$ be an $m \times n$ matrix. \\[2ex]
-The \textbf{row rank} of $A$, denoted $r$, is the dimension of the row space of $A$—the subspace of $\mathbb{R}^n$ spanned by the rows of $A$. \\[2ex]
-The \textbf{column rank} of $A$, denoted $c$, is the dimension of the column space of $A$—the subspace of $\mathbb{R}^m$ spanned by the columns of $A$. Equivalently, it is the dimension of the image of the linear transformation represented by $A$.
+Let $A \in \mathbf{A}^{m \times n}$ be a matrix. We define:
 \begin{itemize}
-  \item The row rank is the number of linearly independent rows in $A$.
-  \item The column rank is the number of linearly independent columns in $A$.
+  \item Row space: The span of the rows $\rightarrow$ subspace of $\mathbb{R}^n$.
+  \item Column space: The span of the columns $\rightarrow$ subspace of $\mathbb{R}^m$.
+  \item Row rank $r$: The dimension of the row space
+  \item Column rank $c$: The dimension of the column space
 \end{itemize}
-Since the row rank is at most $m$ and the column rank at most $n$, both values can be strictly less than $m$ or $n$, respectively.
+$$\textbf{Rank = dimension of the image = number of pivot columns = number of nonzero rows in RREF.}$$
 \subsection{Row rank = column rank}
 \begin{theorembox}{}{}
   The row rank and column rank are the same for every matrix
