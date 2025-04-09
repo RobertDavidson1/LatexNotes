@@ -819,7 +819,7 @@ $$
   \end{bmatrix}
 $$
 . \\
-The \textbf{kernel} of $T$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$ (in matrix terms, this is the $\textbf{nullspace}$)/ This is the set of all column vectors, whose entries, $a,b,c$ satisfies:
+The \textbf{kernel} of $T$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$ (in matrix terms, this is the $\textbf{nullspace}$) \\ This is the set of all column vectors, whose entries, $a,b,c$ satisfies:
 $$
   \begin{bmatrix}
     1 & 2  & 0 \\
@@ -971,13 +971,16 @@ $
 \end{itemize}
 \subsection{The span : how to make subspaces}
 \begin{definitionbox}{}{}
-  Let $S = \{v_1, \dots, v_k\}$ be any finite subset of $\mathbb{R}^n$ \\[2ex]
-  The subset of $\mathbb{R}^n$ consisting of all linear combinations of the elements of $S$ is a subspace of $\mathbb{R}^n$ and is called the \textbf{span} of $S$ and is denoted by $\langle (S) \rangle$.
+  Let $S = \{ \mathbf{v}_1, \dots, \mathbf{v}_k \}$ be a finite subset of $\mathbb{R}^n$. \\
+  The \textbf{S}, denoted $\langle S \rangle$ is the set of all linear combinations of the vectors in $S$:
+  $$\langle S \rangle = \{a_1 \mathbf{v_1} + a_2 \mathbf{v_2} + \ldots + a_k \mathbf{v_k} : a_i \in \mathbb{R}\}$$
+  The span, $\langle S, \rangle$ is a subspace of $\mathbb{R}^n$.
 \end{definitionbox}
 \noindent \textbf{Proof that $\langle S \rangle$ is a subspace of $\mathbb{R}^n$}
 \begin{itemize}
   \item \textbf{Closed under scalar multiplication}: \\
-        Let $u \in \langle S \rangle$ and $\alpha \in \mathbb{R}$. We need to show that $cu$ is a linear combination of $v_1, \dots, v_k$. We have $u = a_1v_1 + a_2v_2 + \cdots + a_kv_k$ for some $a_i \in \mathbb{R}$. Then:
+        Let $u \in \langle S \rangle$ and $\alpha \in \mathbb{R}$ (that is, $\mathbf{u}$ can be written as a combination of the vector in $S$) \\
+        We need to show that $cu$ is a linear combination of $v_1, \dots, v_k$. We have $u = a_1v_1 + a_2v_2 + \cdots + a_kv_k$ for some $a_i \in \mathbb{R}$. Then:
         $$cu = c(a_1v_1 + a_2v_2 + \cdots + a_kv_k) = (ca_1)v_1 + (ca_2)v_2 + \cdots + (ca_k)v_k$$
         so $cu \in \langle S \rangle$.
   \item  \textbf{Closed under addition}: \\
