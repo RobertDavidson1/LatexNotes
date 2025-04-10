@@ -1796,15 +1796,44 @@ So $P$ itself, is the change of basis matrix from the basis $B$ to the standard 
 
 
 \section{Similarity, Eigenvalues, and Diagonalizability}
-\subsection*{Introduction}
-\noindent In this section, we address one of linear algebra’s central questions: how to simplify a matrix so its action becomes more transparent. Often, the simplest form is a \textbf{diagonal} matrix—one whose nonzero entries appear only on its main diagonal. A matrix $A$ that can be converted into this form via an invertible matrix $P$ (so that $P^{-1}AP$ is diagonal) is called \textbf{diagonalizable}. \\[2ex]
-
-\noindent The key to diagonalizability lies in finding a basis of eigenvectors, where each vector in the basis is merely scaled by a constant (an \textbf{eigenvalue}) under the transformation. This gives us a geometric viewpoint: a diagonalizable matrix has enough independent directions in which it acts by simple stretching. However, not every matrix has a full set of eigenvectors; some transformations, like shear mappings or rotations in complex planes, cannot be captured by diagonal forms in the real numbers. \\[2ex]
-\noindent More generally, two matrices are said to be \textbf{similar} if one can be expressed as $P^{-1}AP$ for an invertible $P$. Similar matrices represent the \textbf{same} linear transformation but in different bases. They share core invariants such as determinant, trace, rank, and eigenvalues. Thus, similarity provides a unifying perspective: it reveals when two seemingly different matrices are actually just different coordinate pictures of the same underlying operator. \\[2ex]
-
-\noindent We will see how to recognize when diagonalization is possible by examining the characteristic polynomial and the geometric and algebraic multiplicities of eigenvalues. If a matrix has enough independent eigenvectors—equivalently, if each eigenvalue has as many eigenvectors as its multiplicity—then it can be diagonalized. This framework illuminates why certain real transformations require complex eigenvalues or why some can only be partially simplified (leading to the so-called Jordan normal form). \\[2ex]
-
-\noindent By the end of this section, you will understand not only how to test for diagonalizability and construct the matrix that does it, but also how these ideas generalize to broader simplifications of linear maps. In practice, diagonalization proves invaluable across mathematics, physics, and engineering for tasks like powering matrices, solving linear systems efficiently, or analyzing coupled dynamical systems.\\[2ex]
+Recall, given a basis for an $n$ dimensional vector space, $V$, we can represent a linear transformation:
+$$T : V \to V$$
+as an $n \times n$ matrix $A$. Unfortunately, if we choose a different basis for $V$, the matrix $A$ representing $T$ will change.  \\[2ex]
+We aim to clearly explain when two matrices represent the same linear transformation, just in different bases.
+\subsection*{k}
+We want to see two matrices are similar when they represent the same linear transformation. Choose two bases for the vector space $V$, and $W$: $\{v_1, \dots v_n\}$ and $\{w_1, \dots w_n\}$ and let $A$ be the matrix representing the linear transformation, $T$, for the $v$ basis, and $B$ be the matrix representing the same linear transformation for the $w$ basis. \\[2ex]
+Given the $v$ basis, we can write each vector $z \in V$ as an $n \times 1$ column vector:
+$$z = a_1, v_1 + a_2 v_2 + \cdots + a_n v_n = \begin{bmatrix}
+    a_1    \\
+    a_2    \\
+    \vdots \\
+    a_n
+  \end{bmatrix}$$
+where $a_i$ are unique scalars.
+Similar for the $w$ basis:
+$$z = b_1, w_1 + b_2 w_2 + \cdots + b_n w_n = \begin{bmatrix}
+    b_1    \\
+    b_2    \\
+    \vdots \\
+    b_n
+  \end{bmatrix}$$
+where $b_i$ are unique scalars. \\
+Then, we can introduce a matrix $P$ that maps the $v$ basis to the $w$ basis, called the \textbf{change-of-basis} matrix:
+$$
+  P \begin{bmatrix}
+    a_1    \\
+    a_2    \\
+    \vdots \\
+    a_n
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    b_1    \\
+    b_2    \\
+    \vdots \\
+    b_n
+  \end{bmatrix}
+$$
 
 \subsection{Similarity (The relation of $A$ and $A'$)}
 Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$ we:
