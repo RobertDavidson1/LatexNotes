@@ -831,6 +831,32 @@ $$
   =
   \bigl[\, I_n \mid A^{-1} \bigr].
 $$
+\subsection{Determinant}
+Before the definition, we start with notation. For an $n \times n$ matrix:
+$$
+  A = \begin{bmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nn}
+  \end{bmatrix}
+$$
+, we define $A_{ij}$ as the $(n -1) \times (n-1)$ matrix obtained by deleting the $i$th row and $j$th column of $A$. For example:
+$$
+  A = \begin{bmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9
+  \end{bmatrix}
+  \quad \text{then}\; A_{12} =
+  \begin{bmatrix}
+    4 & 6 \\
+    7 & 9
+  \end{bmatrix}
+$$
+\begin{definitionbox}{}{}
+  $$\text{det}(A) = \sum_{k=1}^n (-1)^{k+1}a_{1k} \text{det}(A_{1k})$$
+  where $A_{1k}$ is the $(n-1) \times (n-1)$ matrix obtained by deleting the first row and $k$th column of $A$.
+\end{definitionbox}
 \begin{examplebox}{}{}
   Find $A^{-1}$ if $A = \begin{bmatrix}
       3 & 4 & -1 \\
