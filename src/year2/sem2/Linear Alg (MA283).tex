@@ -865,26 +865,20 @@ $$
   \end{bmatrix}
   \quad \text{where} \; t \in \mathbb{R}
 $$
-\subsubsection{The kernel is a line and the image is a plane}
-$$
+So the solution is is:
+$$\text{ker}(T) =
+  \left \{
+  t
   \begin{bmatrix}
-    1 & 2  & 0 \\
-    2 & -1 & 5 \\
-    1 & 1  & 1
+    -2 \\
+    1  \\
+    1
   \end{bmatrix}
-  \begin{bmatrix}
-    a \\
-    b \\
-    c
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    0 \\
-    0 \\
-    0
-  \end{bmatrix}
-$$
-The kernel is $(2, 1, 1)t, t \in \mathbb{R}$, which is a line in $\mathbb{R}^3$. The fact that $(-2, 1, 1)$ is in the kernel of $T$, means that column 3 of $M_T$ is a linear combination of columns $1$ and $2$.
+  : t \in \mathbb{R}
+  \right \}$$
+This is a one-dimensional subspace of $\mathbb{R}^3$: all scalar multiples of a single nonzero vector. Geometrically, that's a line through the origin. Every vector in the kernel lies along that line.
+\subsubsection{Column Dependence}
+The fact the kernel is one-dimensional implies that the columns of $M_T$ are linearly dependent. specially, the third column is a linear combination of the first two:
 $$
   -2
   \begin{bmatrix}
@@ -892,64 +886,51 @@ $$
     2 \\
     1
   \end{bmatrix}
-  +
-  1
+  +1
   \begin{bmatrix}
     2  \\
     -1 \\
     1
   \end{bmatrix}
-  +
-  1
+  + 1
   \begin{bmatrix}
     0 \\
     5 \\
     1
   \end{bmatrix}
-  =
-  \begin{bmatrix}
-    0 \\
-    0 \\
-    0
-  \end{bmatrix}
-  \quad \Longrightarrow \quad
-  \begin{bmatrix}
-    0 \\
-    5 \\
-    1
-  \end{bmatrix}
-  =
+  \xRightarrow[]{\text{Rearranging}}
   2
   \begin{bmatrix}
     1 \\
     2 \\
     1
   \end{bmatrix}
-  -
+  -1
   \begin{bmatrix}
     2  \\
     -1 \\
     1
   \end{bmatrix}
+  =
+  \begin{bmatrix}
+    0 \\
+    5 \\
+    1
+  \end{bmatrix}
 $$
-It follows that every linear combination of all three columns of $M_T$ is just a linear combination of columns $1$ and $2$. \\
-The column space of $M_T$ is:
-$
-  \small
-  \left\{
-  a\begin{pmatrix}
+Thus, the image of $T$ is the plane:
+$$\text{span} \left \{ \begin{bmatrix}
     1 \\
     2 \\
     1
-  \end{pmatrix}
-  +
-  b \begin{pmatrix}
+  \end{bmatrix}
+  , \begin{bmatrix}
     2  \\
     -1 \\
     1
-  \end{pmatrix} \; : \; a,b \in \mathbb{R}
-  \right\}
-$
+  \end{bmatrix}
+  \right \}
+$$
 \subsection{Subspaces}
 \begin{definitionbox}{}{}
   A non empty subset $\textbf{V}$ of $\mathbb{R}^n$ is a \textbf{subspace} if:
@@ -971,7 +952,7 @@ $
   Let $S = \{ \mathbf{v}_1, \dots, \mathbf{v}_k \}$ be a finite subset of $\mathbb{R}^n$. \\
   The \textbf{S}, denoted $\langle S \rangle$ is the set of all linear combinations of the vectors in $S$:
   $$\langle S \rangle = \{a_1 \mathbf{v_1} + a_2 \mathbf{v_2} + \ldots + a_k \mathbf{v_k} : a_i \in \mathbb{R}\}$$
-  The span, $\langle S, \rangle$ is a subspace of $\mathbb{R}^n$.
+  The span, $\langle , \rangle$ is a subspace of $\mathbb{R}^n$.
 \end{definitionbox}
 \noindent \textbf{Proof that $\langle S \rangle$ is a subspace of $\mathbb{R}^n$}
 \begin{itemize}
