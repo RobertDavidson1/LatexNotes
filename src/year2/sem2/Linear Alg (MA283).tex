@@ -390,7 +390,7 @@ $$
       \draw[->] (-2,0) -- (2,0) node[right] {\(x\)};
       \draw[->] (0,-2) -- (0,2) node[above] {\(y\)};
 
-      \draw[thick,custom_red] (-2,2) -- (2,-2);
+      \draw[thick,custom_red] (-1.9,1.9) -- (1.9,-1.9);
       \draw[thick,custom_blue] (-2,-1) -- (2,2);
       \draw[thick,custom_purple] (-2,0.5) -- (2,1.5);
 
@@ -419,7 +419,7 @@ $$
 
       \node at (0,-2.5,0) {\small \(m < n\): Infinite solutions};
     \end{tikzpicture}
-    \caption{Horizontal and vertical planes intersecting in a line}
+    \caption{Planes intersecting in a line}
   \end{subfigure}
   \hfill
   % m = n: 2 equations, 2 unknowns (intersection at one point)
@@ -429,10 +429,10 @@ $$
       \draw[->] (-2,0) -- (2,0) node[right] {\(x\)};
       \draw[->] (0,-2) -- (0,2) node[above] {\(y\)};
 
-      \draw[thick,custom_red] (-2,2) -- (2,-2);
-      \draw[thick,custom_blue] (-2,-1) -- (2,2);
+      \draw[thick,custom_red] (-1.9,1.9) -- (1.9,-1.9);
+      \draw[thick,custom_blue] (-1.9,-1) -- (1.9,1.9);
 
-      \filldraw[black] (-0.5,0.5) circle (2pt) node[left] {\tiny unique solution};
+      \filldraw[black] (-0.25,0.25) circle (2pt) node[left] {\tiny unique solution};
 
       \node at (0,-3) {\small \(m = n\): Unique solution};
     \end{tikzpicture}
@@ -442,6 +442,15 @@ $$
   \caption{Geometric interpretation of linear systems}
 \end{figure}
 \subsection{Elementary Row Operations}
+Suppose that the square matrix has an inverse $A^{-1}$, which means $A^{-1}A = I$. With $I$ being the identity matrix. Then our solution will be:
+$$
+  \mathbf{x} = A^{-1}\mathbf{b}
+$$
+Since:
+$$
+  A\mathbf{x} = A(A^{-1}\mathbf{b}) = I\mathbf{b} = b
+$$
+
 To solve a system of linear equations we associate an \textbf{augmented matrix} to the system of equations. For example:
 $$
   \begin{array}
