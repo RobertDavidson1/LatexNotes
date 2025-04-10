@@ -916,7 +916,15 @@ Overall, these ideasâ€”image, kernel, subspaces, span, and linear independenceâ€
   $$T(a_1v_1 + a_2 v_2) = a_1T(v_1) + a_2T(v_2)$$
   \textbf{That is the additivity and homogeneity properties hold.}
 \end{definitionbox}
-
+\subsection{Subspaces}
+\begin{definitionbox}{}{}
+  A non empty subset $\textbf{V}$ of $\mathbb{R}^n$ is a \textbf{subspace} if:
+  \begin{itemize}
+    \item \textbf{Closed under scalar multiplication}: $\alpha \mathbf{u} \in \textbf{V}$, $\mathbf{u} \in \textbf{V}$, $\alpha \in \mathbb{R}$
+    \item \textbf{Closed under addition}: $\mathbf{u} + \mathbf{v} \in \mathbf{V}$, $\mathbf{u}, \mathbf{v} \in \textbf{V}$
+  \end{itemize}
+\end{definitionbox}
+\noindent Given some linear transformation $T: V \to W$, there are naturally occurring subspaces of both $V$ and $W$, namely the \textbf{kernel} and \textbf{image}.
 \subsection{The Image and Kernel of a Linear Transformation}
 $$
   \text{Let: $T:\mathbb{R}^3 \to \mathbb{R}^3$, defined by matrix} \quad
@@ -928,8 +936,9 @@ $$
 $$
 \subsubsection{Image of $T$}
 \begin{definitionbox}{}{}
-  The image of $T$ is:
-  $$\text{Im}(T) = \{w \in W, \text{there exists} v \in V \text{ such that } T(v) = w\}$$
+  $$
+    \text{Im}(T) = \{w \in W, \text{there exists } v \in V \text{ such that } T(v) = w\}
+  $$
 \end{definitionbox}
 The \textbf{image} of $T$, denoted $\text{im}(T)$ is the set of all vectors, $w$ that can be written as $T(\textbf{v})$, for some $\mathbf{v} \in \mathbb{R}^3$. Algebraically, this is the column space of the matrix $M_T$. \textbf{Explicitly:}
 $$\text{im}(T) = \text{span}\left\{
@@ -950,6 +959,9 @@ $$\text{im}(T) = \text{span}\left\{
   \end{bmatrix}
   \right\}$$
 \subsubsection{Kernel of $T$}
+\begin{definitionbox}{}{}
+  $$\text{ker}(T) = \{ v \in V: T(v) = 0\}$$
+\end{definitionbox}
 The \textbf{kernel} of $T$, denoted $\text{ker}(T)$ is the set of all vectors $\mathbf{v} \in \mathbb{R}^3$ such that $T(\mathbf{v}) = \mathbf{0}$. Algebraically, this is the \textbf{null space} of the matrix $M_T$. To find the kernel solve:
 $$
   \begin{bmatrix}
@@ -1063,14 +1075,6 @@ $$\text{span} \left \{ \begin{bmatrix}
   \end{bmatrix}
   \right \}
 $$
-\subsection{Subspaces}
-\begin{definitionbox}{}{}
-  A non empty subset $\textbf{V}$ of $\mathbb{R}^n$ is a \textbf{subspace} if:
-  \begin{itemize}
-    \item \textbf{Closed under scalar multiplication}: $\alpha \mathbf{u} \in \textbf{V}$, $\mathbf{u} \in \textbf{V}$, $\alpha \in \mathbb{R}$
-    \item \textbf{Closed under addition}: $\mathbf{u} + \mathbf{v} \in \mathbf{V}$, $\mathbf{u}, \mathbf{v} \in \textbf{V}$
-  \end{itemize}
-\end{definitionbox}
 \subsubsection*{Examples of subspaces}
 \begin{itemize}
   \item $\{(x,y,z) \in \mathbb{R}^3 : x + y + z = 1\}$ is not a subspace of $\mathbb{R}^3$. the vectors $(1,0,0)$ and $(0,1,0)$ are in the set, but their sum $(1,1,0)$ is not in the set.
@@ -1102,9 +1106,8 @@ $$
 
 \subsection{Spanning sets}
 \begin{definitionbox}{}{}
-  Let $V$ be a subspace of $\mathbb{R}^n$. \\[2ex]
-  A subset $S$ of $V$ is a \textbf{spanning set} for $V$ if $\langle S \rangle = V$. \\[2ex]
-  This means that every element of $V$ can be expressed as a linear combination of the elements of $S$.
+  A set of vectors, $(v_1, \dots, v_n)$ span the vector space, $V$, if given any vector $v \in V$, there are scalar $a_1, \dots, a_n \in \mathbb{R}$ with:
+  $$v = a_1v_1 + a_2v_2 + \cdots + a_nv_n$$
 \end{definitionbox}
 \noindent\textbf{Example} \\
 The set $\{e_1, e_2, e_3\}$ is a spanning set of $\mathbb{R}^3$. We know that:
@@ -1180,13 +1183,14 @@ If we are interested in the span of $\{v_1, \dots, v_k\}$, we can throw away $v_
   The non-zero rows of the RREF are linearly independent, they span the rowspace of the matrix. The rowspace is the subspace of $\mathbb{R}^5$ spanned by the rows of the matrix.
 \end{examplebox}
 \subsection{Test for linear independence}
-A set is linearly independent if none of its elements is a linear combination of the others. We have an alternative formulation, which is easier to check: \\
-"\textbf{A set of vectors is linearly independent if the only way to write the zero vector as a linear combination of the vectors in the set is to use all zero coefficients.}" \\
-To decide if the set $\{v_1, \dots, v_k\}$ is linearly independent, try to write the zero vector as a linear combination of the vectors in the set:
-$$
-  \sum_{i=1}^k \alpha_i v_i = \alpha_1 v_1 + \cdots + \alpha_k v_k = 0 \quad \text{for} \; \alpha_i \in \mathbb{R}
-$$
-If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not, the set is linearly dependent.
+\begin{definitionbox}{}{}
+  Vectors $(v_1, \dots, v_n)$ in a vector space $V$ are linearly independent, if whenever:
+  $$a_1v_1 + \dots + a_nv_n = 0$$,
+  it must be the case that all scalars $a_1, \dots a_n$ must be zero.
+  If $\forall i \rightarrow a_i = 0$, then the set is linearly independent. If not, the set is linearly dependent.
+\end{definitionbox}
+\noindent \textbf{Intuitively}, a collection of vectors are linearly independent if they all point in different directions.
+
 \begin{examplebox}{}{}
   Decide whether the set $\{[1,0,1], [1,0,-1], [1,1,1]\}$ is linearly independent or dependent. \\
   \rule{\textwidth}{1px} \\
@@ -1254,7 +1258,7 @@ This section deepens our investigation of vector spaces by addressing how to des
     \item Spanning: The set of vectors can be combined to form any vector in the space.
   \end{itemize}
 \end{definitionbox}
-$$\textbf{""I can represent everything, using only these, and no fewer."}$$
+$$\textbf{"I can represent everything, using only these, and no fewer."}$$
 \noindent A basis is both the minimal spanning set (remove any vector, and it no longer spans) and the maximal linearly independent set (add any vector, and it becomes linearly dependent) \\[2ex]
 \textbf{Examples:}
 \begin{itemize}
