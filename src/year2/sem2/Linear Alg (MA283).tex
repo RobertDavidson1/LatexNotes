@@ -58,8 +58,16 @@ $$
   \end{bmatrix}
 $$
 \subsection*{Vector Space}
-With these operations of addition and scalar multiplication, the set of
-$m \times n$ matrices is a vector space. A \textbf{vector space} algebraic structure whose elements can be added, subtracted and multiplied by scalars.
+\begin{definitionbox}{}{}
+  The most typical example of a \textbf{vector space} is $\mathbb{R}^n$, the all $n$ sized vector of real numbers
+  $$\{(x_1, \dots, x_n)\; x_i \in \mathbb{R}\}$$
+  What makes this a vector space is is that we can add two $n$-vector together:
+  $$(x_, \dots, x_n) + (y_1, \dots, y_n) = (x_1 + y_1, dots, x_n + y_n)$$
+  and we can multiply each vector by a scalar, $\alpha$:
+  $$
+    \alpha (x_1, \dots, x_n) = (\alpha x_1, \dots, \alpha x_n)
+  $$
+\end{definitionbox}
 
 \subsection*{Linear Combinations}
 Suppose $v_1, v_2, \dots, v_k$ are elements that can be added together and multiplied by scalars. \\[2ex]
@@ -105,7 +113,7 @@ $$
 
 \subsection*{Matrix-Matrix Multiplication}
 
-Let $A$ and $B$ be matrices of size $m \times p$ and $p \times n$, respectively.Write $v_1, \ldots v_n$ for the columns of $B$. Then the product $AB$ is the $m \times n$ matrices whose columns are $Av_1 , \ldots, Av_n$. \\[2ex]
+Let $A$ and $B$ be matrices of size $m \times $ and $p \times n$, respectively.Write $v_1, \ldots v_n$ for the columns of $B$. Then the product $AB$ is the $m \times n$ matrices whose columns are $Av_1 , \ldots, Av_n$. \\[2ex]
 The entry at row $i$ and column $j$ of the matrix $A$ is given by $A_{ij}$. The entry in the $i,j$ position of the product $AB$ is the $i$th entry of the vector $Av_j$, where the vector $v_j$ is the $j$th column of $B$. In other words, the entry in the $i,j$ position of the product $AB$ is given by:
 $$
   (AB)_{ij} = A_{i1}B_{1j} + A_{i2}B_{2j} + \ldots + A_{ip}B_{pj} = \sum_{k=1}^p A_{ik}B_{kj}
@@ -311,144 +319,160 @@ A pair, $(x_0, y_0) \in \mathbb{R}$, is a solution to an linear equation if sett
   is an \textbf{affine hyperplane} in $\mathbb{R}^n$; geometrically resembles a copy of $\mathbb{R}^{n-1}$ inside $\mathbb{R}^n$.
 \end{definitionbox}
 \subsubsection{Interpreting Linear Systems as Matrix Equations}
+For some equations:
+\begin{align*}
+  a_{11}x_1 + \dots + a_{1n}x_n & = b_1  \\
+                                & \vdots \\
+  a_{m1}x_1 + \dots + a_{mn}x_n & = b_m
+\end{align*}
+We can write:
+$$\mathbf{b} = \begin{bmatrix}
+    b_1    \\
+    \vdots \\
+    b_m
+  \end{bmatrix}, \quad
+  A = \begin{bmatrix}
+  a_{11} & \dots & a_{1n} \\
+  \vdots & \ddots & \vdots \\
+  a_{m1} & \dots & a_{mn}
 $$
-  \begin{array}{ccccccc}
-    x  & + & 2y & - & z  & = & 5 \\
-    3x & + & y  & - & 2z & = & 9 \\
-    -x & + & 4y & + & 2z & = & 0
-  \end{array}
-  \quad \Rightarrow \quad
-  \begin{bmatrix}
-    1  & 2 & -1 \\
-    3  & 1 & -2 \\
-    -1 & 4 & 2
-  \end{bmatrix}
-  \begin{bmatrix}
-    x \\
-    y \\
-    z
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    5 \\
-    9 \\
-    0
-  \end{bmatrix}
+\begin{array}{ccccccc}
+  x  & + & 2y & - & z  & = & 5 \\
+  3x & + & y  & - & 2z & = & 9 \\
+  -x & + & 4y & + & 2z & = & 0
+\end{array}
+\quad \Rightarrow \quad
+\begin{bmatrix}
+  1  & 2 & -1 \\
+  3  & 1 & -2 \\
+  -1 & 4 & 2
+\end{bmatrix}
+\begin{bmatrix}
+  x \\
+  y \\
+  z
+\end{bmatrix}
+=
+\begin{bmatrix}
+  5 \\
+  9 \\
+  0
+\end{bmatrix}
 $$
-\subsection{Elementary Row Operations}
-To solve a system of linear equations we associate an \textbf{augmented matrix} to the system of equations. For example:
+  \subsection{Elementary Row Operations}
+  To solve a system of linear equations we associate an \textbf{augmented matrix} to the system of equations. For example:
 $$
-  \begin{array}
-    {ccccccc}x & + & 2y & - & z  & = & 5 \\
-    3x         & + & y  & - & 2z & = & 9 \\
-    -x         & + & 4y & + & 2z & = & 0
-  \end{array}
-  \quad \Rightarrow \quad
-  \begin{bmatrix}
-    1  & 2 & -1 & | & 5 \\
-    3  & 1 & -2 & | & 9 \\
-    -1 & 4 & 2  & | & 0
-  \end{bmatrix}
+\begin{array}
+  {ccccccc}x & + & 2y & - & z  & = & 5 \\
+  3x         & + & y  & - & 2z & = & 9 \\
+  -x         & + & 4y & + & 2z & = & 0
+\end{array}
+\quad \Rightarrow \quad
+\begin{bmatrix}
+  1  & 2 & -1 & | & 5 \\
+  3  & 1 & -2 & | & 9 \\
+  -1 & 4 & 2  & | & 0
+\end{bmatrix}
 $$
-To solve, we can perform the following \textbf{Elementary Row Operations (EROs)}:
-\begin{enumerate}
-  \item Multiply a row by a non-zero constant.
-  \item Add a multiple of one row to another row.
-  \item Swap two rows.
-\end{enumerate}
-The goal of these operations is to transform the augmented matrix into \textbf{row echelon form} (REF) or \textbf{reduced row echelon form} (RREF).
+  To solve, we can perform the following \textbf{Elementary Row Operations (EROs)}:
+  \begin{enumerate}
+    \item Multiply a row by a non-zero constant.
+    \item Add a multiple of one row to another row.
+    \item Swap two rows.
+  \end{enumerate}
+  The goal of these operations is to transform the augmented matrix into \textbf{row echelon form} (REF) or \textbf{reduced row echelon form} (RREF).
 
-\subsubsection{REF and Strategy}
-\begin{minipage}{0.8\textwidth}
-  We say a matrix is in \textbf{row echelon form} (REF) if:
-  \begin{itemize}
-    \item The first non zero entry in each row is a 1 (called the \textbf{leading 1}).
-    \item If a column has a leading 1, then all entries below it are 0.
-    \item The leading 1 in each row is to the right of the leading 1 in the previous row.
-    \item All rows of 0s are at the bottom of the matrix.
-  \end{itemize}
-\end{minipage}
-\begin{minipage}{0.2\textwidth}
-  \begin{center}
-    $$
-      \begin{bmatrix}
-        1 & 2 & -1 & | & 3  \\
-        0 & 1 & 2  & | & -1 \\
-        0 & 0 & 1  & | & -1
-      \end{bmatrix}
-    $$
-    \emph{Example of REF}
-  \end{center}
+  \subsubsection{REF and Strategy}
+  \begin{minipage}{0.8\textwidth}
+    We say a matrix is in \textbf{row echelon form} (REF) if:
+    \begin{itemize}
+      \item The first non zero entry in each row is a 1 (called the \textbf{leading 1}).
+      \item If a column has a leading 1, then all entries below it are 0.
+      \item The leading 1 in each row is to the right of the leading 1 in the previous row.
+      \item All rows of 0s are at the bottom of the matrix.
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}{0.2\textwidth}
+    \begin{center}
+      $$
+        \begin{bmatrix}
+          1 & 2 & -1 & | & 3  \\
+          0 & 1 & 2  & | & -1 \\
+          0 & 0 & 1  & | & -1
+        \end{bmatrix}
+      $$
+      \emph{Example of REF}
+    \end{center}
 
 
-\end{minipage} \\[2ex]
-We have produced a new system of equations. This is easily solved by back substitution.
+  \end{minipage} \\[2ex]
+  We have produced a new system of equations. This is easily solved by back substitution.
 
-\begin{conceptbox}{Stategy for Obtaining REF}{}
-  \begin{itemize}
-    \item Get a 1 as the top left entry
-    \item Use this 1 to clear the entries below it
-    \item Move to the next column and repeat
-    \item Continue until all leading 1s are in place
-    \item Use back substitution to solve the system
-  \end{itemize}
-\end{conceptbox}
-\subsubsection{Row Reduced Echelon Form}
-\begin{minipage}{0.8\textwidth}
-  A matrix is in \textbf{reduced row echelon form} (RREF) if:
-  \begin{itemize}
-    \item It is in REF
-    \item The leading 1 in each row is the only non-zero entry in its column.
-  \end{itemize}
-\end{minipage}
-\begin{minipage}{0.2\textwidth}
-  \begin{center}
-    $$
-      \begin{bmatrix}
-        1 & 0 & 0 & | & 2  \\
-        0 & 1 & 0 & | & -1 \\
-        0 & 0 & 1 & | & -1
-      \end{bmatrix}
-    $$
-    \emph{Example of RREF}
-  \end{center}
-\end{minipage}
+  \begin{conceptbox}{Stategy for Obtaining REF}{}
+    \begin{itemize}
+      \item Get a 1 as the top left entry
+      \item Use this 1 to clear the entries below it
+      \item Move to the next column and repeat
+      \item Continue until all leading 1s are in place
+      \item Use back substitution to solve the system
+    \end{itemize}
+  \end{conceptbox}
+  \subsubsection{Row Reduced Echelon Form}
+  \begin{minipage}{0.8\textwidth}
+    A matrix is in \textbf{reduced row echelon form} (RREF) if:
+    \begin{itemize}
+      \item It is in REF
+      \item The leading 1 in each row is the only non-zero entry in its column.
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}{0.2\textwidth}
+    \begin{center}
+      $$
+        \begin{bmatrix}
+          1 & 0 & 0 & | & 2  \\
+          0 & 1 & 0 & | & -1 \\
+          0 & 0 & 1 & | & -1
+        \end{bmatrix}
+      $$
+      \emph{Example of RREF}
+    \end{center}
+  \end{minipage}
 
-\subsection{Leading variables and free variables}
-We'll start by an example:
+  \subsection{Leading variables and free variables}
+  We'll start by an example:
 $$
-  \begin{array}{ccccccccc}
-    x_1  & - & x_2  & - & x_3  & + & 2x_4 & = & 0 \\
-    2x_1 & + & x_2  & - & x_3  & + & 2x_4 & = & 8 \\
-    x_1  & - & 3x_2 & + & 2x_3 & + & 7x_4 & = & 2
-  \end{array}
-  \quad \Rightarrow \quad
-  \begin{bmatrix}
-    1 & -1 & -1 & 2 & | & 0 \\
-    2 & 1  & -1 & 2 & | & 8 \\
-    1 & -3 & 2  & 7 & | & 2
-  \end{bmatrix}
+\begin{array}{ccccccccc}
+  x_1  & - & x_2  & - & x_3  & + & 2x_4 & = & 0 \\
+  2x_1 & + & x_2  & - & x_3  & + & 2x_4 & = & 8 \\
+  x_1  & - & 3x_2 & + & 2x_3 & + & 7x_4 & = & 2
+\end{array}
+\quad \Rightarrow \quad
+\begin{bmatrix}
+  1 & -1 & -1 & 2 & | & 0 \\
+  2 & 1  & -1 & 2 & | & 8 \\
+  1 & -3 & 2  & 7 & | & 2
+\end{bmatrix}
 $$
-Solving this system of equations, we get:
+  Solving this system of equations, we get:
 $$
-  \text{RREF:}\quad
-  \begin{bmatrix}
-    1 & 0 & 0 & 2  & | & 4 \\
-    0 & 1 & 0 & -1 & | & 2 \\
-    0 & 0 & 0 & 1  & | & 2
-  \end{bmatrix}
-  \quad \Rightarrow \quad
-  \begin{array}{ccccc}
-    x_1 & + & 2x_4 & = & 4 \quad \\
-    x_2 & - & x_4  & = & 2 \quad \\
-    x_3 & + & x_4  & = & 2 \quad
-  \end{array}
-  \quad \Rightarrow \quad
-  \begin{array}{ccc}
-    x_1 & = & 4 - 2x_4 \\
-    x_2 & = & 2 + x_4  \\
-    x_3 & = & 2 - x_4
-  \end{array}
+\text{RREF:}\quad
+\begin{bmatrix}
+  1 & 0 & 0 & 2  & | & 4 \\
+  0 & 1 & 0 & -1 & | & 2 \\
+  0 & 0 & 0 & 1  & | & 2
+\end{bmatrix}
+\quad \Rightarrow \quad
+\begin{array}{ccccc}
+  x_1 & + & 2x_4 & = & 4 \quad \\
+  x_2 & - & x_4  & = & 2 \quad \\
+  x_3 & + & x_4  & = & 2 \quad
+\end{array}
+\quad \Rightarrow \quad
+\begin{array}{ccc}
+  x_1 & = & 4 - 2x_4 \\
+  x_2 & = & 2 + x_4  \\
+  x_3 & = & 2 - x_4
+\end{array}
 $$
 This RREF tells us how the \textbf{leading variables} ($x_1, x_2, x_3$) depend on the \textbf{free variable} ($x_4$). The free variable can take any value in $\mathbb{R}$. We write the solution set as:
 $$x_1 = 4 - 2t, \quad x_2 = 2 + t, \quad x_3 = 2 - t, \quad x_4 = t \quad \text{where} \; t \in \mathbb{R}$$
