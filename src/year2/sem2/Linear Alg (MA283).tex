@@ -1801,6 +1801,40 @@ $$T : V \to V$$
 as an $n \times n$ matrix $A$. Unfortunately, if we choose a different basis for $V$, the matrix $A$ representing $T$ will change.  \\[2ex]
 We aim to clearly explain when two matrices represent the same linear transformation, just in different bases.
 \subsection*{k}
+We want to see two matrices are similar when they represent the same linear transformation. Choose two bases for the vector space $V$, and $W$: $\{v_1, \dots v_n\}$ and $\{w_1, \dots w_n\}$. \\[2ex]
+Given the $v$ basis, we can write any vector $z \in V$ as a linear combination of the basis vectors:
+$$z = a_1, v_1 + a_2 v_2 + \cdots + a_n v_n = \begin{bmatrix}
+    a_1    \\
+    a_2    \\
+    \vdots \\
+    a_n
+  \end{bmatrix}$$
+where $a_i$ are unique scalars. Similar for the $w$ basis:
+
+$$z = b_1, w_1 + b_2 w_2 + \cdots + b_n w_n = \begin{bmatrix}
+    b_1    \\
+    b_2    \\
+    \vdots \\
+    b_n
+  \end{bmatrix}$$
+where $b_i$ are unique scalars. \\[2ex]
+Let $A$ be the matrix representing the linear transformation, $T$, for the $v$ basis, and $B$ be the matrix representing the same linear transformation for the $w$ basis:
+$$T(z) = T(a_1 v_1 + a_2 v_2 + \cdots + a_n v_n) = A\begin{bmatrix}
+    a_1    \\
+    a_2    \\
+    \vdots \\
+    a_n
+  \end{bmatrix} \quad \text{and} \quad
+  T(z) = T(b_1 w_1 + b_2 w_2 + \cdots + b_n w_n) = B\begin{bmatrix}
+    b_1    \\
+    b_2    \\
+    \vdots \\
+    b_n
+  \end{bmatrix}$$
+
+
+
+\subsection*{k}
 We want to see two matrices are similar when they represent the same linear transformation. Choose two bases for the vector space $V$, and $W$: $\{v_1, \dots v_n\}$ and $\{w_1, \dots w_n\}$ and let $A$ be the matrix representing the linear transformation, $T$, for the $v$ basis, and $B$ be the matrix representing the same linear transformation for the $w$ basis. \\[2ex]
 Given the $v$ basis, we can write each vector $z \in V$ as an $n \times 1$ column vector:
 $$z = a_1, v_1 + a_2 v_2 + \cdots + a_n v_n = \begin{bmatrix}
@@ -1818,6 +1852,13 @@ $$z = b_1, w_1 + b_2 w_2 + \cdots + b_n w_n = \begin{bmatrix}
     b_n
   \end{bmatrix}$$
 where $b_i$ are unique scalars. \\
+We know, the linear transformation $T$ acts as:
+$$T(z) = T(a_1 v_1 + a_2 v_2 + \cdots + a_n v_n) = A\begin{bmatrix}
+    a_1    \\
+    a_2    \\
+    \vdots \\
+    a_n
+  \end{bmatrix}$$
 Then, we can introduce a matrix $P$ that maps the $v$ basis to the $w$ basis, called the \textbf{change-of-basis} matrix:
 $$
   P \begin{bmatrix}
@@ -1834,6 +1875,26 @@ $$
     b_n
   \end{bmatrix}
 $$
+So applying the transformation, then converting to the $w$ basis gives:
+$$
+  P\left(A \begin{bmatrix}
+      a_1    \\
+      a_2    \\
+      \vdots \\
+      a_n
+    \end{bmatrix}\right)
+$$
+On the other hand, if $B$ represent the transformation of $T$ in the $w$ basis, we can write:
+$$
+  B\left(P \begin{bmatrix}
+      a_1    \\
+      a_2    \\
+      \vdots \\
+      a_n
+    \end{bmatrix}\right)
+$$
+So:
+$$PA = BP \Longrightarrow A = P^{-1}BP$$
 Our goal is to relate the matrices $A$ and $B$ — that is, to find how the matrix representation the shared linear transformation $T$ changes when we change from the $v$-basis to the $w$-basis.
 \subsection{Similarity (The relation of $A$ and $A'$)}
 Starting with $A$, the matrix $T: \mathbb{R}^3 \to \mathbb{R}^3$ with respect to the standard basis, to we find $A'$, the matrix of $T$ with respect to the basis $B$ we:
