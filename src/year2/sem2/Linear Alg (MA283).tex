@@ -903,6 +903,19 @@ From there, we introduce the formal definition of a \textbf{subspace} of $\mathb
 Next, we discuss the idea of the \textbf{span} of a set of vectors, demonstrating how taking linear combinations of a few vectors can give rise to entire subspaces. This leads to the concept of a \textbf{spanning set}, a collection of vectors whose linear combinations recreate the entire subspace in question. Understanding which (and how many) vectors actually suffice to generate a subspace is a step toward more advanced ideas like dimension. \\[2ex]
 Finally, we turn to the topics of \textbf{linear dependence} and \textbf{linear independence}. These properties reveal whether one vector in a set can be written as a linear combination of the others. A set is linearly dependent if at least one vector is redundant, while a linearly independent set has no such redundancy. Checking for linear independence typically involves setting up a linear combination that yields the zero vector; if the only solution is all zero coefficients, the set is independent. This distinction shapes the way we reduce or optimize spanning sets and reveals the essence of a vector space’s most efficient basis. \\[2ex]
 Overall, these ideas—image, kernel, subspaces, span, and linear independence—are at the heart of linear algebra. They clarify how different vector sets form coherent structures and pave the way for higher-level topics such as rank, dimension, and bases, all of which are built upon the foundation laid out here.
+\subsection*{Recall:}
+\begin{definitionbox}{}{}
+  A set, $V$, is a vector space over the real numbers $\mathbb{R}$ if there are maps:
+  \begin{itemize}
+    \item $\mathbb{R} \times V \to V$: Denoted by $\alpha \mathbf{v}$, where $\alpha \in \mathbb{R}$ and $\mathbf{v} \in V$.
+    \item $V \times V \to V$: Denoted by $\mathbf{u} + \mathbf{v}$, $\forall u,v \in V$
+  \end{itemize}
+\end{definitionbox}
+\begin{definitionbox}{}{}
+  A linear transformation, $T : V \to W$ is a function from vector space $V$ to a vector space $W$, such that, for any real numbers $a_1, a_2$ and $v_1, v_2$, we have:
+  $$T(a_1v_1 + a_2 v_2) = a_1T(v_1) + a_2T(v_2)$$
+  \textbf{That is the additivity and homogeneity properties hold.}
+\end{definitionbox}
 
 \subsection{The Image and Kernel of a Linear Transformation}
 $$
@@ -914,7 +927,11 @@ $$
   \end{bmatrix}
 $$
 \subsubsection{Image of $T$}
-The \textbf{image} of $T$, denoted $\text{im}(T)$ is the set of all vector that can be written as $T(\textbf{v})$, for some $\mathbf{v} \in \mathbb{R}^3$. Algebraically, this is the column space of the matrix $M_T$. \textbf{Explicitly:}
+\begin{definitionbox}{}{}
+  The image of $T$ is:
+  $$\text{Im}(T) = \{w \in W, \text{there exists} v \in V \text{ such that } T(v) = w\}$$
+\end{definitionbox}
+The \textbf{image} of $T$, denoted $\text{im}(T)$ is the set of all vectors, $w$ that can be written as $T(\textbf{v})$, for some $\mathbf{v} \in \mathbb{R}^3$. Algebraically, this is the column space of the matrix $M_T$. \textbf{Explicitly:}
 $$\text{im}(T) = \text{span}\left\{
   \begin{bmatrix}
     1 \\
