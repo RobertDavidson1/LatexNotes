@@ -375,9 +375,72 @@ $$
 $$
 \subsubsection{Cases of Solutions}
 \begin{itemize}
-  \item $m > n$ : no solutions (more equations than unknowns) \\
-
+  \item $\mathbf{m > n}$ \textbf{no solutions} (more equations than unknowns) \\
+        For example, let $m = 3, n = 2$, that is we have 3 equations and 2 unknowns, this corresponds to the fact that three lines in a plane will usually have no  common point of intersection.
+  \item $\mathbf{m < n}$ \textbf{infinitely many solutions} (more unknowns than equations) \\
+        For example, $m = 2, n =3$, that is 2 equations, with 3 unknowns, this corresponds to the fact that two planes in space will usuaully intersect in an entire line.
+  \item $\mathbf{m = n}$: Much of linear algebra deals with this remaining case.
 \end{itemize}
+\begin{figure}[ht]
+  \centering
+  % m > n: 3 equations, 2 unknowns (3 lines, no common intersection)
+  \begin{subfigure}[b]{0.2\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=1]
+      \draw[->] (-2.5,0) -- (2.5,0) node[right] {\(x\)};
+      \draw[->] (0,-2.5) -- (0,2.5) node[above] {\(y\)};
+
+      \draw[thick,red] (-2,2) -- (2,-2);
+      \draw[thick,blue] (-2,-1) -- (2,3);
+      \draw[thick,green!70!black] (-2,0.5) -- (2,1.5);
+
+      \node at (0,-3) {\small \(m > n\): No solution};
+    \end{tikzpicture}
+    \caption{3 lines (no common intersection)}
+  \end{subfigure}
+  \hfill
+  % m < n: 2 equations, 3 unknowns (2 planes intersecting in a line)
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+      % Horizontal plane (xy-plane shifted up)
+      \fill[blue!20,opacity=0.7] (-1.5,-1.5,1) -- (1.5,-1.5,1) -- (1.5,1.5,1) -- (-1.5,1.5,1) -- cycle;
+
+      % Vertical plane (xz-plane)
+      \fill[red!20,opacity=0.7] (-1.5,0,-1.5) -- (1.5,0,-1.5) -- (1.5,0,1.5) -- (-1.5,0,1.5) -- cycle;
+
+      % Axes
+      \draw[->] (0,0,0) -- (2,0,0) node[right] {\(x\)};
+      \draw[->] (0,0,0) -- (0,2,0) node[above] {\(y\)};
+      \draw[->] (0,0,0) -- (0,0,2) node[above right] {\(z\)};
+
+      % Intersection line of planes
+      \draw[very thick,black] (-1.5,0,1) -- (1.5,0,1);
+
+      \node at (0,-2,0) {\small \(m < n\): Infinite solutions};
+    \end{tikzpicture}
+    \caption{Horizontal and vertical planes intersecting in a line}
+  \end{subfigure}
+  \hfill
+  % m = n: 2 equations, 2 unknowns (intersection at one point)
+  \begin{subfigure}[b]{0.2\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=1]
+      \draw[->] (-2.5,0) -- (2.5,0) node[right] {\(x\)};
+      \draw[->] (0,-2.5) -- (0,2.5) node[above] {\(y\)};
+
+      \draw[thick,red] (-2,2) -- (2,-2);
+      \draw[thick,blue] (-2,-1) -- (2,3);
+
+      \filldraw[black] (0.5,0.5) circle (2pt) node[above right] {\tiny unique solution};
+
+      \node at (0,-3) {\small \(m = n\): Unique solution};
+    \end{tikzpicture}
+    \caption{2 lines intersect at a point}
+  \end{subfigure}
+
+  \caption{Geometric interpretation of linear systems}
+\end{figure}
 \subsection{Elementary Row Operations}
 To solve a system of linear equations we associate an \textbf{augmented matrix} to the system of equations. For example:
 $$
